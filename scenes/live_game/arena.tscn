@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dsbx8h2bhbi21"]
+
+[ext_resource type="PackedScene" uid="uid://llpuudtu6wyv" path="res://scenes/player.tscn" id="1_ufcpx"]
+[ext_resource type="PackedScene" uid="uid://bjcooj5na2lch" path="res://scenes/enemy.tscn" id="2_1mb5g"]
+[ext_resource type="PackedScene" uid="uid://6wicyxjpstg1" path="res://scenes/playground/playground.tscn" id="3_7lmse"]
+
+[node name="Arena" type="Node2D" unique_id=2041876055]
+
+[node name="Player" parent="." unique_id=55273758 instance=ExtResource("1_ufcpx")]
+position = Vector2(-794, -345)
+
+[node name="Enemy" parent="." unique_id=1476246328 instance=ExtResource("2_1mb5g")]
+position = Vector2(727, -345)
+
+[node name="Playground" parent="." unique_id=143692811 instance=ExtResource("3_7lmse")]
+position = Vector2(-612, -94)
+
+[node name="Camera2D" type="Camera2D" parent="Playground" unique_id=921767228]
+position = Vector2(605, 103)
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true

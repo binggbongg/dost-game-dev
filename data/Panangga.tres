@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://c3u6ai4ijlckc"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_npjqm"]
+[ext_resource type="Texture2D" uid="uid://dakgmbra2is36" path="res://assets/temporary/TANGLAW.png" id="2_p0swq"]
+
+[resource]
+script = ExtResource("1_npjqm")
+name = "Panangga"
+description = "Sets a protective layer for player."
+category = 3
+damage = 1
+heal = 40
+mana_cost = 30
+texture = ExtResource("2_p0swq")
+metadata/_custom_type_script = "uid://cv07myeubhuht"

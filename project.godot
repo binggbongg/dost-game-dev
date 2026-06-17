@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Dost GameJam"
+run/main_scene="uid://6wicyxjpstg1"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameEnums="*uid://0y1vwrkpn5j"
 
 [display]
 

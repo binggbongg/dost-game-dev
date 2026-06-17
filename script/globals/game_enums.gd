@@ -1,0 +1,58 @@
+extends Node
+# This is to differentiate the cards and later to identify valid combos
+enum CardCategory { LAHI, DIWA, KALIKASAN, TANGLAW }
+#This is so that our system kay maka tell what are the allowed actions at certain states
+enum TurnState {     
+	START_TURN,
+	DRAW_PHASE,
+	PLAYER_ACTION,
+	COMBO_SELECTION,
+	RESOLVING_COMBO,
+	END_TURN,
+	ENEMY_TURN }
+#This is to show the valididty of the combos used to attack/invalidities.
+enum ComboValidationResult {
+	VALID,
+	INVALID_DUPLICATE,
+	INVALID_CATEGORY_MIX,
+	INVALID_RULE_LAHI,
+	INVALID_RULE_DIWA,
+	INVALID_RULE_KALIKASAN,
+	INVALID_RULE_TANGLAW
+}
+#This can be used for both spellbook and actual gameplay
+enum ComboType {
+	ATTACK,
+	HEAL,
+	HYBRID,
+	BUFF,
+	DEBUFF,
+	SPECIAL
+}
+#Can be used to define the probability of drawing that card after shuffled
+enum CardRarity { Karaniwan, Natatangi, Bhira, Dambana }
+#Can be used to flag cards that have already been used in the game.
+enum CardState {
+	IN_DECK,
+	IN_HAND,
+	SELECTED,
+	IN_COMBO,
+	PLAYED,
+	DISCARDED
+}
+#Used for different card functionalities and also will block player from using if for invalid combos
+enum CardInteractionState {
+	IDLE,
+	HOVERED,
+	CLICKED,
+	DRAGGING,
+	DISABLED
+}
+#Used ni siya sa ComboManager while nag validate siya sa combo gi use.
+enum ComboPhase {
+	IDLE,
+	BUILDING,
+	VALIDATING,
+	RESOLVING,
+	FINISHED
+}
