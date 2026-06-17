@@ -19,4 +19,4 @@ position = Vector2(574, 546)
 position = Vector2(897, 548)
 
 [node name="CardSlot" parent="." unique_id=1941583601 instance=ExtResource("3_1ro2l")]
-position = Vector2(414, 198)
+position = Vector2(578, 214)
