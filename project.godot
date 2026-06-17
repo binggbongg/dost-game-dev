@@ -21,8 +21,8 @@ GameEnums="*uid://0y1vwrkpn5j"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/vsync/vsync_mode=0
 
 [physics]

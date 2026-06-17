@@ -1,9 +1,6 @@
-[gd_scene format=3 uid="uid://bjcooj5na2lch"]
+[gd_scene format=3 uid="uid://bun8l6us3o4wr"]
 
 [ext_resource type="Texture2D" uid="uid://cc6t2puxpf5q7" path="res://assets/temporary/player.png" id="1_7p1mj"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8ls1"]
-size = Vector2(20, 42)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_7p1mj")
@@ -104,15 +101,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=55273758]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7p1mj"]
+radius = 161.0
+height = 512.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=301832816]
-position = Vector2(0, 9)
-shape = SubResource("RectangleShape2D_a8ls1")
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=55273758]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=711316617]
 texture_filter = 1
-position = Vector2(15.999908, -52.000023)
 scale = Vector2(11.203123, 11.203123)
 sprite_frames = SubResource("SpriteFrames_7p1mj")
 autoplay = "default"
+frame = 7
+frame_progress = 0.48264837
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=301832816]
+position = Vector2(9, 94)
+shape = SubResource("CapsuleShape2D_7p1mj")

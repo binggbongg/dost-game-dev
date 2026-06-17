@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://llpuudtu6wyv"]
+[gd_scene format=3 uid="uid://dv334scxtukx8"]
 
 [ext_resource type="Texture2D" uid="uid://cc6t2puxpf5q7" path="res://assets/temporary/player.png" id="1_3vyb7"]
 
@@ -101,8 +101,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8ls1"]
-size = Vector2(20, 42)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
+radius = 170.0
+height = 574.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=55273758]
 
@@ -116,5 +117,5 @@ frame_progress = 0.7369005
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=301832816]
-position = Vector2(0, 9)
-shape = SubResource("RectangleShape2D_a8ls1")
+position = Vector2(13, 27)
+shape = SubResource("CapsuleShape2D_3vyb7")

@@ -11,6 +11,8 @@ var card_damage: int
 var card_heal: int
 var card_cost: int
 
+var hand_position
+
 func _ready() -> void:
 	apply_data()
 
