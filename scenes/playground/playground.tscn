@@ -3,20 +3,19 @@
 [ext_resource type="Script" uid="uid://vuetux2a7kmx" path="res://script/card_manager.gd" id="1_8absr"]
 [ext_resource type="PackedScene" uid="uid://cw5abrwt2c70o" path="res://scenes/card.tscn" id="2_1ro2l"]
 [ext_resource type="PackedScene" uid="uid://cuauet8et8d12" path="res://scenes/playground/card_slot.tscn" id="3_1ro2l"]
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="3_uis3y"]
+[ext_resource type="Resource" uid="uid://dmpvj6umjae5f" path="res://data/Ahas.tres" id="4_n0aqf"]
+[ext_resource type="Resource" uid="uid://3w5lqpxhexu6" path="res://data/Apoy.tres" id="5_yqvi2"]
+[ext_resource type="Resource" uid="uid://c3u6ai4ijlckc" path="res://data/Panangga.tres" id="6_pnqtf"]
+[ext_resource type="Resource" uid="uid://bxxih1av5qe8p" path="res://data/Panaginip.tres" id="7_w4mas"]
+[ext_resource type="Resource" uid="uid://bgjgs5sh1hj08" path="res://data/Tubig.tres" id="8_n0aqf"]
 
 [node name="Playground" type="Node2D" unique_id=143692811]
 
 [node name="CardManager" type="Node2D" parent="." unique_id=135479568]
 script = ExtResource("1_8absr")
-
-[node name="Card" parent="CardManager" unique_id=342120758 instance=ExtResource("2_1ro2l")]
-position = Vector2(267, 539)
-
-[node name="Card2" parent="CardManager" unique_id=349028012 instance=ExtResource("2_1ro2l")]
-position = Vector2(574, 546)
-
-[node name="Card3" parent="CardManager" unique_id=1072176247 instance=ExtResource("2_1ro2l")]
-position = Vector2(897, 548)
+card_scene = ExtResource("2_1ro2l")
+starting_cards = Array[ExtResource("3_uis3y")]([ExtResource("4_n0aqf"), ExtResource("5_yqvi2"), ExtResource("6_pnqtf"), ExtResource("7_w4mas"), ExtResource("8_n0aqf")])
 
 [node name="CardSlot" parent="." unique_id=1941583601 instance=ExtResource("3_1ro2l")]
 position = Vector2(578, 214)

@@ -9,8 +9,33 @@ var is_hovering_on_card
 var drag_offset: Vector2 = Vector2.ZERO
 var hovered_card
 
+@export var card_scene: PackedScene
+@export var starting_cards: Array[CardData]
+
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
+	spawn_starting_cards()
+	
+func spawn_starting_cards():
+	var count = starting_cards.size()
+
+	var spacing = 140
+	var total_width = (count - 1) * spacing
+
+	var start_x = (screen_size.x / 2) - (total_width / 2)
+	var y = screen_size.y - 200  # move above bottom slots
+
+	for i in range(count):
+		var data = starting_cards[i]
+
+		var card = card_scene.instantiate()
+		card.card_data = data
+		add_child(card)
+
+		card.position = Vector2(start_x + i * spacing, y)
+		connect_card_signal(card) 
+		
+		
 
 func _process(_delta) -> void:
 	if card_being_dragged:
