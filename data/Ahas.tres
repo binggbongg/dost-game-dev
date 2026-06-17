@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dmpvj6umjae5f"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_gfla4"]
+[ext_resource type="Texture2D" uid="uid://b5b1q5yy1a0gn" path="res://assets/temporary/LAHI.png" id="2_arago"]
+
+[resource]
+script = ExtResource("1_gfla4")
+name = "Ahas"
+description = "Summons the snake spirit"
+damage = 50
+heal = 5
+mana_cost = 75
+texture = ExtResource("2_arago")
+metadata/_custom_type_script = "uid://cv07myeubhuht"
