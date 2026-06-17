@@ -30,7 +30,7 @@ enum ComboType {
 	SPECIAL
 }
 #Can be used to define the probability of drawing that card after shuffled
-enum CardRarity { COMMON, RARE, EPIC, LEGENDARY }
+enum CardRarity { Karaniwan, Natatangi, Bhira, Dambana }
 #Can be used to flag cards that have already been used in the game.
 enum CardState {
 	IN_DECK,

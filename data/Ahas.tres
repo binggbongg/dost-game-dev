@@ -7,6 +7,7 @@
 script = ExtResource("1_gfla4")
 name = "Ahas"
 description = "Summons the snake spirit"
+rarity = 1
 damage = 50
 heal = 5
 mana_cost = 75
