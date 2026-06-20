@@ -3,6 +3,8 @@ extends Node2D
 signal hovered
 signal hovered_off
 
+var current_slot = null
+
 @export var card_data: CardData  
 var card_name: String
 var card_category:GameEnums.CardCategory
@@ -23,9 +25,9 @@ func apply_data():
 	card_name = card_data.name
 	card_category = card_data.category
 	card_rarity = card_data.rarity
-	card_damage = card_damage
-	card_heal = card_heal
-	card_cost = card_cost
+	card_damage = card_data.damage
+	card_heal = card_data.heal
+	card_cost = 0
 	$Sprite2D.texture = card_data.texture
 
 func _on_area_2d_mouse_entered() -> void:

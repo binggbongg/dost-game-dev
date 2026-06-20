@@ -3,13 +3,12 @@ extends Node2D
 signal left_mouse_button_clicked
 signal left_mouse_button_released
 
-const COLLISION_MASK_CARD = 1
-const COLLISION_MASK_DECK = 4
+const LAYER_CARD = 1
+const LAYER_DECK = 5
 
 @onready var card_manager_reference = $"../CardManager"
 @onready var deck_reference = $"../Deck"
 
-# do not touch
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
@@ -28,11 +27,16 @@ func raycast_at_cursor():
 	
 	if result.size() > 0:
 		var result_collision_mask = result[0].collider.collision_layer
-		if result_collision_mask == COLLISION_MASK_CARD:
+		
+		if result_collision_mask == LAYER_CARD:
 			# card is clicked
-			var card_found = result[0].collider.get_parent()
+			var card_found = card_manager_reference.get_highest_card(result)
 			if card_found:
+				if card_found.current_slot:
+					card_found.current_slot.card_in_slot = false
+					card_found.current_slot = null
+				
 				card_manager_reference.start_drag(card_found)
-		elif result_collision_mask == COLLISION_MASK_DECK:
+		elif result_collision_mask == LAYER_DECK:
 			# deck is clicked
 			deck_reference.draw_card()

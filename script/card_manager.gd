@@ -14,7 +14,6 @@ var hovered_card
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	$"../InputManager".connect("left_mouse_button_released", on_left_click_released)
-	
 
 func _process(_delta) -> void:
 	if card_being_dragged:
@@ -24,15 +23,6 @@ func _process(_delta) -> void:
 			clamp(target_pos.x, 0, screen_size.x), 
 			clamp(target_pos.y, 0, screen_size.y)
 		)
-
-#func _input(event: InputEvent) -> void:
-	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		#if event.is_pressed():
-			#var card = raycast_check_card()
-			#if card:
-				#start_drag(card)
-		#else:
-			#finish_drag()
 
 func start_drag(card):
 	card_being_dragged = card
@@ -44,15 +34,32 @@ func finish_drag():
 		card_being_dragged.z_index = 1
 		var card_slot_found = raycast_check_card_slot()
 		
+		# dropping it onto a valid empty slot 
 		if card_slot_found and not card_slot_found.card_in_slot:
-			# call remove function
+			if card_being_dragged.current_slot:
+				card_being_dragged.curren_slot.card_in_slot = false
+			
 			player_hand.remove_card_from_hand(card_being_dragged)
 			card_being_dragged.position = card_slot_found.position
-			card_being_dragged.get_node("Area2D/CollisionShape2D").disabled = true
+			#card_being_dragged.get_node("Area2D/CollisionShape2D").disabled = true
 			card_slot_found.card_in_slot = true
+			card_being_dragged.current_slot = card_slot_found
 		else:
-			if player_hand and player_hand.has_method("animate_card_position"):
-				player_hand.animate_card_position(card_being_dragged, card_being_dragged.hand_position)
+			if player_hand:
+				if card_being_dragged.current_slot:
+					card_being_dragged.curren_slot.card_in_slot = false
+					card_being_dragged.current_slot = null
+					player_hand.add_card_to_hand(card_being_dragged, 0.1)
+				else:
+					if card_being_dragged.get("current_slot") != null and card_being_dragged.current_slot != null:
+						card_being_dragged.current_slot.card_in_slot = false
+						card_being_dragged.current_slot = null
+						
+						if player_hand:
+							player_hand.add_card_to_hand(card_being_dragged, 0.2)
+					else:
+						if player_hand and player_hand.has_method("animate_card_position"):
+							player_hand.animate_card_position(card_being_dragged, card_being_dragged.hand_position, 0.1)
 	card_being_dragged = null
 
 func raycast_check_card():

@@ -28,3 +28,12 @@ collision_mask = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1110943595]
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_6rnap")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1548993711]
+modulate = Color(0, 0, 0, 1)
+offset_left = -10.0
+offset_top = -25.0
+offset_right = 30.0
+offset_bottom = 15.0
+scale = Vector2(2, 2)
+text = "0"

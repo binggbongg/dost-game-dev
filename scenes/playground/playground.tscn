@@ -1,15 +1,8 @@
 [gd_scene format=3 uid="uid://6wicyxjpstg1"]
 
 [ext_resource type="Script" uid="uid://vuetux2a7kmx" path="res://script/card_manager.gd" id="1_8absr"]
-[ext_resource type="PackedScene" uid="uid://cw5abrwt2c70o" path="res://scenes/card.tscn" id="2_1ro2l"]
 [ext_resource type="PackedScene" uid="uid://cuauet8et8d12" path="res://scenes/playground/card_slot.tscn" id="3_1ro2l"]
 [ext_resource type="Script" uid="uid://spy4go6vaqa4" path="res://script/player_hand.gd" id="3_51ujy"]
-[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="3_uis3y"]
-[ext_resource type="Resource" uid="uid://dmpvj6umjae5f" path="res://data/Ahas.tres" id="4_n0aqf"]
-[ext_resource type="Resource" uid="uid://3w5lqpxhexu6" path="res://data/Apoy.tres" id="5_yqvi2"]
-[ext_resource type="Resource" uid="uid://c3u6ai4ijlckc" path="res://data/Panangga.tres" id="6_pnqtf"]
-[ext_resource type="Resource" uid="uid://bxxih1av5qe8p" path="res://data/Panaginip.tres" id="7_w4mas"]
-[ext_resource type="Resource" uid="uid://bgjgs5sh1hj08" path="res://data/Tubig.tres" id="8_n0aqf"]
 [ext_resource type="PackedScene" uid="uid://b4401vms4r7bc" path="res://scenes/deck.tscn" id="11_pnqtf"]
 [ext_resource type="Script" uid="uid://j7l5fw20irs" path="res://script/input_manager.gd" id="12_w4mas"]
 
@@ -29,8 +22,6 @@ position = Vector2(1242, 348)
 
 [node name="PlayerHand" type="Node2D" parent="." unique_id=227717744]
 script = ExtResource("3_51ujy")
-card_scene = ExtResource("2_1ro2l")
-starting_cards = Array[ExtResource("3_uis3y")]([ExtResource("4_n0aqf"), ExtResource("5_yqvi2"), ExtResource("7_w4mas"), ExtResource("6_pnqtf"), ExtResource("8_n0aqf")])
 
 [node name="Deck" parent="." unique_id=1967540081 instance=ExtResource("11_pnqtf")]
 position = Vector2(150, 890)

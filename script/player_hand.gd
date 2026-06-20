@@ -1,70 +1,51 @@
 extends Node2D
 
-@export var card_scene: PackedScene
-@export var starting_cards: Array[CardData]
-
-@onready var card_manager = $"../CardManager"
+const CARD_WIDTH = 140
+const HAND_Y_POSITION = 880
+const DEFAULT_CARD_MOVE_SPEED = 0.1
 
 var screen_size
-var player_cards: Array = [] # To keep track of card entities currently in hand
+var player_cards: Array = []
+
+#@export var card_scene: PackedScene
+#@export var starting_cards: Array[CardData]
+#@onready var card_manager = $"../CardManager"
+
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
-	spawn_starting_cards()
+	#spawn_starting_cards()
 
-func spawn_starting_cards():
-	var count = starting_cards.size()
-	if count == 0: return
-
-	var spawn_start_pos = Vector2(screen_size.x / 2, screen_size.y + 150)
-
-	for i in range(count):
-		var data = starting_cards[i]
-		var card = card_scene.instantiate()
-		card.card_data = data
-		
-		if card_manager:
-			card_manager.add_child(card)
-			card_manager.connect_card_signal(card) 
-		else:
-			add_child(card)
-
-		# Start them out at the hidden spawn point
-		card.position = spawn_start_pos
-		player_cards.append(card)
+func add_card_to_hand(card, speed):
+	if card in player_cards:
+		player_cards.erase(card)
 	
-	# Once all cards are registered in the array, arrange them!
-	update_hand_positions()
+	player_cards.append(card)
+	update_hand_positions(speed)
 
-func update_hand_positions():
+func update_hand_positions(speed):
 	var count = player_cards.size()
 	if count == 0: return
 
-	var spacing = 140
-	var total_width = (count - 1) * spacing
+	var total_width = (count - 1) * CARD_WIDTH
 	var start_x = (screen_size.x / 2) - (total_width / 2)
-	var y = screen_size.y - 200 
+	var y = HAND_Y_POSITION
 
 	for i in range(count):
 		var card = player_cards[i]
+		var final_hand_pos = Vector2(start_x + i * CARD_WIDTH, y)
 		
-		# Calculate the position based on its current index in the active hand array
-		var final_hand_pos = Vector2(start_x + i * spacing, y)
-		
-		# Update its saved home coordinates
 		card.hand_position = final_hand_pos
 		if "starting_position" in card:
 			card.starting_position = final_hand_pos
-			
-		# Animate it to its fresh position
-		animate_card_position(card, final_hand_pos)
+		
+		animate_card_position(card, final_hand_pos, speed)
+
+func animate_card_position(card, new_pos, speed):
+	var tween = get_tree().create_tween()
+	tween.tween_property(card, "position", new_pos, speed)
 
 func remove_card_from_hand(card):
 	if card in player_cards:
 		player_cards.erase(card)
-		update_hand_positions()
- 
-func animate_card_position(card, new_pos):
-	var tween = get_tree().create_tween()
-	tween.tween_property(card, "position", new_pos, 0.1)
-	
+		update_hand_positions(DEFAULT_CARD_MOVE_SPEED)
