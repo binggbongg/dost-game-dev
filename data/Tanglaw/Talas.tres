@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://cjex00l6h8mpc"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_rdwud"]
+[ext_resource type="Texture2D" uid="uid://dakgmbra2is36" path="res://assets/temporary/TANGLAW.png" id="2_gfa1m"]
+
+[resource]
+script = ExtResource("1_rdwud")
+name = "Talas"
+category = 3
+texture = ExtResource("2_gfa1m")
+metadata/_custom_type_script = "uid://cv07myeubhuht"

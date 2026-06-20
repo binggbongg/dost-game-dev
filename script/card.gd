@@ -4,9 +4,9 @@ signal hovered
 signal hovered_off
 
 var current_slot = null
+@onready var card_name: Label = $Area2D/CardName
 
 @export var card_data: CardData  
-var card_name: String
 var card_category:GameEnums.CardCategory
 var card_rarity: GameEnums.CardRarity
 var card_damage: int
@@ -22,7 +22,7 @@ func _ready() -> void:
 func apply_data():
 	if card_data == null:
 		return
-	card_name = card_data.name
+	card_name.text = card_data.name + " - " +  GameEnums.CardRarity.keys()[card_data.rarity]
 	card_category = card_data.category
 	card_rarity = card_data.rarity
 	card_damage = card_data.damage

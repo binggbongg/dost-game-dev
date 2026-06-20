@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://bgjgs5sh1hj08"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_gukyd"]
+[ext_resource type="Texture2D" uid="uid://ckhvdhptlxrvq" path="res://assets/temporary/KALIKASAN.png" id="2_51xnm"]
+
+[resource]
+script = ExtResource("1_gukyd")
+name = "Ulan"
+description = "Water canon attack"
+category = 2
+damage = 7
+heal = 2
+mana_cost = 10
+texture = ExtResource("2_51xnm")
+metadata/_custom_type_script = "uid://cv07myeubhuht"

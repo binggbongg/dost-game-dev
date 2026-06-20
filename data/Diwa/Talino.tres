@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://bxxih1av5qe8p"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_m4s2o"]
+[ext_resource type="Texture2D" uid="uid://bk6ree62npcf7" path="res://assets/temporary/DIWA.png" id="2_o4fgd"]
+
+[resource]
+script = ExtResource("1_m4s2o")
+name = "Talino"
+description = "Puts enemy to sleep for a turn and weakens their next attacks."
+category = 1
+rarity = 3
+damage = 10
+heal = 5
+mana_cost = 15
+texture = ExtResource("2_o4fgd")
+metadata/_custom_type_script = "uid://cv07myeubhuht"

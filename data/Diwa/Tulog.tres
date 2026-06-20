@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://bosxbwuud4rhi"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_4ek7l"]
+[ext_resource type="Texture2D" uid="uid://bk6ree62npcf7" path="res://assets/temporary/DIWA.png" id="2_wtg7r"]
+
+[resource]
+script = ExtResource("1_4ek7l")
+name = "Tulog"
+category = 1
+rarity = 1
+texture = ExtResource("2_wtg7r")
+metadata/_custom_type_script = "uid://cv07myeubhuht"

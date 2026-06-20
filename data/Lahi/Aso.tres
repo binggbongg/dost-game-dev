@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://bgq6daa4bt4mg"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_e32nr"]
+[ext_resource type="Texture2D" uid="uid://b5b1q5yy1a0gn" path="res://assets/temporary/LAHI.png" id="2_tyhio"]
+
+[resource]
+script = ExtResource("1_e32nr")
+name = "Aso"
+texture = ExtResource("2_tyhio")
+metadata/_custom_type_script = "uid://cv07myeubhuht"
