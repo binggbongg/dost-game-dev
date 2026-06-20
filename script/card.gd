@@ -3,7 +3,6 @@ extends Node2D
 signal hovered
 signal hovered_off
 
-var current_slot = null
 @onready var card_name: Label = $Area2D/CardName
 
 @export var card_data: CardData  
@@ -14,9 +13,13 @@ var card_heal: int
 var card_cost: int
 
 var hand_position
+#para ma track where ang kana nga card
+var location = GameEnums.Location.DECK
+var current_slot = null
 
 func _ready() -> void:
 	apply_data()
+	add_to_group("cards")
 
 #Applies data from our resource files!
 func apply_data():
@@ -35,3 +38,9 @@ func _on_area_2d_mouse_entered() -> void:
 
 func _on_area_2d_mouse_exited() -> void:
 	hovered_off.emit(self)
+	
+func reset_state():
+	location = GameEnums.Location.DECK
+	if current_slot:
+		current_slot.card_in_slot = false
+	current_slot = null

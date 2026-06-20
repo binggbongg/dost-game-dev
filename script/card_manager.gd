@@ -30,38 +30,27 @@ func start_drag(card):
 	drag_offset = card.global_position - get_global_mouse_position()
 
 func finish_drag():
-	if card_being_dragged:
-		card_being_dragged.z_index = 1
-		var card_slot_found = raycast_check_card_slot()
-		
-		# dropping it onto a valid empty slot 
-		if card_slot_found and not card_slot_found.card_in_slot:
-			if card_being_dragged.current_slot:
-				card_being_dragged.curren_slot.card_in_slot = false
-			
-			player_hand.remove_card_from_hand(card_being_dragged)
-			card_being_dragged.position = card_slot_found.position
-			#card_being_dragged.get_node("Area2D/CollisionShape2D").disabled = true
-			card_slot_found.card_in_slot = true
-			card_being_dragged.current_slot = card_slot_found
-		else:
-			if player_hand:
-				if card_being_dragged.current_slot:
-					card_being_dragged.curren_slot.card_in_slot = false
-					card_being_dragged.current_slot = null
-					player_hand.add_card_to_hand(card_being_dragged, 0.1)
-				else:
-					if card_being_dragged.get("current_slot") != null and card_being_dragged.current_slot != null:
-						card_being_dragged.current_slot.card_in_slot = false
-						card_being_dragged.current_slot = null
-						
-						if player_hand:
-							player_hand.add_card_to_hand(card_being_dragged, 0.2)
-					else:
-						if player_hand and player_hand.has_method("animate_card_position"):
-							player_hand.animate_card_position(card_being_dragged, card_being_dragged.hand_position, 0.1)
-	card_being_dragged = null
+	if not card_being_dragged:
+		return
 
+	var slot = raycast_check_card_slot()
+	if slot and not slot.card_in_slot:
+		drop_into_slot(card_being_dragged, slot)
+	else:
+		return_to_hand(card_being_dragged)
+	card_being_dragged = null
+func drop_into_slot(card, slot):
+	clear_card_from_slot(card)
+
+	if card in player_hand.player_cards:
+		player_hand.remove_card_from_hand(card)
+
+	card.position = slot.position
+	set_card_to_slot(card, slot)
+func return_to_hand(card):
+	clear_card_from_slot(card)
+
+	player_hand.add_card_to_hand(card, 0.1)
 func raycast_check_card():
 	var space_state = get_world_2d().direct_space_state
 	var parameters = PhysicsPointQueryParameters2D.new()
@@ -145,3 +134,18 @@ func highlight_card(card, hovered):
 	else:
 		card.scale = Vector2(1.0, 1.0)
 		card.z_index = 1
+
+func set_card_to_hand(card):
+	card.location = GameEnums.Location.HAND
+	card.current_slot = null
+	
+func set_card_to_slot(card, slot):
+	card.location = GameEnums.Location.SLOT
+	card.current_slot = slot
+	slot.card_in_slot = true
+	
+func clear_card_from_slot(card):
+	if card.current_slot:
+		card.current_slot.card_in_slot = false
+	card.current_slot = null
+	card.location = GameEnums.Location.HAND

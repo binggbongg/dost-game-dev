@@ -2,18 +2,21 @@ extends Node2D
 
 const CARD_WIDTH = 140
 const HAND_Y_POSITION = 880
-const DEFAULT_CARD_MOVE_SPEED = 0.1
+const DEFAULT_CARD_MOVE_SPEED = 0.3
 
 var screen_size
 var player_cards: Array = []
 
-#@export var card_scene: PackedScene
+@export var card_scene: PackedScene
 #@export var starting_cards: Array[CardData]
-#@onready var card_manager = $"../CardManager"
+@onready var card_manager = $"../CardManager"
+@onready var deck_manager: Node2D = $"../DeckManager"
+@onready var deck: Node2D = $"../Deck"
 
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
+	#draw_starting_hand()
 	#spawn_starting_cards()
 
 func add_card_to_hand(card, speed):
@@ -22,6 +25,7 @@ func add_card_to_hand(card, speed):
 	
 	player_cards.append(card)
 	update_hand_positions(speed)
+	
 
 func update_hand_positions(speed):
 	var count = player_cards.size()
@@ -49,3 +53,18 @@ func remove_card_from_hand(card):
 	if card in player_cards:
 		player_cards.erase(card)
 		update_hand_positions(DEFAULT_CARD_MOVE_SPEED)
+		
+
+func draw_starting_hand():
+	var drawn_cards = deck_manager.draw_cards(5)
+	for card_data in drawn_cards:
+		create_card(card_data)
+
+func create_card(card_data):
+	var card = card_scene.instantiate()
+	card.card_data = card_data
+	get_parent().add_child(card)
+	# Start at the visible deck
+	card.global_position = deck.global_position
+	card_manager.connect_card_signal(card)
+	add_card_to_hand(card, DEFAULT_CARD_MOVE_SPEED)
