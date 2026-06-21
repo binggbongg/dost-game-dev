@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mawrc"]
 size = Vector2(192.5, 282)
 
+[sub_resource type="LabelSettings" id="LabelSettings_6u4wf"]
+font_size = 13
+
 [node name="Card" type="Node2D" unique_id=342120758]
 script = ExtResource("1_grtmt")
 
@@ -17,6 +20,15 @@ texture = ExtResource("1_iecja")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=770059073]
 position = Vector2(-0.25, 1)
 shape = SubResource("RectangleShape2D_mawrc")
+
+[node name="CardName" type="Label" parent="Area2D" unique_id=2016166741]
+anchors_preset = -1
+offset_left = -94.0
+offset_top = -158.0
+offset_right = -7.0
+offset_bottom = -140.0
+text = "Card Name"
+label_settings = SubResource("LabelSettings_6u4wf")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

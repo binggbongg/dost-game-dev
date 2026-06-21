@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://bqdwnc2qjk0m0"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_roffg"]
+[ext_resource type="Texture2D" uid="uid://bk6ree62npcf7" path="res://assets/temporary/DIWA.png" id="2_4d7wo"]
+
+[resource]
+script = ExtResource("1_roffg")
+name = "Saya"
+category = 1
+texture = ExtResource("2_4d7wo")
+metadata/_custom_type_script = "uid://cv07myeubhuht"

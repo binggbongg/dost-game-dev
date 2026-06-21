@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dbmn0bmxh7rwd"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_eg1jt"]
+[ext_resource type="Texture2D" uid="uid://ckhvdhptlxrvq" path="res://assets/temporary/KALIKASAN.png" id="2_duu8p"]
+
+[resource]
+script = ExtResource("1_eg1jt")
+name = "Kidlat"
+category = 2
+rarity = 1
+texture = ExtResource("2_duu8p")
+metadata/_custom_type_script = "uid://cv07myeubhuht"

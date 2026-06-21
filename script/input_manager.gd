@@ -7,7 +7,7 @@ const LAYER_CARD = 1
 const LAYER_DECK = 5
 
 @onready var card_manager_reference = $"../CardManager"
-@onready var deck_reference = $"../Deck"
+@onready var deck_manager =  $"../DeckManager"
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -39,4 +39,4 @@ func raycast_at_cursor():
 				card_manager_reference.start_drag(card_found)
 		elif result_collision_mask == LAYER_DECK:
 			# deck is clicked
-			deck_reference.draw_card()
+			deck_manager.redraw_hand()
