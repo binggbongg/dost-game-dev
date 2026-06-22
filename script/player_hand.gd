@@ -11,7 +11,7 @@ var player_cards: Array = []
 #@export var starting_cards: Array[CardData]
 @onready var card_manager = $"../CardManager"
 @onready var deck_manager: Node2D = $"../DeckManager"
-@onready var deck: Node2D = $"../Deck"
+@onready var deck: Node2D = $"../../UI/Deck"
 
 
 func _ready() -> void:
