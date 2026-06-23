@@ -1,0 +1,90 @@
+[gd_resource type="Resource" script_class="EnemyBehavior" format=3 uid="uid://bqrfesdfh2c5v"]
+
+[ext_resource type="Texture2D" uid="uid://chdu7sas2n0ro" path="res://assets/player/character_boy.png" id="1_043mt"]
+[ext_resource type="Script" uid="uid://bltrhxh2342fx" path="res://data/enemy_behavior.gd" id="1_pwcrj"]
+[ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="2_484wu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_043mt"]
+atlas = ExtResource("1_043mt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_484wu"]
+atlas = ExtResource("1_043mt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foedf"]
+atlas = ExtResource("1_043mt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuevy"]
+atlas = ExtResource("1_043mt")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxx6e"]
+atlas = ExtResource("1_043mt")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pwcrj"]
+resource_name = "default"
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_043mt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_484wu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foedf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuevy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxx6e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_foedf"]
+script = ExtResource("2_484wu")
+name = "Strike"
+value = 4
+chances = 0.5
+metadata/_custom_type_script = "uid://bc0bopaja6vri"
+
+[sub_resource type="Resource" id="Resource_wuevy"]
+script = ExtResource("2_484wu")
+name = "Shield"
+type = 1
+value = 3
+chances = 0.5
+metadata/_custom_type_script = "uid://bc0bopaja6vri"
+
+[sub_resource type="Resource" id="Resource_dxx6e"]
+script = ExtResource("2_484wu")
+name = "Strike Dash"
+type = 2
+value = 8
+chances = 0.7
+cooldown = 2
+metadata/_custom_type_script = "uid://bc0bopaja6vri"
+
+[sub_resource type="Resource" id="Resource_n7gcu"]
+script = ExtResource("2_484wu")
+name = "Strikedown"
+type = 3
+value = 15
+cooldown = 5
+metadata/_custom_type_script = "uid://bc0bopaja6vri"
+
+[resource]
+script = ExtResource("1_pwcrj")
+enemy_name = "Enemy1"
+max_health = 50
+enemy_sprite = SubResource("SpriteFrames_pwcrj")
+regular_moves = Array[ExtResource("2_484wu")]([SubResource("Resource_foedf"), SubResource("Resource_wuevy")])
+special_moves = Array[ExtResource("2_484wu")]([SubResource("Resource_dxx6e"), SubResource("Resource_n7gcu")])
+metadata/_custom_type_script = "uid://bltrhxh2342fx"

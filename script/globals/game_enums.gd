@@ -62,3 +62,11 @@ enum Location {
 	SLOT,
 	DECK
 }
+
+# -- For enemy stuff -- 
+enum EnemyMoveType {
+	ATTACK,
+	DEFENSE,
+	SKILL,
+	BURST
+}
