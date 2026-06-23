@@ -13,35 +13,27 @@ func _ready() -> void:
 
 func start_game():
 	print("--- Game Started: Waiting for player to draw ---")
-	is_busy = false # Para clickable gihapon agng deck sa start
-	
-	# We start in DRAW_PHASE. This tells the InputManager that the 
-	# next deck click should be the initial draw, not a shuffle.
+	is_busy = false # Input is unlocked
 	change_state(GameEnums.TurnState.DRAW_PHASE)
+	# NOTE: We do NOT call start_player_turn() here!
 
-# Ensure start_player_turn only sets PLAYER_ACTION
+func end_player_turn():
+	change_state(GameEnums.TurnState.ENEMY_TURN)
+	print("ENEMY TURN: Player is locked out for 5 seconds.")
+	
+	await get_tree().create_timer(30.0).timeout 
+	
+	# After 30s, the state goes back to Player Action (no need to click draw again!)
+	start_player_turn()
+
 func start_player_turn():
 	if get_node_or_null("../ManaManager"):
 		$"../ManaManager".reset_turn_mana()
 	
+	# State moves to PLAYER_ACTION, gate in InputManager opens, dragging works again.
 	change_state(GameEnums.TurnState.PLAYER_ACTION)
-
-func end_player_turn():
-	# If we are already in the end turn process, don't do it again
-	if current_state == GameEnums.TurnState.ENEMY_TURN or current_state == GameEnums.TurnState.END_TURN:
-		return
-	print("--- Ending Player Turn ---")
-	change_state(GameEnums.TurnState.END_TURN)
-	change_state(GameEnums.TurnState.ENEMY_TURN)
-	
-	# Simulate Enemy Turn (30 seconds) which is max time per turn.
-	await get_tree().create_timer(30.0).timeout 
-	
-	print("--- Enemy Phase Over ---")
-	start_player_turn()
 
 func change_state(new_state: GameEnums.TurnState):
 	current_state = new_state
 	turn_changed.emit(current_state)
 	print("Game State Changed To: ", GameEnums.TurnState.keys()[new_state])
-	#  No timers or start_player_turn calls should be here purely changing of states

@@ -45,27 +45,29 @@ func raycast_at_cursor():
 				
 		elif collision_layer == LAYER_DECK:
 			handle_deck_click()
-
 func handle_deck_click():
 	if turn_manager.is_busy: return
-	turn_manager.is_busy = true
 	
+	# Path 1: First draw of the game
 	if turn_manager.current_state == GameEnums.TurnState.DRAW_PHASE:
-		# FIRST CLICK: Open the hand
-		print("InputManager: Initial Draw Triggered.")
+		turn_manager.is_busy = true
 		deck_manager.player_hand.draw_starting_hand()
+		await get_tree().create_timer(1.0).timeout
+		turn_manager.change_state(GameEnums.TurnState.PLAYER_ACTION)
+		turn_manager.is_busy = false
 		
-		# Wait for cards to arrive
-		await get_tree().create_timer(1.5).timeout
-		
-		# Move to Action phase (This enables dragging)
-		turn_manager.start_player_turn()
-		
+	# Path 2: THE SHUFFLE ACTION (Swap cards and end turn)
 	elif turn_manager.current_state == GameEnums.TurnState.PLAYER_ACTION:
-		# SUBSEQUENT CLICKS: Shuffle and End Turn
-		print("InputManager: Shuffle/End Turn Triggered.")
-		deck_manager.redraw_hand()
-		await get_tree().create_timer(0.5).timeout
+		print("InputManager: Shuffling cards, drawing new ones, and ending turn.")
+		turn_manager.is_busy = true
+		
+		# Swaps the old cards for new ones
+		deck_manager.redraw_hand() 
+		
+		# Wait for the new cards to arrive before locking the turn
+		await get_tree().create_timer(1.0).timeout
+		
+		# Now move to enemy turn. The cards are there, but you can't drag them!
+		card_manager_reference.refresh_hand_interaction() 
 		turn_manager.end_player_turn()
-
-	turn_manager.is_busy = false
+		turn_manager.is_busy = false

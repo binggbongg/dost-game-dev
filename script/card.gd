@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name Card 
 signal hovered
 signal hovered_off
 
@@ -52,3 +52,11 @@ func set_location(new_location: GameEnums.Location):
 		z_index = 10
 	elif location == GameEnums.Location.HAND:
 		z_index = 1
+		
+func set_interaction_state(enabled: bool):
+	if enabled:
+		modulate = Color(1, 1, 1, 1) # Normal
+		$Area2D.monitorable = true
+	else:
+		modulate = Color(0.3, 0.3, 0.3, 0.7) # Darkened/Grayed out
+		$Area2D.monitorable = false # Prevents dragging

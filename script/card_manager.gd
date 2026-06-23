@@ -11,6 +11,7 @@ var hovered_card
 
 @onready var player_hand = $"../PlayerHand"
 @onready var mana_manager: Node2D = $"../ManaManager"
+@onready var combo_manager: Node2D = $"../ComboManager"
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -26,18 +27,26 @@ func _process(_delta) -> void:
 		)
 
 func finish_drag():
-	if not card_being_dragged:
-		return
+	if not card_being_dragged: return
 
 	var slot = raycast_check_card_slot()
-	if slot and not slot.card_in_slot and mana_manager.can_afford(card_being_dragged.card_cost):
-		mana_manager.spend_mana(card_being_dragged.card_cost)
-		drop_into_slot(card_being_dragged, slot)
+	
+	if slot and not slot.card_in_slot:
+		# Use validate_addition because it checks the Hand dependencies!
+		var validation = combo_manager.validate_addition(card_being_dragged)
+		var can_afford = mana_manager.can_afford(card_being_dragged.card_cost)
+		
+		if validation == GameEnums.ComboValidationResult.VALID and can_afford:
+			mana_manager.spend_mana(card_being_dragged.card_cost)
+			drop_into_slot(card_being_dragged, slot)
+		else:
+			print("REJECTED: ", GameEnums.ComboValidationResult.keys()[validation])
+			return_to_hand(card_being_dragged)
 	else:
 		return_to_hand(card_being_dragged)
 	
 	card_being_dragged = null
-
+	
 func drop_into_slot(card, slot):
 	# 1. Clear from old slot if it was in one
 	clear_card_from_slot(card)
@@ -52,10 +61,11 @@ func drop_into_slot(card, slot):
 	# 4. Snap to slot position
 	var tween = get_tree().create_tween()
 	tween.tween_property(card, "position", slot.position, 0.2).set_trans(Tween.TRANS_CUBIC)
+	refresh_hand_interaction()
 func return_to_hand(card):
 	clear_card_from_slot(card)
-
 	player_hand.add_card_to_hand(card, 0.1)
+	refresh_hand_interaction()
 func raycast_check_card():
 	var space_state = get_world_2d().direct_space_state
 	var parameters = PhysicsPointQueryParameters2D.new()
@@ -109,6 +119,7 @@ func on_left_click_released():
 	print("signal left mouse button released")
 	if card_being_dragged:
 		finish_drag()
+	refresh_hand_interaction()
 
 func on_hovered_card(card):
 	if card_being_dragged:
@@ -165,3 +176,14 @@ func clear_card_from_slot(card):
 		card.current_slot.card_in_slot = false
 	card.current_slot = null
 	card.location = GameEnums.Location.HAND
+
+func refresh_hand_interaction():
+	if not player_hand: return
+	
+	for card in player_hand.player_cards:
+		# Check the new rules (Hand vs Slot dependencies)
+		var combo_status = combo_manager.validate_addition(card)
+		var can_afford = mana_manager.can_afford(card.card_cost)
+		
+		# Set visual state (Grayed out if invalid or too expensive)
+		card.set_interaction_state(combo_status == GameEnums.ComboValidationResult.VALID and can_afford)
