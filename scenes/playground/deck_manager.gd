@@ -8,7 +8,6 @@ func _ready():
 	load_all_cards()
 	build_deck()
 	shuffle_deck()
-	player_hand.draw_starting_hand()
 	
 #initialize tanan cards and access them from our resources
 func load_all_cards():

@@ -10,6 +10,7 @@ var drag_offset: Vector2 = Vector2.ZERO
 var hovered_card
 
 @onready var player_hand = $"../PlayerHand"
+@onready var mana_manager: Node2D = $"../ManaManager"
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -29,10 +30,12 @@ func finish_drag():
 		return
 
 	var slot = raycast_check_card_slot()
-	if slot and not slot.card_in_slot:
+	if slot and not slot.card_in_slot and mana_manager.can_afford(card_being_dragged.card_cost):
+		mana_manager.spend_mana(card_being_dragged.card_cost)
 		drop_into_slot(card_being_dragged, slot)
 	else:
 		return_to_hand(card_being_dragged)
+	
 	card_being_dragged = null
 
 func drop_into_slot(card, slot):

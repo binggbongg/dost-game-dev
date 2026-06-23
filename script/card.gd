@@ -30,7 +30,7 @@ func apply_data():
 	card_rarity = card_data.rarity
 	card_damage = card_data.damage
 	card_heal = card_data.heal
-	card_cost = 0
+	card_cost = card_data.mana_cost
 	$Sprite2D.texture = card_data.texture
 
 func _on_area_2d_mouse_entered() -> void:
