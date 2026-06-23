@@ -38,5 +38,5 @@ func raycast_at_cursor():
 				
 				card_manager_reference.start_drag(card_found)
 		elif result_collision_mask == LAYER_DECK:
-			# deck is clicked
-			deck_manager.redraw_hand()
+			if card_manager_reference.card_being_dragged == null:
+				deck_manager.redraw_hand()

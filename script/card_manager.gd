@@ -24,11 +24,6 @@ func _process(_delta) -> void:
 			clamp(target_pos.y, 0, screen_size.y)
 		)
 
-func start_drag(card):
-	card_being_dragged = card
-	card_being_dragged.z_index = 10
-	drag_offset = card.global_position - get_global_mouse_position()
-
 func finish_drag():
 	if not card_being_dragged:
 		return
@@ -39,14 +34,21 @@ func finish_drag():
 	else:
 		return_to_hand(card_being_dragged)
 	card_being_dragged = null
+
 func drop_into_slot(card, slot):
+	# 1. Clear from old slot if it was in one
 	clear_card_from_slot(card)
 
+	# 2. Update Card Data
+	set_card_to_slot(card, slot) # This sets card.location = SLOT
+	
+	# 3. Remove from hand array and trigger the repositioning tween
 	if card in player_hand.player_cards:
 		player_hand.remove_card_from_hand(card)
 
-	card.position = slot.position
-	set_card_to_slot(card, slot)
+	# 4. Snap to slot position
+	var tween = get_tree().create_tween()
+	tween.tween_property(card, "position", slot.position, 0.2).set_trans(Tween.TRANS_CUBIC)
 func return_to_hand(card):
 	clear_card_from_slot(card)
 
@@ -124,16 +126,27 @@ func on_hovered_card_off(card):
 	else:
 		is_hovering_on_card = false
 
+func start_drag(card):
+	card_being_dragged = card
+	card_being_dragged.z_index = 100 # Ensure it's above EVERYTHING
+	drag_offset = card.global_position - get_global_mouse_position()
+
 func highlight_card(card, hovered):
 	if card == card_being_dragged:
 		return
 	
 	if hovered:
 		card.scale = Vector2(1.05, 1.05)
-		card.z_index = 2
+		# Only boost Z-index if it's in the hand. 
+		# If it's in a slot, we might want to keep it at its slot depth.
+		card.z_index = 20 
 	else:
 		card.scale = Vector2(1.0, 1.0)
-		card.z_index = 1
+		# Return to base depth based on location
+		if card.location == GameEnums.Location.SLOT:
+			card.z_index = 10
+		else:
+			card.z_index = 1
 
 func set_card_to_hand(card):
 	card.location = GameEnums.Location.HAND

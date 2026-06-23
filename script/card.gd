@@ -44,3 +44,11 @@ func reset_state():
 	if current_slot:
 		current_slot.card_in_slot = false
 	current_slot = null
+	
+func set_location(new_location: GameEnums.Location):
+	location = new_location
+	scale = Vector2(1.0, 1.0)
+	if location == GameEnums.Location.SLOT:
+		z_index = 10
+	elif location == GameEnums.Location.HAND:
+		z_index = 1
