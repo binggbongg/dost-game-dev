@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name Card 
 signal hovered
 signal hovered_off
 
@@ -30,7 +30,7 @@ func apply_data():
 	card_rarity = card_data.rarity
 	card_damage = card_data.damage
 	card_heal = card_data.heal
-	card_cost = 0
+	card_cost = card_data.mana_cost
 	$Sprite2D.texture = card_data.texture
 
 func _on_area_2d_mouse_entered() -> void:
@@ -44,3 +44,19 @@ func reset_state():
 	if current_slot:
 		current_slot.card_in_slot = false
 	current_slot = null
+	
+func set_location(new_location: GameEnums.Location):
+	location = new_location
+	scale = Vector2(1.0, 1.0)
+	if location == GameEnums.Location.SLOT:
+		z_index = 10
+	elif location == GameEnums.Location.HAND:
+		z_index = 1
+		
+func set_interaction_state(enabled: bool):
+	if enabled:
+		modulate = Color(1, 1, 1, 1) # Normal
+		$Area2D.monitorable = true
+	else:
+		modulate = Color(0.3, 0.3, 0.3, 0.7) # Darkened/Grayed out
+		$Area2D.monitorable = false # Prevents dragging

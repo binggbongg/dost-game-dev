@@ -8,7 +8,6 @@ func _ready():
 	load_all_cards()
 	build_deck()
 	shuffle_deck()
-	player_hand.draw_starting_hand()
 	
 #initialize tanan cards and access them from our resources
 func load_all_cards():
@@ -62,20 +61,24 @@ func draw_cards(amount:int):
 	return drawn_cards
 	
 func redraw_hand():
+	print("DeckManager: Returning cards and drawing fresh ones...")
+	
+	# 1. Clear everything currently visible
 	var all_nodes = get_tree().get_nodes_in_group("cards")
-
 	for node in all_nodes:
-		if node == null:
-			continue
-
-		if not node.has_method("reset_state"):
-			continue
-
-		node.reset_state()
-
-		if node.card_data:
-			deck.append(node.card_data)
-		node.queue_free()
+		if "location" in node and node.location != GameEnums.Location.DECK:
+			if node.card_data:
+				deck.append(node.card_data)
+			node.queue_free()
+	
 	player_hand.player_cards.clear()
+	
+	# 2. Reset Slots
+	var slots_folder = get_node("../../Slots")
+	if slots_folder:
+		for slot in slots_folder.get_children():
+			if "card_in_slot" in slot: slot.card_in_slot = false
+				
+	# 3. Shuffle and produce NEW cards immediately
 	shuffle_deck()
-	player_hand.draw_starting_hand()
+	player_hand.draw_starting_hand() 
