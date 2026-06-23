@@ -10,6 +10,8 @@ size = Vector2(192.5, 282)
 font_size = 13
 
 [node name="Card" type="Node2D" unique_id=342120758]
+position = Vector2(200, 930)
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_grtmt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1153749474]

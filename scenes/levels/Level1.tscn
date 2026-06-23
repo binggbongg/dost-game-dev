@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cg6rrinl3k43c"]
+
+[ext_resource type="Texture2D" uid="uid://n6tlgpkgjmq5" path="res://assets/temporary/temp_bg.jpg" id="1_x4si1"]
+[ext_resource type="PackedScene" uid="uid://d2tckrycp2m2k" path="res://scenes/combat_arena.tscn" id="2_fh0io"]
+[ext_resource type="PackedScene" uid="uid://6wicyxjpstg1" path="res://scenes/playground/playground.tscn" id="3_68ib6"]
+
+[node name="Level1" type="Node2D" unique_id=1730621475]
+
+[node name="Background" type="TextureRect" parent="." unique_id=633699121]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -283.0
+offset_right = 1945.0
+offset_bottom = 651.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_x4si1")
+
+[node name="CombatArena" parent="." unique_id=439901724 instance=ExtResource("2_fh0io")]
+
+[node name="Playground" parent="." unique_id=143692811 instance=ExtResource("3_68ib6")]

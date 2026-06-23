@@ -1,14 +1,13 @@
 extends Node2D
 
-const CARD_WIDTH = 140
-const HAND_Y_POSITION = 880
-const DEFAULT_CARD_MOVE_SPEED = 0.3
+const CARD_WIDTH = 175
+const HAND_Y_POSITION = 930
+const DEFAULT_CARD_MOVE_SPEED = 0.2
 
 var screen_size
 var player_cards: Array = []
 
 @export var card_scene: PackedScene
-#@export var starting_cards: Array[CardData]
 @onready var card_manager = $"../CardManager"
 @onready var deck_manager: Node2D = $"../DeckManager"
 @onready var deck: Node2D = $"../../UI/Deck"
@@ -16,8 +15,6 @@ var player_cards: Array = []
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
-	#draw_starting_hand()
-	#spawn_starting_cards()
 
 func add_card_to_hand(card, speed):
 	if card in player_cards:
