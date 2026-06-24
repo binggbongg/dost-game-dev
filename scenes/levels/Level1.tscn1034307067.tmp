@@ -22,7 +22,6 @@ texture = ExtResource("1_x4si1")
 [node name="CombatArena" parent="." unique_id=439901724 instance=ExtResource("2_fh0io")]
 
 [node name="Playground" parent="." unique_id=143692811 instance=ExtResource("3_68ib6")]
-visible = false
 
 [node name="Button" type="Button" parent="." unique_id=317833088]
 offset_left = 1443.0

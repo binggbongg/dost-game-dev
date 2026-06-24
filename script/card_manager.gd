@@ -150,11 +150,6 @@ func on_hovered_card_off(card):
 	else:
 		is_hovering_on_card = false
 
-func start_drag(card):
-	card_being_dragged = card
-	card_being_dragged.z_index = 100 # Ensure it's above EVERYTHING
-	drag_offset = card.global_position - get_global_mouse_position()
-
 func highlight_card(card, hovered):
 	if card == card_being_dragged:
 		return
