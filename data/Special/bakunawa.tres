@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://q1wvvv4gbdoj"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_jnh2x"]
+[ext_resource type="Texture2D" uid="uid://my16ben7onyr" path="res://assets/temporary/card_placeholder.png" id="2_j6xgj"]
+
+[resource]
+script = ExtResource("1_jnh2x")
+name = "Bakunawa"
+description = "Floods and disables the enemy's strongest moves for 1 turn"
+category = 7
+rarity = 4
+texture = ExtResource("2_j6xgj")
+metadata/_custom_type_script = "uid://cv07myeubhuht"

@@ -1,6 +1,6 @@
 extends Node
 # This is to differentiate the cards and later to identify valid combos
-enum CardCategory { LAHI, DIWA, KALIKASAN, TANGLAW }
+enum CardCategory { LAHI, DIWA, KALIKASAN, TANGLAW, S_DIWATA, S_ASWANG, S_KAPRE, S_BAKUNAWA, S_MINOKAWA }
 #This is so that our system kay maka tell what are the allowed actions at certain states
 enum TurnState {     
 	START_TURN,
@@ -32,7 +32,12 @@ enum ComboType {
 	SPECIAL
 }
 #Can be used to define the probability of drawing that card after shuffled
-enum CardRarity { Karaniwan, Natatangi, Bihira, Dambana }
+enum CardRarity { 
+	Karaniwan, 
+	Natatangi, 
+	Bihira, 
+	Dambana, 	
+	Special }
 #Can be used to flag cards that have already been used in the game.
 enum CardState {
 	IN_DECK,
@@ -71,11 +76,4 @@ enum EnemyMoveType {
 	DEFENSE,
 	SKILL,
 	BURST
-}
-
-enum Special {
-	NOT,
-	SPECIAL_HEAL,
-	SPECIAL_ATTACK,
-	SPECIAL_SHIELD
 }
