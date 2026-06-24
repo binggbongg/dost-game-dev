@@ -61,9 +61,6 @@ func draw_cards(amount:int):
 	return drawn_cards
 	
 func redraw_hand():
-	print("DeckManager: Returning cards and drawing fresh ones...")
-	
-	# 1. Clear everything currently visible
 	var all_nodes = get_tree().get_nodes_in_group("cards")
 	for node in all_nodes:
 		if "location" in node and node.location != GameEnums.Location.DECK:
@@ -73,12 +70,13 @@ func redraw_hand():
 	
 	player_hand.player_cards.clear()
 	
-	# 2. Reset Slots
-	var slots_folder = get_node("../../Slots")
+	# Explicitly clear slots
+	var slots_folder = get_node_or_null("../../Slots")
 	if slots_folder:
 		for slot in slots_folder.get_children():
-			if "card_in_slot" in slot: slot.card_in_slot = false
+			if "card_in_slot" in slot:
+				slot.card_in_slot = false
 				
-	# 3. Shuffle and produce NEW cards immediately
 	shuffle_deck()
-	player_hand.draw_starting_hand() 
+	# DRAW THE NEW HAND IMMEDIATELY AS REQUESTED
+	player_hand.draw_starting_hand()
