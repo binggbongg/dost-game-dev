@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://cw7uuk5gg25u7"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_dcqi1"]
+[ext_resource type="Texture2D" uid="uid://my16ben7onyr" path="res://assets/temporary/card_placeholder.png" id="2_moqux"]
+
+[resource]
+script = ExtResource("1_dcqi1")
+name = "Diwata"
+description = "Regains 50% of full health back"
+category = 4
+rarity = 4
+heal = 0.5
+mana_cost = 60
+texture = ExtResource("2_moqux")
+metadata/_custom_type_script = "uid://cv07myeubhuht"
