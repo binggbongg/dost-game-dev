@@ -1,13 +1,19 @@
+
 extends Node2D
 
 signal mana_changed(current_mana: int)
 
-var max_mana: int = 3 # Starting mana
-var current_mana: int = 0
+var max_mana: int = 100 
+var current_mana: int = 100 # Change this from 0 to max_mana
 
+func _ready():
+	# Ensure mana is full when the game first starts
+	current_mana = max_mana
+	mana_changed.emit(current_mana)
+
+# This is the missing function!
 func reset_turn_mana():
-	# Standard card game: max mana increases by 1 each turn (cap at 10)
-	# max_mana = clampi(max_mana + 1, 1, 10) 
+	print("ManaManager: Refilling mana for the new turn.")
 	current_mana = max_mana
 	mana_changed.emit(current_mana)
 
@@ -20,3 +26,4 @@ func spend_mana(amount: int) -> bool:
 
 func can_afford(amount: int) -> bool:
 	return current_mana >= amount
+	

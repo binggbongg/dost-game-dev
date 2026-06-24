@@ -8,5 +8,6 @@ script = ExtResource("1_plnuy")
 name = "Lunas"
 category = 3
 rarity = 1
+mana_cost = 8
 texture = ExtResource("2_6dt4a")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

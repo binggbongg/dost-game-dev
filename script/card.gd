@@ -20,6 +20,7 @@ var current_slot = null
 func _ready() -> void:
 	apply_data()
 	add_to_group("cards")
+	modulate = Color(1, 1, 1, 1)
 
 #Applies data from our resource files!
 func apply_data():

@@ -7,5 +7,6 @@
 script = ExtResource("1_roffg")
 name = "Saya"
 category = 1
+mana_cost = 5
 texture = ExtResource("2_4d7wo")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

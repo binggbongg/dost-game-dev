@@ -11,6 +11,6 @@ category = 3
 rarity = 3
 damage = 1
 heal = 40
-mana_cost = 30
+mana_cost = 20
 texture = ExtResource("2_2ao7b")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("1_e32nr")
 name = "Aso"
+mana_cost = 10
 texture = ExtResource("2_tyhio")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

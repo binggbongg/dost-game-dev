@@ -7,5 +7,6 @@
 script = ExtResource("1_dashj")
 name = "Gising"
 category = 1
+mana_cost = 5
 texture = ExtResource("2_86xb4")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

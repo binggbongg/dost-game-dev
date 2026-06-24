@@ -8,5 +8,6 @@ script = ExtResource("1_mmbrx")
 name = "Kuta"
 category = 3
 rarity = 1
+mana_cost = 8
 texture = ExtResource("2_7o7gq")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

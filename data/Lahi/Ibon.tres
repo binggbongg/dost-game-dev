@@ -7,5 +7,6 @@
 script = ExtResource("1_dgfcn")
 name = "Ibon"
 rarity = 1
+mana_cost = 20
 texture = ExtResource("2_xd8h5")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

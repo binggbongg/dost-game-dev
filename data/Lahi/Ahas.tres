@@ -10,6 +10,6 @@ description = "Summons the snake spirit"
 rarity = 2
 damage = 50
 heal = 5
-mana_cost = 75
+mana_cost = 25
 texture = ExtResource("2_ag7dd")
 metadata/_custom_type_script = "uid://cv07myeubhuht"
