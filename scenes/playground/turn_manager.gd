@@ -27,12 +27,12 @@ func end_player_turn():
 	start_player_turn()
 
 func start_player_turn():
-	if get_node_or_null("../ManaManager"):
-		$"../ManaManager".reset_turn_mana()
+	print("TurnManager: New turn. Mana persists from last turn.")
 	
-	# State moves to PLAYER_ACTION, gate in InputManager opens, dragging works again.
+	# REMOVED: get_node("../ManaManager").reset_turn_mana()
+	
+	is_busy = false
 	change_state(GameEnums.TurnState.PLAYER_ACTION)
-
 func change_state(new_state: GameEnums.TurnState):
 	current_state = new_state
 	turn_changed.emit(current_state)

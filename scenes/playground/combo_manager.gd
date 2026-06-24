@@ -4,14 +4,12 @@ extends Node
 func get_cards_in_slots() -> Array:
 	var all_nodes = get_tree().get_nodes_in_group("cards")
 	var valid_cards = []
-	
 	for node in all_nodes:
-		# SAFETY CHECK: 
-		# 1. Does the node have the variable 'location'?
-		# 2. Is that location set to SLOT?
+		# If the card is being deleted, ignore it!
+		if node.is_queued_for_deletion(): continue
+		
 		if "location" in node and node.location == GameEnums.Location.SLOT:
 			valid_cards.append(node)
-			
 	return valid_cards
 # --- PART 1: PLACEMENT RULES (Can I drop this card?) ---
 func validate_addition(new_card: Card) -> GameEnums.ComboValidationResult:

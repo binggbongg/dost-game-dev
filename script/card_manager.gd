@@ -8,7 +8,7 @@ var card_being_dragged
 var is_hovering_on_card
 var drag_offset: Vector2 = Vector2.ZERO
 var hovered_card
-
+@onready var turn_manager: Node2D = $"../TurnManager"
 @onready var player_hand = $"../PlayerHand"
 @onready var mana_manager: Node2D = $"../ManaManager"
 @onready var combo_manager: Node2D = $"../ComboManager"
@@ -28,23 +28,19 @@ func _process(_delta) -> void:
 
 func finish_drag():
 	if not card_being_dragged: return
-
 	var slot = raycast_check_card_slot()
 	
 	if slot and not slot.card_in_slot:
-		# Use validate_addition because it checks the Hand dependencies!
 		var validation = combo_manager.validate_addition(card_being_dragged)
 		var can_afford = mana_manager.can_afford(card_being_dragged.card_cost)
 		
 		if validation == GameEnums.ComboValidationResult.VALID and can_afford:
-			mana_manager.spend_mana(card_being_dragged.card_cost)
+			# CHANGED: We DO NOT call mana_manager.spend_mana here anymore.
 			drop_into_slot(card_being_dragged, slot)
 		else:
-			print("REJECTED: ", GameEnums.ComboValidationResult.keys()[validation])
 			return_to_hand(card_being_dragged)
 	else:
 		return_to_hand(card_being_dragged)
-	
 	card_being_dragged = null
 	
 func drop_into_slot(card, slot):
@@ -116,11 +112,14 @@ func connect_card_signal(card):
 	card.connect("hovered_off", on_hovered_card_off)
 
 func on_left_click_released():
-	print("signal left mouse button released")
+	# If we are busy (casting/shuffling), don't do anything
+	if turn_manager.is_busy: return
+	
 	if card_being_dragged:
 		finish_drag()
-	refresh_hand_interaction()
-
+		# Refresh only after the drag is complete
+		refresh_hand_interaction()
+		
 func on_hovered_card(card):
 	if card_being_dragged:
 		return

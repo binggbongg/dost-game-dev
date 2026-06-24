@@ -71,3 +71,11 @@ func create_card(card_data):
 	card.global_position = deck.global_position
 	card_manager.connect_card_signal(card)
 	add_card_to_hand(card, DEFAULT_CARD_MOVE_SPEED)
+
+func replenish_hand():
+	var cards_needed = 5 - player_cards.size()
+	if cards_needed > 0:
+		print("Hand: Replenishing ", cards_needed, " cards.")
+		var drawn_data = deck_manager.draw_cards(cards_needed)
+		for data in drawn_data:
+			create_card(data)
