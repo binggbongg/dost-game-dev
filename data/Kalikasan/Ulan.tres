@@ -10,6 +10,6 @@ description = "Water canon attack"
 category = 2
 damage = 7
 heal = 2
-mana_cost = 10
+mana_cost = 3
 texture = ExtResource("2_51xnm")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

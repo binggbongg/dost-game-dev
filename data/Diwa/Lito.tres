@@ -7,5 +7,6 @@
 script = ExtResource("1_xfiar")
 name = "Lito"
 rarity = 1
+mana_cost = 10
 texture = ExtResource("2_wyygy")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

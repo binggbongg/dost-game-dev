@@ -8,5 +8,6 @@ script = ExtResource("1_t51xp")
 name = "Akit"
 category = 1
 rarity = 2
+mana_cost = 5
 texture = ExtResource("2_flco2")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

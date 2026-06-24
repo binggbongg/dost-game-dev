@@ -8,5 +8,6 @@ script = ExtResource("1_4ek7l")
 name = "Tulog"
 category = 1
 rarity = 1
+mana_cost = 10
 texture = ExtResource("2_wtg7r")
 metadata/_custom_type_script = "uid://cv07myeubhuht"
