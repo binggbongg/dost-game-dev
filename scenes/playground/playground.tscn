@@ -4,24 +4,22 @@
 [ext_resource type="PackedScene" uid="uid://cuauet8et8d12" path="res://scenes/playground/card_slot.tscn" id="3_1ro2l"]
 [ext_resource type="Script" uid="uid://spy4go6vaqa4" path="res://script/player_hand.gd" id="3_51ujy"]
 [ext_resource type="PackedScene" uid="uid://cw5abrwt2c70o" path="res://scenes/card.tscn" id="4_nnrk3"]
-[ext_resource type="Script" uid="uid://df5h5orlktysk" path="res://script/deck_manager.gd" id="6_v0rs1"]
+[ext_resource type="Script" uid="uid://bvwmfuduvlr8j" path="res://scenes/playground/turn_manager.gd" id="6_uis3y"]
+[ext_resource type="Script" uid="uid://df5h5orlktysk" path="res://scenes/playground/deck_manager.gd" id="6_v0rs1"]
+[ext_resource type="Script" uid="uid://bq06oex8xu486" path="res://scenes/playground/mana_manager.gd" id="7_n0aqf"]
+[ext_resource type="Script" uid="uid://b11i4yhoqleww" path="res://scenes/playground/combo_manager.gd" id="8_yqvi2"]
+[ext_resource type="PackedScene" uid="uid://c82bq62sx0rqq" path="res://scenes/ui/cast.tscn" id="9_pnqtf"]
 [ext_resource type="PackedScene" uid="uid://b4401vms4r7bc" path="res://scenes/deck.tscn" id="11_pnqtf"]
 [ext_resource type="Script" uid="uid://j7l5fw20irs" path="res://script/input_manager.gd" id="12_w4mas"]
 
 [node name="Playground" type="Node2D" unique_id=143692811]
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=829875115]
-offset_top = 497.0
-offset_right = 1932.0
-offset_bottom = 1100.0
-color = Color(0.482857, 0, 0.06443162, 1)
 
 [node name="GameManagers" type="Node2D" parent="." unique_id=1478786620]
 
 [node name="CardManager" type="Node2D" parent="GameManagers" unique_id=135479568]
 script = ExtResource("1_8absr")
 
-[node name="PlayerHand" type="Node2D" parent="GameManagers" unique_id=227717744 groups=["cards"]]
+[node name="PlayerHand" type="Node2D" parent="GameManagers" unique_id=227717744]
 script = ExtResource("3_51ujy")
 card_scene = ExtResource("4_nnrk3")
 
@@ -31,18 +29,30 @@ script = ExtResource("12_w4mas")
 [node name="DeckManager" type="Node2D" parent="GameManagers" unique_id=776635361]
 script = ExtResource("6_v0rs1")
 
+[node name="TurnManager" type="Node2D" parent="GameManagers" unique_id=1772167932]
+script = ExtResource("6_uis3y")
+
+[node name="ManaManager" type="Node2D" parent="GameManagers" unique_id=1633614343]
+script = ExtResource("7_n0aqf")
+
+[node name="ComboManager" type="Node2D" parent="GameManagers" unique_id=1133312977]
+script = ExtResource("8_yqvi2")
+
 [node name="UI" type="Node2D" parent="." unique_id=1778596181]
 
+[node name="Cast" parent="UI" unique_id=172885607 instance=ExtResource("9_pnqtf")]
+
 [node name="Deck" parent="UI" unique_id=1967540081 instance=ExtResource("11_pnqtf")]
-position = Vector2(200, 930)
+position = Vector2(150, 890)
+script = null
 
 [node name="Slots" type="Node2D" parent="." unique_id=934500505]
 
 [node name="CardSlot" parent="Slots" unique_id=1941583601 instance=ExtResource("3_1ro2l")]
-position = Vector2(710, 650)
+position = Vector2(641, 346)
 
 [node name="CardSlot2" parent="Slots" unique_id=595069567 instance=ExtResource("3_1ro2l")]
-position = Vector2(960, 650)
+position = Vector2(948, 348)
 
 [node name="CardSlot3" parent="Slots" unique_id=7364264 instance=ExtResource("3_1ro2l")]
-position = Vector2(1210, 650)
+position = Vector2(1242, 348)

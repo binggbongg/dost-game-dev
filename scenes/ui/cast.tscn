@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c82bq62sx0rqq"]
+
+[ext_resource type="Texture2D" uid="uid://c1iy6fdwnc654" path="res://assets/temporary/button.png" id="1_2ccqt"]
+[ext_resource type="Script" uid="uid://dudbpljq53co0" path="res://script/cast.gd" id="1_h4c5d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4c5d"]
+size = Vector2(796.53345, 204.03802)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ghk1n"]
+font_size = 60
+
+[node name="Cast" type="Node2D" unique_id=172885607]
+script = ExtResource("1_h4c5d")
+
+[node name="Button" type="Sprite2D" parent="." unique_id=793162877]
+position = Vector2(1054, 535)
+scale = Vector2(0.50970876, 0.50970876)
+texture = ExtResource("1_2ccqt")
+
+[node name="Area2D" type="Area2D" parent="Button" unique_id=24719274]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Area2D" unique_id=1467857832]
+position = Vector2(-1.9619141, -1.9619141)
+shape = SubResource("RectangleShape2D_h4c5d")
+
+[node name="Label" type="Label" parent="." unique_id=340530934]
+offset_left = 979.0
+offset_top = 486.0
+offset_right = 1124.0
+offset_bottom = 569.0
+text = "	CAST"
+label_settings = SubResource("LabelSettings_ghk1n")

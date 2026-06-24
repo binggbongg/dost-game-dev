@@ -61,7 +61,10 @@ func create_card(card_data):
 	var card = card_scene.instantiate()
 	card.card_data = card_data
 	get_parent().add_child(card)
-	# Start at the visible deck
+	
+	# CRITICAL FIX: The DeckManager needs this to know the card is in the hand!
+	card.location = GameEnums.Location.HAND
+	
 	card.global_position = deck.global_position
 	card_manager.connect_card_signal(card)
 	add_card_to_hand(card, DEFAULT_CARD_MOVE_SPEED)

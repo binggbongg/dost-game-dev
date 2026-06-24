@@ -13,12 +13,13 @@ enum TurnState {
 #This is to show the valididty of the combos used to attack/invalidities.
 enum ComboValidationResult {
 	VALID,
-	INVALID_DUPLICATE,
-	INVALID_CATEGORY_MIX,
-	INVALID_RULE_LAHI,
-	INVALID_RULE_DIWA,
-	INVALID_RULE_KALIKASAN,
-	INVALID_RULE_TANGLAW
+	INVALID_DUPLICATE_DIWA,
+	INVALID_TRI_TANGLAW,
+	INVALID_LAHI_TANGLAW_MIX,
+	INVALID_LAHI_NEEDS_DIWA,
+	INVALID_LAHI_NEEDS_KALIKASAN,
+	INVALID_MISSING_PIECE, 
+	INVALID_NOT_ENOUGH_MANA
 }
 #This can be used for both spellbook and actual gameplay
 enum ComboType {
@@ -69,4 +70,11 @@ enum EnemyMoveType {
 	DEFENSE,
 	SKILL,
 	BURST
+}
+
+enum Special {
+	NOT,
+	SPECIAL_HEAL,
+	SPECIAL_ATTACK,
+	SPECIAL_SHIELD
 }
