@@ -3,6 +3,8 @@ class_name Card
 signal hovered
 signal hovered_off
 
+const DEFAULT_CARD_SCALE = 0.8
+
 @onready var card_name: Label = $Area2D/CardName
 
 @export var card_data: CardData  
@@ -48,7 +50,7 @@ func reset_state():
 	
 func set_location(new_location: GameEnums.Location):
 	location = new_location
-	scale = Vector2(1.0, 1.0)
+	scale = Vector2(DEFAULT_CARD_SCALE, DEFAULT_CARD_SCALE)
 	if location == GameEnums.Location.SLOT:
 		z_index = 10
 	elif location == GameEnums.Location.HAND:

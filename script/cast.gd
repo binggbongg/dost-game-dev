@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var combo_manager = get_node("/root/Playground/GameManagers/ComboManager")
-@onready var turn_manager = get_node("/root/Playground/GameManagers/TurnManager")
+@onready var combo_manager = get_node("../../GameManagers/ComboManager")
+@onready var turn_manager = get_node("../../GameManagers/TurnManager")
 @onready var sprite = $Sprite2D # Make sure your sprite is named this
 @onready var mana_manager: Node2D = $"../../GameManagers/ManaManager"
 @onready var player_hand: Node2D = $"../../GameManagers/PlayerHand"
@@ -32,7 +32,7 @@ func on_click():
 		mana_manager.spend_mana(card.card_cost)
 	
 	# 2. Logic to "un-occupy" the slots physically and logically
-	var slots_folder = get_node("/root/Playground/Slots")
+	var slots_folder = get_node("../../Slots")
 	for slot in slots_folder.get_children():
 		if "card_in_slot" in slot: slot.card_in_slot = false
 

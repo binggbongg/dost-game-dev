@@ -1,8 +1,8 @@
 extends Node2D
 
-@onready var card_manager = get_node("/root/Playground/GameManagers/CardManager")
-@onready var combo_manager = get_node("/root/Playground/GameManagers/ComboManager")
-@onready var turn_manager = get_node("/root/Playground/GameManagers/TurnManager")
+@onready var card_manager = get_node("../../GameManagers/CardManager")
+@onready var combo_manager = get_node("../../GameManagers/ComboManager")
+@onready var turn_manager = get_node("../../GameManagers/TurnManager")
 @onready var sprite = $Sprite2D
 
 var is_disabled = true

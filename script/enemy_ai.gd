@@ -1,5 +1,6 @@
 extends Node2D
 
+# angela ay ni hilabta
 @export var behavior_data: EnemyBehavior
 
 @onready var animated_sprite = $AnimatedSprite2D

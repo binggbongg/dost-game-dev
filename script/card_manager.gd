@@ -152,12 +152,12 @@ func highlight_card(card, hovered):
 		return
 	
 	if hovered:
-		card.scale = Vector2(1.05, 1.05)
+		card.scale = Vector2(CARD_BIGGER_SCALE, CARD_BIGGER_SCALE)
 		# Only boost Z-index if it's in the hand. 
 		# If it's in a slot, we might want to keep it at its slot depth.
 		card.z_index = 20 
 	else:
-		card.scale = Vector2(1.0, 1.0)
+		card.scale = Vector2(DEFAULT_CARD_SCALE, DEFAULT_CARD_SCALE)
 		# Return to base depth based on location
 		if card.location == GameEnums.Location.SLOT:
 			card.z_index = 10
