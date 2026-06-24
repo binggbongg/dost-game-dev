@@ -60,7 +60,7 @@ func validate_addition(new_card: Card) -> GameEnums.ComboValidationResult:
 		if card.card_data.get("is_special"):
 			return GameEnums.ComboValidationResult.INVALID_MISSING_PIECE
 
-	# --- HARD BANS ---
+	# HARD RULES
 
 	# Rule Checking - Duplicate Diwa
 	if new_card.card_category == GameEnums.CardCategory.DIWA:
