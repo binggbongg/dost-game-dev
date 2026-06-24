@@ -28,7 +28,7 @@ func _ready() -> void:
 func apply_data():
 	if card_data == null:
 		return
-	card_name.text = card_data.name + " - " +  GameEnums.CardRarity.keys()[card_data.rarity]
+	card_name.text = card_data.name + " - " +  GameEnums.CardRarity.keys()[card_data.rarity] + "- "+  str(card_data.mana_cost)
 	card_category = card_data.category
 	card_rarity = card_data.rarity
 	card_damage = card_data.damage

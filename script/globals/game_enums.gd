@@ -19,7 +19,8 @@ enum ComboValidationResult {
 	INVALID_LAHI_NEEDS_DIWA,
 	INVALID_LAHI_NEEDS_KALIKASAN,
 	INVALID_MISSING_PIECE, 
-	INVALID_NOT_ENOUGH_MANA
+	INVALID_NOT_ENOUGH_MANA,
+	INVALID_MAX_CARDS
 }
 #This can be used for both spellbook and actual gameplay
 enum ComboType {

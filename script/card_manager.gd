@@ -18,7 +18,7 @@ var hovered_card
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	$"../InputManager".connect("left_mouse_button_released", on_left_click_released)
-
+	mana_manager.mana_changed.connect(func(_val): refresh_hand_interaction())
 func _process(_delta) -> void:
 	if card_being_dragged:
 		var target_pos = get_global_mouse_position() + drag_offset
@@ -39,13 +39,13 @@ func finish_drag():
 	var slot = raycast_check_card_slot()
 	
 	if slot and not slot.card_in_slot:
+		# The ComboManager now checks for reserved mana inside validate_addition
 		var validation = combo_manager.validate_addition(card_being_dragged)
-		var can_afford = mana_manager.can_afford(card_being_dragged.card_cost)
 		
-		if validation == GameEnums.ComboValidationResult.VALID and can_afford:
-			# CHANGED: We DO NOT call mana_manager.spend_mana here anymore.
+		if validation == GameEnums.ComboValidationResult.VALID:
 			drop_into_slot(card_being_dragged, slot)
 		else:
+			print("REJECTED: ", GameEnums.ComboValidationResult.keys()[validation])
 			return_to_hand(card_being_dragged)
 	else:
 		return_to_hand(card_being_dragged)
@@ -126,6 +126,7 @@ func on_left_click_released():
 	if card_being_dragged:
 		finish_drag()
 		# Refresh only after the drag is complete
+		await get_tree().process_frame
 		refresh_hand_interaction()
 		
 func on_hovered_card(card):
@@ -183,9 +184,8 @@ func refresh_hand_interaction():
 	if not player_hand: return
 	
 	for card in player_hand.player_cards:
-		# Check the new rules (Hand vs Slot dependencies)
+		# This now checks if (Current Mana - Reserved Mana) >= Card Cost
 		var combo_status = combo_manager.validate_addition(card)
-		var can_afford = mana_manager.can_afford(card.card_cost)
-		
-		# Set visual state (Grayed out if invalid or too expensive)
-		card.set_interaction_state(combo_status == GameEnums.ComboValidationResult.VALID and can_afford)
+		print(card.card_name.text," -> ",GameEnums.ComboValidationResult.keys()[combo_status])
+		# Set visual state
+		card.set_interaction_state(combo_status == GameEnums.ComboValidationResult.VALID)
