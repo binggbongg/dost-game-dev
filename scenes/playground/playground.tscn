@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://b11i4yhoqleww" path="res://scenes/playground/combo_manager.gd" id="8_yqvi2"]
 [ext_resource type="PackedScene" uid="uid://c82bq62sx0rqq" path="res://scenes/ui/cast.tscn" id="9_pnqtf"]
 [ext_resource type="PackedScene" uid="uid://b4401vms4r7bc" path="res://scenes/deck.tscn" id="11_pnqtf"]
+[ext_resource type="PackedScene" uid="uid://bn3nv1q8fv4kq" path="res://scenes/ui/redo.tscn" id="11_w4mas"]
+[ext_resource type="Script" uid="uid://db6r35qcmakq4" path="res://scenes/ui/redo.gd" id="12_1750b"]
 [ext_resource type="Script" uid="uid://j7l5fw20irs" path="res://script/input_manager.gd" id="12_w4mas"]
 
 [node name="Playground" type="Node2D" unique_id=143692811]
@@ -41,10 +43,15 @@ script = ExtResource("8_yqvi2")
 [node name="UI" type="Node2D" parent="." unique_id=1778596181]
 
 [node name="Cast" parent="UI" unique_id=172885607 instance=ExtResource("9_pnqtf")]
+position = Vector2(440, -209)
 
 [node name="Deck" parent="UI" unique_id=1967540081 instance=ExtResource("11_pnqtf")]
 position = Vector2(150, 890)
 script = null
+
+[node name="Redo" parent="UI" unique_id=1923565615 instance=ExtResource("11_w4mas")]
+position = Vector2(-665, -208)
+script = ExtResource("12_1750b")
 
 [node name="Slots" type="Node2D" parent="." unique_id=934500505]
 

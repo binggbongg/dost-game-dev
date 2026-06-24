@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bn3nv1q8fv4kq"]
+
+[ext_resource type="Texture2D" uid="uid://du3ynfb41hoso" path="res://assets/temporary/undo.png" id="1_gu18k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3w2vd"]
+radius = 141.90587
+
+[node name="Redo" type="Node2D" unique_id=1923565615]
+
+[node name="Button" type="Sprite2D" parent="." unique_id=1200986512]
+position = Vector2(1056, 564.99994)
+scale = Vector2(1.1163926, 1.1168984)
+texture = ExtResource("1_gu18k")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=560865929]
+position = Vector2(1058.6517, 541.81067)
+scale = Vector2(0.5574187, 0.5576712)
+collision_layer = 8
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=5021422]
+position = Vector2(-6.5510254, 50.548344)
+shape = SubResource("CircleShape2D_3w2vd")

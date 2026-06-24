@@ -5,6 +5,8 @@ signal left_mouse_button_released
 
 const LAYER_CARD = 1
 const LAYER_DECK = 5
+const LAYER_CAST = 4  # Matches the Layer you set in Inspector
+const LAYER_REDO = 8  # Matches the Layer you set in Inspector (bits: 1, 2, 4, 8)
 
 @onready var card_manager_reference = $"../CardManager"
 @onready var deck_manager = $"../DeckManager"
@@ -45,6 +47,16 @@ func raycast_at_cursor():
 				
 		elif collision_layer == LAYER_DECK:
 			handle_deck_click()
+		elif collision_layer == LAYER_CAST:
+			# Get the script on the Cast node and trigger it
+			var cast_node = result[0].collider.get_parent()
+			if cast_node.has_method("on_click"):
+				cast_node.on_click()
+		elif collision_layer == LAYER_REDO:
+			# Get the script on the Redo node and trigger it
+			var redo_node = result[0].collider.get_parent()
+			if redo_node.has_method("on_click"):
+				redo_node.on_click()
 func handle_deck_click():
 	if turn_manager.is_busy: return
 	
