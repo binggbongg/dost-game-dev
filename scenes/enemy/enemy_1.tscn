@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d21de5id2a0gx"]
 
-[ext_resource type="Script" uid="uid://cr65k0srho0i" path="res://script/enemy_ai.gd" id="1_a1412"]
+[ext_resource type="Script" uid="uid://cr65k0srho0i" path="res://script/enemy/enemy_ai.gd" id="1_a1412"]
 [ext_resource type="Texture2D" uid="uid://chdu7sas2n0ro" path="res://assets/player/character_boy.png" id="1_tcmaw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a1412"]

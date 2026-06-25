@@ -175,6 +175,10 @@ func set_card_to_slot(card, slot):
 	slot.card_in_slot = true
 	
 func clear_card_from_slot(card):
+	if not card or not("curren_slot" in card):
+		print("CardManager Warning: Object passed to clear_card_from_slot is not a valid card node. Ignoring.")
+		return
+	
 	if card.current_slot:
 		card.current_slot.card_in_slot = false
 	card.current_slot = null

@@ -1,9 +1,13 @@
 extends Node2D
 
 @onready var battle_timer = $"../Timer"
-#@onready var end_cast_button = $"../Button"
 @onready var combat_arena = $"../CombatArena"
 @onready var turn_manager = $"../PlayerInterface/GameManagers/TurnManager"
+@onready var player_hand = $"../PlayerInterface/GameManagers/PlayerHand"
+@onready var card_manager = $"../PlayerInterface/GameManagers/CardManager"
+@onready var end_turn = $"../PlayerInterface/UI/TextureButton"
+@onready var deck_manager = $"../PlayerInterface/GameManagers/DeckManager"
+@onready var combo_manager = $"../PlayerInterface/GameManagers/ComboManager"
 
 # angela ay ni hilabti tanan
 
@@ -11,21 +15,32 @@ func _ready() -> void:
 	if turn_manager:
 		turn_manager.turn_changed.connect(_on_turned_state_changed)
 		print("battle manager connected to turn manager")
-	else:
-		print("cannot find turn manager")
+	
+	if end_turn:
+		end_turn.end_turn_pressed.connect(_on_end_turn_clicked)
+
+func _on_end_turn_clicked():
+	if turn_manager.is_busy:
+		return
+	
+	turn_manager.end_player_turn()
 
 func _on_turned_state_changed(new_state: GameEnums.TurnState):
 	match new_state:
 		GameEnums.TurnState.ENEMY_TURN:
-			execute_enemy_turn()
+			print("enemy turn")
+			await execute_enemy_turn()
+			turn_manager.start_player_turn()
 		GameEnums.TurnState.PLAYER_ACTION:
 			print("player turn")
+			
+			if player_hand:
+				player_hand.replenish_hand()
+			
+			await get_tree().process_frame
+			if card_manager:
+				card_manager.refresh_hand_interaction()
 
-#func _on_button_pressed() -> void:
-	#print("player turn ended")
-	#end_cast_button.disabled = true
-	#await execute_enemy_turn()
-	#start_player_turn()
 
 func execute_enemy_turn():
 	battle_timer.start(1.0)
@@ -39,7 +54,3 @@ func execute_enemy_turn():
 	
 	battle_timer.start(0.5)
 	await battle_timer.timeout
-
-#func start_player_turn():
-	#print("player turn begin")
-	#end_cast_button.disabled = false

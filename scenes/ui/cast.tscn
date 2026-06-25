@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c82bq62sx0rqq"]
 
-[ext_resource type="Script" path="res://script/cast.gd" id="1_h4c5d"]
+[ext_resource type="Script" uid="uid://dudbpljq53co0" path="res://script/for buttons/cast.gd" id="1_h4c5d"]
 [ext_resource type="Texture2D" uid="uid://odo50orpeqp2" path="res://assets/temporary/cast.png" id="2_h4c5d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghk1n"]
@@ -10,7 +10,7 @@ radius = 141.90587
 script = ExtResource("1_h4c5d")
 
 [node name="Button" type="Sprite2D" parent="." unique_id=1327864187]
-scale = Vector2(1.1163926, 1.1168984)
+scale = Vector2(1, 1.001)
 texture = ExtResource("2_h4c5d")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=166264013]

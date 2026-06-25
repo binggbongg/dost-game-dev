@@ -43,7 +43,7 @@ func on_click():
 	
 	# 4. REPLENISH THE HAND FIRST
 	# This adds the 3 new cards to the hand array
-	player_hand.replenish_hand()
+	#player_hand.replenish_hand()
 	
 	# 5. WAIT A SPLIT SECOND
 	# This lets Godot finish the queue_free and replenishment
@@ -54,6 +54,6 @@ func on_click():
 	card_manager.refresh_hand_interaction()
 	
 	# 7. End turn
-	await get_tree().create_timer(1.0).timeout
-	turn_manager.end_player_turn()
+	#await get_tree().create_timer(1.0).timeout
+	#turn_manager.end_player_turn()
 	turn_manager.is_busy = false
