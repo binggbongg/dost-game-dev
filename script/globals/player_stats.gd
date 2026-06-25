@@ -1,6 +1,6 @@
 extends Node
 
-var max_energy: int = 5
+var max_mana: int = 25
 var max_health: int = 50
 var current_health: int
 

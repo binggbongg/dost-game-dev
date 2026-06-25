@@ -22,9 +22,9 @@ func add_card_to_hand(card, speed):
 	
 	player_cards.append(card)
 	update_hand_positions(speed)
-	
 
 func update_hand_positions(speed):
+	player_cards = player_cards.filter(func(c): return is_instance_valid(c) and not c.is_queued_for_deletion())
 	var count = player_cards.size()
 	if count == 0: return
 
@@ -34,6 +34,10 @@ func update_hand_positions(speed):
 
 	for i in range(count):
 		var card = player_cards[i]
+		
+		if not is_instance_valid(card) or card.is_queued_for_deletion():
+			continue
+		
 		var final_hand_pos = Vector2(start_x + i * CARD_WIDTH, y)
 		
 		card.hand_position = final_hand_pos
@@ -70,6 +74,7 @@ func create_card(card_data):
 	add_card_to_hand(card, DEFAULT_CARD_MOVE_SPEED)
 
 func replenish_hand():
+	player_cards = player_cards.filter(func(c): return is_instance_valid(c) and not c.is_queued_for_deletion())
 	var cards_needed = 5 - player_cards.size()
 	if cards_needed > 0:
 		print("Hand: Replenishing ", cards_needed, " cards.")

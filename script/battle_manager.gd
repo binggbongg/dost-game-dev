@@ -8,6 +8,7 @@ extends Node2D
 @onready var end_turn = $"../PlayerInterface/UI/TextureButton"
 @onready var deck_manager = $"../PlayerInterface/GameManagers/DeckManager"
 @onready var combo_manager = $"../PlayerInterface/GameManagers/ComboManager"
+@onready var mana_manager = $"../PlayerInterface/GameManagers/ManaManager"
 
 # angela ay ni hilabti tanan
 
@@ -29,10 +30,20 @@ func _on_turned_state_changed(new_state: GameEnums.TurnState):
 	match new_state:
 		GameEnums.TurnState.ENEMY_TURN:
 			print("enemy turn")
+			if combo_manager:
+				var active_cards = combo_manager.get_cards_in_slots()
+				for card in active_cards:
+					if card_manager:
+						card_manager.return_to_hand(card)
+			
+			await get_tree().process_frame
 			await execute_enemy_turn()
 			turn_manager.start_player_turn()
 		GameEnums.TurnState.PLAYER_ACTION:
 			print("player turn")
+			
+			if mana_manager:
+				mana_manager.reset_turn_mana()
 			
 			if player_hand:
 				player_hand.replenish_hand()
