@@ -9,5 +9,6 @@ name = "Bakunawa"
 description = "Floods and disables the enemy's strongest moves for 1 turn"
 category = 7
 rarity = 4
+mana_cost = 80
 texture = ExtResource("2_j6xgj")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

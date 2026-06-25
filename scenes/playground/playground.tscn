@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c82bq62sx0rqq" path="res://scenes/ui/cast.tscn" id="9_pnqtf"]
 [ext_resource type="PackedScene" uid="uid://b4401vms4r7bc" path="res://scenes/deck.tscn" id="11_pnqtf"]
 [ext_resource type="PackedScene" uid="uid://bn3nv1q8fv4kq" path="res://scenes/ui/redo.tscn" id="11_w4mas"]
-[ext_resource type="Script" uid="uid://db6r35qcmakq4" path="res://scenes/ui/redo.gd" id="12_1750b"]
+[ext_resource type="Script" uid="uid://db6r35qcmakq4" path="res://script/redo.gd" id="12_1750b"]
 [ext_resource type="Script" uid="uid://j7l5fw20irs" path="res://script/input_manager.gd" id="12_w4mas"]
 [ext_resource type="Script" uid="uid://ma7yekwnh18x" path="res://script/mana_counter_placeholder.gd" id="14_6kr34"]
 

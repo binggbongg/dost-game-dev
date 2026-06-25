@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://twwyc8fs4le5"]
+
+[ext_resource type="Texture2D" uid="uid://n6tlgpkgjmq5" path="res://assets/temporary/temp_bg.jpg" id="1_d2t2u"]
+[ext_resource type="Script" uid="uid://cy31dctcq2m2k" path="res://script/battle_manager.gd" id="2_kekr0"]
+[ext_resource type="PackedScene" uid="uid://d2tckrycp2m2k" path="res://scenes/combat_arena.tscn" id="3_cqoap"]
+[ext_resource type="PackedScene" uid="uid://dirj45q71fos6" path="res://scenes/player_interface.tscn" id="4_grf4a"]
+
+[node name="Level1" type="Node2D" unique_id=1730621475]
+
+[node name="UpperBackground" type="TextureRect" parent="." unique_id=633699121]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -283.0
+offset_right = 1945.0
+offset_bottom = 651.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_d2t2u")
+
+[node name="LowerBackground" type="ColorRect" parent="." unique_id=1535264395]
+offset_left = -44.0
+offset_top = 480.0
+offset_right = 1957.0
+offset_bottom = 1135.0
+color = Color(0.2775514, 0.5534014, 0.5556392, 1)
+
+[node name="Timer" type="Timer" parent="." unique_id=322603772]
+
+[node name="Button" type="Button" parent="." unique_id=317833088]
+visible = false
+offset_left = 1443.0
+offset_top = 649.0
+offset_right = 1518.0
+offset_bottom = 680.0
+text = "End Cast"
+flat = true
+
+[node name="BattleManager" type="Node2D" parent="." unique_id=1572491070]
+script = ExtResource("2_kekr0")
+
+[node name="CombatArena" parent="." unique_id=439901724 instance=ExtResource("3_cqoap")]
+
+[node name="PlayerInterface" parent="." unique_id=143692811 instance=ExtResource("4_grf4a")]
+
+[connection signal="pressed" from="Button" to="BattleManager" method="_on_button_pressed"]
