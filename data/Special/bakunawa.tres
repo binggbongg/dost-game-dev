@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SpecialCardData" format=3 uid="uid://q1wvvv4gbdoj"]
+
+[ext_resource type="Script" uid="uid://cpiimvdghqtnm" path="res://data/special_cards.gd" id="1_jnh2x"]
+[ext_resource type="Script" uid="uid://8m6aga3qk3g5" path="res://diwata.gd" id="1_kj3k0"]
+[ext_resource type="Texture2D" uid="uid://cvm2vwhppp067" path="res://assets/temporary/bakunawa.png" id="3_0oigu"]
+
+[resource]
+script = ExtResource("1_jnh2x")
+category = 4
+rarity = 4
+effect_script = ExtResource("1_kj3k0")
+mana_cost = 40
+item_id = "003"
+name = "Bakunawa"
+description = "Does something!"
+texture = ExtResource("3_0oigu")
+price = 20
+metadata/_custom_type_script = "uid://cpiimvdghqtnm"

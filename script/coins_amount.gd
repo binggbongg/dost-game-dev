@@ -1,8 +1,9 @@
-extends Label
+extends Node2D
 
+@onready var coins: Label = $"CoinDisplay/Coins"
 func _ready():
-	PlayerProfile.coins_changed.connect(_update_label)
-	_update_label(PlayerProfile.coins)
+	PlayerProfile.coins_changed.connect(update_label)
+	update_label(PlayerProfile.coins)
 
-func _update_label(val):
-	text =  str(val)
+func update_label(val):
+	coins.text =  str(val)

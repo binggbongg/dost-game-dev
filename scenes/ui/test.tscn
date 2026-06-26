@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://buor4em2o4cfj" path="res://scenes/ui/coin_display.tscn" id="6_268a0"]
 [ext_resource type="Texture2D" uid="uid://bby48bvsp02i0" path="res://assets/temporary/slot spotlight.jpg" id="6_l2kf3"]
 [ext_resource type="Texture2D" uid="uid://djpmv5b8co8qh" path="res://assets/temporary/settings.png" id="6_ynwpg"]
+[ext_resource type="PackedScene" uid="uid://c6s5cqo4d4utu" path="res://scenes/ui/base_menu.tscn" id="7_268a0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3iqw3"]
 font_size = 86
@@ -39,7 +40,7 @@ offset_left = 276.0
 offset_top = 174.0
 offset_right = 885.0
 offset_bottom = 322.0
-text = "INVENTORY"
+text = "SHOP"
 label_settings = SubResource("LabelSettings_3iqw3")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -99,7 +100,7 @@ offset_left = 1079.0
 offset_top = 752.0
 offset_right = 1533.0
 offset_bottom = 839.0
-text = "CAST NOW (4)"
+text = "PURCHASE"
 label_settings = SubResource("LabelSettings_01036")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -207,3 +208,9 @@ texture = ExtResource("6_ynwpg")
 
 [node name="CoinDisplay" parent="." unique_id=220494740 instance=ExtResource("6_268a0")]
 position = Vector2(-10, -2)
+
+[node name="Control" parent="." unique_id=237487255 instance=ExtResource("7_268a0")]
+offset_left = -3.0
+offset_top = -7.0
+offset_right = 1915.0
+offset_bottom = 1076.0

@@ -34,10 +34,24 @@ func has_item(item_id: String, amount: int = 1) -> bool:
 func get_quantity(item_id: String) -> int:
 	return owned_items.get(item_id, 0)
 
-# Used for consumables like potions
+# call this when u wanna consume item 
 func consume_item(item_id: String) -> bool:
 	var data = ItemDb.get_item(item_id)
 	if data and has_item(item_id, 1):
 		remove_item(item_id, 1)
 		return true
 	return false
+
+#testing delete laturr
+func _input(event):
+	if event is InputEventKey and event.pressed and event.keycode == KEY_I:
+		print("\n--- INVENTORY DEBUG TEST ---")
+		
+		# Try adding a test item (Replace 'kapre' with your actual item_id from the .tres)
+		add_item("002", 1)
+		
+		print("Current Inventory Content:")
+		for id in owned_items:
+			print("- ", id, ": x", owned_items[id])
+		
+		print("----------------------------\n")

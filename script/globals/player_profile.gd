@@ -20,9 +20,11 @@ var player_rank: String = "Starter":
 
 var level: int = 1
 var experience: int = 0
-var coins: int = 100
-
-
+var coins: int = 100:
+	set(value):
+		coins = value
+		coins_changed.emit(coins) 
+		
 # Use this when the player first creates their account or starts a new game
 func initialize_profile(new_name: String, character_id: String):
 	player_name = new_name
@@ -39,16 +41,17 @@ func set_rank(new_rank: String):
 
 func add_coins(amount: int) -> void:
 	if amount <= 0: return
-	coins += amount
-	coins_changed.emit(coins)
+	self.coins += amount 
 
 func spend_coins(amount: int) -> bool:
 	if can_afford(amount):
-		coins -= amount
-		coins_changed.emit(coins)
+		self.coins -= amount
 		return true
 	return false
 
 func can_afford(amount: int) -> bool:
 	return coins >= amount
 	
+func _input(event):
+	if event is InputEventKey and event.pressed and event.keycode == KEY_A:
+		add_coins(200)
