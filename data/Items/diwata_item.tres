@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://c67qpxotjm08"]
+
+[ext_resource type="Script" uid="uid://sax74acp7qrl" path="res://data/item_data.gd" id="1_j6qce"]
+[ext_resource type="Texture2D" uid="uid://dbf2yi6groiqc" path="res://assets/temporary/diwata.png" id="1_pvuv3"]
+
+[resource]
+script = ExtResource("1_j6qce")
+item_code = "001"
+name = "Diwata"
+cost = 50
+icon = ExtResource("1_pvuv3")
+metadata/_custom_type_script = "uid://sax74acp7qrl"

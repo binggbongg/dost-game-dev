@@ -1,6 +1,6 @@
 extends Node
 # This is to differentiate the cards and later to identify valid combos
-enum CardCategory { LAHI, DIWA, KALIKASAN, TANGLAW, S_DIWATA, S_ASWANG, S_KAPRE, S_BAKUNAWA, S_MINOKAWA }
+enum CardCategory { LAHI, DIWA, KALIKASAN, TANGLAW}
 #This is so that our system kay maka tell what are the allowed actions at certain states
 enum TurnState {     
 	START_TURN,

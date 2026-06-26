@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameEnums="*uid://0y1vwrkpn5j"
 PlayerStats="*uid://jpdhe845o8y7"
+PlayerProfile="*uid://cayxnyi71tkw2"
 
 [display]
 
