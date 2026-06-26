@@ -1,6 +1,6 @@
 extends RefCounted
 class_name SpecialEffect
 
-# This is the "Blueprint" function. Every effect script will override this.
+#just a safety error check nga need siya override.
 func execute(user: Node, targets: Array):
-	print("Executing base effect - override this!")
+		push_error("SpecialEffect.execute() must be overridden.")
