@@ -5,7 +5,7 @@ extends Node2D
 @onready var turn_manager = $"../PlayerInterface/GameManagers/TurnManager"
 @onready var player_hand = $"../PlayerInterface/GameManagers/PlayerHand"
 @onready var card_manager = $"../PlayerInterface/GameManagers/CardManager"
-@onready var end_turn = $"../PlayerInterface/UI/TextureButton"
+@onready var end_turn = $"../PlayerInterface/UI/EndTurn"
 @onready var deck_manager = $"../PlayerInterface/GameManagers/DeckManager"
 @onready var combo_manager = $"../PlayerInterface/GameManagers/ComboManager"
 @onready var mana_manager = $"../PlayerInterface/GameManagers/ManaManager"
@@ -42,6 +42,9 @@ func _on_turned_state_changed(new_state: GameEnums.TurnState):
 		GameEnums.TurnState.PLAYER_ACTION:
 			print("player turn")
 			
+			if turn_manager:
+				turn_manager.is_busy = false
+			
 			if mana_manager:
 				mana_manager.reset_turn_mana()
 			
@@ -57,11 +60,11 @@ func execute_enemy_turn():
 	battle_timer.start(1.0)
 	await battle_timer.timeout
 	
-	if combat_arena and combat_arena.has_node("Enemy1"):
-		var enemy = combat_arena.get_node("Enemy1")
+	if combat_arena and combat_arena.has_method("get_enemy"):
+		var enemy = combat_arena.get_enemy()
 		enemy.execute_intent()
 	else:
-		print("execute intent method did not work")
+		print("execute intent method did not work or did not find enemy -- from battlemanager")
 	
 	battle_timer.start(0.5)
 	await battle_timer.timeout

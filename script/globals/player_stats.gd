@@ -1,22 +1,23 @@
 extends Node
 
+signal health_changed(new_health: int)
+
 var max_mana: int = 25
 var max_health: int = 50
 var current_health: int
 
-func reset_health():
-	max_health = current_health
+func _ready() -> void:
+	current_health = max_health
+	print("player health: ", current_health)
 
-#func spend_energy(amount: int):
-	#if current_energy >= amount:
-		#current_energy -= amount
-		#return true
-	#
-	#return false
+func reset_health():
+	current_health = max_health
 
 func take_damage(amount: int):
-	if current_health >= amount:
-		current_health -= amount
-		return true
+	current_health = max(0, current_health - amount)
+	health_changed.emit(current_health)
 	
-	return false
+	print("player took ", amount, " damage. health: ", current_health)
+	
+	if current_health <= 0:
+		print("Player has died")

@@ -8,9 +8,9 @@
 [node name="CombatArena" type="Node2D" unique_id=439901724]
 script = ExtResource("1_bsdi3")
 
+[node name="Enemy1" parent="." unique_id=605101585 instance=ExtResource("2_bsdi3")]
+position = Vector2(1300, 350)
+
 [node name="Player" parent="." unique_id=1294632288 instance=ExtResource("1_wa2ja")]
 position = Vector2(600, 350)
 script = ExtResource("3_t4nkh")
-
-[node name="Enemy1" parent="." unique_id=605101585 instance=ExtResource("2_bsdi3")]
-position = Vector2(1300, 350)

@@ -169,3 +169,30 @@ func validate_cast() -> bool:
 		return false
 
 	return true
+
+func calculate_combo_output(active_cards):
+	var total_damage = 0
+	var total_healing = 0
+	
+	for card in active_cards:
+		if not is_instance_valid(card) or not card.card_data: return
+		
+		var data = card.card_data
+		if "damage" in data:
+			total_damage += data.damage
+		if "heal" in data:
+			total_healing += data.heal
+	
+	var categories = active_cards.map(func(c): return c.card_category)
+	var lahi_count = categories.count(GameEnums.CardCategory.LAHI)
+	var diwa_count = categories.count(GameEnums.CardCategory.DIWA)
+	var kali_count = categories.count(GameEnums.CardCategory.KALIKASAN)
+	
+	if lahi_count == 1 and diwa_count == 1 and kali_count == 1:
+		print("Trio synergy: 1.5x multiplier")
+		total_damage *= 1.5
+	
+	return {
+		"damage": total_damage,
+		"healing": total_healing
+	}

@@ -2,14 +2,15 @@ extends Node2D
 
 # angela ay ni hilabta
 @export var behavior_data: EnemyBehavior
-
 @onready var animated_sprite = $AnimatedSprite2D
 
 var current_health: int
+var current_armor: int
 var current_turns: int = 0
 var chosen_intent: EnemyMove
-
 var special_cooldowns: Dictionary = {}
+
+signal enemy_health_changed(new_health: int)
 
 func _ready() -> void:
 	if not behavior_data:
@@ -23,11 +24,22 @@ func _ready() -> void:
 
 func setup_enemy():
 	current_health = behavior_data.max_health
+	enemy_health_changed.emit(current_health)
+	
 	if behavior_data.enemy_sprite and animated_sprite:
 		animated_sprite.sprite_frames = behavior_data.enemy_sprite
 		animated_sprite.play("default")
 	
 	choose_next_intent()
+
+func take_damage(amount):
+	current_health = max(0, current_health - amount)
+	print(name, " takes ", amount, " of damage. current health: ", current_health)
+	enemy_health_changed.emit(current_health)
+	
+	if current_health <= 0:
+		print("enemy has been defeated")
+		queue_free()
 
 func choose_next_intent():
 	current_turns += 1
@@ -87,13 +99,20 @@ func execute_intent():
 	match chosen_intent.type:
 		GameEnums.EnemyMoveType.ATTACK:
 			print("enemy attacked")
+			if PlayerStats:
+				PlayerStats.take_damage(chosen_intent.value)
 		GameEnums.EnemyMoveType.DEFENSE:
 			print("enemy defended")
+			# will add defense thing for the enemy
 		GameEnums.EnemyMoveType.SKILL:
 			print("enemy used skill")
+			if PlayerStats:
+				PlayerStats.take_damage(chosen_intent.value)
 			trigger_cooldown(chosen_intent)
 		GameEnums.EnemyMoveType.BURST:
 			print("enemy used burst")
+			if PlayerStats:
+				PlayerStats.take_damage(chosen_intent.value)
 			trigger_cooldown(chosen_intent)
 	
 	choose_next_intent()
