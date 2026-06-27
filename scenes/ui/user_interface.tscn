@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dfjsh6ukyrks"]
+
+[node name="UserInterface" type="CanvasLayer" unique_id=2105822084]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=876040838]
+visible = false
+offset_right = 1940.0
+offset_bottom = 1081.0
+color = Color(0, 0, 0, 0.19607843)

@@ -7,7 +7,7 @@ const DEFAULT_CARD_SCALE = 0.8
 
 @onready var card_name: Label = $Area2D/CardName
 
-@export var card_data: CardData  
+@export var card_data: Resource  
 var card_category:GameEnums.CardCategory
 var card_rarity: GameEnums.CardRarity
 var card_damage: int
@@ -24,18 +24,19 @@ func _ready() -> void:
 	add_to_group("cards")
 	modulate = Color(1, 1, 1, 1)
 
-#Applies data from our resource files!
 func apply_data():
 	if card_data == null:
 		return
-	card_name.text = card_data.name + " - " +  GameEnums.CardRarity.keys()[card_data.rarity] + "- "+  str(card_data.mana_cost)
+	var d_name = card_data.get("item_name") if card_data.get("item_name") else card_data.get("name")
+	var d_texture = card_data.get("icon") if card_data.get("icon") else card_data.get("texture")
+	card_name.text = str(d_name) + " - " + GameEnums.CardRarity.keys()[card_data.rarity] + " - " + str(card_data.mana_cost)
 	card_category = card_data.category
 	card_rarity = card_data.rarity
 	card_damage = card_data.damage
 	card_heal = card_data.heal
 	card_cost = card_data.mana_cost
-	$Sprite2D.texture = card_data.texture
-
+	
+	$Sprite2D.texture = d_texture
 func _on_area_2d_mouse_entered() -> void:
 	hovered.emit(self)
 

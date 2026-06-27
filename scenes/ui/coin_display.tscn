@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://buor4em2o4cfj"]
+
+[ext_resource type="Texture2D" uid="uid://dkso0nwxame71" path="res://assets/temporary/coin.webp" id="1_hv3hf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hv3hf"]
+font_size = 35
+
+[node name="CoinDisplay" type="Node2D" unique_id=220494740]
+
+[node name="Coin" type="Sprite2D" parent="." unique_id=1371920841]
+position = Vector2(1596.0001, 87.00001)
+scale = Vector2(0.25142857, 0.25142857)
+texture = ExtResource("1_hv3hf")
+
+[node name="label" type="Label" parent="." unique_id=449086980]
+visible = false
+offset_left = 1552.0
+offset_top = 58.0
+offset_right = 1820.0
+offset_bottom = 269.0
+text = "500"
+label_settings = SubResource("LabelSettings_hv3hf")
