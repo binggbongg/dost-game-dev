@@ -52,14 +52,14 @@ func validate_addition(new_card: Card) -> GameEnums.ComboValidationResult:
 		return GameEnums.ComboValidationResult.INVALID_NOT_ENOUGH_MANA
 
 	# Rule Checking - Special Cards: Solo only.
-	if new_card.card_data.get("is_special"):
+	# Rule Checking - Special Cards: Solo only.
+	if new_card.card_data is SpecialCardData:
 		if active_cards.size() > 0:
 			return GameEnums.ComboValidationResult.INVALID_MISSING_PIECE
 
 	for card in active_cards:
-		if card.card_data.get("is_special"):
+		if card.card_data is SpecialCardData:
 			return GameEnums.ComboValidationResult.INVALID_MISSING_PIECE
-
 	# HARD RULES
 
 	# Rule Checking - Duplicate Diwa

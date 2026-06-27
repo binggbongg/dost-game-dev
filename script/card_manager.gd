@@ -29,6 +29,8 @@ func _process(_delta) -> void:
 		)
 
 func start_drag(card):
+	if !card.can_drag:
+		return
 	card_being_dragged = card
 	card.scale = Vector2(DEFAULT_CARD_SCALE, DEFAULT_CARD_SCALE)
 	card_being_dragged.z_index = 10
@@ -67,6 +69,9 @@ func drop_into_slot(card, slot):
 	tween.tween_property(card, "position", slot.position, 0.2).set_trans(Tween.TRANS_CUBIC)
 	refresh_hand_interaction()
 func return_to_hand(card):
+	if card.card_source == GameEnums.CardSource.INVENTORY:
+		BattleEvents.special_cancel_requested.emit()
+		return
 	clear_card_from_slot(card)
 	player_hand.add_card_to_hand(card, 0.1)
 	refresh_hand_interaction()

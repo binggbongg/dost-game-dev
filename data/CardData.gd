@@ -15,3 +15,4 @@ class_name CardData
 
 #For the art nii!
 @export var texture: Texture2D
+var card_source: GameEnums.CardSource =GameEnums.CardSource.DECK

@@ -22,17 +22,28 @@ func _pressed() -> void:
 	else:
 		self.disabled = true
 		self_modulate = Color(0.3, 0.3, 0.3, 0.8)
-
 func _on_pressed():
+	print("Cast button pressed")
+	if turn_manager.is_busy:
+		return
+	var active_cards = combo_manager.get_cards_in_slots()
+	print("Cards in slots: ", active_cards.size())
+	if active_cards.is_empty():
+		return
+	if active_cards.size() == 1:
+		print(active_cards[0].card_data)
+		if active_cards[0].card_data is SpecialCardData:
+			print("SPECIAL CARD DETECTED")
+			cast_special(active_cards[0])
+			return
+	print("NORMAL CAST")
+	cast_normal(active_cards)
+func cast_normal(active_cards):
 	if turn_manager.is_busy: return
 	turn_manager.is_busy = true
-	
-	var active_cards = combo_manager.get_cards_in_slots()	
 	for card in active_cards:
 		mana_manager.spend_mana(card.card_cost)
-	
 	var combo_output = combo_manager.calculate_combo_output(active_cards)
-	
 	if combo_output.damage > 0:
 		if combat_arena and combat_arena.has_method("get_enemy"):
 			var enemy = combat_arena.get_enemy()
@@ -59,5 +70,15 @@ func _on_pressed():
 	await get_tree().process_frame
 	if card_manager:
 		card_manager.refresh_hand_interaction()
-	
+	print("CASTING normal")
 	turn_manager.is_busy = false
+
+func cast_special(_card):
+	print("Entered cast_special()")
+	if turn_manager.is_busy:
+		print("Busy")
+		return
+	turn_manager.is_busy = true
+	print("About to emit signal")
+	BattleEvents.special_cast_requested.emit()
+	print("Signal emitted")

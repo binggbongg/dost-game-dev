@@ -25,6 +25,8 @@ PlayerInventory="*res://script/globals/player_inventory.gd"
 SaveManager="*res://script/globals/save_manager.gd"
 UIManager="*res://script/globals/ui_manager.gd"
 ShopManager="*res://script/globals/shop_manager.gd"
+BattleEvents="*uid://d3ojlq3odosqy"
+ManaManager="*uid://bq06oex8xu486"
 
 [display]
 

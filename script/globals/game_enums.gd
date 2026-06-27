@@ -77,3 +77,7 @@ enum EnemyMoveType {
 	SKILL,
 	BURST
 }
+enum CardSource{
+	DECK,
+	INVENTORY
+}
