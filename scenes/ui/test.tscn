@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://bis0iikukdmeh"]
+
+[ext_resource type="PackedScene" uid="uid://cw5abrwt2c70o" path="res://scenes/card.tscn" id="3_l2kf3"]
+[ext_resource type="Texture2D" uid="uid://cbgla5vm83um3" path="res://assets/temporary/right_button.png" id="4_268a0"]
+[ext_resource type="Texture2D" uid="uid://duued71ex3xol" path="res://assets/temporary/inventory_bg.webp" id="5_v8mdm"]
+[ext_resource type="PackedScene" uid="uid://buor4em2o4cfj" path="res://scenes/ui/coin_display.tscn" id="6_268a0"]
+[ext_resource type="Texture2D" uid="uid://bby48bvsp02i0" path="res://assets/temporary/slot spotlight.jpg" id="6_l2kf3"]
+[ext_resource type="Texture2D" uid="uid://djpmv5b8co8qh" path="res://assets/temporary/settings.png" id="6_ynwpg"]
+[ext_resource type="PackedScene" uid="uid://c6s5cqo4d4utu" path="res://scenes/ui/base_menu.tscn" id="7_268a0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3iqw3"]
+font_size = 86
+
+[sub_resource type="LabelSettings" id="LabelSettings_b0q8k"]
+font_size = 47
+
+[sub_resource type="LabelSettings" id="LabelSettings_01036"]
+font_size = 45
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mdu55"]
+line_spacing = 0.05
+font_size = 18
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1og0m"]
+font_size = 38
+font_color = Color(0.8901961, 0.8784314, 0.92941177, 1)
+
+[node name="Level1" type="Node2D" unique_id=1730621475]
+
+[node name="InventoryBg" type="Sprite2D" parent="." unique_id=470208671]
+texture_filter = 1
+position = Vector2(960.50006, 538.5)
+scale = Vector2(3.1870866, 2.6774197)
+texture = ExtResource("5_v8mdm")
+
+[node name="Inventory" type="Label" parent="." unique_id=1421582973]
+offset_left = 276.0
+offset_top = 174.0
+offset_right = 885.0
+offset_bottom = 322.0
+text = "SHOP"
+label_settings = SubResource("LabelSettings_3iqw3")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Cards" type="Node2D" parent="." unique_id=369089029]
+
+[node name="Card" parent="Cards" unique_id=342120758 instance=ExtResource("3_l2kf3")]
+position = Vector2(268, 422)
+
+[node name="Card2" parent="Cards" unique_id=361981829 instance=ExtResource("3_l2kf3")]
+position = Vector2(495, 420)
+
+[node name="Card3" parent="Cards" unique_id=866531578 instance=ExtResource("3_l2kf3")]
+position = Vector2(687, 423)
+
+[node name="Card4" parent="Cards" unique_id=1917269648 instance=ExtResource("3_l2kf3")]
+position = Vector2(882, 422)
+
+[node name="Cards2" type="Node2D" parent="Cards" unique_id=1045211014]
+position = Vector2(455, 5)
+
+[node name="Card5" parent="Cards" unique_id=453927876 instance=ExtResource("3_l2kf3")]
+position = Vector2(274, 698)
+
+[node name="Card6" parent="Cards" unique_id=1043312596 instance=ExtResource("3_l2kf3")]
+position = Vector2(490, 696)
+
+[node name="Card7" parent="Cards" unique_id=1188748054 instance=ExtResource("3_l2kf3")]
+position = Vector2(683, 693)
+
+[node name="Card8" parent="Cards" unique_id=1877006654 instance=ExtResource("3_l2kf3")]
+position = Vector2(886, 700)
+
+[node name="Cards3" type="Node2D" parent="Cards" unique_id=666791582]
+position = Vector2(463, 270)
+
+[node name="Spotlight" type="Node2D" parent="." unique_id=839745641]
+position = Vector2(246, 143)
+
+[node name="SlotSpotlight" type="Sprite2D" parent="Spotlight" unique_id=1488340823]
+position = Vector2(1307, 449.00006)
+scale = Vector2(0.81657606, 0.80615944)
+texture = ExtResource("6_l2kf3")
+
+[node name="Card Name" type="Label" parent="Spotlight" unique_id=513303637]
+offset_left = 1163.0
+offset_top = 57.0
+offset_right = 1461.0
+offset_bottom = 122.0
+text = "DIWATA"
+label_settings = SubResource("LabelSettings_b0q8k")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Cast" type="Label" parent="Spotlight" unique_id=861842446]
+offset_left = 1079.0
+offset_top = 752.0
+offset_right = 1533.0
+offset_bottom = 839.0
+text = "PURCHASE"
+label_settings = SubResource("LabelSettings_01036")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Spotlight/Cast" unique_id=2005693796]
+
+[node name="Description" type="Label" parent="Spotlight" unique_id=2006313690]
+offset_left = 1095.0
+offset_top = 454.0
+offset_right = 1529.0
+offset_bottom = 584.0
+text = "The goddess of Light and Heaven blesses her mages with abundance and grace. When used in battle, her blessing allows mages to heal 50% of their total health, allowing them to battle longer and relinquish their opponents."
+label_settings = SubResource("LabelSettings_mdu55")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Health" type="Label" parent="Spotlight" unique_id=1226107150]
+offset_left = 1100.0
+offset_top = 664.0
+offset_right = 1170.0
+offset_bottom = 690.0
+text = "HEALTH"
+label_settings = SubResource("LabelSettings_mdu55")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthLevel" type="Label" parent="Spotlight" unique_id=885097383]
+offset_left = 1107.0
+offset_top = 685.0
+offset_right = 1154.0
+offset_bottom = 711.0
+text = "+50%"
+label_settings = SubResource("LabelSettings_mdu55")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Mana" type="Label" parent="Spotlight" unique_id=1297976340]
+offset_left = 1281.0
+offset_top = 664.0
+offset_right = 1336.0
+offset_bottom = 690.0
+text = "MANA"
+label_settings = SubResource("LabelSettings_mdu55")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="ManaCost" type="Label" parent="Spotlight" unique_id=1636975332]
+offset_left = 1292.0
+offset_top = 685.0
+offset_right = 1328.0
+offset_bottom = 711.0
+text = "100"
+label_settings = SubResource("LabelSettings_mdu55")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Arrack" type="Label" parent="Spotlight" unique_id=2077126022]
+offset_left = 1449.0
+offset_top = 664.0
+offset_right = 1505.0
+offset_bottom = 716.0
+text = "Attack"
+label_settings = SubResource("LabelSettings_mdu55")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="AttackLevel" type="Label" parent="Spotlight" unique_id=600647904]
+offset_left = 1460.0
+offset_top = 685.0
+offset_right = 1496.0
+offset_bottom = 711.0
+text = "10"
+label_settings = SubResource("LabelSettings_mdu55")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Card9" parent="Spotlight" unique_id=406068833 instance=ExtResource("3_l2kf3")]
+position = Vector2(1306, 314)
+
+[node name="RightButton" type="Sprite2D" parent="." unique_id=1375140590]
+position = Vector2(704.00006, 962.00006)
+scale = Vector2(0.06669999, 0.06669999)
+texture = ExtResource("4_268a0")
+
+[node name="RightButton2" type="Sprite2D" parent="." unique_id=2100252264]
+position = Vector2(399, 964)
+scale = Vector2(0.069800004, 0.069800004)
+texture = ExtResource("4_268a0")
+flip_h = true
+
+[node name="Card Name3" type="Label" parent="." unique_id=115195411]
+offset_left = 484.0
+offset_top = 929.0
+offset_right = 618.0
+offset_bottom = 982.0
+text = "2/5"
+label_settings = SubResource("LabelSettings_1og0m")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Settings" type="Sprite2D" parent="." unique_id=491787362]
+position = Vector2(1795, 83)
+scale = Vector2(0.19921862, 0.19921862)
+texture = ExtResource("6_ynwpg")
+
+[node name="CoinDisplay" parent="." unique_id=220494740 instance=ExtResource("6_268a0")]
+position = Vector2(-10, -2)
+
+[node name="Control" parent="." unique_id=237487255 instance=ExtResource("7_268a0")]
+offset_left = -3.0
+offset_top = -7.0
+offset_right = 1915.0
+offset_bottom = 1076.0

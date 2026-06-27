@@ -59,10 +59,14 @@ func draw_cards(amount:int):
 			break
 		drawn_cards.append(deck.pop_back())
 	return drawn_cards
-	
+
 func redraw_hand():
 	var all_nodes = get_tree().get_nodes_in_group("cards")
 	for node in all_nodes:
+		if "state" in node and node.state == GameEnums.CardState.PLAYED:
+			node.queue_free()
+			continue
+		
 		if "location" in node and node.location != GameEnums.Location.DECK:
 			if node.card_data:
 				deck.append(node.card_data)

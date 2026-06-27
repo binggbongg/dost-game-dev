@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ShopData" format=3 uid="uid://cf0hklyd64oy"]
+
+[ext_resource type="Script" uid="uid://sax74acp7qrl" path="res://data/item_data.gd" id="1_8c4o3"]
+[ext_resource type="Script" uid="uid://bmynqo32fdteg" path="res://data/shop_data.gd" id="1_q134s"]
+[ext_resource type="Resource" uid="uid://caqi4c7tgv3vo" path="res://data/Special/kapre.tres" id="2_curqe"]
+[ext_resource type="Resource" uid="uid://cotu4b8h276vs" path="res://data/Special/diwata.tres" id="3_dpwa0"]
+[ext_resource type="Resource" uid="uid://y4s7qpb2614t" path="res://data/Special/aswang.tres" id="4_d1qjy"]
+[ext_resource type="Resource" uid="uid://q1wvvv4gbdoj" path="res://data/Special/bakunawa.tres" id="5_dujkg"]
+[ext_resource type="Resource" uid="uid://qbrv38x4j52" path="res://data/Special/minokawa.tres" id="6_c0lkr"]
+
+[resource]
+script = ExtResource("1_q134s")
+items_for_sale = Array[ExtResource("1_8c4o3")]([ExtResource("2_curqe"), ExtResource("3_dpwa0"), ExtResource("4_d1qjy"), ExtResource("5_dujkg"), ExtResource("6_c0lkr")])
+metadata/_custom_type_script = "uid://bmynqo32fdteg"

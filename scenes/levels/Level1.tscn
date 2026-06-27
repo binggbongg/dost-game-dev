@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cg6rrinl3k43c"]
 
 [ext_resource type="Texture2D" uid="uid://n6tlgpkgjmq5" path="res://assets/temporary/temp_bg.jpg" id="1_x4si1"]
-[ext_resource type="PackedScene" path="res://scenes/combat_arena.tscn" id="2_fh0io"]
+[ext_resource type="PackedScene" uid="uid://dkbejpdwhc33b" path="res://scenes/combat_arena.tscn" id="2_fh0io"]
 [ext_resource type="PackedScene" uid="uid://dirj45q71fos6" path="res://scenes/player_interface.tscn" id="4_68ib6"]
 [ext_resource type="Script" uid="uid://cy31dctcq2m2k" path="res://script/battle_manager.gd" id="4_fh0io"]
 
@@ -28,20 +28,9 @@ color = Color(0.2775514, 0.5534014, 0.5556392, 1)
 
 [node name="Timer" type="Timer" parent="." unique_id=322603772]
 
-[node name="Button" type="Button" parent="." unique_id=317833088]
-visible = false
-offset_left = 1443.0
-offset_top = 649.0
-offset_right = 1518.0
-offset_bottom = 680.0
-text = "End Cast"
-flat = true
-
 [node name="BattleManager" type="Node2D" parent="." unique_id=1572491070]
 script = ExtResource("4_fh0io")
 
 [node name="CombatArena" parent="." unique_id=439901724 instance=ExtResource("2_fh0io")]
 
 [node name="PlayerInterface" parent="." unique_id=143692811 instance=ExtResource("4_68ib6")]
-
-[connection signal="pressed" from="Button" to="BattleManager" method="_on_button_pressed"]
