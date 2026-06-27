@@ -1,6 +1,6 @@
 extends Node
 # This is to differentiate the cards and later to identify valid combos
-enum CardCategory { LAHI, DIWA, KALIKASAN, TANGLAW }
+enum CardCategory { LAHI, DIWA, KALIKASAN, TANGLAW, SPECIAL }
 #This is so that our system kay maka tell what are the allowed actions at certain states
 enum TurnState {     
 	START_TURN,
@@ -13,12 +13,14 @@ enum TurnState {
 #This is to show the valididty of the combos used to attack/invalidities.
 enum ComboValidationResult {
 	VALID,
-	INVALID_DUPLICATE,
-	INVALID_CATEGORY_MIX,
-	INVALID_RULE_LAHI,
-	INVALID_RULE_DIWA,
-	INVALID_RULE_KALIKASAN,
-	INVALID_RULE_TANGLAW
+	INVALID_DUPLICATE_DIWA,
+	INVALID_TRI_TANGLAW,
+	INVALID_LAHI_TANGLAW_MIX,
+	INVALID_LAHI_NEEDS_DIWA,
+	INVALID_LAHI_NEEDS_KALIKASAN,
+	INVALID_MISSING_PIECE, 
+	INVALID_NOT_ENOUGH_MANA,
+	INVALID_MAX_CARDS
 }
 #This can be used for both spellbook and actual gameplay
 enum ComboType {
@@ -30,7 +32,12 @@ enum ComboType {
 	SPECIAL
 }
 #Can be used to define the probability of drawing that card after shuffled
-enum CardRarity { Karaniwan, Natatangi, Bhira, Dambana }
+enum CardRarity { 
+	Karaniwan, 
+	Natatangi, 
+	Bihira, 
+	Dambana, 	
+	Special }
 #Can be used to flag cards that have already been used in the game.
 enum CardState {
 	IN_DECK,
@@ -55,4 +62,18 @@ enum ComboPhase {
 	VALIDATING,
 	RESOLVING,
 	FINISHED
+}
+
+enum Location {
+	HAND,
+	SLOT,
+	DECK
+}
+
+# -- For enemy stuff -- 
+enum EnemyMoveType {
+	ATTACK,
+	DEFENSE,
+	SKILL,
+	BURST
 }

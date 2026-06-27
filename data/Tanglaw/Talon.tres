@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dup8fmliunun8"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_vk5q5"]
+[ext_resource type="Texture2D" uid="uid://dakgmbra2is36" path="res://assets/temporary/TANGLAW.png" id="2_eyk7a"]
+
+[resource]
+script = ExtResource("1_vk5q5")
+name = "Talon"
+category = 3
+rarity = 2
+mana_cost = 10
+texture = ExtResource("2_eyk7a")
+metadata/_custom_type_script = "uid://cv07myeubhuht"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://6412apqbju3p"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_x43eh"]
+[ext_resource type="Texture2D" uid="uid://ckhvdhptlxrvq" path="res://assets/temporary/KALIKASAN.png" id="2_thobu"]
+
+[resource]
+script = ExtResource("1_x43eh")
+name = "Ginto"
+category = 2
+rarity = 2
+damage = 7.0
+mana_cost = 7
+texture = ExtResource("2_thobu")
+metadata/_custom_type_script = "uid://cv07myeubhuht"

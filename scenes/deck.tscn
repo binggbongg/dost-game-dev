@@ -2,21 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cph6iod2mil4d" path="res://script/deck.gd" id="1_6rnap"]
 [ext_resource type="Texture2D" uid="uid://my16ben7onyr" path="res://assets/temporary/card_placeholder.png" id="1_sdhao"]
-[ext_resource type="PackedScene" uid="uid://cw5abrwt2c70o" path="res://scenes/card.tscn" id="2_ncs0c"]
-[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="3_ve70f"]
-[ext_resource type="Resource" uid="uid://dmpvj6umjae5f" path="res://data/Ahas.tres" id="4_l6eyo"]
-[ext_resource type="Resource" uid="uid://3w5lqpxhexu6" path="res://data/Apoy.tres" id="5_6mvcw"]
-[ext_resource type="Resource" uid="uid://bxxih1av5qe8p" path="res://data/Panaginip.tres" id="6_2hlif"]
-[ext_resource type="Resource" uid="uid://c3u6ai4ijlckc" path="res://data/Panangga.tres" id="7_yecvj"]
-[ext_resource type="Resource" uid="uid://bgjgs5sh1hj08" path="res://data/Tubig.tres" id="8_h13ue"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rnap"]
 size = Vector2(193, 279)
 
 [node name="Deck" type="Node2D" unique_id=1967540081]
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_6rnap")
-card_scene = ExtResource("2_ncs0c")
-starting_cards = Array[ExtResource("3_ve70f")]([ExtResource("4_l6eyo"), ExtResource("5_6mvcw"), ExtResource("6_2hlif"), ExtResource("7_yecvj"), ExtResource("8_h13ue")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=5312528]
 texture = ExtResource("1_sdhao")
@@ -28,3 +20,13 @@ collision_mask = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1110943595]
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_6rnap")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1548993711]
+visible = false
+modulate = Color(0, 0, 0, 1)
+offset_left = -10.0
+offset_top = -25.0
+offset_right = 30.0
+offset_bottom = 15.0
+scale = Vector2(2, 2)
+text = "0"

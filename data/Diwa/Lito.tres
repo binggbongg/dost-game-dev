@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://y5pjrxnlkcuy"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_xfiar"]
+[ext_resource type="Texture2D" uid="uid://bk6ree62npcf7" path="res://assets/temporary/DIWA.png" id="2_wyygy"]
+
+[resource]
+script = ExtResource("1_xfiar")
+name = "Lito"
+rarity = 1
+mana_cost = 10
+texture = ExtResource("2_wyygy")
+metadata/_custom_type_script = "uid://cv07myeubhuht"

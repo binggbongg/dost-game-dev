@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://c5dqspxywfx0x"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_fh4wt"]
+[ext_resource type="Texture2D" uid="uid://bk6ree62npcf7" path="res://assets/temporary/DIWA.png" id="2_c1v28"]
+
+[resource]
+script = ExtResource("1_fh4wt")
+name = "Lumbay"
+category = 1
+rarity = 2
+mana_cost = 15
+texture = ExtResource("2_c1v28")
+metadata/_custom_type_script = "uid://cv07myeubhuht"

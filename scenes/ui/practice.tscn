@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dd1xaymlbvh8u"]
+
+[ext_resource type="Texture2D" uid="uid://c626r0qxv6kuq" path="res://assets/temporary/practice.png" id="1_377s4"]
+[ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="2_377s4"]
+
+[node name="practice" type="TextureButton" unique_id=1664093449]
+offset_left = -95.0
+offset_top = -159.0
+offset_right = 100.0
+offset_bottom = 125.0
+texture_normal = ExtResource("1_377s4")
+script = ExtResource("2_377s4")

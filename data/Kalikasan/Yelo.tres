@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://131j0els7et5"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_c51js"]
+[ext_resource type="Texture2D" uid="uid://ckhvdhptlxrvq" path="res://assets/temporary/KALIKASAN.png" id="2_exbsn"]
+
+[resource]
+script = ExtResource("1_c51js")
+name = "Yelo"
+category = 2
+rarity = 1
+damage = 5.0
+texture = ExtResource("2_exbsn")
+metadata/_custom_type_script = "uid://cv07myeubhuht"

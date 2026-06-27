@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dtmdx6t3ll38l"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_t51xp"]
+[ext_resource type="Texture2D" uid="uid://bk6ree62npcf7" path="res://assets/temporary/DIWA.png" id="2_flco2"]
+
+[resource]
+script = ExtResource("1_t51xp")
+name = "Akit"
+category = 1
+rarity = 2
+mana_cost = 5
+texture = ExtResource("2_flco2")
+metadata/_custom_type_script = "uid://cv07myeubhuht"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://cmhyyp1p7qmud"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_mmbrx"]
+[ext_resource type="Texture2D" uid="uid://dakgmbra2is36" path="res://assets/temporary/TANGLAW.png" id="2_7o7gq"]
+
+[resource]
+script = ExtResource("1_mmbrx")
+name = "Kuta"
+category = 3
+rarity = 1
+mana_cost = 8
+texture = ExtResource("2_7o7gq")
+metadata/_custom_type_script = "uid://cv07myeubhuht"

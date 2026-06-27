@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bvycxq7tcw1t7"]
+
+[ext_resource type="Texture2D" uid="uid://3dus3b0as5bj" path="res://assets/temporary/shop.png" id="1_go8fd"]
+[ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="2_ehfxd"]
+[ext_resource type="PackedScene" uid="uid://blildoqpt5atk" path="res://scenes/menus/shop.tscn" id="3_dxkve"]
+
+[node name="shop" type="TextureButton" unique_id=1664093449]
+offset_left = -95.0
+offset_top = -159.0
+offset_right = 100.0
+offset_bottom = 125.0
+texture_normal = ExtResource("1_go8fd")
+script = ExtResource("2_ehfxd")
+menu_to_open = ExtResource("3_dxkve")

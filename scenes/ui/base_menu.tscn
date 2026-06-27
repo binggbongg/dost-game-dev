@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c6s5cqo4d4utu"]
+
+[ext_resource type="Script" uid="uid://vsdaf8mn3q5o" path="res://scenes/ui/shopUI.gd" id="1_uwpfi"]
+[ext_resource type="Texture2D" uid="uid://d2wiyhx8nsvkc" path="res://assets/temporary/close.png" id="2_fjhph"]
+
+[node name="Control" type="Control" unique_id=237487255]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1918.0
+offset_bottom = 1083.0
+script = ExtResource("1_uwpfi")
+
+[node name="CloseButton" type="TextureButton" parent="." unique_id=1040856029]
+layout_mode = 0
+offset_left = -11.0
+offset_top = -71.0
+offset_right = 184.0
+offset_bottom = 213.0
+texture_normal = ExtResource("2_fjhph")

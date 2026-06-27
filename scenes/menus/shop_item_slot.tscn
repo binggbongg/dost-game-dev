@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cw788v3d3wj7o"]
+
+[ext_resource type="Script" uid="uid://c61fhtbfdrq7t" path="res://script/ui/shop_item_slot.gd" id="1_7ovqr"]
+
+[node name="ShopItemSlot" type="Control" unique_id=614220094]
+custom_minimum_size = Vector2(180, 250)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7ovqr")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1676696207]
+position = Vector2(90, 125)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=888334492]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2

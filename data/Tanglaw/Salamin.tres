@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://c3u6ai4ijlckc"]
+
+[ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_adxyd"]
+[ext_resource type="Texture2D" uid="uid://dakgmbra2is36" path="res://assets/temporary/TANGLAW.png" id="2_2ao7b"]
+
+[resource]
+script = ExtResource("1_adxyd")
+name = "Salamin"
+description = "Sets a protective layer for player."
+category = 3
+rarity = 3
+damage = 1
+heal = 40
+mana_cost = 20
+texture = ExtResource("2_2ao7b")
+metadata/_custom_type_script = "uid://cv07myeubhuht"

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SpecialCardData" format=3 uid="uid://y4s7qpb2614t"]
+
+[ext_resource type="Script" uid="uid://8m6aga3qk3g5" path="res://diwata.gd" id="1_nlnxx"]
+[ext_resource type="Script" uid="uid://cpiimvdghqtnm" path="res://data/special_cards.gd" id="2_eo2ue"]
+[ext_resource type="Texture2D" uid="uid://dv15mvtul7bh4" path="res://assets/temporary/aswang.png" id="3_nlnxx"]
+
+[resource]
+script = ExtResource("2_eo2ue")
+category = 4
+rarity = 4
+effect_script = ExtResource("1_nlnxx")
+mana_cost = 50
+item_id = "004"
+name = "Aswang"
+description = "Does something scaryyy"
+texture = ExtResource("3_nlnxx")
+price = 50
+metadata/_custom_type_script = "uid://cpiimvdghqtnm"
