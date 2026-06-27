@@ -1,0 +1,7 @@
+extends Node
+
+signal special_card_requested(item_id : String)
+signal special_cancel_requested
+signal special_cast_requested
+signal special_end_turn_requested
+signal special_shuffle_requested
