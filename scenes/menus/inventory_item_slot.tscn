@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://c2bjl38hf6kfw"]
+
+[ext_resource type="Script" uid="uid://bgho1me0h8h7h" path="res://script/ui/inventory_item_slot.gd" id="1_6cm77"]
+[ext_resource type="Texture2D" uid="uid://duc75hx0f1sa4" path="res://assets/temporary/price.png" id="2_sq11q"]
+[ext_resource type="Texture2D" uid="uid://my16ben7onyr" path="res://assets/temporary/card_placeholder.png" id="3_qm76n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xityo"]
+font_size = 25
+font_color = Color(0, 0, 0, 1)
+
+[node name="inventory_item" type="Control" unique_id=1044243021]
+custom_minimum_size = Vector2(180, 250)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6cm77")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=146627793]
+position = Vector2(90, 125)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=875108324]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Price" type="Sprite2D" parent="." unique_id=1494928719]
+position = Vector2(88, 273)
+scale = Vector2(0.6333333, 0.6584507)
+texture = ExtResource("2_sq11q")
+
+[node name="Card" type="Sprite2D" parent="Price" unique_id=1127541764]
+position = Vector2(-18.947369, -3.0374396)
+scale = Vector2(0.1095648, 0.10538535)
+texture = ExtResource("3_qm76n")
+
+[node name="QuantityLabel" type="Label" parent="Price" unique_id=906265984]
+offset_left = -7.8947372
+offset_top = -21.262032
+offset_right = 32.105263
+offset_bottom = 13.737968
+text = "34"
+label_settings = SubResource("LabelSettings_xityo")
+horizontal_alignment = 1

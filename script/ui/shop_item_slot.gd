@@ -4,6 +4,7 @@ signal item_selected(item_id)
 
 const CARD_SCENE = preload("res://scenes/Card.tscn")
 const ITEM_SCENE = preload("res://scenes/ItemDisplay.tscn")
+@onready var price: Label = $Price/Price
 
 var item_id: String = ""
 
@@ -21,7 +22,6 @@ func set_item(id: String):
 	
 
 	visual_node.scale = Vector2(0.25, 0.25) 
-	
 	visual_node.position = Vector2.ZERO 
 
 	if visual_node.has_method("apply_data"):
@@ -29,6 +29,7 @@ func set_item(id: String):
 		visual_node.apply_data()
 
 	# Disable Area2D so it doesn't block UI clicks
+	price.text = str(data.price)
 	var area = visual_node.find_child("Area2D", true, false)
 	if area:
 		area.input_pickable = false

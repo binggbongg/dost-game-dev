@@ -49,6 +49,7 @@ func build_deck():
 	print("For debugging gihapon deck size right now: ", deck.size())
 	
 func shuffle_deck():
+	BattleEvents.special_shuffle_requested.emit()
 	deck.shuffle()
 
 #this will initialize drawing of card from our deck para mao ang method tawgon after mahuman ang turn sa player/enemy and sa start pud sa game

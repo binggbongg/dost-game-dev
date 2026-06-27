@@ -4,16 +4,16 @@ signal hovered
 signal hovered_off
 
 const DEFAULT_CARD_SCALE = 0.8
-
+const SPECIAL_CARD_SCALE = 0.2
 @onready var card_name: Label = $Area2D/CardName
-
+var card_source: GameEnums.CardSource
 @export var card_data: Resource  
 var card_category:GameEnums.CardCategory
 var card_rarity: GameEnums.CardRarity
 var card_damage: int
 var card_heal: int
 var card_cost: int
-
+var can_drag := true
 var hand_position
 #para ma track where ang kana nga card
 var location = GameEnums.Location.DECK
@@ -23,6 +23,7 @@ func _ready() -> void:
 	apply_data()
 	add_to_group("cards")
 	modulate = Color(1, 1, 1, 1)
+	apply_default_scale()
 
 func apply_data():
 	if card_data == null:
@@ -35,8 +36,15 @@ func apply_data():
 	card_damage = card_data.damage
 	card_heal = card_data.heal
 	card_cost = card_data.mana_cost
+	card_source = card_data.card_source
 	
 	$Sprite2D.texture = d_texture
+func apply_default_scale():
+
+	if card_data is SpecialCardData:
+		scale = Vector2(SPECIAL_CARD_SCALE, SPECIAL_CARD_SCALE)
+	else:
+		scale = Vector2(DEFAULT_CARD_SCALE, DEFAULT_CARD_SCALE)
 func _on_area_2d_mouse_entered() -> void:
 	hovered.emit(self)
 

@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://cw788v3d3wj7o"]
 
 [ext_resource type="Script" uid="uid://c61fhtbfdrq7t" path="res://script/ui/shop_item_slot.gd" id="1_7ovqr"]
+[ext_resource type="Texture2D" uid="uid://duc75hx0f1sa4" path="res://assets/temporary/price.png" id="2_gf0fo"]
+[ext_resource type="Texture2D" uid="uid://ckl4ms6j22ino" path="res://assets/temporary/coin.png" id="3_eb68y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gf0fo"]
+font_size = 25
+font_color = Color(0, 0, 0, 1)
 
 [node name="ShopItemSlot" type="Control" unique_id=614220094]
 custom_minimum_size = Vector2(180, 250)
@@ -21,3 +27,22 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+
+[node name="Price" type="Sprite2D" parent="." unique_id=712566735]
+position = Vector2(88, 273)
+scale = Vector2(0.6333333, 0.6584507)
+texture = ExtResource("2_gf0fo")
+
+[node name="Coin" type="Sprite2D" parent="Price" unique_id=2129780851]
+position = Vector2(-18.947363, -3.0374534)
+scale = Vector2(0.16295542, 0.15673932)
+texture = ExtResource("3_eb68y")
+
+[node name="Price" type="Label" parent="Price" unique_id=423798002]
+offset_left = -7.8947372
+offset_top = -21.262032
+offset_right = 32.105263
+offset_bottom = 13.737968
+text = "34"
+label_settings = SubResource("LabelSettings_gf0fo")
+horizontal_alignment = 1
