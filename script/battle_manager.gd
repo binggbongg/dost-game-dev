@@ -14,7 +14,7 @@ var active_special_item_id := ""
 @onready var slots: Node2D = $"../PlayerInterface/Slots"
 @export var card_scene: PackedScene = preload("res://scenes/card.tscn")
 # angela ay ni hilabti tanan
-
+# chat all i can say is it all worked on my end but if mu crash...HIHIHI
 func _ready() -> void:
 	BattleEvents.special_card_requested.connect(_on_special_requested)
 	BattleEvents.special_cancel_requested.connect(_on_special_cancel)
