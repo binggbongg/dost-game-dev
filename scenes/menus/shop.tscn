@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://blildoqpt5atk"]
 
-[ext_resource type="Script" uid="uid://vsdaf8mn3q5o" path="res://scenes/ui/shopUI.gd" id="1_lr2rd"]
+[ext_resource type="Script" uid="uid://vsdaf8mn3q5o" path="res://script/ui/shopUI.gd" id="1_lr2rd"]
 [ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="2_057h8"]
 [ext_resource type="Texture2D" uid="uid://bf5ivx1y55cfm" path="res://assets/temporary/This is a 2D modern illustration of a wooden room with wooden walls, ceiling and floor_.webp" id="2_lr2rd"]
 [ext_resource type="Resource" uid="uid://cf0hklyd64oy" path="res://data/Shop/regular.tres" id="2_p6j4a"]

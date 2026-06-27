@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dkbejpdwhc33b" path="res://scenes/combat_arena.tscn" id="2_fh0io"]
 [ext_resource type="PackedScene" uid="uid://dirj45q71fos6" path="res://scenes/player_interface.tscn" id="4_68ib6"]
 [ext_resource type="Script" uid="uid://cy31dctcq2m2k" path="res://script/battle_manager.gd" id="4_fh0io"]
+[ext_resource type="PackedScene" uid="uid://b14yvyrmb0h2b" path="res://scenes/ui/inventory_button.tscn" id="5_68ib6"]
 
 [node name="Level1" type="Node2D" unique_id=1730621475]
 
@@ -34,3 +35,9 @@ script = ExtResource("4_fh0io")
 [node name="CombatArena" parent="." unique_id=439901724 instance=ExtResource("2_fh0io")]
 
 [node name="PlayerInterface" parent="." unique_id=143692811 instance=ExtResource("4_68ib6")]
+
+[node name="Inventory" parent="." unique_id=328878894 instance=ExtResource("5_68ib6")]
+offset_left = 1493.0
+offset_top = 733.0
+offset_right = 1853.0
+offset_bottom = 1093.0
