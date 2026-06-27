@@ -44,27 +44,12 @@ func _on_item_selected(id: String):
 		cast_button_text.text = "USE ITEM"
 	else:
 		cast_button_text.text = "CAST"
-	var current_mana = 0
-	var mana_manager = get_tree().get_first_node_in_group("mana_manager")
-	if mana_manager:
-		current_mana = mana_manager.current_mana
-		
-	if data is SpecialCardData:
-		if current_mana < data.mana_cost:
-			cast_button_text.text = "NOT ENOUGH MANA"
-			cast_button.disabled = true
-			cast_button.modulate = Color(1, 0.3, 0.3) # Red tint
-		else:
-			cast_button_text.text = "CAST"
-			cast_button.disabled = false
-			cast_button.modulate = Color(1, 1, 1)
-			
+
 # This will now trigger because it's connected in _ready()
 func _on_cast_button_pressed():
-	if selected_item_id == "": return
-	
-	UIManager.item_cast_requested.emit(selected_item_id)
-	
-	# Wait a tiny bit before closing so the click isn't "passed" to the battle
-	await get_tree().create_timer(0.1).timeout
+	if selected_item_id == "": 
+		print("Inventory: No item selected to cast!")
+		return
+		
+	print("Inventory: Casting/Equipping ", selected_item_id)
 	UIManager.close_menu()
