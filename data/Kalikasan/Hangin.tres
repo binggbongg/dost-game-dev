@@ -7,6 +7,7 @@
 script = ExtResource("1_0o41o")
 name = "Hangin"
 category = 2
+damage = 3.0
 mana_cost = 3
 texture = ExtResource("2_armn2")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

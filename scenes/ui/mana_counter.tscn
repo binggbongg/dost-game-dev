@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ddevy8rp7k5s3"]
+
+[node name="ManaCounter" type="Node2D" unique_id=2075467322]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=634442135]
+offset_right = 97.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 50
+text = "0"

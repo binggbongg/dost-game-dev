@@ -3,11 +3,14 @@ extends Node2D
 
 signal mana_changed(current_mana: int)
 
-var max_mana: int = 100 
-var current_mana: int = 100 # Change this from 0 to max_mana
+var max_mana: int
+var current_mana: int  # Change this from 0 to max_mana
 
 func _ready():
-	# Ensure mana is full when the game first starts
+	if PlayerStats:
+		max_mana = PlayerStats.max_mana
+	else:
+		max_mana = 50
 	current_mana = max_mana
 	mana_changed.emit(current_mana)
 

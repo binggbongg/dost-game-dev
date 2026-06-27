@@ -8,6 +8,7 @@ script = ExtResource("1_d8tym")
 name = "Baha"
 category = 2
 rarity = 2
+damage = 7.0
 mana_cost = 7
 texture = ExtResource("2_68muk")
 metadata/_custom_type_script = "uid://cv07myeubhuht"
