@@ -17,14 +17,14 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameEnums="*uid://0y1vwrkpn5j"
-PlayerStats="*uid://jpdhe845o8y7"
-PlayerProfile="*uid://cayxnyi71tkw2"
-ItemDb="*uid://cefb2jy8lw43w"
-PlayerInventory="*uid://be61qbjw61ryu"
-SaveManager="*uid://tlahrhqccth6"
-UIManager="*uid://dmi3ms42ip5ap"
-ShopManager="*uid://cv3bvrc4iwt5n"
+GameEnums="*res://script/globals/game_enums.gd"
+PlayerStats="*res://script/globals/player_stats.gd"
+PlayerProfile="*res://script/globals/player_profile.gd"
+ItemDb="*res://script/globals/itemsDB.gd"
+PlayerInventory="*res://script/globals/player_inventory.gd"
+SaveManager="*res://script/globals/save_manager.gd"
+UIManager="*res://script/globals/ui_manager.gd"
+ShopManager="*res://script/globals/shop_manager.gd"
 
 [display]
 
