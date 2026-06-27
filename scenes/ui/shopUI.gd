@@ -7,8 +7,8 @@ extends "res://script/ui/base_menu.gd"
 @onready var name_label = $HBoxContainer/DetailsPanel/NameLabel
 @onready var desc_label = $HBoxContainer/DetailsPanel/Description
 @onready var big_icon = $HBoxContainer/DetailsPanel/BigIcon
-@onready var purchase_button: TextureButton = $HBoxContainer/DetailsPanel/purchase_button
 @onready var cost: Label = $HBoxContainer/DetailsPanel/Cost
+@onready var purchase_button: TextureButton = $HBoxContainer/DetailsPanel/purchase_button
 
 
 var selected_item_id: String = ""
