@@ -36,6 +36,7 @@ window/vsync/vsync_mode=0
 [global_group]
 
 cards=""
+ui_elements=""
 
 [physics]
 
