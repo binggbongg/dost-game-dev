@@ -1,50 +1,9 @@
 [gd_scene format=3 uid="uid://d21de5id2a0gx"]
 
 [ext_resource type="Script" uid="uid://cr65k0srho0i" path="res://script/enemy/enemy_ai.gd" id="1_a1412"]
-[ext_resource type="Texture2D" uid="uid://chdu7sas2n0ro" path="res://assets/player/character_boy.png" id="1_tcmaw"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a1412"]
-atlas = ExtResource("1_tcmaw")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ejytf"]
-atlas = ExtResource("1_tcmaw")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dq62l"]
-atlas = ExtResource("1_tcmaw")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d3026"]
-atlas = ExtResource("1_tcmaw")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l21ug"]
-atlas = ExtResource("1_tcmaw")
-region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tcmaw"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a1412")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ejytf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dq62l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d3026")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l21ug")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+animations = []
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oweuj"]
 radius = 11.571428
@@ -56,6 +15,7 @@ script = ExtResource("1_a1412")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=881871888]
 sprite_frames = SubResource("SpriteFrames_tcmaw")
+animation = &""
 flip_h = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1270562055]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcr4tpf1y4aiv"
-path="res://.godot/imported/character_girl.png-e03624266836ed3890232f4efd7be4d2.ctex"
+uid="uid://drfuux51qmal2"
+path="res://.godot/imported/boy_attack.png-9a4c2c3183c93c22bd056d0e4f66b082.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/character_girl.png"
-dest_files=["res://.godot/imported/character_girl.png-e03624266836ed3890232f4efd7be4d2.ctex"]
+source_file="res://assets/player/boy_attack.png"
+dest_files=["res://.godot/imported/boy_attack.png-9a4c2c3183c93c22bd056d0e4f66b082.ctex"]
 
 [params]
 

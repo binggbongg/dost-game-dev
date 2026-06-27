@@ -26,9 +26,10 @@ func setup_enemy():
 	current_health = behavior_data.max_health
 	enemy_health_changed.emit(current_health)
 	
+	print(behavior_data.enemy_sprite, " name is ", animated_sprite)
 	if behavior_data.enemy_sprite and animated_sprite:
 		animated_sprite.sprite_frames = behavior_data.enemy_sprite
-		animated_sprite.play("default")
+		animated_sprite.play("idle")
 	
 	choose_next_intent()
 
