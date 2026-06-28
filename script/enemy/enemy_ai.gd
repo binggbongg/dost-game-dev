@@ -20,11 +20,7 @@ func _ready() -> void:
 		print("resource data not found -- enemy ai")
 		behavior_data = load("res://data/EnemySet/enemy_1-1.tres")
 	
-	if behavior_data:
-		setup_enemy()
-	else:
-		print("enemy has no behavior data resource file")
-		return
+	setup_enemy()
 
 func setup_enemy():
 	current_health = behavior_data.max_health
@@ -35,6 +31,7 @@ func setup_enemy():
 		animated_sprite.play("idle")
 	
 	choose_next_intent()
+	print(name, " initialized and prepared initial intent: ", chosen_intent.name)
 
 func take_damage(amount):
 	current_health = max(0, current_health - amount)
@@ -49,13 +46,20 @@ func choose_next_intent():
 	current_turns += 1
 	tick_cooldowns()
 	
+	chosen_intent = null
 	var pool_roll = randf()
+	
 	if pool_roll <= 0.7:
 		if behavior_data.regular_moves.size() > 0:
 			chosen_intent = roll_weighted_moves(behavior_data.regular_moves)
 	else:
 		if behavior_data.special_moves.size() > 0:
 			chosen_intent = get_special_moves()
+	
+	if chosen_intent:
+		print(name, " has locked in intent: ", chosen_intent.name, " (Type: ", chosen_intent.type, ")")
+	else:
+		print("CRITICAL ERROR: ", name, " could not choose ANY move! Check your .tres resource settings.")
 
 func get_special_moves():
 	var valid_specials = get_valid_special_move()

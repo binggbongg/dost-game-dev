@@ -16,3 +16,15 @@ class_name CardData
 #For the art nii!
 @export var texture: Texture2D
 var card_source: GameEnums.CardSource =GameEnums.CardSource.DECK
+
+func apply_effect(player_stats_node, targets):
+	print("applying card effect")
+	if damage > 0:
+		for enemy in targets:
+			if is_instance_valid(enemy) and enemy.has_method("take_damage"):
+				enemy.take_damage(int(damage))
+			else:
+				print("missing take damage method -- from card data")
+	
+	if heal > 0 and player_stats_node and player_stats_node.has_method("heal_player"):
+		player_stats_node.heal_player(int(heal))

@@ -3,44 +3,44 @@ signal profile_updated # Emitted when name, character, or rank changes
 signal coins_changed(new_amount: int)
 
 var current_phase: int = 1
-var current_level: int = 1
+var current_level: int = 2
 
 var level_database = {
 	"1-1": {
-		"background": "test",
-		"enemy_resource": "res//data/EnemySet/enemy_1-1.tres"
+		"background": "res://assets/background/rooms/background_1-1.png",
+		"enemy_resource": "res://data/EnemySet/enemy_1-1.tres"
 	},
 	"1-2": {
-		"background": "test",
-		"enemy_resource": "res//data/EnemySet/enemy_1-2.tres"
+		"background": "res://assets/background/rooms/background_1-2.png",
+		"enemy_resource": "res://data/EnemySet/enemy_1-2.tres"
 	},
 	"1-3": {
-		"background": "test",
-		"enemy_resource": "res//data/BossSet/boss1.tres"
+		"background": "res://assets/background/rooms/background_1-3.png",
+		"enemy_resource": "res://data/BossSet/boss1.tres"
 	},
 	"2-1": {
-		"background": "test",
-		"enemy_resource": "res//data/EnemySet/enemy_2-1.tres"
+		"background": "res://assets/background/rooms/background_2-1.png",
+		"enemy_resource": "res://data/EnemySet/enemy_2-1.tres"
 	},
 	"2-2": {
-		"background": "test",
-		"enemy_resource": "res//data/EnemySet/enemy_2-1.tres"
+		"background": "res://assets/background/rooms/background_2-2.png",
+		"enemy_resource": "res://data/EnemySet/enemy_2-1.tres"
 	},
 	"2-3": {
-		"background": "test",
-		"enemy_resource": "res//data/BossSet/boss2.tres"
+		"background": "res://assets/background/rooms/background_2-3.png",
+		"enemy_resource": "res://data/BossSet/boss2.tres"
 	},
 	"3-1" : {
-		"background": "test",
-		"enemy_resource": "res//data/EnemySet/enemy_3-1.tres"
+		"background": "res://assets/background/rooms/background_3-1.png",
+		"enemy_resource": "res://data/EnemySet/enemy_3-1.tres"
 	},
 	"3-2": {
-		"background": "test",
-		"enemy_resource": "res//data/EnemySet/enemy_3-2.tres"
+		"background": "res://assets/background/rooms/background_3-2.png",
+		"enemy_resource": "res://data/EnemySet/enemy_3-2.tres"
 	},
 	"3-3": {
-		"background": "test",
-		"enemy_resource": "res//data/BossSet/boss3.tres"
+		"background": "res://assets/background/rooms/background_3-1.png",
+		"enemy_resource": "res://data/BossSet/boss3.tres"
 	},
 }
 

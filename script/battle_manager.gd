@@ -11,6 +11,7 @@ extends Node2D
 @onready var mana_manager = $"../PlayerInterface/GameManagers/ManaManager"
 @onready var slots: Node2D = $"../PlayerInterface/Slots"
 @onready var timer_bar = $"../TimerBar"
+@onready var battle_background = $"../UpperBackground"
 
 var active_special_card : Card = null
 var active_special_item_id := ""
@@ -21,9 +22,15 @@ var is_timeout_ending: bool = false
 
 # angela ay ni hilabti tanan
 # chat all i can say is it all worked on my end but if mu crash...HIHIHI
-# oke wa ra ni crash
 
 func _ready() -> void:
+	# for background
+	if battle_background:
+		var bg_path = PlayerProfile.get_current_bg_path()
+		var new_bg = load(bg_path)
+		if new_bg:
+			battle_background.texture = new_bg
+	
 	BattleEvents.special_card_requested.connect(_on_special_requested)
 	BattleEvents.special_cancel_requested.connect(_on_special_cancel)
 	BattleEvents.special_shuffle_requested.connect(_on_special_shuffle)
@@ -143,7 +150,10 @@ func get_first_available_slot() -> Node:
 	
 func _on_end_turn_clicked():
 	if turn_manager.is_busy: return
-	battle_timer.stop
+	
+	cancel_special()
+	battle_timer.stop()
+	
 	if timer_bar:
 		timer_bar.visible = false
 	
@@ -190,8 +200,9 @@ func _on_turned_state_changed(new_state: GameEnums.TurnState):
 				card_manager.refresh_hand_interaction()
 
 func execute_enemy_turn():
+	print("enemy is preparing action")
 	battle_timer.one_shot = true
-	battle_timer.start(5.0)
+	battle_timer.start(2.0)
 	await battle_timer.timeout
 	
 	if combat_arena and combat_arena.has_method("get_enemy"):
@@ -231,3 +242,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			UIManager.open_menu(pause_scene)
 		else:
 			print("Could not open pause screen -- from battlemanager")
+	
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_R: # Pressing the 'D' key on your keyboard
+			if combat_arena and combat_arena.has_method("get_enemy"):
+				var enemy = combat_arena.get_enemy()
+				if enemy and enemy.has_method("take_damage"):
+					print("--- DEBUG: Forcing 10 Damage to Enemy ---")
+					enemy.take_damage(10)

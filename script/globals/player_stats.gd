@@ -21,3 +21,10 @@ func take_damage(amount: int):
 	
 	if current_health <= 0:
 		print("Player has died")
+
+func heal_player(amount):
+	if amount <= 0: return
+	
+	current_health = max(max_health, current_health + max_health)
+	health_changed.emit(current_health)
+	print("player healed")

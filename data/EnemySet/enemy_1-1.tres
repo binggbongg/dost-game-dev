@@ -1,23 +1,23 @@
 [gd_resource type="Resource" script_class="EnemyBehavior" format=3 uid="uid://bqrfesdfh2c5v"]
 
-[ext_resource type="Texture2D" uid="uid://csrbpfegxwvas" path="res://assets/player/lvl1/enemy1.png" id="1_bnb3n"]
-[ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="2_ru2a7"]
-[ext_resource type="Script" uid="uid://bltrhxh2342fx" path="res://data/enemy_behavior.gd" id="3_gaglq"]
+[ext_resource type="Texture2D" uid="uid://csrbpfegxwvas" path="res://assets/player/lvl1/enemy1.png" id="1_p5c4s"]
+[ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="2_t2eve"]
+[ext_resource type="Script" uid="uid://bltrhxh2342fx" path="res://data/enemy_behavior.gd" id="3_f5gxb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_foedf"]
-atlas = ExtResource("1_bnb3n")
+atlas = ExtResource("1_p5c4s")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wuevy"]
-atlas = ExtResource("1_bnb3n")
+atlas = ExtResource("1_p5c4s")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dxx6e"]
-atlas = ExtResource("1_bnb3n")
+atlas = ExtResource("1_p5c4s")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n7gcu"]
-atlas = ExtResource("1_bnb3n")
+atlas = ExtResource("1_p5c4s")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h0iia"]
@@ -42,22 +42,22 @@ animations = [{
 }]
 
 [sub_resource type="Resource" id="Resource_foedf"]
-script = ExtResource("2_ru2a7")
+script = ExtResource("2_t2eve")
 name = "Strike"
 value = 4
-chances = 0.5
+chances = 0.8
 metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
 [sub_resource type="Resource" id="Resource_wuevy"]
-script = ExtResource("2_ru2a7")
+script = ExtResource("2_t2eve")
 name = "Shield"
 type = 1
 value = 3
-chances = 0.5
+chances = 0.2
 metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
 [sub_resource type="Resource" id="Resource_dxx6e"]
-script = ExtResource("2_ru2a7")
+script = ExtResource("2_t2eve")
 name = "Strike Dash"
 type = 2
 value = 8
@@ -66,7 +66,7 @@ cooldown = 3
 metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
 [sub_resource type="Resource" id="Resource_n7gcu"]
-script = ExtResource("2_ru2a7")
+script = ExtResource("2_t2eve")
 name = "Strikedown"
 type = 3
 value = 15
@@ -75,10 +75,10 @@ cooldown = 7
 metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
 [resource]
-script = ExtResource("3_gaglq")
+script = ExtResource("3_f5gxb")
 enemy_name = "Robocorp"
 max_health = 50
 enemy_sprite = SubResource("SpriteFrames_h0iia")
-regular_moves = Array[ExtResource("2_ru2a7")]([SubResource("Resource_foedf"), SubResource("Resource_wuevy")])
-special_moves = Array[ExtResource("2_ru2a7")]([SubResource("Resource_dxx6e"), SubResource("Resource_n7gcu")])
+regular_moves = Array[ExtResource("2_t2eve")]([SubResource("Resource_foedf"), SubResource("Resource_wuevy")])
+special_moves = Array[ExtResource("2_t2eve")]([SubResource("Resource_dxx6e"), SubResource("Resource_n7gcu")])
 metadata/_custom_type_script = "uid://bltrhxh2342fx"

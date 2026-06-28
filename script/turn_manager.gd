@@ -18,13 +18,10 @@ func start_game():
 	# NOTE: We do NOT call start_player_turn() here!
 
 func end_player_turn():
+	is_busy = true
 	change_state(GameEnums.TurnState.ENEMY_TURN)
 	print("ENEMY TURN: Player is locked out for 5 seconds.")
 	
-	await get_tree().create_timer(1.0).timeout 
-	
-	# After 30s, the state goes back to Player Action (no need to click draw again!)
-	start_player_turn()
 
 func start_player_turn():
 	print("TurnManager: New turn. Mana persists from last turn.")
