@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://b5jq54loh7tw7"]
+
+[ext_resource type="Script" uid="uid://0wdc1mleeh78" path="res://script/ui/pause_menu.gd" id="1_2wrho"]
+[ext_resource type="Texture2D" uid="uid://26yniv7ld3ya" path="res://assets/temporary/play_button.png" id="2_gh0u6"]
+[ext_resource type="Texture2D" uid="uid://dai4e62i7gosj" path="res://assets/temporary/reset_button.png" id="3_eyfc8"]
+[ext_resource type="Texture2D" uid="uid://bd10btbxwtrh4" path="res://assets/temporary/exit_button.png" id="4_xiui8"]
+
+[node name="PauseMenu" type="Control" unique_id=386369776]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2wrho")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2107912257]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 502.0
+offset_top = 204.0
+offset_right = -507.0
+offset_bottom = -246.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.43758276, 0.21235046, 9.62615e-08, 1)
+
+[node name="Comment" type="RichTextLabel" parent="." unique_id=281366747]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 234.0
+offset_right = 780.0
+offset_bottom = 439.0
+theme_override_font_sizes/normal_font_size = 24
+text = "hi angela pwede ikaw lng polish sa ui ani hehe functioning ramn sd ang buttons"
+
+[node name="PlayButton" type="TextureButton" parent="." unique_id=2108949909]
+layout_mode = 0
+offset_left = 832.0
+offset_top = 305.0
+offset_right = 875.0
+offset_bottom = 326.0
+scale = Vector2(6, 6)
+texture_normal = ExtResource("2_gh0u6")
+
+[node name="ResetButon" type="TextureButton" parent="." unique_id=389909092]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 452.0
+offset_right = 870.0
+offset_bottom = 473.0
+scale = Vector2(6, 6)
+texture_normal = ExtResource("3_eyfc8")
+
+[node name="ExitButton" type="TextureButton" parent="." unique_id=896247683]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 602.0
+offset_right = 869.0
+offset_bottom = 623.0
+scale = Vector2(6, 6)
+texture_normal = ExtResource("4_xiui8")

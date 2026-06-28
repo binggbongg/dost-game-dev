@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cvgehqahw2e4x"]
+
+[ext_resource type="Texture2D" uid="uid://duued71ex3xol" path="res://assets/temporary/inventory_bg.webp" id="1_hcklf"]
+[ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="1_pubim"]
+
+[node name="Spellbook" type="Control" unique_id=1875600038]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=455572607]
+layout_mode = 0
+offset_right = 1919.0
+offset_bottom = 1094.0
+texture = ExtResource("1_hcklf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1725266803]
+layout_mode = 0
+offset_left = 303.0
+offset_top = 295.0
+offset_right = 1711.0
+offset_bottom = 795.0
+theme_override_font_sizes/normal_font_size = 100
+text = "this is the spellbook scene!
+hi angela"
+
+[node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("1_pubim")]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -69.0
+offset_right = 190.0
+offset_bottom = 223.0

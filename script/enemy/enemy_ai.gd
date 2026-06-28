@@ -13,8 +13,12 @@ var special_cooldowns: Dictionary = {}
 signal enemy_health_changed(new_health: int)
 
 func _ready() -> void:
-	if not behavior_data:
-		behavior_data = load("res://data/EnemySet1/enemy_1.tres")
+	var resource_data = PlayerProfile.get_current_enemy_resource()
+	if resource_data:
+		behavior_data = resource_data
+	else:
+		print("resource data not found -- enemy ai")
+		behavior_data = load("res://data/EnemySet/enemy_1-1.tres")
 	
 	if behavior_data:
 		setup_enemy()
@@ -26,7 +30,6 @@ func setup_enemy():
 	current_health = behavior_data.max_health
 	enemy_health_changed.emit(current_health)
 	
-	print(behavior_data.enemy_sprite, " name is ", animated_sprite)
 	if behavior_data.enemy_sprite and animated_sprite:
 		animated_sprite.sprite_frames = behavior_data.enemy_sprite
 		animated_sprite.play("idle")

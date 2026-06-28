@@ -9,7 +9,7 @@ animations = []
 radius = 11.571428
 height = 34.0
 
-[node name="Enemy1" type="Node2D" unique_id=605101585]
+[node name="Enemy" type="Node2D" unique_id=605101585]
 scale = Vector2(7, 7)
 script = ExtResource("1_a1412")
 

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bn4ggnn074rsh"]
 
 [ext_resource type="Texture2D" uid="uid://d2wiyhx8nsvkc" path="res://assets/temporary/close.png" id="1_6el1d"]
+[ext_resource type="Script" uid="uid://wa6kslpamdoq" path="res://script/ui/close_button.gd" id="2_8y3de"]
 
 [node name="CloseButton" type="TextureButton" unique_id=1384460648]
 offset_left = 4.0
@@ -8,3 +9,4 @@ offset_top = -57.0
 offset_right = 207.0
 offset_bottom = 235.0
 texture_normal = ExtResource("1_6el1d")
+script = ExtResource("2_8y3de")

@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="EnemyBehavior" format=3 uid="uid://qcjsjnj5jc7j"]
+
+[ext_resource type="Texture2D" uid="uid://b154l6apoiu07" path="res://assets/enemies/enemy2.png" id="1_gihff"]
+[ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="1_qf87b"]
+[ext_resource type="Script" uid="uid://bltrhxh2342fx" path="res://data/enemy_behavior.gd" id="2_gihff"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg45y"]
+atlas = ExtResource("1_gihff")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c58ue"]
+atlas = ExtResource("1_gihff")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kubi0"]
+atlas = ExtResource("1_gihff")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q54aq"]
+atlas = ExtResource("1_gihff")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xlpqw"]
+resource_name = "idle"
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg45y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c58ue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kubi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q54aq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_gihff")
+enemy_name = "Enemy2"
+enemy_sprite = SubResource("SpriteFrames_xlpqw")
+metadata/_custom_type_script = "uid://bltrhxh2342fx"

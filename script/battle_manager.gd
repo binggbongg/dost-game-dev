@@ -9,12 +9,20 @@ extends Node2D
 @onready var deck_manager = $"../PlayerInterface/GameManagers/DeckManager"
 @onready var combo_manager = $"../PlayerInterface/GameManagers/ComboManager"
 @onready var mana_manager = $"../PlayerInterface/GameManagers/ManaManager"
+@onready var slots: Node2D = $"../PlayerInterface/Slots"
+@onready var timer_bar = $"../TimerBar"
+
 var active_special_card : Card = null
 var active_special_item_id := ""
-@onready var slots: Node2D = $"../PlayerInterface/Slots"
+var is_timeout_ending: bool = false
+
 @export var card_scene: PackedScene = preload("res://scenes/card.tscn")
+@export var pause_scene = preload("res://scenes/menus/pause_menu.tscn")
+
 # angela ay ni hilabti tanan
 # chat all i can say is it all worked on my end but if mu crash...HIHIHI
+# oke wa ra ni crash
+
 func _ready() -> void:
 	BattleEvents.special_card_requested.connect(_on_special_requested)
 	BattleEvents.special_cancel_requested.connect(_on_special_cancel)
@@ -28,20 +36,36 @@ func _ready() -> void:
 	
 	if end_turn:
 		end_turn.end_turn_pressed.connect(_on_end_turn_clicked)
+
+func _process(_delta: float) -> void:
+	if not turn_manager or not battle_timer or not timer_bar: return
+	if turn_manager.current_state == GameEnums.TurnState.PLAYER_ACTION and not battle_timer.is_stopped():
+		var seconds_left = ceil(battle_timer.time_left)
+		
+		timer_bar.visible = true
+		timer_bar.value = seconds_left
+		
+		var timer_label = timer_bar.get_node_or_null("TimeText")
+		if timer_label:
+			timer_label.text = str(seconds_left) + " s"
+	else:
+		timer_bar.visible = false
+		timer_bar.value = 0
+
 func _on_special_requested(item_id:String):
 	if active_special_card != null:
 		cancel_special()
-
+	
 	var data = ItemDb.get_item(item_id)
 	if data == null:
 		print("Special not found.")
 		return
-
-	create_special_card(data, item_id)
 	
+	create_special_card(data, item_id)
+
 func _on_special_cancel():
 	cancel_special()
-	
+
 func _on_special_shuffle():
 	cancel_special()
 
@@ -118,8 +142,14 @@ func get_first_available_slot() -> Node:
 	return get_child(0)
 	
 func _on_end_turn_clicked():
-	if turn_manager.is_busy:
-		return
+	if turn_manager.is_busy: return
+	battle_timer.stop
+	if timer_bar:
+		timer_bar.visible = false
+	
+	if battle_timer.timeout.is_connected(_on_player_turn_timeout):
+		battle_timer.timeout.disconnect(_on_player_turn_timeout)
+	
 	turn_manager.end_player_turn()
 
 func _on_turned_state_changed(new_state: GameEnums.TurnState):
@@ -133,9 +163,18 @@ func _on_turned_state_changed(new_state: GameEnums.TurnState):
 						card_manager.return_to_hand(card)
 			
 			await get_tree().process_frame
+			
+			if is_timeout_ending:
+				if deck_manager and deck_manager.has_method("redraw_hand"):
+					print("timer ran out. redrawing cards..")
+					deck_manager.redraw_hand()
+				is_timeout_ending = false
+			
 			await execute_enemy_turn()
+			turn_manager.start_player_turn()
 		GameEnums.TurnState.PLAYER_ACTION:
 			print("player turn")
+			start_player_timer()
 			
 			if turn_manager:
 				turn_manager.is_busy = false
@@ -150,9 +189,9 @@ func _on_turned_state_changed(new_state: GameEnums.TurnState):
 			if card_manager:
 				card_manager.refresh_hand_interaction()
 
-
 func execute_enemy_turn():
-	battle_timer.start(1.0)
+	battle_timer.one_shot = true
+	battle_timer.start(5.0)
 	await battle_timer.timeout
 	
 	if combat_arena and combat_arena.has_method("get_enemy"):
@@ -163,3 +202,32 @@ func execute_enemy_turn():
 	
 	battle_timer.start(0.5)
 	await battle_timer.timeout
+
+func start_player_timer():
+	if battle_timer.timeout.is_connected(_on_player_turn_timeout):
+		battle_timer.timeout.disconnect(_on_player_turn_timeout)
+	
+	battle_timer.one_shot = true
+	battle_timer.timeout.connect(_on_player_turn_timeout)
+	battle_timer.start(40.0)
+	print("timer of 40 seconds started.")
+
+func _on_player_turn_timeout():
+	if turn_manager.is_busy and turn_manager.current_state != GameEnums.TurnState.PLAYER_ACTION:
+		return
+	
+	print("player time ended. switching to enemy turn")
+	is_timeout_ending = true
+	turn_manager.is_busy = true
+	
+	if battle_timer.timeout.is_connected(_on_player_turn_timeout):
+		battle_timer.timeout.disconnect(_on_player_turn_timeout)
+	
+	turn_manager.end_player_turn()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		if UIManager.current_menu == null and pause_scene:
+			UIManager.open_menu(pause_scene)
+		else:
+			print("Could not open pause screen -- from battlemanager")

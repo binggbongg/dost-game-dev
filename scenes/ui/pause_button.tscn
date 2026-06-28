@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bmn31kgxbdlkg"]
+
+[ext_resource type="Texture2D" uid="uid://bygt0ji01cwjl" path="res://assets/temporary/pause.png" id="1_mx2gt"]
+[ext_resource type="Script" uid="uid://bafg43pjm1xjd" path="res://script/for buttons/pause_button.gd" id="2_23jja"]
+
+[node name="PauseButton" type="TextureButton" unique_id=784340132]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_mx2gt")
+script = ExtResource("2_23jja")
