@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://nrf002bvasid"]
+
+[ext_resource type="Texture2D" uid="uid://my16ben7onyr" path="res://assets/temporary/card_placeholder.png" id="1_0di40"]
+[ext_resource type="Texture2D" uid="uid://brncfoabci411" path="res://assets/temporary/panel small.png" id="2_ngrdd"]
+
+[node name="ComboSlot" type="Control" unique_id=1928747533]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" type="Sprite2D" parent="." unique_id=1998051567]
+position = Vector2(239, 239)
+scale = Vector2(0.7205128, 0.7205128)
+texture = ExtResource("1_0di40")
+
+[node name="Card2" type="Sprite2D" parent="." unique_id=409500909]
+position = Vector2(414, 233)
+scale = Vector2(0.7205128, 0.7205128)
+texture = ExtResource("1_0di40")
+
+[node name="Card3" type="Sprite2D" parent="." unique_id=886844119]
+position = Vector2(595, 234.99998)
+scale = Vector2(0.7205128, 0.7205128)
+texture = ExtResource("1_0di40")
+
+[node name="Holder" type="Sprite2D" parent="." unique_id=406448804]
+position = Vector2(414, 97)
+scale = Vector2(1.8192307, 0.93485916)
+texture = ExtResource("2_ngrdd")
+
+[node name="Description" type="Sprite2D" parent="." unique_id=2024702259]
+position = Vector2(423, 393)
+scale = Vector2(2.9902244, 1.9887189)
+texture = ExtResource("2_ngrdd")

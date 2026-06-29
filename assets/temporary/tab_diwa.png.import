@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlexhysd7krc1"
-path="res://.godot/imported/LAHI.png-ad47d1071640c714f1055f8b1abe06d5.ctex"
+uid="uid://cococi3nwpqan"
+path="res://.godot/imported/tab_diwa.png-591f1df9ab1c2985c4edcfa87054eca0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/temporary/LAHI.png"
-dest_files=["res://.godot/imported/LAHI.png-ad47d1071640c714f1055f8b1abe06d5.ctex"]
+source_file="res://assets/temporary/tab_diwa.png"
+dest_files=["res://.godot/imported/tab_diwa.png-591f1df9ab1c2985c4edcfa87054eca0.ctex"]
 
 [params]
 
