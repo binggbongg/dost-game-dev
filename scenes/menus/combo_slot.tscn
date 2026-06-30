@@ -3,6 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://my16ben7onyr" path="res://assets/temporary/card_placeholder.png" id="1_0di40"]
 [ext_resource type="Texture2D" uid="uid://brncfoabci411" path="res://assets/temporary/panel small.png" id="2_ngrdd"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_0di40"]
+font_size = 15
+font_color = Color(0.023529412, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ngrdd"]
+font_color = Color(0, 0, 0, 1)
+
 [node name="ComboSlot" type="Control" unique_id=1928747533]
 layout_mode = 3
 anchors_preset = 15
@@ -35,3 +42,22 @@ texture = ExtResource("2_ngrdd")
 position = Vector2(423, 393)
 scale = Vector2(2.9902244, 1.9887189)
 texture = ExtResource("2_ngrdd")
+
+[node name="Label" type="Label" parent="." unique_id=1098619253]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 375.0
+offset_right = 630.0
+offset_bottom = 424.0
+text = "This is the description of the combo. Two sentences max"
+label_settings = SubResource("LabelSettings_0di40")
+autowrap_mode = 3
+
+[node name="Name" type="Label" parent="." unique_id=1314853889]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 87.0
+offset_right = 464.0
+offset_bottom = 110.0
+text = "COMBO NAME"
+label_settings = SubResource("LabelSettings_ngrdd")
