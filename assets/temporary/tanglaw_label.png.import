@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlexhysd7krc1"
-path="res://.godot/imported/LAHI.png-ad47d1071640c714f1055f8b1abe06d5.ctex"
+uid="uid://bk60r5v1mmcf8"
+path="res://.godot/imported/tanglaw_label.png-bb294f6a9c911da40601dfd5457db9c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/temporary/LAHI.png"
-dest_files=["res://.godot/imported/LAHI.png-ad47d1071640c714f1055f8b1abe06d5.ctex"]
+source_file="res://assets/temporary/tanglaw_label.png"
+dest_files=["res://.godot/imported/tanglaw_label.png-bb294f6a9c911da40601dfd5457db9c1.ctex"]
 
 [params]
 
