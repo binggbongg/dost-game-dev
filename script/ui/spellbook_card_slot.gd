@@ -32,8 +32,18 @@ func display(card_res: Resource):
 	
 	self.show()
 	
-	# 1. Update basic info
-	if texture_rect: texture_rect.texture = card_res.get("texture")
+	# 1. Update basic info & Scaling Logic
+	if texture_rect: 
+		texture_rect.texture = card_res.get("texture")
+		
+		# --- AUTO-SCALING LOGIC ---
+		texture_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		
+		# FIXED: Correct Godot 4 constant name
+		texture_rect.texture_filter = TEXTURE_FILTER_NEAREST 
+		# --------------------------
+
 	if name_label: name_label.text = str(card_res.get("name"))
 	if desc_label: desc_label.text = str(card_res.get("description"))
 	
@@ -76,13 +86,11 @@ func display(card_res: Resource):
 			# Set the correct icon for this stat
 			pill.get_node("Icon").texture = icon_textures[data.type]
 			
-			# Find the label inside this pill (since they have different names)
 			# This loop finds the first Label child and sets the text
 			for child in pill.get_children():
 				if child is Label:
 					child.text = data.text
 		else:
-			# Hide physical pills that aren't being used for this card
 			pill.hide()
 
 func display_combo(title: String, body: String):

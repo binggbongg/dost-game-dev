@@ -3,7 +3,7 @@ class_name Card
 signal hovered
 signal hovered_off
 
-const DEFAULT_CARD_SCALE = 0.8
+const DEFAULT_CARD_SCALE = 0.16
 const SPECIAL_CARD_SCALE = 0.2
 @onready var card_name: Label = $Area2D/CardName
 var card_source: GameEnums.CardSource
@@ -23,13 +23,14 @@ func _ready() -> void:
 	apply_data()
 	add_to_group("cards")
 	modulate = Color(1, 1, 1, 1)
-	apply_default_scale()
 
 func apply_data():
 	if card_data == null:
 		return
+		
 	var d_name = card_data.get("item_name") if card_data.get("item_name") else card_data.get("name")
 	var d_texture = card_data.get("icon") if card_data.get("icon") else card_data.get("texture")
+	
 	card_name.text = str(d_name) + " - " + GameEnums.CardRarity.keys()[card_data.rarity] + " - " + str(card_data.mana_cost)
 	card_category = card_data.category
 	card_rarity = card_data.rarity
@@ -38,13 +39,17 @@ func apply_data():
 	card_cost = card_data.mana_cost
 	card_source = card_data.card_source
 	
-	$Sprite2D.texture = d_texture
-func apply_default_scale():
+	# --- UPDATED SCALING LOGIC FOR YOUR TEXTURERECT ---
+	# Even though it's named "Sprite2D", it's a TextureRect (Green Icon)
+	var art_node = $Sprite2D 
+	
+	if d_texture:
+		art_node.texture = d_texture
+		art_node.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		art_node.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		art_node.texture_filter = TEXTURE_FILTER_NEAREST
+		
 
-	if card_data is SpecialCardData:
-		scale = Vector2(SPECIAL_CARD_SCALE, SPECIAL_CARD_SCALE)
-	else:
-		scale = Vector2(DEFAULT_CARD_SCALE, DEFAULT_CARD_SCALE)
 func _on_area_2d_mouse_entered() -> void:
 	hovered.emit(self)
 

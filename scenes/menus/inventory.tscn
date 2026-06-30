@@ -5,21 +5,26 @@
 [ext_resource type="Texture2D" uid="uid://duued71ex3xol" path="res://assets/temporary/inventory_bg.webp" id="2_kbtlh"]
 [ext_resource type="Texture2D" uid="uid://bby48bvsp02i0" path="res://assets/temporary/slot spotlight.jpg" id="2_xityo"]
 [ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="4_aj06e"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_kbtlh"]
 [ext_resource type="PackedScene" uid="uid://buor4em2o4cfj" path="res://scenes/ui/coin_display.tscn" id="5_3ycl8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gunfm"]
 paragraph_spacing = 1.0
+font = ExtResource("4_kbtlh")
 font_size = 80
 
 [sub_resource type="LabelSettings" id="LabelSettings_8tary"]
+font = ExtResource("4_kbtlh")
 font_size = 47
 
 [sub_resource type="LabelSettings" id="LabelSettings_6xei0"]
 line_spacing = 0.05
+font = ExtResource("4_kbtlh")
 font_size = 18
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_xityo"]
+font = ExtResource("4_kbtlh")
 font_size = 50
 
 [node name="Inventory" type="Control" unique_id=407261551]
@@ -82,9 +87,9 @@ anchor_left = 0.12240664
 anchor_top = 0.013940521
 anchor_right = 0.12240664
 anchor_bottom = 0.013940521
-offset_left = 133.90872
+offset_left = -20.091286
 offset_top = 56.609665
-offset_right = 431.90872
+offset_right = 572.9087
 offset_bottom = 121.609665
 text = "DIWATA"
 label_settings = SubResource("LabelSettings_8tary")
@@ -214,13 +219,14 @@ offset_bottom = 1030.0
 
 [node name="use_button_label" type="Label" parent="HBoxContainer/DetailsPanel/use_button" unique_id=696403628]
 layout_mode = 0
-offset_left = 211.0
-offset_top = 26.0
-offset_right = 434.0
-offset_bottom = 95.0
+offset_left = 2.0
+offset_top = 6.0
+offset_right = 594.0
+offset_bottom = 126.0
 text = "USE ITEM"
 label_settings = SubResource("LabelSettings_xityo")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("4_aj06e")]
 layout_mode = 0

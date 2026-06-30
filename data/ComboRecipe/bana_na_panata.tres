@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ComboRecipe" format=3 uid="uid://cbitqx5as54is"]
+
+[ext_resource type="Script" uid="uid://v3nevm1wba6b" path="res://data/combo_recipe.gd" id="1_klsem"]
+
+[resource]
+script = ExtResource("1_klsem")
+name = "Banal ng Panata"
+description = "A sacred vow binds spirit and light, granting sanctuary to the faithful."
+elements = Array[int]([2, 1, 3])
+metadata/_custom_type_script = "uid://v3nevm1wba6b"

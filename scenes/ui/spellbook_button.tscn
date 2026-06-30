@@ -1,12 +1,25 @@
 [gd_scene format=3 uid="uid://6t8x0728x5hf"]
 
-[ext_resource type="Texture2D" uid="uid://bob36fd0gsx8p" path="res://assets/ui/shop/spellbook_icon.png" id="1_0gyfp"]
 [ext_resource type="Script" uid="uid://bnw77vey0ywo1" path="res://script/ui/spellboook_button.gd" id="2_c0cx3"]
+[ext_resource type="PackedScene" uid="uid://cvgehqahw2e4x" path="res://scenes/menus/spellbook.tscn" id="2_k856a"]
+[ext_resource type="Texture2D" uid="uid://bob36fd0gsx8p" path="res://assets/ui/shop/spellbook_icon.png" id="3_nkftk"]
 
 [node name="spellbook" type="TextureButton" unique_id=1664093449]
 offset_left = 3.0
 offset_top = 5.0
-offset_right = 67.0
-offset_bottom = 69.0
-texture_normal = ExtResource("1_0gyfp")
+offset_right = 163.0
+offset_bottom = 223.0
 script = ExtResource("2_c0cx3")
+scene_to_open = ExtResource("2_k856a")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=947239341]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_left = -10.0
+offset_top = -21.0
+offset_right = 165.0
+offset_bottom = 229.64516
+rotation = 0.10471976
+mouse_filter = 2
+texture = ExtResource("3_nkftk")
+expand_mode = 1

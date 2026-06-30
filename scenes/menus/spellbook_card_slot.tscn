@@ -4,19 +4,24 @@
 [ext_resource type="Texture2D" uid="uid://my16ben7onyr" path="res://assets/temporary/card_placeholder.png" id="1_mfgq6"]
 [ext_resource type="Texture2D" uid="uid://brncfoabci411" path="res://assets/temporary/panel small.png" id="2_7keov"]
 [ext_resource type="Texture2D" uid="uid://ckl4ms6j22ino" path="res://assets/temporary/coin.png" id="3_wqq5r"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_wqq5r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jlv65"]
+font = ExtResource("4_wqq5r")
 font_size = 20
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_et8i5"]
+font = ExtResource("4_wqq5r")
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tpnqd"]
+font = ExtResource("4_wqq5r")
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_y31j3"]
 line_spacing = 1.0
+font = ExtResource("4_wqq5r")
 font_size = 20
 font_color = Color(0, 0, 0, 1)
 
@@ -30,9 +35,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7keov")
 
-[node name="Card" type="Sprite2D" parent="." unique_id=383137567]
-position = Vector2(194, 194)
+[node name="Card" type="TextureRect" parent="." unique_id=1208578425]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 0
+offset_left = 108.0
+offset_top = 48.0
+offset_right = 303.0
+offset_bottom = 332.0
 texture = ExtResource("1_mfgq6")
+expand_mode = 1
+stretch_mode = 3
 
 [node name="CardNameHolder" type="Sprite2D" parent="." unique_id=323338511]
 position = Vector2(494.68753, 98)

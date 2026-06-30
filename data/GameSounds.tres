@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundData" format=3 uid="uid://bu8in2jmyqufp"]
+
+[ext_resource type="AudioStream" uid="uid://du3cylgtphemx" path="res://data/SoundData/sfx/478197__jonnyruss01__click_1.wav" id="1_bw5vg"]
+[ext_resource type="Script" uid="uid://ba2pfc6mewee2" path="res://data/sound_data.gd" id="2_475fu"]
+
+[resource]
+script = ExtResource("2_475fu")
+click = ExtResource("1_bw5vg")
+metadata/_custom_type_script = "uid://ba2pfc6mewee2"

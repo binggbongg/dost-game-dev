@@ -67,7 +67,6 @@ var coins: int = 100:
 		coins = value
 		coins_changed.emit(coins) 
 		
-# Use this when the player first creates their account or starts a new game
 func initialize_profile(new_name: String, character_id: String):
 	player_name = new_name
 	selected_character = character_id

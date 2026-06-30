@@ -5,18 +5,22 @@
 [ext_resource type="Texture2D" uid="uid://bf5ivx1y55cfm" path="res://assets/temporary/This is a 2D modern illustration of a wooden room with wooden walls, ceiling and floor_.webp" id="2_lr2rd"]
 [ext_resource type="Resource" uid="uid://cf0hklyd64oy" path="res://data/Shop/regular.tres" id="2_p6j4a"]
 [ext_resource type="PackedScene" uid="uid://buor4em2o4cfj" path="res://scenes/ui/coin_display.tscn" id="4_p6j4a"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_tqrtc"]
 [ext_resource type="Texture2D" uid="uid://bby48bvsp02i0" path="res://assets/temporary/slot spotlight.jpg" id="5_tqrtc"]
 [ext_resource type="Texture2D" uid="uid://dw0jdj1l28v2" path="res://assets/temporary/purchase.png" id="6_op5ld"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lsiq6"]
 paragraph_spacing = 1.0
+font = ExtResource("4_tqrtc")
 font_size = 80
 
 [sub_resource type="LabelSettings" id="LabelSettings_m8xc7"]
+font = ExtResource("4_tqrtc")
 font_size = 47
 
 [sub_resource type="LabelSettings" id="LabelSettings_hlia1"]
 line_spacing = 0.05
+font = ExtResource("4_tqrtc")
 font_size = 18
 font_color = Color(0, 0, 0, 1)
 
@@ -83,13 +87,14 @@ anchor_left = 0.12240664
 anchor_top = 0.013940521
 anchor_right = 0.12240664
 anchor_bottom = 0.013940521
-offset_left = 133.90872
-offset_top = 56.609665
-offset_right = 431.90872
-offset_bottom = 121.609665
+offset_left = -9.091286
+offset_top = 50.609665
+offset_right = 583.9087
+offset_bottom = 134.60966
 text = "DIWATA"
 label_settings = SubResource("LabelSettings_m8xc7")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BigIcon" type="TextureRect" parent="HBoxContainer/DetailsPanel" unique_id=1718231922]
 custom_minimum_size = Vector2(250, 250)
@@ -140,7 +145,7 @@ anchor_right = 0.10373444
 anchor_bottom = 0.151487
 offset_left = 55.65145
 offset_top = 680.75836
-offset_right = 102.65145
+offset_right = 108.65145
 offset_bottom = 706.75836
 text = "+50%"
 label_settings = SubResource("LabelSettings_hlia1")
@@ -210,7 +215,7 @@ autowrap_mode = 3
 layout_mode = 0
 offset_left = 264.0
 offset_top = 835.0
-offset_right = 465.0
+offset_right = 459.0
 offset_bottom = 1119.0
 texture_normal = ExtResource("6_op5ld")
 

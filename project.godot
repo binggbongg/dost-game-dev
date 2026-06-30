@@ -28,6 +28,8 @@ ShopManager="*res://script/globals/shop_manager.gd"
 ManaManager="*uid://bq06oex8xu486"
 BattleEvents="*uid://d3ojlq3odosqy"
 Talo="*uid://bpmdn8oc34pg7"
+AudioManager="*uid://d3im66uqs6wge"
+SceneTransition="*uid://c13y30hlw4iug"
 
 [display]
 
