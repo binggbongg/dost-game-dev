@@ -30,9 +30,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7keov")
 
-[node name="Card" type="Sprite2D" parent="." unique_id=383137567]
-position = Vector2(194, 194)
+[node name="Card" type="TextureRect" parent="." unique_id=1208578425]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 0
+offset_left = 108.0
+offset_top = 48.0
+offset_right = 303.0
+offset_bottom = 332.0
 texture = ExtResource("1_mfgq6")
+expand_mode = 1
+stretch_mode = 3
 
 [node name="CardNameHolder" type="Sprite2D" parent="." unique_id=323338511]
 position = Vector2(494.68753, 98)

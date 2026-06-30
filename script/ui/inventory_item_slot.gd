@@ -26,7 +26,7 @@ func set_item(id: String, quantity: int):
 	marker.add_child(visual_node)
 	
 	# Match the Shop's scale/position logic
-	visual_node.scale = Vector2(0.25, 0.25) 
+
 	visual_node.position = Vector2.ZERO 
 
 	# Apply the data

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ComboRecipe" format=3 uid="uid://c14tk68pybvel"]
+
+[ext_resource type="Script" uid="uid://v3nevm1wba6b" path="res://data/combo_recipe.gd" id="1_4ry0f"]
+
+[resource]
+script = ExtResource("1_4ry0f")
+name = "Katarungan ng Tala"
+description = "Celestial radiance descends upon those whose hearts have strayed from righteousness."
+elements = Array[int]([3, 1, 3])
+metadata/_custom_type_script = "uid://v3nevm1wba6b"
