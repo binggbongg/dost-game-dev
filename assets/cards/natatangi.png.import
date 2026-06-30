@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lxgfy4gxk61t"
-path="res://.godot/imported/galit.png-86024c5f2fadf0817abab45100c3704c.ctex"
+uid="uid://blkvkmgbiswc8"
+path="res://.godot/imported/natatangi.png-66de5594bc4e93365425aaf458cec5db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://galit.png"
-dest_files=["res://.godot/imported/galit.png-86024c5f2fadf0817abab45100c3704c.ctex"]
+source_file="res://assets/cards/natatangi.png"
+dest_files=["res://.godot/imported/natatangi.png-66de5594bc4e93365425aaf458cec5db.ctex"]
 
 [params]
 

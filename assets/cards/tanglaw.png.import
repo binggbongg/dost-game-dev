@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8rm3oev25w74"
-path="res://.godot/imported/dambana.png-b5c9239d7630baa99bb8c113067e92f8.ctex"
+uid="uid://dmuwjan5n372q"
+path="res://.godot/imported/tanglaw.png-49539ab65636082404c3b70826f9a638.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://dambana.png"
-dest_files=["res://.godot/imported/dambana.png-b5c9239d7630baa99bb8c113067e92f8.ctex"]
+source_file="res://assets/cards/tanglaw.png"
+dest_files=["res://.godot/imported/tanglaw.png-49539ab65636082404c3b70826f9a638.ctex"]
 
 [params]
 

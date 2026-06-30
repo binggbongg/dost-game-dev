@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uq43ujd0erey"
-path="res://.godot/imported/hangin.png-b4458f1a896b2517dc633856c9097f0d.ctex"
+uid="uid://cjq6kkw2dr0ja"
+path="res://.godot/imported/takot.png-8bde2b953a051ca317c4ab13a3f0524c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hangin.png"
-dest_files=["res://.godot/imported/hangin.png-b4458f1a896b2517dc633856c9097f0d.ctex"]
+source_file="res://assets/cards/takot.png"
+dest_files=["res://.godot/imported/takot.png-8bde2b953a051ca317c4ab13a3f0524c.ctex"]
 
 [params]
 

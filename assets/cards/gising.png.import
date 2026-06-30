@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgysljwmkgil0"
-path="res://.godot/imported/saya.png-58a9a6d59fec4ce4b4daecf55a9028dd.ctex"
+uid="uid://befdkxiwns8ub"
+path="res://.godot/imported/gising.png-fcccaadcf53af8880bb1fe363d977e79.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://saya.png"
-dest_files=["res://.godot/imported/saya.png-58a9a6d59fec4ce4b4daecf55a9028dd.ctex"]
+source_file="res://assets/cards/gising.png"
+dest_files=["res://.godot/imported/gising.png-fcccaadcf53af8880bb1fe363d977e79.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bns1hxr6g5440"
-path="res://.godot/imported/harang.png-9c5ede44b4b6123e84ed323019cd01e6.ctex"
+uid="uid://bpqgukrcl0nu8"
+path="res://.godot/imported/lahi.png-6193bd5acd7abb0a8896725a577e2654.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://harang.png"
-dest_files=["res://.godot/imported/harang.png-9c5ede44b4b6123e84ed323019cd01e6.ctex"]
+source_file="res://assets/cards/lahi.png"
+dest_files=["res://.godot/imported/lahi.png-6193bd5acd7abb0a8896725a577e2654.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqhw1amixx3sl"
-path="res://.godot/imported/diwa.png-e71df0bc74b0e9ae5c08435d7d8357a0.ctex"
+uid="uid://lxgfy4gxk61t"
+path="res://.godot/imported/galit.png-74eca308d703cb9d9bc175042f5a97c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://diwa.png"
-dest_files=["res://.godot/imported/diwa.png-e71df0bc74b0e9ae5c08435d7d8357a0.ctex"]
+source_file="res://assets/cards/galit.png"
+dest_files=["res://.godot/imported/galit.png-74eca308d703cb9d9bc175042f5a97c4.ctex"]
 
 [params]
 

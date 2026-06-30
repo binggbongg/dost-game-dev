@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmyyscrkfjx8n"
-path="res://.godot/imported/kalikasan.png-1049ea1555f794fbdd663b17bb10ff36.ctex"
+uid="uid://uq43ujd0erey"
+path="res://.godot/imported/hangin.png-4ffdab813b23b99ebb1ad29810d4097b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://kalikasan.png"
-dest_files=["res://.godot/imported/kalikasan.png-1049ea1555f794fbdd663b17bb10ff36.ctex"]
+source_file="res://assets/cards/hangin.png"
+dest_files=["res://.godot/imported/hangin.png-4ffdab813b23b99ebb1ad29810d4097b.ctex"]
 
 [params]
 

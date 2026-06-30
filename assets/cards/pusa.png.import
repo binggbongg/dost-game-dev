@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b00l2l4ytu8wh"
-path="res://.godot/imported/bhira.png-9ef32a0e1ff668c84f7931a152615463.ctex"
+uid="uid://copd7hwoyn14a"
+path="res://.godot/imported/pusa.png-434c5191e2908070344b2889f435ee98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bhira.png"
-dest_files=["res://.godot/imported/bhira.png-9ef32a0e1ff668c84f7931a152615463.ctex"]
+source_file="res://assets/cards/pusa.png"
+dest_files=["res://.godot/imported/pusa.png-434c5191e2908070344b2889f435ee98.ctex"]
 
 [params]
 

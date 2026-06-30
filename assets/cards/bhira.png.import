@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b76bdemmxy8k"
-path="res://.godot/imported/kidlat.png-91a981d65b90836c4fbd787937c681ee.ctex"
+uid="uid://b00l2l4ytu8wh"
+path="res://.godot/imported/bhira.png-1dfdad4411983ba04d42871f6729fb99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://kidlat.png"
-dest_files=["res://.godot/imported/kidlat.png-91a981d65b90836c4fbd787937c681ee.ctex"]
+source_file="res://assets/cards/bhira.png"
+dest_files=["res://.godot/imported/bhira.png-1dfdad4411983ba04d42871f6729fb99.ctex"]
 
 [params]
 

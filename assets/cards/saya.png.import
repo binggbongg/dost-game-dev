@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1i4l7pvxvqqv"
-path="res://.godot/imported/galaw.png-43d545f79143b2d8bad48072c33ad6ee.ctex"
+uid="uid://cgysljwmkgil0"
+path="res://.godot/imported/saya.png-3ea052876873e09353c2050813eb9978.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://galaw.png"
-dest_files=["res://.godot/imported/galaw.png-43d545f79143b2d8bad48072c33ad6ee.ctex"]
+source_file="res://assets/cards/saya.png"
+dest_files=["res://.godot/imported/saya.png-3ea052876873e09353c2050813eb9978.ctex"]
 
 [params]
 

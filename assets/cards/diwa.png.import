@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmuwjan5n372q"
-path="res://.godot/imported/tanglaw.png-cb77e8e1accaf1c48ab9676f9cc6016c.ctex"
+uid="uid://bqhw1amixx3sl"
+path="res://.godot/imported/diwa.png-2220e5683913277bd2877e381a6b348c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tanglaw.png"
-dest_files=["res://.godot/imported/tanglaw.png-cb77e8e1accaf1c48ab9676f9cc6016c.ctex"]
+source_file="res://assets/cards/diwa.png"
+dest_files=["res://.godot/imported/diwa.png-2220e5683913277bd2877e381a6b348c.ctex"]
 
 [params]
 

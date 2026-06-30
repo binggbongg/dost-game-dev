@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce3bsk5ewn25d"
-path="res://.godot/imported/ulan.png-f3dcbcd062704c05b9d670ac753865de.ctex"
+uid="uid://bi34g4qewqv2n"
+path="res://.godot/imported/apoy.png-35763bdfde855ca337f045c0450a54e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ulan.png"
-dest_files=["res://.godot/imported/ulan.png-f3dcbcd062704c05b9d670ac753865de.ctex"]
+source_file="res://assets/cards/apoy.png"
+dest_files=["res://.godot/imported/apoy.png-35763bdfde855ca337f045c0450a54e8.ctex"]
 
 [params]
 

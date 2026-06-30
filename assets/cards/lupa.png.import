@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy3w8egm7pddx"
-path="res://.godot/imported/ulap.png-939555def631cd3a93b0e8109d7fb3ac.ctex"
+uid="uid://bykwvtmeoeon0"
+path="res://.godot/imported/lupa.png-413fd72a7f269f925402dc136bc3577d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ulap.png"
-dest_files=["res://.godot/imported/ulap.png-939555def631cd3a93b0e8109d7fb3ac.ctex"]
+source_file="res://assets/cards/lupa.png"
+dest_files=["res://.godot/imported/lupa.png-413fd72a7f269f925402dc136bc3577d.ctex"]
 
 [params]
 

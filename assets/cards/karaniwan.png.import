@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://copd7hwoyn14a"
-path="res://.godot/imported/pusa.png-314b942ee265a2a4fce5d69e9c1e9d47.ctex"
+uid="uid://clxqbqrabyxwh"
+path="res://.godot/imported/karaniwan.png-5e2d5d315b3bdf5da7f388fb0b911244.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pusa.png"
-dest_files=["res://.godot/imported/pusa.png-314b942ee265a2a4fce5d69e9c1e9d47.ctex"]
+source_file="res://assets/cards/karaniwan.png"
+dest_files=["res://.godot/imported/karaniwan.png-5e2d5d315b3bdf5da7f388fb0b911244.ctex"]
 
 [params]
 

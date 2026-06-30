@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi34g4qewqv2n"
-path="res://.godot/imported/apoy.png-7740cc83d1c7d3c586fa843ef6f49753.ctex"
+uid="uid://bns1hxr6g5440"
+path="res://.godot/imported/harang.png-ec530106281c706ddb54ac80f581ff88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://apoy.png"
-dest_files=["res://.godot/imported/apoy.png-7740cc83d1c7d3c586fa843ef6f49753.ctex"]
+source_file="res://assets/cards/harang.png"
+dest_files=["res://.godot/imported/harang.png-ec530106281c706ddb54ac80f581ff88.ctex"]
 
 [params]
 

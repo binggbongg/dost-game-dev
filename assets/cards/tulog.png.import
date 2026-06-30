@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjq6kkw2dr0ja"
-path="res://.godot/imported/takot.png-27901a703923ace30a1d632212e1ca01.ctex"
+uid="uid://ter34b408exx"
+path="res://.godot/imported/tulog.png-b1f73ddb30ec77d311c8bca0a1d1c713.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://takot.png"
-dest_files=["res://.godot/imported/takot.png-27901a703923ace30a1d632212e1ca01.ctex"]
+source_file="res://assets/cards/tulog.png"
+dest_files=["res://.godot/imported/tulog.png-b1f73ddb30ec77d311c8bca0a1d1c713.ctex"]
 
 [params]
 

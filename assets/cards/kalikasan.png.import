@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blkvkmgbiswc8"
-path="res://.godot/imported/natatangi.png-6846f2c4347abf1b8918b573ae3b355e.ctex"
+uid="uid://dmyyscrkfjx8n"
+path="res://.godot/imported/kalikasan.png-e0a9be65806b6f61ad814194edbca6fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://natatangi.png"
-dest_files=["res://.godot/imported/natatangi.png-6846f2c4347abf1b8918b573ae3b355e.ctex"]
+source_file="res://assets/cards/kalikasan.png"
+dest_files=["res://.godot/imported/kalikasan.png-e0a9be65806b6f61ad814194edbca6fc.ctex"]
 
 [params]
 

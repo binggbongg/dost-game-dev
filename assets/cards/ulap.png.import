@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qnqd0dqh2w6u"
-path="res://.godot/imported/aso.png-5e24de9b0500a2f1c27c98248ae622fb.ctex"
+uid="uid://dy3w8egm7pddx"
+path="res://.godot/imported/ulap.png-ad12fcfb10a8e143e04542643f2a07c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://aso.png"
-dest_files=["res://.godot/imported/aso.png-5e24de9b0500a2f1c27c98248ae622fb.ctex"]
+source_file="res://assets/cards/ulap.png"
+dest_files=["res://.godot/imported/ulap.png-ad12fcfb10a8e143e04542643f2a07c6.ctex"]
 
 [params]
 

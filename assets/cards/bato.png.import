@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://befdkxiwns8ub"
-path="res://.godot/imported/gising.png-970644510fc595918ddb44bae084b7b3.ctex"
+uid="uid://dn1a5m5lxowea"
+path="res://.godot/imported/bato.png-9e9f8047080417d8c91972139a2f09c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gising.png"
-dest_files=["res://.godot/imported/gising.png-970644510fc595918ddb44bae084b7b3.ctex"]
+source_file="res://assets/cards/bato.png"
+dest_files=["res://.godot/imported/bato.png-9e9f8047080417d8c91972139a2f09c0.ctex"]
 
 [params]
 

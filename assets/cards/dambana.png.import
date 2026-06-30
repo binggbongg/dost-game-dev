@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bykwvtmeoeon0"
-path="res://.godot/imported/lupa.png-b7fff169c42cf07949e270a8b15e4ec5.ctex"
+uid="uid://b8rm3oev25w74"
+path="res://.godot/imported/dambana.png-7e924c1dc464cadc02033179837b28de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lupa.png"
-dest_files=["res://.godot/imported/lupa.png-b7fff169c42cf07949e270a8b15e4ec5.ctex"]
+source_file="res://assets/cards/dambana.png"
+dest_files=["res://.godot/imported/dambana.png-7e924c1dc464cadc02033179837b28de.ctex"]
 
 [params]
 

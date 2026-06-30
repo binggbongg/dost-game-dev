@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpqgukrcl0nu8"
-path="res://.godot/imported/lahi.png-70594440fc68780340488cf2ec2e02ae.ctex"
+uid="uid://b76bdemmxy8k"
+path="res://.godot/imported/kidlat.png-f23b34d190ee345a29efb4f2757c4891.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lahi.png"
-dest_files=["res://.godot/imported/lahi.png-70594440fc68780340488cf2ec2e02ae.ctex"]
+source_file="res://assets/cards/kidlat.png"
+dest_files=["res://.godot/imported/kidlat.png-f23b34d190ee345a29efb4f2757c4891.ctex"]
 
 [params]
 
