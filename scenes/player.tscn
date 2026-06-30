@@ -66,8 +66,8 @@ autoplay = "idle"
 shape = SubResource("CapsuleShape2D_fjrip")
 
 [node name="HealthBar" parent="." unique_id=1324304240 instance=ExtResource("3_dqkch")]
-offset_left = -22.571428
-offset_top = -23.857141
-offset_right = 90.42857
-offset_bottom = -8.8571415
+offset_left = -26.714283
+offset_top = -25.42857
+offset_right = 106.85715
+offset_bottom = -9.35714
 scale = Vector2(0.4, 0.4)

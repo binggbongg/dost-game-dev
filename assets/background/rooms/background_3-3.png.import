@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb20wv3a5717v"
-path="res://.godot/imported/background_level3_miniboss1.png-27919016e4803cced8855b534d603806.ctex"
+uid="uid://c4vu03g4vlhr0"
+path="res://.godot/imported/background_3-3.png-eac647b1af48ca7b89fc0f3f9e91d1d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/rooms/background_level3_miniboss1.png"
-dest_files=["res://.godot/imported/background_level3_miniboss1.png-27919016e4803cced8855b534d603806.ctex"]
+source_file="res://assets/background/rooms/background_3-3.png"
+dest_files=["res://.godot/imported/background_3-3.png-eac647b1af48ca7b89fc0f3f9e91d1d5.ctex"]
 
 [params]
 
