@@ -55,6 +55,13 @@ height = 32.0
 scale = Vector2(7, 7)
 script = ExtResource("1_qhqgy")
 
+[node name="HealthBar" parent="." unique_id=1324304240 instance=ExtResource("3_dqkch")]
+offset_left = -18.57143
+offset_top = -24.85714
+offset_right = 39.42857
+offset_bottom = -11.85714
+scale = Vector2(0.6, 0.6)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=899859160]
 sprite_frames = SubResource("SpriteFrames_fjrip")
 animation = &"idle"
@@ -64,10 +71,3 @@ autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=441799477]
 shape = SubResource("CapsuleShape2D_fjrip")
-
-[node name="HealthBar" parent="." unique_id=1324304240 instance=ExtResource("3_dqkch")]
-offset_left = -26.714283
-offset_top = -25.42857
-offset_right = 106.85715
-offset_bottom = -9.35714
-scale = Vector2(0.4, 0.4)

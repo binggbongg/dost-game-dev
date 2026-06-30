@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://6t8x0728x5hf"]
 
-[ext_resource type="Texture2D" uid="uid://dl4n5jvgmyyjs" path="res://assets/temporary/spellbook_btn.png" id="1_r4hf1"]
+[ext_resource type="Texture2D" uid="uid://bob36fd0gsx8p" path="res://assets/ui/shop/spellbook_icon.png" id="1_0gyfp"]
 [ext_resource type="Script" uid="uid://bnw77vey0ywo1" path="res://script/ui/spellboook_button.gd" id="2_c0cx3"]
 
 [node name="spellbook" type="TextureButton" unique_id=1664093449]
 offset_left = 3.0
 offset_top = 5.0
-offset_right = 163.0
-offset_bottom = 223.0
-texture_normal = ExtResource("1_r4hf1")
+offset_right = 67.0
+offset_bottom = 69.0
+texture_normal = ExtResource("1_0gyfp")
 script = ExtResource("2_c0cx3")

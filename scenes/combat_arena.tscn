@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dec55ypyjwcil" path="res://script/combat_arena.gd" id="1_bsdi3"]
 [ext_resource type="PackedScene" uid="uid://llpuudtu6wyv" path="res://scenes/player.tscn" id="1_wa2ja"]
 [ext_resource type="PackedScene" uid="uid://d21de5id2a0gx" path="res://scenes/enemy/enemy_1.tscn" id="2_bsdi3"]
-[ext_resource type="Script" uid="uid://dk7pgn5mfw31k" path="res://script/player.gd" id="3_t4nkh"]
 
 [node name="CombatArena" type="Node2D" unique_id=439901724]
 script = ExtResource("1_bsdi3")
@@ -13,4 +12,3 @@ position = Vector2(1300, 350)
 
 [node name="Player" parent="." unique_id=1294632288 instance=ExtResource("1_wa2ja")]
 position = Vector2(600, 350)
-script = ExtResource("3_t4nkh")
