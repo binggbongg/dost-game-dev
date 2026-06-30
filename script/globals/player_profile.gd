@@ -3,7 +3,7 @@ signal profile_updated # Emitted when name, character, or rank changes
 signal coins_changed(new_amount: int)
 
 var current_phase: int = 1
-var current_level: int = 2
+var current_level: int = 1
 
 var level_database = {
 	"1-1": {

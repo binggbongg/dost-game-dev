@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://cf0pyigiayyeg"]
+
+[ext_resource type="Texture2D" uid="uid://ci6i2bwtfvasp" path="res://assets/temporary/map_bg.png" id="1_82dt2"]
+[ext_resource type="Script" uid="uid://bemoscy4adyh" path="res://script/ui/map.gd" id="1_s72bc"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="2_314dn"]
+[ext_resource type="Texture2D" uid="uid://c8rlw861jbxef" path="res://assets/temporary/end_turn.png" id="2_i0gsi"]
+[ext_resource type="PackedScene" uid="uid://bw7k5221ej7ii" path="res://scenes/level_previews/preview_phase_1.tscn" id="2_t14ch"]
+[ext_resource type="PackedScene" uid="uid://dcxviw3ekcy4k" path="res://scenes/level_previews/preview_phase_2.tscn" id="3_ev0yy"]
+[ext_resource type="PackedScene" uid="uid://dyhvhgchy6owy" path="res://scenes/level_previews/preview_phase_3.tscn" id="4_3yoho"]
+
+[node name="Map" type="Control" unique_id=142484164]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s72bc")
+phase1 = ExtResource("2_t14ch")
+phase2 = ExtResource("3_ev0yy")
+phase3 = ExtResource("4_3yoho")
+
+[node name="Background" type="TextureRect" parent="." unique_id=495273800]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_82dt2")
+
+[node name="Title" type="RichTextLabel" parent="." unique_id=956497268]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.98300004
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 71.0
+offset_right = -1093.3601
+offset_bottom = -796.0
+theme_override_fonts/normal_font = ExtResource("2_314dn")
+theme_override_font_sizes/normal_font_size = 80
+text = "The Land of the Iron City"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="Node2D" parent="." unique_id=560113213]
+
+[node name="Phase1" type="TextureButton" parent="Buttons" unique_id=1622936125]
+offset_left = 724.0
+offset_top = 644.0
+offset_right = 857.0
+offset_bottom = 777.0
+texture_normal = ExtResource("2_i0gsi")
+
+[node name="Phase2" type="TextureButton" parent="Buttons" unique_id=437314485]
+offset_left = 1174.0
+offset_top = 606.0
+offset_right = 1307.0
+offset_bottom = 739.0
+texture_normal = ExtResource("2_i0gsi")
+
+[node name="Phase3" type="TextureButton" parent="Buttons" unique_id=1813737107]
+offset_left = 1299.0
+offset_top = 243.0
+offset_right = 1432.0
+offset_bottom = 376.0
+texture_normal = ExtResource("2_i0gsi")
+
+[node name="Labels" type="Node2D" parent="." unique_id=1214762967]
+
+[node name="Phase1" type="RichTextLabel" parent="Labels" unique_id=98132479]
+offset_left = 701.0
+offset_top = 783.0
+offset_right = 894.0
+offset_bottom = 855.0
+theme_override_fonts/normal_font = ExtResource("2_314dn")
+theme_override_font_sizes/normal_font_size = 50
+text = "Phase 1"
+
+[node name="Phase2" type="RichTextLabel" parent="Labels" unique_id=189005444]
+offset_left = 1155.0
+offset_top = 751.0
+offset_right = 1348.0
+offset_bottom = 823.0
+theme_override_fonts/normal_font = ExtResource("2_314dn")
+theme_override_font_sizes/normal_font_size = 50
+text = "Phase 2"
+
+[node name="Phase3" type="RichTextLabel" parent="Labels" unique_id=884953015]
+offset_left = 1271.0
+offset_top = 388.0
+offset_right = 1464.0
+offset_bottom = 460.0
+theme_override_fonts/normal_font = ExtResource("2_314dn")
+theme_override_font_sizes/normal_font_size = 50
+text = "Phase 3"

@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://cy31dctcq2m2k" path="res://script/battle_manager.gd" id="4_fh0io"]
 [ext_resource type="PackedScene" uid="uid://cvgehqahw2e4x" path="res://scenes/menus/spellbook.tscn" id="4_m00rq"]
 [ext_resource type="PackedScene" uid="uid://b14yvyrmb0h2b" path="res://scenes/ui/inventory_button.tscn" id="5_68ib6"]
-[ext_resource type="Script" uid="uid://dnlgpixkm0s8o" path="res://script/ui/timer_bar.gd" id="5_brv20"]
 [ext_resource type="PackedScene" uid="uid://bmn31kgxbdlkg" path="res://scenes/ui/pause_button.tscn" id="6_7d7pp"]
 [ext_resource type="PackedScene" uid="uid://b5jq54loh7tw7" path="res://scenes/menus/pause_menu.tscn" id="7_e5nfq"]
 
@@ -26,6 +25,7 @@ grow_vertical = 2
 texture = ExtResource("1_x4si1")
 
 [node name="LowerBackground" type="ColorRect" parent="." unique_id=1535264395]
+visible = false
 offset_left = -44.0
 offset_top = 480.0
 offset_right = 1957.0
@@ -40,7 +40,6 @@ theme_override_font_sizes/font_size = 30
 max_value = 40.0
 step = 1.0
 show_percentage = false
-script = ExtResource("5_brv20")
 
 [node name="TimeText" type="Label" parent="TimerBar" unique_id=1944965971]
 layout_mode = 0

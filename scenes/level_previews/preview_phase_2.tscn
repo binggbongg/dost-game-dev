@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dcxviw3ekcy4k"]
+
+[ext_resource type="Script" uid="uid://da2oeh0l25ddt" path="res://script/preview_phase.gd" id="1_fnwds"]
+[ext_resource type="Texture2D" uid="uid://d1oekugphync4" path="res://assets/temporary/level_preview.png" id="1_ld471"]
+[ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="2_fnwds"]
+[ext_resource type="Texture2D" uid="uid://26yniv7ld3ya" path="res://assets/temporary/play_button.png" id="3_e77cd"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_73c11"]
+
+[node name="Preview_Phase2" type="Control" unique_id=684956544]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fnwds")
+phase_number = 2
+
+[node name="Background" type="TextureRect" parent="." unique_id=2090813972]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ld471")
+
+[node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("2_fnwds")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 203.0
+offset_bottom = 292.0
+
+[node name="Title" type="RichTextLabel" parent="." unique_id=100139269]
+layout_mode = 0
+offset_left = 629.0
+offset_top = 127.0
+offset_right = 1233.0
+offset_bottom = 244.0
+theme_override_fonts/normal_font = ExtResource("4_73c11")
+theme_override_font_sizes/normal_font_size = 70
+text = "Phase 2 levels"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelDescription" type="RichTextLabel" parent="." unique_id=1749124558]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 434.0
+offset_right = 1225.0
+offset_bottom = 520.0
+theme_override_fonts/normal_font = ExtResource("4_73c11")
+theme_override_font_sizes/normal_font_size = 40
+text = "Phase 2 level 1 begins here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="." unique_id=1025482983]
+layout_mode = 0
+offset_left = 844.0
+offset_top = 547.0
+offset_right = 887.0
+offset_bottom = 568.8
+scale = Vector2(4, 4)
+texture_normal = ExtResource("3_e77cd")
