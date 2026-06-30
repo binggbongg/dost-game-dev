@@ -21,7 +21,6 @@ func set_item(id: String):
 	$Marker2D.add_child(visual_node)
 	
 
-	visual_node.scale = Vector2(0.25, 0.25) 
 	visual_node.position = Vector2.ZERO 
 
 	if visual_node.has_method("apply_data"):

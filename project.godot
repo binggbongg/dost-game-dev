@@ -27,6 +27,8 @@ UIManager="*res://script/globals/ui_manager.gd"
 ShopManager="*res://script/globals/shop_manager.gd"
 ManaManager="*uid://bq06oex8xu486"
 BattleEvents="*uid://d3ojlq3odosqy"
+AudioManager="*uid://d3im66uqs6wge"
+SceneTransition="*uid://c13y30hlw4iug"
 
 [display]
 
