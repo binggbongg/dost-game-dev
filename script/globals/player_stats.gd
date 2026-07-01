@@ -19,6 +19,7 @@ func reset_health():
 
 func take_damage(amount: int):
 	current_health = max(0, current_health - amount)
+	PlayerProfile.run_damage_taken += amount
 	health_changed.emit(current_health)
 	
 	print("player took ", amount, " damage. health: ", current_health)

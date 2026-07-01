@@ -2,14 +2,17 @@
 
 [ext_resource type="Script" uid="uid://c0w2femtfhvyh" path="res://script/ui/play.gd" id="1_14hys"]
 [ext_resource type="AudioStream" uid="uid://df1gcjroxeyx6" path="res://data/SoundData/bgm/game_start.wav" id="2_bweju"]
+[ext_resource type="PackedScene" uid="uid://lq3tmvb8ajg0" path="res://scenes/menus/lounge.tscn" id="3_0wcnn"]
 [ext_resource type="PackedScene" uid="uid://di1evjdy75pxt" path="res://scenes/menus/register_account.tscn" id="4_0wcnn"]
 [ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="4_bweju"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_ivt2f"]
+[ext_resource type="PackedScene" uid="uid://btnk1nc2mvnsk" path="res://scenes/story/intro.tscn" id="5_0xjr7"]
 [ext_resource type="Texture2D" uid="uid://26yniv7ld3ya" path="res://assets/temporary/play_button.png" id="5_hcoq6"]
 [ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="7_0wcnn"]
 [ext_resource type="Texture2D" uid="uid://qp5803g1mrc1" path="res://assets/temporary/on.png" id="7_6wpdt"]
 [ext_resource type="Texture2D" uid="uid://dmei84moikr28" path="res://assets/ui/shop/setting_icon.png" id="7_57ra1"]
 [ext_resource type="Texture2D" uid="uid://dxjw6iahv7nqt" path="res://assets/temporary/off.png" id="8_0wcnn"]
+[ext_resource type="PackedScene" uid="uid://dnv63h23touyw" path="res://scenes/menus/login_account.tscn" id="9_ifrkh"]
 [ext_resource type="Texture2D" uid="uid://ctjhgkc78lwkd" path="res://assets/temporary/continue.png" id="11_pcbjq"]
 [ext_resource type="Texture2D" uid="uid://b8unkrg5rgnjl" path="res://assets/temporary/leaderboard.png" id="12_6wpdt"]
 [ext_resource type="Texture2D" uid="uid://bd10btbxwtrh4" path="res://assets/temporary/exit_button.png" id="13_0wcnn"]
@@ -117,7 +120,9 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_14hys")
 menu_bgm = ExtResource("2_bweju")
+lounge = ExtResource("3_0wcnn")
 setup = ExtResource("4_0wcnn")
+intro = ExtResource("5_0xjr7")
 
 [node name="Background" type="AnimatedSprite2D" parent="." unique_id=839548396]
 position = Vector2(959.7222, 539.5)
@@ -162,6 +167,7 @@ offset_top = 21.0
 offset_right = 1887.0
 offset_bottom = 145.0
 script = ExtResource("7_0wcnn")
+menu_to_open = ExtResource("9_ifrkh")
 
 [node name="Audio_Off" type="AnimatedSprite2D" parent="Settings" unique_id=96538401]
 position = Vector2(75, 61)

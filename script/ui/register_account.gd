@@ -21,7 +21,7 @@ func register_user():
 		message_label.text = "Passwords do not match. Try Again."
 		return
 	
-	var result := await Talo.player_auth.register(username.text.strip_edges(), password.text.strip_edges())
+	var result = await Talo.player_auth.register(username.text.strip_edges(), password.text.strip_edges())
 	if result != OK:
 		match Talo.player_auth.last_error.get_code():
 			TaloAuthError.ErrorCode.IDENTIFIER_TAKEN:

@@ -14,7 +14,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x02yk")
-phase_number = 1
 
 [node name="Background" type="TextureRect" parent="." unique_id=2090813972]
 layout_mode = 1
