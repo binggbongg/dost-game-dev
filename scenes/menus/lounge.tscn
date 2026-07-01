@@ -17,6 +17,12 @@
 [ext_resource type="Texture2D" uid="uid://dbvqdnaxhvjp6" path="res://assets/player/girl_idol.png" id="14_vh42r"]
 [ext_resource type="Texture2D" uid="uid://2y6frsn7uoor" path="res://assets/temporary/undo.png" id="15_f46hc"]
 [ext_resource type="PackedScene" uid="uid://dm1hwrj3l0df6" path="res://scenes/menus/play.tscn" id="17_rxnbf"]
+[ext_resource type="Texture2D" uid="uid://bkl7747ki6nl5" path="res://assets/player/boy_idle.png" id="18_8m8uw"]
+[ext_resource type="Script" uid="uid://ci07xjxb5qtyr" path="res://script/ui/open_scene.gd" id="18_le30m"]
+[ext_resource type="PackedScene" uid="uid://cf0pyigiayyeg" path="res://scenes/menus/map.tscn" id="19_8m8uw"]
+[ext_resource type="Texture2D" uid="uid://4eehpc74bxfg" path="res://assets/temporary/cast.png" id="20_ngrx0"]
+[ext_resource type="PackedScene" uid="uid://divonvi0kh3o3" path="res://scenes/story/storyUI.tscn" id="22_ngrx0"]
+[ext_resource type="Texture2D" uid="uid://ddvwjs6qs7xc7" path="res://assets/temporary/arrow.png" id="23_v8p6s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0xjr7"]
 atlas = ExtResource("4_6cgmx")
@@ -65,6 +71,26 @@ font_size = 34
 [sub_resource type="LabelSettings" id="LabelSettings_le30m"]
 font = ExtResource("13_y4gql")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng6g8"]
+atlas = ExtResource("18_8m8uw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yieg"]
+atlas = ExtResource("18_8m8uw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g40ly"]
+atlas = ExtResource("18_8m8uw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu812"]
+atlas = ExtResource("18_8m8uw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77jkr"]
+atlas = ExtResource("18_8m8uw")
+region = Rect2(128, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_8m8uw"]
 atlas = ExtResource("14_vh42r")
 region = Rect2(0, 0, 32, 32)
@@ -89,6 +115,26 @@ region = Rect2(128, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ng6g8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yieg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g40ly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu812")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77jkr")
+}],
+"loop": true,
+"name": &"idle_boy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8m8uw")
 }, {
 "duration": 1.0,
@@ -105,6 +151,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_girl",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8rf1m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_v8p6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_v8p6s")
+}],
+"loop": true,
+"name": &"arrow_up",
 "speed": 5.0
 }]
 
@@ -126,16 +186,32 @@ limit_right = 4270
 limit_bottom = 1214
 limit_smoothed = true
 
+[node name="Node2D" type="Control" parent="." unique_id=2033325511]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 412.0
+offset_top = 599.00006
+offset_right = 412.0
+offset_bottom = 599.00006
+scale = Vector2(13.382811, 13.382811)
+
 [node name="Buttons" type="CanvasLayer" parent="." unique_id=129866597]
 
-[node name="Lore" type="TextureButton" parent="Buttons" unique_id=1944594900]
+[node name="Content" type="Control" parent="Buttons" unique_id=505607146]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Lore" type="TextureButton" parent="Buttons/Content" unique_id=1944594900]
+layout_mode = 0
 offset_left = 1294.0
 offset_top = 60.0
 offset_right = 1471.0
 offset_bottom = 222.0
 script = ExtResource("3_uygx0")
 
-[node name="TextureRect" type="TextureRect" parent="Buttons/Lore" unique_id=1544803444]
+[node name="TextureRect" type="TextureRect" parent="Buttons/Content/Lore" unique_id=1544803444]
 layout_mode = 0
 offset_left = -59.0
 offset_top = -67.0
@@ -145,14 +221,15 @@ mouse_filter = 2
 texture = ExtResource("6_3tcgj")
 expand_mode = 1
 
-[node name="Trophy" type="TextureButton" parent="Buttons" unique_id=415183698]
+[node name="Trophy" type="TextureButton" parent="Buttons/Content" unique_id=415183698]
+layout_mode = 0
 offset_left = 1106.0
 offset_top = 67.0
 offset_right = 1283.0
 offset_bottom = 229.0
 script = ExtResource("3_uygx0")
 
-[node name="TextureRect" type="TextureRect" parent="Buttons/Trophy" unique_id=1365825466]
+[node name="TextureRect" type="TextureRect" parent="Buttons/Content/Trophy" unique_id=1365825466]
 layout_mode = 0
 offset_left = -48.0
 offset_top = -76.0
@@ -162,13 +239,14 @@ mouse_filter = 2
 texture = ExtResource("5_vh42r")
 expand_mode = 1
 
-[node name="PVP" type="TextureButton" parent="Buttons" unique_id=1039800473]
+[node name="PVP" type="TextureButton" parent="Buttons/Content" unique_id=1039800473]
+layout_mode = 0
 offset_left = 1367.0
 offset_top = 923.0
 offset_right = 1531.0
 offset_bottom = 1081.0
 
-[node name="TextureRect" type="TextureRect" parent="Buttons/PVP" unique_id=59886956]
+[node name="TextureRect" type="TextureRect" parent="Buttons/Content/PVP" unique_id=59886956]
 layout_mode = 0
 offset_left = -34.0
 offset_top = -68.0
@@ -177,32 +255,35 @@ offset_bottom = 216.0
 mouse_filter = 2
 texture = ExtResource("5_3k8m0")
 
-[node name="Settings" type="TextureButton" parent="Buttons" unique_id=133290181]
+[node name="Settings" type="TextureButton" parent="Buttons/Content" unique_id=133290181]
+layout_mode = 0
 offset_left = 1759.0
 offset_top = 67.0
 offset_right = 1895.0
 offset_bottom = 191.0
 script = ExtResource("3_uygx0")
 
-[node name="Audio_Off" type="AnimatedSprite2D" parent="Buttons/Settings" unique_id=1147222571]
+[node name="Audio_Off" type="AnimatedSprite2D" parent="Buttons/Content/Settings" unique_id=1147222571]
 position = Vector2(66.999985, 57)
 scale = Vector2(1.9843755, 1.9843755)
 sprite_frames = SubResource("SpriteFrames_2p8cd")
 autoplay = "default"
 
-[node name="shop" parent="Buttons" unique_id=1664093449 instance=ExtResource("3_tenb1")]
+[node name="shop" parent="Buttons/Content" unique_id=1664093449 instance=ExtResource("3_tenb1")]
+layout_mode = 0
 offset_left = 1514.0
 offset_top = 841.0
 offset_right = 1743.0
 offset_bottom = 1125.0
 
-[node name="spellbook" parent="Buttons" unique_id=2063430236 instance=ExtResource("3_gl360")]
+[node name="spellbook" parent="Buttons/Content" unique_id=2063430236 instance=ExtResource("3_gl360")]
+layout_mode = 0
 offset_left = 1766.0
 offset_top = 923.0
 offset_right = 1878.0
 offset_bottom = 1075.0
 
-[node name="TextureRect2" type="TextureRect" parent="Buttons/spellbook" unique_id=1104742764]
+[node name="TextureRect2" type="TextureRect" parent="Buttons/Content/spellbook" unique_id=1104742764]
 layout_mode = 0
 offset_left = -35.00003
 offset_top = -24.999985
@@ -212,20 +293,23 @@ rotation = 0.057595864
 mouse_filter = 2
 texture = ExtResource("4_gl360")
 
-[node name="CoinDisplay" parent="Buttons" unique_id=1244250796 instance=ExtResource("8_12qkm")]
+[node name="CoinDisplay" parent="Buttons/Content" unique_id=1244250796 instance=ExtResource("8_12qkm")]
+layout_mode = 0
 offset_left = 1580.0
 offset_top = 95.0
 offset_right = 1730.0
 offset_bottom = 145.0
 
-[node name="CharacterSpotlight" type="TextureRect" parent="Buttons" unique_id=59332521]
+[node name="CharacterSpotlight" type="TextureRect" parent="Buttons/Content" unique_id=59332521]
+layout_mode = 0
 offset_left = -30.0
 offset_top = -29.0
 offset_right = 842.0
 offset_bottom = 1240.9899
 texture = ExtResource("3_2p8cd")
 
-[node name="PlayerName" type="Label" parent="Buttons" unique_id=770426345]
+[node name="PlayerName" type="Label" parent="Buttons/Content" unique_id=770426345]
+layout_mode = 0
 offset_left = 214.0
 offset_top = 325.0
 offset_right = 598.0
@@ -235,7 +319,8 @@ label_settings = SubResource("LabelSettings_rxnbf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PLayerLevel" type="Label" parent="Buttons" unique_id=1393023250]
+[node name="PLayerLevel" type="Label" parent="Buttons/Content" unique_id=1393023250]
+layout_mode = 0
 offset_left = 201.0
 offset_top = 820.0
 offset_right = 604.0
@@ -246,7 +331,8 @@ label_settings = SubResource("LabelSettings_8s6re")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PLayerLevel2" type="Label" parent="Buttons" unique_id=1226604120]
+[node name="PLayerLevel2" type="Label" parent="Buttons/Content" unique_id=1226604120]
+layout_mode = 0
 offset_left = 197.0
 offset_top = 823.0
 offset_right = 600.0
@@ -256,15 +342,15 @@ label_settings = SubResource("LabelSettings_le30m")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Character" type="AnimatedSprite2D" parent="Buttons" unique_id=954473690]
+[node name="Character" type="AnimatedSprite2D" parent="Buttons/Content" unique_id=954473690]
 position = Vector2(412, 599.00006)
 scale = Vector2(13.382811, 13.382811)
 sprite_frames = SubResource("SpriteFrames_6g71x")
-animation = &"idle_girl"
+animation = &"idle_boy"
 autoplay = "idle_girl"
-frame_progress = 0.5510747
 
-[node name="TextureButton" type="TextureButton" parent="Buttons" unique_id=668035586]
+[node name="Back" type="TextureButton" parent="Buttons/Content" unique_id=668035586]
+layout_mode = 0
 offset_left = 78.0
 offset_top = 63.0
 offset_right = 211.0
@@ -272,3 +358,240 @@ offset_bottom = 196.0
 texture_normal = ExtResource("15_f46hc")
 script = ExtResource("3_uygx0")
 menu_to_open = ExtResource("17_rxnbf")
+
+[node name="Chapters" type="TextureButton" parent="." unique_id=1487799225]
+offset_left = 1806.0
+offset_top = 1599.0
+offset_right = 1976.0
+offset_bottom = 1745.0
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="TextureButton" type="TextureRect" parent="Chapters" unique_id=1454905494]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 4.0
+offset_right = 160.0
+offset_bottom = 137.0
+mouse_filter = 2
+texture = ExtResource("20_ngrx0")
+
+[node name="Chapters2" type="TextureButton" parent="." unique_id=2045396379]
+offset_left = 1455.0
+offset_top = 1305.0
+offset_right = 1625.0
+offset_bottom = 1451.0
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="TextureButton" type="TextureRect" parent="Chapters2" unique_id=116132514]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 4.0
+offset_right = 155.0
+offset_bottom = 137.0
+mouse_filter = 2
+texture = ExtResource("20_ngrx0")
+
+[node name="Chapters3" type="TextureButton" parent="." unique_id=1637828946]
+offset_left = 1031.0
+offset_top = 1494.0
+offset_right = 1201.0
+offset_bottom = 1640.0
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="TextureButton" type="TextureRect" parent="Chapters3" unique_id=1477938325]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 143.0
+offset_bottom = 137.0
+mouse_filter = 2
+texture = ExtResource("20_ngrx0")
+
+[node name="Chapters4" type="TextureButton" parent="." unique_id=20228541]
+offset_left = 2064.0
+offset_top = 149.0
+offset_right = 2234.0
+offset_bottom = 295.0
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="TextureButton" type="TextureRect" parent="Chapters4" unique_id=1570723398]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 143.0
+offset_bottom = 137.0
+mouse_filter = 2
+texture = ExtResource("20_ngrx0")
+
+[node name="Chapters5" type="TextureButton" parent="." unique_id=1103691283]
+offset_left = 2440.0
+offset_top = 688.0
+offset_right = 2610.0
+offset_bottom = 834.0
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="TextureButton" type="TextureRect" parent="Chapters5" unique_id=523521440]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 143.0
+offset_bottom = 137.0
+mouse_filter = 2
+texture = ExtResource("20_ngrx0")
+
+[node name="Chapters6" type="TextureButton" parent="." unique_id=1430926937]
+offset_left = 2755.0
+offset_top = 441.0
+offset_right = 2925.0
+offset_bottom = 587.0
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="TextureButton" type="TextureRect" parent="Chapters6" unique_id=992036638]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 143.0
+offset_bottom = 137.0
+mouse_filter = 2
+texture = ExtResource("20_ngrx0")
+
+[node name="Chapters7" type="TextureButton" parent="." unique_id=948900191]
+offset_left = 3150.0
+offset_top = 711.0
+offset_right = 3320.0
+offset_bottom = 857.0
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="TextureButton" type="TextureRect" parent="Chapters7" unique_id=1561772181]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 143.0
+offset_bottom = 137.0
+mouse_filter = 2
+texture = ExtResource("20_ngrx0")
+
+[node name="Chapters8" type="TextureButton" parent="." unique_id=1488943352]
+offset_left = 3496.0
+offset_top = 278.0
+offset_right = 3666.0
+offset_bottom = 424.0
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="TextureButton" type="TextureRect" parent="Chapters8" unique_id=1571231975]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 143.0
+offset_bottom = 137.0
+mouse_filter = 2
+texture = ExtResource("20_ngrx0")
+
+[node name="Chapters9" type="TextureButton" parent="." unique_id=1227364910]
+offset_left = 3226.0
+offset_top = 1000.0
+offset_right = 3396.0
+offset_bottom = 1146.0
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="TextureButton" type="TextureRect" parent="Chapters9" unique_id=885660946]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 143.0
+offset_bottom = 137.0
+mouse_filter = 2
+texture = ExtResource("20_ngrx0")
+
+[node name="Chapters10" type="TextureButton" parent="." unique_id=800057535]
+offset_left = 2772.0
+offset_top = 1146.0
+offset_right = 2942.0
+offset_bottom = 1292.0
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="TextureButton" type="TextureRect" parent="Chapters10" unique_id=193612414]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 143.0
+offset_bottom = 137.0
+mouse_filter = 2
+texture = ExtResource("20_ngrx0")
+
+[node name="Chapters11" type="TextureButton" parent="." unique_id=89277563]
+offset_left = 2515.0
+offset_top = 1341.0
+offset_right = 2685.0
+offset_bottom = 1487.0
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="TextureButton" type="TextureRect" parent="Chapters11" unique_id=1981679850]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 143.0
+offset_bottom = 137.0
+mouse_filter = 2
+texture = ExtResource("20_ngrx0")
+
+[node name="Chapters12" type="TextureButton" parent="." unique_id=1885022203]
+offset_left = 2408.0
+offset_top = 1705.0
+offset_right = 2578.0
+offset_bottom = 1851.0
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="TextureButton" type="TextureRect" parent="Chapters12" unique_id=1147501560]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 143.0
+offset_bottom = 137.0
+mouse_filter = 2
+texture = ExtResource("20_ngrx0")
+
+[node name="Chapters13" type="TextureButton" parent="." unique_id=1967808796]
+offset_left = 3026.0
+offset_top = 1623.0
+offset_right = 3196.0
+offset_bottom = 1769.0
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="TextureButton" type="TextureRect" parent="Chapters13" unique_id=1889110573]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 143.0
+offset_bottom = 137.0
+mouse_filter = 2
+texture = ExtResource("20_ngrx0")
+
+[node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=1670448932]
+
+[node name="Dimmer" type="ColorRect" parent="TutorialLayer" unique_id=986855807]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="CanvasLayer" parent="TutorialLayer" unique_id=153786700 instance=ExtResource("22_ngrx0")]
+
+[node name="arrow_up" type="AnimatedSprite2D" parent="TutorialLayer" unique_id=2064920646]
+sprite_frames = SubResource("SpriteFrames_8rf1m")
+animation = &"arrow_up"

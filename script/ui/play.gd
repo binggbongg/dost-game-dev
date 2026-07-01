@@ -21,7 +21,7 @@ extends Control
 var next_scene: PackedScene 
 
 func _ready():
-	if PlayerProfile.player_name == "Default Player":
+	if PlayerProfile.player_name != "Default Player":
 		next_scene = setup
 		new_game_button.visible = true
 		continue_button.visible = false

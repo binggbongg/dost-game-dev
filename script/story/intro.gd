@@ -55,12 +55,10 @@ func advance_line():
 func display_current_line():
 	text_label.text = lore_data.lines[line_index]
 	
-	# Typewriter effect
 	text_label.visible_ratio = 0
 	var t = create_tween()
 	t.tween_property(text_label, "visible_ratio", 1.0, 1.5)
 	
-	# Play the "click" sound from your manager
 	AudioManager.play_ui_sound("click")
 
 func finish_intro():

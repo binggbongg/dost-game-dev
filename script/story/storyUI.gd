@@ -8,10 +8,22 @@ signal sequence_finished
 @onready var name_label = $DialogueBox/Panel/NameLabel
 @onready var portrait = $Portrait
 @onready var display: AnimatedSprite2D = $AnimatedSprite2D
-
+@onready var panel = $DialogueBox/Panel # Ensure this path matches your scene
 var current_data: StoryData
 var line_index: int = 0
 
+
+func set_dialogue_position(at_bottom: bool):
+	if at_bottom:
+		panel.anchor_top = 1.0
+		panel.anchor_bottom = 1.0
+		panel.offset_top = -250 # Adjust based on your panel height
+		panel.offset_bottom = -20
+	else:
+		panel.anchor_top = 0.0
+		panel.anchor_bottom = 0.0
+		panel.offset_top = 20
+		panel.offset_bottom = 250
 func _ready():
 	hide()
 
@@ -20,7 +32,6 @@ func start_sequence(data: StoryData):
 	line_index = 0
 	show()
 	
-	# Logic for Lore vs Tutorial
 	background.visible = (data.type == StoryData.Type.LORE)
 	dimmer.visible = (data.type == StoryData.Type.TUTORIAL)
 	

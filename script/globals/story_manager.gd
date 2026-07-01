@@ -4,7 +4,7 @@ var ui: CanvasLayer
 
 func play(data: StoryData):
 	if not ui:
-		var scene = load("res://scenes/ui/StoryUI.tscn")
+		var scene = load("res://scenes/story/StoryUI.tscn")
 		ui = scene.instantiate()
 		get_tree().root.add_child(ui)
 	
