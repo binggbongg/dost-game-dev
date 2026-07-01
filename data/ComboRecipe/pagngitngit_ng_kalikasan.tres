@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ComboRecipe" format=3 uid="uid://dhxc16bdpbpjy"]
+
+[ext_resource type="Script" uid="uid://v3nevm1wba6b" path="res://data/combo_recipe.gd" id="1_2s3vx"]
+
+[resource]
+script = ExtResource("1_2s3vx")
+name = "Pagngitngit ng Kalikasan"
+description = "The untamed world answers every wound with overwhelming vengeance."
+elements = Array[int]([2, 2, 2])
+metadata/_custom_type_script = "uid://v3nevm1wba6b"

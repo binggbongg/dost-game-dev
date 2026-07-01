@@ -14,8 +14,15 @@ position = Vector2(200, 930)
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_grtmt")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1153749474]
+[node name="Sprite2D" type="TextureRect" parent="." unique_id=1183415287]
+custom_minimum_size = Vector2(200, 300)
+offset_left = -97.49999
+offset_top = -143.74998
+offset_right = 97.50001
+offset_bottom = 140.25002
 texture = ExtResource("1_iecja")
+expand_mode = 1
+stretch_mode = 3
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1726607769]
 

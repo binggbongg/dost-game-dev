@@ -10,6 +10,7 @@ var card_being_dragged
 var is_hovering_on_card
 var drag_offset: Vector2 = Vector2.ZERO
 var hovered_card
+
 @onready var turn_manager: Node2D = $"../TurnManager"
 @onready var player_hand = $"../PlayerHand"
 @onready var mana_manager: Node2D = $"../ManaManager"

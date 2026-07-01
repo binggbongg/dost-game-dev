@@ -6,8 +6,7 @@ var max_mana: int = 25
 var max_health: int = 50
 var current_health: int
 
-@onready var health_bar:UIHealthBar
-
+@onready var health_bar:UIStatusBar
 
 func _ready() -> void:
 	current_health = max_health

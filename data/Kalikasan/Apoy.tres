@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://3w5lqpxhexu6"]
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_15b2u"]
-[ext_resource type="Texture2D" uid="uid://ckhvdhptlxrvq" path="res://assets/temporary/KALIKASAN.png" id="2_mcbsl"]
+[ext_resource type="Texture2D" uid="uid://bi34g4qewqv2n" path="res://assets/cards/apoy.png" id="2_cc56d"]
 
 [resource]
 script = ExtResource("1_15b2u")
@@ -10,5 +10,5 @@ description = "Basic fire attack."
 category = 2
 damage = 3.0
 mana_cost = 3
-texture = ExtResource("2_mcbsl")
+texture = ExtResource("2_cc56d")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

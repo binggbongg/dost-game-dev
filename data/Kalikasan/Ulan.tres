@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://bgjgs5sh1hj08"]
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_gukyd"]
-[ext_resource type="Texture2D" uid="uid://ckhvdhptlxrvq" path="res://assets/temporary/KALIKASAN.png" id="2_51xnm"]
+[ext_resource type="Texture2D" uid="uid://ce3bsk5ewn25d" path="res://assets/cards/ulan.png" id="2_55x57"]
 
 [resource]
 script = ExtResource("1_gukyd")
@@ -11,5 +11,5 @@ category = 2
 damage = 3.0
 heal = 2
 mana_cost = 3
-texture = ExtResource("2_51xnm")
+texture = ExtResource("2_55x57")
 metadata/_custom_type_script = "uid://cv07myeubhuht"
