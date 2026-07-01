@@ -1,0 +1,195 @@
+[gd_scene format=3 uid="uid://dnv63h23touyw"]
+
+[ext_resource type="Script" uid="uid://blg4o5ipkpt4k" path="res://script/ui/login_account.gd" id="1_aejm6"]
+[ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="1_l88xf"]
+[ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="2_pyuj4"]
+[ext_resource type="PackedScene" uid="uid://di1evjdy75pxt" path="res://scenes/menus/register_account.tscn" id="2_rxaha"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_mh3e2"]
+[ext_resource type="Texture2D" uid="uid://dhiy0u8u5y80b" path="res://assets/temporary/Assets_UI.png" id="4_cc4ba"]
+[ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="5_vuu3o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ut1y"]
+atlas = ExtResource("1_l88xf")
+region = Rect2(0, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6ipy"]
+atlas = ExtResource("1_l88xf")
+region = Rect2(192, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fagkd"]
+atlas = ExtResource("1_l88xf")
+region = Rect2(384, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhkl8"]
+atlas = ExtResource("1_l88xf")
+region = Rect2(576, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71t1l"]
+atlas = ExtResource("1_l88xf")
+region = Rect2(768, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr35c"]
+atlas = ExtResource("1_l88xf")
+region = Rect2(960, 0, 192, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o7e00"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ut1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6ipy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fagkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhkl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71t1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr35c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_r8lcr"]
+colors = PackedColorArray(0, 0, 0, 0, 0.13333334, 0.047058824, 0, 0.8784314)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mh3e2"]
+gradient = SubResource("Gradient_r8lcr")
+fill_from = Vector2(0.4871795, 0)
+fill_to = Vector2(0.48376068, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_417cv"]
+atlas = ExtResource("4_cc4ba")
+region = Rect2(444, 454, 298, 123)
+
+[node name="LoginAccount" type="Control" unique_id=413018492]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_aejm6")
+scene = ExtResource("2_rxaha")
+
+[node name="Background" type="Node2D" parent="." unique_id=1309525119]
+
+[node name="AnimatedBG" type="AnimatedSprite2D" parent="Background" unique_id=408774780]
+position = Vector2(960, 540)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_o7e00")
+autoplay = "default"
+
+[node name="Gradient" type="TextureRect" parent="Background" unique_id=1606147460]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_mh3e2")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1678492429]
+layout_mode = 0
+offset_left = 570.0
+offset_top = 156.0
+offset_right = 1333.0
+offset_bottom = 864.0
+color = Color(0.5022987, 0.24747545, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=322527703]
+layout_mode = 0
+offset_left = 733.0
+offset_top = 217.0
+offset_right = 1194.0
+offset_bottom = 307.0
+theme_override_fonts/font = ExtResource("2_pyuj4")
+theme_override_font_sizes/font_size = 50
+text = "Login Account"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Placeholder1" type="Node" parent="." unique_id=1474830691]
+
+[node name="UsernameLabel" type="Label" parent="Placeholder1" unique_id=1842331212]
+offset_left = 719.0
+offset_top = 325.0
+offset_right = 1214.0
+offset_bottom = 368.0
+theme_override_fonts/font = ExtResource("2_pyuj4")
+theme_override_font_sizes/font_size = 30
+text = "Username"
+vertical_alignment = 1
+
+[node name="InputUsername" type="LineEdit" parent="Placeholder1" unique_id=459858381]
+offset_left = 719.0
+offset_top = 373.0
+offset_right = 1215.0
+offset_bottom = 423.0
+theme_override_fonts/font = ExtResource("3_mh3e2")
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Enter username"
+
+[node name="Placeholder2" type="Node" parent="." unique_id=1193616408]
+
+[node name="PasswordLabel" type="Label" parent="Placeholder2" unique_id=1078144199]
+offset_left = 719.0
+offset_top = 455.0
+offset_right = 1214.0
+offset_bottom = 498.0
+theme_override_fonts/font = ExtResource("2_pyuj4")
+theme_override_font_sizes/font_size = 30
+text = "Password"
+vertical_alignment = 1
+
+[node name="InputPassword" type="LineEdit" parent="Placeholder2" unique_id=2047264579]
+offset_left = 719.0
+offset_top = 505.0
+offset_right = 1215.0
+offset_bottom = 555.0
+theme_override_fonts/font = ExtResource("3_mh3e2")
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Enter username"
+
+[node name="LoginButton" type="TextureButton" parent="." unique_id=604496443]
+layout_mode = 0
+offset_left = 835.0
+offset_top = 650.0
+offset_right = 1133.0
+offset_bottom = 773.0
+scale = Vector2(0.8, 0.8)
+texture_normal = SubResource("AtlasTexture_417cv")
+
+[node name="RegisterLabel" type="Label" parent="." unique_id=1264889390]
+layout_mode = 0
+offset_left = 923.0
+offset_top = 580.0
+offset_right = 1214.0
+offset_bottom = 610.0
+mouse_filter = 0
+theme_override_fonts/font = ExtResource("3_mh3e2")
+theme_override_font_sizes/font_size = 25
+text = "Register here"
+horizontal_alignment = 2
+
+[node name="MessageLabel" type="Label" parent="." unique_id=1737471786]
+layout_mode = 0
+offset_left = 572.0
+offset_top = 778.0
+offset_right = 1334.0
+offset_bottom = 803.0
+theme_override_fonts/font = ExtResource("3_mh3e2")
+theme_override_font_sizes/font_size = 20
+text = "sample message here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("5_vuu3o")]
+layout_mode = 0
+offset_left = 586.0
+offset_top = 130.0
+offset_right = 789.0
+offset_bottom = 422.0
+scale = Vector2(0.6, 0.6)

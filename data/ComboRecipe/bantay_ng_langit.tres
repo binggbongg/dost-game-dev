@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ComboRecipe" format=3 uid="uid://ctapcsg4y2p6w"]
+
+[ext_resource type="Script" uid="uid://v3nevm1wba6b" path="res://data/combo_recipe.gd" id="1_88v51"]
+
+[resource]
+script = ExtResource("1_88v51")
+name = "Bantay_ng_Langit"
+description = "A heavenly guardian stands watch, shielding the chosen from all harm."
+elements = Array[int]([3, 3])
+metadata/_custom_type_script = "uid://v3nevm1wba6b"

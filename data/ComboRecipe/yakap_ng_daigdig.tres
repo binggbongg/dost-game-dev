@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ComboRecipe" format=3 uid="uid://cpomfx3lq8iox"]
+
+[ext_resource type="Script" uid="uid://v3nevm1wba6b" path="res://data/combo_recipe.gd" id="1_3mg6l"]
+
+[resource]
+script = ExtResource("1_3mg6l")
+name = "Yakap ng Daigdig"
+description = "The earth's spirit answers your call, embracing allies and ensnaring foes alike."
+elements = Array[int]([1, 2])
+metadata/_custom_type_script = "uid://v3nevm1wba6b"
