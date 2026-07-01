@@ -23,3 +23,4 @@ func _on_pressed():
 	BattleEvents.special_end_turn_requested.emit()
 	print("End Turn Button Physically Clicked!")
 	end_turn_pressed.emit()
+	AudioManager.play_ui_sound("click")

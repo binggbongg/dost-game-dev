@@ -22,6 +22,8 @@ func open_menu(menu_scene: PackedScene):
 	ui_layer.add_child(current_menu)
 	
 	menu_opened.emit(current_menu.name)
+	AudioManager.play_ui_sound("click")
+
 	print("UIManager: Opened ", current_menu.name)
 
 func close_menu():
@@ -29,6 +31,7 @@ func close_menu():
 		current_menu.queue_free()
 		current_menu = null
 		menu_closed.emit()
+		AudioManager.play_ui_sound("click")
 		print("UIManager: Menu closed")
 
 func toggle_menu(menu_scene: PackedScene):

@@ -43,6 +43,7 @@ func raycast_at_cursor():
 			if turn_manager.current_state == GameEnums.TurnState.PLAYER_ACTION:
 				var card_found = card_manager_reference.get_highest_card(result)
 				if card_found:
+					AudioManager.play_ui_sound("click")
 					card_manager_reference.start_drag(card_found)
 				
 		elif collision_layer == LAYER_DECK:
@@ -59,6 +60,7 @@ func raycast_at_cursor():
 				redo_node.on_click()
 
 func handle_deck_click():
+	AudioManager.play_ui_sound("shuffle")
 	if turn_manager.is_busy: return
 	
 	if turn_manager.current_state == GameEnums.TurnState.DRAW_PHASE:

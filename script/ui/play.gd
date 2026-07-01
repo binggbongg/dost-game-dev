@@ -16,11 +16,12 @@ extends Control
 @onready var audio_button: TextureButton = $Audio
 @onready var audio_icon_on: TextureRect = $Audio/Audio_On
 @onready var audio_icon_off: TextureRect = $Audio/Audio_On2
+@onready var exit: TextureButton = $Exit
 
 var next_scene: PackedScene 
 
 func _ready():
-	if PlayerProfile.player_name == "Default Player":
+	if PlayerProfile.player_name != "Default Player":
 		next_scene = setup
 		new_game_button.visible = true
 		continue_button.visible = false
@@ -39,7 +40,7 @@ func _ready():
 	play_button.pressed.connect(_on_play_pressed)
 	settings_button.pressed.connect(_on_settings_pressed)
 	audio_button.pressed.connect(_on_audio_pressed)
-	
+	exit.pressed.connect(_on_exit_pressed)
 	play_button.mouse_entered.connect(_on_button_hover)
 	settings_button.mouse_entered.connect(_on_button_hover)
 	audio_button.mouse_entered.connect(_on_button_hover)
@@ -48,7 +49,10 @@ func _on_play_pressed():
 	AudioManager.play_ui_sound("click")
 	# Ensure the next_scene variable was actually set
 	if next_scene:
-		SceneTransition.change_scene(next_scene)
+			#CRITICAL! HI AISSHA IF U SEE DIS AFTER MAHUMAN UG REGISTER HAVE THIS NEXT TWO 
+			#LINES ADDED TO UR CODE FOR THE INTRO LORE!
+			
+			SceneTransition.change_scene(next_scene)
 	else:
 		print("Error: next_scene is null! Check Inspector assignments.")
 
@@ -70,3 +74,8 @@ func _update_audio_ui():
 	
 	audio_icon_on.visible = !is_muted
 	audio_icon_off.visible = is_muted
+
+func _on_exit_pressed():
+	AudioManager.play_ui_sound("click")
+	await get_tree().create_timer(0.1).timeout 
+	get_tree().quit()

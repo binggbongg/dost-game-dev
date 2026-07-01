@@ -5,6 +5,7 @@ extends Control
 @onready var confirm_pass = $Placeholder2/Placeholder3/InputCPass
 @onready var message_label = $MessageLabel
 @onready var register_button = $RegisterButton
+@export var next_scene: PackedScene
 
 func _ready() -> void:
 	if message_label:
@@ -29,4 +30,5 @@ func register_user():
 				message_label.text = Talo.player_auth.last_error.get_string()
 	
 	message_label.text = "Registration successful"
+	SceneTransition.change_scene(next_scene)
 	UIManager.close_menu()
