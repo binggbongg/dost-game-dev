@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://xdbig4p2et14"]
+
+[ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="1_r8lcr"]
+[ext_resource type="Texture2D" uid="uid://2y6frsn7uoor" path="res://assets/temporary/undo.png" id="2_qhkl8"]
+[ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="3_71t1l"]
+[ext_resource type="FontFile" uid="uid://df2vd0uxg3gcf" path="res://assets/fonts/PixelifySans-SemiBold.ttf" id="4_jr35c"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="5_w1rm7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ut1y"]
+atlas = ExtResource("1_r8lcr")
+region = Rect2(0, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6ipy"]
+atlas = ExtResource("1_r8lcr")
+region = Rect2(192, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fagkd"]
+atlas = ExtResource("1_r8lcr")
+region = Rect2(384, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhkl8"]
+atlas = ExtResource("1_r8lcr")
+region = Rect2(576, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71t1l"]
+atlas = ExtResource("1_r8lcr")
+region = Rect2(768, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr35c"]
+atlas = ExtResource("1_r8lcr")
+region = Rect2(960, 0, 192, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w1rm7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ut1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6ipy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fagkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhkl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71t1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr35c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_r8lcr"]
+colors = PackedColorArray(0, 0, 0, 0, 0.13333334, 0.047058824, 0, 0.8784314)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1ut1y"]
+gradient = SubResource("Gradient_r8lcr")
+fill_from = Vector2(0.4871795, 0)
+fill_to = Vector2(0.48376068, 1)
+
+[node name="Leaderboard" type="Control" unique_id=879311702]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Node2D" parent="." unique_id=1784625537]
+
+[node name="AnimatedBG" type="AnimatedSprite2D" parent="Background" unique_id=756750779]
+position = Vector2(960, 540)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_w1rm7")
+autoplay = "default"
+frame = 1
+frame_progress = 0.7974256
+
+[node name="Gradient" type="TextureRect" parent="Background" unique_id=1977982183]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_1ut1y")
+
+[node name="BackButton" type="TextureButton" parent="." unique_id=1984174972]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 43.0
+offset_right = 172.0
+offset_bottom = 176.0
+texture_normal = ExtResource("2_qhkl8")
+
+[node name="Title" type="RichTextLabel" parent="." unique_id=619921796]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 37.0
+offset_right = 1388.0
+offset_bottom = 164.0
+theme_override_fonts/normal_font = ExtResource("3_71t1l")
+theme_override_font_sizes/normal_font_size = 100
+text = "Leaderboards"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1693473289]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 306.0
+offset_top = 178.0
+offset_right = -324.0
+offset_bottom = -823.0
+theme_override_constants/separation = 300
+alignment = 1
+
+[node name="RankLabel" type="Label" parent="HBoxContainer" unique_id=651692321]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_jr35c")
+theme_override_font_sizes/font_size = 55
+text = "Rank"
+
+[node name="NameLabel" type="Label" parent="HBoxContainer" unique_id=56537324]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_jr35c")
+theme_override_font_sizes/font_size = 55
+text = "Username"
+
+[node name="ScoreLabel" type="Label" parent="HBoxContainer" unique_id=880588402]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_jr35c")
+theme_override_font_sizes/font_size = 55
+text = "Score"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1421599821]
+layout_mode = 0
+offset_left = 379.0
+offset_top = 261.0
+offset_right = 1519.0
+offset_bottom = 965.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer" unique_id=1446329492]
+layout_mode = 2
+theme_override_constants/separation = 420
+alignment = 1
+
+[node name="RankColumn" type="VBoxContainer" parent="ScrollContainer/HBoxContainer" unique_id=796725897]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/HBoxContainer/RankColumn" unique_id=476615812]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_w1rm7")
+theme_override_font_sizes/font_size = 30
+text = "test 1"
+
+[node name="NameColumn" type="VBoxContainer" parent="ScrollContainer/HBoxContainer" unique_id=693635589]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/HBoxContainer/NameColumn" unique_id=315007061]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_w1rm7")
+theme_override_font_sizes/font_size = 30
+text = "test 2"
+
+[node name="ScoreColumn" type="VBoxContainer" parent="ScrollContainer/HBoxContainer" unique_id=2046318030]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/HBoxContainer/ScoreColumn" unique_id=1015597381]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_w1rm7")
+theme_override_font_sizes/font_size = 30
+text = "test 3"

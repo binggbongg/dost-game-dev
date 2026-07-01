@@ -1,15 +1,22 @@
 [gd_scene format=3 uid="uid://cg6rrinl3k43c"]
 
-[ext_resource type="Texture2D" uid="uid://n6tlgpkgjmq5" path="res://assets/temporary/temp_bg.jpg" id="1_x4si1"]
+[ext_resource type="Texture2D" uid="uid://b67a6h4yy3qud" path="res://assets/background/rooms/background_1-1.png" id="1_brv20"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="2_7d7pp"]
 [ext_resource type="PackedScene" uid="uid://dkbejpdwhc33b" path="res://scenes/combat_arena.tscn" id="2_fh0io"]
 [ext_resource type="PackedScene" uid="uid://6t8x0728x5hf" path="res://scenes/ui/spellbook_button.tscn" id="3_76cw8"]
 [ext_resource type="PackedScene" uid="uid://dirj45q71fos6" path="res://scenes/player_interface.tscn" id="4_68ib6"]
 [ext_resource type="Script" uid="uid://cy31dctcq2m2k" path="res://script/battle_manager.gd" id="4_fh0io"]
 [ext_resource type="PackedScene" uid="uid://cvgehqahw2e4x" path="res://scenes/menus/spellbook.tscn" id="4_m00rq"]
 [ext_resource type="PackedScene" uid="uid://b14yvyrmb0h2b" path="res://scenes/ui/inventory_button.tscn" id="5_68ib6"]
-[ext_resource type="Script" uid="uid://dnlgpixkm0s8o" path="res://script/ui/timer_bar.gd" id="5_brv20"]
 [ext_resource type="PackedScene" uid="uid://bmn31kgxbdlkg" path="res://scenes/ui/pause_button.tscn" id="6_7d7pp"]
-[ext_resource type="PackedScene" uid="uid://b5jq54loh7tw7" path="res://scenes/menus/pause_menu.tscn" id="7_e5nfq"]
+
+[sub_resource type="Gradient" id="Gradient_7d7pp"]
+colors = PackedColorArray(0, 0, 0, 0, 0.12951815, 0.04519721, 1.2032688e-08, 0.8901961)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e5nfq"]
+gradient = SubResource("Gradient_7d7pp")
+fill_from = Vector2(0.45641026, 0)
+fill_to = Vector2(0.48376068, 1)
 
 [node name="Level1" type="Node2D" unique_id=1730621475]
 
@@ -23,30 +30,44 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_x4si1")
+texture = ExtResource("1_brv20")
 
 [node name="LowerBackground" type="ColorRect" parent="." unique_id=1535264395]
+visible = false
 offset_left = -44.0
 offset_top = 480.0
 offset_right = 1957.0
 offset_bottom = 1135.0
-color = Color(0.42871895, 0.00012735397, 0.42871588, 0.63529414)
+color = Color(0.31497598, 0.1455535, 0, 0.41960785)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=93782774]
+offset_left = -47.0
+offset_top = 487.0
+offset_right = 1978.0
+offset_bottom = 1111.0
+texture = SubResource("GradientTexture2D_e5nfq")
 
 [node name="TimerBar" type="ProgressBar" parent="." unique_id=1491666729]
-offset_left = 900.0
-offset_right = 1000.0
-offset_bottom = 30.0
+offset_left = 807.0
+offset_top = 50.0
+offset_right = 1122.0
+offset_bottom = 95.0
 theme_override_font_sizes/font_size = 30
 max_value = 40.0
 step = 1.0
 show_percentage = false
-script = ExtResource("5_brv20")
 
 [node name="TimeText" type="Label" parent="TimerBar" unique_id=1944965971]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 314.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("2_7d7pp")
+theme_override_font_sizes/font_size = 30
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Buttons" type="Node2D" parent="." unique_id=1820597283]
 
@@ -58,21 +79,20 @@ offset_bottom = 208.0
 scale = Vector2(0.6, 0.6)
 
 [node name="spellbook" parent="Buttons" unique_id=1664093449 instance=ExtResource("3_76cw8")]
-offset_left = 160.0
-offset_top = 30.0
-offset_right = 320.0
-offset_bottom = 248.0
-scale = Vector2(0.5, 0.5)
+offset_left = 150.0
+offset_top = 18.0
+offset_right = 214.0
+offset_bottom = 82.0
+scale = Vector2(2, 2)
 scene_to_open = ExtResource("4_m00rq")
 
 [node name="PauseButton" parent="Buttons" unique_id=784340132 instance=ExtResource("6_7d7pp")]
 process_mode = 3
-offset_left = 1780.0
-offset_top = 30.0
-offset_right = 1913.0
-offset_bottom = 163.0
-scale = Vector2(0.8, 0.8)
-pause_screen = ExtResource("7_e5nfq")
+offset_left = 1726.0001
+offset_top = 2.0
+offset_right = 1791.0001
+offset_bottom = 66.0
+scale = Vector2(3, 3)
 
 [node name="BattleManager" type="Node2D" parent="." unique_id=1572491070]
 script = ExtResource("4_fh0io")

@@ -6,8 +6,11 @@ var max_mana: int = 25
 var max_health: int = 50
 var current_health: int
 
+@onready var health_bar:UIStatusBar
+
 func _ready() -> void:
 	current_health = max_health
+	
 	print("player health: ", current_health)
 
 func reset_health():
@@ -25,6 +28,6 @@ func take_damage(amount: int):
 func heal_player(amount):
 	if amount <= 0: return
 	
-	current_health = max(max_health, current_health + max_health)
+	current_health = min(max_health, current_health + max_health)
 	health_changed.emit(current_health)
 	print("player healed")

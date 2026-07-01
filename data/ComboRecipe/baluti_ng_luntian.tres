@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ComboRecipe" format=3 uid="uid://cdsnpvaksqyro"]
+
+[ext_resource type="Script" uid="uid://v3nevm1wba6b" path="res://data/combo_recipe.gd" id="1_vkabs"]
+
+[resource]
+script = ExtResource("1_vkabs")
+name = "Baluti ng Luntian"
+description = "Ancient roots and sacred light weave an unyielding defense."
+elements = Array[int]([2, 3, 2])
+metadata/_custom_type_script = "uid://v3nevm1wba6b"

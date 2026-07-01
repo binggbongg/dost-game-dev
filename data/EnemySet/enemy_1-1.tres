@@ -76,7 +76,7 @@ metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
 [resource]
 script = ExtResource("3_f5gxb")
-enemy_name = "Robocorp"
+enemy_name = "Human with Drone"
 max_health = 50
 enemy_sprite = SubResource("SpriteFrames_h0iia")
 regular_moves = Array[ExtResource("2_t2eve")]([SubResource("Resource_foedf"), SubResource("Resource_wuevy")])

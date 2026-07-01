@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://lq3tmvb8ajg0"]
 
-[ext_resource type="Texture2D" uid="uid://bft0mxxoloyms" path="res://assets/temporary/download.jpg" id="1_1cgml"]
-[ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="2_gl360"]
+[ext_resource type="Texture2D" uid="uid://ci6i2bwtfvasp" path="res://assets/temporary/map_bg.png" id="1_1cgml"]
+[ext_resource type="PackedScene" uid="uid://6t8x0728x5hf" path="res://scenes/ui/spellbook_button.tscn" id="3_gl360"]
 [ext_resource type="PackedScene" uid="uid://bvycxq7tcw1t7" path="res://scenes/ui/shop_button.tscn" id="3_tenb1"]
 
 [node name="Lounge" type="Control" unique_id=799759309]
@@ -20,16 +20,16 @@ texture = ExtResource("1_1cgml")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=315398017]
 
-[node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("2_gl360")]
-layout_mode = 0
-offset_left = -13.0
-offset_top = -69.0
-offset_right = 190.0
-offset_bottom = 223.0
-
 [node name="shop" parent="." unique_id=1664093449 instance=ExtResource("3_tenb1")]
 layout_mode = 0
-offset_left = 1723.0
-offset_top = 826.0
-offset_right = 1918.0
-offset_bottom = 1110.0
+offset_left = 1471.0
+offset_top = 782.0
+offset_right = 1700.0
+offset_bottom = 1066.0
+
+[node name="spellbook" parent="." unique_id=2063430236 instance=ExtResource("3_gl360")]
+layout_mode = 0
+offset_left = 1704.0
+offset_top = 812.0
+offset_right = 1864.0
+offset_bottom = 1030.0

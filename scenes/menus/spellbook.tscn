@@ -1,7 +1,29 @@
 [gd_scene format=3 uid="uid://cvgehqahw2e4x"]
 
-[ext_resource type="Texture2D" uid="uid://duued71ex3xol" path="res://assets/temporary/inventory_bg.webp" id="1_hcklf"]
 [ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="1_pubim"]
+[ext_resource type="Texture2D" uid="uid://dxycjm2n7qvlg" path="res://assets/background/rooms/background_shop1.png" id="2_dfgxp"]
+[ext_resource type="PackedScene" uid="uid://b13ncvuf2dceb" path="res://scenes/menus/spellbook_card_slot.tscn" id="4_focpo"]
+[ext_resource type="Texture2D" uid="uid://b874nuseu5vul" path="res://assets/ui/spellbook/spellbook_book.png" id="4_n8wyq"]
+[ext_resource type="Texture2D" uid="uid://c5l76bbrwe1ee" path="res://assets/temporary/tab_kalikasan.png" id="6_n8wyq"]
+[ext_resource type="Texture2D" uid="uid://mqbgl2en2v0y" path="res://assets/ui/spellbook/spellbook_green_bookmark.png" id="7_cf21n"]
+[ext_resource type="Texture2D" uid="uid://crmdns3mwxyxj" path="res://assets/temporary/tab_tanglaw.png" id="7_mgxdx"]
+[ext_resource type="Texture2D" uid="uid://cococi3nwpqan" path="res://assets/temporary/tab_diwa.png" id="8_vgybv"]
+[ext_resource type="Texture2D" uid="uid://c5t544jq1um42" path="res://assets/ui/spellbook/spellbook_blue_bookmark.png" id="9_lqdag"]
+[ext_resource type="Texture2D" uid="uid://d084wcxh87fxa" path="res://assets/temporary/tab_lahi.png" id="9_qwtax"]
+[ext_resource type="Texture2D" uid="uid://djjsdp0b4o26v" path="res://assets/temporary/tab_combo.png" id="10_2uart"]
+[ext_resource type="Texture2D" uid="uid://ddypymhkc2atp" path="res://assets/temporary/LEFT.png" id="10_n8wyq"]
+[ext_resource type="Texture2D" uid="uid://c2ijib67ou3nb" path="res://assets/ui/spellbook/spellbook_yellow_bookmark.png" id="11_7agw1"]
+[ext_resource type="Texture2D" uid="uid://dihs2mn726ssg" path="res://assets/temporary/RIGHT.png" id="11_mgxdx"]
+[ext_resource type="Script" uid="uid://dacmhq3qtdlpg" path="res://script/ui/spellbook_manager.gd" id="12_vgybv"]
+[ext_resource type="Texture2D" uid="uid://ckffja4gdctvj" path="res://assets/ui/spellbook/spellbook_red_bookmark.png" id="13_4ffkf"]
+[ext_resource type="PackedScene" uid="uid://nrf002bvasid" path="res://scenes/menus/combo_slot.tscn" id="13_qwtax"]
+[ext_resource type="Texture2D" uid="uid://bturl8bl73yof" path="res://assets/ui/spellbook/spellbook_purple_bookmark.png" id="15_166nj"]
+[ext_resource type="Texture2D" uid="uid://c5esexsxqsto6" path="res://assets/ui/spellbook/spellbook_back_button.png" id="17_ndbtc"]
+[ext_resource type="Texture2D" uid="uid://cjrcuo56wi0fc" path="res://assets/ui/spellbook/spellbook_next_button.png" id="19_3i8rq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2uart"]
+font_size = 21
+shadow_size = 12
 
 [node name="Spellbook" type="Control" unique_id=1875600038]
 layout_mode = 3
@@ -11,13 +33,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="SpellbookManager" type="Node2D" parent="." unique_id=280941533]
+script = ExtResource("12_vgybv")
+
 [node name="TextureRect" type="TextureRect" parent="." unique_id=455572607]
 layout_mode = 0
 offset_right = 1919.0
 offset_bottom = 1094.0
-texture = ExtResource("1_hcklf")
+texture = ExtResource("2_dfgxp")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1725266803]
+visible = false
 layout_mode = 0
 offset_left = 303.0
 offset_top = 295.0
@@ -33,3 +59,182 @@ offset_left = -13.0
 offset_top = -69.0
 offset_right = 190.0
 offset_bottom = 223.0
+
+[node name="SpellbookBg" type="Sprite2D" parent="." unique_id=174915693]
+position = Vector2(1008, 545)
+scale = Vector2(10.000002, 10)
+texture = ExtResource("4_n8wyq")
+
+[node name="CardSlots" type="Node2D" parent="." unique_id=368073542]
+position = Vector2(295, 317)
+
+[node name="SpellbookCardSlotLeft" parent="CardSlots" unique_id=845631153 instance=ExtResource("4_focpo")]
+offset_left = 15.0
+offset_top = -84.0
+offset_right = 757.0
+offset_bottom = 551.0
+metadata/_edit_use_anchors_ = true
+
+[node name="SpellbookCardSlotRight" parent="CardSlots" unique_id=2017068616 instance=ExtResource("4_focpo")]
+offset_left = 676.0
+offset_top = -83.0
+offset_right = 1509.0
+offset_bottom = 498.0
+
+[node name="Bookmarks" type="Node2D" parent="." unique_id=1545144624]
+
+[node name="Kalikasan" type="TextureButton" parent="Bookmarks" unique_id=2006518696]
+offset_left = 169.0
+offset_top = 99.0
+offset_right = 364.0
+offset_bottom = 383.0
+texture_normal = ExtResource("6_n8wyq")
+
+[node name="K" type="TextureRect" parent="Bookmarks/Kalikasan" unique_id=2083790439]
+layout_mode = 0
+offset_left = 19.000008
+offset_top = 15.000004
+offset_right = 30.000008
+offset_bottom = 22.000004
+scale = Vector2(12.214286, 12.214286)
+mouse_filter = 2
+texture = ExtResource("7_cf21n")
+
+[node name="Tanglaw" type="TextureButton" parent="Bookmarks" unique_id=1812581569]
+offset_left = 166.0
+offset_top = 194.0
+offset_right = 361.0
+offset_bottom = 478.0
+texture_normal = ExtResource("7_mgxdx")
+
+[node name="T" type="TextureRect" parent="Bookmarks/Tanglaw" unique_id=123609631]
+layout_mode = 0
+offset_left = 13.000008
+offset_top = 14.999996
+offset_right = 24.000008
+offset_bottom = 21.999996
+scale = Vector2(12.214286, 12.214286)
+mouse_filter = 2
+texture = ExtResource("9_lqdag")
+
+[node name="Diwa" type="TextureButton" parent="Bookmarks" unique_id=1456634340]
+offset_left = 157.0
+offset_top = 296.0
+offset_right = 352.0
+offset_bottom = 580.0
+texture_normal = ExtResource("8_vgybv")
+
+[node name="D" type="TextureRect" parent="Bookmarks/Diwa" unique_id=2000124008]
+layout_mode = 0
+offset_left = 13.000008
+offset_top = 16.999996
+offset_right = 24.000008
+offset_bottom = 23.999996
+scale = Vector2(12.214286, 12.214286)
+mouse_filter = 2
+texture = ExtResource("11_7agw1")
+
+[node name="Lahi" type="TextureButton" parent="Bookmarks" unique_id=979844623]
+offset_left = 147.0
+offset_top = 404.0
+offset_right = 342.0
+offset_bottom = 688.0
+texture_normal = ExtResource("9_qwtax")
+
+[node name="L" type="TextureRect" parent="Bookmarks/Lahi" unique_id=150251389]
+layout_mode = 0
+offset_left = 12.000008
+offset_top = 12.999996
+offset_right = 23.000008
+offset_bottom = 19.999996
+scale = Vector2(12.214286, 12.214286)
+mouse_filter = 2
+texture = ExtResource("13_4ffkf")
+
+[node name="Combo" type="TextureButton" parent="Bookmarks" unique_id=781123908]
+offset_left = 138.0
+offset_top = 510.0
+offset_right = 333.0
+offset_bottom = 794.0
+texture_normal = ExtResource("10_2uart")
+
+[node name="C" type="TextureRect" parent="Bookmarks/Combo" unique_id=1475183577]
+layout_mode = 0
+offset_left = 12.000008
+offset_top = 14.999996
+offset_right = 23.000008
+offset_bottom = 21.999996
+scale = Vector2(12.214286, 12.214286)
+mouse_filter = 2
+texture = ExtResource("15_166nj")
+
+[node name="Pagination" type="Node2D" parent="." unique_id=393529831]
+
+[node name="Left" type="TextureButton" parent="Pagination" unique_id=182413592]
+offset_left = 780.0
+offset_top = 900.0
+offset_right = 1053.0
+offset_bottom = 1184.0
+texture_normal = ExtResource("10_n8wyq")
+
+[node name="Back" type="TextureRect" parent="Pagination/Left" unique_id=981705762]
+layout_mode = 0
+offset_left = 63.000004
+offset_top = 104.0
+offset_right = 72.0
+offset_bottom = 112.0
+scale = Vector2(8.937504, 8.937504)
+mouse_filter = 2
+texture = ExtResource("17_ndbtc")
+
+[node name="Right" type="TextureButton" parent="Pagination" unique_id=907833044]
+offset_left = 1015.0
+offset_top = 898.0
+offset_right = 1210.0
+offset_bottom = 1182.0
+texture_normal = ExtResource("11_mgxdx")
+
+[node name="Next" type="TextureRect" parent="Pagination/Right" unique_id=347790322]
+layout_mode = 0
+offset_left = 60.00002
+offset_top = 106.0
+offset_right = 69.000015
+offset_bottom = 114.0
+scale = Vector2(8.937504, 8.937504)
+mouse_filter = 2
+texture = ExtResource("19_3i8rq")
+
+[node name="Label" type="Label" parent="Pagination" unique_id=1861420774]
+offset_left = 959.0
+offset_top = 1025.0
+offset_right = 1054.0
+offset_bottom = 1055.0
+text = "1 out of 5"
+label_settings = SubResource("LabelSettings_2uart")
+
+[node name="ComboSlot" type="Node2D" parent="." unique_id=1066137679]
+visible = false
+
+[node name="ComboSlotLeftTop" parent="ComboSlot" unique_id=1928747533 instance=ExtResource("13_qwtax")]
+offset_left = 259.0
+offset_top = 49.0
+offset_right = 259.0
+offset_bottom = 49.0
+
+[node name="ComboSlotLeftBottom" parent="ComboSlot" unique_id=1959456125 instance=ExtResource("13_qwtax")]
+offset_left = 259.0
+offset_top = 469.0
+offset_right = 259.0
+offset_bottom = 469.0
+
+[node name="ComboSlotRightTop" parent="ComboSlot" unique_id=1552715495 instance=ExtResource("13_qwtax")]
+offset_left = 954.0
+offset_top = 41.0
+offset_right = 954.0
+offset_bottom = 41.0
+
+[node name="ComboSlotRightBottom" parent="ComboSlot" unique_id=4670608 instance=ExtResource("13_qwtax")]
+offset_left = 946.0
+offset_top = 469.0
+offset_right = 946.0
+offset_bottom = 469.0

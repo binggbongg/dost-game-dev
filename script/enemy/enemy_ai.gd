@@ -31,7 +31,7 @@ func setup_enemy():
 		animated_sprite.play("idle")
 	
 	choose_next_intent()
-	print(name, " initialized and prepared initial intent: ", chosen_intent.name)
+	#print(name, " initialized and prepared initial intent: ", chosen_intent.name)
 
 func take_damage(amount):
 	current_health = max(0, current_health - amount)
@@ -56,9 +56,7 @@ func choose_next_intent():
 		if behavior_data.special_moves.size() > 0:
 			chosen_intent = get_special_moves()
 	
-	if chosen_intent:
-		print(name, " has locked in intent: ", chosen_intent.name, " (Type: ", chosen_intent.type, ")")
-	else:
+	if not chosen_intent:
 		print("CRITICAL ERROR: ", name, " could not choose ANY move! Check your .tres resource settings.")
 
 func get_special_moves():
@@ -131,7 +129,7 @@ func trigger_cooldown(move):
 
 func tick_cooldowns():
 	if special_cooldowns.size() == 0:
-		return	
+		return
 	
 	for move_name in special_cooldowns.keys():
 		if special_cooldowns[move_name] > 0:

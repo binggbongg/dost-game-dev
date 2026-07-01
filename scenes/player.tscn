@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://llpuudtu6wyv"]
 
 [ext_resource type="Texture2D" uid="uid://dbvqdnaxhvjp6" path="res://assets/player/girl_idol.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://dk7pgn5mfw31k" path="res://script/player.gd" id="1_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://coub0g7uaj6k1" path="res://scenes/ui/health_bar.tscn" id="3_dqkch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -51,6 +53,14 @@ height = 32.0
 
 [node name="Player" type="Node2D" unique_id=1294632288]
 scale = Vector2(7, 7)
+script = ExtResource("1_qhqgy")
+
+[node name="HealthBar" parent="." unique_id=1324304240 instance=ExtResource("3_dqkch")]
+offset_left = -18.57143
+offset_top = -24.85714
+offset_right = 39.42857
+offset_bottom = -11.85714
+scale = Vector2(0.6, 0.6)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=899859160]
 sprite_frames = SubResource("SpriteFrames_fjrip")
