@@ -30,6 +30,7 @@ BattleEvents="*uid://d3ojlq3odosqy"
 Talo="*uid://bpmdn8oc34pg7"
 AudioManager="*uid://d3im66uqs6wge"
 SceneTransition="*uid://c13y30hlw4iug"
+StoryManager="*uid://c0rvyt3mqmeto"
 
 [display]
 

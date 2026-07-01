@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://divonvi0kh3o3"]
+
+[ext_resource type="Script" uid="uid://cimu6spqdj8rc" path="res://script/story/storyUI.gd" id="1_gftur"]
+[ext_resource type="Texture2D" uid="uid://b67a6h4yy3qud" path="res://assets/background/rooms/background_1-1.png" id="2_2hrnm"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_2hrnm"]
+[ext_resource type="Texture2D" uid="uid://wykepq7lmmxh" path="res://assets/temporary/scroll.png" id="4_inpc1"]
+[ext_resource type="Texture2D" uid="uid://bi56vrf4j558c" path="res://assets/temporary/draft_part_one.png" id="5_agqun"]
+[ext_resource type="Texture2D" uid="uid://dbfdbay7w8doe" path="res://assets/temporary/draft_part_two.png" id="6_msc64"]
+[ext_resource type="Texture2D" uid="uid://crur6r1l1ajk6" path="res://assets/temporary/part_three.png" id="7_8h8sl"]
+[ext_resource type="Texture2D" uid="uid://bigkl0pjyvuf7" path="res://assets/temporary/part_four.png" id="8_sloyd"]
+[ext_resource type="Texture2D" uid="uid://bk5rdxtho70il" path="res://assets/temporary/part_five.png" id="9_urih4"]
+[ext_resource type="Texture2D" uid="uid://dg2qqaxr7nhpl" path="res://assets/temporary/part_siz.png" id="10_mlkn2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ymd72"]
+font = ExtResource("3_2hrnm")
+font_size = 29
+
+[sub_resource type="LabelSettings" id="LabelSettings_rrrj2"]
+font = ExtResource("3_2hrnm")
+font_size = 36
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ycgse"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_agqun")
+}],
+"loop": true,
+"name": &"lore 1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_msc64")
+}],
+"loop": true,
+"name": &"lore 2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_8h8sl")
+}],
+"loop": true,
+"name": &"lore 3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_sloyd")
+}],
+"loop": true,
+"name": &"lore 4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_urih4")
+}],
+"loop": true,
+"name": &"lore 5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_mlkn2")
+}],
+"loop": true,
+"name": &"lore 6",
+"speed": 5.0
+}]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=153786700]
+script = ExtResource("1_gftur")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1306323752]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2hrnm")
+
+[node name="Dimmer" type="ColorRect" parent="." unique_id=1364385443]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="DialogueBox" type="Control" parent="." unique_id=1161655313]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1909.0
+offset_bottom = 1081.0
+
+[node name="Panel" type="Panel" parent="DialogueBox" unique_id=1383475601]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 772.0
+offset_right = 1814.0
+offset_bottom = 1039.0
+
+[node name="TextLabel" type="Label" parent="DialogueBox/Panel" unique_id=1893403387]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 63.0
+offset_right = 1696.0
+offset_bottom = 200.0
+text = "This is a sample dialogue"
+label_settings = SubResource("LabelSettings_ymd72")
+autowrap_mode = 2
+
+[node name="NameLabel" type="Label" parent="DialogueBox/Panel" unique_id=1668047581]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 20.0
+offset_right = 1640.0
+offset_bottom = 65.0
+text = "Aissha"
+label_settings = SubResource("LabelSettings_rrrj2")
+autowrap_mode = 2
+
+[node name="Portrait" type="TextureRect" parent="." unique_id=2089851814]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1188772259]
+offset_left = 124.0
+offset_top = -590.0
+offset_right = 1682.0
+offset_bottom = 1679.0872
+texture = ExtResource("4_inpc1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=755147829]
+position = Vector2(879.00006, 513)
+scale = Vector2(0.34090918, 0.3409091)
+sprite_frames = SubResource("SpriteFrames_ycgse")
+animation = &"lore 1"

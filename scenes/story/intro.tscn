@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://btnk1nc2mvnsk"]
+
+[ext_resource type="Script" uid="uid://dunh5iej4tx4g" path="res://script/story/intro.gd" id="1_c6j4x"]
+[ext_resource type="Texture2D" uid="uid://b67a6h4yy3qud" path="res://assets/background/rooms/background_1-1.png" id="2_bchp6"]
+[ext_resource type="Resource" uid="uid://dlkt6qvastnrv" path="res://data/StoryData/IntroLore.tres" id="2_sdojk"]
+[ext_resource type="PackedScene" uid="uid://bp1vipbbyp64f" path="res://scenes/menus/setup.tscn" id="3_g6k38"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_sdojk"]
+[ext_resource type="Texture2D" uid="uid://wykepq7lmmxh" path="res://assets/temporary/scroll.png" id="4_g6k38"]
+[ext_resource type="Texture2D" uid="uid://bi56vrf4j558c" path="res://assets/temporary/draft_part_one.png" id="5_t4sft"]
+[ext_resource type="Texture2D" uid="uid://dbfdbay7w8doe" path="res://assets/temporary/draft_part_two.png" id="6_c1bjo"]
+[ext_resource type="Texture2D" uid="uid://crur6r1l1ajk6" path="res://assets/temporary/part_three.png" id="7_605ih"]
+[ext_resource type="Texture2D" uid="uid://bigkl0pjyvuf7" path="res://assets/temporary/part_four.png" id="8_yl5b4"]
+[ext_resource type="Texture2D" uid="uid://bk5rdxtho70il" path="res://assets/temporary/part_five.png" id="9_qrf87"]
+[ext_resource type="Texture2D" uid="uid://dg2qqaxr7nhpl" path="res://assets/temporary/part_siz.png" id="10_5gkmh"]
+[ext_resource type="Texture2D" uid="uid://bd10btbxwtrh4" path="res://assets/temporary/exit_button.png" id="13_g6k38"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ycgse"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_t4sft")
+}],
+"loop": true,
+"name": &"lore 1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_c1bjo")
+}],
+"loop": true,
+"name": &"lore 2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_605ih")
+}],
+"loop": true,
+"name": &"lore 3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_yl5b4")
+}],
+"loop": true,
+"name": &"lore 4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_qrf87")
+}],
+"loop": true,
+"name": &"lore 5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_5gkmh")
+}],
+"loop": true,
+"name": &"lore 6",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ymd72"]
+font = ExtResource("3_sdojk")
+font_size = 29
+
+[sub_resource type="LabelSettings" id="LabelSettings_rrrj2"]
+font = ExtResource("3_sdojk")
+font_size = 36
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=153786700]
+script = ExtResource("1_c6j4x")
+lore_data = ExtResource("2_sdojk")
+next_scene = ExtResource("3_g6k38")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1306323752]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bchp6")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1188772259]
+offset_left = 86.0
+offset_top = -728.0
+offset_right = 1803.0
+offset_bottom = 1772.6565
+texture = ExtResource("4_g6k38")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=755147829]
+position = Vector2(930, 491)
+scale = Vector2(0.41054788, 0.41054776)
+sprite_frames = SubResource("SpriteFrames_ycgse")
+animation = &"lore 1"
+
+[node name="DialogueBox" type="Control" parent="." unique_id=1161655313]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1909.0
+offset_bottom = 1081.0
+
+[node name="Panel" type="Panel" parent="DialogueBox" unique_id=1383475601]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 772.0
+offset_right = 1814.0
+offset_bottom = 1039.0
+
+[node name="TextLabel" type="Label" parent="DialogueBox/Panel" unique_id=1893403387]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 63.0
+offset_right = 1666.0
+offset_bottom = 241.0
+text = "This is a sample dialogue"
+label_settings = SubResource("LabelSettings_ymd72")
+autowrap_mode = 2
+
+[node name="NameLabel" type="Label" parent="DialogueBox/Panel" unique_id=1668047581]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 22.0
+offset_right = 1645.0
+offset_bottom = 67.0
+text = "???"
+label_settings = SubResource("LabelSettings_rrrj2")
+autowrap_mode = 2
+
+[node name="Skip" type="Button" parent="." unique_id=858947398]
+offset_left = 1746.0
+offset_top = 17.0
+offset_right = 1906.0
+offset_bottom = 116.0
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="Skip" unique_id=523768392]
+texture_filter = 1
+layout_mode = 0
+offset_left = 11.0
+offset_top = 13.0
+offset_right = 142.47824
+offset_bottom = 85.0
+mouse_filter = 2
+texture = ExtResource("13_g6k38")

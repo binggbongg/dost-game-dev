@@ -49,7 +49,10 @@ func _on_play_pressed():
 	AudioManager.play_ui_sound("click")
 	# Ensure the next_scene variable was actually set
 	if next_scene:
-		SceneTransition.change_scene(next_scene)
+			#CRITICAL! HI AISSHA IF U SEE DIS AFTER MAHUMAN UG REGISTER HAVE THIS NEXT TWO 
+			#LINES ADDED TO UR CODE FOR THE INTRO LORE!
+			
+			SceneTransition.change_scene(next_scene)
 	else:
 		print("Error: next_scene is null! Check Inspector assignments.")
 
