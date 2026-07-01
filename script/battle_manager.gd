@@ -16,27 +16,24 @@ extends Node2D
 var active_special_card : Card = null
 var active_special_item_id := ""
 var is_timeout_ending: bool = false
+var is_manually_drawn: bool = false
 
 @export var card_scene: PackedScene = preload("res://scenes/card.tscn")
 @export var pause_scene = preload("res://scenes/menus/pause_menu.tscn")
+
+signal battle_won
 
 # angela ay ni hilabti tanan
 # chat all i can say is it all worked on my end but if mu crash...HIHIHI
 
 func _ready() -> void:
-	# for background
-	if battle_background:
-		var bg_path = PlayerProfile.get_current_bg_path()
-		var new_bg = load(bg_path)
-		if new_bg:
-			battle_background.texture = new_bg
-	
 	BattleEvents.special_card_requested.connect(_on_special_requested)
 	BattleEvents.special_cancel_requested.connect(_on_special_cancel)
 	BattleEvents.special_shuffle_requested.connect(_on_special_shuffle)
 	BattleEvents.special_cast_requested.connect(_on_special_cast)
 	BattleEvents.special_end_turn_requested.connect(_on_special_end_turn)
 	print("BattleManager connected special_cast_requested")
+	
 	if turn_manager:
 		turn_manager.turn_changed.connect(_on_turned_state_changed)
 		print("battle manager connected to turn manager")
@@ -58,6 +55,15 @@ func _process(_delta: float) -> void:
 	else:
 		timer_bar.visible = false
 		timer_bar.value = 0
+
+func setup_enemy(enemy_resource: EnemyBehavior) -> void:
+	if not enemy_resource:
+		print("Received null enemy resource --from battlemanager")
+	
+	if combat_arena and combat_arena.has_method("initialize_arena_enemy"):
+		combat_arena.initialize_arena_enemy(enemy_resource)
+	else:
+		print("something wrong with combat arena --battle manager")
 
 func _on_special_requested(item_id:String):
 	if active_special_card != null:
@@ -181,19 +187,24 @@ func _on_turned_state_changed(new_state: GameEnums.TurnState):
 				is_timeout_ending = false
 			
 			await execute_enemy_turn()
+			
+			var enemy = combat_arena.get_enemy()
+			if enemy and enemy.get("current_health") <= 0:
+				battle_won.emit()
+				return
+			
 			turn_manager.start_player_turn()
 		GameEnums.TurnState.PLAYER_ACTION:
 			print("player turn")
 			start_player_timer()
 			
-			if turn_manager:
-				turn_manager.is_busy = false
+			if turn_manager: turn_manager.is_busy = false
+			if mana_manager: mana_manager.reset_turn_mana()
 			
-			if mana_manager:
-				mana_manager.reset_turn_mana()
-			
-			if player_hand:
+			if not is_manually_drawn:
 				player_hand.replenish_hand()
+			else:
+				is_manually_drawn = false
 			
 			await get_tree().process_frame
 			if card_manager:

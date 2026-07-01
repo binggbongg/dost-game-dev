@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://cg6rrinl3k43c"]
 
+[ext_resource type="Script" uid="uid://dpsghyuys5oq1" path="res://script/combat_level.gd" id="1_7d7pp"]
 [ext_resource type="Texture2D" uid="uid://b67a6h4yy3qud" path="res://assets/background/rooms/background_1-1.png" id="1_brv20"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="2_7d7pp"]
+[ext_resource type="Resource" uid="uid://ddc6s25uh7wdt" path="res://data/Levels/level_1-1.tres" id="2_e5nfq"]
 [ext_resource type="PackedScene" uid="uid://dkbejpdwhc33b" path="res://scenes/combat_arena.tscn" id="2_fh0io"]
 [ext_resource type="PackedScene" uid="uid://6t8x0728x5hf" path="res://scenes/ui/spellbook_button.tscn" id="3_76cw8"]
 [ext_resource type="PackedScene" uid="uid://dirj45q71fos6" path="res://scenes/player_interface.tscn" id="4_68ib6"]
 [ext_resource type="Script" uid="uid://cy31dctcq2m2k" path="res://script/battle_manager.gd" id="4_fh0io"]
-[ext_resource type="PackedScene" uid="uid://cvgehqahw2e4x" path="res://scenes/menus/spellbook.tscn" id="4_m00rq"]
 [ext_resource type="PackedScene" uid="uid://b14yvyrmb0h2b" path="res://scenes/ui/inventory_button.tscn" id="5_68ib6"]
 [ext_resource type="PackedScene" uid="uid://bmn31kgxbdlkg" path="res://scenes/ui/pause_button.tscn" id="6_7d7pp"]
 
@@ -19,6 +20,8 @@ fill_from = Vector2(0.45641026, 0)
 fill_to = Vector2(0.48376068, 1)
 
 [node name="Level1" type="Node2D" unique_id=1730621475]
+script = ExtResource("1_7d7pp")
+current_level_data = ExtResource("2_e5nfq")
 
 [node name="Timer" type="Timer" parent="." unique_id=322603772]
 
@@ -32,15 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_brv20")
 
-[node name="LowerBackground" type="ColorRect" parent="." unique_id=1535264395]
-visible = false
-offset_left = -44.0
-offset_top = 480.0
-offset_right = 1957.0
-offset_bottom = 1135.0
-color = Color(0.31497598, 0.1455535, 0, 0.41960785)
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=93782774]
+[node name="LowerBackground" type="TextureRect" parent="." unique_id=93782774]
 offset_left = -47.0
 offset_top = 487.0
 offset_right = 1978.0
@@ -84,7 +79,6 @@ offset_top = 18.0
 offset_right = 214.0
 offset_bottom = 82.0
 scale = Vector2(2, 2)
-scene_to_open = ExtResource("4_m00rq")
 
 [node name="PauseButton" parent="Buttons" unique_id=784340132 instance=ExtResource("6_7d7pp")]
 process_mode = 3
