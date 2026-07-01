@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://heyib34w8xm4"
-path="res://.godot/imported/lunas.png-ba10d3b5a3ce8d3bc67db6986431ff14.ctex"
+uid="uid://b7wvt5v5nj3pc"
+path="res://.godot/imported/yelo.png-513d7d4692cd366262cd644d3038e6f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lunas.png"
-dest_files=["res://.godot/imported/lunas.png-ba10d3b5a3ce8d3bc67db6986431ff14.ctex"]
+source_file="res://assets/cards/yelo.png"
+dest_files=["res://.godot/imported/yelo.png-513d7d4692cd366262cd644d3038e6f2.ctex"]
 
 [params]
 

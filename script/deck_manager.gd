@@ -88,6 +88,7 @@ func redraw_hand():
 	
 	#var battle_manager = get_node_or_null("../../../BattleManager")
 	#if battle_manager and battle_manager.has_method("_on_end_turn_clicked"):
+		#print("accessed battle manager --deck manager")
 		#battle_manager.is_manually_drawn = true
 		#battle_manager._on_end_turn_clicked()
 	#else:

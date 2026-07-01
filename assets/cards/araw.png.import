@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcjuq13jjrnsy"
-path="res://.godot/imported/kuta.png-659968e11fdbc747049780bbc1833fe2.ctex"
+uid="uid://2rqyl6r4m21a"
+path="res://.godot/imported/araw.png-0bfcf92899a58ea756918e00e0dc10ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://kuta.png"
-dest_files=["res://.godot/imported/kuta.png-659968e11fdbc747049780bbc1833fe2.ctex"]
+source_file="res://assets/cards/araw.png"
+dest_files=["res://.godot/imported/araw.png-0bfcf92899a58ea756918e00e0dc10ca.ctex"]
 
 [params]
 

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c0w2femtfhvyh" path="res://script/ui/play.gd" id="1_14hys"]
 [ext_resource type="AudioStream" uid="uid://df1gcjroxeyx6" path="res://data/SoundData/bgm/game_start.wav" id="2_bweju"]
-[ext_resource type="PackedScene" uid="uid://dnv63h23touyw" path="res://scenes/menus/login_account.tscn" id="3_6wpdt"]
 [ext_resource type="PackedScene" uid="uid://di1evjdy75pxt" path="res://scenes/menus/register_account.tscn" id="4_0wcnn"]
 [ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="4_bweju"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_ivt2f"]
@@ -118,7 +117,6 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_14hys")
 menu_bgm = ExtResource("2_bweju")
-lounge = ExtResource("3_6wpdt")
 setup = ExtResource("4_0wcnn")
 
 [node name="Background" type="AnimatedSprite2D" parent="." unique_id=839548396]

@@ -75,12 +75,7 @@ func handle_deck_click():
 		
 		deck_manager.redraw_hand() 
 		
-		var battle_manager = get_node_or_null("../../../BattleManager")
-		if battle_manager:
-			print("is manually drawn now true --input manager")
-			battle_manager.is_manually_drawn = true
-		
 		# 3. Lock interaction immediately so player can see cards but not move them
-		#card_manager_reference.refresh_hand_interaction()
+		card_manager_reference.refresh_hand_interaction()
 		turn_manager.end_player_turn()
 		turn_manager.is_busy = false

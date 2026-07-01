@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dunh5iej4tx4g" path="res://script/story/intro.gd" id="1_c6j4x"]
 [ext_resource type="Texture2D" uid="uid://b67a6h4yy3qud" path="res://assets/background/rooms/background_1-1.png" id="2_bchp6"]
 [ext_resource type="Resource" uid="uid://dlkt6qvastnrv" path="res://data/StoryData/IntroLore.tres" id="2_sdojk"]
-[ext_resource type="PackedScene" uid="uid://bp1vipbbyp64f" path="res://scenes/menus/setup.tscn" id="3_g6k38"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_sdojk"]
 [ext_resource type="Texture2D" uid="uid://wykepq7lmmxh" path="res://assets/temporary/scroll.png" id="4_g6k38"]
 [ext_resource type="Texture2D" uid="uid://bi56vrf4j558c" path="res://assets/temporary/draft_part_one.png" id="5_t4sft"]
@@ -76,7 +75,6 @@ font_size = 36
 [node name="CanvasLayer" type="CanvasLayer" unique_id=153786700]
 script = ExtResource("1_c6j4x")
 lore_data = ExtResource("2_sdojk")
-next_scene = ExtResource("3_g6k38")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1306323752]
 anchors_preset = 15

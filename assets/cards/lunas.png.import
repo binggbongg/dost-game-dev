@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2rqyl6r4m21a"
-path="res://.godot/imported/araw.png-fa180c8c1509d3887a25ac935fac8b44.ctex"
+uid="uid://heyib34w8xm4"
+path="res://.godot/imported/lunas.png-4270a31797e15625d36952c062fba341.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://araw.png"
-dest_files=["res://.godot/imported/araw.png-fa180c8c1509d3887a25ac935fac8b44.ctex"]
+source_file="res://assets/cards/lunas.png"
+dest_files=["res://.godot/imported/lunas.png-4270a31797e15625d36952c062fba341.ctex"]
 
 [params]
 

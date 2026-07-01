@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7wvt5v5nj3pc"
-path="res://.godot/imported/yelo.png-53a2bc1333eb050f8f9f631d7c653b8a.ctex"
+uid="uid://0xqfrr18npye"
+path="res://.godot/imported/baha.png-b17c294bcbe1e32f758d3e2033eb3255.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://yelo.png"
-dest_files=["res://.godot/imported/yelo.png-53a2bc1333eb050f8f9f631d7c653b8a.ctex"]
+source_file="res://assets/cards/baha.png"
+dest_files=["res://.godot/imported/baha.png-b17c294bcbe1e32f758d3e2033eb3255.ctex"]
 
 [params]
 

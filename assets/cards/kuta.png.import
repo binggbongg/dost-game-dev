@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqm6cto27m5gj"
-path="res://.godot/imported/talas.png-9a69ffa6bc31420a9137b47b95193640.ctex"
+uid="uid://bcjuq13jjrnsy"
+path="res://.godot/imported/kuta.png-3dc6ae96df0c6d830f8c69dcc2b9a993.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://talas.png"
-dest_files=["res://.godot/imported/talas.png-9a69ffa6bc31420a9137b47b95193640.ctex"]
+source_file="res://assets/cards/kuta.png"
+dest_files=["res://.godot/imported/kuta.png-3dc6ae96df0c6d830f8c69dcc2b9a993.ctex"]
 
 [params]
 

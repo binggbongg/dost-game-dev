@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bp1vipbbyp64f"]
 
 [ext_resource type="Script" uid="uid://c3uhf5vseirdr" path="res://script/story/setup.gd" id="1_1ga4y"]
-[ext_resource type="PackedScene" uid="uid://lq3tmvb8ajg0" path="res://scenes/menus/lounge.tscn" id="2_4vuuv"]
 [ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="4_0yieg"]
 [ext_resource type="Texture2D" uid="uid://bkl7747ki6nl5" path="res://assets/player/boy_idle.png" id="6_4vuuv"]
 [ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="13_jgyn7"]
@@ -169,7 +168,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_1ga4y")
-lounge_scene = ExtResource("2_4vuuv")
 
 [node name="Background" type="Node2D" parent="." unique_id=1309525119]
 

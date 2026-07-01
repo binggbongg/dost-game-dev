@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://lq3tmvb8ajg0"]
 
 [ext_resource type="Texture2D" uid="uid://ci6i2bwtfvasp" path="res://assets/temporary/map_bg.png" id="1_1cgml"]
-[ext_resource type="Script" uid="uid://0rivha5gykeg" path="res://script/lounge.gd" id="1_ij4pv"]
+[ext_resource type="Script" path="res://script/lounge.gd" id="1_ij4pv"]
 [ext_resource type="Texture2D" uid="uid://dr0x4711m18cr" path="res://assets/temporary/character highlight.png" id="3_2p8cd"]
 [ext_resource type="PackedScene" uid="uid://6t8x0728x5hf" path="res://scenes/ui/spellbook_button.tscn" id="3_gl360"]
 [ext_resource type="PackedScene" uid="uid://bvycxq7tcw1t7" path="res://scenes/ui/shop_button.tscn" id="3_tenb1"]
@@ -16,9 +16,8 @@
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="13_y4gql"]
 [ext_resource type="Texture2D" uid="uid://dbvqdnaxhvjp6" path="res://assets/player/girl_idol.png" id="14_vh42r"]
 [ext_resource type="Texture2D" uid="uid://2y6frsn7uoor" path="res://assets/temporary/undo.png" id="15_f46hc"]
-[ext_resource type="PackedScene" uid="uid://dm1hwrj3l0df6" path="res://scenes/menus/play.tscn" id="17_rxnbf"]
 [ext_resource type="Texture2D" uid="uid://bkl7747ki6nl5" path="res://assets/player/boy_idle.png" id="18_8m8uw"]
-[ext_resource type="Script" uid="uid://ci07xjxb5qtyr" path="res://script/ui/open_scene.gd" id="18_le30m"]
+[ext_resource type="Script" path="res://script/ui/open_scene.gd" id="18_le30m"]
 [ext_resource type="PackedScene" uid="uid://cf0pyigiayyeg" path="res://scenes/menus/map.tscn" id="19_8m8uw"]
 [ext_resource type="Texture2D" uid="uid://4eehpc74bxfg" path="res://assets/temporary/cast.png" id="20_ngrx0"]
 [ext_resource type="PackedScene" uid="uid://divonvi0kh3o3" path="res://scenes/story/storyUI.tscn" id="22_ngrx0"]
@@ -357,7 +356,6 @@ offset_right = 211.0
 offset_bottom = 196.0
 texture_normal = ExtResource("15_f46hc")
 script = ExtResource("3_uygx0")
-menu_to_open = ExtResource("17_rxnbf")
 
 [node name="Chapters" type="TextureButton" parent="." unique_id=1487799225]
 offset_left = 1806.0

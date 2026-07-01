@@ -8,12 +8,8 @@
 [ext_resource type="Script" uid="uid://bvwmfuduvlr8j" path="res://script/turn_manager.gd" id="6_ef8sc"]
 [ext_resource type="Script" uid="uid://bq06oex8xu486" path="res://script/mana_manager.gd" id="7_6627k"]
 [ext_resource type="Script" uid="uid://b11i4yhoqleww" path="res://script/combo_manager.gd" id="8_tpnij"]
-[ext_resource type="PackedScene" uid="uid://c82bq62sx0rqq" path="res://scenes/ui/cast.tscn" id="9_sw6vk"]
 [ext_resource type="PackedScene" uid="uid://b4401vms4r7bc" path="res://scenes/deck.tscn" id="10_nfx06"]
-[ext_resource type="PackedScene" uid="uid://bn3nv1q8fv4kq" path="res://scenes/ui/redo.tscn" id="11_fsphr"]
-[ext_resource type="Script" uid="uid://db6r35qcmakq4" path="res://script/for buttons/redo.gd" id="12_5f8t2"]
 [ext_resource type="PackedScene" uid="uid://cuauet8et8d12" path="res://scenes/playground/card_slot.tscn" id="13_7bqed"]
-[ext_resource type="PackedScene" uid="uid://ddevy8rp7k5s3" path="res://scenes/ui/mana_counter.tscn" id="14_41kfc"]
 [ext_resource type="Texture2D" uid="uid://c8rlw861jbxef" path="res://assets/temporary/end_turn.png" id="14_prrro"]
 [ext_resource type="Script" uid="uid://4e6ld4cyaa3c" path="res://script/for buttons/end_turn_button.gd" id="15_41kfc"]
 [ext_resource type="Texture2D" uid="uid://bx6fyqi0ypknb" path="res://assets/ui/shop/attack_icon.png" id="16_nfx06"]
@@ -63,24 +59,9 @@ script = ExtResource("8_tpnij")
 
 [node name="UI" type="Node2D" parent="." unique_id=1778596181]
 
-[node name="Cast" parent="UI" unique_id=172885607 instance=ExtResource("9_sw6vk")]
-visible = false
-position = Vector2(1510, 620)
-scale = Vector2(0.8, 0.8)
-
 [node name="Deck" parent="UI" unique_id=1967540081 instance=ExtResource("10_nfx06")]
 position = Vector2(140, 920)
 script = null
-
-[node name="Redo" parent="UI" unique_id=1923565615 instance=ExtResource("11_fsphr")]
-visible = false
-position = Vector2(410, 620)
-scale = Vector2(0.8, 0.8)
-script = ExtResource("12_5f8t2")
-
-[node name="ManaCounter" parent="UI" unique_id=2075467322 instance=ExtResource("14_41kfc")]
-visible = false
-position = Vector2(200, 580)
 
 [node name="EndTurn" type="TextureButton" parent="UI" unique_id=178733085]
 offset_left = 1570.0

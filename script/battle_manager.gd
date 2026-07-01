@@ -172,6 +172,11 @@ func _on_turned_state_changed(new_state: GameEnums.TurnState):
 	match new_state:
 		GameEnums.TurnState.ENEMY_TURN:
 			print("enemy turn")
+			
+			battle_timer.stop()
+			if battle_timer.timeout.is_connected(_on_player_turn_timeout):
+				battle_timer.timeout.disconnect(_on_player_turn_timeout)
+			
 			if combo_manager:
 				var active_cards = combo_manager.get_cards_in_slots()
 				for card in active_cards:

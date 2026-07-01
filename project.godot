@@ -31,7 +31,7 @@ Talo="*uid://bpmdn8oc34pg7"
 AudioManager="*uid://d3im66uqs6wge"
 SceneTransition="*uid://c13y30hlw4iug"
 DialogueManager="*uid://c3rodes2l3gxb"
-StoryManager="*uid://c0rvyt3mqmeto"
+StoryManager="*res://script/globals/story_manager.gd"
 
 [display]
 
