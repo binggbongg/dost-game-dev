@@ -24,6 +24,7 @@ func _pressed() -> void:
 		self_modulate = Color(0.3, 0.3, 0.3, 0.8)
 func _on_pressed():
 	print("Cast button pressed")
+	AudioManager.play_ui_sound("click")
 	if turn_manager.is_busy:
 		return
 	var active_cards = combo_manager.get_cards_in_slots()
@@ -38,6 +39,7 @@ func _on_pressed():
 			return
 	print("NORMAL CAST")
 	cast_normal(active_cards)
+	
 func cast_normal(active_cards):
 	if turn_manager.is_busy: return
 	turn_manager.is_busy = true

@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://6t8x0728x5hf" path="res://scenes/ui/spellbook_button.tscn" id="3_76cw8"]
 [ext_resource type="PackedScene" uid="uid://dirj45q71fos6" path="res://scenes/player_interface.tscn" id="4_68ib6"]
 [ext_resource type="Script" uid="uid://cy31dctcq2m2k" path="res://script/battle_manager.gd" id="4_fh0io"]
-[ext_resource type="PackedScene" uid="uid://cvgehqahw2e4x" path="res://scenes/menus/spellbook.tscn" id="4_m00rq"]
 [ext_resource type="PackedScene" uid="uid://b14yvyrmb0h2b" path="res://scenes/ui/inventory_button.tscn" id="5_68ib6"]
 [ext_resource type="PackedScene" uid="uid://bmn31kgxbdlkg" path="res://scenes/ui/pause_button.tscn" id="6_7d7pp"]
+[ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="9_e5nfq"]
+[ext_resource type="Texture2D" uid="uid://dmei84moikr28" path="res://assets/ui/shop/setting_icon.png" id="10_lha2r"]
 
 [sub_resource type="Gradient" id="Gradient_7d7pp"]
 colors = PackedColorArray(0, 0, 0, 0, 0.12951815, 0.04519721, 1.2032688e-08, 0.8901961)
@@ -17,6 +18,42 @@ colors = PackedColorArray(0, 0, 0, 0, 0.12951815, 0.04519721, 1.2032688e-08, 0.8
 gradient = SubResource("Gradient_7d7pp")
 fill_from = Vector2(0.45641026, 0)
 fill_to = Vector2(0.48376068, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xjr7"]
+atlas = ExtResource("10_lha2r")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifrkh"]
+atlas = ExtResource("10_lha2r")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drxk1"]
+atlas = ExtResource("10_lha2r")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvox0"]
+atlas = ExtResource("10_lha2r")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6owa4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xjr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifrkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drxk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvox0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Level1" type="Node2D" unique_id=1730621475]
 
@@ -84,14 +121,13 @@ offset_top = 18.0
 offset_right = 214.0
 offset_bottom = 82.0
 scale = Vector2(2, 2)
-scene_to_open = ExtResource("4_m00rq")
 
 [node name="PauseButton" parent="Buttons" unique_id=784340132 instance=ExtResource("6_7d7pp")]
 process_mode = 3
-offset_left = 1726.0001
-offset_top = 2.0
-offset_right = 1791.0001
-offset_bottom = 66.0
+offset_left = 1591.0
+offset_top = -1.0
+offset_right = 1656.0
+offset_bottom = 63.0
 scale = Vector2(3, 3)
 
 [node name="BattleManager" type="Node2D" parent="." unique_id=1572491070]
@@ -100,3 +136,16 @@ script = ExtResource("4_fh0io")
 [node name="CombatArena" parent="." unique_id=439901724 instance=ExtResource("2_fh0io")]
 
 [node name="PlayerInterface" parent="." unique_id=143692811 instance=ExtResource("4_68ib6")]
+
+[node name="Settings" type="TextureButton" parent="." unique_id=1958819724]
+offset_left = 1751.0
+offset_top = 21.0
+offset_right = 1887.0
+offset_bottom = 145.0
+script = ExtResource("9_e5nfq")
+
+[node name="Audio_Off" type="AnimatedSprite2D" parent="Settings" unique_id=1598970155]
+position = Vector2(74.75005, 77.24994)
+scale = Vector2(2.2421858, 2.2421858)
+sprite_frames = SubResource("SpriteFrames_6owa4")
+autoplay = "default"

@@ -23,7 +23,7 @@ func _process(_delta: float) -> void:
 func _on_pressed():
 	
 	if turn_manager.is_busy: return
-	
+	AudioManager.play_ui_sound("click")
 	var active_cards = combo_manager.get_cards_in_slots()
 	if active_cards.size() > 0:
 		for card in active_cards:

@@ -16,6 +16,7 @@ extends Control
 @onready var audio_button: TextureButton = $Audio
 @onready var audio_icon_on: TextureRect = $Audio/Audio_On
 @onready var audio_icon_off: TextureRect = $Audio/Audio_On2
+@onready var exit: TextureButton = $Exit
 
 var next_scene: PackedScene 
 
@@ -39,7 +40,7 @@ func _ready():
 	play_button.pressed.connect(_on_play_pressed)
 	settings_button.pressed.connect(_on_settings_pressed)
 	audio_button.pressed.connect(_on_audio_pressed)
-	
+	exit.pressed.connect(_on_exit_pressed)
 	play_button.mouse_entered.connect(_on_button_hover)
 	settings_button.mouse_entered.connect(_on_button_hover)
 	audio_button.mouse_entered.connect(_on_button_hover)
@@ -70,3 +71,8 @@ func _update_audio_ui():
 	
 	audio_icon_on.visible = !is_muted
 	audio_icon_off.visible = is_muted
+
+func _on_exit_pressed():
+	AudioManager.play_ui_sound("click")
+	await get_tree().create_timer(0.1).timeout 
+	get_tree().quit()

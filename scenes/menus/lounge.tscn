@@ -1,35 +1,274 @@
 [gd_scene format=3 uid="uid://lq3tmvb8ajg0"]
 
 [ext_resource type="Texture2D" uid="uid://ci6i2bwtfvasp" path="res://assets/temporary/map_bg.png" id="1_1cgml"]
+[ext_resource type="Script" uid="uid://0rivha5gykeg" path="res://script/lounge.gd" id="1_ij4pv"]
+[ext_resource type="Texture2D" uid="uid://dr0x4711m18cr" path="res://assets/temporary/character highlight.png" id="3_2p8cd"]
 [ext_resource type="PackedScene" uid="uid://6t8x0728x5hf" path="res://scenes/ui/spellbook_button.tscn" id="3_gl360"]
 [ext_resource type="PackedScene" uid="uid://bvycxq7tcw1t7" path="res://scenes/ui/shop_button.tscn" id="3_tenb1"]
+[ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="3_uygx0"]
+[ext_resource type="Texture2D" uid="uid://dmei84moikr28" path="res://assets/ui/shop/setting_icon.png" id="4_6cgmx"]
+[ext_resource type="Texture2D" uid="uid://bob36fd0gsx8p" path="res://assets/ui/shop/spellbook_icon.png" id="4_gl360"]
+[ext_resource type="Texture2D" uid="uid://cc3nipjbujmkd" path="res://assets/temporary/battle.png" id="5_3k8m0"]
+[ext_resource type="Texture2D" uid="uid://buemc7yldjape" path="res://assets/temporary/trophy.png" id="5_vh42r"]
+[ext_resource type="Texture2D" uid="uid://dfe143f1tvgxd" path="res://assets/temporary/lore.png" id="6_3tcgj"]
+[ext_resource type="PackedScene" uid="uid://buor4em2o4cfj" path="res://scenes/ui/coin_display.tscn" id="8_12qkm"]
+[ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="12_f46hc"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="13_y4gql"]
+[ext_resource type="Texture2D" uid="uid://dbvqdnaxhvjp6" path="res://assets/player/girl_idol.png" id="14_vh42r"]
+[ext_resource type="Texture2D" uid="uid://2y6frsn7uoor" path="res://assets/temporary/undo.png" id="15_f46hc"]
+[ext_resource type="PackedScene" uid="uid://dm1hwrj3l0df6" path="res://scenes/menus/play.tscn" id="17_rxnbf"]
 
-[node name="Lounge" type="Control" unique_id=799759309]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xjr7"]
+atlas = ExtResource("4_6cgmx")
+region = Rect2(0, 0, 64, 64)
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=753404846]
-layout_mode = 0
-offset_right = 1919.0
-offset_bottom = 1094.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifrkh"]
+atlas = ExtResource("4_6cgmx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drxk1"]
+atlas = ExtResource("4_6cgmx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvox0"]
+atlas = ExtResource("4_6cgmx")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2p8cd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xjr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifrkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drxk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvox0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rxnbf"]
+font = ExtResource("12_f46hc")
+font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_8s6re"]
+font = ExtResource("13_y4gql")
+font_size = 34
+
+[sub_resource type="LabelSettings" id="LabelSettings_le30m"]
+font = ExtResource("13_y4gql")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m8uw"]
+atlas = ExtResource("14_vh42r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngrx0"]
+atlas = ExtResource("14_vh42r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8p6s"]
+atlas = ExtResource("14_vh42r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rf1m"]
+atlas = ExtResource("14_vh42r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y8p0"]
+atlas = ExtResource("14_vh42r")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6g71x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m8uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngrx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8p6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rf1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8y8p0")
+}],
+"loop": true,
+"name": &"idle_girl",
+"speed": 5.0
+}]
+
+[node name="Lounge" type="Node2D" unique_id=590874842]
+script = ExtResource("1_ij4pv")
+
+[node name="Map" type="TextureRect" parent="." unique_id=1061391353]
+offset_right = 640.0
+offset_bottom = 360.0
+scale = Vector2(6.6708336, 6.6708336)
+mouse_filter = 2
 texture = ExtResource("1_1cgml")
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=315398017]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=857988488]
+position = Vector2(950, 500)
+limit_enabled = false
+limit_top = -1070
+limit_right = 4270
+limit_bottom = 1214
+limit_smoothed = true
 
-[node name="shop" parent="." unique_id=1664093449 instance=ExtResource("3_tenb1")]
-layout_mode = 0
-offset_left = 1471.0
-offset_top = 782.0
-offset_right = 1700.0
-offset_bottom = 1066.0
+[node name="Buttons" type="CanvasLayer" parent="." unique_id=129866597]
 
-[node name="spellbook" parent="." unique_id=2063430236 instance=ExtResource("3_gl360")]
+[node name="Lore" type="TextureButton" parent="Buttons" unique_id=1944594900]
+offset_left = 1294.0
+offset_top = 60.0
+offset_right = 1471.0
+offset_bottom = 222.0
+script = ExtResource("3_uygx0")
+
+[node name="TextureRect" type="TextureRect" parent="Buttons/Lore" unique_id=1544803444]
 layout_mode = 0
-offset_left = 1704.0
-offset_top = 812.0
-offset_right = 1864.0
-offset_bottom = 1030.0
+offset_left = -59.0
+offset_top = -67.0
+offset_right = 237.0
+offset_bottom = 229.0
+mouse_filter = 2
+texture = ExtResource("6_3tcgj")
+expand_mode = 1
+
+[node name="Trophy" type="TextureButton" parent="Buttons" unique_id=415183698]
+offset_left = 1106.0
+offset_top = 67.0
+offset_right = 1283.0
+offset_bottom = 229.0
+script = ExtResource("3_uygx0")
+
+[node name="TextureRect" type="TextureRect" parent="Buttons/Trophy" unique_id=1365825466]
+layout_mode = 0
+offset_left = -48.0
+offset_top = -76.0
+offset_right = 248.0
+offset_bottom = 220.0
+mouse_filter = 2
+texture = ExtResource("5_vh42r")
+expand_mode = 1
+
+[node name="PVP" type="TextureButton" parent="Buttons" unique_id=1039800473]
+offset_left = 1367.0
+offset_top = 923.0
+offset_right = 1531.0
+offset_bottom = 1081.0
+
+[node name="TextureRect" type="TextureRect" parent="Buttons/PVP" unique_id=59886956]
+layout_mode = 0
+offset_left = -34.0
+offset_top = -68.0
+offset_right = 197.0
+offset_bottom = 216.0
+mouse_filter = 2
+texture = ExtResource("5_3k8m0")
+
+[node name="Settings" type="TextureButton" parent="Buttons" unique_id=133290181]
+offset_left = 1759.0
+offset_top = 67.0
+offset_right = 1895.0
+offset_bottom = 191.0
+script = ExtResource("3_uygx0")
+
+[node name="Audio_Off" type="AnimatedSprite2D" parent="Buttons/Settings" unique_id=1147222571]
+position = Vector2(66.999985, 57)
+scale = Vector2(1.9843755, 1.9843755)
+sprite_frames = SubResource("SpriteFrames_2p8cd")
+autoplay = "default"
+
+[node name="shop" parent="Buttons" unique_id=1664093449 instance=ExtResource("3_tenb1")]
+offset_left = 1514.0
+offset_top = 841.0
+offset_right = 1743.0
+offset_bottom = 1125.0
+
+[node name="spellbook" parent="Buttons" unique_id=2063430236 instance=ExtResource("3_gl360")]
+offset_left = 1766.0
+offset_top = 923.0
+offset_right = 1878.0
+offset_bottom = 1075.0
+
+[node name="TextureRect2" type="TextureRect" parent="Buttons/spellbook" unique_id=1104742764]
+layout_mode = 0
+offset_left = -35.00003
+offset_top = -24.999985
+offset_right = 149.51913
+offset_bottom = 159.51918
+rotation = 0.057595864
+mouse_filter = 2
+texture = ExtResource("4_gl360")
+
+[node name="CoinDisplay" parent="Buttons" unique_id=1244250796 instance=ExtResource("8_12qkm")]
+offset_left = 1580.0
+offset_top = 95.0
+offset_right = 1730.0
+offset_bottom = 145.0
+
+[node name="CharacterSpotlight" type="TextureRect" parent="Buttons" unique_id=59332521]
+offset_left = -30.0
+offset_top = -29.0
+offset_right = 842.0
+offset_bottom = 1240.9899
+texture = ExtResource("3_2p8cd")
+
+[node name="PlayerName" type="Label" parent="Buttons" unique_id=770426345]
+offset_left = 214.0
+offset_top = 325.0
+offset_right = 598.0
+offset_bottom = 422.0
+text = "Aissha"
+label_settings = SubResource("LabelSettings_rxnbf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PLayerLevel" type="Label" parent="Buttons" unique_id=1393023250]
+offset_left = 201.0
+offset_top = 820.0
+offset_right = 604.0
+offset_bottom = 907.0
+text = "Level 1
+"
+label_settings = SubResource("LabelSettings_8s6re")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PLayerLevel2" type="Label" parent="Buttons" unique_id=1226604120]
+offset_left = 197.0
+offset_top = 823.0
+offset_right = 600.0
+offset_bottom = 910.0
+text = "230/199 XP"
+label_settings = SubResource("LabelSettings_le30m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Character" type="AnimatedSprite2D" parent="Buttons" unique_id=954473690]
+position = Vector2(412, 599.00006)
+scale = Vector2(13.382811, 13.382811)
+sprite_frames = SubResource("SpriteFrames_6g71x")
+animation = &"idle_girl"
+autoplay = "idle_girl"
+frame_progress = 0.5510747
+
+[node name="TextureButton" type="TextureButton" parent="Buttons" unique_id=668035586]
+offset_left = 78.0
+offset_top = 63.0
+offset_right = 211.0
+offset_bottom = 196.0
+texture_normal = ExtResource("15_f46hc")
+script = ExtResource("3_uygx0")
+menu_to_open = ExtResource("17_rxnbf")

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dm1hwrj3l0df6"]
 
 [ext_resource type="Script" uid="uid://c0w2femtfhvyh" path="res://script/ui/play.gd" id="1_14hys"]
-[ext_resource type="PackedScene" uid="uid://lq3tmvb8ajg0" path="res://scenes/menus/lounge.tscn" id="2_14hys"]
 [ext_resource type="AudioStream" uid="uid://df1gcjroxeyx6" path="res://data/SoundData/bgm/game_start.wav" id="2_bweju"]
-[ext_resource type="PackedScene" uid="uid://bp1vipbbyp64f" path="res://scenes/menus/setup.tscn" id="4_57ra1"]
+[ext_resource type="PackedScene" uid="uid://dnv63h23touyw" path="res://scenes/menus/login_account.tscn" id="3_6wpdt"]
+[ext_resource type="PackedScene" uid="uid://di1evjdy75pxt" path="res://scenes/menus/register_account.tscn" id="4_0wcnn"]
 [ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="4_bweju"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_ivt2f"]
 [ext_resource type="Texture2D" uid="uid://26yniv7ld3ya" path="res://assets/temporary/play_button.png" id="5_hcoq6"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ctjhgkc78lwkd" path="res://assets/temporary/continue.png" id="11_pcbjq"]
 [ext_resource type="Texture2D" uid="uid://b8unkrg5rgnjl" path="res://assets/temporary/leaderboard.png" id="12_6wpdt"]
 [ext_resource type="Texture2D" uid="uid://bd10btbxwtrh4" path="res://assets/temporary/exit_button.png" id="13_0wcnn"]
+[ext_resource type="PackedScene" uid="uid://xdbig4p2et14" path="res://scenes/menus/leaderboard.tscn" id="13_0xjr7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_57ra1"]
 atlas = ExtResource("4_bweju")
@@ -117,8 +118,8 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_14hys")
 menu_bgm = ExtResource("2_bweju")
-lounge = ExtResource("2_14hys")
-setup = ExtResource("4_57ra1")
+lounge = ExtResource("3_6wpdt")
+setup = ExtResource("4_0wcnn")
 
 [node name="Background" type="AnimatedSprite2D" parent="." unique_id=839548396]
 position = Vector2(959.7222, 539.5)
@@ -244,6 +245,7 @@ offset_top = 735.0
 offset_right = 1527.0
 offset_bottom = 822.0
 script = ExtResource("7_0wcnn")
+menu_to_open = ExtResource("13_0xjr7")
 
 [node name="Play_art" type="TextureRect" parent="Leaderboard" unique_id=408661024]
 custom_minimum_size = Vector2(400, 600)

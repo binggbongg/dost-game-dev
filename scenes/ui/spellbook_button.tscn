@@ -13,12 +13,12 @@ script = ExtResource("2_c0cx3")
 scene_to_open = ExtResource("2_k856a")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=947239341]
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(50, 25)
 layout_mode = 0
-offset_left = -10.0
-offset_top = -21.0
-offset_right = 165.0
-offset_bottom = 229.64516
+offset_left = -6.000001
+offset_top = -11.000002
+offset_right = 71.41419
+offset_bottom = 58.444427
 rotation = 0.10471976
 mouse_filter = 2
 texture = ExtResource("3_nkftk")
