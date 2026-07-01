@@ -5,7 +5,7 @@ extends Control
 @onready var login_button = $LoginButton
 @onready var register_label = $RegisterLabel
 @onready var message_label = $MessageLabel
-
+@export var next_scene: PackedScene
 @export var scene: PackedScene
 
 func _ready() -> void:
@@ -37,6 +37,7 @@ func login_user():
 					message_label.text = Talo.player_auth.last_error.get_string()
 		Talo.player_auth.LoginResult.OK:
 			message_label.text = "Login successful"
+			SceneTransition.change_scene(next_scene)
 			UIManager.close_menu()
 
 func register_user(event):

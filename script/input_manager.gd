@@ -17,10 +17,10 @@ func _input(event: InputEvent) -> void:
 	var state = turn_manager.current_state
 	if state != GameEnums.TurnState.PLAYER_ACTION and state != GameEnums.TurnState.DRAW_PHASE:
 		return 
-		
+	
 	if turn_manager.is_busy:
 		return
-
+	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
 			left_mouse_button_clicked.emit()
@@ -43,6 +43,7 @@ func raycast_at_cursor():
 			if turn_manager.current_state == GameEnums.TurnState.PLAYER_ACTION:
 				var card_found = card_manager_reference.get_highest_card(result)
 				if card_found:
+					AudioManager.play_ui_sound("click")
 					card_manager_reference.start_drag(card_found)
 				
 		elif collision_layer == LAYER_DECK:
@@ -57,7 +58,9 @@ func raycast_at_cursor():
 			var redo_node = result[0].collider.get_parent()
 			if redo_node.has_method("on_click"):
 				redo_node.on_click()
+
 func handle_deck_click():
+	AudioManager.play_ui_sound("shuffle")
 	if turn_manager.is_busy: return
 	
 	if turn_manager.current_state == GameEnums.TurnState.DRAW_PHASE:
@@ -66,17 +69,18 @@ func handle_deck_click():
 		await get_tree().create_timer(1.2).timeout
 		turn_manager.change_state(GameEnums.TurnState.PLAYER_ACTION)
 		turn_manager.is_busy = false
-		
 	elif turn_manager.current_state == GameEnums.TurnState.PLAYER_ACTION:
 		print("InputManager: SHUFFLE & PASS sequence started.")
 		turn_manager.is_busy = true
 		
-		# 1. Clear hand and slots
 		deck_manager.redraw_hand() 
-		# 2. Wait for cards to fly in
-		await get_tree().create_timer(1.2).timeout
+		
+		var battle_manager = get_node_or_null("../../../BattleManager")
+		if battle_manager:
+			print("is manually drawn now true --input manager")
+			battle_manager.is_manually_drawn = true
 		
 		# 3. Lock interaction immediately so player can see cards but not move them
-		card_manager_reference.refresh_hand_interaction()
+		#card_manager_reference.refresh_hand_interaction()
 		turn_manager.end_player_turn()
 		turn_manager.is_busy = false

@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://divonvi0kh3o3"]
+
+[ext_resource type="Script" uid="uid://cimu6spqdj8rc" path="res://script/story/storyUI.gd" id="1_gftur"]
+[ext_resource type="Texture2D" uid="uid://b67a6h4yy3qud" path="res://assets/background/rooms/background_1-1.png" id="2_2hrnm"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_2hrnm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ymd72"]
+font = ExtResource("3_2hrnm")
+font_size = 29
+
+[sub_resource type="LabelSettings" id="LabelSettings_rrrj2"]
+font = ExtResource("3_2hrnm")
+font_size = 36
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=153786700]
+script = ExtResource("1_gftur")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1306323752]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2hrnm")
+
+[node name="Dimmer" type="ColorRect" parent="." unique_id=1364385443]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="DialogueBox" type="Control" parent="." unique_id=1161655313]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1909.0
+offset_bottom = 1081.0
+
+[node name="Panel" type="Panel" parent="DialogueBox" unique_id=1383475601]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 772.0
+offset_right = 1814.0
+offset_bottom = 1039.0
+
+[node name="TextLabel" type="Label" parent="DialogueBox/Panel" unique_id=1893403387]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 63.0
+offset_right = 1696.0
+offset_bottom = 200.0
+text = "This is a sample dialogue"
+label_settings = SubResource("LabelSettings_ymd72")
+autowrap_mode = 2
+
+[node name="NameLabel" type="Label" parent="DialogueBox/Panel" unique_id=1668047581]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 20.0
+offset_right = 1640.0
+offset_bottom = 65.0
+text = "Aissha"
+label_settings = SubResource("LabelSettings_rrrj2")
+autowrap_mode = 2
+
+[node name="Portrait" type="TextureRect" parent="." unique_id=2089851814]
+offset_left = 1595.0
+offset_top = 753.0
+offset_right = 1803.0
+offset_bottom = 1024.0

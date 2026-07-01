@@ -12,17 +12,21 @@ var special_cooldowns: Dictionary = {}
 
 signal enemy_health_changed(new_health: int)
 
-func _ready() -> void:
-	var resource_data = PlayerProfile.get_current_enemy_resource()
-	if resource_data:
-		behavior_data = resource_data
-	else:
-		print("resource data not found -- enemy ai")
-		behavior_data = load("res://data/EnemySet/enemy_1-1.tres")
-	
+#func _ready() -> void:
+	#if behavior_data:
+		#setup_enemy()
+	#else:
+		#print("no behavior data --enemy ai")
+
+func initialize_from_resource(new_behavior: EnemyBehavior):
+	behavior_data = new_behavior
 	setup_enemy()
 
 func setup_enemy():
+	if not behavior_data: 
+		print("Enemy AI Error: setup_enemy called but behavior_data is missing!")
+		return
+	
 	current_health = behavior_data.max_health
 	enemy_health_changed.emit(current_health)
 	
@@ -31,7 +35,6 @@ func setup_enemy():
 		animated_sprite.play("idle")
 	
 	choose_next_intent()
-	#print(name, " initialized and prepared initial intent: ", chosen_intent.name)
 
 func take_damage(amount):
 	current_health = max(0, current_health - amount)
@@ -40,9 +43,15 @@ func take_damage(amount):
 	
 	if current_health <= 0:
 		print("enemy has been defeated")
-		queue_free()
+		#queue_free()
+		#if animated_sprite and animated_sprite.sprite_frames.has_animation("death"):
+			#animated_sprite.play("death")
+		#else:
+			#visible = false
 
 func choose_next_intent():
+	if current_health <= 0: return
+	
 	current_turns += 1
 	tick_cooldowns()
 	

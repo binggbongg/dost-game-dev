@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://dlkt6qvastnrv"]
+
+[ext_resource type="Texture2D" uid="uid://b67a6h4yy3qud" path="res://assets/background/rooms/background_1-1.png" id="1_eti65"]
+[ext_resource type="Texture2D" uid="uid://wykepq7lmmxh" path="res://assets/temporary/scroll.png" id="1_ie6vm"]
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_u7p7s"]
+[ext_resource type="AudioStream" uid="uid://df1gcjroxeyx6" path="res://data/SoundData/bgm/game_start.wav" id="2_6rhc6"]
+
+[resource]
+script = ExtResource("1_u7p7s")
+character_name = "Aissha"
+portrait = ExtResource("1_ie6vm")
+background = ExtResource("1_eti65")
+lines = Array[String](["In elder days, ere the Iron City cast its shadow upon the world, the Mages dwelt in concord with the spirits of earth, sea, and sky. Bestowed with divine grace, they were charged to preserve the balance of all living things. Through sacred voices they wove their sorceries, and the land prospered beneath their guardianship.", "Yet the hearts of men grew restless. They raised cities of iron where sacred forests once stood, and forged engines whose thunder drowned the whispers of the spirits. Thus did ambition eclipse reverence, and the ancient covenant between mankind and nature began to wither.", "Then came the hunters of the Iron Cities. Fearing that which they could neither command nor comprehend, they pursued the Mage clans without mercy. Voices were stolen, tongues were silenced, and with them vanished the power of countless guardians, until the world believed magic itself had perished.", "Yet among the fallen remained one. Thou wast born without a voice, and for many seasons didst walk as one apart, believing thy silence to be a burden. But the eldest spirits revealed an older truth—that once in an age, a child is born beneath the Silent Blessing, a covenant through which the spirits heed not the voice, but the hands. Such souls cannot wield spoken sorcery, yet neither can they ever be robbed of their magic.", "What the world deemed thy greatest frailty became its final hope. Whilst every other mage was cast into silence, thy bond with the spirits endured untouched. Through sacred signs—the first language of magic, long forgotten by men—thou alone remainest able to weave the ancient arts.", "Now the stolen voices of thy people lie imprisoned within the heart of the Iron City. Go forth, last keeper of the Silent Blessing. Restore the voices of the fallen, awaken those whom the world hath forsaken, and renew the covenant betwixt mankind, nature, and the spirits—for the fate of all now resteth within thy hands."])
+bgm_to_play = ExtResource("2_6rhc6")
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

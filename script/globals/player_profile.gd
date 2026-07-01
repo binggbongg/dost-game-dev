@@ -59,7 +59,13 @@ var player_rank: String = "Starter":
 	set(value):
 		player_rank = value
 		profile_updated.emit()
+var tutorial_steps_completed: Dictionary = {
+	"lounge_tour": false,
+	"combat_basics": false,
+	"combo_tutorial": false
+}
 
+var is_tutorial_fight: bool = false
 var level: int = 1
 var experience: int = 0
 var coins: int = 100:
@@ -73,6 +79,14 @@ func initialize_profile(new_name: String, character_id: String):
 	level = 1
 	experience = 0
 	coins = 100
+	
+	tutorial_steps_completed = {
+		"lounge_tour": false,
+		"combat_basics": false,
+		"combo_tutorial": false
+	}
+	is_tutorial_fight = false
+	
 	print("Profile Initialized for: ", player_name)
 
 func set_rank(new_rank: String):

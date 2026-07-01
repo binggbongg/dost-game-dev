@@ -1,6 +1,7 @@
 extends Node
 
 signal health_changed(new_health: int)
+signal player_died
 
 var max_mana: int = 25
 var max_health: int = 50
@@ -24,6 +25,7 @@ func take_damage(amount: int):
 	
 	if current_health <= 0:
 		print("Player has died")
+		player_died.emit()
 
 func heal_player(amount):
 	if amount <= 0: return

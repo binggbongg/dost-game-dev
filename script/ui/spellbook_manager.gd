@@ -13,10 +13,8 @@ var combo_mode := false
 
 @onready var card_parent = get_node_or_null("../CardSlots")
 @onready var combo_parent = get_node_or_null("../ComboSlot")
-
 @onready var left_slot = get_node_or_null("../CardSlots/SpellbookCardSlotLeft")
 @onready var right_slot = get_node_or_null("../CardSlots/SpellbookCardSlotRight")
-
 @onready var page_label = get_node_or_null("../Pagination/Label")
 
 func _ready():
@@ -82,6 +80,7 @@ func open_category(category):
 	
 	current_spread = 0
 	filtered_cards = all_cards.filter(func(c): return c.category == category)
+	AudioManager.play_ui_sound("flip")
 	refresh_display()
 
 func open_combo_mode():
@@ -90,6 +89,7 @@ func open_combo_mode():
 	if combo_parent: combo_parent.show()
 	
 	current_spread = 0
+	AudioManager.play_ui_sound("flip")
 	refresh_display()
 
 
@@ -132,9 +132,12 @@ func next_page():
 		
 	if current_spread < max_p:
 		current_spread += 1
+		AudioManager.play_ui_sound("flip")
 		refresh_display()
+	
 
 func prev_page():
 	if current_spread > 0:
 		current_spread -= 1
+		AudioManager.play_ui_sound("flip")
 		refresh_display()

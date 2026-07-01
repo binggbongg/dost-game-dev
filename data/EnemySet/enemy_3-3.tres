@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyBehavior" format=3 uid="uid://24ur20kgirg2"]
+
+[ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="1_uny76"]
+[ext_resource type="Script" uid="uid://bltrhxh2342fx" path="res://data/enemy_behavior.gd" id="2_bgufy"]
+
+[resource]
+script = ExtResource("2_bgufy")
+max_health = 300
+metadata/_custom_type_script = "uid://bltrhxh2342fx"

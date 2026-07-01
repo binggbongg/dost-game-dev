@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://bv2wr0mmvdvds"]
+
+[ext_resource type="Script" uid="uid://buqidver0oody" path="res://data/level_data.gd" id="1_05xyf"]
+[ext_resource type="Resource" uid="uid://qcjsjnj5jc7j" path="res://data/EnemySet/enemy_1-2.tres" id="1_vq65a"]
+
+[resource]
+script = ExtResource("1_05xyf")
+level_number = 2
+background = "uid://sk5ki0j6f3l0"
+enemy_data = ExtResource("1_vq65a")
+metadata/_custom_type_script = "uid://buqidver0oody"
