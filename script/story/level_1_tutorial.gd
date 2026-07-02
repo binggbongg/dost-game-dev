@@ -63,24 +63,29 @@ func start_battle_tutorial():
 		await get_tree().process_frame
 	
 	print("Deck was clicked!")
-	print("================")
-	print(player_hand.player_cards.size())
+	
+	# --- ADD THIS DELAY ---
+	# Wait for cards to fly out of the deck and settle in the hand
+	await get_tree().create_timer(0.8).timeout 
+	# ----------------------
 
-	for c in player_hand.player_cards:
-		print(c.name, c.global_position)
-
 	print("================")
+	print("Cards in hand: ", player_hand.player_cards.size())
+
+	# It's safer to filter out any nulls just in case
+	var valid_cards = player_hand.player_cards.filter(func(c): return is_instance_valid(c))
+
 	await highlight_group_and_talk(
-		player_hand.player_cards,
+		valid_cards,
 		base + "playerhand.tres"
 	)
 
+	# Small buffer to prevent the "skipping" feeling
+	await get_tree().create_timer(0.2).timeout 
+
+	print("Highlighting Slots")
 	await highlight_group_and_talk(
-		[
-			slot1,
-			slot2,
-			slot3
-		],
+		[slot1, slot2, slot3],
 		base + "slot.tres"
 	)
 
@@ -116,35 +121,31 @@ func highlight_and_talk(node: CanvasItem, data_path: String):
 		node.mouse_filter = Control.MOUSE_FILTER_STOP
 
 func highlight_group_and_talk(nodes: Array, data_path: String):
-
+	print("Step: Starting group highlight for ", data_path)
 	var copies := []
-
 	var targets := []
 
 	for node in nodes:
-
-		if !is_instance_valid(node):
-			continue
-
+		if !is_instance_valid(node): continue
 		targets.append(node)
-
 		var copy = node.duplicate()
-
 		highlight_layer.add_child(copy)
 
 		if node is Control:
-			copy.global_position = node.global_position
-
+			copy.global_position = node.get_global_rect().position
+			copy.size = node.size
 		elif node is Node2D:
 			copy.global_position = node.global_position
-
+			if "z_index" in copy: copy.z_index = 100
 		copies.append(copy)
 
-	await StoryManager.play_group_tutorial(
-		data_path,
-		targets
-	)
+	# Await the actual tutorial UI
+	await StoryManager.play_group_tutorial(data_path, targets)
+	print("Step: Tutorial UI closed, cleaning up copies.")
 
 	for copy in copies:
 		if is_instance_valid(copy):
 			copy.queue_free()
+
+	# Give Godot a tiny moment to breathe before next task
+	await get_tree().process_frame

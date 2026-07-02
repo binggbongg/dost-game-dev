@@ -14,7 +14,6 @@ shader_parameter/dim_color = Color(0, 0, 0, 0.72)
 
 [sub_resource type="LabelSettings" id="LabelSettings_01g43"]
 font = ExtResource("3_snaxp")
-font_size = 19
 
 [sub_resource type="LabelSettings" id="LabelSettings_rrrj2"]
 font = ExtResource("3_snaxp")
@@ -42,14 +41,14 @@ offset_bottom = 1081.0
 layout_mode = 0
 offset_left = 104.0
 offset_top = 175.0
-offset_right = 493.0
+offset_right = 582.0
 offset_bottom = 323.0
 
 [node name="TextLabel" type="Label" parent="MechanicsBox/MechanicsPanel" unique_id=1556756639]
 layout_mode = 0
 offset_left = 21.0
 offset_top = 60.0
-offset_right = 377.0
+offset_right = 460.0
 offset_bottom = 139.0
 text = "This is a sample mechanics"
 label_settings = SubResource("LabelSettings_01g43")
