@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://ckbrj3vh8fqlp"]
+
+[ext_resource type="Script" uid="uid://dmmvfqxpp4q1s" path="res://script/story/mechanicsui.gd" id="1_6ak7u"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_snaxp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_01g43"]
+font = ExtResource("3_snaxp")
+font_size = 19
+
+[sub_resource type="LabelSettings" id="LabelSettings_rrrj2"]
+font = ExtResource("3_snaxp")
+font_size = 36
+
+[node name="Mechanics" type="CanvasLayer" unique_id=153786700]
+script = ExtResource("1_6ak7u")
+
+[node name="Dimmer" type="ColorRect" parent="." unique_id=1416320715]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13333334, 0.11372549, 0.03529412, 0.43529412)
+
+[node name="MechanicsBox" type="Control" parent="." unique_id=265513911]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1909.0
+offset_bottom = 1081.0
+
+[node name="MechanicsPanel" type="Panel" parent="MechanicsBox" unique_id=1985091821]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 175.0
+offset_right = 493.0
+offset_bottom = 323.0
+
+[node name="TextLabel" type="Label" parent="MechanicsBox/MechanicsPanel" unique_id=1556756639]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 60.0
+offset_right = 377.0
+offset_bottom = 139.0
+text = "This is a sample mechanics"
+label_settings = SubResource("LabelSettings_01g43")
+autowrap_mode = 2
+
+[node name="NameLabel" type="Label" parent="MechanicsBox/MechanicsPanel" unique_id=1951035370]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 19.0
+offset_right = 476.0
+offset_bottom = 64.0
+text = "Aissha"
+label_settings = SubResource("LabelSettings_rrrj2")
+autowrap_mode = 2
+
+[node name="HiglightLayer" type="CanvasLayer" parent="." unique_id=1369897337]
+layer = 30
+visible = false

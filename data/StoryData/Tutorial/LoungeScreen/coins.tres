@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://dqouwoq24qkq6"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_fyqnr"]
+
+[resource]
+script = ExtResource("1_fyqnr")
+type = 1
+character_name = "Coins"
+lines = Array[String](["New players earn 100 coins to help you fund for your big quest. Earn more coins by finishing off enemies."])
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

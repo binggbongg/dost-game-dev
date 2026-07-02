@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://dewwqgv34wwp2"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_cmcmr"]
+
+[resource]
+script = ExtResource("1_cmcmr")
+type = 1
+character_name = "Leadrboards"
+lines = Array[String](["View progess of friends and other players"])
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

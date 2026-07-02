@@ -16,7 +16,7 @@ mouse_filter = 2
 script = ExtResource("1_baxa6")
 
 [node name="Coin" type="Sprite2D" parent="." unique_id=1371920841]
-position = Vector2(37, 29)
+position = Vector2(86, 31)
 scale = Vector2(0.25142857, 0.25142857)
 texture = ExtResource("1_hv3hf")
 
@@ -24,3 +24,4 @@ texture = ExtResource("1_hv3hf")
 layout_mode = 2
 text = "500"
 label_settings = SubResource("LabelSettings_hv3hf")
+horizontal_alignment = 1

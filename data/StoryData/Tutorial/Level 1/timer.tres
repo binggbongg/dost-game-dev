@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://2g3onwvv8jv7"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_ufbko"]
+
+[resource]
+script = ExtResource("1_ufbko")
+type = 1
+character_name = "Timer"
+lines = Array[String](["Player and enemies are given 30 seconds per turn, use it wisely."])
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

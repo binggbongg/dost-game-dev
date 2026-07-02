@@ -1,27 +1,27 @@
 [gd_scene format=3 uid="uid://lq3tmvb8ajg0"]
 
 [ext_resource type="Texture2D" uid="uid://ci6i2bwtfvasp" path="res://assets/temporary/map_bg.png" id="1_1cgml"]
-[ext_resource type="Script" path="res://script/lounge.gd" id="1_ij4pv"]
+[ext_resource type="Script" uid="uid://0rivha5gykeg" path="res://script/lounge.gd" id="1_ij4pv"]
 [ext_resource type="Texture2D" uid="uid://dr0x4711m18cr" path="res://assets/temporary/character highlight.png" id="3_2p8cd"]
 [ext_resource type="PackedScene" uid="uid://6t8x0728x5hf" path="res://scenes/ui/spellbook_button.tscn" id="3_gl360"]
 [ext_resource type="PackedScene" uid="uid://bvycxq7tcw1t7" path="res://scenes/ui/shop_button.tscn" id="3_tenb1"]
 [ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="3_uygx0"]
 [ext_resource type="Texture2D" uid="uid://dmei84moikr28" path="res://assets/ui/shop/setting_icon.png" id="4_6cgmx"]
-[ext_resource type="Texture2D" uid="uid://bob36fd0gsx8p" path="res://assets/ui/shop/spellbook_icon.png" id="4_gl360"]
 [ext_resource type="Texture2D" uid="uid://cc3nipjbujmkd" path="res://assets/temporary/battle.png" id="5_3k8m0"]
+[ext_resource type="PackedScene" uid="uid://btnk1nc2mvnsk" path="res://scenes/story/intro.tscn" id="5_ngrx0"]
 [ext_resource type="Texture2D" uid="uid://buemc7yldjape" path="res://assets/temporary/trophy.png" id="5_vh42r"]
 [ext_resource type="Texture2D" uid="uid://dfe143f1tvgxd" path="res://assets/temporary/lore.png" id="6_3tcgj"]
+[ext_resource type="PackedScene" uid="uid://xdbig4p2et14" path="res://scenes/menus/leaderboard.tscn" id="7_v8p6s"]
 [ext_resource type="PackedScene" uid="uid://buor4em2o4cfj" path="res://scenes/ui/coin_display.tscn" id="8_12qkm"]
 [ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="12_f46hc"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="13_y4gql"]
 [ext_resource type="Texture2D" uid="uid://dbvqdnaxhvjp6" path="res://assets/player/girl_idol.png" id="14_vh42r"]
 [ext_resource type="Texture2D" uid="uid://2y6frsn7uoor" path="res://assets/temporary/undo.png" id="15_f46hc"]
 [ext_resource type="Texture2D" uid="uid://bkl7747ki6nl5" path="res://assets/player/boy_idle.png" id="18_8m8uw"]
-[ext_resource type="Script" path="res://script/ui/open_scene.gd" id="18_le30m"]
+[ext_resource type="Script" uid="uid://ci07xjxb5qtyr" path="res://script/ui/open_scene.gd" id="18_le30m"]
 [ext_resource type="PackedScene" uid="uid://cf0pyigiayyeg" path="res://scenes/menus/map.tscn" id="19_8m8uw"]
+[ext_resource type="PackedScene" uid="uid://ckbrj3vh8fqlp" path="res://scenes/story/mechanicsui.tscn" id="20_le30m"]
 [ext_resource type="Texture2D" uid="uid://4eehpc74bxfg" path="res://assets/temporary/cast.png" id="20_ngrx0"]
-[ext_resource type="PackedScene" uid="uid://divonvi0kh3o3" path="res://scenes/story/storyUI.tscn" id="22_ngrx0"]
-[ext_resource type="Texture2D" uid="uid://ddvwjs6qs7xc7" path="res://assets/temporary/arrow.png" id="23_v8p6s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0xjr7"]
 atlas = ExtResource("4_6cgmx")
@@ -153,20 +153,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8rf1m"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("23_v8p6s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_v8p6s")
-}],
-"loop": true,
-"name": &"arrow_up",
-"speed": 5.0
-}]
-
 [node name="Lounge" type="Node2D" unique_id=590874842]
 script = ExtResource("1_ij4pv")
 
@@ -204,39 +190,23 @@ offset_bottom = 40.0
 
 [node name="Lore" type="TextureButton" parent="Buttons/Content" unique_id=1944594900]
 layout_mode = 0
-offset_left = 1294.0
-offset_top = 60.0
-offset_right = 1471.0
-offset_bottom = 222.0
+offset_left = 1153.0
+offset_top = 4.0
+offset_right = 1348.0
+offset_bottom = 288.0
+texture_normal = ExtResource("6_3tcgj")
 script = ExtResource("3_uygx0")
-
-[node name="TextureRect" type="TextureRect" parent="Buttons/Content/Lore" unique_id=1544803444]
-layout_mode = 0
-offset_left = -59.0
-offset_top = -67.0
-offset_right = 237.0
-offset_bottom = 229.0
-mouse_filter = 2
-texture = ExtResource("6_3tcgj")
-expand_mode = 1
+menu_to_open = ExtResource("5_ngrx0")
 
 [node name="Trophy" type="TextureButton" parent="Buttons/Content" unique_id=415183698]
 layout_mode = 0
-offset_left = 1106.0
-offset_top = 67.0
-offset_right = 1283.0
-offset_bottom = 229.0
+offset_left = 1306.0
+offset_top = -14.0
+offset_right = 1501.0
+offset_bottom = 270.0
+texture_normal = ExtResource("5_vh42r")
 script = ExtResource("3_uygx0")
-
-[node name="TextureRect" type="TextureRect" parent="Buttons/Content/Trophy" unique_id=1365825466]
-layout_mode = 0
-offset_left = -48.0
-offset_top = -76.0
-offset_right = 248.0
-offset_bottom = 220.0
-mouse_filter = 2
-texture = ExtResource("5_vh42r")
-expand_mode = 1
+menu_to_open = ExtResource("7_v8p6s")
 
 [node name="PVP" type="TextureButton" parent="Buttons/Content" unique_id=1039800473]
 layout_mode = 0
@@ -271,33 +241,33 @@ autoplay = "default"
 [node name="shop" parent="Buttons/Content" unique_id=1664093449 instance=ExtResource("3_tenb1")]
 layout_mode = 0
 offset_left = 1514.0
-offset_top = 841.0
-offset_right = 1743.0
+offset_top = 837.0
+offset_right = 1740.0
 offset_bottom = 1125.0
 
 [node name="spellbook" parent="Buttons/Content" unique_id=2063430236 instance=ExtResource("3_gl360")]
 layout_mode = 0
-offset_left = 1766.0
-offset_top = 923.0
-offset_right = 1878.0
-offset_bottom = 1075.0
-
-[node name="TextureRect2" type="TextureRect" parent="Buttons/Content/spellbook" unique_id=1104742764]
-layout_mode = 0
-offset_left = -35.00003
-offset_top = -24.999985
-offset_right = 149.51913
-offset_bottom = 159.51918
-rotation = 0.057595864
-mouse_filter = 2
-texture = ExtResource("4_gl360")
+offset_left = 1737.0
+offset_top = 886.00006
+offset_right = 1801.0
+offset_bottom = 950.00006
 
 [node name="CoinDisplay" parent="Buttons/Content" unique_id=1244250796 instance=ExtResource("8_12qkm")]
 layout_mode = 0
-offset_left = 1580.0
-offset_top = 95.0
-offset_right = 1730.0
-offset_bottom = 145.0
+offset_left = 1542.0
+offset_top = 93.0
+offset_right = 1692.0
+offset_bottom = 143.0
+
+[node name="ChapterOne" type="TextureButton" parent="Buttons/Content" unique_id=1487799225]
+layout_mode = 0
+offset_left = 893.0
+offset_top = 1704.0
+offset_right = 1063.0
+offset_bottom = 1850.0
+texture_normal = ExtResource("20_ngrx0")
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
 
 [node name="CharacterSpotlight" type="TextureRect" parent="Buttons/Content" unique_id=59332521]
 layout_mode = 0
@@ -307,42 +277,42 @@ offset_right = 842.0
 offset_bottom = 1240.9899
 texture = ExtResource("3_2p8cd")
 
-[node name="PlayerName" type="Label" parent="Buttons/Content" unique_id=770426345]
+[node name="PlayerName" type="Label" parent="Buttons/Content/CharacterSpotlight" unique_id=770426345]
 layout_mode = 0
-offset_left = 214.0
-offset_top = 325.0
-offset_right = 598.0
-offset_bottom = 422.0
+offset_left = 244.0
+offset_top = 354.0
+offset_right = 628.0
+offset_bottom = 451.0
 text = "Aissha"
 label_settings = SubResource("LabelSettings_rxnbf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PLayerLevel" type="Label" parent="Buttons/Content" unique_id=1393023250]
+[node name="PLayerLevel" type="Label" parent="Buttons/Content/CharacterSpotlight" unique_id=1393023250]
 layout_mode = 0
-offset_left = 201.0
-offset_top = 820.0
-offset_right = 604.0
-offset_bottom = 907.0
+offset_left = 231.0
+offset_top = 849.0
+offset_right = 634.0
+offset_bottom = 936.0
 text = "Level 1
 "
 label_settings = SubResource("LabelSettings_8s6re")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PLayerLevel2" type="Label" parent="Buttons/Content" unique_id=1226604120]
+[node name="PLayerLevel2" type="Label" parent="Buttons/Content/CharacterSpotlight" unique_id=1226604120]
 layout_mode = 0
-offset_left = 197.0
-offset_top = 823.0
-offset_right = 600.0
-offset_bottom = 910.0
+offset_left = 227.0
+offset_top = 852.0
+offset_right = 630.0
+offset_bottom = 939.0
 text = "230/199 XP"
 label_settings = SubResource("LabelSettings_le30m")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Character" type="AnimatedSprite2D" parent="Buttons/Content" unique_id=954473690]
-position = Vector2(412, 599.00006)
+[node name="Character" type="AnimatedSprite2D" parent="Buttons/Content/CharacterSpotlight" unique_id=954473690]
+position = Vector2(442, 628.00006)
 scale = Vector2(13.382811, 13.382811)
 sprite_frames = SubResource("SpriteFrames_6g71x")
 animation = &"idle_boy"
@@ -357,22 +327,14 @@ offset_bottom = 196.0
 texture_normal = ExtResource("15_f46hc")
 script = ExtResource("3_uygx0")
 
-[node name="Chapters" type="TextureButton" parent="." unique_id=1487799225]
-offset_left = 1806.0
-offset_top = 1599.0
-offset_right = 1976.0
-offset_bottom = 1745.0
+[node name="ChapterOne" type="TextureButton" parent="." unique_id=1766995160]
+offset_left = 893.0
+offset_top = 1704.0
+offset_right = 1063.0
+offset_bottom = 1850.0
+texture_normal = ExtResource("20_ngrx0")
 script = ExtResource("18_le30m")
 next_scene = ExtResource("19_8m8uw")
-
-[node name="TextureButton" type="TextureRect" parent="Chapters" unique_id=1454905494]
-layout_mode = 0
-offset_left = 27.0
-offset_top = 4.0
-offset_right = 160.0
-offset_bottom = 137.0
-mouse_filter = 2
-texture = ExtResource("20_ngrx0")
 
 [node name="Chapters2" type="TextureButton" parent="." unique_id=2045396379]
 offset_left = 1455.0
@@ -476,111 +438,11 @@ offset_bottom = 137.0
 mouse_filter = 2
 texture = ExtResource("20_ngrx0")
 
-[node name="Chapters8" type="TextureButton" parent="." unique_id=1488943352]
-offset_left = 3496.0
-offset_top = 278.0
-offset_right = 3666.0
-offset_bottom = 424.0
-script = ExtResource("18_le30m")
-next_scene = ExtResource("19_8m8uw")
-
-[node name="TextureButton" type="TextureRect" parent="Chapters8" unique_id=1571231975]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 4.0
-offset_right = 143.0
-offset_bottom = 137.0
-mouse_filter = 2
-texture = ExtResource("20_ngrx0")
-
-[node name="Chapters9" type="TextureButton" parent="." unique_id=1227364910]
-offset_left = 3226.0
-offset_top = 1000.0
-offset_right = 3396.0
-offset_bottom = 1146.0
-script = ExtResource("18_le30m")
-next_scene = ExtResource("19_8m8uw")
-
-[node name="TextureButton" type="TextureRect" parent="Chapters9" unique_id=885660946]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 4.0
-offset_right = 143.0
-offset_bottom = 137.0
-mouse_filter = 2
-texture = ExtResource("20_ngrx0")
-
-[node name="Chapters10" type="TextureButton" parent="." unique_id=800057535]
-offset_left = 2772.0
-offset_top = 1146.0
-offset_right = 2942.0
-offset_bottom = 1292.0
-script = ExtResource("18_le30m")
-next_scene = ExtResource("19_8m8uw")
-
-[node name="TextureButton" type="TextureRect" parent="Chapters10" unique_id=193612414]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 4.0
-offset_right = 143.0
-offset_bottom = 137.0
-mouse_filter = 2
-texture = ExtResource("20_ngrx0")
-
-[node name="Chapters11" type="TextureButton" parent="." unique_id=89277563]
-offset_left = 2515.0
-offset_top = 1341.0
-offset_right = 2685.0
-offset_bottom = 1487.0
-script = ExtResource("18_le30m")
-next_scene = ExtResource("19_8m8uw")
-
-[node name="TextureButton" type="TextureRect" parent="Chapters11" unique_id=1981679850]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 4.0
-offset_right = 143.0
-offset_bottom = 137.0
-mouse_filter = 2
-texture = ExtResource("20_ngrx0")
-
-[node name="Chapters12" type="TextureButton" parent="." unique_id=1885022203]
-offset_left = 2408.0
-offset_top = 1705.0
-offset_right = 2578.0
-offset_bottom = 1851.0
-script = ExtResource("18_le30m")
-next_scene = ExtResource("19_8m8uw")
-
-[node name="TextureButton" type="TextureRect" parent="Chapters12" unique_id=1147501560]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 4.0
-offset_right = 143.0
-offset_bottom = 137.0
-mouse_filter = 2
-texture = ExtResource("20_ngrx0")
-
-[node name="Chapters13" type="TextureButton" parent="." unique_id=1967808796]
-offset_left = 3026.0
-offset_top = 1623.0
-offset_right = 3196.0
-offset_bottom = 1769.0
-script = ExtResource("18_le30m")
-next_scene = ExtResource("19_8m8uw")
-
-[node name="TextureButton" type="TextureRect" parent="Chapters13" unique_id=1889110573]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 4.0
-offset_right = 143.0
-offset_bottom = 137.0
-mouse_filter = 2
-texture = ExtResource("20_ngrx0")
-
 [node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=1670448932]
+layer = 20
+visible = false
 
-[node name="Dimmer" type="ColorRect" parent="TutorialLayer" unique_id=986855807]
+[node name="Dimmer" type="ColorRect" parent="TutorialLayer" unique_id=77863251]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -588,8 +450,9 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5882353)
 
-[node name="CanvasLayer" parent="TutorialLayer" unique_id=153786700 instance=ExtResource("22_ngrx0")]
+[node name="Mechanics" parent="TutorialLayer" unique_id=153786700 instance=ExtResource("20_le30m")]
+visible = false
 
-[node name="arrow_up" type="AnimatedSprite2D" parent="TutorialLayer" unique_id=2064920646]
-sprite_frames = SubResource("SpriteFrames_8rf1m")
-animation = &"arrow_up"
+[node name="HiglightLayer" type="CanvasLayer" parent="." unique_id=2124777705]
+layer = 30
+visible = false

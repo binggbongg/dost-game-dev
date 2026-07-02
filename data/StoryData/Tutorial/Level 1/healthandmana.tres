@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://bwvmcejuurcoq"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_60ljb"]
+
+[resource]
+script = ExtResource("1_60ljb")
+type = 1
+character_name = "Player Stats"
+lines = Array[String](["View your health and mana here. Mana replenishes every turn but still use it wisely."])
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"
