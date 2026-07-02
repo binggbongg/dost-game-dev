@@ -231,6 +231,7 @@ func execute_enemy_turn():
 	await battle_timer.timeout
 
 func start_player_timer():
+	PlayerProfile.run_turns += 1
 	if battle_timer.timeout.is_connected(_on_player_turn_timeout):
 		battle_timer.timeout.disconnect(_on_player_turn_timeout)
 	

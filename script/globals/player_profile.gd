@@ -4,45 +4,7 @@ signal coins_changed(new_amount: int)
 
 var current_phase: int = 1
 var current_level: int = 1
-
-var level_database = {
-	"1-1": {
-		"background": "res://assets/background/rooms/background_1-1.png",
-		"enemy_resource": "res://data/EnemySet/enemy_1-1.tres"
-	},
-	"1-2": {
-		"background": "res://assets/background/rooms/background_1-2.png",
-		"enemy_resource": "res://data/EnemySet/enemy_1-2.tres"
-	},
-	"1-3": {
-		"background": "res://assets/background/rooms/background_1-3.png",
-		"enemy_resource": "res://data/BossSet/boss1.tres"
-	},
-	"2-1": {
-		"background": "res://assets/background/rooms/background_2-1.png",
-		"enemy_resource": "res://data/EnemySet/enemy_2-1.tres"
-	},
-	"2-2": {
-		"background": "res://assets/background/rooms/background_2-2.png",
-		"enemy_resource": "res://data/EnemySet/enemy_2-1.tres"
-	},
-	"2-3": {
-		"background": "res://assets/background/rooms/background_2-3.png",
-		"enemy_resource": "res://data/BossSet/boss2.tres"
-	},
-	"3-1" : {
-		"background": "res://assets/background/rooms/background_3-1.png",
-		"enemy_resource": "res://data/EnemySet/enemy_3-1.tres"
-	},
-	"3-2": {
-		"background": "res://assets/background/rooms/background_3-2.png",
-		"enemy_resource": "res://data/EnemySet/enemy_3-2.tres"
-	},
-	"3-3": {
-		"background": "res://assets/background/rooms/background_3-1.png",
-		"enemy_resource": "res://data/BossSet/boss3.tres"
-	},
-}
+var next_level_resource: LevelData = null
 
 #setters
 var player_name: String = "Default Player":
@@ -111,25 +73,18 @@ func _input(event):
 	if event is InputEventKey and event.pressed and event.keycode == KEY_A:
 		add_coins(200)
 
-# ---- level logic stuff here ----
+# progression systems
 
-func is_boss_level():
-	return current_level == 3
+var max_unlocked_chapters = 1
+var high_scores: Dictionary = {}
 
-func get_current_level_data():
-	var key = str(current_phase) + "-" + str(current_level)
-	if level_database.has(key):
-		return level_database[key]
-	
-	print("could not find level -- from playerprofile")
-	return level_database["1-1"]
+var run_turns: int = 0
+var run_damage_taken: int = 0
+var run_combos_played: int = 0
+var run_items_used: int = 0
 
-func get_current_bg_path():
-	return get_current_level_data().get("background", "test")
-
-func get_current_enemy_resource():
-	var path = get_current_level_data().get("enemy_resource", "")
-	if path != "":
-		return load(path)
-	
-	return load("res://data/EnemySet/enemy_1-1.tres")
+func reset_run_counter():
+	run_turns = 0
+	run_damage_taken = 0
+	run_combos_played = 0
+	run_items_used = 0

@@ -66,29 +66,29 @@ texture_normal = ExtResource("2_i0gsi")
 
 [node name="Labels" type="Node2D" parent="." unique_id=1214762967]
 
-[node name="Phase1" type="RichTextLabel" parent="Labels" unique_id=98132479]
-offset_left = 701.0
-offset_top = 783.0
-offset_right = 894.0
-offset_bottom = 855.0
+[node name="1" type="RichTextLabel" parent="Labels" unique_id=98132479]
+offset_left = 660.0
+offset_top = 790.0
+offset_right = 925.0
+offset_bottom = 862.0
 theme_override_fonts/normal_font = ExtResource("2_314dn")
 theme_override_font_sizes/normal_font_size = 50
-text = "Phase 1"
+text = "Chapter 1"
 
-[node name="Phase2" type="RichTextLabel" parent="Labels" unique_id=189005444]
-offset_left = 1155.0
-offset_top = 751.0
-offset_right = 1348.0
-offset_bottom = 823.0
+[node name="2" type="RichTextLabel" parent="Labels" unique_id=189005444]
+offset_left = 1119.0
+offset_top = 756.0
+offset_right = 1393.0
+offset_bottom = 828.0
 theme_override_fonts/normal_font = ExtResource("2_314dn")
 theme_override_font_sizes/normal_font_size = 50
-text = "Phase 2"
+text = "Chapter 2"
 
-[node name="Phase3" type="RichTextLabel" parent="Labels" unique_id=884953015]
-offset_left = 1271.0
+[node name="3" type="RichTextLabel" parent="Labels" unique_id=884953015]
+offset_left = 1245.0
 offset_top = 388.0
-offset_right = 1464.0
+offset_right = 1510.0
 offset_bottom = 460.0
 theme_override_fonts/normal_font = ExtResource("2_314dn")
 theme_override_font_sizes/normal_font_size = 50
-text = "Phase 3"
+text = "Chapter 3"

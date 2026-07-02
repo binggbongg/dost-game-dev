@@ -27,7 +27,7 @@ func login_user():
 		return
 	
 	update_message("Connecting...")
-	var result := await Talo.player_auth.login(username, password)
+	var result = await Talo.player_auth.login(username, password)
 	match result:
 		Talo.player_auth.LoginResult.FAILED:
 			match Talo.player_auth.last_error.get_code():
@@ -37,6 +37,12 @@ func login_user():
 					message_label.text = Talo.player_auth.last_error.get_string()
 		Talo.player_auth.LoginResult.OK:
 			message_label.text = "Login successful"
+			# Inside your login/registration success block:
+			var main_menu = get_tree().current_scene
+			if main_menu and main_menu.has_method("check_player_history"):
+				main_menu.update_settings_button_state() # Lock the login gear icon
+				main_menu.check_player_history()          # Refresh the Play/Continue status
+			
 			SceneTransition.change_scene(next_scene)
 			UIManager.close_menu()
 
