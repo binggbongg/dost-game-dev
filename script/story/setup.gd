@@ -1,12 +1,8 @@
 extends Control
-
-# --- EXPORTS ---
-@export var lounge_scene: PackedScene # Drag your Lounge.tscn here
-
 # --- ONREADY NODES (Matched to your screenshot) ---
 @onready var character_group = $Character
 @onready var name_group = $Name
-
+const LOUNGE_SCENE := "res://scenes/menus/lounge.tscn"
 @onready var boy_button = $Character/Boy/BoyButton
 @onready var girl_button = $Character/Girl/GirlButton # Assuming the button name is the same
 
@@ -45,7 +41,7 @@ func _on_submit_pressed():
 	
 	PlayerProfile.initialize_profile(entered_name, chosen_character_id)
 	
-	if lounge_scene:
-		SceneTransition.change_scene(lounge_scene)
+	if LOUNGE_SCENE:
+		get_tree().change_scene_to_file(LOUNGE_SCENE)
 	else:
 		print("Error: No lounge scene assigned in Setup Inspector!")
