@@ -18,6 +18,7 @@ func add_item(item_id: String, amount: int = 1):
 	
 	inventory_changed.emit()
 	print("Inventory: Added ", amount, "x ", item_id)
+	_sync_inventory_change()
 
 func remove_item(item_id: String, amount: int = 1) -> bool:
 	if has_item(item_id, amount):
@@ -25,6 +26,7 @@ func remove_item(item_id: String, amount: int = 1) -> bool:
 		if owned_items[item_id] <= 0:
 			owned_items.erase(item_id)
 		inventory_changed.emit()
+		_sync_inventory_change()
 		return true
 	return false
 
@@ -41,6 +43,11 @@ func consume_item(item_id: String) -> bool:
 		remove_item(item_id, 1)
 		return true
 	return false
+
+func _sync_inventory_change():
+	if typeof(SaveManager) != TYPE_NIL and SaveManager.has_method("save_game"):
+		print("Inventory: Saving save state to cloud")
+		SaveManager.save_game()
 
 #testing delete laturr
 func _input(event):

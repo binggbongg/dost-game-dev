@@ -23,6 +23,7 @@ func _ready():
 	girl_button.pressed.connect(_on_character_selected.bind("Girl"))
 	submit_button.pressed.connect(_on_submit_pressed)
 	input_username.text_submitted.connect(func(_text): _on_submit_pressed())
+
 func _on_character_selected(char_id: String):
 	AudioManager.play_ui_sound("click")
 	
@@ -32,7 +33,6 @@ func _on_character_selected(char_id: String):
 	character_group.hide()
 	name_group.show()
 	input_username.grab_focus()
-	
 
 func _on_submit_pressed():
 	var entered_name = input_username.text.strip_edges()
@@ -43,7 +43,13 @@ func _on_submit_pressed():
 	
 	AudioManager.play_ui_sound("click")
 	
+	submit_button.disabled = true
+	input_username.editable = false
+	
 	PlayerProfile.initialize_profile(entered_name, chosen_character_id)
+	
+	if typeof(SaveManager) != TYPE_NIL and SaveManager.has_method("save_game_async"):
+		SaveManager.save_game_async()
 	
 	if lounge_scene:
 		SceneTransition.change_scene(lounge_scene)

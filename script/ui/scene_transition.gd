@@ -10,6 +10,9 @@ func change_scene(target_scene: PackedScene):
 	AudioManager.stop_bgm(0.5) 
 	await tween.finished
 	
+	if typeof(UIManager) != TYPE_NIL and UIManager.current_menu != null:
+		UIManager.close_menu()
+	
 	get_tree().change_scene_to_packed(target_scene)
 	
 	var tween_in = create_tween()

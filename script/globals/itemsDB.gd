@@ -11,6 +11,7 @@ func get_item(id: String) -> ItemData:
 
 func get_all_items() -> Array:
 	return items.values()
+
 func load_items_from_directory(path: String):
 	var dir = DirAccess.open(path)
 	if dir:
