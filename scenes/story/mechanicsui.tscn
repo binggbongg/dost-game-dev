@@ -1,7 +1,16 @@
 [gd_scene format=3 uid="uid://ckbrj3vh8fqlp"]
 
 [ext_resource type="Script" uid="uid://dmmvfqxpp4q1s" path="res://script/story/mechanicsui.gd" id="1_6ak7u"]
+[ext_resource type="Shader" uid="uid://crsc08hbfyowh" path="res://scenes/ui/shader/tutorial_spotlight.gdshader.gdshader" id="2_6ak7u"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_snaxp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w4obx"]
+shader = ExtResource("2_6ak7u")
+shader_parameter/hole_position = Vector2(0, 0)
+shader_parameter/hole_size = Vector2(200, 200)
+shader_parameter/corner_radius = 18.0
+shader_parameter/feather = 16.0
+shader_parameter/dim_color = Color(0, 0, 0, 0.72)
 
 [sub_resource type="LabelSettings" id="LabelSettings_01g43"]
 font = ExtResource("3_snaxp")
@@ -15,12 +24,13 @@ font_size = 36
 script = ExtResource("1_6ak7u")
 
 [node name="Dimmer" type="ColorRect" parent="." unique_id=1416320715]
+material = SubResource("ShaderMaterial_w4obx")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.13333334, 0.11372549, 0.03529412, 0.43529412)
+color = Color(0, 0, 0, 0.47058824)
 
 [node name="MechanicsBox" type="Control" parent="." unique_id=265513911]
 layout_mode = 3

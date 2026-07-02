@@ -12,6 +12,6 @@ func play_tutorial(data_path: String, target_node: Control = null):
 		await mechanics_ui.ready
 
 	mechanics_ui.start_tutorial(data, target_node)
-
+	mechanics_ui.set_spotlight(target_node)
 	# Wait until the tutorial finishes
 	await mechanics_ui.finished

@@ -5,7 +5,7 @@ extends Node2D
 @onready var buttons_container = $Buttons/Content
 @onready var tutorial_layer = $TutorialLayer
 @onready var dimmer = $TutorialLayer/Dimmer
-@onready var highlight_layer = $HighlightLayer 
+@onready var highlight_layer = $HighlightLayer/Control 
 
 var tutorial_active = false
 
@@ -53,15 +53,15 @@ func highlight_and_talk(node: Control, data_path: String):
 	
 	node.reparent(highlight_layer)
 	node.global_position = old_pos # Prevent jumping
+	
 	node.modulate = Color(1.8, 1.8, 1.8) # Glow effect
+	
 	print("Starting tutorial:", node.name)
 	print("Data path:", data_path)
 
 	await StoryManager.play_tutorial(data_path, node)
 
 	print("Finished tutorial:", node.name)
-
-
 	node.reparent(old_parent)
 	old_parent.move_child(node, old_index)
 	node.modulate = Color.WHITE

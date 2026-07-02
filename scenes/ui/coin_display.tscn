@@ -8,15 +8,15 @@ font_size = 35
 
 [node name="CoinDisplay" type="MarginContainer" unique_id=1244250796 groups=["ui_elements"]]
 custom_minimum_size = Vector2(150, 50)
-offset_left = 1563.0
-offset_top = 56.0
+offset_left = 1431.0
+offset_top = 42.0
 offset_right = 1713.0
-offset_bottom = 106.0
+offset_bottom = 156.0
 mouse_filter = 2
 script = ExtResource("1_baxa6")
 
 [node name="Coin" type="Sprite2D" parent="." unique_id=1371920841]
-position = Vector2(86, 31)
+position = Vector2(147, 60)
 scale = Vector2(0.25142857, 0.25142857)
 texture = ExtResource("1_hv3hf")
 
