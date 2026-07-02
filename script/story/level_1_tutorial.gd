@@ -13,7 +13,7 @@ extends Node2D
 @onready var health = $CombatArena/Player/HealthBar
 @onready var timer_bar = $TimerBar
 @onready var timer = $TimerBar/TimeText
-@onready var deck = $PlayerInterface/UI/Deck
+@onready var deck = $PlayerInterface/UI/Deck/Sprite2D
 @onready var cast_button = $PlayerInterface/UI/CastButton
 @onready var undo_button = $PlayerInterface/UI/UndoButton
 @onready var end_turn = $PlayerInterface/UI/EndTurn
@@ -48,11 +48,7 @@ func _on_deck_clicked():
 func start_battle_tutorial():
 	tutorial_active = true
 	var base = "res://data/StoryData/Tutorial/Level 1/"
-	print("Health")
-	await highlight_and_talk(health, base + "health.tres")
-	print("Timer")
-	await highlight_and_talk(timer, base + "timer.tres")
-	print("Deck")
+	
 	await highlight_and_talk(deck, base + "Deck.tres")
 	print("Start game")
 	# Begin battle
@@ -88,27 +84,27 @@ func start_battle_tutorial():
 		[slot1, slot2, slot3],
 		base + "slot.tres"
 	)
-
-	await highlight_and_talk(cast_button, base + "cast.tres")
-	await highlight_and_talk(undo_button, base + "redo.tres")
-	await highlight_and_talk(end_turn, base + "endturn.tres")
+	await highlight_and_talk(health, base + "health.tres")
 	await highlight_and_talk(spellbook, base + "spellbook.tres")
 	await highlight_and_talk(inventory, base + "inventory.tres")
+	await highlight_and_talk(timer, base + "timer.tres")
+	await highlight_and_talk(undo_button, base + "redo.tres")
+	await highlight_and_talk(cast_button, base + "cast.tres")
+	await highlight_and_talk(end_turn, base + "endturn.tres")
 
 	PlayerProfile.tutorial_steps_completed["battle_tutorial"] = true
-
 	get_tree().change_scene_to_file("res://scenes/levels/Level1.tscn")
 
 
 func highlight_and_talk(node: CanvasItem, data_path: String):
+	if !is_instance_valid(node): return
+	
 	var copy := node.duplicate()
-
 	highlight_layer.add_child(copy)
 
-	if node is Control:
-		copy.global_position = node.global_position
-	elif node is Node2D:
-		copy.global_position = node.global_position
+	var visual_transform = node.get_global_transform_with_canvas()
+	copy.global_position = visual_transform.get_origin()
+	copy.scale = visual_transform.get_scale()
 
 	if node is Control:
 		node.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -119,7 +115,6 @@ func highlight_and_talk(node: CanvasItem, data_path: String):
 
 	if node is Control:
 		node.mouse_filter = Control.MOUSE_FILTER_STOP
-
 func highlight_group_and_talk(nodes: Array, data_path: String):
 	print("Step: Starting group highlight for ", data_path)
 	var copies := []

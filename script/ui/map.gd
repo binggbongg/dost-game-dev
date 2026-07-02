@@ -39,16 +39,21 @@ func start_chapter_intro():
 
 func highlight_and_talk(node: Control, data_path: String):
 	var copy := node.duplicate()
-
 	highlight_layer.add_child(copy)
-	copy.global_position = node.global_position
+	
+	# Match the visual appearance exactly using the Canvas Transform
+	var visual_transform = node.get_global_transform_with_canvas()
+	copy.global_position = visual_transform.get_origin()
+	copy.scale = visual_transform.get_scale()
+	
 	node.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
-	await StoryManager.play_tutorial(data_path, copy)
+	# FIX: Pass the original 'node' to the StoryManager so the math 
+	# in MechanicsUI.gd can see the correct screen coordinates.
+	await StoryManager.play_tutorial(data_path, node)
 
 	copy.queue_free()
-	node.mouse_filter = Control.MOUSE_FILTER_STOP 
-
+	node.mouse_filter = Control.MOUSE_FILTER_STOP
 func phase_button_pressed(current_phase):
 	AudioManager.play_ui_sound("click")
 	if current_phase:

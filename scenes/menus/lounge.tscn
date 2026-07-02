@@ -490,11 +490,11 @@ color = Color(0, 0, 0, 0.5882353)
 [node name="Mechanics" parent="TutorialLayer" unique_id=153786700 instance=ExtResource("20_le30m")]
 visible = false
 
-[node name="HiglightLayer" type="CanvasLayer" parent="." unique_id=2124777705]
+[node name="HighlightLayer" type="CanvasLayer" parent="." unique_id=2124777705]
 layer = 80
 visible = false
 
-[node name="Control" type="Control" parent="HiglightLayer" unique_id=1435107228]
+[node name="Control" type="Control" parent="HighlightLayer" unique_id=1435107228]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
