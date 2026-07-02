@@ -12,30 +12,16 @@ font_size = 29
 font = ExtResource("3_2hrnm")
 font_size = 36
 
-[sub_resource type="LabelSettings" id="LabelSettings_01g43"]
-font = ExtResource("3_2hrnm")
-font_size = 19
-
 [node name="CanvasLayer" type="CanvasLayer" unique_id=153786700]
 script = ExtResource("1_gftur")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1306323752]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_2hrnm")
-
-[node name="Dimmer" type="ColorRect" parent="." unique_id=1364385443]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.5882353)
 
 [node name="DialogueBox" type="Control" parent="." unique_id=1161655313]
 layout_mode = 3
@@ -70,41 +56,13 @@ text = "Aissha"
 label_settings = SubResource("LabelSettings_rrrj2")
 autowrap_mode = 2
 
-[node name="MechanicsBox" type="Control" parent="." unique_id=265513911]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1909.0
-offset_bottom = 1081.0
-
-[node name="MechanicsPanel" type="Panel" parent="MechanicsBox" unique_id=1985091821]
-layout_mode = 0
-offset_left = 104.0
-offset_top = 175.0
-offset_right = 585.0
-offset_bottom = 320.0
-
-[node name="TextLabel" type="Label" parent="MechanicsBox/MechanicsPanel" unique_id=1556756639]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 63.0
-offset_right = 457.0
-offset_bottom = 127.0
-text = "This is a sample mechanics"
-label_settings = SubResource("LabelSettings_01g43")
-autowrap_mode = 2
-
-[node name="NameLabel" type="Label" parent="MechanicsBox/MechanicsPanel" unique_id=1951035370]
-layout_mode = 0
-offset_left = 27.0
-offset_top = 20.0
-offset_right = 1640.0
-offset_bottom = 65.0
-text = "Aissha"
-label_settings = SubResource("LabelSettings_rrrj2")
-autowrap_mode = 2
-
 [node name="Portrait" type="TextureRect" parent="." unique_id=2089851814]
 offset_left = 1595.0
 offset_top = 753.0
 offset_right = 1803.0
 offset_bottom = 1024.0
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=832731292]
+position = Vector2(1352.0001, 522)
+scale = Vector2(20, 20)
+flip_h = true

@@ -6,6 +6,8 @@ extends Node2D
 @onready var tutorial_layer = $TutorialLayer
 @onready var dimmer = $TutorialLayer/Dimmer
 @onready var highlight_layer = $HighlightLayer/Control 
+@onready var player_name: Label = $Buttons/Content/CharacterSpotlight/PlayerName
+@onready var me: AnimatedSprite2D = $Buttons/Content/CharacterSpotlight/Character
 
 var tutorial_active = false
 
@@ -13,6 +15,15 @@ func _ready():
 	await get_tree().process_frame
 	center_camera()
 	dimmer.hide()
+	if PlayerProfile.player_name != "Default Player":
+		player_name.text = PlayerProfile.player_name
+	if PlayerProfile.selected_character != "None":
+		var character_id = PlayerProfile.selected_character
+		var path = "res://data/Characters/%s.tres" % character_id
+		var character_data := load(path) as CharacterData
+		if character_data:
+			me.sprite_frames = character_data.sprite_frames
+			me.play("idle")
 	if not PlayerProfile.tutorial_steps_completed.get("lounge_tour", false):
 		start_lounge_tour()
 

@@ -15,8 +15,8 @@ var chosen_character_id: String = ""
 func _ready():
 	character_group.show()
 	name_group.hide()
-	boy_button.pressed.connect(_on_character_selected.bind("Boy"))
-	girl_button.pressed.connect(_on_character_selected.bind("Girl"))
+	boy_button.pressed.connect(_on_character_selected.bind("boy_plain"))
+	girl_button.pressed.connect(_on_character_selected.bind("girl_plain"))
 	submit_button.pressed.connect(_on_submit_pressed)
 	input_username.text_submitted.connect(func(_text): _on_submit_pressed())
 func _on_character_selected(char_id: String):
