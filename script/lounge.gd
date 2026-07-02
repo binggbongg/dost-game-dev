@@ -52,10 +52,7 @@ func highlight_and_talk(node: Control, data_path: String):
 	var old_pos = node.global_position
 	
 	node.reparent(highlight_layer)
-	node.global_position = old_pos # Prevent jumping
-	
-	node.modulate = Color(1.8, 1.8, 1.8) # Glow effect
-	
+	node.global_position = old_pos 
 	print("Starting tutorial:", node.name)
 	print("Data path:", data_path)
 

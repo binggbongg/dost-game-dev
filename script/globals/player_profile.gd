@@ -23,8 +23,8 @@ var player_rank: String = "Starter":
 		profile_updated.emit()
 var tutorial_steps_completed: Dictionary = {
 	"lounge_tour": false,
-	"combat_basics": false,
-	"combo_tutorial": false
+	"chapter_intro": false,
+	"battle_tutorial": false
 }
 
 var is_tutorial_fight: bool = false
@@ -44,8 +44,8 @@ func initialize_profile(new_name: String, character_id: String):
 	
 	tutorial_steps_completed = {
 		"lounge_tour": false,
-		"combat_basics": false,
-		"combo_tutorial": false
+		"chapter_intro": false,
+		"battle_tutorial": false
 	}
 	is_tutorial_fight = false
 	

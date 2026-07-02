@@ -237,7 +237,7 @@ offset_bottom = 223.0
 
 [node name="CoinDisplay" parent="." unique_id=220494740 instance=ExtResource("5_3ycl8")]
 layout_mode = 0
-offset_left = 1017.0
-offset_top = 53.0
-offset_right = 1167.0
-offset_bottom = 103.0
+offset_left = 877.0
+offset_top = 84.0
+offset_right = 1158.0
+offset_bottom = 199.0

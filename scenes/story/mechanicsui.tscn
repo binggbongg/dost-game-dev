@@ -67,4 +67,3 @@ autowrap_mode = 2
 
 [node name="HiglightLayer" type="CanvasLayer" parent="." unique_id=1369897337]
 layer = 30
-visible = false
