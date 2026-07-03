@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://lq3tmvb8ajg0"]
 
-[ext_resource type="Texture2D" uid="uid://ci6i2bwtfvasp" path="res://assets/temporary/map_bg.png" id="1_1cgml"]
 [ext_resource type="Script" uid="uid://0rivha5gykeg" path="res://script/lounge.gd" id="1_ij4pv"]
+[ext_resource type="Texture2D" uid="uid://baltvh87tb21e" path="res://assets/ui/map/map.png" id="2_8y8p0"]
 [ext_resource type="Texture2D" uid="uid://dr0x4711m18cr" path="res://assets/temporary/character highlight.png" id="3_2p8cd"]
 [ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="3_uygx0"]
 [ext_resource type="Texture2D" uid="uid://dmei84moikr28" path="res://assets/ui/shop/setting_icon.png" id="4_6cgmx"]
@@ -160,15 +160,17 @@ animations = [{
 script = ExtResource("1_ij4pv")
 
 [node name="Map" type="TextureRect" parent="." unique_id=1061391353]
-offset_right = 640.0
-offset_bottom = 360.0
+texture_filter = 1
+offset_left = -407.00012
+offset_top = -16.0
+offset_right = 41.11975
+offset_bottom = 236.06738
 scale = Vector2(6.6708336, 6.6708336)
 mouse_filter = 2
-texture = ExtResource("1_1cgml")
+texture = ExtResource("2_8y8p0")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=857988488]
 position = Vector2(950, 500)
-offset = Vector2(0, 41)
 limit_enabled = false
 limit_top = -1070
 limit_right = 4270
@@ -379,115 +381,67 @@ texture_normal = ExtResource("15_f46hc")
 script = ExtResource("3_uygx0")
 
 [node name="ChapterOne" type="TextureButton" parent="." unique_id=1766995160]
-offset_left = 890.0
-offset_top = 1700.0
-offset_right = 1034.0
-offset_bottom = 1835.0
+offset_left = 1253.0
+offset_top = 1323.0
+offset_right = 1397.0
+offset_bottom = 1458.0
 texture_normal = ExtResource("20_ngrx0")
 script = ExtResource("18_le30m")
 next_scene = ExtResource("19_8m8uw")
 
-[node name="Chapters2" type="TextureButton" parent="." unique_id=2045396379]
-offset_left = 1455.0
-offset_top = 1305.0
-offset_right = 1625.0
-offset_bottom = 1451.0
+[node name="ChapterOne2" type="TextureButton" parent="." unique_id=2126808616]
+offset_left = 1084.0
+offset_top = 1078.0
+offset_right = 1228.0
+offset_bottom = 1213.0
+texture_normal = ExtResource("20_ngrx0")
 script = ExtResource("18_le30m")
 next_scene = ExtResource("19_8m8uw")
 
-[node name="TextureButton" type="TextureRect" parent="Chapters2" unique_id=116132514]
-layout_mode = 0
-offset_left = 22.0
-offset_top = 4.0
-offset_right = 155.0
-offset_bottom = 137.0
-mouse_filter = 2
-texture = ExtResource("20_ngrx0")
-
-[node name="Chapters3" type="TextureButton" parent="." unique_id=1637828946]
-offset_left = 1031.0
-offset_top = 1494.0
-offset_right = 1201.0
-offset_bottom = 1640.0
+[node name="ChapterOne3" type="TextureButton" parent="." unique_id=349371893]
+offset_left = 1310.0
+offset_top = 858.0
+offset_right = 1454.0
+offset_bottom = 993.0
+texture_normal = ExtResource("20_ngrx0")
 script = ExtResource("18_le30m")
 next_scene = ExtResource("19_8m8uw")
 
-[node name="TextureButton" type="TextureRect" parent="Chapters3" unique_id=1477938325]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 4.0
-offset_right = 143.0
-offset_bottom = 137.0
-mouse_filter = 2
-texture = ExtResource("20_ngrx0")
-
-[node name="Chapters4" type="TextureButton" parent="." unique_id=20228541]
-offset_left = 2064.0
-offset_top = 149.0
-offset_right = 2234.0
-offset_bottom = 295.0
+[node name="ChapterOne4" type="TextureButton" parent="." unique_id=536430282]
+offset_left = 1012.0
+offset_top = 569.0
+offset_right = 1156.0
+offset_bottom = 704.0
+texture_normal = ExtResource("20_ngrx0")
 script = ExtResource("18_le30m")
 next_scene = ExtResource("19_8m8uw")
 
-[node name="TextureButton" type="TextureRect" parent="Chapters4" unique_id=1570723398]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 4.0
-offset_right = 143.0
-offset_bottom = 137.0
-mouse_filter = 2
-texture = ExtResource("20_ngrx0")
-
-[node name="Chapters5" type="TextureButton" parent="." unique_id=1103691283]
-offset_left = 2440.0
-offset_top = 688.0
-offset_right = 2610.0
-offset_bottom = 834.0
+[node name="ChapterOne5" type="TextureButton" parent="." unique_id=1386622254]
+offset_left = 755.0
+offset_top = 334.0
+offset_right = 899.0
+offset_bottom = 469.0
+texture_normal = ExtResource("20_ngrx0")
 script = ExtResource("18_le30m")
 next_scene = ExtResource("19_8m8uw")
 
-[node name="TextureButton" type="TextureRect" parent="Chapters5" unique_id=523521440]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 4.0
-offset_right = 143.0
-offset_bottom = 137.0
-mouse_filter = 2
-texture = ExtResource("20_ngrx0")
-
-[node name="Chapters6" type="TextureButton" parent="." unique_id=1430926937]
-offset_left = 2755.0
-offset_top = 441.0
-offset_right = 2925.0
-offset_bottom = 587.0
+[node name="ChapterOne6" type="TextureButton" parent="." unique_id=1598216685]
+offset_left = 868.0
+offset_top = 58.0
+offset_right = 1012.0
+offset_bottom = 193.0
+texture_normal = ExtResource("20_ngrx0")
 script = ExtResource("18_le30m")
 next_scene = ExtResource("19_8m8uw")
 
-[node name="TextureButton" type="TextureRect" parent="Chapters6" unique_id=992036638]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 4.0
-offset_right = 143.0
-offset_bottom = 137.0
-mouse_filter = 2
-texture = ExtResource("20_ngrx0")
-
-[node name="Chapters7" type="TextureButton" parent="." unique_id=948900191]
-offset_left = 3150.0
-offset_top = 711.0
-offset_right = 3320.0
-offset_bottom = 857.0
+[node name="ChapterOne7" type="TextureButton" parent="." unique_id=965550457]
+offset_left = 655.0
+offset_top = 909.0
+offset_right = 799.0
+offset_bottom = 1044.0
+texture_normal = ExtResource("20_ngrx0")
 script = ExtResource("18_le30m")
 next_scene = ExtResource("19_8m8uw")
-
-[node name="TextureButton" type="TextureRect" parent="Chapters7" unique_id=1561772181]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 4.0
-offset_right = 143.0
-offset_bottom = 137.0
-mouse_filter = 2
-texture = ExtResource("20_ngrx0")
 
 [node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=1670448932]
 layer = 20

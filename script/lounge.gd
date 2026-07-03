@@ -31,15 +31,12 @@ func _ready():
 		start_lounge_tour()
 
 func center_camera():
-	var view = get_viewport_rect().size
+	var view = get_viewport().get_visible_rect().size
 	var actual_size = map.size * map.scale
 
-	var left = map.position.x
-	var bottom = map.position.y + actual_size.y
-
 	cam.position = Vector2(
-		left + view.x / 2,
-		bottom - view.y / 2
+		map.position.x + actual_size.x / 2 - 150,
+		map.position.y + actual_size.y - view.y / 2
 	)
 
 	limit_camera_view()
@@ -92,7 +89,7 @@ func highlight_and_talk(node: CanvasItem, data_path: String):
 	await get_tree().create_timer(0.1).timeout
 
 func limit_camera_view():
-	var view = get_viewport_rect().size
+	var view = get_viewport().get_visible_rect().size
 
 	var actual_size = map.size * map.scale
 
