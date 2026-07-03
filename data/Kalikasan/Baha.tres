@@ -9,6 +9,6 @@ name = "Baha"
 category = 2
 rarity = 2
 damage = 8
-mana_cost = 7
+mana_cost = 6
 texture = ExtResource("2_68muk")
 metadata/_custom_type_script = "uid://cv07myeubhuht"
