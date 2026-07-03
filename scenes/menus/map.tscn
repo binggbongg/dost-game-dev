@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bw7k5221ej7ii" path="res://scenes/level_previews/preview_phase_1.tscn" id="2_t14ch"]
 [ext_resource type="PackedScene" uid="uid://dcxviw3ekcy4k" path="res://scenes/level_previews/preview_phase_2.tscn" id="3_ev0yy"]
 [ext_resource type="PackedScene" uid="uid://dyhvhgchy6owy" path="res://scenes/level_previews/preview_phase_3.tscn" id="4_3yoho"]
+[ext_resource type="PackedScene" uid="uid://ckbrj3vh8fqlp" path="res://scenes/story/mechanicsui.tscn" id="8_ev0yy"]
 
 [node name="Map" type="Control" unique_id=142484164]
 layout_mode = 3
@@ -41,7 +42,7 @@ text = "The Land of the Iron City"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buttons" type="Node2D" parent="." unique_id=560113213]
+[node name="Buttons" type="CanvasLayer" parent="." unique_id=501019418]
 
 [node name="Phase1" type="TextureButton" parent="Buttons" unique_id=1622936125]
 offset_left = 724.0
@@ -92,3 +93,29 @@ offset_bottom = 460.0
 theme_override_fonts/normal_font = ExtResource("2_314dn")
 theme_override_font_sizes/normal_font_size = 50
 text = "Chapter 3"
+
+[node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=1603193052]
+layer = 20
+visible = false
+
+[node name="Dimmer" type="ColorRect" parent="TutorialLayer" unique_id=711970714]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="Mechanics" parent="TutorialLayer" unique_id=153786700 instance=ExtResource("8_ev0yy")]
+visible = false
+
+[node name="HighlightLayer" type="CanvasLayer" parent="." unique_id=1158412874]
+layer = 80
+visible = false
+
+[node name="Control" type="Control" parent="HighlightLayer" unique_id=960033263]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2

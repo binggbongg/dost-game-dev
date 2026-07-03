@@ -1,15 +1,27 @@
 extends Node
 
-var ui: CanvasLayer
+var mechanics_ui: CanvasLayer
 
-func play(data: StoryData):
-	if not ui:
-		var scene = load("res://scenes/story/StoryUI.tscn")
-		ui = scene.instantiate()
-		get_tree().root.add_child(ui)
-	
-	if data.bgm_to_play:
-		AudioManager.play_bgm(data.bgm_to_play)
-		
-	ui.start_sequence(data)
-	return ui.sequence_finished # Allows us to 'await' it
+func play_tutorial(data_path: String, target_node: CanvasItem = null):
+	var data: StoryData = load(data_path)
+
+	if mechanics_ui == null:
+		var scene = load("res://scenes/story/mechanicsui.tscn")
+		mechanics_ui = scene.instantiate()
+		get_tree().root.add_child.call_deferred(mechanics_ui)
+		await mechanics_ui.ready
+
+	mechanics_ui.start_tutorial(data, target_node)
+	mechanics_ui.set_spotlight(target_node)
+	# Wait until the tutorial finishes
+	await mechanics_ui.finished
+
+func play_group_tutorial(data_path: String, targets: Array):
+	var data: StoryData = load(data_path)
+	if mechanics_ui == null:
+		var scene = load("res://scenes/story/mechanicsui.tscn")
+		mechanics_ui = scene.instantiate()
+		get_tree().root.add_child.call_deferred(mechanics_ui)
+		await mechanics_ui.ready
+	mechanics_ui.start_group_tutorial(data, targets)
+	await mechanics_ui.finished

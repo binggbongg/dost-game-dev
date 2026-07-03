@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://d2ekjm4kcdqqv"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_rku8l"]
+
+[resource]
+script = ExtResource("1_rku8l")
+character_name = "Undo"
+lines = Array[String](["If you are unsure about your current cast, you may easily remove everything from the slots and start over"])
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

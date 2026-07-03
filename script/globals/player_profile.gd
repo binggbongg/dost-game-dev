@@ -25,8 +25,8 @@ var player_rank: String = "Starter":
 		profile_updated.emit()
 var tutorial_steps_completed: Dictionary = {
 	"lounge_tour": false,
-	"combat_basics": false,
-	"combo_tutorial": false
+	"chapter_intro": false,
+	"battle_tutorial": false
 }
 
 var is_tutorial_fight: bool = false
@@ -36,6 +36,46 @@ var coins: int = 100:
 	set(value):
 		coins = value
 		coins_changed.emit(coins) 
+		
+func initialize_profile(new_name: String, character_id: String):
+	player_name = new_name
+	selected_character = character_id
+	level = 1
+	experience = 0
+	coins = 100
+	
+	tutorial_steps_completed = {
+		"lounge_tour": false,
+		"chapter_intro": false,
+		"battle_tutorial": false
+	}
+	is_tutorial_fight = false
+	
+	print("Profile Initialized for: ", player_name)
+
+func set_rank(new_rank: String):
+	player_rank = new_rank
+
+#Money logic
+
+func add_coins(amount: int) -> void:
+	if amount <= 0: return
+	self.coins += amount 
+
+func spend_coins(amount: int) -> bool:
+	if can_afford(amount):
+		self.coins -= amount
+		return true
+	return false
+
+func can_afford(amount: int) -> bool:
+	return coins >= amount
+	
+func _input(event):
+	if event is InputEventKey and event.pressed and event.keycode == KEY_A:
+		add_coins(200)
+
+# progression systems
 
 # -- progression systems --
 var max_unlocked_chapters = 1

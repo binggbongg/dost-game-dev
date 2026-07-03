@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://sh712fho0e0n"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_lbvvg"]
+
+[resource]
+script = ExtResource("1_lbvvg")
+type = 1
+character_name = "Player Hand"
+lines = Array[String](["You are given 5 cards in your hand, slide them into the slot as single spells or cast valid magic combo spells for greater power. Invalid cards will be grayed out and not be playable until you have enough mana or have a valid spell."])
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"
