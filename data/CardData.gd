@@ -11,7 +11,7 @@ class_name CardData
 #These will affect player stats and enemy stats sa game, can be compounded with other cards if played at the same time.
 @export var damage: int = 0
 @export var heal: int = 0
-@export var multiplier: int = 0
+@export var multiplier: float = 0
 @export var mana_cost: int = 0
 
 #For the art nii!

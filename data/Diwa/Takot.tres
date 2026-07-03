@@ -1,12 +1,14 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://jmh7vs2knngw"]
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_ca5gj"]
-[ext_resource type="Texture2D" uid="uid://bk6ree62npcf7" path="res://assets/temporary/DIWA.png" id="2_s0rg0"]
+[ext_resource type="Texture2D" uid="uid://cjq6kkw2dr0ja" path="res://assets/cards/takot.png" id="2_s0rg0"]
 
 [resource]
 script = ExtResource("1_ca5gj")
 name = "Takot"
 category = 1
-mana_cost = 5
+damage = 1
+multiplier = 1.2
+mana_cost = 1
 texture = ExtResource("2_s0rg0")
 metadata/_custom_type_script = "uid://cv07myeubhuht"
