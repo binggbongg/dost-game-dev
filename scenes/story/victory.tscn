@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://cpoamb37wksl3"]
+
+[ext_resource type="Script" uid="uid://c6ngaw1h8fqup" path="res://script/story/chap_1_outro.gd" id="1_5ormt"]
+[ext_resource type="FontFile" uid="uid://df2vd0uxg3gcf" path="res://assets/fonts/PixelifySans-SemiBold.ttf" id="2_3wost"]
+[ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="3_d6xub"]
+[ext_resource type="Texture2D" uid="uid://dai4e62i7gosj" path="res://assets/temporary/reset_button.png" id="4_xhar2"]
+[ext_resource type="Texture2D" uid="uid://dl51l2pbbo6cg" path="res://assets/ui/buttons/coin_icon.png" id="5_246vl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nj4xa"]
+font = ExtResource("2_3wost")
+font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_jdhpx"]
+font = ExtResource("3_d6xub")
+font_size = 39
+
+[node name="Scene" type="CanvasLayer" unique_id=676979114]
+layer = 80
+script = ExtResource("1_5ormt")
+
+[node name="Dimmer" type="ColorRect" parent="." unique_id=1002242521]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.79607844)
+
+[node name="Border" type="ColorRect" parent="." unique_id=1511601350]
+offset_left = 531.0
+offset_top = 298.0
+offset_right = 1351.0
+offset_bottom = 805.0
+color = Color(0.5727254, 0.28634936, 0.15357694, 0.85882354)
+
+[node name="TextLabel2" type="Label" parent="." unique_id=1747634354]
+offset_left = 556.0
+offset_top = 371.0
+offset_right = 1364.0
+offset_bottom = 461.0
+text = "CHAPTER COMPLETE"
+label_settings = SubResource("LabelSettings_nj4xa")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextLabel4" type="Label" parent="." unique_id=1141033330]
+offset_left = 636.0
+offset_top = 524.0
+offset_right = 962.0
+offset_bottom = 614.0
+text = "300,000"
+label_settings = SubResource("LabelSettings_nj4xa")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextLabel6" type="Label" parent="." unique_id=395892412]
+offset_left = 1072.0
+offset_top = 524.0
+offset_right = 1214.0
+offset_bottom = 614.0
+text = "200"
+label_settings = SubResource("LabelSettings_nj4xa")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextLabel3" type="Label" parent="." unique_id=850787837]
+offset_left = 654.0
+offset_top = 464.0
+offset_right = 944.0
+offset_bottom = 554.0
+text = "YOUR SCORE:"
+label_settings = SubResource("LabelSettings_jdhpx")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextLabel5" type="Label" parent="." unique_id=1759971537]
+offset_left = 958.0
+offset_top = 465.0
+offset_right = 1276.0
+offset_bottom = 555.0
+text = "LEVEL REWARDS:"
+label_settings = SubResource("LabelSettings_jdhpx")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=360275559]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = 123.0
+offset_right = -79.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.4, 4.4)
+texture_normal = ExtResource("4_xhar2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=630681341]
+position = Vector2(1034, 568)
+texture = ExtResource("5_246vl")

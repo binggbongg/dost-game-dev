@@ -52,15 +52,11 @@ func start_battle_tutorial():
 		await get_tree().process_frame
 	
 	await get_tree().create_timer(0.8).timeout 
-
 	var valid_cards = player_hand.player_cards.filter(func(c): return is_instance_valid(c))
 	await highlight_group_and_talk(valid_cards, base + "playerhand.tres")
-
 	await get_tree().create_timer(0.2).timeout 
-
 	await highlight_group_and_talk([slot1, slot2, slot3], base + "slot.tres")
-	
-	# Group these to ensure smooth transitions
+
 	var steps = [
 		[health, "health.tres"],
 		[spellbook, "spellbook.tres"],
@@ -70,17 +66,10 @@ func start_battle_tutorial():
 		[cast_button, "cast.tres"],
 		[end_turn, "endturn.tres"]
 	]
-
 	for step in steps:
 		await highlight_and_talk(step[0], base + step[1])
-
 	PlayerProfile.tutorial_steps_completed["battle_tutorial"] = true
-	
-	# --- CLEANUP TUTORIAL UI BEFORE OUTRO ---
 	dimmer.hide()
-	# Optional: if StoryManager has a cleanup function, call it here
-	# StoryManager.mechanics_ui.hide_everything() 
-
 	var end_screen_path = "res://scenes/story/chap1outro.tscn" 
 	var end_screen = load(end_screen_path).instantiate()
 	get_tree().root.add_child(end_screen)
@@ -95,7 +84,6 @@ func highlight_and_talk(node: CanvasItem, data_path: String):
 	copy.visible = false # Prevent 1-frame flicker at (0,0)
 	highlight_layer.add_child(copy)
 
-	# Use Canvas Transform for 100% accurate visual match
 	var visual_transform = node.get_global_transform_with_canvas()
 	copy.global_position = visual_transform.get_origin()
 	copy.scale = visual_transform.get_scale()
@@ -109,14 +97,12 @@ func highlight_and_talk(node: CanvasItem, data_path: String):
 	if node is Control:
 		node.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
-	# IMPORTANT: Pass 'node' (original) for math, not 'copy'
 	await StoryManager.play_tutorial(data_path, node)
 
 	copy.queue_free()
 	if node is Control:
 		node.mouse_filter = Control.MOUSE_FILTER_STOP
 	
-	# Small delay between steps prevents "skipping" glitches
 	await get_tree().create_timer(0.1).timeout
 
 func highlight_group_and_talk(nodes: Array, data_path: String):

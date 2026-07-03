@@ -8,8 +8,6 @@ signal finished
 func _ready():
 	# 1. Start the BACKGROUND invisible (this affects children too)
 	dimmer.modulate.a = 0
-	label.text = "Battle Tutorial Complete!\nClick anywhere to begin your journey."
-	
 	# 2. Fade In the Dimmer
 	var tween = create_tween()
 	# We target 'dimmer' specifically instead of 'self'

@@ -98,6 +98,8 @@ func trigger_boss_defeat_cutscene():
 
 func _on_player_dies():
 	print("Combat Level: Player dead, you lose")
-	
-	# change the file to an actual game over scene
-	get_tree().change_scene_to_file("res://scenes/menus/lounge.tscn")
+	var end_screen_path = "res://scenes/story/gameover.tscn" 
+	var end_screen = load(end_screen_path).instantiate()
+	get_tree().root.add_child(end_screen)
+	await end_screen.finished
+	SceneTransition.change_scene_path("res://scenes/menus/lounge.tscn")

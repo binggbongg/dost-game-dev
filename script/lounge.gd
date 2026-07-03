@@ -43,7 +43,7 @@ func start_lounge_tour():
 		[$Buttons/Content/CharacterSpotlight, "characterspotlight.tres"],
 		[$Buttons/Content/Lore, "lore.tres"],
 		[$Buttons/Content/Trophy, "leaderboard.tres"],
-		[$Buttons/Content/CoinDisplay, "coins.tres"],
+		[$Buttons/Content/CoinDisplay/Coin, "coins.tres"],
 		[$Buttons/Content/Settings, "settings.tres"],
 		[$Buttons/Content/spellbook, "spellbook.tres"],
 		[$Buttons/Content/shop, "shop.tres"],
@@ -91,6 +91,7 @@ func highlight_and_talk(node: CanvasItem, data_path: String):
 	
 	# 5. Brief pause before next step to make the transition look smooth
 	await get_tree().create_timer(0.1).timeout
+
 func limit_camera_view():
 	var view = get_viewport_rect().size
 	var m_rect = map.get_global_rect()

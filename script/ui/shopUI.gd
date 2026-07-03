@@ -16,6 +16,11 @@ var selected_price: int = 0
 func _ready():
 	super._ready() 
 	purchase_button.pressed.connect(_on_purchase_clicked)
+	
+	name_label.text = ""
+	desc_label.text = ""
+	cost.text = ""
+	
 	populate_shop()
 
 func populate_shop():
