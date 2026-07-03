@@ -16,8 +16,10 @@ extends Control
 @onready var settings_button: TextureButton = $Settings
 @onready var audio_button: TextureButton = $Audio
 @onready var audio_icon_on: TextureRect = $Audio/Audio_On
-@onready var audio_icon_off: TextureRect = $Audio/Audio_On2
+@onready var audio_icon_off: TextureRect = $Audio/Audio_Off
 @onready var exit: TextureButton = $Exit
+
+@onready var login_scene: PackedScene = load("res://scenes/menus/login_account.tscn")
 
 @onready var new_game_btn: TextureButton = $NewGameButton
 @onready var continue_btn: TextureButton = $ContinueButton
@@ -77,6 +79,8 @@ func check_player_history() -> void:
 		continue_btn.visible = true
 		continue_btn.disabled = true
 		continue_btn.modulate = Color(0.4, 0.4, 0.4, 0.9)
+		
+		UIManager.open_menu(login_scene)
 		return
 
 	new_game_btn.modulate = Color(1, 1, 1, 1)

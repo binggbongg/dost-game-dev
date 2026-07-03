@@ -6,7 +6,7 @@ extends Node
 @onready var sfx_players: Array = []
 
 var active_bgm_player: AudioStreamPlayer
-var library = preload("res://data/GameSounds.tres") 
+var library = preload("res://data/SoundData/GameSounds.tres") 
 
 # --- INITIALIZATION ---
 func _ready():
