@@ -170,29 +170,37 @@ func validate_cast() -> bool:
 
 	return true
 
-func calculate_combo_output(active_cards):
-	var total_damage = 0
-	var total_healing = 0
+func calculate_combo_output(active_cards: Array) -> Dictionary:
+	var base_damage: float = 0.0
+	var base_healing: float = 0.0
+	var global_multiplier: float = 1
 	
 	for card in active_cards:
-		if not is_instance_valid(card) or not card.card_data: return
+		if not is_instance_valid(card) or not card.card_data:
+			continue
 		
-		var data = card.card_data
-		if "damage" in data:
-			total_damage += data.damage
-		if "heal" in data:
-			total_healing += data.heal
+		var data = card.card_data as CardData
+		
+		match card.card_category:
+			GameEnums.CardCategory.KALIKASAN:
+				base_damage += data.damage
+			GameEnums.CardCategory.TANGLAW:
+				base_healing += data.heal
+			GameEnums.CardCategory.DIWA:
+				base_damage += data.damage
+				base_healing += data.heal
+				if data.multiplier > 0:
+					global_multiplier += (data.multiplier - 1.0)
+			GameEnums.CardCategory.LAHI:
+				base_damage += data.damage
+				base_healing += data.heal
 	
-	var categories = active_cards.map(func(c): return c.card_category)
-	var lahi_count = categories.count(GameEnums.CardCategory.LAHI)
-	var diwa_count = categories.count(GameEnums.CardCategory.DIWA)
-	var kali_count = categories.count(GameEnums.CardCategory.KALIKASAN)
+	# add the special conditions of red's combos here.. i will finalize guro inig july 4
 	
-	if lahi_count == 1 and diwa_count == 1 and kali_count == 1:
-		print("Trio synergy: 1.5x multiplier")
-		total_damage *= 1.5
-	
+	var final_damage = base_damage * global_multiplier
+	var final_healing = base_healing * global_multiplier
+
 	return {
-		"damage": total_damage,
-		"healing": total_healing
+		"damage": int(round(final_damage)),
+		"healing": int(round(final_healing))
 	}
