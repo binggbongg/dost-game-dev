@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://blg4o5ipkpt4k" path="res://script/ui/login_account.gd" id="1_aejm6"]
 [ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="1_l88xf"]
-[ext_resource type="PackedScene" uid="uid://dm1hwrj3l0df6" path="res://scenes/menus/play.tscn" id="2_3cens"]
 [ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="2_pyuj4"]
-[ext_resource type="PackedScene" uid="uid://di1evjdy75pxt" path="res://scenes/menus/register_account.tscn" id="2_rxaha"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_mh3e2"]
 [ext_resource type="Texture2D" uid="uid://dhiy0u8u5y80b" path="res://assets/temporary/Assets_UI.png" id="4_cc4ba"]
 [ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="5_vuu3o"]
@@ -77,8 +75,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_aejm6")
-next_scene = ExtResource("2_3cens")
-scene = ExtResource("2_rxaha")
 
 [node name="Background" type="Node2D" parent="." unique_id=1309525119]
 

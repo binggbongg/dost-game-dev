@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://cyhyj767rlhjl"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_2hjar"]
+
+[resource]
+script = ExtResource("1_2hjar")
+character_name = "Start Here"
+lines = Array[String](["Your journey start here, click play to begin."])
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

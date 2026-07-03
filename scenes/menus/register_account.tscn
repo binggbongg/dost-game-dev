@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c1ypudxvyp6t6" path="res://script/ui/register_account.gd" id="1_3krcp"]
 [ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="1_hjwia"]
 [ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="2_3krcp"]
-[ext_resource type="PackedScene" uid="uid://dm1hwrj3l0df6" path="res://scenes/menus/play.tscn" id="2_ldrm6"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_ldrm6"]
 [ext_resource type="Texture2D" uid="uid://dhiy0u8u5y80b" path="res://assets/temporary/Assets_UI.png" id="4_qt4tx"]
 [ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="5_fblf8"]
@@ -76,7 +75,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_3krcp")
-next_scene = ExtResource("2_ldrm6")
 
 [node name="Background" type="Node2D" parent="." unique_id=1309525119]
 

@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://kmica80eblti"]
+
+[ext_resource type="Script" uid="uid://3rf8j7vr04w" path="res://script/story/level_1_tutorial.gd" id="1_4jv6r"]
+[ext_resource type="Texture2D" uid="uid://b67a6h4yy3qud" path="res://assets/background/rooms/background_1-1.png" id="2_h7g6p"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_5ahqo"]
+[ext_resource type="PackedScene" uid="uid://b14yvyrmb0h2b" path="res://scenes/ui/inventory_button.tscn" id="4_dfrf2"]
+[ext_resource type="PackedScene" uid="uid://6t8x0728x5hf" path="res://scenes/ui/spellbook_button.tscn" id="5_cwjf1"]
+[ext_resource type="PackedScene" uid="uid://bmn31kgxbdlkg" path="res://scenes/ui/pause_button.tscn" id="6_laxjo"]
+[ext_resource type="Script" uid="uid://cy31dctcq2m2k" path="res://script/battle_manager.gd" id="7_6n2d1"]
+[ext_resource type="PackedScene" uid="uid://dkbejpdwhc33b" path="res://scenes/combat_arena.tscn" id="8_bfbtn"]
+[ext_resource type="PackedScene" uid="uid://dirj45q71fos6" path="res://scenes/player_interface.tscn" id="9_0tbow"]
+[ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="10_4okvx"]
+[ext_resource type="Texture2D" uid="uid://dmei84moikr28" path="res://assets/ui/shop/setting_icon.png" id="11_n6t1x"]
+[ext_resource type="PackedScene" uid="uid://ckbrj3vh8fqlp" path="res://scenes/story/mechanicsui.tscn" id="12_h7g6p"]
+
+[sub_resource type="Gradient" id="Gradient_7d7pp"]
+colors = PackedColorArray(0, 0, 0, 0, 0.12951815, 0.04519721, 1.2032688e-08, 0.8901961)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e5nfq"]
+gradient = SubResource("Gradient_7d7pp")
+fill_from = Vector2(0.45641026, 0)
+fill_to = Vector2(0.48376068, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xjr7"]
+atlas = ExtResource("11_n6t1x")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifrkh"]
+atlas = ExtResource("11_n6t1x")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drxk1"]
+atlas = ExtResource("11_n6t1x")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvox0"]
+atlas = ExtResource("11_n6t1x")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6owa4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xjr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifrkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drxk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvox0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Tutorial" type="Node2D" unique_id=1730621475]
+script = ExtResource("1_4jv6r")
+
+[node name="Timer" type="Timer" parent="." unique_id=322603772]
+
+[node name="UpperBackground" type="TextureRect" parent="." unique_id=633699121]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_h7g6p")
+
+[node name="LowerBackground" type="TextureRect" parent="." unique_id=93782774]
+offset_left = -47.0
+offset_top = 487.0
+offset_right = 1978.0
+offset_bottom = 1111.0
+texture = SubResource("GradientTexture2D_e5nfq")
+
+[node name="TimerBar" type="ProgressBar" parent="." unique_id=1491666729]
+offset_left = 807.0
+offset_top = 50.0
+offset_right = 1122.0
+offset_bottom = 95.0
+theme_override_font_sizes/font_size = 30
+max_value = 40.0
+step = 1.0
+show_percentage = false
+
+[node name="TimeText" type="Label" parent="TimerBar" unique_id=1944965971]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 314.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("3_5ahqo")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="Node2D" parent="." unique_id=1820597283]
+
+[node name="Inventory" parent="Buttons" unique_id=328878894 instance=ExtResource("4_dfrf2")]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 186.0
+offset_bottom = 208.0
+scale = Vector2(0.6, 0.6)
+
+[node name="spellbook" parent="Buttons" unique_id=1664093449 instance=ExtResource("5_cwjf1")]
+offset_left = 150.0
+offset_top = 18.0
+offset_right = 214.0
+offset_bottom = 82.0
+scale = Vector2(2, 2)
+
+[node name="PauseButton" parent="Buttons" unique_id=784340132 instance=ExtResource("6_laxjo")]
+process_mode = 3
+offset_left = 1591.0
+offset_top = -1.0
+offset_right = 1656.0
+offset_bottom = 63.0
+scale = Vector2(3, 3)
+
+[node name="BattleManager" type="Node2D" parent="." unique_id=1572491070]
+script = ExtResource("7_6n2d1")
+
+[node name="CombatArena" parent="." unique_id=439901724 instance=ExtResource("8_bfbtn")]
+
+[node name="Settings" type="TextureButton" parent="." unique_id=1958819724]
+offset_left = 1751.0
+offset_top = 21.0
+offset_right = 1887.0
+offset_bottom = 145.0
+script = ExtResource("10_4okvx")
+
+[node name="Audio_Off" type="AnimatedSprite2D" parent="Settings" unique_id=1598970155]
+position = Vector2(74.75005, 77.24994)
+scale = Vector2(2.2421858, 2.2421858)
+sprite_frames = SubResource("SpriteFrames_6owa4")
+autoplay = "default"
+
+[node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=1010130489]
+layer = 20
+visible = false
+
+[node name="Dimmer" type="ColorRect" parent="TutorialLayer" unique_id=130284323]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="Mechanics" parent="TutorialLayer" unique_id=153786700 instance=ExtResource("12_h7g6p")]
+visible = false
+
+[node name="HighlightLayer" type="CanvasLayer" parent="." unique_id=1255470781]
+layer = 80
+visible = false
+
+[node name="Control" type="Control" parent="HighlightLayer" unique_id=427167052]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerInterface" parent="." unique_id=143692811 instance=ExtResource("9_0tbow")]

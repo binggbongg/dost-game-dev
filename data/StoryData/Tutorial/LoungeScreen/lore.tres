@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://2ho4txc4h768"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_un4eo"]
+
+[resource]
+script = ExtResource("1_un4eo")
+type = 1
+lines = Array[String](["Here you can replay the old tale to guide your journey."])
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

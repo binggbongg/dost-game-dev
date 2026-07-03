@@ -5,11 +5,11 @@ var current_state: GameEnums.TurnState = GameEnums.TurnState.START_TURN
 var is_busy: bool = false
 
 @onready var deck_manager = $"../DeckManager"
-
-func _ready() -> void:
-	# Small delay to let the scene tree finish initializing
-	await get_tree().process_frame 
-	start_game()
+@export var auto_start := true
+func _ready():
+	await get_tree().process_frame
+	if auto_start:
+		start_game()
 
 func start_game():
 	print("--- Game Started: Waiting for player to draw ---")

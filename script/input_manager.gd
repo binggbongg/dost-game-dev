@@ -2,6 +2,7 @@ extends Node2D
 
 signal left_mouse_button_clicked
 signal left_mouse_button_released
+signal deck_clicked
 
 const LAYER_CARD = 1
 const LAYER_DECK = 5
@@ -60,6 +61,7 @@ func raycast_at_cursor():
 				redo_node.on_click()
 
 func handle_deck_click():
+	deck_clicked.emit()
 	AudioManager.play_ui_sound("shuffle")
 	if turn_manager.is_busy: return
 	

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://dmdaevknul35k"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_cxo6s"]
+
+[resource]
+script = ExtResource("1_cxo6s")
+type = 1
+character_name = "Pause & Settings"
+lines = Array[String](["Use this buttons when you want to pause the game midway or change some settings when playing."])
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

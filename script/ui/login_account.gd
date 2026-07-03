@@ -5,8 +5,7 @@ extends Control
 @onready var login_button = $LoginButton
 @onready var register_label = $RegisterLabel
 @onready var message_label = $MessageLabel
-@export var next_scene: PackedScene
-@export var scene: PackedScene
+@onready var register_scene: PackedScene = load("res://scenes/menus/register_account.tscn")
 
 func _ready() -> void:
 	if message_label:
@@ -37,19 +36,23 @@ func login_user():
 					message_label.text = Talo.player_auth.last_error.get_string()
 		Talo.player_auth.LoginResult.OK:
 			message_label.text = "Login successful"
-			# Inside your login/registration success block:
+			
+			if typeof(SaveManager) != TYPE_NIL and SaveManager.has_method("sync_with_cloud"):
+				await SaveManager.sync_with_cloud()
+			
 			var main_menu = get_tree().current_scene
 			if main_menu and main_menu.has_method("check_player_history"):
 				main_menu.update_settings_button_state() # Lock the login gear icon
 				main_menu.check_player_history()          # Refresh the Play/Continue status
 			
-			SceneTransition.change_scene(next_scene)
 			UIManager.close_menu()
 
 func register_user(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed == false:
 		print("redirecting to register screen")
-		UIManager.open_menu(scene)
+		if register_scene:
+			UIManager.close_menu()
+			UIManager.open_menu(register_scene)
 
 func update_message(message):
 	if message_label:

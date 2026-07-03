@@ -2,117 +2,104 @@ extends Node2D
 
 @onready var cam = $Camera2D
 @onready var map = $Map
-
-# --- UPDATED PATHS (Option 1) ---
-# Since you moved everything into 'Content', we must update the paths
 @onready var buttons_container = $Buttons/Content
-@onready var player_name_label: Label = $Buttons/Content/PlayerName
-
-# Tutorial Nodes
 @onready var tutorial_layer = $TutorialLayer
 @onready var dimmer = $TutorialLayer/Dimmer
-@onready var arrow = $TutorialLayer/arrow_up
+@onready var highlight_layer = $HighlightLayer/Control 
+@onready var player_name: Label = $Buttons/Content/CharacterSpotlight/PlayerName
+@onready var me: AnimatedSprite2D = $Buttons/Content/CharacterSpotlight/Character
 
-var is_dragging = false
 var tutorial_active = false
 
 func _ready():
-	# 1. SETUP CAMERA (Start at BOTTOM LEFT)
 	await get_tree().process_frame
-	var viewport_size = get_viewport_rect().size
-	var map_size = map.get_global_rect().size
-	
-	# To start at BOTTOM LEFT:
-	# X is just half the screen width (leftmost clamped position)
-	cam.position.x = (viewport_size.x / 2) / cam.zoom.x
-	# Y is the map height minus half the screen height
-	cam.position.y = map_size.y - ((viewport_size.y / 2) / cam.zoom.y)
-	
-	limit_camera_view()
-	
-	# 2. UPDATE UI
+	center_camera()
+	dimmer.hide()
 	if PlayerProfile.player_name != "Default Player":
-		player_name_label.text = PlayerProfile.player_name
-	
-	# 3. START TUTORIAL IF NEW PLAYER
+		player_name.text = PlayerProfile.player_name
+	if PlayerProfile.selected_character != "None":
+		var character_id = PlayerProfile.selected_character
+		var path = "res://data/Characters/%s.tres" % character_id
+		var character_data := load(path) as CharacterData
+		if character_data:
+			me.sprite_frames = character_data.sprite_frames
+			me.play("idle")
 	if not PlayerProfile.tutorial_steps_completed.get("lounge_tour", false):
 		start_lounge_tour()
-	else:
-		dimmer.hide()
-		arrow.hide()
 
-func _unhandled_input(event):
-	if tutorial_active: return 
-	
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			is_dragging = event.pressed
-			
-	if event is InputEventMouseMotion and is_dragging:
-		cam.position -= event.relative / cam.zoom
-		limit_camera_view()
+func center_camera():
+	var view = get_viewport_rect().size
+	var m_rect = map.get_global_rect()
+	cam.position.x = m_rect.position.x + (view.x / 2)
+	cam.position.y = m_rect.end.y - (view.y / 2)
+	limit_camera_view()
 
-# --- TUTORIAL FLOW ---
 
 func start_lounge_tour():
 	tutorial_active = true
-	dimmer.show()
+	var base_path = "res://data/StoryData/Tutorial/LoungeScreen/"
 	
-	# We pass the nodes that are now inside 'Content'
-	await highlight_and_talk(buttons_container.get_node("CharacterSpotlight"), "res://data/StoryData/Tutorial/characterspotlight.tres")
+	var tour_steps = [
+		[$Buttons/Content/CharacterSpotlight, "characterspotlight.tres"],
+		[$Buttons/Content/Lore, "lore.tres"],
+		[$Buttons/Content/Trophy, "leaderboard.tres"],
+		[$Buttons/Content/CoinDisplay, "coins.tres"],
+		[$Buttons/Content/Settings, "settings.tres"],
+		[$Buttons/Content/spellbook, "spellbook.tres"],
+		[$Buttons/Content/shop, "shop.tres"],
+		[$Buttons/Content/PVP, "battle.tres"],
+		[$ChapterOne, "chapter.tres"],
+	]
+
+	for step in tour_steps:
+		await highlight_and_talk(step[0], base_path + step[1])
 	
-	# Step 2: Coins (Top Right)
-	# await highlight_and_talk(buttons_container.get_node("CoinDisplay"), "res://data/StoryData/Tutorial/coins.tres")
-	
-	# ... Add other steps here using the same buttons_container.get_node() format ...
-	
-	reset_highlights()
-	dimmer.hide()
-	arrow.hide()
+	# MOVE THESE HERE - Outside the loop
 	tutorial_active = false
 	PlayerProfile.tutorial_steps_completed["lounge_tour"] = true
+func highlight_and_talk(node: CanvasItem, data_path: String):
+	if !is_instance_valid(node): return
+	
+	# 1. Wait a frame to ensure camera movement from the previous click is stopped
+	await get_tree().process_frame 
+	
+	var copy := node.duplicate()
+	copy.visible = false # Hide immediately to prevent 1-frame flicker at (0,0)
+	highlight_layer.add_child(copy)
 
-func highlight_and_talk(node: Control, data_path: String):
-	reset_highlights()
+	# 2. Get the screen position relative to the MOVING camera
+	var visual_transform = node.get_global_transform_with_canvas()
+	copy.global_position = visual_transform.get_origin()
+	copy.scale = visual_transform.get_scale()
 	
-	var screen_h = get_viewport_rect().size.y
-	var is_bottom_half = node.global_position.y > (screen_h / 2)
+	# 3. Force the pivot to zero so the copy doesn't shift
+	if copy is Control:
+		copy.pivot_offset = Vector2.ZERO
 	
-	arrow.show()
-	if is_bottom_half:
-		arrow.global_position = node.global_position + Vector2(node.size.x / 2, -40)
-		arrow.rotation_degrees = 180 
-	else:
-		arrow.global_position = node.global_position + Vector2(node.size.x / 2, node.size.y + 40)
-		arrow.rotation_degrees = 0
-	
-	node.z_index = 101
-	node.modulate = Color(1.5, 1.5, 1.5)
-	buttons_container.modulate = Color(0.4, 0.4, 0.4)
-	
-	var data = load(data_path)
-	StoryManager.play(data)
-	if StoryManager.ui:
-		StoryManager.ui.set_dialogue_position(!is_bottom_half)
-	
-	await StoryManager.ui.sequence_finished
+	copy.visible = true
 
-func reset_highlights():
-	buttons_container.modulate = Color.WHITE
-	for child in buttons_container.get_children():
-		if child is Control:
-			child.z_index = 0
-			child.modulate = Color.WHITE
+	if node is Control:
+		node.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
-# --- CAMERA CLAMPING ---
+	# 4. Pass the original node to the system for spotlight math
+	await StoryManager.play_tutorial(data_path, node)
 
+	copy.queue_free()
+
+	if node is Control:
+		node.mouse_filter = Control.MOUSE_FILTER_STOP
+	
+	# 5. Brief pause before next step to make the transition look smooth
+	await get_tree().create_timer(0.1).timeout
 func limit_camera_view():
-	var viewport_size = get_viewport_rect().size
-	var map_size = map.get_global_rect().size
-	var min_x = (viewport_size.x / 2) / cam.zoom.x
-	var min_y = (viewport_size.y / 2) / cam.zoom.y
-	var max_x = map_size.x - min_x
-	var max_y = map_size.y - min_y
+	var view = get_viewport_rect().size
+	var m_rect = map.get_global_rect()
+	cam.position.x = clamp(cam.position.x, m_rect.position.x + (view.x / 2), m_rect.end.x - (view.x / 2))
+	cam.position.y = clamp(cam.position.y, m_rect.position.y + (view.y / 2), m_rect.end.y - (view.y / 2))
+
+func _unhandled_input(event):
+	if tutorial_active: return
+	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		cam.position -= event.relative / cam.zoom
+		limit_camera_view()
 	
-	cam.position.x = clamp(cam.position.x, min_x, max_x)
-	cam.position.y = clamp(cam.position.y, min_y, max_y)
