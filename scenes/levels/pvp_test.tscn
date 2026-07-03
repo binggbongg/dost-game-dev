@@ -1,0 +1,278 @@
+[gd_scene format=3 uid="uid://b5oymlgc3vhuc"]
+
+[ext_resource type="Texture2D" uid="uid://b67a6h4yy3qud" path="res://assets/background/rooms/background_1-1.png" id="2_v740m"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_s84vk"]
+[ext_resource type="PackedScene" uid="uid://b14yvyrmb0h2b" path="res://scenes/ui/inventory_button.tscn" id="4_mxk6p"]
+[ext_resource type="PackedScene" uid="uid://6t8x0728x5hf" path="res://scenes/ui/spellbook_button.tscn" id="5_j4h37"]
+[ext_resource type="PackedScene" uid="uid://bmn31kgxbdlkg" path="res://scenes/ui/pause_button.tscn" id="6_j4fqt"]
+[ext_resource type="Script" uid="uid://cy31dctcq2m2k" path="res://script/battle_manager.gd" id="7_1ukks"]
+[ext_resource type="PackedScene" uid="uid://cuauet8et8d12" path="res://scenes/playground/card_slot.tscn" id="9_23bvn"]
+[ext_resource type="Script" uid="uid://vuetux2a7kmx" path="res://script/card_manager.gd" id="10_fa1ap"]
+[ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="10_n55hq"]
+[ext_resource type="Script" uid="uid://spy4go6vaqa4" path="res://script/player_hand.gd" id="11_8vqxg"]
+[ext_resource type="Texture2D" uid="uid://dmei84moikr28" path="res://assets/ui/shop/setting_icon.png" id="11_kapc2"]
+[ext_resource type="PackedScene" uid="uid://cw5abrwt2c70o" path="res://scenes/card.tscn" id="12_3dkyd"]
+[ext_resource type="Script" uid="uid://j7l5fw20irs" path="res://script/input_manager.gd" id="13_2t405"]
+[ext_resource type="Script" uid="uid://df5h5orlktysk" path="res://script/deck_manager.gd" id="14_qa5gx"]
+[ext_resource type="Script" uid="uid://bvwmfuduvlr8j" path="res://script/turn_manager.gd" id="15_ick4t"]
+[ext_resource type="Script" uid="uid://bq06oex8xu486" path="res://script/mana_manager.gd" id="16_6kp6n"]
+[ext_resource type="Script" uid="uid://b11i4yhoqleww" path="res://script/combo_manager.gd" id="17_ygxey"]
+[ext_resource type="PackedScene" uid="uid://b4401vms4r7bc" path="res://scenes/deck.tscn" id="18_01u3l"]
+[ext_resource type="Texture2D" uid="uid://c8rlw861jbxef" path="res://assets/temporary/end_turn.png" id="19_1vnwk"]
+[ext_resource type="Script" uid="uid://4e6ld4cyaa3c" path="res://script/for buttons/end_turn_button.gd" id="20_1d8hb"]
+[ext_resource type="Texture2D" uid="uid://bx6fyqi0ypknb" path="res://assets/ui/shop/attack_icon.png" id="21_kxd2j"]
+[ext_resource type="Script" uid="uid://w4dvt40tscpk" path="res://script/for buttons/cast_button.gd" id="22_dhack"]
+[ext_resource type="Texture2D" uid="uid://2y6frsn7uoor" path="res://assets/temporary/undo.png" id="23_4oekn"]
+[ext_resource type="Script" uid="uid://bhns0255lmy8p" path="res://script/for buttons/undo_button.gd" id="24_8ie2f"]
+[ext_resource type="Script" uid="uid://buqgxxfmbk4e5" path="res://script/health_label.gd" id="25_l0bvp"]
+[ext_resource type="Script" uid="uid://tlo2ra6q3mf1" path="res://script/mana_label.gd" id="26_42o7t"]
+
+[sub_resource type="Gradient" id="Gradient_7d7pp"]
+colors = PackedColorArray(0, 0, 0, 0, 0.12951815, 0.04519721, 1.2032688e-08, 0.8901961)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e5nfq"]
+gradient = SubResource("Gradient_7d7pp")
+fill_from = Vector2(0.45641026, 0)
+fill_to = Vector2(0.48376068, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xjr7"]
+atlas = ExtResource("11_kapc2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifrkh"]
+atlas = ExtResource("11_kapc2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drxk1"]
+atlas = ExtResource("11_kapc2")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvox0"]
+atlas = ExtResource("11_kapc2")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6owa4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xjr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifrkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drxk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvox0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bypya"]
+atlas = ExtResource("21_kxd2j")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lkb2"]
+atlas = ExtResource("21_kxd2j")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luxd2"]
+atlas = ExtResource("21_kxd2j")
+region = Rect2(128, 0, 64, 64)
+
+[node name="PVP Test" type="Node2D" unique_id=1730621475]
+
+[node name="Timer" type="Timer" parent="." unique_id=322603772]
+
+[node name="UpperBackground" type="TextureRect" parent="." unique_id=633699121]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v740m")
+
+[node name="LowerBackground" type="TextureRect" parent="." unique_id=93782774]
+visible = false
+offset_left = -47.0
+offset_top = 487.0
+offset_right = 1978.0
+offset_bottom = 1111.0
+texture = SubResource("GradientTexture2D_e5nfq")
+
+[node name="TimerBar" type="ProgressBar" parent="." unique_id=1491666729]
+offset_left = 807.0
+offset_top = 50.0
+offset_right = 1122.0
+offset_bottom = 95.0
+theme_override_font_sizes/font_size = 30
+max_value = 40.0
+step = 1.0
+show_percentage = false
+
+[node name="TimeText" type="Label" parent="TimerBar" unique_id=1944965971]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 314.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("3_s84vk")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="Node2D" parent="." unique_id=1820597283]
+
+[node name="Inventory" parent="Buttons" unique_id=328878894 instance=ExtResource("4_mxk6p")]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 186.0
+offset_bottom = 208.0
+scale = Vector2(0.6, 0.6)
+
+[node name="spellbook" parent="Buttons" unique_id=1664093449 instance=ExtResource("5_j4h37")]
+offset_left = 150.0
+offset_top = 18.0
+offset_right = 214.0
+offset_bottom = 82.0
+scale = Vector2(2, 2)
+
+[node name="PauseButton" parent="Buttons" unique_id=784340132 instance=ExtResource("6_j4fqt")]
+process_mode = 3
+offset_left = 1591.0
+offset_top = -1.0
+offset_right = 1656.0
+offset_bottom = 63.0
+scale = Vector2(3, 3)
+
+[node name="BattleManager" type="Node2D" parent="." unique_id=1572491070]
+script = ExtResource("7_1ukks")
+
+[node name="Settings" type="TextureButton" parent="." unique_id=1958819724]
+offset_left = 1751.0
+offset_top = 21.0
+offset_right = 1887.0
+offset_bottom = 145.0
+script = ExtResource("10_n55hq")
+
+[node name="Audio_Off" type="AnimatedSprite2D" parent="Settings" unique_id=1598970155]
+position = Vector2(74.75005, 77.24994)
+scale = Vector2(2.2421858, 2.2421858)
+sprite_frames = SubResource("SpriteFrames_6owa4")
+autoplay = "default"
+
+[node name="You" type="Node2D" parent="." unique_id=750925632]
+position = Vector2(-47, 487)
+
+[node name="Slots" type="Node2D" parent="You" unique_id=943659249]
+
+[node name="CardSlot" parent="You/Slots" unique_id=1941583601 instance=ExtResource("9_23bvn")]
+position = Vector2(781, -176.99998)
+
+[node name="CardSlot2" parent="You/Slots" unique_id=1625974931 instance=ExtResource("9_23bvn")]
+position = Vector2(1031, -176.99998)
+
+[node name="CardSlot3" parent="You/Slots" unique_id=1018283423 instance=ExtResource("9_23bvn")]
+position = Vector2(1281, -176.99998)
+
+[node name="Me" type="Node2D" parent="." unique_id=1564063313]
+position = Vector2(-47, 487)
+
+[node name="GameManagers" type="Node2D" parent="Me" unique_id=2142872967]
+
+[node name="CardManager" type="Node2D" parent="Me/GameManagers" unique_id=149540942]
+script = ExtResource("10_fa1ap")
+
+[node name="PlayerHand" type="Node2D" parent="Me/GameManagers" unique_id=680309948]
+script = ExtResource("11_8vqxg")
+card_scene = ExtResource("12_3dkyd")
+
+[node name="InputManager" type="Node2D" parent="Me/GameManagers" unique_id=745261611]
+script = ExtResource("13_2t405")
+
+[node name="DeckManager" type="Node2D" parent="Me/GameManagers" unique_id=608514568]
+script = ExtResource("14_qa5gx")
+
+[node name="TurnManager" type="Node2D" parent="Me/GameManagers" unique_id=2130595038]
+script = ExtResource("15_ick4t")
+
+[node name="ManaManager" type="Node2D" parent="Me/GameManagers" unique_id=954917221]
+script = ExtResource("16_6kp6n")
+
+[node name="ComboManager" type="Node2D" parent="Me/GameManagers" unique_id=947538360]
+script = ExtResource("17_ygxey")
+
+[node name="UI" type="Node2D" parent="Me" unique_id=1904202632]
+
+[node name="Deck" parent="Me/UI" unique_id=1967540081 instance=ExtResource("18_01u3l")]
+position = Vector2(140, 920)
+script = null
+
+[node name="EndTurn" type="TextureButton" parent="Me/UI" unique_id=1539120646]
+offset_left = 1570.0
+offset_top = 600.0
+offset_right = 1703.0
+offset_bottom = 733.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("19_1vnwk")
+script = ExtResource("20_1d8hb")
+metadata/_edit_use_anchors_ = true
+
+[node name="CastButton" type="TextureButton" parent="Me/UI" unique_id=333699938]
+offset_left = 1346.0
+offset_top = 570.0
+offset_right = 1410.0
+offset_bottom = 634.0
+scale = Vector2(3, 3)
+texture_normal = SubResource("AtlasTexture_bypya")
+texture_pressed = SubResource("AtlasTexture_8lkb2")
+texture_hover = SubResource("AtlasTexture_luxd2")
+script = ExtResource("22_dhack")
+metadata/_edit_use_anchors_ = true
+
+[node name="UndoButton" type="TextureButton" parent="Me/UI" unique_id=2002847331]
+offset_left = 430.0
+offset_top = 600.0
+offset_right = 563.0
+offset_bottom = 733.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("23_4oekn")
+script = ExtResource("24_8ie2f")
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthLabel" type="RichTextLabel" parent="Me/UI" unique_id=150095794]
+offset_left = 59.0
+offset_top = 640.0
+offset_right = 288.0
+offset_bottom = 694.0
+theme_override_font_sizes/normal_font_size = 30
+text = "Health: 0"
+script = ExtResource("25_l0bvp")
+metadata/_edit_use_anchors_ = true
+
+[node name="ManaLabel" type="RichTextLabel" parent="Me/UI" unique_id=1758619831]
+offset_left = 59.0
+offset_top = 690.0
+offset_right = 278.0
+offset_bottom = 772.0
+theme_override_font_sizes/normal_font_size = 30
+text = "Mana: 0"
+script = ExtResource("26_42o7t")
+metadata/_edit_use_anchors_ = true
+
+[node name="Slots" type="Node2D" parent="Me" unique_id=1002246196]
+
+[node name="CardSlot" parent="Me/Slots" unique_id=1037037752 instance=ExtResource("9_23bvn")]
+position = Vector2(752, 237.00003)
+
+[node name="CardSlot2" parent="Me/Slots" unique_id=1958888498 instance=ExtResource("9_23bvn")]
+position = Vector2(1002, 237.00003)
+
+[node name="CardSlot3" parent="Me/Slots" unique_id=1297838945 instance=ExtResource("9_23bvn")]
+position = Vector2(1252, 237.00003)
