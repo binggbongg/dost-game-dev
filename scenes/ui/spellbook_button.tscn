@@ -5,9 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://bob36fd0gsx8p" path="res://assets/ui/shop/spellbook_icon.png" id="3_nkftk"]
 
 [node name="spellbook" type="TextureButton" unique_id=1664093449]
-offset_right = 64.0
-offset_bottom = 64.0
-scale = Vector2(3, 3)
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(2.925, 2.925)
+pivot_offset = Vector2(32, 32)
 texture_normal = ExtResource("3_nkftk")
 script = ExtResource("2_c0cx3")
 scene_to_open = ExtResource("2_k856a")

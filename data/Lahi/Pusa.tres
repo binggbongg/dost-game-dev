@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://g8rqmvqr7m0k"]
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_a5wgo"]
-[ext_resource type="Texture2D" uid="uid://b5b1q5yy1a0gn" path="res://assets/temporary/LAHI.png" id="2_svvxy"]
+[ext_resource type="Texture2D" uid="uid://copd7hwoyn14a" path="res://assets/cards/pusa.png" id="2_svvxy"]
 
 [resource]
 script = ExtResource("1_a5wgo")
 name = "Pusa"
-mana_cost = 10
+damage = 2
+mana_cost = 2
 texture = ExtResource("2_svvxy")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

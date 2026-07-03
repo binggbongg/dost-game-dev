@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://blg4o5ipkpt4k" path="res://script/ui/login_account.gd" id="1_aejm6"]
 [ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="1_l88xf"]
 [ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="2_pyuj4"]
+[ext_resource type="Texture2D" uid="uid://dvuofhfo7vd65" path="res://assets/ui/mainscreen/mainscreen_ui_loginAccount.png" id="3_3cens"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_mh3e2"]
 [ext_resource type="Texture2D" uid="uid://dhiy0u8u5y80b" path="res://assets/temporary/Assets_UI.png" id="4_cc4ba"]
 [ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="5_vuu3o"]
@@ -90,6 +91,7 @@ offset_bottom = 1080.0
 texture = SubResource("GradientTexture2D_mh3e2")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1678492429]
+visible = false
 layout_mode = 0
 offset_left = 570.0
 offset_top = 156.0
@@ -97,12 +99,24 @@ offset_right = 1333.0
 offset_bottom = 864.0
 color = Color(0.5022987, 0.24747545, 0, 1)
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=722632295]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 48.140003
+anchor_bottom = 26.975
+offset_left = 574.0
+offset_top = 117.0
+offset_right = -1265.6001
+offset_bottom = -870.8889
+scale = Vector2(9, 9)
+texture = ExtResource("3_3cens")
+
 [node name="Label" type="Label" parent="." unique_id=322527703]
 layout_mode = 0
 offset_left = 733.0
-offset_top = 217.0
+offset_top = 231.0
 offset_right = 1194.0
-offset_bottom = 307.0
+offset_bottom = 321.0
 theme_override_fonts/font = ExtResource("2_pyuj4")
 theme_override_font_sizes/font_size = 50
 text = "Login Account"
@@ -113,9 +127,9 @@ vertical_alignment = 1
 
 [node name="UsernameLabel" type="Label" parent="Placeholder1" unique_id=1842331212]
 offset_left = 719.0
-offset_top = 325.0
+offset_top = 339.0
 offset_right = 1214.0
-offset_bottom = 368.0
+offset_bottom = 382.0
 theme_override_fonts/font = ExtResource("2_pyuj4")
 theme_override_font_sizes/font_size = 30
 text = "Username"
@@ -123,9 +137,9 @@ vertical_alignment = 1
 
 [node name="InputUsername" type="LineEdit" parent="Placeholder1" unique_id=459858381]
 offset_left = 719.0
-offset_top = 373.0
+offset_top = 387.0
 offset_right = 1215.0
-offset_bottom = 423.0
+offset_bottom = 437.0
 theme_override_fonts/font = ExtResource("3_mh3e2")
 theme_override_font_sizes/font_size = 30
 placeholder_text = "Enter username"
@@ -163,9 +177,9 @@ texture_normal = SubResource("AtlasTexture_417cv")
 [node name="RegisterLabel" type="Label" parent="." unique_id=1264889390]
 layout_mode = 0
 offset_left = 923.0
-offset_top = 580.0
+offset_top = 578.0
 offset_right = 1214.0
-offset_bottom = 610.0
+offset_bottom = 608.0
 mouse_filter = 0
 theme_override_fonts/font = ExtResource("3_mh3e2")
 theme_override_font_sizes/font_size = 25
@@ -175,9 +189,9 @@ horizontal_alignment = 2
 [node name="MessageLabel" type="Label" parent="." unique_id=1737471786]
 layout_mode = 0
 offset_left = 572.0
-offset_top = 778.0
+offset_top = 786.0
 offset_right = 1334.0
-offset_bottom = 803.0
+offset_bottom = 811.0
 theme_override_fonts/font = ExtResource("3_mh3e2")
 theme_override_font_sizes/font_size = 20
 text = "sample message here"
@@ -186,8 +200,7 @@ vertical_alignment = 1
 
 [node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("5_vuu3o")]
 layout_mode = 0
-offset_left = 586.0
-offset_top = 130.0
-offset_right = 789.0
-offset_bottom = 422.0
-scale = Vector2(0.6, 0.6)
+offset_left = 1224.0
+offset_top = 197.0
+offset_right = 1229.0
+offset_bottom = 202.0

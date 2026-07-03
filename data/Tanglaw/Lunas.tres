@@ -1,13 +1,14 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dn3lc1wa5r7in"]
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_plnuy"]
-[ext_resource type="Texture2D" uid="uid://dakgmbra2is36" path="res://assets/temporary/TANGLAW.png" id="2_6dt4a"]
+[ext_resource type="Texture2D" uid="uid://heyib34w8xm4" path="res://assets/cards/lunas.png" id="2_6dt4a"]
 
 [resource]
 script = ExtResource("1_plnuy")
 name = "Lunas"
 category = 3
 rarity = 1
-mana_cost = 8
+heal = 6
+mana_cost = 4
 texture = ExtResource("2_6dt4a")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

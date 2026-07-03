@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://bjslaobnq3y5j"]
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_e7uw1"]
-[ext_resource type="Texture2D" uid="uid://b5b1q5yy1a0gn" path="res://assets/temporary/LAHI.png" id="2_g2bno"]
+[ext_resource type="Texture2D" uid="uid://brnoxouko6set" path="res://assets/cards/buwaya.png" id="2_g2bno"]
 
 [resource]
 script = ExtResource("1_e7uw1")
 name = "Buwaya"
 rarity = 3
-mana_cost = 30
+damage = 9
+mana_cost = 8
 texture = ExtResource("2_g2bno")
 metadata/_custom_type_script = "uid://cv07myeubhuht"
