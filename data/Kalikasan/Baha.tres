@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://bhif2s2y4lsdw"]
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_d8tym"]
-[ext_resource type="Texture2D" uid="uid://ckhvdhptlxrvq" path="res://assets/temporary/KALIKASAN.png" id="2_68muk"]
+[ext_resource type="Texture2D" uid="uid://8bgl3cyt8ncp" path="res://assets/temporary/KALIKASAN.png" id="2_68muk"]
 
 [resource]
 script = ExtResource("1_d8tym")
 name = "Baha"
 category = 2
 rarity = 2
-damage = 7.0
+damage = 8
 mana_cost = 7
 texture = ExtResource("2_68muk")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

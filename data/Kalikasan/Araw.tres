@@ -9,6 +9,6 @@ name = "Araw"
 category = 2
 rarity = 1
 damage = 5.0
-mana_cost = 5
+mana_cost = 4
 texture = ExtResource("2_okjpj")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

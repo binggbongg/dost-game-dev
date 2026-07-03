@@ -8,6 +8,6 @@ script = ExtResource("1_6t87j")
 name = "Lupa"
 category = 2
 damage = 3.0
-mana_cost = 3
+mana_cost = 2
 texture = ExtResource("2_vf8ie")
 metadata/_custom_type_script = "uid://cv07myeubhuht"
