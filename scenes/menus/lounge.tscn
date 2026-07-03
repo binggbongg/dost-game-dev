@@ -237,10 +237,10 @@ texture = ExtResource("5_vh42r")
 
 [node name="PVP" type="TextureButton" parent="Buttons/Content" unique_id=1039800473]
 layout_mode = 0
-offset_left = 1425.56
-offset_top = 853.385
-offset_right = 1620.56
-offset_bottom = 1137.385
+offset_left = 1425.0
+offset_top = 775.0
+offset_right = 1620.0
+offset_bottom = 1059.0
 texture_normal = ExtResource("5_3k8m0")
 
 [node name="TextureRect" type="TextureRect" parent="Buttons/Content/PVP" unique_id=59886956]
@@ -269,10 +269,10 @@ autoplay = "default"
 
 [node name="shop" type="TextureButton" parent="Buttons/Content" unique_id=259792266]
 layout_mode = 0
-offset_left = 1620.0
-offset_top = 940.0
-offset_right = 1776.0
-offset_bottom = 1115.0
+offset_left = 1618.9999
+offset_top = 856.0
+offset_right = 1774.9999
+offset_bottom = 1031.0
 scale = Vector2(0.7, 0.7)
 texture_normal = ExtResource("11_6g71x")
 script = ExtResource("3_uygx0")
@@ -290,10 +290,10 @@ texture = ExtResource("11_8y8p0")
 
 [node name="spellbook" type="TextureButton" parent="Buttons/Content" unique_id=1670468700]
 layout_mode = 0
-offset_left = 1754.845
-offset_top = 937.275
-offset_right = 1818.845
-offset_bottom = 1001.275
+offset_left = 1746.0
+offset_top = 856.0
+offset_right = 1810.0
+offset_bottom = 920.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("4_gl360")
 script = ExtResource("3_uygx0")

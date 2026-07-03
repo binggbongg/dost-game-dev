@@ -12,6 +12,9 @@ extends Node2D
 var tutorial_active = false
 
 func _ready():
+	print("Map scale: ", map.scale)
+	print("Map global scale: ", map.get_global_transform().get_scale())
+	print("Map size: ", map.size)
 	await get_tree().process_frame
 	center_camera()
 	dimmer.hide()
@@ -29,11 +32,17 @@ func _ready():
 
 func center_camera():
 	var view = get_viewport_rect().size
-	var m_rect = map.get_global_rect()
-	cam.position.x = m_rect.position.x + (view.x / 2)
-	cam.position.y = m_rect.end.y - (view.y / 2)
-	limit_camera_view()
+	var actual_size = map.size * map.scale
 
+	var left = map.position.x
+	var bottom = map.position.y + actual_size.y
+
+	cam.position = Vector2(
+		left + view.x / 2,
+		bottom - view.y / 2
+	)
+
+	limit_camera_view()
 
 func start_lounge_tour():
 	tutorial_active = true
@@ -54,50 +63,55 @@ func start_lounge_tour():
 	for step in tour_steps:
 		await highlight_and_talk(step[0], base_path + step[1])
 	
-	# MOVE THESE HERE - Outside the loop
 	tutorial_active = false
 	PlayerProfile.tutorial_steps_completed["lounge_tour"] = true
 func highlight_and_talk(node: CanvasItem, data_path: String):
 	if !is_instance_valid(node): return
 	
-	# 1. Wait a frame to ensure camera movement from the previous click is stopped
 	await get_tree().process_frame 
 	
 	var copy := node.duplicate()
-	copy.visible = false # Hide immediately to prevent 1-frame flicker at (0,0)
+	copy.visible = false
 	highlight_layer.add_child(copy)
 
-	# 2. Get the screen position relative to the MOVING camera
 	var visual_transform = node.get_global_transform_with_canvas()
 	copy.global_position = visual_transform.get_origin()
 	copy.scale = visual_transform.get_scale()
 	
-	# 3. Force the pivot to zero so the copy doesn't shift
 	if copy is Control:
 		copy.pivot_offset = Vector2.ZERO
 	
 	copy.visible = true
-
 	if node is Control:
 		node.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
-	# 4. Pass the original node to the system for spotlight math
 	await StoryManager.play_tutorial(data_path, node)
-
 	copy.queue_free()
-
 	if node is Control:
 		node.mouse_filter = Control.MOUSE_FILTER_STOP
-	
-	# 5. Brief pause before next step to make the transition look smooth
 	await get_tree().create_timer(0.1).timeout
 
 func limit_camera_view():
 	var view = get_viewport_rect().size
-	var m_rect = map.get_global_rect()
-	cam.position.x = clamp(cam.position.x, m_rect.position.x + (view.x / 2), m_rect.end.x - (view.x / 2))
-	cam.position.y = clamp(cam.position.y, m_rect.position.y + (view.y / 2), m_rect.end.y - (view.y / 2))
 
+	var actual_size = map.size * map.scale
+
+	var left = map.position.x
+	var top = map.position.y
+	var right = left + actual_size.x
+	var bottom = top + actual_size.y
+
+	cam.position.x = clamp(
+		cam.position.x,
+		left + view.x / 2,
+		right - view.x / 2
+	)
+
+	cam.position.y = clamp(
+		cam.position.y,
+		top + view.y / 2,
+		bottom - view.y / 2
+	)
 func _unhandled_input(event):
 	if tutorial_active: return
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
