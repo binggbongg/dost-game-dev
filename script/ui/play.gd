@@ -127,29 +127,12 @@ func _on_continue_pressed():
 	if typeof(SaveManager) != TYPE_NIL and SaveManager.has_method("sync_with_cloud"):
 		await SaveManager.sync_with_cloud()
 	
-	SceneTransition.change_scene(next_scene)
-
-#func _on_play_pressed():
-	#AudioManager.play_ui_sound("click")
-	## Ensure the next_scene variable was actually set
-	#if not next_scene:
-		#print("next scene null -- from play")
-	#
-	#if is_returning_player:
-		#if typeof(SaveManager) != TYPE_NIL and SaveManager.has_method("sync_with_cloud"):
-			#await SaveManager.sync_with_cloud()
-	#else:
-		#PlayerProfile.player_name = "Default Player"
-		#PlayerProfile.selected_character = "None"
-		#PlayerProfile.max_unlocked_chapters = 1
-		#PlayerProfile.high_scores.clear()
-	#
-	#SceneTransition.change_scene(next_scene)
+	SceneTransition.change_scene(next_scene) 
 
 func _on_settings_pressed():
 	AudioManager.play_ui_sound("click")
 	UIManager.open_menu(setup)
-	
+
 func _on_audio_pressed():
 	AudioManager.play_ui_sound("click")
 	AudioManager.toggle_mute()

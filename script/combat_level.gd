@@ -100,4 +100,4 @@ func _on_player_dies():
 	print("Combat Level: Player dead, you lose")
 	
 	# change the file to an actual game over scene
-	get_tree().change_scene_to_file("res://scenes/menus/map.tscn")
+	get_tree().change_scene_to_file("res://scenes/menus/lounge.tscn")

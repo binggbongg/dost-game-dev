@@ -47,7 +47,7 @@ func _on_submit_pressed():
 	if typeof(SaveManager) != TYPE_NIL and SaveManager.has_method("save_game_async"):
 		SaveManager.save_game_async()
 	
-	if lounge_scene:
-		SceneTransition.change_scene(lounge_scene)
+	if LOUNGE_SCENE:
+		SceneTransition.change_scene_path(LOUNGE_SCENE)
 	else:
 		print("Error: No lounge scene assigned in Setup Inspector!")

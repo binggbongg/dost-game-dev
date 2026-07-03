@@ -5,7 +5,7 @@ extends Control
 @onready var login_button = $LoginButton
 @onready var register_label = $RegisterLabel
 @onready var message_label = $MessageLabel
-@export var register_scene: PackedScene
+@onready var register_scene: PackedScene = load("res://scenes/menus/register_account.tscn")
 
 func _ready() -> void:
 	if message_label:
