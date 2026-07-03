@@ -9,10 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://bob36fd0gsx8p" path="res://assets/ui/shop/spellbook_icon.png" id="4_gl360"]
 [ext_resource type="Texture2D" uid="uid://cc3nipjbujmkd" path="res://assets/temporary/battle.png" id="5_3k8m0"]
 [ext_resource type="Texture2D" uid="uid://buemc7yldjape" path="res://assets/temporary/trophy.png" id="5_vh42r"]
-[ext_resource type="Texture2D" uid="uid://dfe143f1tvgxd" path="res://assets/temporary/lore.png" id="6_3tcgj"]
+[ext_resource type="Texture2D" uid="uid://cmm0ft8pmm2ms" path="res://assets/ui/buttons/leaderboard_icon.png" id="6_8y8p0"]
 [ext_resource type="PackedScene" uid="uid://xdbig4p2et14" path="res://scenes/menus/leaderboard.tscn" id="7_v8p6s"]
 [ext_resource type="PackedScene" uid="uid://buor4em2o4cfj" path="res://scenes/ui/coin_display.tscn" id="8_12qkm"]
 [ext_resource type="PackedScene" uid="uid://blildoqpt5atk" path="res://scenes/menus/shop.tscn" id="10_8rf1m"]
+[ext_resource type="Texture2D" uid="uid://3fygd35eaabq" path="res://assets/temporary/inv_btn.png" id="11_6g71x"]
 [ext_resource type="Texture2D" uid="uid://3dus3b0as5bj" path="res://assets/temporary/shop.png" id="11_8y8p0"]
 [ext_resource type="PackedScene" uid="uid://cvgehqahw2e4x" path="res://scenes/menus/spellbook.tscn" id="12_6g71x"]
 [ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="12_f46hc"]
@@ -167,6 +168,7 @@ texture = ExtResource("1_1cgml")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=857988488]
 position = Vector2(950, 500)
+offset = Vector2(0, 41)
 limit_enabled = false
 limit_top = -1070
 limit_right = 4270
@@ -192,32 +194,39 @@ offset_bottom = 40.0
 
 [node name="Lore" type="TextureButton" parent="Buttons/Content" unique_id=1944594900]
 layout_mode = 0
-offset_left = 1212.0
-offset_top = 48.0
-offset_right = 1348.0
-offset_bottom = 193.0
+offset_left = 1500.0
+offset_top = 27.0
+offset_right = 1564.0
+offset_bottom = 91.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("4_gl360")
 script = ExtResource("3_uygx0")
 menu_to_open = ExtResource("4_8rf1m")
 
 [node name="TextureRect" type="TextureRect" parent="Buttons/Content/Lore" unique_id=1629188274]
+visible = false
 layout_mode = 0
-offset_left = -21.0
+offset_left = 39.825
 offset_top = -50.0
-offset_right = 174.0
-offset_bottom = 234.0
+offset_right = 103.825
+offset_bottom = 14.0
+scale = Vector2(2, 2)
 mouse_filter = 2
-texture = ExtResource("6_3tcgj")
+texture = ExtResource("4_gl360")
 
 [node name="Trophy" type="TextureButton" parent="Buttons/Content" unique_id=415183698]
 layout_mode = 0
-offset_left = 1367.0
-offset_top = 65.0
-offset_right = 1494.0
-offset_bottom = 179.0
+offset_left = 1630.0
+offset_top = 27.0
+offset_right = 1694.0
+offset_bottom = 91.000046
+scale = Vector2(2, 2)
+texture_normal = ExtResource("6_8y8p0")
 script = ExtResource("3_uygx0")
 menu_to_open = ExtResource("7_v8p6s")
 
 [node name="TextureRect2" type="TextureRect" parent="Buttons/Content/Trophy" unique_id=1818399883]
+visible = false
 layout_mode = 0
 offset_left = -32.0
 offset_top = -78.0
@@ -228,26 +237,28 @@ texture = ExtResource("5_vh42r")
 
 [node name="PVP" type="TextureButton" parent="Buttons/Content" unique_id=1039800473]
 layout_mode = 0
-offset_left = 1367.0
-offset_top = 902.0
-offset_right = 1531.0
-offset_bottom = 1040.0
+offset_left = 1425.56
+offset_top = 853.385
+offset_right = 1620.56
+offset_bottom = 1137.385
+texture_normal = ExtResource("5_3k8m0")
 
 [node name="TextureRect" type="TextureRect" parent="Buttons/Content/PVP" unique_id=59886956]
+visible = false
 layout_mode = 0
-offset_left = -11.0
-offset_top = -63.00003
-offset_right = 184.0
-offset_bottom = 220.99997
+offset_left = 29.405
+offset_top = -53.97
+offset_right = 224.405
+offset_bottom = 230.03
 mouse_filter = 2
 texture = ExtResource("5_3k8m0")
 
 [node name="Settings" type="TextureButton" parent="Buttons/Content" unique_id=133290181]
 layout_mode = 0
-offset_left = 1759.0
-offset_top = 59.0
-offset_right = 1895.0
-offset_bottom = 191.0
+offset_left = 1760.06
+offset_top = 27.0
+offset_right = 1896.06
+offset_bottom = 159.0
 script = ExtResource("3_uygx0")
 
 [node name="Audio_Off" type="AnimatedSprite2D" parent="Buttons/Content/Settings" unique_id=1147222571]
@@ -258,14 +269,17 @@ autoplay = "default"
 
 [node name="shop" type="TextureButton" parent="Buttons/Content" unique_id=259792266]
 layout_mode = 0
-offset_left = 1587.0
-offset_top = 926.0
-offset_right = 1723.0
-offset_bottom = 1058.0
+offset_left = 1620.0
+offset_top = 940.0
+offset_right = 1776.0
+offset_bottom = 1115.0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("11_6g71x")
 script = ExtResource("3_uygx0")
 menu_to_open = ExtResource("10_8rf1m")
 
 [node name="TextureRect2" type="TextureRect" parent="Buttons/Content/shop" unique_id=32576250]
+visible = false
 layout_mode = 0
 offset_left = -46.0
 offset_top = -65.0
@@ -276,28 +290,27 @@ texture = ExtResource("11_8y8p0")
 
 [node name="spellbook" type="TextureButton" parent="Buttons/Content" unique_id=1670468700]
 layout_mode = 0
-offset_left = 1739.0
-offset_top = 925.0
-offset_right = 1875.0
-offset_bottom = 1057.0
+offset_left = 1754.845
+offset_top = 937.275
+offset_right = 1818.845
+offset_bottom = 1001.275
+scale = Vector2(2, 2)
+texture_normal = ExtResource("4_gl360")
 script = ExtResource("3_uygx0")
 menu_to_open = ExtResource("12_6g71x")
 
-[node name="TextureRect2" type="TextureRect" parent="Buttons/Content/spellbook" unique_id=968948488]
-layout_mode = 0
-offset_left = 1.0
-offset_top = -0.24673462
-offset_right = 122.0
-offset_bottom = 148.51517
-mouse_filter = 2
-texture = ExtResource("4_gl360")
-
 [node name="CoinDisplay" parent="Buttons/Content" unique_id=1244250796 instance=ExtResource("8_12qkm")]
 layout_mode = 0
-offset_left = 1486.0
-offset_top = 62.0
-offset_right = 1765.0
-offset_bottom = 175.0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1375.975
+offset_top = 91.835
+offset_right = 1375.975
+offset_bottom = 91.835
+scale = Vector2(1.5, 1.5)
 
 [node name="CharacterSpotlight" type="TextureRect" parent="Buttons/Content" unique_id=59332521]
 layout_mode = 0
@@ -357,10 +370,11 @@ autoplay = "idle_girl"
 
 [node name="Back" type="TextureButton" parent="Buttons/Content" unique_id=668035586]
 layout_mode = 0
-offset_left = 78.0
-offset_top = 63.0
-offset_right = 211.0
-offset_bottom = 196.0
+offset_left = 60.0
+offset_top = 37.725
+offset_right = 193.0
+offset_bottom = 170.725
+scale = Vector2(0.9, 0.9)
 texture_normal = ExtResource("15_f46hc")
 script = ExtResource("3_uygx0")
 

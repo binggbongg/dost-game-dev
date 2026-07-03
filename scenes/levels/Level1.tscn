@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bmn31kgxbdlkg" path="res://scenes/ui/pause_button.tscn" id="6_7d7pp"]
 [ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="9_e5nfq"]
 [ext_resource type="Texture2D" uid="uid://dmei84moikr28" path="res://assets/ui/shop/setting_icon.png" id="10_lha2r"]
+[ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="12_6owa4"]
 
 [sub_resource type="Gradient" id="Gradient_7d7pp"]
 colors = PackedColorArray(0, 0, 0, 0, 0.12951815, 0.04519721, 1.2032688e-08, 0.8901961)
@@ -143,3 +144,14 @@ position = Vector2(74.75005, 77.24994)
 scale = Vector2(2.2421858, 2.2421858)
 sprite_frames = SubResource("SpriteFrames_6owa4")
 autoplay = "default"
+
+[node name="MessageLabel" type="RichTextLabel" parent="." unique_id=2113445259]
+offset_left = 720.0
+offset_top = 119.0
+offset_right = 1208.0
+offset_bottom = 159.0
+theme_override_fonts/normal_font = ExtResource("12_6owa4")
+theme_override_font_sizes/normal_font_size = 25
+text = "test message"
+horizontal_alignment = 1
+vertical_alignment = 1
