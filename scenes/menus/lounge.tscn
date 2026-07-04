@@ -19,12 +19,13 @@
 [ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="12_f46hc"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="13_y4gql"]
 [ext_resource type="Texture2D" uid="uid://dbvqdnaxhvjp6" path="res://assets/player/girl_idol.png" id="14_vh42r"]
-[ext_resource type="Texture2D" uid="uid://2y6frsn7uoor" path="res://assets/temporary/undo.png" id="15_f46hc"]
+[ext_resource type="PackedScene" uid="uid://bjo62sglogr7j" path="res://scenes/menus/player_pack_slot.tscn" id="16_6g71x"]
 [ext_resource type="Texture2D" uid="uid://bkl7747ki6nl5" path="res://assets/player/boy_idle.png" id="18_8m8uw"]
 [ext_resource type="Script" uid="uid://ci07xjxb5qtyr" path="res://script/ui/open_scene.gd" id="18_le30m"]
 [ext_resource type="PackedScene" uid="uid://cf0pyigiayyeg" path="res://scenes/menus/map.tscn" id="19_8m8uw"]
 [ext_resource type="PackedScene" uid="uid://ckbrj3vh8fqlp" path="res://scenes/story/mechanicsui.tscn" id="20_le30m"]
 [ext_resource type="Texture2D" uid="uid://4eehpc74bxfg" path="res://assets/temporary/cast.png" id="20_ngrx0"]
+[ext_resource type="Texture2D" uid="uid://c5esexsxqsto6" path="res://assets/ui/spellbook/spellbook_back_button.png" id="25_8y8p0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0xjr7"]
 atlas = ExtResource("4_6cgmx")
@@ -158,6 +159,7 @@ animations = [{
 
 [node name="Lounge" type="Node2D" unique_id=590874842]
 script = ExtResource("1_ij4pv")
+pack_scene = ExtResource("16_6g71x")
 
 [node name="Map" type="TextureRect" parent="." unique_id=1061391353]
 texture_filter = 1
@@ -370,15 +372,16 @@ sprite_frames = SubResource("SpriteFrames_6g71x")
 animation = &"idle_boy"
 autoplay = "idle_girl"
 
-[node name="Back" type="TextureButton" parent="Buttons/Content" unique_id=668035586]
+[node name="Back" type="TextureButton" parent="Buttons/Content" unique_id=1229531995]
 layout_mode = 0
-offset_left = 60.0
-offset_top = 37.725
-offset_right = 193.0
-offset_bottom = 170.725
-scale = Vector2(0.9, 0.9)
-texture_normal = ExtResource("15_f46hc")
-script = ExtResource("3_uygx0")
+offset_left = 43.0
+offset_top = 47.0
+offset_right = 52.0
+offset_bottom = 55.924103
+scale = Vector2(11.99, 11.99)
+texture_normal = ExtResource("25_8y8p0")
+
+[node name="PackLayer" type="CanvasLayer" parent="." unique_id=1097962439]
 
 [node name="ChapterOne" type="TextureButton" parent="." unique_id=1766995160]
 offset_left = 1253.0

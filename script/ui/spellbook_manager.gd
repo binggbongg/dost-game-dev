@@ -36,9 +36,12 @@ func load_all_cards():
 			dir.list_dir_begin()
 			var file = dir.get_next()
 			while file != "":
-				if file.ends_with(".tres"):
-					var res = load(path + file)
-					if res: all_cards.append(res)
+				if file.ends_with(".tres") or file.ends_with(".res"):
+					var full_path = path + file
+					var res = load(full_path)
+					if res: 
+						# Store BOTH the resource and its file path so we can check ownership status later
+						all_cards.append({"resource": res, "path": full_path})
 				file = dir.get_next()
 
 func load_all_combos():
@@ -49,7 +52,7 @@ func load_all_combos():
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if file_name.ends_with(".tres"):
+			if file_name.ends_with(".tres") or file_name.ends_with(".res"):
 				var res = load(path + file_name)
 				if res: all_combos.append(res)
 			file_name = dir.get_next()
@@ -79,7 +82,8 @@ func open_category(category):
 	if combo_parent: combo_parent.hide()
 	
 	current_spread = 0
-	filtered_cards = all_cards.filter(func(c): return c.category == category)
+	# Filter based on the resource attribute inside our dictionary setup
+	filtered_cards = all_cards.filter(func(c): return c.resource.category == category)
 	AudioManager.play_ui_sound("flip")
 	refresh_display()
 
@@ -117,8 +121,28 @@ func refresh_display():
 	
 	else:
 		var i = current_spread * CARDS_PER_SPREAD
-		if left_slot: left_slot.display(filtered_cards[i] if i < filtered_cards.size() else null)
-		if right_slot: right_slot.display(filtered_cards[i+1] if i+1 < filtered_cards.size() else null)
+		
+		# Left Slot Handling
+		if left_slot:
+			if i < filtered_cards.size():
+				var card_data = filtered_cards[i]
+				var is_owned = PlayerProfile.owned_cards.has(card_data.path)
+				
+				left_slot.display(card_data.resource)
+				left_slot.modulate = Color(1, 1, 1, 1) if is_owned else Color(0.25, 0.25, 0.25, 0.7)
+			else:
+				left_slot.display(null)
+		
+		# Right Slot Handling
+		if right_slot:
+			if i + 1 < filtered_cards.size():
+				var card_data = filtered_cards[i+1]
+				var is_owned = PlayerProfile.owned_cards.has(card_data.path)
+				
+				right_slot.display(card_data.resource)
+				right_slot.modulate = Color(1, 1, 1, 1) if is_owned else Color(0.25, 0.25, 0.25, 0.7)
+			else:
+				right_slot.display(null)
 		
 		var total = maxi(1, ceili(filtered_cards.size() / float(CARDS_PER_SPREAD)))
 		if page_label: page_label.text = "Page %d / %d" % [current_spread + 1, total]

@@ -12,12 +12,17 @@ func _ready():
 #initialize tanan cards and access them from our resources
 func load_all_cards():
 	all_cards.clear()
-	load_folder("res://data/Diwa")
-	load_folder("res://data/Kalikasan")
-	load_folder("res://data/Lahi")
-	load_folder("res://data/Tanglaw")
-	print("Debugging the loading of the cards: ", all_cards.size())
-	
+
+	var source = PlayerProfile.current_deck
+
+	if source.is_empty():
+		source = PlayerProfile.owned_cards
+
+	for card_path in source:
+		if CardRegistry.all_cards.has(card_path):
+			all_cards.append(CardRegistry.all_cards[card_path])
+
+	print("Loaded", all_cards.size(), "cards")
 func load_folder(path:String):
 	var dir = DirAccess.open(path)
 	if dir == null:

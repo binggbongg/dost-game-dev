@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_2hjar")
 character_name = "Start Here"
-lines = Array[String](["Your journey start here, click play to begin."])
+lines = Array[String](["Every good hero begins somewhere.", "Your path little one starts here."])
 metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

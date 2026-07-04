@@ -1,7 +1,44 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://clfxrnjs8gmlc"]
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_dq2ih"]
+[ext_resource type="Texture2D" uid="uid://4efiacsmb8po" path="res://assets/ui/handsigns/kalikasan_attack/kalikasan_bulkan.png" id="1_uj3je"]
 [ext_resource type="Texture2D" uid="uid://8bgl3cyt8ncp" path="res://assets/temporary/KALIKASAN.png" id="2_2yaat"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5uty"]
+atlas = ExtResource("1_uj3je")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sq708"]
+atlas = ExtResource("1_uj3je")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3n48i"]
+atlas = ExtResource("1_uj3je")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_si6pn"]
+atlas = ExtResource("1_uj3je")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2pfts"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5uty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sq708")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3n48i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_si6pn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_dq2ih")
@@ -11,4 +48,5 @@ rarity = 3
 damage = 12
 mana_cost = 9
 texture = ExtResource("2_2yaat")
+cardASL = SubResource("SpriteFrames_2pfts")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

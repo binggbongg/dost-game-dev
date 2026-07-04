@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_axtmp"]
 [ext_resource type="Texture2D" uid="uid://lxgfy4gxk61t" path="res://assets/cards/galit.png" id="2_p2u47"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_p2u47"]
+
 [resource]
 script = ExtResource("1_axtmp")
 name = "Galit"
@@ -11,4 +13,5 @@ damage = 1
 multiplier = 1.2
 mana_cost = 1
 texture = ExtResource("2_p2u47")
+cardASL = SubResource("SpriteFrames_p2u47")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

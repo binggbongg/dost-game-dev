@@ -18,9 +18,13 @@ var hand_position
 #para ma track where ang kana nga card
 var location = GameEnums.Location.DECK
 var current_slot = null
+@onready var mana_cost: Label = $Area2D/ManaCost/ManaCost
+@onready var power_highlight: Label = $Area2D/CardPowerHighlight/PowerHighlight
+@onready var power_highlight_icon: TextureRect = $Area2D/CardPowerHighlight/PowerHighlightIcon
 
 func _ready() -> void:
 	apply_data()
+	
 	add_to_group("cards")
 	modulate = Color(1, 1, 1, 1)
 
@@ -31,14 +35,15 @@ func apply_data():
 	var d_name = card_data.get("item_name") if card_data.get("item_name") else card_data.get("name")
 	var d_texture = card_data.get("icon") if card_data.get("icon") else card_data.get("texture")
 	
-	card_name.text = str(d_name) + " - " + GameEnums.CardRarity.keys()[card_data.rarity] + " - " + str(card_data.mana_cost)
+	card_name.text = str(d_name) + " - "  + str(card_data.mana_cost)
 	card_category = card_data.category
 	card_rarity = card_data.rarity
 	card_damage = card_data.damage
 	card_heal = card_data.heal
 	card_cost = card_data.mana_cost
+	mana_cost.text = str(card_data.mana_cost)
 	card_source = card_data.card_source
-	
+	power_highlighter()
 	# --- UPDATED SCALING LOGIC FOR YOUR TEXTURERECT ---
 	# Even though it's named "Sprite2D", it's a TextureRect (Green Icon)
 	var art_node = $Sprite2D 
@@ -77,3 +82,41 @@ func set_interaction_state(enabled: bool):
 	else:
 		modulate = Color(0.3, 0.3, 0.3, 0.7) # Darkened/Grayed out
 		$Area2D.monitorable = false # Prevents dragging
+
+func power_highlighter():
+	if(card_data.category == GameEnums.CardCategory.KALIKASAN):
+			power_highlight.text = str(card_data.damage)
+			power_highlight_icon.texture = load("res://assets/ui/buttons/damage_icon.png")
+	elif (card_data.category == GameEnums.CardCategory.TANGLAW):
+			power_highlight.text = str(card_data.heal)
+			power_highlight_icon.texture = load("res://assets/ui/buttons/heal_icon.png")
+	elif (card_data.category == GameEnums.CardCategory.DIWA):
+			power_highlight.text = str(card_data.multiplier)
+			power_highlight_icon.texture = load("res://assets/ui/buttons/multiplier_icon.png")
+	else: 
+			power_highlight.text = str(card_data.damage)
+			power_highlight_icon.texture = load("res://assets/ui/buttons/damage_icon.png")
+
+func display_info(data: CardData):
+	card_data = data
+	apply_data()
+	scale = Vector2(0.8, 0.8)
+
+func get_display_name() -> String:
+	if card_data == null:
+		return ""
+	return card_data.get("item_name") if card_data.get("item_name") else card_data.get("name")
+
+func get_display_description() -> String:
+	if card_data == null:
+		return ""
+	return card_data.description
+
+func get_display_rarity() -> String:
+	if card_data == null:
+		return ""
+
+	var rarity = GameEnums.CardRarity.keys()[card_data.rarity]
+	var category = GameEnums.CardCategory.keys()[card_data.category]
+
+	return "%s • %s" % [rarity.capitalize(), category.capitalize()]

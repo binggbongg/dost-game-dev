@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://ddwrpxb6wtsnc"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_814qb"]
+
+[resource]
+script = ExtResource("1_814qb")
+type = 1
+character_name = "Tabs"
+lines = Array[String](["Select cards to take with you in your upcoming battle here."])
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

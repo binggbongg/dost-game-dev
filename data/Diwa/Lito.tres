@@ -1,14 +1,53 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://y5pjrxnlkcuy"]
 
+[ext_resource type="Texture2D" uid="uid://bmwxu0sq01h" path="res://assets/ui/handsigns/diwa_attack/diwa_lito.png" id="1_c7qf4"]
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_xfiar"]
 [ext_resource type="Texture2D" uid="uid://dmg3erj4fqynp" path="res://assets/cards/lito.png" id="2_wyygy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uspfd"]
+atlas = ExtResource("1_c7qf4")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e80xh"]
+atlas = ExtResource("1_c7qf4")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6dc2"]
+atlas = ExtResource("1_c7qf4")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gxp6"]
+atlas = ExtResource("1_c7qf4")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xnawh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uspfd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e80xh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6dc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gxp6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_xfiar")
 name = "Lito"
+category = 1
 rarity = 1
 damage = 2
 multiplier = 1.5
 mana_cost = 3
 texture = ExtResource("2_wyygy")
+cardASL = SubResource("SpriteFrames_xnawh")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

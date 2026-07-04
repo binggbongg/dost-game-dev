@@ -43,8 +43,10 @@ func _on_pressed():
 func cast_normal(active_cards):
 	if turn_manager.is_busy: return
 	turn_manager.is_busy = true
+	
 	for card in active_cards:
 		mana_manager.spend_mana(card.card_cost)
+		
 	var combo_output = combo_manager.calculate_combo_output(active_cards)
 	if combo_output.damage > 0:
 		if combat_arena and combat_arena.has_method("get_enemy"):
@@ -56,6 +58,16 @@ func cast_normal(active_cards):
 		else:
 			print("Cast Error: CombatArena script helper method is missing!")
 	
+	if combat_arena:
+		# Adjust the node path "Player" if your player node has a different name inside CombatArena
+		var player_node = combat_arena.get_node_or_null("Player")
+		if player_node and player_node.has_method("play_attack_animation"):
+			player_node.play_attack_animation()
+
+	var sprite_anim_node = get_node_or_null("../../SpriteAnmation")
+	if sprite_anim_node and sprite_anim_node.has_method("play_cast_sequence"):
+		await sprite_anim_node.play_cast_sequence(active_cards)
+
 	var slots_folder = get_node("../../Slots")
 	if slots_folder:
 		for slot in slots_folder.get_children():
@@ -74,7 +86,6 @@ func cast_normal(active_cards):
 		card_manager.refresh_hand_interaction()
 	print("CASTING normal")
 	turn_manager.is_busy = false
-
 func cast_special(_card):
 	print("Entered cast_special()")
 	if turn_manager.is_busy:

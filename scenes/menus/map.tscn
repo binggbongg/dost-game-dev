@@ -1,13 +1,54 @@
 [gd_scene format=3 uid="uid://cf0pyigiayyeg"]
 
-[ext_resource type="Texture2D" uid="uid://ci6i2bwtfvasp" path="res://assets/temporary/map_bg.png" id="1_82dt2"]
 [ext_resource type="Script" uid="uid://bemoscy4adyh" path="res://script/ui/map.gd" id="1_s72bc"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="2_314dn"]
-[ext_resource type="Texture2D" uid="uid://c8rlw861jbxef" path="res://assets/temporary/end_turn.png" id="2_i0gsi"]
 [ext_resource type="PackedScene" uid="uid://bw7k5221ej7ii" path="res://scenes/level_previews/preview_phase_1.tscn" id="2_t14ch"]
 [ext_resource type="PackedScene" uid="uid://dcxviw3ekcy4k" path="res://scenes/level_previews/preview_phase_2.tscn" id="3_ev0yy"]
 [ext_resource type="PackedScene" uid="uid://dyhvhgchy6owy" path="res://scenes/level_previews/preview_phase_3.tscn" id="4_3yoho"]
+[ext_resource type="Texture2D" uid="uid://baltvh87tb21e" path="res://assets/ui/map/map.png" id="5_sijnj"]
+[ext_resource type="Texture2D" uid="uid://kw6tbr3xis4r" path="res://assets/ui/story/story_scroll.png" id="6_60erm"]
+[ext_resource type="FontFile" uid="uid://df2vd0uxg3gcf" path="res://assets/fonts/PixelifySans-SemiBold.ttf" id="7_o6k5t"]
 [ext_resource type="PackedScene" uid="uid://ckbrj3vh8fqlp" path="res://scenes/story/mechanicsui.tscn" id="8_ev0yy"]
+[ext_resource type="Texture2D" uid="uid://c5esexsxqsto6" path="res://assets/ui/spellbook/spellbook_back_button.png" id="9_3yoho"]
+[ext_resource type="Texture2D" uid="uid://bgkif5gr6mfrm" path="res://assets/ui/map/map_bigbutton.png" id="9_cu3pl"]
+[ext_resource type="Texture2D" uid="uid://cad0d2tw4c1ea" path="res://assets/ui/buttons/Start_icon.png" id="12_60erm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3d4ke"]
+font = ExtResource("7_o6k5t")
+font_size = 105
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mieb7"]
+font = ExtResource("2_314dn")
+font_size = 25
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gh0d3"]
+font = ExtResource("7_o6k5t")
+font_size = 27
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6k5t"]
+atlas = ExtResource("12_60erm")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu3pl"]
+atlas = ExtResource("12_60erm")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3d4ke"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6k5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cu3pl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Map" type="Control" unique_id=142484164]
 layout_mode = 3
@@ -25,74 +66,98 @@ phase3 = ExtResource("4_3yoho")
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("1_82dt2")
+texture = ExtResource("5_sijnj")
 
-[node name="Title" type="RichTextLabel" parent="." unique_id=956497268]
+[node name="Scroll" type="TextureRect" parent="." unique_id=2039498294]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("6_60erm")
+
+[node name="ChapterNo" type="Label" parent="." unique_id=1272290620]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.98300004
 anchor_bottom = 1.0
-offset_left = 64.0
-offset_top = 71.0
-offset_right = -1093.3601
-offset_bottom = -796.0
-theme_override_fonts/normal_font = ExtResource("2_314dn")
-theme_override_font_sizes/normal_font_size = 80
-text = "The Land of the Iron City"
-horizontal_alignment = 1
+offset_left = 334.0
+offset_top = 283.0
+offset_right = -823.3601
+offset_bottom = -584.0
+text = "Chapter 1"
+label_settings = SubResource("LabelSettings_3d4ke")
 vertical_alignment = 1
+
+[node name="ChapterNo2" type="Label" parent="." unique_id=446143759]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.98300004
+anchor_bottom = 1.0
+offset_left = 339.0
+offset_top = 420.0
+offset_right = -903.3601
+offset_bottom = -522.0
+text = "In the fields where people and nature used to work hand-in-hand, are replaced by the sound of enginges and metal grazing away each peace of land."
+label_settings = SubResource("LabelSettings_mieb7")
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Buttons" type="CanvasLayer" parent="." unique_id=501019418]
 
 [node name="Phase1" type="TextureButton" parent="Buttons" unique_id=1622936125]
 offset_left = 724.0
 offset_top = 644.0
-offset_right = 857.0
-offset_bottom = 777.0
-texture_normal = ExtResource("2_i0gsi")
+offset_right = 737.0
+offset_bottom = 657.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("9_cu3pl")
 
-[node name="Phase2" type="TextureButton" parent="Buttons" unique_id=437314485]
-offset_left = 1174.0
-offset_top = 606.0
-offset_right = 1307.0
-offset_bottom = 739.0
-texture_normal = ExtResource("2_i0gsi")
+[node name="Phase2" type="TextureButton" parent="Buttons" unique_id=1346812254]
+offset_left = 1295.0
+offset_top = 260.00003
+offset_right = 1308.0
+offset_bottom = 273.00003
+scale = Vector2(10, 10)
+texture_normal = ExtResource("9_cu3pl")
 
-[node name="Phase3" type="TextureButton" parent="Buttons" unique_id=1813737107]
-offset_left = 1299.0
-offset_top = 243.0
-offset_right = 1432.0
-offset_bottom = 376.0
-texture_normal = ExtResource("2_i0gsi")
+[node name="Phase3" type="TextureButton" parent="Buttons" unique_id=221368573]
+offset_left = 1209.0
+offset_top = 562.0
+offset_right = 1222.0
+offset_bottom = 575.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("9_cu3pl")
 
 [node name="Labels" type="Node2D" parent="." unique_id=1214762967]
 
-[node name="1" type="RichTextLabel" parent="Labels" unique_id=98132479]
-offset_left = 660.0
-offset_top = 790.0
-offset_right = 925.0
-offset_bottom = 862.0
-theme_override_fonts/normal_font = ExtResource("2_314dn")
-theme_override_font_sizes/normal_font_size = 50
-text = "Chapter 1"
+[node name="3" type="Label" parent="Labels" unique_id=1475296039]
+offset_left = 1122.0
+offset_top = 380.0
+offset_right = 1609.0
+offset_bottom = 452.0
+text = "The Metal Karabao"
+label_settings = SubResource("LabelSettings_gh0d3")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="2" type="RichTextLabel" parent="Labels" unique_id=189005444]
-offset_left = 1119.0
-offset_top = 756.0
-offset_right = 1393.0
-offset_bottom = 828.0
-theme_override_fonts/normal_font = ExtResource("2_314dn")
-theme_override_font_sizes/normal_font_size = 50
-text = "Chapter 2"
+[node name="4" type="Label" parent="Labels" unique_id=615404527]
+offset_left = 1012.0
+offset_top = 692.0
+offset_right = 1499.0
+offset_bottom = 764.0
+text = "The Metal Karabao"
+label_settings = SubResource("LabelSettings_gh0d3")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="3" type="RichTextLabel" parent="Labels" unique_id=884953015]
-offset_left = 1245.0
-offset_top = 388.0
-offset_right = 1510.0
-offset_bottom = 460.0
-theme_override_fonts/normal_font = ExtResource("2_314dn")
-theme_override_font_sizes/normal_font_size = 50
-text = "Chapter 3"
+[node name="5" type="Label" parent="Labels" unique_id=1702988549]
+offset_left = 540.0
+offset_top = 772.0
+offset_right = 1027.0
+offset_bottom = 844.0
+text = "The Metal Karabao"
+label_settings = SubResource("LabelSettings_gh0d3")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=1603193052]
 layer = 20
@@ -119,3 +184,27 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+
+[node name="Back" type="TextureButton" parent="." unique_id=282255273]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 47.0
+offset_right = 52.0
+offset_bottom = 55.924103
+scale = Vector2(11.99, 11.99)
+texture_normal = ExtResource("9_3yoho")
+
+[node name="Start" type="TextureButton" parent="." unique_id=1772978172]
+layout_mode = 0
+offset_left = 347.0
+offset_top = 543.0
+offset_right = 518.0
+offset_bottom = 602.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Start" unique_id=1008622458]
+position = Vector2(76, 46)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_3d4ke")
+autoplay = "default"
+frame = 1
+frame_progress = 1.0

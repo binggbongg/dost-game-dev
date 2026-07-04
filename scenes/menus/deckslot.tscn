@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ph6jbp7fcig3"]
+
+[ext_resource type="Script" uid="uid://dllydbbnhcjxs" path="res://script/ui/deck_card_slot.gd" id="1_vw7pp"]
+[ext_resource type="PackedScene" uid="uid://cw5abrwt2c70o" path="res://scenes/card.tscn" id="2_vw7pp"]
+[ext_resource type="Texture2D" uid="uid://3lfeq0ht0rab" path="res://assets/temporary/gamejam.svg" id="3_vw7pp"]
+
+[node name="Deck" type="Control" unique_id=2017068616]
+custom_minimum_size = Vector2(180, 250)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1740.0
+offset_bottom = -830.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.78, 1.78)
+script = ExtResource("1_vw7pp")
+
+[node name="Card" parent="." unique_id=778584260 instance=ExtResource("2_vw7pp")]
+position = Vector2(70.224724, 116.292145)
+
+[node name="Button" type="Button" parent="." unique_id=1016910442]
+layout_mode = 0
+offset_left = -7.741935
+offset_right = 169.04166
+offset_bottom = 265.06924
+scale = Vector2(0.905, 0.905)
+flat = true
+
+[node name="Icon" type="TextureRect" parent="Button" unique_id=1187339003]
+layout_mode = 0
+offset_left = 7.999999
+offset_top = 8.0
+offset_right = 203.0
+offset_bottom = 292.0
+scale = Vector2(0.905, 0.905)
+texture = ExtResource("3_vw7pp")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

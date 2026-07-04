@@ -26,8 +26,17 @@ var player_rank: String = "Starter":
 var tutorial_steps_completed: Dictionary = {
 	"lounge_tour": false,
 	"chapter_intro": false,
-	"battle_tutorial": false
+	"battle_tutorial": false,
+	"deck_builder": false
 }
+var owned_cards: Array[String] = []
+var current_deck: Array[String] = []
+var pending_scene: String = ""
+func add_card_to_inventory(card_path: String):
+	if not owned_cards.has(card_path):
+		owned_cards.append(card_path)
+		print("Added to inventory: ", card_path)
+	SaveManager.save_game()
 
 var is_tutorial_fight: bool = false
 var level: int = 1
@@ -66,7 +75,8 @@ func initialize_profile(new_name: String, character_id: String):
 	tutorial_steps_completed = {
 		"lounge_tour": false,
 		"chapter_intro": false,
-		"battle_tutorial": false
+		"battle_tutorial": false,
+		"deck_builder": false
 	}
 	is_tutorial_fight = false
 	
@@ -94,7 +104,10 @@ func spend_coins(amount: int) -> bool:
 func can_afford(amount: int) -> bool:
 	return coins >= amount
 
-# -- debugging purposes
-func _input(event):
-	if event is InputEventKey and event.pressed and event.keycode == KEY_A:
-		add_coins(200)
+func get_current_level_data() -> LevelData:
+	return next_level_resource
+
+func set_next_level(level_data: LevelData):
+	next_level_resource = level_data
+	current_phase = level_data.phase
+	current_level = level_data.level

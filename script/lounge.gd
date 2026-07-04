@@ -8,13 +8,12 @@ extends Node2D
 @onready var highlight_layer = $HighlightLayer/Control 
 @onready var player_name: Label = $Buttons/Content/CharacterSpotlight/PlayerName
 @onready var me: AnimatedSprite2D = $Buttons/Content/CharacterSpotlight/Character
-
+@onready var back: TextureButton = $Buttons/Content/Back
+@export var pack_scene: PackedScene 
 var tutorial_active = false
 
 func _ready():
-	print("Map scale: ", map.scale)
-	print("Map global scale: ", map.get_global_transform().get_scale())
-	print("Map size: ", map.size)
+	back.pressed.connect(func(): back_button_pressed())
 	await get_tree().process_frame
 	center_camera()
 	dimmer.hide()
@@ -44,8 +43,8 @@ func center_camera():
 func start_lounge_tour():
 	tutorial_active = true
 	var base_path = "res://data/StoryData/Tutorial/LoungeScreen/"
-	
-	var tour_steps = [
+
+	var first_steps = [
 		[$Buttons/Content/CharacterSpotlight, "characterspotlight.tres"],
 		[$Buttons/Content/Lore, "lore.tres"],
 		[$Buttons/Content/Trophy, "leaderboard.tres"],
@@ -54,14 +53,21 @@ func start_lounge_tour():
 		[$Buttons/Content/spellbook, "spellbook.tres"],
 		[$Buttons/Content/shop, "shop.tres"],
 		[$Buttons/Content/PVP, "battle.tres"],
-		[$ChapterOne, "chapter.tres"],
 	]
 
-	for step in tour_steps:
+	for step in first_steps:
 		await highlight_and_talk(step[0], base_path + step[1])
-	
+
+	await give_starter_packs()
+
+	await highlight_and_talk(
+		$ChapterOne,
+		base_path + "chapter.tres"
+	)
+
 	tutorial_active = false
 	PlayerProfile.tutorial_steps_completed["lounge_tour"] = true
+	SaveManager.save_game()
 func highlight_and_talk(node: CanvasItem, data_path: String):
 	if !is_instance_valid(node): return
 	
@@ -114,4 +120,28 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		cam.position -= event.relative / cam.zoom
 		limit_camera_view()
+	
+func back_button_pressed():
+	SceneTransition.change_scene_path("res://scenes/menus/play.tscn")
+func give_starter_packs():
+	var pack_layer = get_node_or_null("PackLayer")
+	if not pack_layer:
+		pack_layer = CanvasLayer.new()
+		pack_layer.name = "PackLayer"
+		pack_layer.layer = 100
+		add_child(pack_layer)
+
+	for i in range(5):
+		var pack_instance = pack_scene.instantiate()
+		pack_layer.add_child(pack_instance)
+		pack_instance.open_pack(true) 
+		if i == 0:
+			var base_path = "res://data/StoryData/Tutorial/LoungeScreen/"
+			await StoryManager.play_card_pack_tutorial(
+				base_path + "starter_packs_intro.tres",
+				pack_instance
+			)
+		await pack_instance.tree_exited 
+		if i < 4:
+			await get_tree().create_timer(0.3).timeout
 	

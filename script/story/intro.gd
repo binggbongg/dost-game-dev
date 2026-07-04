@@ -1,49 +1,97 @@
 extends CanvasLayer
 
-@export var lore_data: StoryData 
+@export var lore_data: StoryData
 @export var next_scene: PackedScene
 
 @onready var text_label = $DialogueBox/Panel/TextLabel
 @onready var name_label = $DialogueBox/Panel/NameLabel
-@onready var illustration_rect = $TextureRect # The small image inside the scroll
 @onready var display: AnimatedSprite2D = $AnimatedSprite2D
 @onready var skip: Button = $Skip
+@onready var next: Label = $DialogueBox/Panel/Next
+@onready var close_button: TextureButton = $CloseButton
+@onready var dialogue_panel = $DialogueBox/Panel
 
 var line_index: int = 0
+var is_transitioning := false
 
 func _ready():
+	close_button.pressed.connect(_back_pressed)
 	skip.pressed.connect(skip_pressed)
+	
+	# Connect the dialogue box panel directly to handle text advancement clicks safely
+	if dialogue_panel:
+		dialogue_panel.gui_input.connect(_on_dialogue_panel_gui_input)
+
+	next.visible = false
+
 	if lore_data:
 		name_label.text = lore_data.character_name
-		
-		if lore_data.portrait:
-			illustration_rect.texture = lore_data.portrait
-			
 		if lore_data.bgm_to_play:
 			AudioManager.play_bgm(lore_data.bgm_to_play)
-			
 		display_current_line()
 	else:
-		print("Error: No Lore Data resource assigned to Intro scene!")
+		push_error("No Lore Data resource assigned!")
 
 func skip_pressed():
+	if is_transitioning:
+		return
 	finish_intro()
+
+## Keyboards/Controllers still use this safely without breaking mouse interactions
 func _input(event):
+	if is_transitioning or not visible:
+		return
+
+	# ONLY process keyboard space/enter actions here
+	if event.is_action_pressed("ui_accept"):
+		advance_dialogue_logic()
+
+## New Dedicated Click Zone Handler for the Dialogue Box Panel
+func _on_dialogue_panel_gui_input(event: InputEvent):
+	if is_transitioning:
+		return
+		
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		advance_dialogue_logic()
+
+## Combined execution logic
+func advance_dialogue_logic():
+	# Finish typing first
+	if text_label.visible_ratio < 1.0:
+		text_label.visible_ratio = 1.0
+		if line_index < lore_data.lines.size() - 1:
+			next.visible = true
+	else:
+		if line_index < lore_data.lines.size() - 1:
+			transition_to_next_page()
+		else:
+			finish_intro()
+
+func transition_to_next_page():
+	is_transitioning = true
+	next.visible = false
+
 	var animations = display.sprite_frames.get_animation_names()
 	var index = animations.find(display.animation)
 	index = (index + 1) % animations.size()
-	
-	if visible and (event.is_action_pressed("ui_accept") or event is InputEventMouseButton and event.pressed):
-		if text_label.visible_ratio < 1.0:
-			text_label.visible_ratio = 1.0 # Skip typing
-		else:
-			var tween = create_tween()
-			tween.tween_property(display, "modulate:a", 0.0, 0.2)
-			tween.tween_callback(func():
-				display.animation = animations[index]
-			)
-			tween.tween_property(display, "modulate:a", 1.0, 0.2)
-			advance_line()
+
+	AudioManager.play_ui_sound("flip")
+
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
+
+	tween.tween_property(display, "modulate:a", 0.0, 0.3)
+
+	tween.tween_callback(func():
+		display.animation = animations[index]
+		advance_line()
+	)
+
+	tween.tween_property(display, "modulate:a", 1.0, 0.3)
+	tween.tween_callback(func():
+		is_transitioning = false
+	)
 
 func advance_line():
 	line_index += 1
@@ -53,13 +101,23 @@ func advance_line():
 		finish_intro()
 
 func display_current_line():
+	next.visible = false
 	text_label.text = lore_data.lines[line_index]
-	
-	text_label.visible_ratio = 0
-	var t = create_tween()
-	t.tween_property(text_label, "visible_ratio", 1.0, 1.5)
-	
+	text_label.visible_ratio = 0.0
+
+	var tween = create_tween()
+	tween.tween_property(text_label, "visible_ratio", 1.0, 1.5)
+
+	if line_index < lore_data.lines.size() - 1:
+		tween.tween_callback(func():
+			next.visible = true
+		)
+
+	maxi(0, 1) # Internal formatting sanity check
 	AudioManager.play_ui_sound("click")
+
+func _back_pressed():
+	SceneTransition.change_scene_path("res://scenes/menus/play.tscn")
 
 func finish_intro():
 	if next_scene:

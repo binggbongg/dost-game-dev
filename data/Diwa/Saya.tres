@@ -1,7 +1,44 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://bqdwnc2qjk0m0"]
 
+[ext_resource type="Texture2D" uid="uid://c4rir060o5ck" path="res://assets/ui/handsigns/diwa_attack/diwa_saya.png" id="1_qtp6k"]
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_roffg"]
 [ext_resource type="Texture2D" uid="uid://2top5dua0ecm" path="res://assets/temporary/DIWA.png" id="2_4d7wo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_na8l8"]
+atlas = ExtResource("1_qtp6k")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hi54"]
+atlas = ExtResource("1_qtp6k")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xqgx"]
+atlas = ExtResource("1_qtp6k")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwf6h"]
+atlas = ExtResource("1_qtp6k")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3egqr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_na8l8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hi54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xqgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwf6h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_roffg")
@@ -11,4 +48,5 @@ damage = 1
 multiplier = 1.2
 mana_cost = 1
 texture = ExtResource("2_4d7wo")
+cardASL = SubResource("SpriteFrames_3egqr")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

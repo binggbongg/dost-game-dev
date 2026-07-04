@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://ow63lyeruaq6"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_gw22e"]
+
+[resource]
+script = ExtResource("1_gw22e")
+type = 1
+character_name = "Deck Counter"
+lines = Array[String](["Displays your total selected cards for battle."])
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

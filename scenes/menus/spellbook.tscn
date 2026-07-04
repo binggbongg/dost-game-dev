@@ -4,16 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dxycjm2n7qvlg" path="res://assets/background/rooms/background_shop1.png" id="2_dfgxp"]
 [ext_resource type="PackedScene" uid="uid://b13ncvuf2dceb" path="res://scenes/menus/spellbook_card_slot.tscn" id="4_focpo"]
 [ext_resource type="Texture2D" uid="uid://b874nuseu5vul" path="res://assets/ui/spellbook/spellbook_book.png" id="4_n8wyq"]
-[ext_resource type="Texture2D" uid="uid://c5l76bbrwe1ee" path="res://assets/temporary/tab_kalikasan.png" id="6_n8wyq"]
 [ext_resource type="Texture2D" uid="uid://mqbgl2en2v0y" path="res://assets/ui/spellbook/spellbook_green_bookmark.png" id="7_cf21n"]
-[ext_resource type="Texture2D" uid="uid://crmdns3mwxyxj" path="res://assets/temporary/tab_tanglaw.png" id="7_mgxdx"]
-[ext_resource type="Texture2D" uid="uid://cococi3nwpqan" path="res://assets/temporary/tab_diwa.png" id="8_vgybv"]
 [ext_resource type="Texture2D" uid="uid://c5t544jq1um42" path="res://assets/ui/spellbook/spellbook_blue_bookmark.png" id="9_lqdag"]
-[ext_resource type="Texture2D" uid="uid://d084wcxh87fxa" path="res://assets/temporary/tab_lahi.png" id="9_qwtax"]
-[ext_resource type="Texture2D" uid="uid://djjsdp0b4o26v" path="res://assets/temporary/tab_combo.png" id="10_2uart"]
-[ext_resource type="Texture2D" uid="uid://ddypymhkc2atp" path="res://assets/temporary/LEFT.png" id="10_n8wyq"]
 [ext_resource type="Texture2D" uid="uid://c2ijib67ou3nb" path="res://assets/ui/spellbook/spellbook_yellow_bookmark.png" id="11_7agw1"]
-[ext_resource type="Texture2D" uid="uid://dihs2mn726ssg" path="res://assets/temporary/RIGHT.png" id="11_mgxdx"]
 [ext_resource type="Script" uid="uid://dacmhq3qtdlpg" path="res://script/ui/spellbook_manager.gd" id="12_vgybv"]
 [ext_resource type="Texture2D" uid="uid://ckffja4gdctvj" path="res://assets/ui/spellbook/spellbook_red_bookmark.png" id="13_4ffkf"]
 [ext_resource type="PackedScene" uid="uid://nrf002bvasid" path="res://scenes/menus/combo_slot.tscn" id="13_qwtax"]
@@ -22,7 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cjrcuo56wi0fc" path="res://assets/ui/spellbook/spellbook_next_button.png" id="19_3i8rq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2uart"]
-font_size = 21
+font_size = 29
+font_color = Color(0.35085708, 0.1066822, 2.4065375e-08, 1)
 shadow_size = 12
 
 [node name="Spellbook" type="Control" unique_id=1875600038]
@@ -86,129 +80,66 @@ offset_bottom = 498.0
 [node name="Kalikasan" type="TextureButton" parent="Bookmarks" unique_id=2006518696]
 offset_left = 169.0
 offset_top = 99.0
-offset_right = 364.0
-offset_bottom = 383.0
-texture_normal = ExtResource("6_n8wyq")
+offset_right = 180.0
+offset_bottom = 106.0
+scale = Vector2(12.655, 12.655)
+texture_normal = ExtResource("7_cf21n")
 
-[node name="K" type="TextureRect" parent="Bookmarks/Kalikasan" unique_id=2083790439]
-layout_mode = 0
-offset_left = 19.000008
-offset_top = 15.000004
-offset_right = 30.000008
-offset_bottom = 22.000004
-scale = Vector2(12.214286, 12.214286)
-mouse_filter = 2
-texture = ExtResource("7_cf21n")
+[node name="Tanglaw" type="TextureButton" parent="Bookmarks" unique_id=1943650813]
+offset_left = 167.0
+offset_top = 202.0
+offset_right = 178.0
+offset_bottom = 209.0
+scale = Vector2(12.655, 12.655)
+texture_normal = ExtResource("9_lqdag")
 
-[node name="Tanglaw" type="TextureButton" parent="Bookmarks" unique_id=1812581569]
-offset_left = 166.0
-offset_top = 194.0
-offset_right = 361.0
-offset_bottom = 478.0
-texture_normal = ExtResource("7_mgxdx")
+[node name="Diwa" type="TextureButton" parent="Bookmarks" unique_id=1761058960]
+offset_left = 165.0
+offset_top = 311.0
+offset_right = 176.0
+offset_bottom = 318.0
+scale = Vector2(12.655, 12.655)
+texture_normal = ExtResource("11_7agw1")
 
-[node name="T" type="TextureRect" parent="Bookmarks/Tanglaw" unique_id=123609631]
-layout_mode = 0
-offset_left = 13.000008
-offset_top = 14.999996
-offset_right = 24.000008
-offset_bottom = 21.999996
-scale = Vector2(12.214286, 12.214286)
-mouse_filter = 2
-texture = ExtResource("9_lqdag")
+[node name="Lahi" type="TextureButton" parent="Bookmarks" unique_id=1349092788]
+offset_left = 155.99998
+offset_top = 419.99997
+offset_right = 166.99998
+offset_bottom = 426.99997
+scale = Vector2(12.655, 12.655)
+texture_normal = ExtResource("13_4ffkf")
 
-[node name="Diwa" type="TextureButton" parent="Bookmarks" unique_id=1456634340]
-offset_left = 157.0
-offset_top = 296.0
-offset_right = 352.0
-offset_bottom = 580.0
-texture_normal = ExtResource("8_vgybv")
-
-[node name="D" type="TextureRect" parent="Bookmarks/Diwa" unique_id=2000124008]
-layout_mode = 0
-offset_left = 13.000008
-offset_top = 16.999996
-offset_right = 24.000008
-offset_bottom = 23.999996
-scale = Vector2(12.214286, 12.214286)
-mouse_filter = 2
-texture = ExtResource("11_7agw1")
-
-[node name="Lahi" type="TextureButton" parent="Bookmarks" unique_id=979844623]
-offset_left = 147.0
-offset_top = 404.0
-offset_right = 342.0
-offset_bottom = 688.0
-texture_normal = ExtResource("9_qwtax")
-
-[node name="L" type="TextureRect" parent="Bookmarks/Lahi" unique_id=150251389]
-layout_mode = 0
-offset_left = 12.000008
-offset_top = 12.999996
-offset_right = 23.000008
-offset_bottom = 19.999996
-scale = Vector2(12.214286, 12.214286)
-mouse_filter = 2
-texture = ExtResource("13_4ffkf")
-
-[node name="Combo" type="TextureButton" parent="Bookmarks" unique_id=781123908]
-offset_left = 138.0
-offset_top = 510.0
-offset_right = 333.0
-offset_bottom = 794.0
-texture_normal = ExtResource("10_2uart")
-
-[node name="C" type="TextureRect" parent="Bookmarks/Combo" unique_id=1475183577]
-layout_mode = 0
-offset_left = 12.000008
-offset_top = 14.999996
-offset_right = 23.000008
-offset_bottom = 21.999996
-scale = Vector2(12.214286, 12.214286)
-mouse_filter = 2
-texture = ExtResource("15_166nj")
+[node name="Combo" type="TextureButton" parent="Bookmarks" unique_id=588747631]
+offset_left = 157.99998
+offset_top = 531.0
+offset_right = 168.99998
+offset_bottom = 538.0
+scale = Vector2(12.655, 12.655)
+texture_normal = ExtResource("15_166nj")
 
 [node name="Pagination" type="Node2D" parent="." unique_id=393529831]
 
 [node name="Left" type="TextureButton" parent="Pagination" unique_id=182413592]
-offset_left = 780.0
-offset_top = 900.0
-offset_right = 1053.0
-offset_bottom = 1184.0
-texture_normal = ExtResource("10_n8wyq")
+offset_left = 349.0
+offset_top = 905.00006
+offset_right = 358.0
+offset_bottom = 913.6819
+scale = Vector2(9.445, 9.445)
+texture_normal = ExtResource("17_ndbtc")
 
-[node name="Back" type="TextureRect" parent="Pagination/Left" unique_id=981705762]
-layout_mode = 0
-offset_left = 63.000004
-offset_top = 104.0
-offset_right = 72.0
-offset_bottom = 112.0
-scale = Vector2(8.937504, 8.937504)
-mouse_filter = 2
-texture = ExtResource("17_ndbtc")
-
-[node name="Right" type="TextureButton" parent="Pagination" unique_id=907833044]
-offset_left = 1015.0
-offset_top = 898.0
-offset_right = 1210.0
-offset_bottom = 1182.0
-texture_normal = ExtResource("11_mgxdx")
-
-[node name="Next" type="TextureRect" parent="Pagination/Right" unique_id=347790322]
-layout_mode = 0
-offset_left = 60.00002
-offset_top = 106.0
-offset_right = 69.000015
-offset_bottom = 114.0
-scale = Vector2(8.937504, 8.937504)
-mouse_filter = 2
-texture = ExtResource("19_3i8rq")
+[node name="Right" type="TextureButton" parent="Pagination" unique_id=200031203]
+offset_left = 1592.0
+offset_top = 918.00006
+offset_right = 1601.0
+offset_bottom = 926.6819
+scale = Vector2(9.445, 9.445)
+texture_normal = ExtResource("19_3i8rq")
 
 [node name="Label" type="Label" parent="Pagination" unique_id=1861420774]
-offset_left = 959.0
-offset_top = 1025.0
-offset_right = 1054.0
-offset_bottom = 1055.0
+offset_left = 934.0
+offset_top = 937.0
+offset_right = 1066.0
+offset_bottom = 977.0
 text = "1 out of 5"
 label_settings = SubResource("LabelSettings_2uart")
 

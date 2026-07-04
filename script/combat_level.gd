@@ -7,6 +7,13 @@ class_name CombatLevel
 var current_level_data: LevelData
 
 func _ready() -> void:
+	print("OH YOURE IN REAL GAME!")
+	await get_tree().process_frame
+	var deck = $PlayerInterface/UI/Deck
+	print("Deck visible:", deck.visible)
+	print("Deck process:", deck.process_mode)
+	if deck is Control:
+		print("Mouse filter:", deck.mouse_filter)
 	if not current_level_data and PlayerProfile.next_level_resource:
 		current_level_data = PlayerProfile.next_level_resource
 	

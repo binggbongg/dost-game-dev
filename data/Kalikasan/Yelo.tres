@@ -1,14 +1,52 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://131j0els7et5"]
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_c51js"]
+[ext_resource type="Texture2D" uid="uid://qxyf27ekldp6" path="res://assets/ui/handsigns/kalikasan_attack/kalikasan_yelo.png" id="1_t1xkh"]
 [ext_resource type="Texture2D" uid="uid://b7wvt5v5nj3pc" path="res://assets/cards/yelo.png" id="2_exbsn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hpkt"]
+atlas = ExtResource("1_t1xkh")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufdph"]
+atlas = ExtResource("1_t1xkh")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdej1"]
+atlas = ExtResource("1_t1xkh")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x6x4"]
+atlas = ExtResource("1_t1xkh")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fx7yi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hpkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufdph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdej1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x6x4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_c51js")
 name = "Yelo"
 category = 2
 rarity = 1
-damage = 5.0
+damage = 5
 mana_cost = 4
 texture = ExtResource("2_exbsn")
+cardASL = SubResource("SpriteFrames_fx7yi")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

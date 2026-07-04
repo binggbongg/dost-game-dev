@@ -1,7 +1,44 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://nimhh0hgym4w"]
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_e6lkg"]
+[ext_resource type="Texture2D" uid="uid://c4uiibr8rv2qf" path="res://assets/ui/handsigns/tanglaw_attack/tanglaw_harang.png" id="1_u11jx"]
 [ext_resource type="Texture2D" uid="uid://bns1hxr6g5440" path="res://assets/cards/harang.png" id="2_a44is"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqj51"]
+atlas = ExtResource("1_u11jx")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veice"]
+atlas = ExtResource("1_u11jx")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2k1b6"]
+atlas = ExtResource("1_u11jx")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mlbi"]
+atlas = ExtResource("1_u11jx")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gfble"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqj51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veice")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2k1b6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mlbi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_e6lkg")
@@ -10,4 +47,5 @@ category = 3
 heal = 3
 mana_cost = 2
 texture = ExtResource("2_a44is")
+cardASL = SubResource("SpriteFrames_gfble")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

@@ -25,3 +25,15 @@ func play_group_tutorial(data_path: String, targets: Array):
 		await mechanics_ui.ready
 	mechanics_ui.start_group_tutorial(data, targets)
 	await mechanics_ui.finished
+
+func play_card_pack_tutorial(data_path: String, pack: Control):
+	var data: StoryData = load(data_path)
+
+	if mechanics_ui == null:
+		var scene = load("res://scenes/story/mechanicsui.tscn")
+		mechanics_ui = scene.instantiate()
+		get_tree().root.add_child.call_deferred(mechanics_ui)
+		await mechanics_ui.ready
+
+	await mechanics_ui.start_card_pack_tutorial(data, pack)
+	await mechanics_ui.finished

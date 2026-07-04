@@ -1,7 +1,44 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dmpvj6umjae5f"]
 
+[ext_resource type="Texture2D" uid="uid://du745rvjdek7n" path="res://assets/ui/handsigns/lahi_attack/lahi_ahas.png" id="1_ag7dd"]
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_kcas5"]
 [ext_resource type="Texture2D" uid="uid://ci571wub63gio" path="res://assets/cards/ahas.png" id="2_kcas5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wuno"]
+atlas = ExtResource("1_ag7dd")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qdsx"]
+atlas = ExtResource("1_ag7dd")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tk82"]
+atlas = ExtResource("1_ag7dd")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m0sj"]
+atlas = ExtResource("1_ag7dd")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_le01o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wuno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qdsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tk82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0m0sj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_kcas5")
@@ -11,4 +48,5 @@ rarity = 2
 damage = 6
 mana_cost = 5
 texture = ExtResource("2_kcas5")
+cardASL = SubResource("SpriteFrames_le01o")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

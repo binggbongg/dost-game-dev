@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://y8mxiad4h5vg"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_2ojpg"]
+
+[resource]
+script = ExtResource("1_2ojpg")
+type = 1
+character_name = "Save"
+lines = Array[String](["Save your deck and be ready to battle."])
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"
