@@ -106,8 +106,37 @@ func can_afford(amount: int) -> bool:
 
 func get_current_level_data() -> LevelData:
 	return next_level_resource
+	
+	
+func update_high_score(level_id: String, score: int) -> bool:
+	if not high_scores.has(level_id):
+		high_scores[level_id] = 0
+	
+	if score > high_scores[level_id]:
+		high_scores[level_id] = score
+		SaveManager.save_game()
+		return true
+	return false
+func advance_to_next_level() -> void:
+	var next_l := current_level + 1
+	var next_p := current_phase
+	
+	if next_l > 3:
+		next_l = 1
+		next_p += 1
+		
+	var next_path = "res://data/Levels/level_%d-%d.tres" % [next_p, next_l]
+	
+	if ResourceLoader.exists(next_path):
+		var loaded_level = load(next_path) as LevelData
+		if loaded_level:
+			set_next_level(loaded_level)
+			print("Progression Saved: Next target route updated to ", next_path)
+	else:
+		print("Congratulations! You've cleared all available levels in this version.")
 
+## Overriding set_next_level to cleanly bind your LevelData layout structure variables
 func set_next_level(level_data: LevelData):
 	next_level_resource = level_data
-	current_phase = level_data.phase
-	current_level = level_data.level
+	current_phase = level_data.phase_number
+	current_level = level_data.level_number

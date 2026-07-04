@@ -10,8 +10,13 @@ var current_armor: int
 var current_turns: int = 0
 var chosen_intent: EnemyMove
 var special_cooldowns: Dictionary = {}
+var is_defeated: bool = false
 
 signal enemy_health_changed(new_health: int)
+# FIX: new signal so anything (battle_manager, UI, achievements, etc.)
+# can react to the enemy dying without battle_manager having to manually
+# call check_enemy_death() from every single damage source in the game.
+signal enemy_died
 
 #func _ready() -> void:
 	#if behavior_data:
@@ -29,6 +34,7 @@ func setup_enemy():
 		return
 	
 	current_health = behavior_data.max_health
+	is_defeated = false
 	if health_bar and health_bar.has_method("initialize_bar"):
 		health_bar.initialize_bar(
 			behavior_data.max_health,
@@ -48,12 +54,17 @@ func setup_enemy():
 	choose_next_intent()
 
 func take_damage(amount):
+	if is_defeated:
+		return
+	
 	current_health = max(0, current_health - amount)
 	print(name, " takes ", amount, " of damage. current health: ", current_health)
 	enemy_health_changed.emit(current_health)
 	
 	if current_health <= 0:
+		is_defeated = true
 		print("enemy has been defeated")
+		enemy_died.emit()
 		#queue_free()
 		#if animated_sprite and animated_sprite.sprite_frames.has_animation("death"):
 			#animated_sprite.play("death")
@@ -118,6 +129,10 @@ func roll_weighted_moves(moves_pool: Array) -> EnemyMove:
 	return moves_pool[0]
 
 func execute_intent():
+	if is_defeated:
+		print("execute_intent() called on a defeated enemy, ignoring")
+		return
+	
 	if not chosen_intent:
 		print("did not choose any type of moves")
 		return

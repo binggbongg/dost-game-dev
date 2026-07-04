@@ -9,7 +9,9 @@ enum TurnState {
 	COMBO_SELECTION,
 	RESOLVING_COMBO,
 	END_TURN,
-	ENEMY_TURN }
+	ENEMY_TURN,
+	GAME_COMPLETE,
+	GAME_OVER}
 #This is to show the valididty of the combos used to attack/invalidities.
 enum ComboValidationResult {
 	VALID,

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cimu6spqdj8rc" path="res://script/story/storyUI.gd" id="1_gftur"]
 [ext_resource type="Texture2D" uid="uid://b67a6h4yy3qud" path="res://assets/background/rooms/background_1-1.png" id="2_2hrnm"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_2hrnm"]
+[ext_resource type="Texture2D" uid="uid://c2xv5vbofw3wy" path="res://assets/player/girl_idle.png" id="4_vslhr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ymd72"]
 font = ExtResource("3_2hrnm")
@@ -11,6 +12,49 @@ font_size = 29
 [sub_resource type="LabelSettings" id="LabelSettings_rrrj2"]
 font = ExtResource("3_2hrnm")
 font_size = 36
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjncb"]
+atlas = ExtResource("4_vslhr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfddg"]
+atlas = ExtResource("4_vslhr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37vpt"]
+atlas = ExtResource("4_vslhr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvaat"]
+atlas = ExtResource("4_vslhr")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nuxm"]
+atlas = ExtResource("4_vslhr")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sy2s2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjncb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfddg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37vpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvaat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nuxm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=153786700]
 script = ExtResource("1_gftur")
@@ -32,13 +76,13 @@ offset_bottom = 1081.0
 [node name="DialoguePanel" type="Panel" parent="DialogueBox" unique_id=1383475601]
 layout_mode = 0
 offset_left = 109.0
-offset_top = 772.0
+offset_top = 689.0
 offset_right = 1814.0
 offset_bottom = 1039.0
 
 [node name="TextLabel" type="Label" parent="DialogueBox/DialoguePanel" unique_id=1893403387]
 layout_mode = 0
-offset_left = 30.0
+offset_left = 464.0
 offset_top = 63.0
 offset_right = 1696.0
 offset_bottom = 200.0
@@ -48,13 +92,20 @@ autowrap_mode = 2
 
 [node name="NameLabel" type="Label" parent="DialogueBox/DialoguePanel" unique_id=1668047581]
 layout_mode = 0
-offset_left = 27.0
+offset_left = 461.0
 offset_top = 20.0
 offset_right = 1640.0
 offset_bottom = 65.0
 text = "Aissha"
 label_settings = SubResource("LabelSettings_rrrj2")
 autowrap_mode = 2
+
+[node name="DialoguePanel2" type="ColorRect" parent="DialogueBox" unique_id=1957530214]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 699.0
+offset_right = 457.0
+offset_bottom = 1019.0
 
 [node name="Portrait" type="TextureRect" parent="." unique_id=2089851814]
 offset_left = 1595.0
@@ -63,6 +114,7 @@ offset_right = 1803.0
 offset_bottom = 1024.0
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=832731292]
-position = Vector2(1352.0001, 522)
-scale = Vector2(20, 20)
-flip_h = true
+position = Vector2(237.5, 850.50006)
+scale = Vector2(17.53125, 17.53125)
+sprite_frames = SubResource("SpriteFrames_sy2s2")
+animation = &"idle"

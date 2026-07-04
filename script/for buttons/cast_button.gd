@@ -61,15 +61,6 @@ func cast_normal(active_cards):
 		mana_manager.spend_mana(card.card_cost)
 		
 	var combo_output = combo_manager.calculate_combo_output(active_cards)
-	if combo_output.damage > 0:
-		if combat_arena and combat_arena.has_method("get_enemy"):
-			var enemy = combat_arena.get_enemy()
-			if enemy and enemy.has_method("take_damage"):
-				enemy.take_damage(combo_output.damage)
-			else:
-				print("Cast Error: Active enemy node is invalid or missing take_damage()!")
-		else:
-			print("Cast Error: CombatArena script helper method is missing!")
 	
 	var player_node = null
 	if combat_arena:
@@ -77,12 +68,29 @@ func cast_normal(active_cards):
 		if player_node and player_node.has_method("start_attack_loop"):
 			player_node.start_attack_loop()
 
+	# ─── ANIMATION SEQUENCE RUNS FIRST ───
 	var sprite_anim_node = get_node_or_null("../../SpriteAnmation")
 	if sprite_anim_node and sprite_anim_node.has_method("play_cast_sequence"):
 		await sprite_anim_node.play_cast_sequence(active_cards)
 
 	if player_node and player_node.has_method("stop_attack_loop"):
 		player_node.stop_attack_loop()
+
+	# ─── DAMAGE IS APPLIED AFTER ANIMATION FINISHES ───
+	if combo_output.damage > 0:
+		if combat_arena and combat_arena.has_method("get_enemy"):
+			var enemy = combat_arena.get_enemy()
+			if enemy and enemy.has_method("take_damage"):
+				enemy.take_damage(combo_output.damage)
+				var battle_mgr = get_node_or_null("../../GameManagers/BattleManager")
+				if battle_mgr and battle_mgr.has_method("check_enemy_death"):
+					# If the enemy died, immediately exit to prevent any further script execution
+					if battle_mgr.check_enemy_death():
+						return 
+			else:
+				print("Cast Error: Active enemy node is invalid or missing take_damage()!")
+		else:
+			print("Cast Error: CombatArena script helper method is missing!")
 
 	var slots_folder = get_node("../../Slots")
 	if slots_folder:
