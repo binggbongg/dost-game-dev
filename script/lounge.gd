@@ -43,8 +43,8 @@ func center_camera():
 func start_lounge_tour():
 	tutorial_active = true
 	var base_path = "res://data/StoryData/Tutorial/LoungeScreen/"
-	
-	var tour_steps = [
+
+	var first_steps = [
 		[$Buttons/Content/CharacterSpotlight, "characterspotlight.tres"],
 		[$Buttons/Content/Lore, "lore.tres"],
 		[$Buttons/Content/Trophy, "leaderboard.tres"],
@@ -53,16 +53,21 @@ func start_lounge_tour():
 		[$Buttons/Content/spellbook, "spellbook.tres"],
 		[$Buttons/Content/shop, "shop.tres"],
 		[$Buttons/Content/PVP, "battle.tres"],
-		[$ChapterOne, "chapter.tres"],
 	]
 
-	for step in tour_steps:
+	for step in first_steps:
 		await highlight_and_talk(step[0], base_path + step[1])
-	
+
+	await give_starter_packs()
+
+	await highlight_and_talk(
+		$ChapterOne,
+		base_path + "chapter.tres"
+	)
+
 	tutorial_active = false
 	PlayerProfile.tutorial_steps_completed["lounge_tour"] = true
 	SaveManager.save_game()
-	give_starter_packs()
 func highlight_and_talk(node: CanvasItem, data_path: String):
 	if !is_instance_valid(node): return
 	
@@ -119,23 +124,32 @@ func _unhandled_input(event):
 func back_button_pressed():
 	SceneTransition.change_scene_path("res://scenes/menus/play.tscn")
 func give_starter_packs():
-	# 1. Create a dedicated UI layer so it ignores the Camera2D
 	var pack_layer = get_node_or_null("PackLayer")
 	if not pack_layer:
 		pack_layer = CanvasLayer.new()
 		pack_layer.name = "PackLayer"
-		pack_layer.layer = 100 # Put it above everything
+		pack_layer.layer = 100
 		add_child(pack_layer)
 
 	for i in range(5):
 		var pack_instance = pack_scene.instantiate()
 		pack_layer.add_child(pack_instance)
 		
-		# 2. Tell the pack to fill the whole screen
-		pack_instance.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		
-		# 3. Start the logic
+		# 1. Open the pack visuals
 		pack_instance.open_pack(true) 
 		
+		# 2. TUTORIAL INTEGRATION
+		# If this is the very first pack, we highlight it and play the dialogue
+		if i == 0:
+			var base_path = "res://data/StoryData/Tutorial/LoungeScreen/"
+			# We pass 'pack_instance' as the node to highlight.
+			# This makes the pack stay bright while the character talks!
+			await highlight_and_talk(pack_instance, base_path + "starter_packs_intro.tres")
+		
+		# 3. Wait for the player to finish swiping all 5 cards
 		await pack_instance.tree_exited 
-		await get_tree().create_timer(0.4).timeout
+		
+		# Small delay before the next pack pops up
+		if i < 4:
+			await get_tree().create_timer(0.3).timeout
+	

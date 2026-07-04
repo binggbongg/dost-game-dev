@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://nnu4hj7r1msj"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_wir0u"]
+
+[resource]
+script = ExtResource("1_wir0u")
+type = 1
+character_name = "Starter Pack"
+lines = Array[String](["Start your journey with these spell cards to help you overcome each battle forward!"])
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

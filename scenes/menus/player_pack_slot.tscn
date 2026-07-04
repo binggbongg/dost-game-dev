@@ -17,16 +17,16 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Card" parent="Cards" unique_id=778584260 instance=ExtResource("1_q2yvh")]
-
-[node name="Card2" parent="Cards" unique_id=1192171222 instance=ExtResource("1_q2yvh")]
-rotation = 0.0690869
-
-[node name="Card3" parent="Cards" unique_id=122643779 instance=ExtResource("1_q2yvh")]
-rotation = -0.03805584
+[node name="Card5" parent="Cards" unique_id=928522314 instance=ExtResource("1_q2yvh")]
+rotation = -0.010255647
 
 [node name="Card4" parent="Cards" unique_id=1921009054 instance=ExtResource("1_q2yvh")]
 rotation = 0.041970003
 
-[node name="Card5" parent="Cards" unique_id=928522314 instance=ExtResource("1_q2yvh")]
-rotation = -0.010255647
+[node name="Card3" parent="Cards" unique_id=122643779 instance=ExtResource("1_q2yvh")]
+rotation = -0.03805584
+
+[node name="Card2" parent="Cards" unique_id=1192171222 instance=ExtResource("1_q2yvh")]
+rotation = 0.069086894
+
+[node name="Card" parent="Cards" unique_id=778584260 instance=ExtResource("1_q2yvh")]
