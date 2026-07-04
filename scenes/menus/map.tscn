@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dcxviw3ekcy4k" path="res://scenes/level_previews/preview_phase_2.tscn" id="3_ev0yy"]
 [ext_resource type="PackedScene" uid="uid://dyhvhgchy6owy" path="res://scenes/level_previews/preview_phase_3.tscn" id="4_3yoho"]
 [ext_resource type="PackedScene" uid="uid://ckbrj3vh8fqlp" path="res://scenes/story/mechanicsui.tscn" id="8_ev0yy"]
+[ext_resource type="Texture2D" uid="uid://c5esexsxqsto6" path="res://assets/ui/spellbook/spellbook_back_button.png" id="9_3yoho"]
 
 [node name="Map" type="Control" unique_id=142484164]
 layout_mode = 3
@@ -119,3 +120,12 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+
+[node name="Back" type="TextureButton" parent="." unique_id=282255273]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 47.0
+offset_right = 52.0
+offset_bottom = 55.924103
+scale = Vector2(11.99, 11.99)
+texture_normal = ExtResource("9_3yoho")

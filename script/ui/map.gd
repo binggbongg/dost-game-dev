@@ -7,6 +7,7 @@ extends Control
 @onready var button1 = $Buttons/Phase1
 @onready var button2 = $Buttons/Phase2
 @onready var button3 = $Buttons/Phase3
+@onready var back: TextureButton = $Back
 
 @onready var tutorial_layer = $TutorialLayer
 @onready var dimmer = $TutorialLayer/Dimmer
@@ -16,7 +17,7 @@ var tutorial_active = false
  
 func _ready() -> void:
 	update_button_locks()
-	
+	back.pressed.connect(func(): back_button_pressed())
 	button1.pressed.connect(func(): phase_button_pressed(phase1))
 	button2.pressed.connect(func(): phase_button_pressed(phase2))
 	button3.pressed.connect(func(): phase_button_pressed(phase3))
@@ -81,3 +82,5 @@ func update_button_locks():
 	else:
 		button3.disabled = true
 		button3.modulate = Color(0.3, 0.3, 0.3, 0.9)
+func back_button_pressed():
+	SceneTransition.change_scene_path("res://scenes/menus/lounge.tscn")

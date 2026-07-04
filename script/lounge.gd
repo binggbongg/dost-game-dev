@@ -8,13 +8,12 @@ extends Node2D
 @onready var highlight_layer = $HighlightLayer/Control 
 @onready var player_name: Label = $Buttons/Content/CharacterSpotlight/PlayerName
 @onready var me: AnimatedSprite2D = $Buttons/Content/CharacterSpotlight/Character
+@onready var back: TextureButton = $Buttons/Content/Back
 
 var tutorial_active = false
 
 func _ready():
-	print("Map scale: ", map.scale)
-	print("Map global scale: ", map.get_global_transform().get_scale())
-	print("Map size: ", map.size)
+	back.pressed.connect(func(): back_button_pressed())
 	await get_tree().process_frame
 	center_camera()
 	dimmer.hide()
@@ -116,3 +115,5 @@ func _unhandled_input(event):
 		cam.position -= event.relative / cam.zoom
 		limit_camera_view()
 	
+func back_button_pressed():
+	SceneTransition.change_scene_path("res://scenes/menus/play.tscn")
