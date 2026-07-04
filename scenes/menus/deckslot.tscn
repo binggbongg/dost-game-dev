@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://ph6jbp7fcig3"]
 
-[ext_resource type="Script" uid="uid://btop63eqjc3lh" path="res://script/ui/spellbook_card_slot.gd" id="1_y020b"]
+[ext_resource type="Script" uid="uid://dllydbbnhcjxs" path="res://script/ui/deck_card_slot.gd" id="1_vw7pp"]
 [ext_resource type="PackedScene" uid="uid://cw5abrwt2c70o" path="res://scenes/card.tscn" id="2_vw7pp"]
 [ext_resource type="Texture2D" uid="uid://3lfeq0ht0rab" path="res://assets/temporary/gamejam.svg" id="3_vw7pp"]
 
-[node name="SpellbookCardSlot" type="Control" unique_id=2017068616]
+[node name="Deck" type="Control" unique_id=2017068616]
 custom_minimum_size = Vector2(180, 250)
 layout_mode = 3
 anchors_preset = 15
@@ -15,7 +15,7 @@ offset_bottom = -830.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.78, 1.78)
-script = ExtResource("1_y020b")
+script = ExtResource("1_vw7pp")
 
 [node name="Card" parent="." unique_id=778584260 instance=ExtResource("2_vw7pp")]
 position = Vector2(70.224724, 116.292145)

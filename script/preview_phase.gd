@@ -5,7 +5,7 @@ extends Control
 @onready var deck_grid: GridContainer = $SelectedSection/DeckGrid
 @onready var library_grid: GridContainer = $Board/MarginContainer/Hbox/ScrollArea/LibraryGrid
 
-var slot_scene = preload("res://scenes/menus/deck_card_slot.tscn")
+var slot_scene = preload("res://scenes/menus/deckslot.tscn")
 var current_category = "kalikasan" # Default
 
 func _ready():

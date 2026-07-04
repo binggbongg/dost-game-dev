@@ -60,7 +60,7 @@ func phase_button_pressed(current_phase):
 		if not PlayerProfile.tutorial_steps_completed.get("battle_tutorial", false):
 			PlayerProfile.pending_scene = "res://scenes/levels/Level1_Tutorial.tscn"
 		else:
-			PlayerProfile.pending_scene = current_phase
+			PlayerProfile.pending_scene = "res://scenes/levels/Level1.tscn"
 		print("DEBUGGING NOW IN MAP" + PlayerProfile.pending_scene)
 		get_tree().change_scene_to_file("res://scenes/ui/DeckBuilder.tscn")
 
@@ -83,4 +83,6 @@ func update_button_locks():
 		button3.disabled = true
 		button3.modulate = Color(0.3, 0.3, 0.3, 0.9)
 func back_button_pressed():
+	print("back button clicked!")
 	SceneTransition.change_scene_path("res://scenes/menus/lounge.tscn")
+	print("backed")

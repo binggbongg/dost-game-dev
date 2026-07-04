@@ -1,37 +1,45 @@
 extends Control
 
-signal selection_changed
+signal hovered(card_path)
+signal selection_changed(card_path)
 
-@onready var check_icon = $Button/Icon # Change to your checkmark node path
-@onready var card_template = $Card     # Your card template scene node
+@onready var check_icon = $Button/Icon
+@onready var button = $Button
+@onready var card_template: Card = $Card
 
 var card_path: String = ""
 
-func update_selection_visuals():
-	# Sync visual checkmark with the PlayerProfile deck
-	check_icon.visible = PlayerProfile.current_deck.has(card_path)
+func _ready():
+	button.mouse_entered.connect(_on_mouse_entered)
+	button.pressed.connect(_on_button_pressed)
+
+func setup(path: String):
+	card_path = path
+
+	var data: CardData = CardRegistry.all_cards[path]
+
+	card_template.scale = Vector2(0.75, 0.75)
+	card_template.position = custom_minimum_size / 2
+	card_template.display_info(data)
+
+	update_selection_visuals()
+
+func _on_mouse_entered():
+	hovered.emit(card_path)
 
 func _on_button_pressed():
+
 	if PlayerProfile.current_deck.has(card_path):
 		PlayerProfile.current_deck.erase(card_path)
 	else:
-		if PlayerProfile.current_deck.size() < 12:
-			PlayerProfile.current_deck.append(card_path)
-		else:
+		if PlayerProfile.current_deck.size() >= 12:
 			print("Deck Full!")
+			return
 
-	print(PlayerProfile.current_deck)
-	print("Deck size:", PlayerProfile.current_deck.size())
+		PlayerProfile.current_deck.append(card_path)
 
 	update_selection_visuals()
-	selection_changed.emit()
-	
-func setup(path: String):
-	card_path = path
-	var data = CardRegistry.all_cards[path]
-	card_template.scale = Vector2(0.75, 0.75) 
-	card_template.position = custom_minimum_size / 2
-	if card_template.has_method("apply_data"):
-		card_template.card_data = data
-		card_template.apply_data()
-	update_selection_visuals()
+	selection_changed.emit(card_path)
+
+func update_selection_visuals():
+	check_icon.visible = PlayerProfile.current_deck.has(card_path)

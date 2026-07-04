@@ -101,3 +101,22 @@ func display_info(data: CardData):
 	card_data = data
 	apply_data()
 	scale = Vector2(0.8, 0.8)
+
+func get_display_name() -> String:
+	if card_data == null:
+		return ""
+	return card_data.get("item_name") if card_data.get("item_name") else card_data.get("name")
+
+func get_display_description() -> String:
+	if card_data == null:
+		return ""
+	return card_data.description
+
+func get_display_rarity() -> String:
+	if card_data == null:
+		return ""
+
+	var rarity = GameEnums.CardRarity.keys()[card_data.rarity]
+	var category = GameEnums.CardCategory.keys()[card_data.category]
+
+	return "%s • %s" % [rarity.capitalize(), category.capitalize()]

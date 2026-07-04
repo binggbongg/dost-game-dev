@@ -26,7 +26,8 @@ var player_rank: String = "Starter":
 var tutorial_steps_completed: Dictionary = {
 	"lounge_tour": false,
 	"chapter_intro": false,
-	"battle_tutorial": false
+	"battle_tutorial": false,
+	"deck_builder": false
 }
 var owned_cards: Array[String] = []
 var current_deck: Array[String] = []
@@ -74,7 +75,8 @@ func initialize_profile(new_name: String, character_id: String):
 	tutorial_steps_completed = {
 		"lounge_tour": false,
 		"chapter_intro": false,
-		"battle_tutorial": false
+		"battle_tutorial": false,
+		"deck_builder": false
 	}
 	is_tutorial_fight = false
 	

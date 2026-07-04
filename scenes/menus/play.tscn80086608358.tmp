@@ -1,0 +1,297 @@
+[gd_scene format=3 uid="uid://dm1hwrj3l0df6"]
+
+[ext_resource type="Script" uid="uid://c0w2femtfhvyh" path="res://script/ui/play.gd" id="1_14hys"]
+[ext_resource type="AudioStream" uid="uid://df1gcjroxeyx6" path="res://data/SoundData/bgm/game_start.wav" id="2_bweju"]
+[ext_resource type="PackedScene" uid="uid://lq3tmvb8ajg0" path="res://scenes/menus/lounge.tscn" id="3_0wcnn"]
+[ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="4_bweju"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_ivt2f"]
+[ext_resource type="PackedScene" uid="uid://btnk1nc2mvnsk" path="res://scenes/story/intro.tscn" id="5_0xjr7"]
+[ext_resource type="Texture2D" uid="uid://26yniv7ld3ya" path="res://assets/temporary/play_button.png" id="5_hcoq6"]
+[ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="7_0wcnn"]
+[ext_resource type="Texture2D" uid="uid://dmei84moikr28" path="res://assets/ui/shop/setting_icon.png" id="7_57ra1"]
+[ext_resource type="PackedScene" uid="uid://dnv63h23touyw" path="res://scenes/menus/login_account.tscn" id="9_ifrkh"]
+[ext_resource type="Texture2D" uid="uid://nvmc7rggfnbj" path="res://assets/ui/buttons/soundOn_icon.png" id="11_0xjr7"]
+[ext_resource type="Texture2D" uid="uid://ctjhgkc78lwkd" path="res://assets/temporary/continue.png" id="11_pcbjq"]
+[ext_resource type="Texture2D" uid="uid://cfp5pvxioqchf" path="res://assets/ui/buttons/soundOff_icon.png" id="12_ifrkh"]
+[ext_resource type="PackedScene" uid="uid://xdbig4p2et14" path="res://scenes/menus/leaderboard.tscn" id="13_0xjr7"]
+[ext_resource type="Texture2D" uid="uid://dhiy0u8u5y80b" path="res://assets/temporary/Assets_UI.png" id="15_0wcnn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57ra1"]
+atlas = ExtResource("4_bweju")
+region = Rect2(0, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivt2f"]
+atlas = ExtResource("4_bweju")
+region = Rect2(192, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcoq6"]
+atlas = ExtResource("4_bweju")
+region = Rect2(384, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcbjq"]
+atlas = ExtResource("4_bweju")
+region = Rect2(576, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wpdt"]
+atlas = ExtResource("4_bweju")
+region = Rect2(768, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wcnn"]
+atlas = ExtResource("4_bweju")
+region = Rect2(960, 0, 192, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xjr7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57ra1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivt2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcoq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcbjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wpdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wcnn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0xjr7"]
+font = ExtResource("4_ivt2f")
+font_size = 200
+shadow_color = Color(0, 0, 0, 0.8901961)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ifrkh"]
+font = ExtResource("4_ivt2f")
+font_size = 140
+font_color = Color(0.68235296, 0.6862745, 0.63529414, 0.8)
+shadow_color = Color(0.050980393, 0, 0.10980392, 0.7529412)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xjr7"]
+atlas = ExtResource("7_57ra1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifrkh"]
+atlas = ExtResource("7_57ra1")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drxk1"]
+atlas = ExtResource("7_57ra1")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvox0"]
+atlas = ExtResource("7_57ra1")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cuvb2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xjr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifrkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drxk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvox0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuvb2"]
+atlas = ExtResource("15_0wcnn")
+region = Rect2(798, 615, 261, 122)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp6ot"]
+atlas = ExtResource("15_0wcnn")
+region = Rect2(1109, 114, 284, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybogl"]
+atlas = ExtResource("15_0wcnn")
+region = Rect2(126, 114, 280, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsy8o"]
+atlas = ExtResource("15_0wcnn")
+region = Rect2(444, 454, 298, 123)
+
+[node name="Play" type="Control" unique_id=1732985381]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_14hys")
+menu_bgm = ExtResource("2_bweju")
+lounge = ExtResource("3_0wcnn")
+setup = ExtResource("9_ifrkh")
+intro = ExtResource("5_0xjr7")
+
+[node name="Background" type="AnimatedSprite2D" parent="." unique_id=839548396]
+position = Vector2(959.7222, 539.5)
+scale = Vector2(10.070024, 10.083333)
+sprite_frames = SubResource("SpriteFrames_0xjr7")
+autoplay = "default"
+frame = 1
+frame_progress = 0.90714777
+
+[node name="Title" type="Control" parent="." unique_id=1611951136]
+anchors_preset = 0
+offset_top = -9.0
+offset_right = 1920.9999
+offset_bottom = 1075.0
+
+[node name="Label" type="Label" parent="Title" unique_id=1333881234]
+layout_mode = 0
+offset_left = 984.0
+offset_top = 323.0
+offset_right = 1705.0
+offset_bottom = 563.0
+text = "Salamin"
+label_settings = SubResource("LabelSettings_0xjr7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Title" unique_id=1500851924]
+layout_mode = 0
+offset_left = 1075.0
+offset_top = 460.0
+offset_right = 1796.0
+offset_bottom = 700.0
+text = "at Bakal "
+label_settings = SubResource("LabelSettings_ifrkh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="TextureButton" parent="." unique_id=276622558]
+layout_mode = 0
+offset_left = 1751.0
+offset_top = 21.0
+offset_right = 1887.0
+offset_bottom = 145.0
+script = ExtResource("7_0wcnn")
+menu_to_open = ExtResource("13_0xjr7")
+
+[node name="Audio_Off" type="AnimatedSprite2D" parent="Settings" unique_id=96538401]
+position = Vector2(75, 61)
+scale = Vector2(1.6875, 1.6875)
+sprite_frames = SubResource("SpriteFrames_cuvb2")
+autoplay = "default"
+
+[node name="Audio" type="TextureButton" parent="." unique_id=299054473]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(2, 2)
+
+[node name="Audio_On" type="TextureRect" parent="Audio" unique_id=943570828]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.272
+anchor_top = -8.195001
+anchor_right = -3.272
+anchor_bottom = -8.195001
+offset_left = 209.408
+offset_top = 524.48004
+offset_right = 273.40802
+offset_bottom = 588.48004
+texture = ExtResource("11_0xjr7")
+expand_mode = 1
+
+[node name="Audio_Off" type="TextureRect" parent="Audio" unique_id=407974782]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.272
+anchor_top = -8.195001
+anchor_right = -3.272
+anchor_bottom = -8.195001
+offset_left = 209.408
+offset_top = 524.48004
+offset_right = 273.40802
+offset_bottom = 588.48004
+texture = ExtResource("12_ifrkh")
+expand_mode = 1
+
+[node name="Play" type="TextureButton" parent="." unique_id=1205911924]
+visible = false
+layout_mode = 0
+offset_left = 1274.0
+offset_top = 640.0
+offset_right = 1524.0
+offset_bottom = 727.0
+
+[node name="NewGame" type="TextureRect" parent="Play" unique_id=1136695913]
+custom_minimum_size = Vector2(150, 75)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.497
+offset_left = 172.25
+offset_top = 12.0
+offset_right = 198.0
+offset_bottom = 87.0
+mouse_filter = 2
+texture = ExtResource("5_hcoq6")
+expand_mode = 1
+
+[node name="Continue" type="TextureRect" parent="Play" unique_id=551117370]
+custom_minimum_size = Vector2(400, 600)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.497
+offset_left = 48.25
+offset_top = -229.0
+offset_right = 324.0
+offset_bottom = 371.0
+mouse_filter = 2
+texture = ExtResource("11_pcbjq")
+expand_mode = 1
+
+[node name="Leaderboard" type="TextureButton" parent="." unique_id=267476027]
+layout_mode = 0
+offset_left = 1311.0
+offset_top = 825.0
+offset_right = 1572.0
+offset_bottom = 947.0
+scale = Vector2(0.7, 0.7)
+texture_normal = SubResource("AtlasTexture_cuvb2")
+script = ExtResource("7_0wcnn")
+menu_to_open = ExtResource("13_0xjr7")
+
+[node name="Exit" type="TextureButton" parent="." unique_id=364911246]
+layout_mode = 0
+offset_left = 1315.0
+offset_top = 920.0
+offset_right = 1599.0
+offset_bottom = 1051.0
+scale = Vector2(0.6, 0.6)
+texture_normal = SubResource("AtlasTexture_bp6ot")
+
+[node name="ContinueButton" type="TextureButton" parent="." unique_id=301235348]
+layout_mode = 0
+offset_left = 1311.0
+offset_top = 651.0
+offset_right = 1599.3335
+offset_bottom = 782.0
+scale = Vector2(0.6, 0.6)
+texture_normal = SubResource("AtlasTexture_ybogl")
+
+[node name="NewGameButton" type="TextureButton" parent="." unique_id=684198820]
+layout_mode = 0
+offset_left = 1311.0
+offset_top = 739.0
+offset_right = 1609.0
+offset_bottom = 862.0
+scale = Vector2(0.6, 0.6)
+texture_normal = SubResource("AtlasTexture_fsy8o")

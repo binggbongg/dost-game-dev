@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://jwj3jplt8soa"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_ou7r5"]
+
+[resource]
+script = ExtResource("1_ou7r5")
+type = 1
+character_name = "Categories"
+lines = Array[String](["View cards by type and abilitiy!"])
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"
