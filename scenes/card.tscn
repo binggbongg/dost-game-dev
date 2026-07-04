@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://my16ben7onyr" path="res://assets/temporary/card_placeholder.png" id="1_iecja"]
 [ext_resource type="FontFile" uid="uid://df2vd0uxg3gcf" path="res://assets/fonts/PixelifySans-SemiBold.ttf" id="3_sy11y"]
 [ext_resource type="Texture2D" uid="uid://cmm0ft8pmm2ms" path="res://assets/ui/buttons/leaderboard_icon.png" id="4_6ligt"]
-[ext_resource type="Texture2D" uid="uid://dl51l2pbbo6cg" path="res://assets/ui/buttons/coin_icon.png" id="5_8w5pg"]
+[ext_resource type="Texture2D" uid="uid://de043ovrwxssr" path="res://assets/ui/buttons/mana_icon.png" id="5_sy11y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mawrc"]
 size = Vector2(192.5, 282)
@@ -82,9 +82,9 @@ offset_bottom = 146.25
 [node name="ManaCost" type="Label" parent="Area2D/ManaCost" unique_id=736326464]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 1.2499999
+offset_left = 3.7499995
 offset_top = -2.4999998
-offset_right = 40.000004
+offset_right = 42.500004
 offset_bottom = 36.5
 text = "50"
 label_settings = SubResource("LabelSettings_nvopj")
@@ -96,7 +96,7 @@ offset_top = 3.7499905
 offset_right = 40.250008
 offset_bottom = 67.74999
 scale = Vector2(0.42, 0.42)
-texture = ExtResource("5_8w5pg")
+texture = ExtResource("5_sy11y")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

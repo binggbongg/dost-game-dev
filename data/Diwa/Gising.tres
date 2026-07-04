@@ -1,7 +1,44 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://b8r5n0ec562gd"]
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_dashj"]
+[ext_resource type="Texture2D" uid="uid://dladccsv3tpgv" path="res://assets/ui/handsigns/diwa_attack/diwa_gising.png" id="1_s1ipm"]
 [ext_resource type="Texture2D" uid="uid://befdkxiwns8ub" path="res://assets/cards/gising.png" id="2_86xb4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_se0kn"]
+atlas = ExtResource("1_s1ipm")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxgeg"]
+atlas = ExtResource("1_s1ipm")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pp3x0"]
+atlas = ExtResource("1_s1ipm")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxf2u"]
+atlas = ExtResource("1_s1ipm")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ds7y6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_se0kn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxgeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pp3x0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxf2u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_dashj")
@@ -11,4 +48,5 @@ damage = 1
 multiplier = 1.2
 mana_cost = 1
 texture = ExtResource("2_86xb4")
+cardASL = SubResource("SpriteFrames_ds7y6")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

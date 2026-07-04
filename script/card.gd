@@ -86,16 +86,16 @@ func set_interaction_state(enabled: bool):
 func power_highlighter():
 	if(card_data.category == GameEnums.CardCategory.KALIKASAN):
 			power_highlight.text = str(card_data.damage)
-			power_highlight_icon.texture = load("res://assets/ui/spellbook/spellbook_green_bookmark.png")
+			power_highlight_icon.texture = load("res://assets/ui/buttons/damage_icon.png")
 	elif (card_data.category == GameEnums.CardCategory.TANGLAW):
 			power_highlight.text = str(card_data.heal)
-			power_highlight_icon.texture = load("res://assets/ui/spellbook/spellbook_blue_bookmark.png")
+			power_highlight_icon.texture = load("res://assets/ui/buttons/heal_icon.png")
 	elif (card_data.category == GameEnums.CardCategory.DIWA):
 			power_highlight.text = str(card_data.multiplier)
-			power_highlight_icon.texture = load("res://assets/ui/spellbook/spellbook_yellow_bookmark.png")
+			power_highlight_icon.texture = load("res://assets/ui/buttons/multiplier_icon.png")
 	else: 
 			power_highlight.text = str(card_data.damage)
-			power_highlight_icon.texture = load("res://assets/ui/spellbook/spellbook_red_bookmark.png")
+			power_highlight_icon.texture = load("res://assets/ui/buttons/damage_icon.png")
 
 func display_info(data: CardData):
 	card_data = data

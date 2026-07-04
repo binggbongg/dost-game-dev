@@ -1,13 +1,50 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://pyh6f4608t7f"]
 
+[ext_resource type="Texture2D" uid="uid://cp3givhoypaqq" path="res://assets/ui/handsigns/kalikasan_attack/kalikasan_ulap.png" id="1_k1vdn"]
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_lxhqc"]
 [ext_resource type="Texture2D" uid="uid://dy3w8egm7pddx" path="res://assets/cards/ulap.png" id="2_ob1jw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8shrp"]
+atlas = ExtResource("1_k1vdn")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tv0ln"]
+atlas = ExtResource("1_k1vdn")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4vgt"]
+atlas = ExtResource("1_k1vdn")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2k6r"]
+atlas = ExtResource("1_k1vdn")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m4jax"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8shrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tv0ln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4vgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2k6r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_lxhqc")
 name = "Ulap"
 category = 2
-damage = 3.0
 mana_cost = 2
 texture = ExtResource("2_ob1jw")
+cardASL = SubResource("SpriteFrames_m4jax")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

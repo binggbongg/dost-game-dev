@@ -1,14 +1,51 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://bgjgs5sh1hj08"]
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_gukyd"]
+[ext_resource type="Texture2D" uid="uid://dbdbtw7d015n3" path="res://assets/ui/handsigns/kalikasan_attack/kalikasan_ulan.png" id="1_val47"]
 [ext_resource type="Texture2D" uid="uid://ce3bsk5ewn25d" path="res://assets/cards/ulan.png" id="2_55x57"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6mo2"]
+atlas = ExtResource("1_val47")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7nvy"]
+atlas = ExtResource("1_val47")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykht3"]
+atlas = ExtResource("1_val47")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8ikq"]
+atlas = ExtResource("1_val47")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xhlc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6mo2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7nvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykht3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8ikq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_gukyd")
 name = "Ulan"
 description = "Water canon attack"
 category = 2
-damage = 3.0
 mana_cost = 2
 texture = ExtResource("2_55x57")
+cardASL = SubResource("SpriteFrames_0xhlc")
 metadata/_custom_type_script = "uid://cv07myeubhuht"
