@@ -103,8 +103,17 @@ func trigger_boss_defeat_cutscene():
 	else:
 		proceed_next_stage()
 
-func _on_player_dies():
-	print("Combat Level: Player dead, you lose")
+func _on_player_dies():	
+	var turn_manager = get_node_or_null("PlayerInterface/GameManagers/TurnManager")
+	if turn_manager:
+		turn_manager.is_busy = true
+	var combat_arena = get_node_or_null("CombatArena")
+	if combat_arena:
+		var player_node = combat_arena.get_node_or_null("Player")
+		if player_node and player_node.has_method("play_death_animation"):
+			# Execution halts here until the death animation completes exactly once
+			await player_node.play_death_animation()
+	
 	var end_screen_path = "res://scenes/story/gameover.tscn" 
 	var end_screen = load(end_screen_path).instantiate()
 	get_tree().root.add_child(end_screen)

@@ -118,58 +118,48 @@ func validate_addition(new_card: Card) -> GameEnums.ComboValidationResult:
 
 
 # --- PART 2: CAST RULES (Controls the Cast Sprite's highlight) ---
-
 func validate_cast() -> bool:
 	var active = get_cards_in_slots()
 
-	if active.is_empty():
+	if active.is_empty() or active.size() > 3:
 		return false
 
-	if active.size() > 3:
-		return false
-
-	# Special Solo check
 	if active.size() == 1 and active[0].card_data.get("is_special"):
 		return true
 
 	var categories = active.map(func(c): return c.card_category)
-
 	var lahi_count = categories.count(GameEnums.CardCategory.LAHI)
 	var diwa_count = categories.count(GameEnums.CardCategory.DIWA)
 	var kali_count = categories.count(GameEnums.CardCategory.KALIKASAN)
 	var tanglaw_count = categories.count(GameEnums.CardCategory.TANGLAW)
 
-	# Duplicate Diwa
-	if diwa_count > 1:
-		return false
+	if active.size() == 1:
+		return true
 
-	# Triple Tanglaw
-	if tanglaw_count > 2:
-		return false
+	if active.size() == 2:
+		if kali_count == 2: return true                    # KALIKASAN + KALIKASAN
+		if diwa_count == 1 and kali_count == 1: return true # DIWA + KALIKASAN / KALIKASAN + DIWA
+		if diwa_count == 1 and tanglaw_count == 1: return true # DIWA + TANGLAW / TANGLAW + DIWA
+		return false # Disallow any other random 2-card combinations
 
-	# Lahi + Tanglaw
-	if lahi_count > 0 and tanglaw_count > 0:
-		return false
+	if active.size() == 3:
+		if lahi_count > 0:
+			if lahi_count == 1 and diwa_count == 1 and kali_count == 1: return true # LAHI + DIWA + KALIKASAN
+			if lahi_count == 2 and diwa_count == 1: return true                    # LAHI + DIWA + LAHI
+			return false
 
-	# Rule Checking - Lahi Combos
-	if lahi_count > 0:
+		if kali_count == 3: return true # KALIKASAN + KALIKASAN + KALIKASAN
+		
+		if diwa_count == 1:
+			if kali_count == 2: return true # KALIKASAN + DIWA + KALIKASAN / DIWA + KALIKASAN + KALIKASAN
+			if kali_count == 1 and tanglaw_count == 1: return true # KALIKASAN + DIWA + TANGLAW / TANGLAW + KALIKASAN + DIWA / DIWA + TANGLAW + KALIKASAN
+			if tanglaw_count == 2: return true # DIWA + TANGLAW + TANGLAW / TANGLAW + DIWA + TANGLAW
+			
+		if tanglaw_count > 0:
+			if kali_count == 1 and tanglaw_count == 2: return true # KALIKASAN + TANGLAW + TANGLAW
+			if kali_count == 2 and tanglaw_count == 1: return true # KALIKASAN + TANGLAW + KALIKASAN
 
-		# LAHI
-		if active.size() == 1:
-			return true
-
-		# LAHI + DIWA + LAHI
-		if lahi_count == 2 and diwa_count == 1:
-			return true
-
-		# LAHI + DIWA + KALIKASAN
-		if lahi_count == 1 and diwa_count == 1 and kali_count == 1:
-			return true
-
-		return false
-
-	return true
-
+	return false 
 func calculate_combo_output(active_cards: Array) -> Dictionary:
 	var base_damage: float = 0.0
 	var base_healing: float = 0.0

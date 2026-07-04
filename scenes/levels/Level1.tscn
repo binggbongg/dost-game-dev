@@ -117,10 +117,10 @@ offset_bottom = 1111.0
 scale = Vector2(0.6, 0.6)
 
 [node name="spellbook" parent="Buttons" unique_id=1664093449 instance=ExtResource("3_76cw8")]
-offset_left = 1799.0
-offset_top = 921.0
-offset_right = 1863.0
-offset_bottom = 985.0
+offset_left = 1798.0
+offset_top = 964.0
+offset_right = 1862.0
+offset_bottom = 1028.0
 scale = Vector2(2, 2)
 
 [node name="PauseButton" parent="Buttons" unique_id=784340132 instance=ExtResource("6_7d7pp")]

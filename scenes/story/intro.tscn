@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cf8ev4ro6kfoa" path="res://assets/ui/story/story_four.png" id="9_qrf87"]
 [ext_resource type="Texture2D" uid="uid://cfx7ipnrsioyq" path="res://assets/ui/story/story_five.png" id="10_5gkmh"]
 [ext_resource type="Texture2D" uid="uid://dkrdeoxraji45" path="res://assets/ui/story/story_six.png" id="11_0whan"]
-[ext_resource type="Texture2D" uid="uid://bd10btbxwtrh4" path="res://assets/temporary/exit_button.png" id="13_g6k38"]
+[ext_resource type="Texture2D" uid="uid://b0swjxppkpsi5" path="res://assets/ui/buttons/exit_icon.png" id="13_g6k38"]
 [ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="13_t4sft"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ycgse"]
@@ -154,9 +154,10 @@ flat = true
 [node name="TextureRect" type="TextureRect" parent="Skip" unique_id=523768392]
 texture_filter = 1
 layout_mode = 0
-offset_left = 11.0
-offset_top = 13.0
-offset_right = 142.47824
-offset_bottom = 85.0
+offset_left = -35.0
+offset_top = -3.0
+offset_right = 96.47824
+offset_bottom = 69.0
+scale = Vector2(1.495, 1.495)
 mouse_filter = 2
 texture = ExtResource("13_g6k38")
