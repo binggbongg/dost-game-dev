@@ -265,71 +265,48 @@ func _unhandled_input(event: InputEvent) -> void:
 					check_enemy_death()
 
 func check_enemy_death() -> bool:
-	print("CHECKPOINT C: check_enemy_death() started")
 	if combat_arena and combat_arena.has_method("get_enemy"):
 		var enemy = combat_arena.get_enemy()
-		print("CHECKPOINT D: got enemy reference, is_instance_valid=", is_instance_valid(enemy))
 		if enemy and enemy.get("current_health") <= 0:
-			print("--- CRITICAL VICTORY DETECTED ---")
 
 			# Halt the entire turn processing system completely
 			if turn_manager:
 				turn_manager.is_busy = false # UNLOCK UI processing systems so you can click buttons
 				turn_manager.current_state = GameEnums.TurnState.GAME_COMPLETE
-			print("CHECKPOINT E: turn_manager state set to GAME_COMPLETE")
 
 			# Kill all active turn timing wheels
 			battle_timer.stop()
-			print("CHECKPOINT F: battle_timer stopped")
 			if battle_timer.timeout.is_connected(_on_player_turn_timeout):
 				battle_timer.timeout.disconnect(_on_player_turn_timeout)
-			print("CHECKPOINT G: timeout disconnected (or was never connected)")
 
 			if timer_bar:
 				timer_bar.visible = false
-			print("CHECKPOINT H: about to call _sequence_battle_wrap_up()")
 
 			_sequence_battle_wrap_up()
-			print("CHECKPOINT I: _sequence_battle_wrap_up() returned")
 			return true
-	print("CHECKPOINT J: check_enemy_death() found no valid dead enemy, returning false")
 	return false
 
 func _sequence_battle_wrap_up() -> void:
-	print("CHECKPOINT 3: wrap_up started")
 	if has_node("../PlayerInterface/VictoryScreenNode"):
-		print("VICTORY BLOCKED: a VictoryScreenNode already exists in the tree")
 		return
-	print("CHECKPOINT 4: passed has_node check, no existing VictoryScreenNode")
 
 	var base_max_score = 400000
 	var turn_penalty = PlayerProfile.run_turns * 7500
 	var damage_penalty = PlayerProfile.run_damage_taken * 250
 	var final_score: int = max(50000, base_max_score - turn_penalty - damage_penalty)
-	print("CHECKPOINT 5: score calculated = ", final_score)
 
 	if victory_screen_scene:
-		print("CHECKPOINT 6: victory_screen_scene is valid, about to instantiate")
 		var victory_instance = victory_screen_scene.instantiate()
-		print("CHECKPOINT 7: instantiate() returned, is_instance_valid=", is_instance_valid(victory_instance))
 		victory_instance.name = "VictoryScreenNode"
-		print("CHECKPOINT 8: name set")
 
 		var ui_parent = get_node_or_null("../PlayerInterface")
-		print("CHECKPOINT 9: ui_parent found=", ui_parent != null)
 		if ui_parent:
 			ui_parent.add_child(victory_instance)
 		else:
 			get_parent().add_child(victory_instance)
-		print("CHECKPOINT 10: victory_instance added to tree, in_tree=", victory_instance.is_inside_tree())
 
 		var current_level_data = PlayerProfile.get_current_level_data()
-		print("CHECKPOINT 11: current_level_data valid=", current_level_data != null)
 
 		victory_instance.initialize_victory_rewards(current_level_data, final_score)
-		print("CHECKPOINT 12: initialize_victory_rewards() returned successfully")
 
 		PlayerProfile.reset_run_counter()
-		print("CHECKPOINT 13: run counter reset, wrap_up fully complete")
-	else:
-		print("CHECKPOINT WARN: victory_screen_scene is null/unassigned, popup cannot be created")

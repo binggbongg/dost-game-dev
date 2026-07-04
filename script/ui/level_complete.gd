@@ -1,9 +1,10 @@
 extends CanvasLayer
 # UI References (matched to your scene tree)
-@onready var coin_reward_label: Label = $VICTORY/ColorRect/CoinLabel
-@onready var score_label: Label = $VICTORY/ColorRect/ScoreLabel
+@onready var score_label: Label = $VICTORY/ScoreLabel
 @onready var next_button: TextureButton = $VICTORY/next
 @onready var pack_reward_label: Label = $VICTORY/Control/CardLabel
+@onready var coin_reward_label: Label = $VICTORY/CoinLabel
+
 @onready var pack_layer: CanvasLayer = $PackLayer
 @export var pack_scene: PackedScene                           # Assign your card pack .tscn here
 
