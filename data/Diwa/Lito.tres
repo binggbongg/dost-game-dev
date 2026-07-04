@@ -43,6 +43,7 @@ animations = [{
 [resource]
 script = ExtResource("1_xfiar")
 name = "Lito"
+category = 1
 rarity = 1
 damage = 2
 multiplier = 1.5

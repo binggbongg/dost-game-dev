@@ -15,7 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cjrcuo56wi0fc" path="res://assets/ui/spellbook/spellbook_next_button.png" id="19_3i8rq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2uart"]
-font_size = 21
+font_size = 29
+font_color = Color(0.35085708, 0.1066822, 2.4065375e-08, 1)
 shadow_size = 12
 
 [node name="Spellbook" type="Control" unique_id=1875600038]
@@ -119,26 +120,26 @@ texture_normal = ExtResource("15_166nj")
 [node name="Pagination" type="Node2D" parent="." unique_id=393529831]
 
 [node name="Left" type="TextureButton" parent="Pagination" unique_id=182413592]
-offset_left = 831.0
-offset_top = 996.00006
-offset_right = 840.0
-offset_bottom = 1004.6819
+offset_left = 349.0
+offset_top = 905.00006
+offset_right = 358.0
+offset_bottom = 913.6819
 scale = Vector2(9.445, 9.445)
 texture_normal = ExtResource("17_ndbtc")
 
 [node name="Right" type="TextureButton" parent="Pagination" unique_id=200031203]
-offset_left = 1076.0
-offset_top = 996.00006
-offset_right = 1085.0
-offset_bottom = 1004.6819
+offset_left = 1592.0
+offset_top = 918.00006
+offset_right = 1601.0
+offset_bottom = 926.6819
 scale = Vector2(9.445, 9.445)
 texture_normal = ExtResource("19_3i8rq")
 
 [node name="Label" type="Label" parent="Pagination" unique_id=1861420774]
-offset_left = 959.0
-offset_top = 1025.0
-offset_right = 1054.0
-offset_bottom = 1055.0
+offset_left = 934.0
+offset_top = 937.0
+offset_right = 1066.0
+offset_bottom = 977.0
 text = "1 out of 5"
 label_settings = SubResource("LabelSettings_2uart")
 

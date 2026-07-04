@@ -2,11 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://my16ben7onyr" path="res://assets/temporary/card_placeholder.png" id="1_0di40"]
 [ext_resource type="Script" uid="uid://k4nay075lugp" path="res://script/ui/combo_slot.gd" id="1_hakbr"]
-[ext_resource type="Texture2D" uid="uid://bykwvtmeoeon0" path="res://assets/cards/lupa.png" id="2_hakbr"]
-[ext_resource type="Texture2D" uid="uid://brncfoabci411" path="res://assets/temporary/panel small.png" id="2_ngrdd"]
-[ext_resource type="Texture2D" uid="uid://befdkxiwns8ub" path="res://assets/cards/gising.png" id="3_03fnx"]
-[ext_resource type="Texture2D" uid="uid://qnqd0dqh2w6u" path="res://assets/cards/aso.png" id="4_1hwl6"]
-[ext_resource type="Texture2D" uid="uid://cjq6kkw2dr0ja" path="res://assets/cards/takot.png" id="5_q5e7q"]
+[ext_resource type="Texture2D" uid="uid://bdcjpy6fofac5" path="res://assets/cards/4.png" id="2_junjx"]
+[ext_resource type="Texture2D" uid="uid://csn03vyiyaocx" path="res://assets/cards/3.png" id="3_hakbr"]
+[ext_resource type="Texture2D" uid="uid://d3opubgs2iu7c" path="res://assets/cards/2.png" id="4_03fnx"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="8_03fnx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0di40"]
@@ -26,10 +24,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hakbr")
-icon_kalikasan = ExtResource("2_hakbr")
-icon_tanglaw = ExtResource("3_03fnx")
-icon_lahi = ExtResource("4_1hwl6")
-icon_diwa = ExtResource("5_q5e7q")
+icon_kalikasan = ExtResource("2_junjx")
+icon_tanglaw = ExtResource("3_hakbr")
+icon_lahi = ExtResource("4_03fnx")
+icon_diwa = ExtResource("4_03fnx")
 
 [node name="Tripple" type="Node2D" parent="." unique_id=1782123757]
 visible = false
@@ -68,16 +66,6 @@ scale = Vector2(0.7205128, 0.7205128)
 texture = ExtResource("1_0di40")
 expand_mode = 1
 stretch_mode = 3
-
-[node name="Holder" type="Sprite2D" parent="Tripple" unique_id=406448804]
-position = Vector2(414, 97)
-scale = Vector2(1.8192307, 0.93485916)
-texture = ExtResource("2_ngrdd")
-
-[node name="Description" type="Sprite2D" parent="Tripple" unique_id=2024702259]
-position = Vector2(423, 393)
-scale = Vector2(2.9902244, 1.9887189)
-texture = ExtResource("2_ngrdd")
 
 [node name="Label" type="Label" parent="Tripple" unique_id=1098619253]
 offset_left = 224.0
@@ -121,16 +109,6 @@ scale = Vector2(0.7205128, 0.7205128)
 texture = ExtResource("1_0di40")
 expand_mode = 1
 stretch_mode = 3
-
-[node name="Holder" type="Sprite2D" parent="Double" unique_id=2063923554]
-position = Vector2(414, 97)
-scale = Vector2(1.8192307, 0.93485916)
-texture = ExtResource("2_ngrdd")
-
-[node name="Description" type="Sprite2D" parent="Double" unique_id=1940743486]
-position = Vector2(423, 393)
-scale = Vector2(2.9902244, 1.9887189)
-texture = ExtResource("2_ngrdd")
 
 [node name="Label" type="Label" parent="Double" unique_id=651760543]
 offset_left = 224.0
