@@ -15,6 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://cfp5pvxioqchf" path="res://assets/ui/buttons/soundOff_icon.png" id="12_ifrkh"]
 [ext_resource type="PackedScene" uid="uid://xdbig4p2et14" path="res://scenes/menus/leaderboard.tscn" id="13_0xjr7"]
 [ext_resource type="Texture2D" uid="uid://dhiy0u8u5y80b" path="res://assets/temporary/Assets_UI.png" id="15_0wcnn"]
+[ext_resource type="Texture2D" uid="uid://dihsiy3erxnhn" path="res://assets/ui/buttons/quit_button.png" id="16_drxk1"]
+[ext_resource type="Texture2D" uid="uid://c176ax82el2ra" path="res://assets/ui/buttons/newgame_icon.png" id="17_lvox0"]
+[ext_resource type="Texture2D" uid="uid://cad0d2tw4c1ea" path="res://assets/ui/buttons/Start_icon.png" id="18_cuvb2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_57ra1"]
 atlas = ExtResource("4_bweju")
@@ -118,16 +121,34 @@ atlas = ExtResource("15_0wcnn")
 region = Rect2(798, 615, 261, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bp6ot"]
-atlas = ExtResource("15_0wcnn")
-region = Rect2(1109, 114, 284, 131)
+atlas = ExtResource("16_drxk1")
+region = Rect2(21, 11, 85, 42)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ybogl"]
-atlas = ExtResource("15_0wcnn")
-region = Rect2(126, 114, 280, 131)
+atlas = ExtResource("17_lvox0")
+region = Rect2(11, 10, 106, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fsy8o"]
-atlas = ExtResource("15_0wcnn")
-region = Rect2(444, 454, 298, 123)
+atlas = ExtResource("18_cuvb2")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i44w2"]
+atlas = ExtResource("18_cuvb2")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kr238"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsy8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i44w2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Play" type="Control" unique_id=1732985381]
 layout_mode = 3
@@ -148,16 +169,15 @@ frame_progress = 0.90714777
 
 [node name="Title" type="Control" parent="." unique_id=1611951136]
 anchors_preset = 0
-offset_top = -9.0
 offset_right = 1920.9999
-offset_bottom = 1075.0
+offset_bottom = 1084.0
 
 [node name="Label" type="Label" parent="Title" unique_id=1333881234]
 layout_mode = 0
-offset_left = 984.0
-offset_top = 323.0
-offset_right = 1705.0
-offset_bottom = 563.0
+offset_left = 1009.0
+offset_top = 199.0
+offset_right = 1730.0
+offset_bottom = 439.0
 text = "Salamin"
 label_settings = SubResource("LabelSettings_0xjr7")
 horizontal_alignment = 1
@@ -165,10 +185,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Title" unique_id=1500851924]
 layout_mode = 0
-offset_left = 1075.0
-offset_top = 460.0
-offset_right = 1796.0
-offset_bottom = 700.0
+offset_left = 1100.0
+offset_top = 336.0
+offset_right = 1821.0
+offset_bottom = 576.0
 text = "at Bakal "
 label_settings = SubResource("LabelSettings_ifrkh")
 horizontal_alignment = 1
@@ -260,38 +280,42 @@ expand_mode = 1
 
 [node name="Leaderboard" type="TextureButton" parent="." unique_id=267476027]
 layout_mode = 0
-offset_left = 1311.0
-offset_top = 825.0
-offset_right = 1572.0
-offset_bottom = 947.0
-scale = Vector2(0.7, 0.7)
+offset_left = 1330.0
+offset_top = 761.0
+offset_right = 1591.0
+offset_bottom = 883.0
+scale = Vector2(0.8, 0.8)
 texture_normal = SubResource("AtlasTexture_cuvb2")
 script = ExtResource("7_0wcnn")
 menu_to_open = ExtResource("13_0xjr7")
 
 [node name="Exit" type="TextureButton" parent="." unique_id=364911246]
 layout_mode = 0
-offset_left = 1315.0
-offset_top = 920.0
-offset_right = 1599.0
-offset_bottom = 1051.0
-scale = Vector2(0.6, 0.6)
+offset_left = 1341.0
+offset_top = 873.0
+offset_right = 1426.0
+offset_bottom = 917.0
+scale = Vector2(2.2, 2.2)
 texture_normal = SubResource("AtlasTexture_bp6ot")
 
 [node name="ContinueButton" type="TextureButton" parent="." unique_id=301235348]
 layout_mode = 0
-offset_left = 1311.0
-offset_top = 651.0
-offset_right = 1599.3335
-offset_bottom = 782.0
-scale = Vector2(0.6, 0.6)
+offset_left = 1313.0001
+offset_top = 537.00006
+offset_right = 1419.0001
+offset_bottom = 581.00006
+scale = Vector2(2.2, 2.2)
 texture_normal = SubResource("AtlasTexture_ybogl")
 
 [node name="NewGameButton" type="TextureButton" parent="." unique_id=684198820]
 layout_mode = 0
-offset_left = 1311.0
-offset_top = 739.0
-offset_right = 1609.0
-offset_bottom = 862.0
-scale = Vector2(0.6, 0.6)
-texture_normal = SubResource("AtlasTexture_fsy8o")
+offset_left = 1290.0
+offset_top = 630.0
+offset_right = 1416.5
+offset_bottom = 696.0
+scale = Vector2(2.2, 2.2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NewGameButton" unique_id=1325709076]
+sprite_frames = SubResource("SpriteFrames_kr238")
+autoplay = "default"
+offset = Vector2(63.333252, 31.724976)

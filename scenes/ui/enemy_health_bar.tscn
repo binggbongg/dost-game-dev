@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ougnig1drgdm"]
+
+[ext_resource type="Texture2D" uid="uid://bf1yykwfcy6le" path="res://assets/ui/progressbar/progressbar_enemy_container.png" id="1_eniyr"]
+[ext_resource type="Texture2D" uid="uid://dogqvap3ugaqi" path="res://assets/ui/progressbar/progressbar_enemy_health.png" id="2_ynmrj"]
+[ext_resource type="Script" uid="uid://cwv3ho3lcl25h" path="res://script/ui/health_bar.gd" id="3_ynmrj"]
+
+[node name="EnemyHealthBar" type="TextureProgressBar" unique_id=1763924136]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rounded = true
+texture_under = ExtResource("1_eniyr")
+texture_progress = ExtResource("2_ynmrj")
+script = ExtResource("3_ynmrj")
+
+[node name="HealthBarText" type="RichTextLabel" parent="." unique_id=2049322634]
+layout_mode = 0
+offset_left = 3.0
+offset_top = -8.0
+offset_right = 136.33333
+offset_bottom = 23.0
+scale = Vector2(0.3, 0.3)
+theme_override_font_sizes/normal_font_size = 20
+text = "0/0"
+horizontal_alignment = 1
+vertical_alignment = 1

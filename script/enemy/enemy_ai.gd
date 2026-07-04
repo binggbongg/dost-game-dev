@@ -3,6 +3,7 @@ extends Node2D
 # angela ay ni hilabta
 @export var behavior_data: EnemyBehavior
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var health_bar = $EnemyHealthBar
 
 var current_health: int
 var current_armor: int
@@ -28,6 +29,16 @@ func setup_enemy():
 		return
 	
 	current_health = behavior_data.max_health
+	if health_bar and health_bar.has_method("initialize_bar"):
+		health_bar.initialize_bar(
+			behavior_data.max_health,
+			current_health,
+			enemy_health_changed,
+			0,
+			0,
+			enemy_health_changed # for filling out the parameters needed only
+		)
+	
 	enemy_health_changed.emit(current_health)
 	
 	if behavior_data.enemy_sprite and animated_sprite:

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="1_hjwia"]
 [ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="2_3krcp"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_ldrm6"]
+[ext_resource type="Texture2D" uid="uid://cul7661ju2d7r" path="res://assets/ui/mainscreen/mainscreen_ui_registerAccount.png" id="3_qt4tx"]
 [ext_resource type="Texture2D" uid="uid://dhiy0u8u5y80b" path="res://assets/temporary/Assets_UI.png" id="4_qt4tx"]
 [ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="5_fblf8"]
 
@@ -90,6 +91,7 @@ offset_bottom = 1080.0
 texture = SubResource("GradientTexture2D_mh3e2")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1678492429]
+visible = false
 layout_mode = 0
 offset_left = 570.0
 offset_top = 156.0
@@ -97,12 +99,21 @@ offset_right = 1333.0
 offset_bottom = 864.0
 color = Color(0.5022987, 0.24747545, 0, 1)
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=443222025]
+layout_mode = 0
+offset_left = 571.0
+offset_top = 87.0
+offset_right = 666.375
+offset_bottom = 196.75
+scale = Vector2(8, 8)
+texture = ExtResource("3_qt4tx")
+
 [node name="Label" type="Label" parent="." unique_id=322527703]
 layout_mode = 0
 offset_left = 724.0
-offset_top = 211.0
+offset_top = 208.0
 offset_right = 1185.0
-offset_bottom = 301.0
+offset_bottom = 298.0
 theme_override_fonts/font = ExtResource("2_3krcp")
 theme_override_font_sizes/font_size = 50
 text = "Register Account"
@@ -113,9 +124,9 @@ vertical_alignment = 1
 
 [node name="UsernameLabel" type="Label" parent="Placeholder1" unique_id=1842331212]
 offset_left = 709.0
-offset_top = 311.0
+offset_top = 308.0
 offset_right = 1204.0
-offset_bottom = 354.0
+offset_bottom = 351.0
 theme_override_fonts/font = ExtResource("2_3krcp")
 theme_override_font_sizes/font_size = 30
 text = "Username"
@@ -123,9 +134,9 @@ vertical_alignment = 1
 
 [node name="InputUsername" type="LineEdit" parent="Placeholder1" unique_id=459858381]
 offset_left = 709.0
-offset_top = 358.0
+offset_top = 355.0
 offset_right = 1205.0
-offset_bottom = 408.0
+offset_bottom = 405.0
 theme_override_fonts/font = ExtResource("3_ldrm6")
 theme_override_font_sizes/font_size = 30
 placeholder_text = "Enter username"
@@ -134,9 +145,9 @@ placeholder_text = "Enter username"
 
 [node name="PasswordLabel" type="Label" parent="Placeholder2" unique_id=1078144199]
 offset_left = 709.0
-offset_top = 425.0
+offset_top = 423.0
 offset_right = 1204.0
-offset_bottom = 468.0
+offset_bottom = 466.0
 theme_override_fonts/font = ExtResource("2_3krcp")
 theme_override_font_sizes/font_size = 30
 text = "Password"
@@ -144,9 +155,9 @@ vertical_alignment = 1
 
 [node name="InputPassword" type="LineEdit" parent="Placeholder2" unique_id=2047264579]
 offset_left = 709.0
-offset_top = 475.0
+offset_top = 471.0
 offset_right = 1205.0
-offset_bottom = 525.0
+offset_bottom = 521.0
 theme_override_fonts/font = ExtResource("3_ldrm6")
 theme_override_font_sizes/font_size = 30
 placeholder_text = "Enter password"
@@ -165,27 +176,19 @@ vertical_alignment = 1
 
 [node name="InputCPass" type="LineEdit" parent="Placeholder2/Placeholder3" unique_id=1784939123]
 offset_left = 709.0
-offset_top = 598.0
+offset_top = 596.0
 offset_right = 1205.0
-offset_bottom = 648.0
+offset_bottom = 646.0
 theme_override_fonts/font = ExtResource("3_ldrm6")
 theme_override_font_sizes/font_size = 30
 placeholder_text = "Confirm password"
 
-[node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("5_fblf8")]
-layout_mode = 0
-offset_left = 586.0
-offset_top = 130.0
-offset_right = 789.0
-offset_bottom = 422.0
-scale = Vector2(0.6, 0.6)
-
 [node name="RegisterButton" type="TextureButton" parent="." unique_id=1225701361]
 layout_mode = 0
 offset_left = 841.99994
-offset_top = 678.0
+offset_top = 683.00006
 offset_right = 1116.0
-offset_bottom = 801.0
+offset_bottom = 806.00006
 scale = Vector2(0.8, 0.8)
 texture_normal = SubResource("AtlasTexture_mh3e2")
 
@@ -204,11 +207,18 @@ horizontal_alignment = 2
 [node name="MessageLabel" type="Label" parent="." unique_id=282164482]
 layout_mode = 0
 offset_left = 576.0
-offset_top = 800.0
+offset_top = 805.0
 offset_right = 1330.0
-offset_bottom = 825.0
+offset_bottom = 830.0
 theme_override_fonts/font = ExtResource("3_ldrm6")
 theme_override_font_sizes/font_size = 20
 text = "sample message here"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("5_fblf8")]
+layout_mode = 0
+offset_left = 1218.0
+offset_top = 158.0
+offset_right = 1223.0
+offset_bottom = 163.0

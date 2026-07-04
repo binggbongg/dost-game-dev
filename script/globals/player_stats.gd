@@ -3,7 +3,7 @@ extends Node
 signal health_changed(new_health: int)
 signal player_died
 
-var max_mana: int = 25
+var max_mana: int = 12
 var max_health: int = 50
 var current_health: int
 
