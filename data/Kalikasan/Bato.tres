@@ -44,6 +44,7 @@ animations = [{
 script = ExtResource("1_q53yv")
 name = "Bato"
 category = 2
+damage = 3
 mana_cost = 2
 texture = ExtResource("2_lfsfo")
 cardASL = SubResource("SpriteFrames_c4kf1")

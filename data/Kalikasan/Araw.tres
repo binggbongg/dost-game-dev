@@ -45,6 +45,7 @@ script = ExtResource("1_lb8xh")
 name = "Araw"
 category = 2
 rarity = 1
+damage = 5
 mana_cost = 4
 texture = ExtResource("2_okjpj")
 cardASL = SubResource("SpriteFrames_qodnk")

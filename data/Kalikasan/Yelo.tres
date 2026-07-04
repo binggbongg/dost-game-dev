@@ -45,6 +45,7 @@ script = ExtResource("1_c51js")
 name = "Yelo"
 category = 2
 rarity = 1
+damage = 5
 mana_cost = 4
 texture = ExtResource("2_exbsn")
 cardASL = SubResource("SpriteFrames_fx7yi")

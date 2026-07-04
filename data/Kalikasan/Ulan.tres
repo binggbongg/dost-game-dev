@@ -45,6 +45,7 @@ script = ExtResource("1_gukyd")
 name = "Ulan"
 description = "Water canon attack"
 category = 2
+damage = 3
 mana_cost = 2
 texture = ExtResource("2_55x57")
 cardASL = SubResource("SpriteFrames_0xhlc")

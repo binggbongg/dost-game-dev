@@ -44,6 +44,7 @@ animations = [{
 script = ExtResource("1_lxhqc")
 name = "Ulap"
 category = 2
+damage = 3
 mana_cost = 2
 texture = ExtResource("2_ob1jw")
 cardASL = SubResource("SpriteFrames_m4jax")
