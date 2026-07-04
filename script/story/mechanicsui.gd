@@ -199,3 +199,40 @@ func set_group_spotlight():
 	
 	mat.set_shader_parameter("hole_position", group_center)
 	mat.set_shader_parameter("hole_size", group_size + padding)
+
+func start_card_pack_tutorial(data: StoryData, pack: Control):
+	current_data = data
+	line_index = 0
+	label_name.text = data.character_name
+	last_start_time = Time.get_ticks_msec()
+
+	visible = true
+	dimmer.show()
+	panel.show()
+	is_active = true
+
+	await get_tree().process_frame
+
+	var screen = get_viewport().get_visible_rect().size
+
+	var center = pack.get_global_rect().get_center()
+
+	var mat := dimmer.material as ShaderMaterial
+	mat.set_shader_parameter("hole_position", center)
+	mat.set_shader_parameter("hole_size", Vector2(520, 620))
+
+	var margin := 30.0
+	var spacing := 60.0
+
+	var pos_x = center.x - panel.size.x / 2.0
+	var pos_y = center.y + 400
+
+	if pos_y + panel.size.y > screen.y - margin:
+		pos_y = center.y - 360 - panel.size.y
+
+	pos_x = clamp(pos_x, margin, screen.x - panel.size.x - margin)
+	pos_y = clamp(pos_y, margin, screen.y - panel.size.y - margin)
+
+	panel.global_position = Vector2(pos_x, pos_y)
+
+	next_line()

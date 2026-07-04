@@ -70,10 +70,10 @@ label_settings = SubResource("LabelSettings_rrrj2")
 autowrap_mode = 2
 
 [node name="TextLabel2" type="Label" parent="." unique_id=1606723756]
-offset_left = 19.0
-offset_top = 108.0
-offset_right = 1882.0
-offset_bottom = 1067.0
+offset_left = 1405.0
+offset_top = 1028.0
+offset_right = 1902.0
+offset_bottom = 1069.0
 text = "Press the spacebar to continue"
 label_settings = SubResource("LabelSettings_6ak7u")
 horizontal_alignment = 1

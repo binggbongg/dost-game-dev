@@ -134,22 +134,14 @@ func give_starter_packs():
 	for i in range(5):
 		var pack_instance = pack_scene.instantiate()
 		pack_layer.add_child(pack_instance)
-		
-		# 1. Open the pack visuals
 		pack_instance.open_pack(true) 
-		
-		# 2. TUTORIAL INTEGRATION
-		# If this is the very first pack, we highlight it and play the dialogue
 		if i == 0:
 			var base_path = "res://data/StoryData/Tutorial/LoungeScreen/"
-			# We pass 'pack_instance' as the node to highlight.
-			# This makes the pack stay bright while the character talks!
-			await highlight_and_talk(pack_instance, base_path + "starter_packs_intro.tres")
-		
-		# 3. Wait for the player to finish swiping all 5 cards
+			await StoryManager.play_card_pack_tutorial(
+				base_path + "starter_packs_intro.tres",
+				pack_instance
+			)
 		await pack_instance.tree_exited 
-		
-		# Small delay before the next pack pops up
 		if i < 4:
 			await get_tree().create_timer(0.3).timeout
 	
