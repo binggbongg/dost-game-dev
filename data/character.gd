@@ -17,7 +17,7 @@ class_name CharacterData
 @export var run_animation := "run"
 @export var attack_animation := "attack"
 @export var cast_animation := "cast"
-@export var hurt_animation := "hurt"
+@export var shock_animation := "shock"
 @export var death_animation := "death"
 
 @export_group("Effects")
