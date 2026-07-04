@@ -24,7 +24,6 @@ func index_folder(path: String, category_name: String):
 		var file_name = dir.get_next()
 		
 		while file_name != "":
-			# Only look for resource files (.tres or .res)
 			if !dir.current_is_dir() and (file_name.ends_with(".tres") or file_name.ends_with(".res")):
 				var full_path = path + file_name
 				var card_res = load(full_path)
@@ -40,9 +39,6 @@ func index_folder(path: String, category_name: String):
 func get_random_card_path() -> String:
 	var keys = all_cards.keys()
 	return keys[randi() % keys.size()]
-# Add this to your existing CardRegistry.gd
-
-# Inside CardRegistry.gd
 
 func generate_pack_paths(is_new_player: bool) -> Array[String]:
 	var pack: Array[String] = []
@@ -67,7 +63,6 @@ func roll_for_single_card(is_new_player: bool) -> String:
 		if all_cards[path].rarity == target_rarity:
 			pool.append(path)
 	
-	# DEBUG PRINT: This will tell us why the pool might be empty
 	if pool.size() == 0:
 		print("DEBUG: No cards found for rarity: ", GameEnums.CardRarity.keys()[target_rarity], ". Using fallback.")
 		return all_cards.keys().pick_random() # Pick ANY card so it doesn't break
