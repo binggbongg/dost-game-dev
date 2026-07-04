@@ -62,6 +62,7 @@ func start_lounge_tour():
 	
 	tutorial_active = false
 	PlayerProfile.tutorial_steps_completed["lounge_tour"] = true
+	SaveManager.save_game()
 func highlight_and_talk(node: CanvasItem, data_path: String):
 	if !is_instance_valid(node): return
 	

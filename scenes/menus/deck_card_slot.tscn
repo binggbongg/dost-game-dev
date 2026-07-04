@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b5v6vfi3ax7bj"]
+
+[ext_resource type="Script" uid="uid://dllydbbnhcjxs" path="res://script/ui/deck_card_slot.gd" id="1_logl5"]
+[ext_resource type="PackedScene" uid="uid://cw5abrwt2c70o" path="res://scenes/card.tscn" id="2_ntnpq"]
+
+[node name="Deck_Item_Slot" type="Control" unique_id=614220094]
+custom_minimum_size = Vector2(150, 210)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_logl5")
+
+[node name="Card" parent="." unique_id=342120758 instance=ExtResource("2_ntnpq")]
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1676696207]
+position = Vector2(90, 125)
+
+[node name="Button" type="Button" parent="." unique_id=1939337830]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 70.0
+offset_right = 123.0
+offset_bottom = 166.0
+flat = true

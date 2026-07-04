@@ -61,6 +61,7 @@ func raycast_at_cursor():
 				redo_node.on_click()
 
 func handle_deck_click():
+	print("Deck button pressed")
 	deck_clicked.emit()
 	AudioManager.play_ui_sound("shuffle")
 	if turn_manager.is_busy: return

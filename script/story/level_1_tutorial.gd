@@ -31,6 +31,7 @@ var tutorial_active := false
 var deck_clicked := false
 
 func _ready():
+	print("OH YOURE IN TUTORIAL!")
 	dimmer.hide()
 	turn_manager.auto_start = false
 	input_manager.deck_clicked.connect(_on_deck_clicked)
@@ -69,13 +70,17 @@ func start_battle_tutorial():
 	for step in steps:
 		await highlight_and_talk(step[0], base + step[1])
 	PlayerProfile.tutorial_steps_completed["battle_tutorial"] = true
+	PlayerProfile.pending_scene = "res://scenes/levels/Level1.tscn"
+	highlight_layer.queue_free()
+	tutorial_layer.queue_free()
+	SaveManager.save_game()
 	dimmer.hide()
 	var end_screen_path = "res://scenes/story/chap1outro.tscn" 
 	var end_screen = load(end_screen_path).instantiate()
 	get_tree().root.add_child(end_screen)
 	
 	await end_screen.finished
-	SceneTransition.change_scene_path("res://scenes/levels/Level1.tscn")
+	SceneTransition.change_scene_path("res://scenes/ui/DeckBuilder.tscn")
 
 func highlight_and_talk(node: CanvasItem, data_path: String):
 	if !is_instance_valid(node): return

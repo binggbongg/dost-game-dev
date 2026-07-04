@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://w4dvt40tscpk" path="res://script/for buttons/cast_button.gd" id="17_sw6vk"]
 [ext_resource type="Texture2D" uid="uid://2y6frsn7uoor" path="res://assets/temporary/undo.png" id="17_tpnij"]
 [ext_resource type="Script" uid="uid://bhns0255lmy8p" path="res://script/for buttons/undo_button.gd" id="19_sw6vk"]
-[ext_resource type="Script" path="res://script/health_label.gd" id="20_nfx06"]
+[ext_resource type="Script" uid="uid://buqgxxfmbk4e5" path="res://script/health_label.gd" id="20_nfx06"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fsphr"]
 atlas = ExtResource("16_nfx06")

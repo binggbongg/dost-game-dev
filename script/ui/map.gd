@@ -36,31 +36,32 @@ func start_chapter_intro():
 		await highlight_and_talk(step[0], base_path + step[1])
 		tutorial_active = false
 		PlayerProfile.tutorial_steps_completed["chapter_intro"] = true
+		SaveManager.save_game()
 
 func highlight_and_talk(node: Control, data_path: String):
 	var copy := node.duplicate()
 	highlight_layer.add_child(copy)
 	
-	# Match the visual appearance exactly using the Canvas Transform
 	var visual_transform = node.get_global_transform_with_canvas()
 	copy.global_position = visual_transform.get_origin()
 	copy.scale = visual_transform.get_scale()
 	
 	node.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
-	# FIX: Pass the original 'node' to the StoryManager so the math 
-	# in MechanicsUI.gd can see the correct screen coordinates.
 	await StoryManager.play_tutorial(data_path, node)
 
 	copy.queue_free()
 	node.mouse_filter = Control.MOUSE_FILTER_STOP
 func phase_button_pressed(current_phase):
 	AudioManager.play_ui_sound("click")
+
 	if current_phase:
 		if not PlayerProfile.tutorial_steps_completed.get("battle_tutorial", false):
-			get_tree().change_scene_to_file("res://scenes/levels/Level1_Tutorial.tscn")
-	else:
-		UIManager.open_menu(current_phase)
+			PlayerProfile.pending_scene = "res://scenes/levels/Level1_Tutorial.tscn"
+		else:
+			PlayerProfile.pending_scene = current_phase
+		print("DEBUGGING NOW IN MAP" + PlayerProfile.pending_scene)
+		get_tree().change_scene_to_file("res://scenes/ui/DeckBuilder.tscn")
 
 func update_button_locks():
 	var max_unlocked = PlayerProfile.max_unlocked_chapters

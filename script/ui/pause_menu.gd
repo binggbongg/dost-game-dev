@@ -19,7 +19,7 @@ func _on_restart_pressed():
 func _on_quit_pressed():
 	print("quitting game")
 	UIManager.close_menu()
-	get_tree().change_scene_to_file("res://scenes/menus/map.tscn")
+	get_tree().change_scene_to_file("res://scenes/menus/lounge.tscn")
 	# will transfer back to the map scene.
 
 func _input(event: InputEvent) -> void:

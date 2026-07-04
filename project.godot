@@ -32,6 +32,7 @@ UIManager="*res://script/globals/ui_manager.gd"
 AudioManager="*uid://d3im66uqs6wge"
 SceneTransition="*uid://c13y30hlw4iug"
 StoryManager="*res://script/globals/story_manager.gd"
+CardRegistry="*uid://dw4nqbboppvbp"
 
 [display]
 

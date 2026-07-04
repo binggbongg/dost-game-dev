@@ -183,7 +183,6 @@ offset_bottom = 1080.0
 texture = SubResource("GradientTexture2D_mh3e2")
 
 [node name="Character" type="Node2D" parent="." unique_id=1400295104]
-visible = false
 
 [node name="Border" type="ColorRect" parent="Character" unique_id=1678492429]
 offset_left = 536.0
@@ -191,6 +190,7 @@ offset_top = 179.0
 offset_right = 1356.0
 offset_bottom = 853.0
 color = Color(0.5022987, 0.24747545, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="GreetingLabel" type="Label" parent="Character" unique_id=322527703]
 offset_left = 573.0
