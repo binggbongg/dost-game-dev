@@ -3,6 +3,7 @@ extends Control
 @export var phase1: PackedScene
 @export var phase2: PackedScene
 @export var phase3: PackedScene
+@onready var start: TextureButton = $Start
 
 @onready var button1 = $Buttons/Phase1
 @onready var button2 = $Buttons/Phase2
@@ -18,9 +19,7 @@ var tutorial_active = false
 func _ready() -> void:
 	update_button_locks()
 	back.pressed.connect(func(): back_button_pressed())
-	button1.pressed.connect(func(): phase_button_pressed(phase1))
-	button2.pressed.connect(func(): phase_button_pressed(phase2))
-	button3.pressed.connect(func(): phase_button_pressed(phase3))
+	start.pressed.connect(func(): phase_button_pressed(phase1))
 	dimmer.hide()
 
 	if not PlayerProfile.tutorial_steps_completed.get("chapter_intro", false):
