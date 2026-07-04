@@ -93,6 +93,13 @@ sprite_frames = SubResource("SpriteFrames_ycgse")
 animation = &"lore 1"
 autoplay = "lore 1"
 
+[node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("13_t4sft")]
+offset_left = -16.0
+offset_top = -47.0
+offset_right = 179.0
+offset_bottom = 237.0
+script = null
+
 [node name="DialogueBox" type="Control" parent="." unique_id=1161655313]
 layout_mode = 3
 anchors_preset = 0
@@ -153,10 +160,3 @@ offset_right = 142.47824
 offset_bottom = 85.0
 mouse_filter = 2
 texture = ExtResource("13_g6k38")
-
-[node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("13_t4sft")]
-offset_left = -16.0
-offset_top = -47.0
-offset_right = 179.0
-offset_bottom = 237.0
-script = null

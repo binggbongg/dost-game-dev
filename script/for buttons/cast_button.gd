@@ -58,15 +58,15 @@ func cast_normal(active_cards):
 		else:
 			print("Cast Error: CombatArena script helper method is missing!")
 	
-	# -----------------------------------------------------------------
-	# VISUAL SEQUENCER INTERCEPTION
-	# -----------------------------------------------------------------
-	# Find our SpriteAnmation node relative to the CastButton layout
-	var sprite_anim_node = get_node_or_null("../../SpriteAnmation") # Added an extra ../ to go out of UI
+	if combat_arena:
+		# Adjust the node path "Player" if your player node has a different name inside CombatArena
+		var player_node = combat_arena.get_node_or_null("Player")
+		if player_node and player_node.has_method("play_attack_animation"):
+			player_node.play_attack_animation()
+
+	var sprite_anim_node = get_node_or_null("../../SpriteAnmation")
 	if sprite_anim_node and sprite_anim_node.has_method("play_cast_sequence"):
-		# Halt function execution here until all card animations loop through and complete
 		await sprite_anim_node.play_cast_sequence(active_cards)
-	# -----------------------------------------------------------------
 
 	var slots_folder = get_node("../../Slots")
 	if slots_folder:
