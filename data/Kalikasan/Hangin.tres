@@ -1,13 +1,50 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://kocyvkmwrqlq"]
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_0o41o"]
+[ext_resource type="Texture2D" uid="uid://oo758s1gr085" path="res://assets/ui/handsigns/kalikasan_attack/kalikasan_hangin.png" id="1_kddhy"]
 [ext_resource type="Texture2D" uid="uid://uq43ujd0erey" path="res://assets/cards/hangin.png" id="2_armn2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2jsn"]
+atlas = ExtResource("1_kddhy")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywfwt"]
+atlas = ExtResource("1_kddhy")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlcbl"]
+atlas = ExtResource("1_kddhy")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wape1"]
+atlas = ExtResource("1_kddhy")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jyk1o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2jsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywfwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlcbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wape1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_0o41o")
 name = "Hangin"
 category = 2
-damage = 3.0
 mana_cost = 2
 texture = ExtResource("2_armn2")
+cardASL = SubResource("SpriteFrames_jyk1o")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

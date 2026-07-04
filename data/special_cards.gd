@@ -11,7 +11,7 @@ class_name SpecialCardData
 @export var heal : float = 0
 @export var mana_cost: int = 0
 var card_source: GameEnums.CardSource =GameEnums.CardSource.INVENTORY
-
+@export var cardASL: SpriteFrames
 func apply_effect(user: Node, targets: Array):
 	print("apply_effect called")
 	if effect_script == null:

@@ -1,14 +1,51 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dbmn0bmxh7rwd"]
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_eg1jt"]
+[ext_resource type="Texture2D" uid="uid://djktjiufpit2q" path="res://assets/ui/handsigns/kalikasan_attack/kalikasan_kidlat.png" id="1_hay0w"]
 [ext_resource type="Texture2D" uid="uid://b76bdemmxy8k" path="res://assets/cards/kidlat.png" id="2_duu8p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hae5c"]
+atlas = ExtResource("1_hay0w")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v0ek"]
+atlas = ExtResource("1_hay0w")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lup73"]
+atlas = ExtResource("1_hay0w")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5bc3"]
+atlas = ExtResource("1_hay0w")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mty8l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hae5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6v0ek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lup73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5bc3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_eg1jt")
 name = "Kidlat"
 category = 2
 rarity = 1
-damage = 5.0
 mana_cost = 4
 texture = ExtResource("2_duu8p")
+cardASL = SubResource("SpriteFrames_mty8l")
 metadata/_custom_type_script = "uid://cv07myeubhuht"
