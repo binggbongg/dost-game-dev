@@ -18,9 +18,9 @@ func _on_restart_pressed():
 
 func _on_quit_pressed():
 	print("quitting game")
+	get_tree().paused = false
 	UIManager.close_menu()
 	get_tree().change_scene_to_file("res://scenes/menus/lounge.tscn")
-	# will transfer back to the map scene.
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
