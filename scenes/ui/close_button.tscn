@@ -6,7 +6,7 @@
 [node name="CloseButton" type="TextureButton" unique_id=1384460648]
 offset_left = 4.0
 offset_top = -57.0
-offset_right = 207.0
-offset_bottom = 235.0
+offset_right = 199.0
+offset_bottom = 227.0
 texture_normal = ExtResource("1_6el1d")
 script = ExtResource("2_8y3de")
