@@ -19,6 +19,7 @@
 [ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="12_f46hc"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="13_y4gql"]
 [ext_resource type="Texture2D" uid="uid://dbvqdnaxhvjp6" path="res://assets/player/girl_idol.png" id="14_vh42r"]
+[ext_resource type="PackedScene" uid="uid://bjo62sglogr7j" path="res://scenes/menus/player_pack_slot.tscn" id="16_6g71x"]
 [ext_resource type="Texture2D" uid="uid://bkl7747ki6nl5" path="res://assets/player/boy_idle.png" id="18_8m8uw"]
 [ext_resource type="Script" uid="uid://ci07xjxb5qtyr" path="res://script/ui/open_scene.gd" id="18_le30m"]
 [ext_resource type="PackedScene" uid="uid://cf0pyigiayyeg" path="res://scenes/menus/map.tscn" id="19_8m8uw"]
@@ -158,6 +159,7 @@ animations = [{
 
 [node name="Lounge" type="Node2D" unique_id=590874842]
 script = ExtResource("1_ij4pv")
+pack_scene = ExtResource("16_6g71x")
 
 [node name="Map" type="TextureRect" parent="." unique_id=1061391353]
 texture_filter = 1
@@ -378,6 +380,8 @@ offset_right = 52.0
 offset_bottom = 55.924103
 scale = Vector2(11.99, 11.99)
 texture_normal = ExtResource("25_8y8p0")
+
+[node name="PackLayer" type="CanvasLayer" parent="." unique_id=1097962439]
 
 [node name="ChapterOne" type="TextureButton" parent="." unique_id=1766995160]
 offset_left = 1253.0

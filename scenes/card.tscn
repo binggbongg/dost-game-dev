@@ -2,12 +2,19 @@
 
 [ext_resource type="Script" uid="uid://dvieovxb6c8hb" path="res://script/card.gd" id="1_grtmt"]
 [ext_resource type="Texture2D" uid="uid://my16ben7onyr" path="res://assets/temporary/card_placeholder.png" id="1_iecja"]
+[ext_resource type="FontFile" uid="uid://df2vd0uxg3gcf" path="res://assets/fonts/PixelifySans-SemiBold.ttf" id="3_sy11y"]
+[ext_resource type="Texture2D" uid="uid://cmm0ft8pmm2ms" path="res://assets/ui/buttons/leaderboard_icon.png" id="4_6ligt"]
+[ext_resource type="Texture2D" uid="uid://dl51l2pbbo6cg" path="res://assets/ui/buttons/coin_icon.png" id="5_8w5pg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mawrc"]
 size = Vector2(192.5, 282)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6u4wf"]
 font_size = 13
+
+[sub_resource type="LabelSettings" id="LabelSettings_nvopj"]
+font = ExtResource("3_sy11y")
+font_size = 32
 
 [node name="Card" type="Node2D" unique_id=778584260]
 scale = Vector2(0.8, 0.8)
@@ -37,6 +44,59 @@ offset_right = -7.0
 offset_bottom = -140.0
 text = "Card Name"
 label_settings = SubResource("LabelSettings_6u4wf")
+
+[node name="CardPowerHighlight" type="Control" parent="Area2D" unique_id=919060533]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 48.749992
+offset_top = -128.74998
+offset_right = 88.74999
+offset_bottom = -88.749985
+
+[node name="PowerHighlight" type="Label" parent="Area2D/CardPowerHighlight" unique_id=79884093]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 11.250004
+offset_right = 50.000008
+offset_bottom = 38.999992
+text = "50"
+label_settings = SubResource("LabelSettings_nvopj")
+
+[node name="PowerHighlightIcon" type="TextureRect" parent="Area2D/CardPowerHighlight" unique_id=1856865708]
+layout_mode = 0
+offset_left = -12.499992
+offset_top = 3.7499905
+offset_right = 51.500008
+offset_bottom = 67.74999
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("4_6ligt")
+
+[node name="ManaCost" type="Control" parent="Area2D" unique_id=1382913364]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -66.25
+offset_top = 106.25
+offset_right = -26.25
+offset_bottom = 146.25
+
+[node name="ManaCost" type="Label" parent="Area2D/ManaCost" unique_id=736326464]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 1.2499999
+offset_top = -2.4999998
+offset_right = 40.000004
+offset_bottom = 36.5
+text = "50"
+label_settings = SubResource("LabelSettings_nvopj")
+
+[node name="TextureRect" type="TextureRect" parent="Area2D/ManaCost" unique_id=1256354585]
+layout_mode = 0
+offset_left = -23.749992
+offset_top = 3.7499905
+offset_right = 40.250008
+offset_bottom = 67.74999
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("5_8w5pg")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

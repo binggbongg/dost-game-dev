@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bjo62sglogr7j"]
+
+[ext_resource type="Script" uid="uid://b7c6raoc82vkj" path="res://script/ui/player_pack_slot.gd" id="1_823iu"]
+[ext_resource type="PackedScene" uid="uid://cw5abrwt2c70o" path="res://scenes/card.tscn" id="1_q2yvh"]
+
+[node name="PlayerPackSlot" type="Control" unique_id=316134810]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_823iu")
+
+[node name="Cards" type="Control" parent="." unique_id=506776331]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Card" parent="Cards" unique_id=778584260 instance=ExtResource("1_q2yvh")]
+
+[node name="Card2" parent="Cards" unique_id=1192171222 instance=ExtResource("1_q2yvh")]
+rotation = 0.0690869
+
+[node name="Card3" parent="Cards" unique_id=122643779 instance=ExtResource("1_q2yvh")]
+rotation = -0.03805584
+
+[node name="Card4" parent="Cards" unique_id=1921009054 instance=ExtResource("1_q2yvh")]
+rotation = 0.041970003
+
+[node name="Card5" parent="Cards" unique_id=928522314 instance=ExtResource("1_q2yvh")]
+rotation = -0.010255647

@@ -9,7 +9,7 @@ extends Node2D
 @onready var player_name: Label = $Buttons/Content/CharacterSpotlight/PlayerName
 @onready var me: AnimatedSprite2D = $Buttons/Content/CharacterSpotlight/Character
 @onready var back: TextureButton = $Buttons/Content/Back
-
+@export var pack_scene: PackedScene 
 var tutorial_active = false
 
 func _ready():
@@ -62,6 +62,7 @@ func start_lounge_tour():
 	tutorial_active = false
 	PlayerProfile.tutorial_steps_completed["lounge_tour"] = true
 	SaveManager.save_game()
+	give_starter_packs()
 func highlight_and_talk(node: CanvasItem, data_path: String):
 	if !is_instance_valid(node): return
 	
@@ -117,3 +118,24 @@ func _unhandled_input(event):
 	
 func back_button_pressed():
 	SceneTransition.change_scene_path("res://scenes/menus/play.tscn")
+func give_starter_packs():
+	# 1. Create a dedicated UI layer so it ignores the Camera2D
+	var pack_layer = get_node_or_null("PackLayer")
+	if not pack_layer:
+		pack_layer = CanvasLayer.new()
+		pack_layer.name = "PackLayer"
+		pack_layer.layer = 100 # Put it above everything
+		add_child(pack_layer)
+
+	for i in range(5):
+		var pack_instance = pack_scene.instantiate()
+		pack_layer.add_child(pack_instance)
+		
+		# 2. Tell the pack to fill the whole screen
+		pack_instance.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		
+		# 3. Start the logic
+		pack_instance.open_pack(true) 
+		
+		await pack_instance.tree_exited 
+		await get_tree().create_timer(0.4).timeout
