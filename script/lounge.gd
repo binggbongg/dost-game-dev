@@ -12,7 +12,10 @@ extends Node2D
 @export var pack_scene: PackedScene 
 var tutorial_active = false
 
+var chapter_buttons: Array[BaseButton] = []
+
 func _ready():
+	AudioManager.play_sound_from_path("res://data/SoundData/bgm/lounge.wav", true)
 	back.pressed.connect(func(): back_button_pressed())
 	await get_tree().process_frame
 	center_camera()
@@ -26,6 +29,10 @@ func _ready():
 		if character_data:
 			me.sprite_frames = character_data.sprite_frames
 			me.play("idle")
+			
+	# --- NEW PROGRESSION LOCK INITIALIZATION ---
+	collect_and_update_chapter_locks()
+	
 	if not PlayerProfile.tutorial_steps_completed.get("lounge_tour", false):
 		start_lounge_tour()
 
@@ -51,8 +58,8 @@ func start_lounge_tour():
 		[$Buttons/Content/CoinDisplay/Coin, "coins.tres"],
 		[$Buttons/Content/Settings, "settings.tres"],
 		[$Buttons/Content/spellbook, "spellbook.tres"],
-		[$Buttons/Content/shop, "shop.tres"],
-		[$Buttons/Content/PVP, "battle.tres"],
+		[$Buttons/Content/shop, "shop.tres"]
+		#[$Buttons/Content/PVP, "battle.tres"],
 	]
 
 	for step in first_steps:
@@ -122,6 +129,7 @@ func _unhandled_input(event):
 		limit_camera_view()
 	
 func back_button_pressed():
+	AudioManager.play_ui_sound("click")
 	SceneTransition.change_scene_path("res://scenes/menus/play.tscn")
 func give_starter_packs():
 	var pack_layer = get_node_or_null("PackLayer")
@@ -144,4 +152,34 @@ func give_starter_packs():
 		await pack_instance.tree_exited 
 		if i < 4:
 			await get_tree().create_timer(0.3).timeout
+
+
+func collect_and_update_chapter_locks() -> void:
+	chapter_buttons.clear()
 	
+	var ch1 = get_node_or_null("ChapterOne")
+	if ch1 and ch1 is BaseButton:
+		chapter_buttons.append(ch1)
+		
+	for i in range(2, 14):
+		var btn = get_node_or_null(str(i))
+		if btn and btn is BaseButton:
+			chapter_buttons.append(btn)
+			
+	var current_max_unlocked = PlayerProfile.max_unlocked_chapters
+	
+	for idx in range(chapter_buttons.size()):
+		var target_btn = chapter_buttons[idx]
+		var chapter_num = idx + 1
+		
+		if chapter_num == 1:
+			target_btn.disabled = false
+			target_btn.modulate = Color(1.0, 1.0, 1.0, 1.0)
+			continue
+			
+		if current_max_unlocked >= chapter_num:
+			target_btn.disabled = false
+			target_btn.modulate = Color(1.0, 1.0, 1.0, 1.0)
+		else:
+			target_btn.disabled = true
+			target_btn.modulate = Color(0.3, 0.3, 0.3, 0.8) # Grayed out visual feedback

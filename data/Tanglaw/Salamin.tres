@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bhy735jodwbgb" path="res://assets/ui/handsigns/tanglaw_attack/tanglaw_salamin.png" id="1_2ao7b"]
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_adxyd"]
-[ext_resource type="Texture2D" uid="uid://b1ricwc6anusd" path="res://assets/temporary/TANGLAW.png" id="2_2ao7b"]
+[ext_resource type="Texture2D" uid="uid://bupnvla7km3ys" path="res://assets/cards/salamin.png" id="3_2ao7b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gsq66"]
 atlas = ExtResource("1_2ao7b")
@@ -48,6 +48,6 @@ category = 3
 rarity = 3
 heal = 15
 mana_cost = 9
-texture = ExtResource("2_2ao7b")
+texture = ExtResource("3_2ao7b")
 cardASL = SubResource("SpriteFrames_yncqc")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

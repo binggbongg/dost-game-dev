@@ -9,3 +9,4 @@ enum Type {LORE, TUTORIAL, DIALOGUE}
 @export var background: Texture2D
 @export_multiline var lines: Array[String]
 @export var bgm_to_play: AudioStream
+@export var dialogue: DialogueResource

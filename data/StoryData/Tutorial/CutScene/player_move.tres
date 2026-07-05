@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://bm8wo6nfjw415"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_hyx4d"]
+
+[resource]
+script = ExtResource("1_hyx4d")
+type = 1
+character_name = "Move"
+lines = Array[String](["Use your right arrrow key to move to the right."])
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

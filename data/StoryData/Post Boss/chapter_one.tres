@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://dob5kyf7ub8uu"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_qt4bl"]
+[ext_resource type="Texture2D" uid="uid://cs0c43t26y4h6" path="res://assets/gems/prosperity_gem.png" id="1_rie71"]
+[ext_resource type="Texture2D" uid="uid://cpogo6ux7n285" path="res://assets/background/rooms/background_1-3.png" id="1_tc2bh"]
+[ext_resource type="Resource" uid="uid://bl7rrt78dnh5k" path="res://script/story/dialogue/chapter_one.dialogue" id="2_fpmqb"]
+
+[resource]
+script = ExtResource("1_qt4bl")
+character_name = "Star Fragment"
+portrait = ExtResource("1_rie71")
+background = ExtResource("1_tc2bh")
+dialogue = ExtResource("2_fpmqb")
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

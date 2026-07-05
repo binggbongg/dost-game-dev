@@ -14,7 +14,7 @@ class_name CharacterData
 @export_group("Animations")
 @export var idle_animation := "idle"
 @export var walk_animation := "walk"
-@export var run_animation := "run"
+@export var portrait_animation := "portrait"
 @export var attack_animation := "attack"
 @export var cast_animation := "cast"
 @export var shock_animation := "shock"

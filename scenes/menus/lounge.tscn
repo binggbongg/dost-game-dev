@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://0rivha5gykeg" path="res://script/lounge.gd" id="1_ij4pv"]
 [ext_resource type="Texture2D" uid="uid://baltvh87tb21e" path="res://assets/ui/map/map.png" id="2_8y8p0"]
-[ext_resource type="Texture2D" uid="uid://dr0x4711m18cr" path="res://assets/temporary/character highlight.png" id="3_2p8cd"]
 [ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="3_uygx0"]
 [ext_resource type="Texture2D" uid="uid://dmei84moikr28" path="res://assets/ui/shop/setting_icon.png" id="4_6cgmx"]
 [ext_resource type="PackedScene" uid="uid://brel5vplcm173" path="res://scenes/story/lore_revisit.tscn" id="4_8rf1m"]
@@ -12,20 +11,21 @@
 [ext_resource type="Texture2D" uid="uid://cmm0ft8pmm2ms" path="res://assets/ui/buttons/leaderboard_icon.png" id="6_8y8p0"]
 [ext_resource type="PackedScene" uid="uid://xdbig4p2et14" path="res://scenes/menus/leaderboard.tscn" id="7_v8p6s"]
 [ext_resource type="PackedScene" uid="uid://buor4em2o4cfj" path="res://scenes/ui/coin_display.tscn" id="8_12qkm"]
+[ext_resource type="Texture2D" uid="uid://bw8iae4yec1af" path="res://assets/ui/buttons/damage_icon.png" id="10_6g71x"]
 [ext_resource type="PackedScene" uid="uid://blildoqpt5atk" path="res://scenes/menus/shop.tscn" id="10_8rf1m"]
-[ext_resource type="Texture2D" uid="uid://3fygd35eaabq" path="res://assets/temporary/inv_btn.png" id="11_6g71x"]
-[ext_resource type="Texture2D" uid="uid://3dus3b0as5bj" path="res://assets/temporary/shop.png" id="11_8y8p0"]
 [ext_resource type="PackedScene" uid="uid://cvgehqahw2e4x" path="res://scenes/menus/spellbook.tscn" id="12_6g71x"]
 [ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="12_f46hc"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="13_y4gql"]
-[ext_resource type="Texture2D" uid="uid://dbvqdnaxhvjp6" path="res://assets/player/girl_idol.png" id="14_vh42r"]
+[ext_resource type="Texture2D" uid="uid://c2xv5vbofw3wy" path="res://assets/player/girl_idle.png" id="14_vh42r"]
+[ext_resource type="Texture2D" uid="uid://vorb3t6rt425" path="res://assets/ui/map/character_container.png" id="15_5p4kk"]
 [ext_resource type="PackedScene" uid="uid://bjo62sglogr7j" path="res://scenes/menus/player_pack_slot.tscn" id="16_6g71x"]
-[ext_resource type="Texture2D" uid="uid://bkl7747ki6nl5" path="res://assets/player/boy_idle.png" id="18_8m8uw"]
+[ext_resource type="Texture2D" uid="uid://dv446b0xouw3g" path="res://assets/player/boy_idle.png" id="18_8m8uw"]
 [ext_resource type="Script" uid="uid://ci07xjxb5qtyr" path="res://script/ui/open_scene.gd" id="18_le30m"]
 [ext_resource type="PackedScene" uid="uid://cf0pyigiayyeg" path="res://scenes/menus/map.tscn" id="19_8m8uw"]
 [ext_resource type="PackedScene" uid="uid://ckbrj3vh8fqlp" path="res://scenes/story/mechanicsui.tscn" id="20_le30m"]
-[ext_resource type="Texture2D" uid="uid://4eehpc74bxfg" path="res://assets/temporary/cast.png" id="20_ngrx0"]
+[ext_resource type="Texture2D" uid="uid://bgjgxd6qjdpe2" path="res://assets/ui/map/map_smallbutton.png" id="23_6g71x"]
 [ext_resource type="Texture2D" uid="uid://c5esexsxqsto6" path="res://assets/ui/spellbook/spellbook_back_button.png" id="25_8y8p0"]
+[ext_resource type="Texture2D" uid="uid://beq2d6vpfad7e" path="res://assets/ui/buttons/shop_button.png" id="25_jawdw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0xjr7"]
 atlas = ExtResource("4_6cgmx")
@@ -240,12 +240,14 @@ mouse_filter = 2
 texture = ExtResource("5_vh42r")
 
 [node name="PVP" type="TextureButton" parent="Buttons/Content" unique_id=1039800473]
+visible = false
 layout_mode = 0
-offset_left = 1425.0
-offset_top = 775.0
-offset_right = 1620.0
-offset_bottom = 1059.0
-texture_normal = ExtResource("5_3k8m0")
+offset_left = 1454.0
+offset_top = 880.0
+offset_right = 1470.0
+offset_bottom = 893.0
+scale = Vector2(8.55, 8.55)
+texture_normal = ExtResource("10_6g71x")
 
 [node name="TextureRect" type="TextureRect" parent="Buttons/Content/PVP" unique_id=59886956]
 visible = false
@@ -271,26 +273,16 @@ scale = Vector2(1.9843755, 1.9843755)
 sprite_frames = SubResource("SpriteFrames_2p8cd")
 autoplay = "default"
 
-[node name="shop" type="TextureButton" parent="Buttons/Content" unique_id=259792266]
+[node name="shop" type="TextureButton" parent="Buttons/Content" unique_id=1652047126]
 layout_mode = 0
-offset_left = 1618.9999
-offset_top = 856.0
-offset_right = 1774.9999
-offset_bottom = 1031.0
-scale = Vector2(0.7, 0.7)
-texture_normal = ExtResource("11_6g71x")
+offset_left = 1561.0
+offset_top = 798.0
+offset_right = 1625.0
+offset_bottom = 862.0
+scale = Vector2(3.895, 3.895)
+texture_normal = ExtResource("25_jawdw")
 script = ExtResource("3_uygx0")
 menu_to_open = ExtResource("10_8rf1m")
-
-[node name="TextureRect2" type="TextureRect" parent="Buttons/Content/shop" unique_id=32576250]
-visible = false
-layout_mode = 0
-offset_left = -46.0
-offset_top = -65.0
-offset_right = 185.0
-offset_bottom = 219.0
-mouse_filter = 2
-texture = ExtResource("11_8y8p0")
 
 [node name="spellbook" type="TextureButton" parent="Buttons/Content" unique_id=1670468700]
 layout_mode = 0
@@ -325,11 +317,12 @@ offset_bottom = 977.0
 
 [node name="CharacterSpotlight" type="TextureRect" parent="Buttons/Content/CharacterSpotlight" unique_id=1060060001]
 layout_mode = 0
-offset_left = -170.0
-offset_top = -250.0
-offset_right = 702.0
-offset_bottom = 1019.98987
-texture = ExtResource("3_2p8cd")
+offset_left = 45.0
+offset_top = 73.585
+offset_right = 917.0
+offset_bottom = 1343.5747
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("15_5p4kk")
 
 [node name="PlayerName" type="Label" parent="Buttons/Content/CharacterSpotlight" unique_id=770426345]
 layout_mode = 0
@@ -384,65 +377,142 @@ texture_normal = ExtResource("25_8y8p0")
 [node name="PackLayer" type="CanvasLayer" parent="." unique_id=1097962439]
 
 [node name="ChapterOne" type="TextureButton" parent="." unique_id=1766995160]
-offset_left = 1253.0
-offset_top = 1323.0
-offset_right = 1397.0
-offset_bottom = 1458.0
-texture_normal = ExtResource("20_ngrx0")
+offset_left = 1216.0
+offset_top = 1305.0
+offset_right = 1226.0
+offset_bottom = 1315.0
+scale = Vector2(12.035, 12.035)
+texture_normal = ExtResource("23_6g71x")
 script = ExtResource("18_le30m")
 next_scene = ExtResource("19_8m8uw")
 
-[node name="ChapterOne2" type="TextureButton" parent="." unique_id=2126808616]
-offset_left = 1084.0
-offset_top = 1078.0
-offset_right = 1228.0
-offset_bottom = 1213.0
-texture_normal = ExtResource("20_ngrx0")
+[node name="2" type="TextureButton" parent="." unique_id=313555400]
+offset_left = 1489.0
+offset_top = 1232.0
+offset_right = 1499.0
+offset_bottom = 1242.0
+scale = Vector2(12.035, 12.035)
+texture_normal = ExtResource("23_6g71x")
 script = ExtResource("18_le30m")
 next_scene = ExtResource("19_8m8uw")
 
-[node name="ChapterOne3" type="TextureButton" parent="." unique_id=349371893]
-offset_left = 1310.0
-offset_top = 858.0
-offset_right = 1454.0
-offset_bottom = 993.0
-texture_normal = ExtResource("20_ngrx0")
+[node name="3" type="TextureButton" parent="." unique_id=941459341]
+offset_left = 1149.9999
+offset_top = 1107.0
+offset_right = 1159.9999
+offset_bottom = 1117.0
+scale = Vector2(12.035, 12.035)
+texture_normal = ExtResource("23_6g71x")
 script = ExtResource("18_le30m")
 next_scene = ExtResource("19_8m8uw")
 
-[node name="ChapterOne4" type="TextureButton" parent="." unique_id=536430282]
-offset_left = 1012.0
-offset_top = 569.0
-offset_right = 1156.0
-offset_bottom = 704.0
-texture_normal = ExtResource("20_ngrx0")
+[node name="4" type="TextureButton" parent="." unique_id=118883132]
+offset_left = 1420.9999
+offset_top = 1011.99994
+offset_right = 1430.9999
+offset_bottom = 1021.99994
+scale = Vector2(12.035, 12.035)
+texture_normal = ExtResource("23_6g71x")
 script = ExtResource("18_le30m")
 next_scene = ExtResource("19_8m8uw")
 
-[node name="ChapterOne5" type="TextureButton" parent="." unique_id=1386622254]
-offset_left = 755.0
-offset_top = 334.0
-offset_right = 899.0
-offset_bottom = 469.0
-texture_normal = ExtResource("20_ngrx0")
+[node name="5" type="TextureButton" parent="." unique_id=1083896062]
+offset_left = 1300.9999
+offset_top = 947.0
+offset_right = 1310.9999
+offset_bottom = 957.0
+scale = Vector2(12.035, 12.035)
+texture_normal = ExtResource("23_6g71x")
 script = ExtResource("18_le30m")
 next_scene = ExtResource("19_8m8uw")
 
-[node name="ChapterOne6" type="TextureButton" parent="." unique_id=1598216685]
-offset_left = 868.0
-offset_top = 58.0
-offset_right = 1012.0
-offset_bottom = 193.0
-texture_normal = ExtResource("20_ngrx0")
+[node name="6" type="TextureButton" parent="." unique_id=1573985095]
+offset_left = 968.99994
+offset_top = 913.99994
+offset_right = 978.99994
+offset_bottom = 923.99994
+scale = Vector2(12.035, 12.035)
+texture_normal = ExtResource("23_6g71x")
 script = ExtResource("18_le30m")
 next_scene = ExtResource("19_8m8uw")
 
-[node name="ChapterOne7" type="TextureButton" parent="." unique_id=965550457]
-offset_left = 655.0
-offset_top = 909.0
-offset_right = 799.0
-offset_bottom = 1044.0
-texture_normal = ExtResource("20_ngrx0")
+[node name="7" type="TextureButton" parent="." unique_id=1156988054]
+offset_left = 1122.0
+offset_top = 805.0
+offset_right = 1132.0
+offset_bottom = 815.0
+scale = Vector2(12.035, 12.035)
+texture_normal = ExtResource("23_6g71x")
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="8" type="TextureButton" parent="." unique_id=390008112]
+offset_left = 851.9999
+offset_top = 637.0
+offset_right = 861.9999
+offset_bottom = 647.0
+scale = Vector2(12.035, 12.035)
+texture_normal = ExtResource("23_6g71x")
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="9" type="TextureButton" parent="." unique_id=1530628658]
+offset_left = 728.99994
+offset_top = 830.0
+offset_right = 738.99994
+offset_bottom = 840.0
+scale = Vector2(12.035, 12.035)
+texture_normal = ExtResource("23_6g71x")
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="10" type="TextureButton" parent="." unique_id=433018687]
+offset_left = 507.99982
+offset_top = 1077.0
+offset_right = 517.9998
+offset_bottom = 1087.0
+scale = Vector2(12.035, 12.035)
+texture_normal = ExtResource("23_6g71x")
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="11" type="TextureButton" parent="." unique_id=178747862]
+offset_left = 1169.0
+offset_top = 565.0
+offset_right = 1179.0
+offset_bottom = 575.0
+scale = Vector2(12.035, 12.035)
+texture_normal = ExtResource("23_6g71x")
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="12" type="TextureButton" parent="." unique_id=2044364842]
+offset_left = 936.99994
+offset_top = 333.0
+offset_right = 946.99994
+offset_bottom = 343.0
+scale = Vector2(12.035, 12.035)
+texture_normal = ExtResource("23_6g71x")
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="13" type="TextureButton" parent="." unique_id=1483348238]
+offset_left = 881.9999
+offset_top = 14.999997
+offset_right = 891.9999
+offset_bottom = 24.999996
+scale = Vector2(12.035, 12.035)
+texture_normal = ExtResource("23_6g71x")
+script = ExtResource("18_le30m")
+next_scene = ExtResource("19_8m8uw")
+
+[node name="14" type="TextureButton" parent="." unique_id=2115341660]
+offset_left = 704.0
+offset_top = 328.00003
+offset_right = 714.0
+offset_bottom = 338.00003
+scale = Vector2(12.035, 12.035)
+texture_normal = ExtResource("23_6g71x")
 script = ExtResource("18_le30m")
 next_scene = ExtResource("19_8m8uw")
 

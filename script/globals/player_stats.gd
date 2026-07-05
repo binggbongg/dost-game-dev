@@ -31,6 +31,6 @@ func take_damage(amount: int):
 func heal_player(amount):
 	if amount <= 0: return
 	
-	current_health = min(max_health, current_health + max_health)
+	current_health = min(max_health, current_health + amount)
 	health_changed.emit(current_health)
 	print("player healed")

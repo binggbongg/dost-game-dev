@@ -22,9 +22,7 @@ func _ready():
 	cards_container.position = get_viewport_rect().size / 2
 
 
-#========================================================
-# Called from Lounge.gd
-#========================================================
+
 func open_pack(is_new_player: bool):
 	card_paths = CardRegistry.generate_pack_paths(is_new_player)
 	current_idx = card_paths.size() - 1
@@ -42,9 +40,7 @@ func open_pack(is_new_player: bool):
 	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
 
-#========================================================
-# Create the stacked deck
-#========================================================
+
 func setup_cards():
 	var nodes = cards_container.get_children()
 
@@ -74,9 +70,6 @@ func setup_cards():
 			card.visible = false
 
 
-#========================================================
-# Drag Input
-#========================================================
 func _input(event: InputEvent):
 	if !visible:
 		return
@@ -104,9 +97,6 @@ func _input(event: InputEvent):
 		current_card.rotation_degrees = offset * 0.05
 
 
-#========================================================
-# Finish dragging
-#========================================================
 func _handle_drag_end(card_node):
 
 	var base_x = current_idx * 6
@@ -153,9 +143,7 @@ func _handle_drag_end(card_node):
 		)
 
 
-#========================================================
-# Card removed
-#========================================================
+
 func _on_card_swiped():
 	# Save card
 	PlayerProfile.add_card_to_inventory(card_paths[current_idx])

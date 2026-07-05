@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://b1srenpusy6ns" path="res://assets/ui/mainscreen/mainscreen_ui_chooseacharacter.png" id="3_4vuuv"]
 [ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="4_0yieg"]
 [ext_resource type="Texture2D" uid="uid://kgl2v0um6khp" path="res://assets/ui/mainscreen/mainscreen_ui_button_short.png" id="5_ng6g8"]
-[ext_resource type="Texture2D" uid="uid://bkl7747ki6nl5" path="res://assets/player/boy_idle.png" id="6_4vuuv"]
+[ext_resource type="Texture2D" uid="uid://dv446b0xouw3g" path="res://assets/player/boy_idle.png" id="6_4vuuv"]
 [ext_resource type="Texture2D" uid="uid://dvuofhfo7vd65" path="res://assets/ui/mainscreen/mainscreen_ui_loginAccount.png" id="8_4vuuv"]
 [ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="13_jgyn7"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="14_am75w"]
-[ext_resource type="Texture2D" uid="uid://dbvqdnaxhvjp6" path="res://assets/player/girl_idol.png" id="15_nbmt4"]
+[ext_resource type="Texture2D" uid="uid://c2xv5vbofw3wy" path="res://assets/player/girl_idle.png" id="15_nbmt4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ut1y"]
 atlas = ExtResource("4_0yieg")

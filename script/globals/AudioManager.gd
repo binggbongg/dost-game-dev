@@ -25,13 +25,11 @@ func _ready():
 		sfx_players.append(p)
 
 # --- THE "PLAY BY NAME" FUNCTION ---
-# This is what you call from your UI scripts
 func play_ui_sound(sound_name: String):
 	if library == null:
 		print("AudioManager Error: Library (GameSounds.tres) not found!")
 		return
 
-	# These names MUST match the variable names inside your SoundData.gd
 	match sound_name:
 		"click": play_sfx(library.click)
 		"hover": play_sfx(library.hover)
@@ -49,6 +47,7 @@ func play_sfx(stream: AudioStream, pitch_variance: float = 0.1):
 		if not p.playing:
 			p.stream = stream
 			p.pitch_scale = randf_range(1.0 - pitch_variance, 1.0 + pitch_variance)
+			p.volume_db = 0.0 # Reset to default baseline
 			p.play()
 			return
 
@@ -80,3 +79,27 @@ func toggle_mute():
 	var is_muted = AudioServer.is_bus_mute(master_bus)
 	AudioServer.set_bus_mute(master_bus, !is_muted)
 	return !is_muted
+
+# --- PLAY VIA FILE PATH (WITH INDIVIDUAL VOLUME BOOST) ---
+# To raise the volume, pass a positive number (like 4.0, 6.5, etc.) into volume_adjust
+func play_sound_from_path(file_path: String, is_bgm: bool = false, volume_adjust: float = 0.0) -> void:
+	if not ResourceLoader.exists(file_path):
+		print("AudioManager Error: Audio file path does not exist! -> ", file_path)
+		return
+		
+	var stream = load(file_path) as AudioStream
+	if not stream:
+		print("AudioManager Error: Failed to load file as AudioStream -> ", file_path)
+		return
+		
+	if is_bgm:
+		play_bgm(stream)
+		active_bgm_player.volume_db = volume_adjust
+	else:
+		for p in sfx_players:
+			if not p.playing:
+				p.stream = stream
+				p.pitch_scale = randf_range(0.95, 1.05)
+				p.volume_db = volume_adjust # Boosts or drops the decibels for this specific play instance
+				p.play()
+				return

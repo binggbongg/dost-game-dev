@@ -108,6 +108,9 @@ func check_player_history() -> void:
 		new_game_btn.disabled = false
 		continue_btn.disabled = true
 		continue_btn.modulate = Color(0.4, 0.4, 0.4, 0.9)
+	
+	if PlayerProfile.has_method("sync_local_scores_to_talo"):
+		PlayerProfile.sync_local_scores_to_talo()
 
 func _on_new_game_pressed():
 	AudioManager.play_ui_sound("click")
