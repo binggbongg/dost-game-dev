@@ -94,10 +94,10 @@ animation = &"lore 1"
 autoplay = "lore 1"
 
 [node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("13_t4sft")]
-offset_left = -16.0
-offset_top = -47.0
-offset_right = 179.0
-offset_bottom = 237.0
+offset_left = 66.0
+offset_top = 38.0
+offset_right = 73.875
+offset_bottom = 44.625
 script = null
 
 [node name="DialogueBox" type="Control" parent="." unique_id=1161655313]

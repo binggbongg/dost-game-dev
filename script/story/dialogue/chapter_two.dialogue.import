@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dwe4c16a4cr2s"
+path="res://.godot/imported/chapter_two.dialogue-c2fdef22e4122a017782b391b151a340.tres"
+
+[deps]
+
+source_file="res://script/story/dialogue/chapter_two.dialogue"
+dest_files=["res://.godot/imported/chapter_two.dialogue-c2fdef22e4122a017782b391b151a340.tres"]
+
+[params]
+
+defaults=true

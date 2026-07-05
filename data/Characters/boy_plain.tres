@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bvrfatanm1wli" path="res://assets/player/boy_attack.png" id="2_87a7f"]
 [ext_resource type="Texture2D" uid="uid://cqukty3kj5qnt" path="res://assets/player/boy_death.png" id="3_s8k3x"]
 [ext_resource type="Texture2D" uid="uid://dv446b0xouw3g" path="res://assets/player/boy_idle.png" id="4_gvi1o"]
+[ext_resource type="Texture2D" uid="uid://dbc0gv8m0jvd3" path="res://assets/player/boy_portrait.png" id="5_gvi1o"]
 [ext_resource type="Texture2D" uid="uid://dqlreq4lnj8pi" path="res://assets/player/boy_scared.png" id="5_s8k3x"]
 [ext_resource type="Texture2D" uid="uid://bjxqvrod4fdtj" path="res://assets/player/boy_walk.png" id="6_gvi1o"]
 
@@ -106,6 +107,22 @@ region = Rect2(96, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2msvg"]
 atlas = ExtResource("4_gvi1o")
 region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oxmo"]
+atlas = ExtResource("5_gvi1o")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvoig"]
+atlas = ExtResource("5_gvi1o")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8stp"]
+atlas = ExtResource("5_gvi1o")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcwpa"]
+atlas = ExtResource("5_gvi1o")
+region = Rect2(288, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l7paq"]
 atlas = ExtResource("5_s8k3x")
@@ -237,6 +254,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oxmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvoig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8stp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcwpa")
+}],
+"loop": true,
+"name": &"portrait",
 "speed": 5.0
 }, {
 "frames": [{

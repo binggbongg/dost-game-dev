@@ -1,70 +1,18 @@
 [gd_scene format=3 uid="uid://divonvi0kh3o3"]
 
 [ext_resource type="Script" uid="uid://cimu6spqdj8rc" path="res://script/story/storyUI.gd" id="1_gftur"]
-[ext_resource type="Texture2D" uid="uid://b67a6h4yy3qud" path="res://assets/background/rooms/background_1-1.png" id="2_2hrnm"]
-[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_2hrnm"]
-[ext_resource type="Texture2D" uid="uid://cakc0gemx5fg8" path="res://assets/player/girl_portrait.png" id="4_vslhr"]
+[ext_resource type="Texture2D" uid="uid://cul7661ju2d7r" path="res://assets/ui/mainscreen/mainscreen_ui_registerAccount.png" id="4_vslhr"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_ymd72"]
-font = ExtResource("3_2hrnm")
-font_size = 32
+[sub_resource type="SpriteFrames" id="SpriteFrames_01g43"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_rrrj2"]
-font = ExtResource("3_2hrnm")
-font_size = 39
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vjncb"]
-atlas = ExtResource("4_vslhr")
-region = Rect2(0, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mfddg"]
-atlas = ExtResource("4_vslhr")
-region = Rect2(96, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_37vpt"]
-atlas = ExtResource("4_vslhr")
-region = Rect2(192, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rvaat"]
-atlas = ExtResource("4_vslhr")
-region = Rect2(288, 0, 96, 96)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_sy2s2"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vjncb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mfddg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_37vpt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rvaat")
-}],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
-}]
-
-[node name="CanvasLayer" type="CanvasLayer" unique_id=153786700]
+[node name="Conversation" type="CanvasLayer" unique_id=153786700]
 script = ExtResource("1_gftur")
-
-[node name="Background" type="TextureRect" parent="." unique_id=1306323752]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_2hrnm")
 
 [node name="DialogueBox" type="Control" parent="." unique_id=1161655313]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1909.0
-offset_bottom = 1081.0
+offset_right = 1933.7235
+offset_bottom = 1095.0
 
 [node name="DialoguePanel" type="Panel" parent="DialogueBox" unique_id=1383475601]
 layout_mode = 0
@@ -73,49 +21,63 @@ offset_top = 689.0
 offset_right = 1814.0
 offset_bottom = 1039.0
 
-[node name="TextLabel" type="Label" parent="DialogueBox/DialoguePanel" unique_id=1893403387]
+[node name="DialoguePanel4" type="Panel" parent="DialogueBox/DialoguePanel" unique_id=1359117070]
 layout_mode = 0
-offset_left = 378.0
-offset_top = 83.0
-offset_right = 1683.0
-offset_bottom = 220.0
+offset_left = 2.0
+offset_top = -76.0
+offset_right = 412.0
+offset_bottom = -16.0
+
+[node name="TextLabel" type="RichTextLabel" parent="DialogueBox/DialoguePanel" unique_id=1121274928]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 45.0
+offset_right = 1689.0
+offset_bottom = 164.0
+theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/bold_font_size = 26
+theme_override_font_sizes/bold_italics_font_size = 26
+theme_override_font_sizes/italics_font_size = 26
+theme_override_font_sizes/mono_font_size = 26
+bbcode_enabled = true
 text = "This is a sample dialogue"
-label_settings = SubResource("LabelSettings_ymd72")
 autowrap_mode = 2
 
-[node name="NameLabel" type="Label" parent="DialogueBox/DialoguePanel" unique_id=1668047581]
+[node name="NameLabel" type="RichTextLabel" parent="DialogueBox/DialoguePanel" unique_id=2072070224]
 layout_mode = 0
-offset_left = 376.0
-offset_top = 33.0
-offset_right = 1555.0
-offset_bottom = 80.0
+offset_left = 18.0
+offset_top = -71.0
+offset_right = 400.0
+offset_bottom = -18.0
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/mono_font_size = 30
+bbcode_enabled = true
 text = "Aissha"
-label_settings = SubResource("LabelSettings_rrrj2")
 autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="DialoguePanel2" type="ColorRect" parent="DialogueBox" unique_id=1957530214]
+[node name="me" type="AnimatedSprite2D" parent="DialogueBox" unique_id=131686089]
+position = Vector2(163.99998, 723.99994)
+scale = Vector2(3.325, 3.325)
+sprite_frames = SubResource("SpriteFrames_01g43")
+
+[node name="DialoguePanel3" type="TextureRect" parent="DialogueBox" unique_id=196373372]
 layout_mode = 0
-offset_left = 141.0
-offset_top = 699.0
-offset_right = 457.0
-offset_bottom = 1019.0
+offset_left = 128.0
+offset_top = 689.0
+offset_right = 471.0
+offset_bottom = 1036.3418
+texture = ExtResource("4_vslhr")
 
-[node name="DialoguePanel3" type="ColorRect" parent="DialogueBox" unique_id=578800269]
+[node name="npc_portrait" type="TextureRect" parent="DialogueBox" unique_id=762260707]
+visibility_layer = 17
 layout_mode = 0
-offset_left = 149.0
-offset_top = 706.0
-offset_right = 450.0
-offset_bottom = 1010.8101
-color = Color(0, 0, 0, 1)
-
-[node name="Portrait" type="TextureRect" parent="." unique_id=2089851814]
-offset_left = 1595.0
-offset_top = 753.0
-offset_right = 1803.0
-offset_bottom = 1024.0
-
-[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=832731292]
-position = Vector2(304.93753, 850.9375)
-scale = Vector2(3.3346355, 3.3346355)
-sprite_frames = SubResource("SpriteFrames_sy2s2")
-animation = &"new_animation"
+offset_left = 162.0
+offset_top = 710.0
+offset_right = 252.82707
+offset_bottom = 801.7294
+scale = Vector2(3.22, 3.22)
