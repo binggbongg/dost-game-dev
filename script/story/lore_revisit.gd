@@ -6,6 +6,7 @@ extends Control
 @onready var text_label = $DialogueBox/Panel/TextLabel
 @onready var name_label = $DialogueBox/Panel/NameLabel
 @onready var display: AnimatedSprite2D = $AnimatedSprite2D
+
 @onready var next: Label = $DialogueBox/Panel/Next
 @onready var close_button: TextureButton = $CloseButton
 @onready var dialogue_panel = $DialogueBox/Panel
@@ -17,6 +18,7 @@ var is_transitioning := false
 func _ready():
 	close_button.pressed.connect(_back_pressed)
 
+	
 	# Connect the dialogue box panel directly to handle text advancement clicks safely
 	if dialogue_panel:
 		dialogue_panel.gui_input.connect(_on_dialogue_panel_gui_input)
@@ -32,8 +34,10 @@ func _ready():
 		push_error("No Lore Data resource assigned!")
 
 
+
 ## Keyboards/Controllers still use this safely without breaking mouse interactions
 func _input(event):
+	AudioManager.play_ui_sound("click")
 	if is_transitioning or not visible:
 		return
 
@@ -111,7 +115,8 @@ func display_current_line():
 	show_current_block()
 	
 func _back_pressed():
-	SceneTransition.change_scene_path("res://scenes/menus/play.tscn")
+	AudioManager.play_ui_sound("click")
+	SceneTransition.change_scene_path("res://scenes/menus/lounge.tscn")
 
 func finish_intro():
 	if next_scene:

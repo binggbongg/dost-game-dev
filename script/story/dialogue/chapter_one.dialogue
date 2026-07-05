@@ -3,7 +3,9 @@ Player: Is it... finally over?
 => END
 
 ~ see_gem
-Player: Let's move towards it.
+Player: What is that? 
+Player: Maybe it can give me answers to the stolen voices of my people.
+Player: Let's head towards it.
 => END
 
 ~ chapter1_star_fragment

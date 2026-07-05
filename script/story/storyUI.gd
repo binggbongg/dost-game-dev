@@ -26,7 +26,7 @@ func display_line(speaker: String, text: String) -> void:
 	# --- UNIFIED STYLE SWITCHING ---
 	if speaker == "Player":
 		# Clean, standard style for the player name
-		name_label.text = speaker
+		name_label.text = PlayerProfile.player_name
 		
 		# Format player thoughts in italics for specific phrases
 		if text.contains("?") or text.contains("...") or text.contains("Let's move"):

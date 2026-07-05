@@ -34,12 +34,14 @@ func _ready():
 		push_error("No Lore Data resource assigned!")
 
 func skip_pressed():
+	AudioManager.play_ui_sound("click")
 	if is_transitioning:
 		return
 	finish_intro()
 
 ## Keyboards/Controllers still use this safely without breaking mouse interactions
 func _input(event):
+	AudioManager.play_ui_sound("click")
 	if is_transitioning or not visible:
 		return
 
@@ -117,6 +119,7 @@ func display_current_line():
 	show_current_block()
 	
 func _back_pressed():
+	AudioManager.play_ui_sound("click")
 	SceneTransition.change_scene_path("res://scenes/menus/play.tscn")
 
 func finish_intro():

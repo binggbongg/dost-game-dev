@@ -17,6 +17,7 @@ var reached_enemy: bool = false
 var float_tween: Tween
 
 func _ready() -> void:
+	AudioManager.play_sound_from_path("res://data/SoundData/bgm/cutscene.wav", true)
 	setup_player_visuals()
 	
 	# Gray out the Karabao right away so it looks completely dead
@@ -87,6 +88,7 @@ func start_world_cutscene(data: StoryData) -> void:
 	can_move = true
 
 func play_gem_spawn_anim() -> void:
+	AudioManager.play_sound_from_path("res://data/SoundData/sfx/flutter.mp3", false, 5.0)
 	gem.visible = true
 	
 	# Configure initial bright glow intensity using self_modulate overdrive values
@@ -143,6 +145,13 @@ func finish_cutscene() -> void:
 	PlayerProfile.tutorial_steps_completed["cut_scene"] = true
 	SaveManager.save_game()
 	
+	# Plays your loud sound effect
+	AudioManager.play_sound_from_path("res://data/SoundData/sfx/flutter.mp3", false, 5.0)
+	
+	# Wait for 3 seconds so the player can hear the sound effect completely
+	await get_tree().create_timer(3.0).timeout
+	
+	# Begin the fade out sequence
 	var fade = create_tween()
 	fade.tween_property(gem, "modulate:a", 0.0, 0.5)
 	await fade.finished

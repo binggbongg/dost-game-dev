@@ -17,6 +17,7 @@ extends Control
 var tutorial_active = false
  
 func _ready() -> void:
+	AudioManager.play_sound_from_path("res://data/SoundData/bgm/lounge.wav", true)
 	update_button_locks()
 	back.pressed.connect(func(): back_button_pressed())
 	start.pressed.connect(func(): phase_button_pressed(phase1))
@@ -30,7 +31,7 @@ func start_chapter_intro():
 	var base_path = "res://data/StoryData/Tutorial/ChapterScreen/"
 	
 	var tour_steps = [
-	[$Buttons/Phase1, "Chapter1Intro.tres"]
+	[start, "Chapter1Intro.tres"]
 	]
 	for step in tour_steps:
 		await highlight_and_talk(step[0], base_path + step[1])
