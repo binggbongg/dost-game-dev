@@ -10,7 +10,8 @@ extends CanvasLayer
 @onready var next: Label = $DialogueBox/Panel/Next
 @onready var close_button: TextureButton = $CloseButton
 @onready var dialogue_panel = $DialogueBox/Panel
-
+var current_blocks: PackedStringArray
+var block_index: int = 0
 var line_index: int = 0
 var is_transitioning := false
 
@@ -54,18 +55,24 @@ func _on_dialogue_panel_gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		advance_dialogue_logic()
 
-## Combined execution logic
 func advance_dialogue_logic():
 	# Finish typing first
 	if text_label.visible_ratio < 1.0:
 		text_label.visible_ratio = 1.0
-		if line_index < lore_data.lines.size() - 1:
-			next.visible = true
+		return
+
+	# Still more dialogue blocks in this slide?
+	if block_index < current_blocks.size() - 1:
+		block_index += 1
+		show_current_block()
+		return
+
+	# Otherwise move to the next slide
+	if line_index < lore_data.lines.size() - 1:
+		transition_to_next_page()
 	else:
-		if line_index < lore_data.lines.size() - 1:
-			transition_to_next_page()
-		else:
-			finish_intro()
+		finish_intro()
+
 
 func transition_to_next_page():
 	is_transitioning = true
@@ -99,26 +106,32 @@ func advance_line():
 		display_current_line()
 	else:
 		finish_intro()
-
+		
 func display_current_line():
 	next.visible = false
-	text_label.text = lore_data.lines[line_index]
-	text_label.visible_ratio = 0.0
 
-	var tween = create_tween()
-	tween.tween_property(text_label, "visible_ratio", 1.0, 1.5)
+	# Split one slide into dialogue blocks using blank lines
+	current_blocks = lore_data.lines[line_index].split("\n\n")
+	block_index = 0
 
-	if line_index < lore_data.lines.size() - 1:
-		tween.tween_callback(func():
-			next.visible = true
-		)
-
-	maxi(0, 1) # Internal formatting sanity check
-	AudioManager.play_ui_sound("click")
-
+	show_current_block()
+	
 func _back_pressed():
 	SceneTransition.change_scene_path("res://scenes/menus/play.tscn")
 
 func finish_intro():
 	if next_scene:
 		SceneTransition.change_scene(next_scene)
+
+func show_current_block():
+	text_label.text = current_blocks[block_index]
+	text_label.visible_ratio = 0.0
+
+	var tween = create_tween()
+	tween.tween_property(text_label, "visible_ratio", 1.0, 1.5)
+
+	tween.tween_callback(func():
+		next.visible = true
+	)
+
+	AudioManager.play_ui_sound("click")

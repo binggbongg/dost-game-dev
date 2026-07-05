@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://hwvdlnk2ti43" path="res://data/character.gd" id="1_p370c"]
 [ext_resource type="Texture2D" uid="uid://em16q1ohhgal" path="res://assets/player/girl_death.png" id="3_yqjlm"]
 [ext_resource type="Texture2D" uid="uid://c2xv5vbofw3wy" path="res://assets/player/girl_idle.png" id="4_5wify"]
+[ext_resource type="Texture2D" uid="uid://cakc0gemx5fg8" path="res://assets/player/girl_portrait.png" id="4_rgp5o"]
 [ext_resource type="Texture2D" uid="uid://7wof5uqla26v" path="res://assets/player/girl_walk.png" id="5_3tjms"]
 [ext_resource type="Texture2D" uid="uid://byoj5jc4v7oxn" path="res://assets/player/girl_scared.png" id="5_rgp5o"]
 
@@ -74,25 +75,25 @@ region = Rect2(320, 0, 32, 32)
 atlas = ExtResource("3_yqjlm")
 region = Rect2(352, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p0jyr"]
-atlas = ExtResource("4_5wify")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2achk"]
-atlas = ExtResource("4_5wify")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_31gjd"]
-atlas = ExtResource("4_5wify")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6hitj"]
-atlas = ExtResource("4_5wify")
-region = Rect2(96, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_vann8"]
 atlas = ExtResource("4_5wify")
 region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjncb"]
+atlas = ExtResource("4_rgp5o")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfddg"]
+atlas = ExtResource("4_rgp5o")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37vpt"]
+atlas = ExtResource("4_rgp5o")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvaat"]
+atlas = ExtResource("4_rgp5o")
+region = Rect2(288, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y8317"]
 atlas = ExtResource("5_rgp5o")
@@ -215,6 +216,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjncb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfddg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37vpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvaat")
+}],
+"loop": true,
+"name": &"portrait",
 "speed": 5.0
 }, {
 "frames": [{
