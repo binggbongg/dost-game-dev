@@ -229,15 +229,33 @@ func _on_turned_state_changed(new_state: GameEnums.TurnState):
 
 func execute_enemy_turn():
 	display_action_message("Enemy is preparing an action...")
+	
+	# Give the player a moment to read the intent alert message box popup
 	battle_timer.one_shot = true
-	battle_timer.start(2.0)
+	battle_timer.start(1.5)
 	await battle_timer.timeout
 
+	var enemy_node = null
 	if combat_arena and combat_arena.has_method("get_enemy"):
-		var enemy = combat_arena.get_enemy()
-		display_action_message("Enemy casts: " + str(enemy.get("current_intent_name")))
-		enemy.execute_intent()
+		enemy_node = combat_arena.get_enemy()
 
+	if is_instance_valid(enemy_node) and not enemy_node.is_defeated:
+		# 1. Fire the action mechanics instantly
+		enemy_node.execute_intent()
+		
+		# 2. 🌟 THE TURN MANAGER FALLBACK SAFETY GATE WINDOW
+		# Hold the ENEMY_TURN state open here for exactly 1.8 seconds to allow frames to draw
+		battle_timer.start(1.8)
+		await battle_timer.timeout
+		
+		# 3. Securely force the enemy back to its idle loop state setup
+		if is_instance_valid(enemy_node) and not enemy_node.is_defeated:
+			var sprite = enemy_node.get_node_or_null("AnimatedSprite2D")
+			if sprite and sprite.sprite_frames.has_animation("idle"):
+				print("Centralized Battle System: Restoring enemy to idle loop state safely.")
+				sprite.play("idle")
+
+	# Finalize the turn cycle sequence phase cleanly
 	battle_timer.start(0.5)
 	await battle_timer.timeout
 

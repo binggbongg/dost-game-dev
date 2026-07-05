@@ -1,28 +1,17 @@
 extends Node2D
 
-# angela ay ni hilabta
 @export var behavior_data: EnemyBehavior
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var health_bar = $EnemyHealthBar
 
 var current_health: int
-var current_armor: int
 var current_turns: int = 0
 var chosen_intent: EnemyMove
 var special_cooldowns: Dictionary = {}
 var is_defeated: bool = false
 
 signal enemy_health_changed(new_health: int)
-# FIX: new signal so anything (battle_manager, UI, achievements, etc.)
-# can react to the enemy dying without battle_manager having to manually
-# call check_enemy_death() from every single damage source in the game.
 signal enemy_died
-
-#func _ready() -> void:
-	#if behavior_data:
-		#setup_enemy()
-	#else:
-		#print("no behavior data --enemy ai")
 
 func initialize_from_resource(new_behavior: EnemyBehavior):
 	behavior_data = new_behavior
@@ -42,7 +31,7 @@ func setup_enemy():
 			enemy_health_changed,
 			0,
 			0,
-			enemy_health_changed # for filling out the parameters needed only
+			enemy_health_changed
 		)
 	
 	enemy_health_changed.emit(current_health)
@@ -65,11 +54,11 @@ func take_damage(amount):
 		is_defeated = true
 		print("enemy has been defeated")
 		enemy_died.emit()
-		#queue_free()
-		#if animated_sprite and animated_sprite.sprite_frames.has_animation("death"):
-			#animated_sprite.play("death")
-		#else:
-			#visible = false
+		
+		if animated_sprite and animated_sprite.sprite_frames.has_animation("death"):
+			animated_sprite.play("death")
+		else:
+			visible = false
 
 func choose_next_intent():
 	if current_health <= 0: return
@@ -128,6 +117,7 @@ func roll_weighted_moves(moves_pool: Array) -> EnemyMove:
 	
 	return moves_pool[0]
 
+# 🌟 MODIFIED: Converted to a coroutine (using async await) so it handles animation states properly
 func execute_intent():
 	if is_defeated:
 		print("execute_intent() called on a defeated enemy, ignoring")
@@ -137,25 +127,35 @@ func execute_intent():
 		print("did not choose any type of moves")
 		return
 	
+	var anim_to_play := ""
+	
 	match chosen_intent.type:
 		GameEnums.EnemyMoveType.ATTACK:
-			print("enemy attacked")
+			print("enemy used regular attack")
+			anim_to_play = "skill_1"
 			if PlayerStats:
 				PlayerStats.take_damage(chosen_intent.value)
-		GameEnums.EnemyMoveType.DEFENSE:
-			print("enemy defended")
-			# will add defense thing for the enemy
+
 		GameEnums.EnemyMoveType.SKILL:
 			print("enemy used skill")
+			anim_to_play = "skill_2"
 			if PlayerStats:
 				PlayerStats.take_damage(chosen_intent.value)
 			trigger_cooldown(chosen_intent)
+
 		GameEnums.EnemyMoveType.BURST:
 			print("enemy used burst")
+			anim_to_play = "burst"
 			if PlayerStats:
 				PlayerStats.take_damage(chosen_intent.value)
 			trigger_cooldown(chosen_intent)
-	
+
+	# 🌟 Play the animation instantly without using any "await" keyword blocks here!
+	if animated_sprite and animated_sprite.sprite_frames.has_animation(anim_to_play):
+		animated_sprite.play(anim_to_play)
+	else:
+		print("Warning: Animation ", anim_to_play, " missing from SpriteFrames!")
+		
 	choose_next_intent()
 
 func trigger_cooldown(move):
@@ -169,3 +169,16 @@ func tick_cooldowns():
 	for move_name in special_cooldowns.keys():
 		if special_cooldowns[move_name] > 0:
 			special_cooldowns[move_name] -= 1
+
+func any_signals(signals_array: Array) -> void:
+	var completed = false
+	var callable = func(): completed = true
+	
+	for sig in signals_array:
+		if sig is Signal:
+			sig.connect(callable, CONNECT_ONE_SHOT)
+		elif sig is SceneTreeTimer:
+			sig.timeout.connect(callable, CONNECT_ONE_SHOT)
+			
+	while not completed and is_inside_tree():
+		await get_tree().process_frame
