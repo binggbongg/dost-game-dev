@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4401vms4r7bc"]
 
 [ext_resource type="Script" uid="uid://cph6iod2mil4d" path="res://script/deck.gd" id="1_6rnap"]
-[ext_resource type="Texture2D" uid="uid://my16ben7onyr" path="res://assets/temporary/card_placeholder.png" id="1_sdhao"]
+[ext_resource type="Texture2D" uid="uid://bxfg2puf72670" path="res://assets/cards/card back.png" id="2_6rnap"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rnap"]
 size = Vector2(193, 279)
@@ -11,7 +11,8 @@ scale = Vector2(0.8, 0.8)
 script = ExtResource("1_6rnap")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=5312528]
-texture = ExtResource("1_sdhao")
+scale = Vector2(3, 3)
+texture = ExtResource("2_6rnap")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1895852424]
 collision_layer = 5

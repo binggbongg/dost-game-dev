@@ -12,7 +12,7 @@
 [ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="10_4hq6j"]
 [ext_resource type="PackedScene" uid="uid://cw5abrwt2c70o" path="res://scenes/card.tscn" id="10_jv85f"]
 [ext_resource type="FontFile" uid="uid://df2vd0uxg3gcf" path="res://assets/fonts/PixelifySans-SemiBold.ttf" id="11_jv85f"]
-[ext_resource type="Texture2D" uid="uid://b0swjxppkpsi5" path="res://assets/ui/buttons/exit_icon.png" id="11_yv3al"]
+[ext_resource type="Texture2D" uid="uid://cad0d2tw4c1ea" path="res://assets/ui/buttons/Start_icon.png" id="13_nvek4"]
 [ext_resource type="PackedScene" uid="uid://ckbrj3vh8fqlp" path="res://scenes/story/mechanicsui.tscn" id="14_nvek4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_50gjk"]
@@ -26,6 +26,28 @@ font_size = 29
 [sub_resource type="LabelSettings" id="LabelSettings_hs0xd"]
 font = ExtResource("11_jv85f")
 font_size = 14
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs0xd"]
+atlas = ExtResource("13_nvek4")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prm12"]
+atlas = ExtResource("13_nvek4")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3agqh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs0xd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prm12")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="TabContainer" type="Control" unique_id=987151352]
 layout_mode = 3
@@ -255,12 +277,16 @@ horizontal_alignment = 2
 
 [node name="SaveDeck" type="TextureButton" parent="." unique_id=980764383]
 layout_mode = 0
-offset_left = 1650.0001
-offset_top = 59.0
-offset_right = 1778.0001
-offset_bottom = 123.0
-scale = Vector2(1.54, 1.54)
-texture_normal = ExtResource("11_yv3al")
+offset_left = 1600.0
+offset_top = 40.0
+offset_right = 1728.0
+offset_bottom = 104.0
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SaveDeck" unique_id=1232678434]
+position = Vector2(64, 32)
+sprite_frames = SubResource("SpriteFrames_3agqh")
+autoplay = "default"
 
 [node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=771811342]
 layer = 20

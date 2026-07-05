@@ -118,7 +118,7 @@ func process_chapter_scoring_and_unlock() -> int:
 	var gameplay_base = match_combo_bonus_points + (combos_played * 250)
 	
 	# Turn efficiency modifier: fewer turns keeps this multiplier closer to 1.0
-	var turn_efficiency = clamp(1.0 - (turns * 0.05), 0.2, 1.0)
+	var turn_efficiency = clamp(1.0 - (turns * 0.02), 0.2, 1.0)
 	
 	var raw_total = gameplay_base * match_score_multipler * turn_efficiency
 	var final_calculated_score: int = int(max(0, raw_total))
@@ -129,11 +129,28 @@ func process_chapter_scoring_and_unlock() -> int:
 	print("Post-Cast Accumulated Score Points: ", match_combo_bonus_points)
 	print("Final Balanced Victory Score: ", final_calculated_score)
 	
-	var chapter_key = "chapter_" + str(PlayerProfile.current_phase)
-	PlayerProfile.high_scores[chapter_key] = {"rank": "A", "score": final_calculated_score}
+	var final_rank := "C"
+	if final_calculated_score >= 2000 and turns <= 10:
+		final_rank = "S"
+	# A Rank: Solid score output OR decent efficiency combo
+	elif final_calculated_score >= 1000 or (final_calculated_score >= 900 and turns <= 13):
+		final_rank = "A"
+	# B Rank: Average score tier
+	elif final_calculated_score >= 700:
+		final_rank = "B"
+	# Fallback (Under 1200 points) results in a C rank
+	else:
+		final_rank = "C"
 	
-	#if typeof(Talo) != TYPE_NIL:
-		#Talo.leaderboards.post_score(chapter_key, final_calculated_score)
+	var chapter_key = "chapter_" + str(PlayerProfile.current_phase)
+	
+	PlayerProfile.high_scores[chapter_key] = {"rank": final_rank, "score": final_calculated_score}
+	
+	# 🌟 TALO INTEGRATION: Pass the score alongside the rank metadata props dictionary
+	# Note: Talo uses add_entry for posting leaderboard entries in modern versions
+	if typeof(Talo) != TYPE_NIL:
+		var score_metadata = {"rank": final_rank, "chapter_cleared": true}
+		Talo.leaderboards.add_entry(chapter_key, final_calculated_score, score_metadata)
 	
 	SaveManager.save_game()
 	return final_calculated_score
@@ -163,17 +180,17 @@ func _on_player_dies():
 	SceneTransition.change_scene_path("res://scenes/menus/lounge.tscn")
 
 func evaluate_combo_scoring(active_cards: Array, matched_recipe: ComboRecipe):
-	match_combo_bonus_points += active_cards.size() * 10
+	match_combo_bonus_points += active_cards.size() * 100
 	
 	if matched_recipe:
 		PlayerProfile.run_combos_played += 1
 		var recipe_size = matched_recipe.elements.size()
 		if recipe_size == 2:
 			print("2-card combo bonus")
-			match_combo_bonus_points += 50
+			match_combo_bonus_points += 250
 		elif recipe_size == 3:
 			print("3-card combo bonus!")
-			match_combo_bonus_points += 150
+			match_combo_bonus_points += 400
 			match_score_multipler += 0.2
 	
 	print("Current Score (combatlevel): ", str(match_combo_bonus_points))

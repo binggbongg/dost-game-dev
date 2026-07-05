@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://xdbig4p2et14" path="res://scenes/menus/leaderboard.tscn" id="7_v8p6s"]
 [ext_resource type="PackedScene" uid="uid://buor4em2o4cfj" path="res://scenes/ui/coin_display.tscn" id="8_12qkm"]
 [ext_resource type="PackedScene" uid="uid://blildoqpt5atk" path="res://scenes/menus/shop.tscn" id="10_8rf1m"]
-[ext_resource type="Texture2D" uid="uid://3fygd35eaabq" path="res://assets/temporary/inv_btn.png" id="11_6g71x"]
 [ext_resource type="Texture2D" uid="uid://3dus3b0as5bj" path="res://assets/temporary/shop.png" id="11_8y8p0"]
+[ext_resource type="Texture2D" uid="uid://kpvfh62xlg46" path="res://assets/ui/buttons/inventory_icon.png" id="12_5p4kk"]
 [ext_resource type="PackedScene" uid="uid://cvgehqahw2e4x" path="res://scenes/menus/spellbook.tscn" id="12_6g71x"]
 [ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="12_f46hc"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="13_y4gql"]
@@ -273,12 +273,12 @@ autoplay = "default"
 
 [node name="shop" type="TextureButton" parent="Buttons/Content" unique_id=259792266]
 layout_mode = 0
-offset_left = 1618.9999
-offset_top = 856.0
-offset_right = 1774.9999
-offset_bottom = 1031.0
-scale = Vector2(0.7, 0.7)
-texture_normal = ExtResource("11_6g71x")
+offset_left = 1624.9999
+offset_top = 865.0
+offset_right = 1636.9999
+offset_bottom = 879.0
+scale = Vector2(8.7, 8.7)
+texture_normal = ExtResource("12_5p4kk")
 script = ExtResource("3_uygx0")
 menu_to_open = ExtResource("10_8rf1m")
 

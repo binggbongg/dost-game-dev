@@ -209,14 +209,14 @@ animations = [{
 [sub_resource type="Resource" id="Resource_h2ol7"]
 script = ExtResource("1_raexg")
 name = "Transformation"
-value = 10
+value = 8
 metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
 [sub_resource type="Resource" id="Resource_qjexy"]
 script = ExtResource("1_raexg")
 name = "Flaming Circle"
 type = 2
-value = 14
+value = 12
 chances = 0.6
 metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
@@ -224,7 +224,7 @@ metadata/_custom_type_script = "uid://bc0bopaja6vri"
 script = ExtResource("1_raexg")
 name = "Flaming Ball"
 type = 3
-value = 18
+value = 16
 chances = 0.4
 metadata/_custom_type_script = "uid://bc0bopaja6vri"
 

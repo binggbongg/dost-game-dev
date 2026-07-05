@@ -38,7 +38,7 @@ func initialize_victory_rewards(level_data: LevelData, score: int) -> void:
 
 	var is_new_high_score = PlayerProfile.update_high_score(level_key, score)
 
-	var minimum_reward_threshold = 300
+	var minimum_reward_threshold = 200
 	var qualifies_for_rewards = is_new_high_score or (score >= minimum_reward_threshold)
 
 	if not qualifies_for_rewards:
@@ -48,15 +48,15 @@ func initialize_victory_rewards(level_data: LevelData, score: int) -> void:
 	else:
 		# 2. Score / Currency Ratio Processing Matrix using your LevelData layout rules
 		if level_data and level_data.is_boss_level:
-			var boss_ratio: float = float(score) / 2500.00
+			var boss_ratio: float = float(score) / 1500.00
 			cached_coins_earned = int(clamp(boss_ratio * 200, 0, 250))
 			cached_packs_earned = 2
 		elif level_data and level_data.level_number == 3:
-			var miniboss_ratio: float = float(score) / 1500.0
+			var miniboss_ratio: float = float(score) / 1000.0
 			cached_coins_earned = int(clamp(miniboss_ratio * 120, 0, 150))
 			cached_packs_earned = 1
 		else:
-			var minion_ratio: float = float(score) / 800.0
+			var minion_ratio: float = float(score) / 600.0
 			cached_coins_earned = int(clamp(minion_ratio * 50, 0, 75))
 			cached_packs_earned = 0
 

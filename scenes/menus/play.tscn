@@ -175,10 +175,10 @@ frame_progress = 0.90714777
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=881261035]
 layout_mode = 0
-offset_left = 655.0
-offset_top = 88.0
-offset_right = 2044.0
-offset_bottom = 712.0
+offset_left = 580.0
+offset_top = 122.0
+offset_right = 2048.0
+offset_bottom = 648.0
 texture = SubResource("GradientTexture2D_ybogl")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1620426149]

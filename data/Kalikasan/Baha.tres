@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_d8tym"]
 [ext_resource type="Texture2D" uid="uid://cp6uovtxbw148" path="res://assets/ui/handsigns/kalikasan_attack/kalikasan_baha.png" id="1_iluun"]
-[ext_resource type="Texture2D" uid="uid://8bgl3cyt8ncp" path="res://assets/temporary/KALIKASAN.png" id="2_68muk"]
+[ext_resource type="Texture2D" uid="uid://0xqfrr18npye" path="res://assets/cards/baha.png" id="3_iluun"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kwnep"]
 atlas = ExtResource("1_iluun")
@@ -47,6 +47,6 @@ category = 2
 rarity = 2
 damage = 8
 mana_cost = 6
-texture = ExtResource("2_68muk")
+texture = ExtResource("3_iluun")
 cardASL = SubResource("SpriteFrames_3rhdj")
 metadata/_custom_type_script = "uid://cv07myeubhuht"
