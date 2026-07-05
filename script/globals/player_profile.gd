@@ -168,6 +168,6 @@ func sync_local_scores_to_talo() -> void:
 			var score_metadata: Dictionary = raw_props as Dictionary
 			
 			# 3. Send it to the Talo API safely
-			await Talo.leaderboards.add_entry(key, local_score, score_metadata)
+			#await Talo.leaderboards.add_entry(key, local_score, score_metadata)
 			
 	print("[SYNC] Offline data backup synchronization processing finished.")

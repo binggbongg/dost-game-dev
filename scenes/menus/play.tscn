@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://26yniv7ld3ya" path="res://assets/temporary/play_button.png" id="5_hcoq6"]
 [ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="7_0wcnn"]
 [ext_resource type="Texture2D" uid="uid://dmei84moikr28" path="res://assets/ui/shop/setting_icon.png" id="7_57ra1"]
-[ext_resource type="Texture2D" uid="uid://dtqq8gvycd8xc" path="res://assets/logo/logo-no-bg-01.png" id="7_lvox0"]
+[ext_resource type="Texture2D" uid="uid://wycp27g2a2f2" path="res://dost-esports-2-pixelated.png" id="7_lvox0"]
 [ext_resource type="PackedScene" uid="uid://dnv63h23touyw" path="res://scenes/menus/login_account.tscn" id="9_ifrkh"]
 [ext_resource type="Texture2D" uid="uid://nvmc7rggfnbj" path="res://assets/ui/buttons/soundOn_icon.png" id="11_0xjr7"]
 [ext_resource type="Texture2D" uid="uid://ctjhgkc78lwkd" path="res://assets/temporary/continue.png" id="11_pcbjq"]
@@ -175,19 +175,19 @@ frame_progress = 0.90714777
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=881261035]
 layout_mode = 0
-offset_left = 580.0
-offset_top = 122.0
-offset_right = 2048.0
-offset_bottom = 648.0
+offset_left = 737.0
+offset_top = 131.0
+offset_right = 1889.0
+offset_bottom = 561.0
 texture = SubResource("GradientTexture2D_ybogl")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1620426149]
 layout_mode = 0
-offset_left = 822.0
-offset_top = -196.0
-offset_right = 5322.0
-offset_bottom = 4304.0
-scale = Vector2(0.23, 0.23)
+offset_left = 799.0
+offset_top = -266.0
+offset_right = 5299.0
+offset_bottom = 4234.0
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_lvox0")
 
 [node name="Title" type="Control" parent="." unique_id=1611951136]

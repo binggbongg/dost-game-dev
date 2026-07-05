@@ -54,8 +54,6 @@ func _on_enemy_defeated():
 		battle_manager.halt_battle_processing()
 		
 	var calculated_score = await process_chapter_scoring_and_unlock()
-
-	# Sets up PlayerProfile progression state markers BEFORE showing the UI screen
 	prepare_next_progression_target()
 
 	# 🌟 FIX 2: Dynamic local instantiation using the secure preload variable
@@ -69,8 +67,12 @@ func _on_enemy_defeated():
 			ui_parent.add_child(victory_instance)
 		else:
 			add_child(victory_instance)
-			
-		victory_instance.initialize_victory_rewards(current_level_data, calculated_score)
+		
+		var current_chapter_key = "chapter_" + str(PlayerProfile.current_phase)
+		var saved_record = PlayerProfile.high_scores.get(current_chapter_key, {"rank": "C"})
+		var final_calculated_rank: String = saved_record.get("rank", "C")
+		
+		victory_instance.initialize_victory_rewards(current_level_data, calculated_score, final_calculated_rank)
 		PlayerProfile.reset_run_counter()
 	else:
 		print("CRITICAL: victory_screen_scene file target asset path is invalid or missing!")
@@ -142,6 +144,13 @@ func process_chapter_scoring_and_unlock() -> int:
 	else:
 		final_rank = "C"
 	
+	var bonus_packs_earned := 0
+	match final_rank:
+		"S": bonus_packs_earned = 3 # Premium reward for flawless play
+		"A": bonus_packs_earned = 2
+		"B": bonus_packs_earned = 1
+		"C": bonus_packs_earned = 0
+	
 	var chapter_key = "chapter_" + str(PlayerProfile.current_phase)
 	
 	PlayerProfile.high_scores[chapter_key] = {"rank": final_rank, "score": final_calculated_score}
@@ -157,7 +166,7 @@ func process_chapter_scoring_and_unlock() -> int:
 		# 🌟 FORCE UNTYPED CASTING: Prevents the plugin's element type check mismatch
 		var score_metadata: Dictionary = raw_props as Dictionary
 		
-		await Talo.leaderboards.add_entry(chapter_key, final_calculated_score, score_metadata)
+		#await Talo.leaderboards.add_entry(chapter_key, final_calculated_score, score_metadata)
 	
 	SaveManager.save_game()
 	return final_calculated_score
