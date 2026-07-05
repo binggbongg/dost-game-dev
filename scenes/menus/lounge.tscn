@@ -240,6 +240,7 @@ mouse_filter = 2
 texture = ExtResource("5_vh42r")
 
 [node name="PVP" type="TextureButton" parent="Buttons/Content" unique_id=1039800473]
+visible = false
 layout_mode = 0
 offset_left = 1425.0
 offset_top = 775.0

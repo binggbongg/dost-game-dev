@@ -53,7 +53,7 @@ func _on_enemy_defeated():
 	if battle_manager and battle_manager.has_method("halt_battle_processing"):
 		battle_manager.halt_battle_processing()
 		
-	var calculated_score = process_chapter_scoring_and_unlock()
+	var calculated_score = await process_chapter_scoring_and_unlock()
 
 	# Sets up PlayerProfile progression state markers BEFORE showing the UI screen
 	prepare_next_progression_target()
@@ -149,8 +149,15 @@ func process_chapter_scoring_and_unlock() -> int:
 	# 🌟 TALO INTEGRATION: Pass the score alongside the rank metadata props dictionary
 	# Note: Talo uses add_entry for posting leaderboard entries in modern versions
 	if typeof(Talo) != TYPE_NIL:
-		var score_metadata = {"rank": final_rank, "chapter_cleared": true}
-		Talo.leaderboards.add_entry(chapter_key, final_calculated_score, score_metadata)
+		var raw_props = {
+			"rank": str(final_rank), 
+			"chapter_cleared": "true"
+		}
+		
+		# 🌟 FORCE UNTYPED CASTING: Prevents the plugin's element type check mismatch
+		var score_metadata: Dictionary = raw_props as Dictionary
+		
+		await Talo.leaderboards.add_entry(chapter_key, final_calculated_score, score_metadata)
 	
 	SaveManager.save_game()
 	return final_calculated_score

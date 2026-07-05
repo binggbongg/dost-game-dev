@@ -51,8 +51,8 @@ func start_lounge_tour():
 		[$Buttons/Content/CoinDisplay/Coin, "coins.tres"],
 		[$Buttons/Content/Settings, "settings.tres"],
 		[$Buttons/Content/spellbook, "spellbook.tres"],
-		[$Buttons/Content/shop, "shop.tres"],
-		[$Buttons/Content/PVP, "battle.tres"],
+		[$Buttons/Content/shop, "shop.tres"]
+		#[$Buttons/Content/PVP, "battle.tres"],
 	]
 
 	for step in first_steps:
