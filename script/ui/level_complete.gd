@@ -11,6 +11,9 @@ extends CanvasLayer
 # Internal logic data cache
 var cached_coins_earned := 0
 var cached_packs_earned := 0
+var level_data_ref: LevelData = null
+
+var final_score_to_display: int = 0
 
 func _ready() -> void:
 	# FIX: force this CanvasLayer to draw above every other UI layer
@@ -27,6 +30,8 @@ func _ready() -> void:
 	if reward_panel is Control:
 		reward_panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 		reward_panel.pivot_offset = reward_panel.size / 2.0
+	
+	update_ui_text_displays()
 
 func initialize_victory_rewards(level_data: LevelData, score: int) -> void:
 	# FIX: nothing was ever making this popup visible before.
@@ -89,24 +94,31 @@ func _on_next_pressed() -> void:
 		for i in range(cached_packs_earned):
 			var pack_instance = pack_scene.instantiate()
 			pack_layer.add_child(pack_instance)
-
-			# Fire up pack logic layout stack
 			pack_instance.open_pack(false)
-
-			# Halt current coroutine timeline until card drag handling deletes pack instance node
 			await pack_instance.tree_exited
 
-			# Delay spacing cadence buffer between multiple packs setup blocks
 			if i < cached_packs_earned - 1:
 				await get_tree().create_timer(0.25).timeout
 
-	# Transition back to main gameplay loops safely when the card loops finish processing
+	# Transition to card selection loops or map interfaces safely
 	_finish_and_transition_scene()
 
+func update_ui_text_displays():
+	if is_instance_valid(score_label):
+		score_label.text = str(final_score_to_display)
+	if is_instance_valid(coin_reward_label):
+		coin_reward_label.text = str(cached_coins_earned)
+	if is_instance_valid(pack_reward_label):
+		pack_reward_label.text = str(cached_packs_earned)
+
 func _finish_and_transition_scene() -> void:
-	print("Rewards sequence completed cleanly. Transitioning to lounge menu map...")
-	# FIX: previously this node was left in the tree forever after hiding it,
-	# so has_node("../PlayerInterface/VictoryScreenNode") in battle_manager.gd
-	# would stay true and block every future victory popup from being created.
-	SceneTransition.change_scene_path("res://scenes/menus/lounge.tscn")
+	# 🌟 THE FINAL ROUTING FLOW CONTROLLER
+	if level_data_ref and level_data_ref.is_boss_level:
+		print("[ROUTE] Boss clear complete. Moving back to overall lounge interface.")
+		SceneTransition.change_scene_path("res://scenes/menus/lounge.tscn")
+	else:
+		print("[ROUTE] Minion clear complete. Redirecting straight to Deck Builder scene layout.")
+		# Redirect the player directly back to card preparation operations
+		SceneTransition.change_scene_path("res://scenes/ui/DeckBuilder.tscn")
+		
 	queue_free()

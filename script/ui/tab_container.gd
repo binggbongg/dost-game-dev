@@ -169,8 +169,12 @@ func _on_save_button_pressed():
 
 	SaveManager.save_game()
 
-	if PlayerProfile.get("pending_scene"):
+	if !PlayerProfile.pending_scene.is_empty():
+		print("[DECK BUILDER] Launching stored path destination: ", PlayerProfile.pending_scene)
 		get_tree().change_scene_to_file(PlayerProfile.pending_scene)
+	else:
+		# Safety fallback if profile scene tracker was unassigned
+		get_tree().change_scene_to_file("res://scenes/menus/map.tscn")
 
 
 func get_first_card_slot():

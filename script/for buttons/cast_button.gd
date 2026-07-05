@@ -75,6 +75,8 @@ func cast_normal(active_cards):
 
 	if player_node and player_node.has_method("stop_attack_loop"):
 		player_node.stop_attack_loop()
+	
+	var battle_mgr = get_node_or_null("../../../BattleManager")
 
 	# ─── DAMAGE IS APPLIED AFTER ANIMATION FINISHES ───
 	if combo_output.damage > 0:
@@ -82,15 +84,16 @@ func cast_normal(active_cards):
 			var enemy = combat_arena.get_enemy()
 			if enemy and enemy.has_method("take_damage"):
 				enemy.take_damage(combo_output.damage)
-				var battle_mgr = get_node_or_null("../../GameManagers/BattleManager")
-				if battle_mgr and battle_mgr.has_method("check_enemy_death"):
-					# If the enemy died, immediately exit to prevent any further script execution
-					if battle_mgr.check_enemy_death():
-						return 
+				if battle_mgr:
+					battle_mgr.display_action_message("Unleashed a combo for %d damage!" % combo_output.damage)
 			else:
 				print("Cast Error: Active enemy node is invalid or missing take_damage()!")
 		else:
 			print("Cast Error: CombatArena script helper method is missing!")
+	
+	if combo_output.healing > 0:
+		PlayerStats.heal_player(combo_output.healing)
+		battle_mgr.display_action_message("Cast restorative magic for %d health!" % combo_output.healing)
 
 	var slots_folder = get_node("../../Slots")
 	if slots_folder:

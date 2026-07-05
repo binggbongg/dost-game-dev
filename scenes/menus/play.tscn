@@ -298,7 +298,7 @@ offset_bottom = 917.0
 scale = Vector2(2.2, 2.2)
 texture_normal = SubResource("AtlasTexture_bp6ot")
 
-[node name="ContinueButton" type="TextureButton" parent="." unique_id=301235348]
+[node name="NewGameButton" type="TextureButton" parent="." unique_id=301235348]
 layout_mode = 0
 offset_left = 1313.0001
 offset_top = 537.00006
@@ -307,7 +307,7 @@ offset_bottom = 581.00006
 scale = Vector2(2.2, 2.2)
 texture_normal = SubResource("AtlasTexture_ybogl")
 
-[node name="NewGameButton" type="TextureButton" parent="." unique_id=684198820]
+[node name="ContinueButton" type="TextureButton" parent="." unique_id=684198820]
 layout_mode = 0
 offset_left = 1290.0
 offset_top = 630.0
@@ -315,7 +315,7 @@ offset_right = 1416.5
 offset_bottom = 696.0
 scale = Vector2(2.2, 2.2)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NewGameButton" unique_id=1325709076]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ContinueButton" unique_id=1325709076]
 sprite_frames = SubResource("SpriteFrames_kr238")
 autoplay = "default"
 offset = Vector2(63.333252, 31.724976)

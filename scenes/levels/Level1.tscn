@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b67a6h4yy3qud" path="res://assets/background/rooms/background_1-1.png" id="1_brv20"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="2_7d7pp"]
 [ext_resource type="PackedScene" uid="uid://dkbejpdwhc33b" path="res://scenes/combat_arena.tscn" id="2_fh0io"]
+[ext_resource type="PackedScene" uid="uid://c6ao8ylhrwwbu" path="res://scenes/ui/level_complete.tscn" id="2_n5pya"]
 [ext_resource type="PackedScene" uid="uid://6t8x0728x5hf" path="res://scenes/ui/spellbook_button.tscn" id="3_76cw8"]
 [ext_resource type="PackedScene" uid="uid://dirj45q71fos6" path="res://scenes/player_interface.tscn" id="4_68ib6"]
 [ext_resource type="Script" uid="uid://cy31dctcq2m2k" path="res://script/battle_manager.gd" id="4_fh0io"]
@@ -59,6 +60,7 @@ animations = [{
 
 [node name="Level1" type="Node2D" unique_id=1730621475]
 script = ExtResource("1_7d7pp")
+victory_screen_scene = ExtResource("2_n5pya")
 
 [node name="Timer" type="Timer" parent="." unique_id=322603772]
 
@@ -161,6 +163,5 @@ offset_right = 1207.9994
 offset_bottom = 161.00006
 theme_override_fonts/normal_font = ExtResource("12_6owa4")
 theme_override_font_sizes/normal_font_size = 25
-text = "test message"
 horizontal_alignment = 1
 vertical_alignment = 1

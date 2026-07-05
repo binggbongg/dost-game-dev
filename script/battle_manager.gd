@@ -13,6 +13,8 @@ extends Node2D
 @onready var timer_bar = $"../TimerBar"
 @onready var battle_background = $"../UpperBackground"
 
+@onready var action_log_label = $"../PlayerInterface/UI/ActionLogLabel"
+
 var active_special_card : Card = null
 var active_special_item_id := ""
 var is_timeout_ending: bool = false
@@ -20,11 +22,7 @@ var is_manually_drawn: bool = false
 
 @export var card_scene: PackedScene = preload("res://scenes/card.tscn")
 @export var pause_scene = preload("res://scenes/menus/pause_menu.tscn")
-
-# ─── VICTORY UI PRELOAD ───
 @export var victory_screen_scene: PackedScene = preload("res://scenes/ui/level_complete.tscn")
-
-signal battle_won
 
 func _ready() -> void:
 	BattleEvents.special_card_requested.connect(_on_special_requested)
@@ -40,10 +38,7 @@ func _ready() -> void:
 
 	if end_turn:
 		end_turn.end_turn_pressed.connect(_on_end_turn_clicked)
-
-	# Connect our victory signal to handle opening the screen setup
-	battle_won.connect(_sequence_battle_wrap_up)
-	print("CHECKPOINT 0: battle_won connected to _sequence_battle_wrap_up in _ready()")
+	
 
 func _process(_delta: float) -> void:
 	if not turn_manager or not battle_timer or not timer_bar: return
@@ -60,26 +55,47 @@ func _process(_delta: float) -> void:
 		timer_bar.visible = false
 		timer_bar.value = 0
 
-func setup_enemy(enemy_resource: EnemyBehavior) -> void:
-	if not enemy_resource:
-		print("Received null enemy resource --from battlemanager")
+#func setup_enemy(enemy_resource: EnemyBehavior) -> void:
+	#if not enemy_resource:
+		#print("Received null enemy resource --from battlemanager")
+#
+	#if combat_arena and combat_arena.has_method("initialize_arena_enemy"):
+		#combat_arena.initialize_arena_enemy(enemy_resource)
+#
+		#if combat_arena.has_method("get_enemy"):
+			#var enemy = combat_arena.get_enemy()
+			#if enemy and enemy.has_signal("enemy_died"):
+				#if not enemy.enemy_died.is_connected(_on_enemy_died):
+					#enemy.enemy_died.connect(_on_enemy_died)
+					#print("CHECKPOINT: connected enemy_died signal to _on_enemy_died")
+	#else:
+		#print("something wrong with combat arena --battle manager")
 
+func setup_enemy(enemy_resource: EnemyBehavior) -> void:
 	if combat_arena and combat_arena.has_method("initialize_arena_enemy"):
 		combat_arena.initialize_arena_enemy(enemy_resource)
 
-		if combat_arena.has_method("get_enemy"):
-			var enemy = combat_arena.get_enemy()
-			if enemy and enemy.has_signal("enemy_died"):
-				if not enemy.enemy_died.is_connected(_on_enemy_died):
-					enemy.enemy_died.connect(_on_enemy_died)
-					print("CHECKPOINT: connected enemy_died signal to _on_enemy_died")
-	else:
-		print("something wrong with combat arena --battle manager")
+func halt_battle_processing() -> void:
+	if turn_manager:
+		turn_manager.is_busy = true
+		turn_manager.current_state = GameEnums.TurnState.GAME_COMPLETE
 
-func _on_enemy_died() -> void:
-	print("CHECKPOINT A: _on_enemy_died received signal")
-	check_enemy_death()
-	print("CHECKPOINT B: check_enemy_death() returned inside _on_enemy_died")
+	if battle_timer:
+		battle_timer.stop()
+		if battle_timer.timeout.is_connected(_on_player_turn_timeout):
+			battle_timer.timeout.disconnect(_on_player_turn_timeout)
+
+	if timer_bar:
+		timer_bar.visible = false
+
+#func setup_enemy(enemy_resource: EnemyBehavior) -> void:
+	#if combat_arena and combat_arena.has_method("initialize_arena_enemy"):
+		#combat_arena.initialize_arena_enemy(enemy_resource)
+#
+#func _on_enemy_died() -> void:
+	#print("CHECKPOINT A: _on_enemy_died received signal")
+	#check_enemy_death()
+	#print("CHECKPOINT B: check_enemy_death() returned inside _on_enemy_died")
 
 func _on_special_requested(item_id:String):
 	if active_special_card != null:
@@ -110,6 +126,8 @@ func _on_special_cast():
 
 	var enemy = combat_arena.get_enemy()
 	active_special_card.card_data.apply_effect(PlayerStats, [enemy])
+	
+	process_cast_score_injection([active_special_card])
 
 	PlayerInventory.consume_item(active_special_item_id)
 	if active_special_card.current_slot:
@@ -119,9 +137,6 @@ func _on_special_cast():
 	active_special_item_id = ""
 	player_hand.set_hand_enabled(true)
 	card_manager.refresh_hand_interaction()
-
-	# Check death from special items instantly before passing turn
-	if check_enemy_death(): return
 
 	turn_manager.end_player_turn()
 
@@ -174,6 +189,7 @@ func _on_end_turn_clicked():
 	turn_manager.end_player_turn()
 
 func _on_turned_state_changed(new_state: GameEnums.TurnState):
+	if turn_manager.current_state == GameEnums.TurnState.GAME_COMPLETE: return
 	match new_state:
 		GameEnums.TurnState.ENEMY_TURN:
 			print("enemy turn")
@@ -194,17 +210,11 @@ func _on_turned_state_changed(new_state: GameEnums.TurnState):
 				is_timeout_ending = false
 
 			await execute_enemy_turn()
-
-			# Check enemy death at end of turn sequence loops
-			if check_enemy_death(): return
-
-			turn_manager.start_player_turn()
+			if turn_manager.current_state != GameEnums.TurnState.GAME_COMPLETE:
+				turn_manager.start_player_turn()
 
 		GameEnums.TurnState.PLAYER_ACTION:
 			print("player turn")
-			# Check death immediately at turn start in case of damage-over-time effects
-			if check_enemy_death(): return
-
 			start_player_timer()
 			if turn_manager: turn_manager.is_busy = false
 			if mana_manager: mana_manager.reset_turn_mana()
@@ -218,13 +228,14 @@ func _on_turned_state_changed(new_state: GameEnums.TurnState):
 			if card_manager: card_manager.refresh_hand_interaction()
 
 func execute_enemy_turn():
-	print("enemy is preparing action")
+	display_action_message("Enemy is preparing an action...")
 	battle_timer.one_shot = true
 	battle_timer.start(2.0)
 	await battle_timer.timeout
 
 	if combat_arena and combat_arena.has_method("get_enemy"):
 		var enemy = combat_arena.get_enemy()
+		display_action_message("Enemy casts: " + str(enemy.get("current_intent_name")))
 		enemy.execute_intent()
 
 	battle_timer.start(0.5)
@@ -249,6 +260,39 @@ func _on_player_turn_timeout():
 
 	turn_manager.end_player_turn()
 
+func process_cast_score_injection(active_cards: Array):
+	var root_scene = get_tree().current_scene
+	if root_scene and root_scene.has_method("evaluate_combo_scoring"):
+		var matched_recipe = null
+		if combo_manager and combo_manager.has_method("get_matched_recipe"):
+			matched_recipe = combo_manager.get_matched_recipe()
+		
+		# Inject points straight into CombatLevel instantly upon successful casting execution
+		root_scene.evaluate_combo_scoring(active_cards, matched_recipe)
+
+func display_action_message(message: String) -> void:
+	if not is_instance_valid(action_log_label):
+		return
+		
+	# Kill any active fade animations currently manipulating this specific label
+	var active_tweens = get_tree().get_processed_tweens()
+	for tween in active_tweens:
+		if tween.is_valid() and tween.get_meta("target_node", null) == action_log_label:
+			tween.kill()
+	
+	# Assign the string text and snap it back to fully visible opacity
+	action_log_label.text = message
+	action_log_label.modulate.a = 1.0
+	action_log_label.visible = true
+	
+	# Create a clean fade sequence
+	var fade_tween = create_tween()
+	fade_tween.set_meta("target_node", action_log_label)
+	
+	fade_tween.tween_interval(2.0) # Hold the text visibly on screen for 2 seconds
+	fade_tween.tween_property(action_log_label, "modulate:a", 0.0, 0.5) # Fade out over 0.5s
+	fade_tween.tween_callback(func(): action_log_label.visible = false)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		if UIManager.current_menu == null and pause_scene:
@@ -262,51 +306,51 @@ func _unhandled_input(event: InputEvent) -> void:
 					print("--- DEBUG: Forcing 10 Damage to Enemy ---")
 					enemy.take_damage(10)
 					# Intercept debug damage instantly to trigger win criteria check screen
-					check_enemy_death()
+					#check_enemy_death()
 
-func check_enemy_death() -> bool:
-	if combat_arena and combat_arena.has_method("get_enemy"):
-		var enemy = combat_arena.get_enemy()
-		if enemy and enemy.get("current_health") <= 0:
-
-			# Halt the entire turn processing system completely
-			if turn_manager:
-				turn_manager.is_busy = false # UNLOCK UI processing systems so you can click buttons
-				turn_manager.current_state = GameEnums.TurnState.GAME_COMPLETE
-
-			# Kill all active turn timing wheels
-			battle_timer.stop()
-			if battle_timer.timeout.is_connected(_on_player_turn_timeout):
-				battle_timer.timeout.disconnect(_on_player_turn_timeout)
-
-			if timer_bar:
-				timer_bar.visible = false
-
-			_sequence_battle_wrap_up()
-			return true
-	return false
-
-func _sequence_battle_wrap_up() -> void:
-	if has_node("../PlayerInterface/VictoryScreenNode"):
-		return
-
-	var base_max_score = 400000
-	var turn_penalty = PlayerProfile.run_turns * 7500
-	var damage_penalty = PlayerProfile.run_damage_taken * 250
-	var final_score: int = max(50000, base_max_score - turn_penalty - damage_penalty)
-
-	if victory_screen_scene:
-		var victory_instance = victory_screen_scene.instantiate()
-		victory_instance.name = "VictoryScreenNode"
-
-		var ui_parent = get_node_or_null("../PlayerInterface")
-		if ui_parent:
-			ui_parent.add_child(victory_instance)
-		else:
-			get_parent().add_child(victory_instance)
-
-		var current_level_data = PlayerProfile.get_current_level_data()
-
-		victory_instance.initialize_victory_rewards(current_level_data, final_score)
-
-		PlayerProfile.reset_run_counter()
+#func check_enemy_death() -> bool:
+	#if combat_arena and combat_arena.has_method("get_enemy"):
+		#var enemy = combat_arena.get_enemy()
+		#if enemy and enemy.get("current_health") <= 0:
+#
+			## Halt the entire turn processing system completely
+			#if turn_manager:
+				#turn_manager.is_busy = false # UNLOCK UI processing systems so you can click buttons
+				#turn_manager.current_state = GameEnums.TurnState.GAME_COMPLETE
+#
+			## Kill all active turn timing wheels
+			#battle_timer.stop()
+			#if battle_timer.timeout.is_connected(_on_player_turn_timeout):
+				#battle_timer.timeout.disconnect(_on_player_turn_timeout)
+#
+			#if timer_bar:
+				#timer_bar.visible = false
+#
+			#_sequence_battle_wrap_up()
+			#return true
+	#return false
+#
+#func _sequence_battle_wrap_up() -> void:
+	#if has_node("../PlayerInterface/VictoryScreenNode"):
+		#return
+#
+	#var base_max_score = 400000
+	#var turn_penalty = PlayerProfile.run_turns * 7500
+	#var damage_penalty = PlayerProfile.run_damage_taken * 250
+	#var final_score: int = max(50000, base_max_score - turn_penalty - damage_penalty)
+#
+	#if victory_screen_scene:
+		#var victory_instance = victory_screen_scene.instantiate()
+		#victory_instance.name = "VictoryScreenNode"
+#
+		#var ui_parent = get_node_or_null("../PlayerInterface")
+		#if ui_parent:
+			#ui_parent.add_child(victory_instance)
+		#else:
+			#get_parent().add_child(victory_instance)
+#
+		#var current_level_data = PlayerProfile.get_current_level_data()
+#
+		#victory_instance.initialize_victory_rewards(current_level_data, final_score)
+#
+		#PlayerProfile.reset_run_counter()

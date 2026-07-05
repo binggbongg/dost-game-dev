@@ -270,6 +270,10 @@ text = "Mana: "
 vertical_alignment = 1
 script = ExtResource("16_y6h71")
 
+[node name="ActionLogLabel" type="Label" parent="UI" unique_id=1234093403]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="Slots" type="Node2D" parent="." unique_id=934500505]
 
 [node name="CardSlot" parent="Slots" unique_id=1941583601 instance=ExtResource("13_7bqed")]

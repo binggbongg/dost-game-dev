@@ -160,6 +160,43 @@ func validate_cast() -> bool:
 			if kali_count == 2 and tanglaw_count == 1: return true # KALIKASAN + TANGLAW + KALIKASAN
 
 	return false 
+
+func get_matched_recipe() -> ComboRecipe:
+	var active = get_cards_in_slots()
+	if not validate_cast() or active.size() < 2:
+		return null
+		
+	# Extract the active card categories currently sitting in your grid slots
+	var current_elements = active.map(func(c): return c.card_category)
+	current_elements.sort() 
+
+	var recipe_paths: Array[String] = [
+		"res://data/ComboRecipe/baluti_ng_luntian.tres",
+		"res://data/ComboRecipe/bana_na_panata.tres",
+		"res://data/ComboRecipe/bantay_ng_langit.tres",
+		"res://data/ComboRecipe/basbas_ng_liwanag.tres",
+		"res://data/ComboRecipe/galit_ng_gubat.tres",
+		"res://data/ComboRecipe/hukbo_ng_alamat.tres",
+		"res://data/ComboRecipe/katarungan_ng_tala.tres",
+		"res://data/ComboRecipe/lukob_ng_bituin.tres",
+		"res://data/ComboRecipe/pagngitngit_ng_kalikasan.tres",
+		"res://data/ComboRecipe/Pintig_ng_Sanlibutan.tres",
+		"res://data/ComboRecipe/yakap_ng_daigdig.tres"
+	]
+
+	for path in recipe_paths:
+		if not ResourceLoader.exists(path): continue
+		var recipe = load(path) as ComboRecipe
+		if recipe:
+			var recipe_elements = recipe.elements.duplicate()
+			recipe_elements.sort()
+			
+			# If the card patterns match up perfectly, return this exact recipe resource!
+			if current_elements == recipe_elements:
+				return recipe
+
+	return null
+
 func calculate_combo_output(active_cards: Array) -> Dictionary:
 	var base_damage: float = 0.0
 	var base_healing: float = 0.0
@@ -184,8 +221,6 @@ func calculate_combo_output(active_cards: Array) -> Dictionary:
 			GameEnums.CardCategory.LAHI:
 				base_damage += data.damage
 				base_healing += data.heal
-	
-	# add the special conditions of red's combos here.. i will finalize guro inig july 4
 	
 	var final_damage = base_damage * global_multiplier
 	var final_healing = base_healing * global_multiplier
