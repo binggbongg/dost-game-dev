@@ -9,12 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://26yniv7ld3ya" path="res://assets/temporary/play_button.png" id="5_hcoq6"]
 [ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="7_0wcnn"]
 [ext_resource type="Texture2D" uid="uid://dmei84moikr28" path="res://assets/ui/shop/setting_icon.png" id="7_57ra1"]
+[ext_resource type="Texture2D" uid="uid://dtqq8gvycd8xc" path="res://assets/logo/logo-no-bg-01.png" id="7_lvox0"]
 [ext_resource type="PackedScene" uid="uid://dnv63h23touyw" path="res://scenes/menus/login_account.tscn" id="9_ifrkh"]
 [ext_resource type="Texture2D" uid="uid://nvmc7rggfnbj" path="res://assets/ui/buttons/soundOn_icon.png" id="11_0xjr7"]
 [ext_resource type="Texture2D" uid="uid://ctjhgkc78lwkd" path="res://assets/temporary/continue.png" id="11_pcbjq"]
 [ext_resource type="Texture2D" uid="uid://cfp5pvxioqchf" path="res://assets/ui/buttons/soundOff_icon.png" id="12_ifrkh"]
 [ext_resource type="PackedScene" uid="uid://xdbig4p2et14" path="res://scenes/menus/leaderboard.tscn" id="13_0xjr7"]
-[ext_resource type="Texture2D" uid="uid://dhiy0u8u5y80b" path="res://assets/temporary/Assets_UI.png" id="15_0wcnn"]
+[ext_resource type="Texture2D" uid="uid://cmm0ft8pmm2ms" path="res://assets/ui/buttons/leaderboard_icon.png" id="16_cuvb2"]
 [ext_resource type="Texture2D" uid="uid://dihsiy3erxnhn" path="res://assets/ui/buttons/quit_button.png" id="16_drxk1"]
 [ext_resource type="Texture2D" uid="uid://c176ax82el2ra" path="res://assets/ui/buttons/newgame_icon.png" id="17_lvox0"]
 [ext_resource type="Texture2D" uid="uid://cad0d2tw4c1ea" path="res://assets/ui/buttons/Start_icon.png" id="18_cuvb2"]
@@ -69,6 +70,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_bp6ot"]
+colors = PackedColorArray(0, 0, 0, 0.8156863, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ybogl"]
+gradient = SubResource("Gradient_bp6ot")
+fill = 1
+fill_from = Vector2(0.5190972, 0.4045139)
+fill_to = Vector2(0.16493055, 0.6197917)
+
 [sub_resource type="LabelSettings" id="LabelSettings_0xjr7"]
 font = ExtResource("4_ivt2f")
 font_size = 200
@@ -115,10 +125,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cuvb2"]
-atlas = ExtResource("15_0wcnn")
-region = Rect2(798, 615, 261, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bp6ot"]
 atlas = ExtResource("16_drxk1")
@@ -167,7 +173,25 @@ autoplay = "default"
 frame = 1
 frame_progress = 0.90714777
 
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=881261035]
+layout_mode = 0
+offset_left = 655.0
+offset_top = 88.0
+offset_right = 2044.0
+offset_bottom = 712.0
+texture = SubResource("GradientTexture2D_ybogl")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1620426149]
+layout_mode = 0
+offset_left = 822.0
+offset_top = -196.0
+offset_right = 5322.0
+offset_bottom = 4304.0
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("7_lvox0")
+
 [node name="Title" type="Control" parent="." unique_id=1611951136]
+visible = false
 anchors_preset = 0
 offset_right = 1920.9999
 offset_bottom = 1084.0
@@ -280,40 +304,40 @@ expand_mode = 1
 
 [node name="Leaderboard" type="TextureButton" parent="." unique_id=267476027]
 layout_mode = 0
-offset_left = 1330.0
-offset_top = 761.0
-offset_right = 1591.0
-offset_bottom = 883.0
-scale = Vector2(0.8, 0.8)
-texture_normal = SubResource("AtlasTexture_cuvb2")
+offset_left = 1621.0
+offset_top = 12.0
+offset_right = 1685.0
+offset_bottom = 76.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("16_cuvb2")
 script = ExtResource("7_0wcnn")
 menu_to_open = ExtResource("13_0xjr7")
 
 [node name="Exit" type="TextureButton" parent="." unique_id=364911246]
 layout_mode = 0
-offset_left = 1341.0
-offset_top = 873.0
-offset_right = 1426.0
-offset_bottom = 917.0
-scale = Vector2(2.2, 2.2)
+offset_left = 1333.4102
+offset_top = 768.755
+offset_right = 1418.4102
+offset_bottom = 812.755
+scale = Vector2(3.3, 3.3)
 texture_normal = SubResource("AtlasTexture_bp6ot")
 
 [node name="NewGameButton" type="TextureButton" parent="." unique_id=301235348]
 layout_mode = 0
-offset_left = 1313.0001
-offset_top = 537.00006
-offset_right = 1419.0001
-offset_bottom = 581.00006
-scale = Vector2(2.2, 2.2)
+offset_left = 1328.56
+offset_top = 633.93494
+offset_right = 1434.56
+offset_bottom = 677.93494
+scale = Vector2(2.7, 2.7)
 texture_normal = SubResource("AtlasTexture_ybogl")
 
 [node name="ContinueButton" type="TextureButton" parent="." unique_id=684198820]
 layout_mode = 0
-offset_left = 1290.0
-offset_top = 630.0
-offset_right = 1416.5
-offset_bottom = 696.0
-scale = Vector2(2.2, 2.2)
+offset_left = 1300.0
+offset_top = 473.165
+offset_right = 1426.4996
+offset_bottom = 539.1648
+scale = Vector2(2.7, 2.7)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ContinueButton" unique_id=1325709076]
 sprite_frames = SubResource("SpriteFrames_kr238")

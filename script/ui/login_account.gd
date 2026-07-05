@@ -7,6 +7,8 @@ extends Control
 @onready var message_label = $MessageLabel
 @onready var register_scene: PackedScene = load("res://scenes/menus/register_account.tscn")
 
+const LOADING_SCREEN_SCENE = preload("res://scenes/loading.tscn")
+
 func _ready() -> void:
 	if message_label:
 		message_label.text = ""
@@ -26,9 +28,16 @@ func login_user():
 		return
 	
 	update_message("Connecting...")
+	var loading_instance = LOADING_SCREEN_SCENE.instantiate()
+	get_tree().root.add_child(loading_instance)
+	
+	if loading_instance.has_method("set_message"):
+		loading_instance.set_message("Authenticating credentials...")
+	
 	var result = await Talo.player_auth.login(username, password)
 	match result:
 		Talo.player_auth.LoginResult.FAILED:
+			loading_instance.queue_free()
 			match Talo.player_auth.last_error.get_code():
 				TaloAuthError.ErrorCode.INVALID_CREDENTIALS:
 					message_label.text = "Username or passsword is incorrect"
@@ -37,8 +46,16 @@ func login_user():
 		Talo.player_auth.LoginResult.OK:
 			message_label.text = "Login successful"
 			
+			if loading_instance.has_method("set_message"):
+				loading_instance.set_message("Downloading cloud save data...")
+			
 			if typeof(SaveManager) != TYPE_NIL and SaveManager.has_method("sync_with_cloud"):
 				await SaveManager.sync_with_cloud()
+			
+			if loading_instance.has_method("close_loading_screen"):
+				loading_instance.close_loading_screen()
+			else:
+				loading_instance.queue_free()
 			
 			var main_menu = get_tree().current_scene
 			if main_menu and main_menu.has_method("check_player_history"):

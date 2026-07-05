@@ -206,9 +206,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_h2ol7"]
+script = ExtResource("1_raexg")
+name = "Transformation"
+value = 10
+metadata/_custom_type_script = "uid://bc0bopaja6vri"
+
+[sub_resource type="Resource" id="Resource_qjexy"]
+script = ExtResource("1_raexg")
+name = "Flaming Circle"
+type = 2
+value = 14
+chances = 0.6
+metadata/_custom_type_script = "uid://bc0bopaja6vri"
+
+[sub_resource type="Resource" id="Resource_s523q"]
+script = ExtResource("1_raexg")
+name = "Flaming Ball"
+type = 3
+value = 18
+chances = 0.4
+metadata/_custom_type_script = "uid://bc0bopaja6vri"
+
 [resource]
 script = ExtResource("2_kfc3t")
 enemy_name = "Cyber Tamaraw"
-max_health = 100
+max_health = 90
 enemy_sprite = SubResource("SpriteFrames_s523q")
+regular_moves = Array[ExtResource("1_raexg")]([SubResource("Resource_h2ol7")])
+special_moves = Array[ExtResource("1_raexg")]([SubResource("Resource_qjexy"), SubResource("Resource_s523q")])
 metadata/_custom_type_script = "uid://bltrhxh2342fx"

@@ -16,35 +16,29 @@ var level_data_ref: LevelData = null
 var final_score_to_display: int = 0
 
 func _ready() -> void:
-	# FIX: force this CanvasLayer to draw above every other UI layer
-	# (HUD, PlayerInterface, pause menu, etc). Bump this number higher
-	# if you still find it hidden behind something.
 	layer = 100
-
 	next_button.pressed.connect(_on_next_pressed)
 
-	# FIX: your ColorRect actually lives under VICTORY, not directly
-	# under this CanvasLayer's root, so the old get_node_or_null("ColorRect")
-	# was always returning null and silently doing nothing.
 	var reward_panel = get_node_or_null("VICTORY/ColorRect")
 	if reward_panel is Control:
 		reward_panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 		reward_panel.pivot_offset = reward_panel.size / 2.0
 	
+	# Keep this here to handle fallback frame drawing if elements initialize slowly
 	update_ui_text_displays()
 
 func initialize_victory_rewards(level_data: LevelData, score: int) -> void:
-	# FIX: nothing was ever making this popup visible before.
 	visible = true
 	$VICTORY.visible = true
+	level_data_ref = level_data 
 
-	var level_key = "level_" + str(level_data.phase_number) + "-" + str(level_data.level_number)
+	final_score_to_display = score
 
-	# 1. High Score Validation Verification
+	var level_key = "level_" + str(level_data.phase_number) + "-" + str(level_data.level_number) if level_data else "custom"
+
 	var is_new_high_score = PlayerProfile.update_high_score(level_key, score)
 
-	# Fallback rule: Minimum base threshold score required to get rewards at all
-	var minimum_reward_threshold = 150000
+	var minimum_reward_threshold = 300
 	var qualifies_for_rewards = is_new_high_score or (score >= minimum_reward_threshold)
 
 	if not qualifies_for_rewards:
@@ -53,29 +47,25 @@ func initialize_victory_rewards(level_data: LevelData, score: int) -> void:
 		print("Score did not break an old high score or meet minimum requirements. No rewards granted.")
 	else:
 		# 2. Score / Currency Ratio Processing Matrix using your LevelData layout rules
-		if level_data.is_boss_level:
-			# Major Boss Level
-			var boss_ratio: float = float(score) / 400000.0
+		if level_data and level_data.is_boss_level:
+			var boss_ratio: float = float(score) / 2500.00
 			cached_coins_earned = int(clamp(boss_ratio * 200, 0, 250))
 			cached_packs_earned = 2
-		elif level_data.level_number == 3:
-			# Mini Boss Level (Final level of a standard phase sequence)
-			var miniboss_ratio: float = float(score) / 300000.0
+		elif level_data and level_data.level_number == 3:
+			var miniboss_ratio: float = float(score) / 1500.0
 			cached_coins_earned = int(clamp(miniboss_ratio * 120, 0, 150))
 			cached_packs_earned = 1
 		else:
-			# Standard Minion Level
-			var minion_ratio: float = float(score) / 200000.0
+			var minion_ratio: float = float(score) / 800.0
 			cached_coins_earned = int(clamp(minion_ratio * 50, 0, 75))
 			cached_packs_earned = 0
 
 	# 3. Apply profile data updates safely
 	PlayerProfile.add_coins(cached_coins_earned)
+	SaveManager.save_game()
 
-	# 4. Text Label UI Interface Painting
-	score_label.text = str(score)
-	coin_reward_label.text = str(cached_coins_earned)
-	pack_reward_label.text = str(cached_packs_earned)
+	# 4. 🌟 FIX 2: Centralize UI text updates using our robust display coupler function
+	update_ui_text_displays()
 
 ## Sequence controller running the box disappearance and pack animations loop
 func _on_next_pressed() -> void:

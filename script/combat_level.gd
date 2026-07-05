@@ -175,3 +175,5 @@ func evaluate_combo_scoring(active_cards: Array, matched_recipe: ComboRecipe):
 			print("3-card combo bonus!")
 			match_combo_bonus_points += 150
 			match_score_multipler += 0.2
+	
+	print("Current Score (combatlevel): ", str(match_combo_bonus_points))

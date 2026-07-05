@@ -76,7 +76,15 @@ func cast_normal(active_cards):
 	if player_node and player_node.has_method("stop_attack_loop"):
 		player_node.stop_attack_loop()
 	
-	var battle_mgr = get_node_or_null("../../../BattleManager")
+	# 🌟 FIX 1: Locate BattleManager reliably using the scene tree root
+	var battle_mgr = null
+	if get_tree().current_scene:
+		battle_mgr = get_tree().current_scene.get_node_or_null("BattleManager")
+
+	# 🌟 FIX 2: INJECT SCORE MID-BATTLE (Before applying lethal damage ends the match)
+	if battle_mgr and battle_mgr.has_method("process_cast_score_injection"):
+		print("Cast Button: Injecting normal combo cards into score tracker...")
+		battle_mgr.process_cast_score_injection(active_cards)
 
 	# ─── DAMAGE IS APPLIED AFTER ANIMATION FINISHES ───
 	if combo_output.damage > 0:
@@ -84,7 +92,7 @@ func cast_normal(active_cards):
 			var enemy = combat_arena.get_enemy()
 			if enemy and enemy.has_method("take_damage"):
 				enemy.take_damage(combo_output.damage)
-				if battle_mgr:
+				if battle_mgr and battle_mgr.has_method("display_action_message"):
 					battle_mgr.display_action_message("Unleashed a combo for %d damage!" % combo_output.damage)
 			else:
 				print("Cast Error: Active enemy node is invalid or missing take_damage()!")
@@ -93,7 +101,8 @@ func cast_normal(active_cards):
 	
 	if combo_output.healing > 0:
 		PlayerStats.heal_player(combo_output.healing)
-		battle_mgr.display_action_message("Cast restorative magic for %d health!" % combo_output.healing)
+		if battle_mgr and battle_mgr.has_method("display_action_message"):
+			battle_mgr.display_action_message("Cast restorative magic for %d health!" % combo_output.healing)
 
 	var slots_folder = get_node("../../Slots")
 	if slots_folder:
