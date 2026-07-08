@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://dtix80p6rjggk"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_irb48"]
+
+[resource]
+script = ExtResource("1_irb48")
+type = 1
+character_name = "Inventory"
+lines = Array[String](["View purchased items from the shop here. You can also utilize them in battle if you have enough mana."])
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

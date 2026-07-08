@@ -1,75 +1,105 @@
-extends Node
+extends TaloLoadable
 
-const SAVE_PATH = "user://savegame.json"
-func _ready():
+func _ready() -> void:
+	id = "global_save_manager"
+	super()
+	
 	await get_tree().process_frame
-	load_game()
-#para ni ang data kay mo persist the next time the player comes back, we can add this sa exit buttons, saves, etc.
+	sync_with_cloud()
+
+func register_fields():
+	register_field("player_name", PlayerProfile.player_name)
+	register_field("selected_character", PlayerProfile.selected_character)
+	register_field("player_rank", PlayerProfile.player_rank)
+	register_field("coins", PlayerProfile.coins)
+	
+	register_field("is_profile_initialized", PlayerProfile.is_profile_initialized)
+	
+	register_field("max_unlocked_chapters", PlayerProfile.max_unlocked_chapters)
+	register_field("high_scores", PlayerProfile.high_scores)
+	
+	register_field("owned_items", PlayerInventory.owned_items)
+	#hi aissha
+	register_field("tutorials", PlayerProfile.tutorial_steps_completed)
+	register_field("owned_cards", PlayerProfile.owned_cards)
+
+func on_loaded(data: Dictionary):
+	PlayerProfile.player_name = data.get("player_name", "NoobGamer")
+	PlayerProfile.selected_character = data.get("selected_character", "None")
+	PlayerProfile.player_rank = data.get("player_rank", "Starter")
+	PlayerProfile.coins = int(data.get("coins", 100))
+	
+	PlayerProfile.is_profile_initialized = data.get("is_profile_initialized", false)
+	PlayerProfile.max_unlocked_chapters = int(data.get("max_unlocked_chapters", 1))
+	PlayerProfile.high_scores = data.get("high_scores", {})
+	
+	PlayerInventory.owned_items = data.get("owned_items", {})
+	PlayerInventory.inventory_changed.emit()
+	PlayerProfile.owned_cards = data.get("owned_cards", [])
+	PlayerProfile.tutorial_steps_completed = data.get("tutorials", false)
+	
+	print("SaveManager (Talo): Cloud sync applied")
+	print("- Coins Loaded: ", PlayerProfile.coins)
+	print("- Max Chapter Unlocked: ", PlayerProfile.max_unlocked_chapters)
+	print("- High Scores: ", PlayerProfile.high_scores)
+	print("- Inventory: ", PlayerInventory.owned_items)
+
+func sync_with_cloud() -> void:
+	if typeof(Talo) == TYPE_NIL or Talo.identity_check(false) != OK:
+		print("SaveManager (Talo): Player is not authenticated yet. Deferring sync.")
+		return
+
+	print("SaveManager (Talo): Contacting cloud service...")
+	Talo.saves.get_saves()
+	await Talo.saves.saves_loaded
+	
+	if Talo.saves.latest != null:
+		print("SaveManager (Talo): Found existing cloud progress. Loading newest profile...")
+		Talo.saves.choose_save(Talo.saves.latest)
+	else:
+		print("SaveManager (Talo): Critical initialization gate - Fresh account with no saves detected!")
+		print("SaveManager (Talo): Provisioning immediate empty container placeholder to satisfy plugin references...")
+		
+		# 🛡️ SAFE GUARD: To prevent Talo's plugin from breaking on a 'Nil' check,
+		# we initialize an empty, valid TaloGameSave instance into the current session slot.
+		# This assigns an ID of 0 so Talo's background loop processes it safely.
+		if Talo.saves.current == null:
+			# 🛠️ FIX: Match exact keys and casing expected by TaloGameSave._init()
+			var baseline_save_data = {
+				id = 0,
+				name = "PlayerProfileSave",
+				content = {
+					"version": "godot.v2",
+					"objects": []
+				},
+				updatedAt = Time.get_datetime_string_from_system() # ✨ Fixed camelCase key!
+			}
+			# Safely instantiate the class with the corrected dictionary layout
+			Talo.saves.current = TaloGameSave.new(baseline_save_data)
+		
+		# ⏳ Now that the slot is safely populated, tell the cloud server to store it permanently
+		await Talo.saves.create_save("PlayerProfileSave")
+		print("SaveManager (Talo): Placeholder workspace baked successfully.")
+
 func save_game():
-	var save_data = {
-		"profile": {
-			"player_name": PlayerProfile.player_name,
-			"selected_character": PlayerProfile.selected_character,
-			"player_rank": PlayerProfile.player_rank,
-			"coins": PlayerProfile.coins,
-		},
-		"inventory": PlayerInventory.owned_items 
-	}
+	if Talo.saves.current == null:
+		print("SaveManager Warning: Blocked a save attempt because Talo.saves.current is null (Not fully synced yet).")
+		return
 	
-	var json_string = JSON.stringify(save_data)
-	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	
-	if file:
-		file.store_line(json_string)
-		print("SaveManager: Game Saved successfully to ", SAVE_PATH)
-	else:
-		print("SaveManager: Error opening file to save!")
-#mao ni ang method tawgon inig start!
-func load_game():
-	if not FileAccess.file_exists(SAVE_PATH):
-		print("SaveManager: No save file found. Starting fresh.")
-		return false
-		
-	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
-	var json_string = file.get_as_text()
-	var json = JSON.new()
-	var parse_result = json.parse(json_string)
-	
-	if parse_result == OK:
-		var data = json.get_data()
-		apply_save_data(data)
-		print("SaveManager: Game Loaded successfully.")
-		return true
-	else:
-		print("SaveManager: Error parsing JSON!")
-		return false
+	print("Preparing to push data to cloud profile -- savemanager")
+	Talo.saves.update_current_save()
 
-
-#this method is called sa above function, this will set everything para ready na tanan (player profile & inventory)
-func apply_save_data(data: Dictionary):
-	if data.has("profile"):
-		var p = data["profile"]
-		# We use self. to be 100% sure the signals fire
-		PlayerProfile.player_name = p.get("player_name", "Default")
-		PlayerProfile.selected_character = p.get("selected_character", "None")
-		PlayerProfile.player_rank = p.get("player_rank", "Starter")
-		PlayerProfile.coins = int(p.get("coins", 0)) # Force Integer
-		print("SaveManager: Loaded Coins: ", PlayerProfile.coins)
+func save_game_async() -> void:
+	if Talo.saves.current == null:
+		print("SaveManager (Async): Building initial save slot...")
+		await Talo.saves.create_save("PlayerProfileSave")
+		print("Initial save slot created")
+		return
 	
-	if data.has("inventory"):
-		PlayerInventory.owned_items = data["inventory"]
-		PlayerInventory.inventory_changed.emit()
-		print("SaveManager: Loaded Inventory: ", PlayerInventory.owned_items)
+	print("Preparing to push data to cloud profile (Async)")
+	await Talo.saves.update_current_save()
 
-#back to uno, for those hard resets 
 func delete_save():
-	if FileAccess.file_exists(SAVE_PATH):
-		DirAccess.remove_absolute(SAVE_PATH)
-		print("SaveManager: Save file deleted.")
-		
-#testing delete latur
-func _input(event):
-	if event is InputEventKey and event.pressed and event.keycode == KEY_S:
-		save_game()
-	if event is InputEventKey and event.pressed and event.keycode == KEY_L:
-		load_game()
+	if Talo.saves.current != null:
+		Talo.saves.delete_save(Talo.saves.current)
+		print("SaveManager (Talo): Current save slot deleted")

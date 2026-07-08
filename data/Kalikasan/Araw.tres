@@ -1,14 +1,52 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://47qivsam3538"]
 
+[ext_resource type="Texture2D" uid="uid://bwwblossk6u4p" path="res://assets/ui/handsigns/kalikasan_attack/kalikasan_araw.png" id="1_hfwhj"]
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_lb8xh"]
-[ext_resource type="Texture2D" uid="uid://ckhvdhptlxrvq" path="res://assets/temporary/KALIKASAN.png" id="2_okjpj"]
+[ext_resource type="Texture2D" uid="uid://2rqyl6r4m21a" path="res://assets/cards/araw.png" id="2_okjpj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c20np"]
+atlas = ExtResource("1_hfwhj")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm3fx"]
+atlas = ExtResource("1_hfwhj")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p12e3"]
+atlas = ExtResource("1_hfwhj")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cwwh"]
+atlas = ExtResource("1_hfwhj")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qodnk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c20np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm3fx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p12e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cwwh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_lb8xh")
 name = "Araw"
 category = 2
 rarity = 1
-damage = 5.0
-mana_cost = 5
+damage = 5
+mana_cost = 4
 texture = ExtResource("2_okjpj")
+cardASL = SubResource("SpriteFrames_qodnk")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

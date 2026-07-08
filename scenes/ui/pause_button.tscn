@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bmn31kgxbdlkg"]
+
+[ext_resource type="Texture2D" uid="uid://dqwo83tb0ep84" path="res://assets/ui/shop/pause_icon.png" id="1_q8tpf"]
+[ext_resource type="Script" uid="uid://bafg43pjm1xjd" path="res://script/for buttons/pause_button.gd" id="2_23jja"]
+[ext_resource type="PackedScene" uid="uid://b5jq54loh7tw7" path="res://scenes/menus/pause_menu.tscn" id="2_q8tpf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8tpf"]
+atlas = ExtResource("1_q8tpf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjjq4"]
+atlas = ExtResource("1_q8tpf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s75l5"]
+atlas = ExtResource("1_q8tpf")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dog6p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8tpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjjq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s75l5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PauseButton" type="TextureButton" unique_id=784340132]
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("2_23jja")
+pause_screen = ExtResource("2_q8tpf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1079676576]
+position = Vector2(32, 32)
+sprite_frames = SubResource("SpriteFrames_dog6p")
+autoplay = "default"
+frame_progress = 0.43058673

@@ -9,15 +9,20 @@ func _ready():
 	build_deck()
 	shuffle_deck()
 	
-#initialize tanan cards and access them from our resources
 func load_all_cards():
 	all_cards.clear()
-	load_folder("res://data/Diwa")
-	load_folder("res://data/Kalikasan")
-	load_folder("res://data/Lahi")
-	load_folder("res://data/Tanglaw")
-	print("Debugging the loading of the cards: ", all_cards.size())
-	
+
+	var source = PlayerProfile.current_deck
+
+	if source.is_empty():
+		source = PlayerProfile.owned_cards
+
+	for card_path in source:
+		if CardRegistry.all_cards.has(card_path):
+			all_cards.append(CardRegistry.all_cards[card_path])
+
+	print("Loaded", all_cards.size(), "cards")
+
 func load_folder(path:String):
 	var dir = DirAccess.open(path)
 	if dir == null:
@@ -31,7 +36,6 @@ func load_folder(path:String):
 		file_name = dir.get_next()
 	dir.list_dir_end()
 	
-#himuon na atong deckk (dapat shared ra ang deck sa player and enemy)
 func build_deck():
 	deck.clear()
 	for card in all_cards:
@@ -49,14 +53,22 @@ func build_deck():
 	print("For debugging gihapon deck size right now: ", deck.size())
 	
 func shuffle_deck():
+	BattleEvents.special_shuffle_requested.emit()
 	deck.shuffle()
 
-#this will initialize drawing of card from our deck para mao ang method tawgon after mahuman ang turn sa player/enemy and sa start pud sa game
+# Draws cards from our deck. Automatically replenishes if the deck runs dry mid-game.
 func draw_cards(amount:int):
 	var drawn_cards = []
 	for i in range(amount):
 		if deck.is_empty():
-			break
+			print("Deck is out of cards! Re-shuffling and replenishing from deck builder selections...")
+			build_deck()
+			shuffle_deck()
+			
+			if deck.is_empty():
+				print("Warning: Attempted to replenish deck, but all_cards profile configuration is empty!")
+				break
+				
 		drawn_cards.append(deck.pop_back())
 	return drawn_cards
 
@@ -74,7 +86,6 @@ func redraw_hand():
 	
 	player_hand.player_cards.clear()
 	
-	# Explicitly clear slots
 	var slots_folder = get_node_or_null("../../Slots")
 	if slots_folder:
 		for slot in slots_folder.get_children():
@@ -82,5 +93,4 @@ func redraw_hand():
 				slot.card_in_slot = false
 				
 	shuffle_deck()
-	# DRAW THE NEW HAND IMMEDIATELY AS REQUESTED
 	player_hand.draw_starting_hand()

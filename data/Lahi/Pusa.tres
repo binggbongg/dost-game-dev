@@ -1,11 +1,50 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://g8rqmvqr7m0k"]
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_a5wgo"]
-[ext_resource type="Texture2D" uid="uid://b5b1q5yy1a0gn" path="res://assets/temporary/LAHI.png" id="2_svvxy"]
+[ext_resource type="Texture2D" uid="uid://bfy6aaqdnd48q" path="res://assets/ui/handsigns/lahi_attack/lahi_pusa.png" id="1_jd142"]
+[ext_resource type="Texture2D" uid="uid://copd7hwoyn14a" path="res://assets/cards/pusa.png" id="2_svvxy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2afj3"]
+atlas = ExtResource("1_jd142")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjere"]
+atlas = ExtResource("1_jd142")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7rqu"]
+atlas = ExtResource("1_jd142")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swuow"]
+atlas = ExtResource("1_jd142")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f3xxr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2afj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjere")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7rqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swuow")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_a5wgo")
 name = "Pusa"
-mana_cost = 10
+damage = 2
+mana_cost = 2
 texture = ExtResource("2_svvxy")
+cardASL = SubResource("SpriteFrames_f3xxr")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

@@ -8,19 +8,144 @@
 [ext_resource type="Script" uid="uid://bvwmfuduvlr8j" path="res://script/turn_manager.gd" id="6_ef8sc"]
 [ext_resource type="Script" uid="uid://bq06oex8xu486" path="res://script/mana_manager.gd" id="7_6627k"]
 [ext_resource type="Script" uid="uid://b11i4yhoqleww" path="res://script/combo_manager.gd" id="8_tpnij"]
-[ext_resource type="PackedScene" uid="uid://c82bq62sx0rqq" path="res://scenes/ui/cast.tscn" id="9_sw6vk"]
 [ext_resource type="PackedScene" uid="uid://b4401vms4r7bc" path="res://scenes/deck.tscn" id="10_nfx06"]
-[ext_resource type="PackedScene" uid="uid://bn3nv1q8fv4kq" path="res://scenes/ui/redo.tscn" id="11_fsphr"]
-[ext_resource type="Script" uid="uid://db6r35qcmakq4" path="res://script/for buttons/redo.gd" id="12_5f8t2"]
 [ext_resource type="PackedScene" uid="uid://cuauet8et8d12" path="res://scenes/playground/card_slot.tscn" id="13_7bqed"]
-[ext_resource type="PackedScene" uid="uid://ddevy8rp7k5s3" path="res://scenes/ui/mana_counter.tscn" id="14_41kfc"]
-[ext_resource type="Texture2D" uid="uid://c8rlw861jbxef" path="res://assets/temporary/end_turn.png" id="14_prrro"]
+[ext_resource type="Texture2D" uid="uid://78f53yfm7lk3" path="res://assets/ui/shop/shuffle_icon.png" id="13_6627k"]
 [ext_resource type="Script" uid="uid://4e6ld4cyaa3c" path="res://script/for buttons/end_turn_button.gd" id="15_41kfc"]
-[ext_resource type="Texture2D" uid="uid://4eehpc74bxfg" path="res://assets/temporary/cast.png" id="16_6627k"]
+[ext_resource type="Texture2D" uid="uid://i6u68cf63gep" path="res://assets/ui/shop/refresh_icon.png" id="15_tpnij"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="16_6627k"]
+[ext_resource type="Texture2D" uid="uid://bx6fyqi0ypknb" path="res://assets/ui/shop/attack_icon.png" id="16_nfx06"]
 [ext_resource type="Script" uid="uid://tlo2ra6q3mf1" path="res://script/mana_label.gd" id="16_y6h71"]
+[ext_resource type="Texture2D" uid="uid://wyktyx008vun" path="res://assets/ui/buttons/heal_icon.png" id="17_7bqed"]
 [ext_resource type="Script" uid="uid://w4dvt40tscpk" path="res://script/for buttons/cast_button.gd" id="17_sw6vk"]
-[ext_resource type="Texture2D" uid="uid://2y6frsn7uoor" path="res://assets/temporary/undo.png" id="17_tpnij"]
+[ext_resource type="Texture2D" uid="uid://de043ovrwxssr" path="res://assets/ui/buttons/mana_icon.png" id="18_vymni"]
 [ext_resource type="Script" uid="uid://bhns0255lmy8p" path="res://script/for buttons/undo_button.gd" id="19_sw6vk"]
+[ext_resource type="Script" uid="uid://buqgxxfmbk4e5" path="res://script/health_label.gd" id="20_nfx06"]
+[ext_resource type="Texture2D" uid="uid://dgowx8wbwjkd4" path="res://assets/ui/handsigns/kalikasan_attack/kalikasan_apoy.png" id="20_tpnij"]
+[ext_resource type="Script" uid="uid://dsi8sgixbk4g7" path="res://script/ui/sprite_anmation.gd" id="21_sw6vk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sw6vk"]
+atlas = ExtResource("16_nfx06")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfx06"]
+atlas = ExtResource("16_nfx06")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsphr"]
+atlas = ExtResource("16_nfx06")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5f8t2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sw6vk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfx06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsphr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bqed"]
+atlas = ExtResource("13_6627k")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vymni"]
+atlas = ExtResource("13_6627k")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3lra"]
+atlas = ExtResource("13_6627k")
+region = Rect2(256, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a1mqx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bqed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vymni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3lra")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6627k"]
+atlas = ExtResource("15_tpnij")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpnij"]
+atlas = ExtResource("15_tpnij")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f8t2"]
+atlas = ExtResource("15_tpnij")
+region = Rect2(256, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bp0r4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6627k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpnij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f8t2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kypp1"]
+atlas = ExtResource("20_tpnij")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukjja"]
+atlas = ExtResource("20_tpnij")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5s5a"]
+atlas = ExtResource("20_tpnij")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njy47"]
+atlas = ExtResource("20_tpnij")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sw6vk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kypp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukjja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5s5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njy47")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [node name="PlayerInterface" type="Node2D" unique_id=143692811]
 
@@ -50,68 +175,124 @@ script = ExtResource("8_tpnij")
 
 [node name="UI" type="Node2D" parent="." unique_id=1778596181]
 
-[node name="Cast" parent="UI" unique_id=172885607 instance=ExtResource("9_sw6vk")]
-visible = false
-position = Vector2(1510, 620)
-scale = Vector2(0.8, 0.8)
-
 [node name="Deck" parent="UI" unique_id=1967540081 instance=ExtResource("10_nfx06")]
-position = Vector2(150, 890)
+position = Vector2(140, 920)
 script = null
-
-[node name="Redo" parent="UI" unique_id=1923565615 instance=ExtResource("11_fsphr")]
-visible = false
-position = Vector2(410, 620)
-scale = Vector2(0.8, 0.8)
-script = ExtResource("12_5f8t2")
-
-[node name="ManaCounter" parent="UI" unique_id=2075467322 instance=ExtResource("14_41kfc")]
-visible = false
-position = Vector2(200, 580)
 
 [node name="EndTurn" type="TextureButton" parent="UI" unique_id=178733085]
 offset_left = 1570.0
-offset_top = 570.0
+offset_top = 606.0
 offset_right = 1703.0
-offset_bottom = 703.0
+offset_bottom = 739.0
 scale = Vector2(0.8, 0.8)
-texture_normal = ExtResource("14_prrro")
 script = ExtResource("15_41kfc")
 
+[node name="EndTurn" type="AnimatedSprite2D" parent="UI/EndTurn" unique_id=690663493]
+position = Vector2(66.25, 75)
+scale = Vector2(3.5499995, 3.5499995)
+sprite_frames = SubResource("SpriteFrames_5f8t2")
+autoplay = "default"
+
 [node name="CastButton" type="TextureButton" parent="UI" unique_id=1741941068]
-offset_left = 1400.0
+offset_left = 1346.0
 offset_top = 570.0
-offset_right = 1533.0
-offset_bottom = 703.0
-scale = Vector2(0.8, 0.8)
-texture_normal = ExtResource("16_6627k")
+offset_right = 1410.0
+offset_bottom = 634.0
+scale = Vector2(3, 3)
 script = ExtResource("17_sw6vk")
+
+[node name="EndTurn2" type="AnimatedSprite2D" parent="UI/CastButton" unique_id=344583425]
+position = Vector2(29.999977, 32)
+scale = Vector2(0.9466666, 0.9466666)
+sprite_frames = SubResource("SpriteFrames_a1mqx")
+autoplay = "default"
 
 [node name="UndoButton" type="TextureButton" parent="UI" unique_id=214705102]
 offset_left = 430.0
-offset_top = 570.0
+offset_top = 600.0
 offset_right = 563.0
-offset_bottom = 703.0
+offset_bottom = 733.0
 scale = Vector2(0.8, 0.8)
-texture_normal = ExtResource("17_tpnij")
 script = ExtResource("19_sw6vk")
 
-[node name="ManaLabel" type="RichTextLabel" parent="UI" unique_id=1883248164]
-offset_left = 90.0
-offset_top = 550.0
-offset_right = 290.0
-offset_bottom = 700.0
-theme_override_font_sizes/normal_font_size = 30
-text = "0"
+[node name="Redo" type="AnimatedSprite2D" parent="UI/UndoButton" unique_id=1646214883]
+position = Vector2(67.5, 71.25)
+scale = Vector2(3.55, 3.55)
+sprite_frames = SubResource("SpriteFrames_bp0r4")
+autoplay = "default"
+frame_progress = 0.10541193
+
+[node name="Border" type="TextureRect" parent="UI" unique_id=114682843]
+offset_left = -5.0
+offset_top = 4.0
+offset_right = 481.66663
+offset_bottom = 152.0
+
+[node name="IconHealth" type="TextureRect" parent="UI/Border" unique_id=906948913]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 35.0
+offset_right = 102.0
+offset_bottom = 75.0
+texture = ExtResource("17_7bqed")
+
+[node name="IconMana" type="TextureRect" parent="UI/Border" unique_id=1395652342]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 82.0
+offset_right = 99.0
+offset_bottom = 122.0
+texture = ExtResource("18_vymni")
+
+[node name="HealthLabel" type="RichTextLabel" parent="UI/Border" unique_id=1414619960]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 22.0
+offset_right = 483.0
+offset_bottom = 88.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("16_6627k")
+theme_override_font_sizes/normal_font_size = 32
+text = "Health: 00/00"
+vertical_alignment = 1
+script = ExtResource("20_nfx06")
+
+[node name="ManaLabel" type="RichTextLabel" parent="UI/Border" unique_id=1883248164]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 65.0
+offset_right = 478.0
+offset_bottom = 134.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("16_6627k")
+theme_override_font_sizes/normal_font_size = 32
+text = "Mana: "
+vertical_alignment = 1
 script = ExtResource("16_y6h71")
+
+[node name="ActionLogLabel" type="Label" parent="UI" unique_id=1234093403]
+offset_left = 643.0
+offset_top = 117.0
+offset_right = 1288.0
+offset_bottom = 152.0
+theme_override_font_sizes/font_size = 27
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Slots" type="Node2D" parent="." unique_id=934500505]
 
 [node name="CardSlot" parent="Slots" unique_id=1941583601 instance=ExtResource("13_7bqed")]
-position = Vector2(710, 620)
+position = Vector2(710, 660)
 
 [node name="CardSlot2" parent="Slots" unique_id=595069567 instance=ExtResource("13_7bqed")]
-position = Vector2(960, 620)
+position = Vector2(960, 660)
 
 [node name="CardSlot3" parent="Slots" unique_id=7364264 instance=ExtResource("13_7bqed")]
-position = Vector2(1210, 620)
+position = Vector2(1210, 660)
+
+[node name="SpriteAnmation" type="AnimatedSprite2D" parent="." unique_id=1291226503]
+position = Vector2(973, 362)
+scale = Vector2(5.78125, 5.78125)
+sprite_frames = SubResource("SpriteFrames_sw6vk")
+autoplay = "default"
+script = ExtResource("21_sw6vk")

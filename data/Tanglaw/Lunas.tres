@@ -1,13 +1,52 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dn3lc1wa5r7in"]
 
+[ext_resource type="Texture2D" uid="uid://ct35hbbdapmkd" path="res://assets/ui/handsigns/tanglaw_attack/tanglaw_lunas.png" id="1_22pca"]
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_plnuy"]
-[ext_resource type="Texture2D" uid="uid://dakgmbra2is36" path="res://assets/temporary/TANGLAW.png" id="2_6dt4a"]
+[ext_resource type="Texture2D" uid="uid://heyib34w8xm4" path="res://assets/cards/lunas.png" id="2_6dt4a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kberp"]
+atlas = ExtResource("1_22pca")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx6uo"]
+atlas = ExtResource("1_22pca")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xplfq"]
+atlas = ExtResource("1_22pca")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llgbo"]
+atlas = ExtResource("1_22pca")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4125x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kberp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yx6uo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xplfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llgbo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_plnuy")
 name = "Lunas"
 category = 3
 rarity = 1
-mana_cost = 8
+heal = 6
+mana_cost = 4
 texture = ExtResource("2_6dt4a")
+cardASL = SubResource("SpriteFrames_4125x")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

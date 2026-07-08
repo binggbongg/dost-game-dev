@@ -1,7 +1,44 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://c3u6ai4ijlckc"]
 
+[ext_resource type="Texture2D" uid="uid://bhy735jodwbgb" path="res://assets/ui/handsigns/tanglaw_attack/tanglaw_salamin.png" id="1_2ao7b"]
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_adxyd"]
-[ext_resource type="Texture2D" uid="uid://dakgmbra2is36" path="res://assets/temporary/TANGLAW.png" id="2_2ao7b"]
+[ext_resource type="Texture2D" uid="uid://bupnvla7km3ys" path="res://assets/cards/salamin.png" id="3_2ao7b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsq66"]
+atlas = ExtResource("1_2ao7b")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hglqk"]
+atlas = ExtResource("1_2ao7b")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0s21"]
+atlas = ExtResource("1_2ao7b")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_820qs"]
+atlas = ExtResource("1_2ao7b")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yncqc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsq66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hglqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0s21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_820qs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_adxyd")
@@ -9,8 +46,8 @@ name = "Salamin"
 description = "Sets a protective layer for player."
 category = 3
 rarity = 3
-damage = 1
-heal = 40
-mana_cost = 20
-texture = ExtResource("2_2ao7b")
+heal = 15
+mana_cost = 9
+texture = ExtResource("3_2ao7b")
+cardASL = SubResource("SpriteFrames_yncqc")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

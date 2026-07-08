@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var combo_manager = get_node("../../GameManagers/ComboManager")
 @onready var turn_manager = get_node("../../GameManagers/TurnManager")
-@onready var sprite = $Sprite2D # Make sure your sprite is named this
 @onready var mana_manager: Node2D = $"../../GameManagers/ManaManager"
 @onready var player_hand: Node2D = $"../../GameManagers/PlayerHand"
 @onready var card_manager: Node2D = $"../../GameManagers/CardManager"

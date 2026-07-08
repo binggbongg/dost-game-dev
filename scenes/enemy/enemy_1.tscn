@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d21de5id2a0gx"]
 
 [ext_resource type="Script" uid="uid://cr65k0srho0i" path="res://script/enemy/enemy_ai.gd" id="1_a1412"]
+[ext_resource type="PackedScene" uid="uid://ougnig1drgdm" path="res://scenes/ui/enemy_health_bar.tscn" id="2_trh57"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tcmaw"]
 animations = []
@@ -9,9 +10,16 @@ animations = []
 radius = 11.571428
 height = 34.0
 
-[node name="Enemy1" type="Node2D" unique_id=605101585]
+[node name="Enemy" type="Node2D" unique_id=605101585]
 scale = Vector2(7, 7)
 script = ExtResource("1_a1412")
+
+[node name="EnemyHealthBar" parent="." unique_id=1763924136 instance=ExtResource("2_trh57")]
+offset_left = -18.428572
+offset_top = -25.857143
+offset_right = 27.571428
+offset_bottom = -17.857143
+scale = Vector2(0.8, 0.8)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=881871888]
 sprite_frames = SubResource("SpriteFrames_tcmaw")

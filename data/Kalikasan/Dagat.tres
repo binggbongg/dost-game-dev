@@ -1,14 +1,52 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://boknjhwg1xj7o"]
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_7g53f"]
-[ext_resource type="Texture2D" uid="uid://ckhvdhptlxrvq" path="res://assets/temporary/KALIKASAN.png" id="2_mr85l"]
+[ext_resource type="Texture2D" uid="uid://c63300154tr5g" path="res://assets/ui/handsigns/kalikasan_attack/kalikasan_dagat.png" id="1_kianu"]
+[ext_resource type="Texture2D" uid="uid://dkkkd6e0toh8c" path="res://assets/cards/dagat.png" id="2_mr85l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sm7x5"]
+atlas = ExtResource("1_kianu")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kg7i"]
+atlas = ExtResource("1_kianu")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p12xm"]
+atlas = ExtResource("1_kianu")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asmn4"]
+atlas = ExtResource("1_kianu")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0qcm2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sm7x5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kg7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p12xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asmn4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_7g53f")
 name = "Dagat"
 category = 2
 rarity = 1
-damage = 5.0
-mana_cost = 5
+damage = 5
+mana_cost = 4
 texture = ExtResource("2_mr85l")
+cardASL = SubResource("SpriteFrames_0qcm2")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

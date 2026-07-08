@@ -1,0 +1,335 @@
+[gd_scene format=3 uid="uid://bp1vipbbyp64f"]
+
+[ext_resource type="Script" uid="uid://c3uhf5vseirdr" path="res://script/story/setup.gd" id="1_1ga4y"]
+[ext_resource type="Texture2D" uid="uid://b1srenpusy6ns" path="res://assets/ui/mainscreen/mainscreen_ui_chooseacharacter.png" id="3_4vuuv"]
+[ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="4_0yieg"]
+[ext_resource type="Texture2D" uid="uid://kgl2v0um6khp" path="res://assets/ui/mainscreen/mainscreen_ui_button_short.png" id="5_ng6g8"]
+[ext_resource type="Texture2D" uid="uid://dv446b0xouw3g" path="res://assets/player/boy_idle.png" id="6_4vuuv"]
+[ext_resource type="Texture2D" uid="uid://dvuofhfo7vd65" path="res://assets/ui/mainscreen/mainscreen_ui_loginAccount.png" id="8_4vuuv"]
+[ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="13_jgyn7"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="14_am75w"]
+[ext_resource type="Texture2D" uid="uid://c2xv5vbofw3wy" path="res://assets/player/girl_idle.png" id="15_nbmt4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ut1y"]
+atlas = ExtResource("4_0yieg")
+region = Rect2(0, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6ipy"]
+atlas = ExtResource("4_0yieg")
+region = Rect2(192, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fagkd"]
+atlas = ExtResource("4_0yieg")
+region = Rect2(384, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhkl8"]
+atlas = ExtResource("4_0yieg")
+region = Rect2(576, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71t1l"]
+atlas = ExtResource("4_0yieg")
+region = Rect2(768, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr35c"]
+atlas = ExtResource("4_0yieg")
+region = Rect2(960, 0, 192, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o7e00"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ut1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6ipy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fagkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhkl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71t1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr35c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_r8lcr"]
+colors = PackedColorArray(0, 0, 0, 0, 0.13333334, 0.047058824, 0, 0.8784314)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mh3e2"]
+gradient = SubResource("Gradient_r8lcr")
+fill_from = Vector2(0.4871795, 0)
+fill_to = Vector2(0.48376068, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tf5vc"]
+paragraph_spacing = 0.5
+font_size = 56
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng6g8"]
+atlas = ExtResource("6_4vuuv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yieg"]
+atlas = ExtResource("6_4vuuv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g40ly"]
+atlas = ExtResource("6_4vuuv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu812"]
+atlas = ExtResource("6_4vuuv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77jkr"]
+atlas = ExtResource("6_4vuuv")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2povi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng6g8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yieg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g40ly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu812")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77jkr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olnx8"]
+atlas = ExtResource("15_nbmt4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw5d8"]
+atlas = ExtResource("15_nbmt4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b71yg"]
+atlas = ExtResource("15_nbmt4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3omac"]
+atlas = ExtResource("15_nbmt4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44ohy"]
+atlas = ExtResource("15_nbmt4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fho6l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olnx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw5d8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b71yg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3omac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44ohy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ga4y"]
+font_size = 29
+
+[node name="Setup" type="Control" unique_id=413018492]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1ga4y")
+
+[node name="Background" type="Node2D" parent="." unique_id=1309525119]
+
+[node name="AnimatedBG" type="AnimatedSprite2D" parent="Background" unique_id=408774780]
+position = Vector2(960, 540)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_o7e00")
+autoplay = "default"
+
+[node name="Gradient" type="TextureRect" parent="Background" unique_id=1606147460]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_mh3e2")
+
+[node name="Character" type="Node2D" parent="." unique_id=1400295104]
+
+[node name="Border" type="TextureRect" parent="Character" unique_id=1624913404]
+offset_left = 549.0
+offset_top = 207.0
+offset_right = 1369.0
+offset_bottom = 881.0
+texture = ExtResource("3_4vuuv")
+metadata/_edit_use_anchors_ = true
+
+[node name="GreetingLabel" type="Label" parent="Character" unique_id=322527703]
+offset_left = 595.0
+offset_top = 251.0
+offset_right = 1351.0
+offset_bottom = 376.0
+theme_override_fonts/font = ExtResource("13_jgyn7")
+theme_override_font_sizes/font_size = 50
+text = "Greetings, Blessed One,"
+label_settings = SubResource("LabelSettings_tf5vc")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="GreetingLabel3" type="RichTextLabel" parent="Character" unique_id=573939570]
+offset_left = 691.0
+offset_top = 708.0
+offset_right = 1232.0
+offset_bottom = 845.0
+theme_override_fonts/normal_font = ExtResource("14_am75w")
+theme_override_fonts/bold_font = ExtResource("13_jgyn7")
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 19
+text = "How dost thou appear before the spirits? "
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Boy" type="ColorRect" parent="Character" unique_id=1390617612]
+offset_left = 679.0
+offset_top = 381.0
+offset_right = 906.0
+offset_bottom = 709.0
+color = Color(0.3854925, 0.38549247, 0.38549247, 0.654902)
+
+[node name="BoyButton" type="Button" parent="Character/Boy" unique_id=2037051535]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 223.0
+offset_bottom = 327.0
+
+[node name="BoySprite" type="AnimatedSprite2D" parent="Character/Boy" unique_id=1257499477]
+position = Vector2(114, 167)
+scale = Vector2(7.1875, 7.1875)
+sprite_frames = SubResource("SpriteFrames_2povi")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.46472526
+
+[node name="Girl" type="ColorRect" parent="Character" unique_id=1400708573]
+offset_left = 1012.0
+offset_top = 381.0
+offset_right = 1239.0
+offset_bottom = 709.0
+color = Color(0.3854925, 0.38549247, 0.38549247, 0.654902)
+
+[node name="GirlButton" type="Button" parent="Character/Girl" unique_id=71594915]
+layout_mode = 0
+offset_left = 9.0
+offset_right = 231.0
+offset_bottom = 327.0
+
+[node name="GirlSprite" type="AnimatedSprite2D" parent="Character/Girl" unique_id=1957829145]
+position = Vector2(124.999985, 159.00002)
+scale = Vector2(7.8281236, 7.8281236)
+sprite_frames = SubResource("SpriteFrames_fho6l")
+autoplay = "default"
+frame_progress = 0.361837
+
+[node name="Name" type="Node2D" parent="." unique_id=425122895]
+visible = false
+position = Vector2(36, 0)
+
+[node name="Border" type="TextureRect" parent="Name" unique_id=1594066080]
+offset_left = 512.0
+offset_top = 289.0
+offset_right = 1332.0
+offset_bottom = 796.0
+texture = ExtResource("8_4vuuv")
+metadata/_edit_use_anchors_ = true
+
+[node name="GreetingLabel2" type="Label" parent="Name" unique_id=2126410742]
+offset_left = 552.0
+offset_top = 395.0
+offset_right = 1308.0
+offset_bottom = 520.0
+theme_override_fonts/font = ExtResource("13_jgyn7")
+theme_override_font_sizes/font_size = 50
+text = "Greetings, Blessed One,"
+label_settings = SubResource("LabelSettings_tf5vc")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="GreetingLabel" type="RichTextLabel" parent="Name" unique_id=1476342811]
+offset_left = 654.0
+offset_top = 431.0
+offset_right = 1195.0
+offset_bottom = 568.0
+theme_override_fonts/normal_font = ExtResource("14_am75w")
+theme_override_fonts/bold_font = ExtResource("13_jgyn7")
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 19
+text = "What name dost thou bear?\""
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="InputUsername" type="LineEdit" parent="Name" unique_id=459858381]
+offset_left = 599.0
+offset_top = 539.0
+offset_right = 1227.0
+offset_bottom = 589.0
+theme_override_fonts/font = ExtResource("14_am75w")
+theme_override_font_sizes/font_size = 30
+placeholder_text = " Enter your name"
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sunmit" type="TextureButton" parent="Name" unique_id=299540285]
+offset_left = 798.0
+offset_top = 640.0
+offset_right = 819.0
+offset_bottom = 647.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("5_ng6g8")
+metadata/_edit_use_anchors_ = true
+
+[node name="nEXT" type="Label" parent="Name" unique_id=203488152]
+offset_left = 825.0
+offset_top = 653.0
+offset_right = 997.0
+offset_bottom = 690.0
+theme_override_fonts/font = ExtResource("13_jgyn7")
+theme_override_font_sizes/font_size = 30
+text = "SAVE"
+label_settings = SubResource("LabelSettings_1ga4y")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true

@@ -1,0 +1,220 @@
+[gd_scene format=3 uid="uid://di1evjdy75pxt"]
+
+[ext_resource type="Script" uid="uid://c1ypudxvyp6t6" path="res://script/ui/register_account.gd" id="1_3krcp"]
+[ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="1_hjwia"]
+[ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="2_3krcp"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_ldrm6"]
+[ext_resource type="Texture2D" uid="uid://cul7661ju2d7r" path="res://assets/ui/mainscreen/mainscreen_ui_registerAccount.png" id="3_qt4tx"]
+[ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="5_fblf8"]
+[ext_resource type="Texture2D" uid="uid://n2eax006wda8" path="res://assets/ui/buttons/save_button.png" id="6_ldrm6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ut1y"]
+atlas = ExtResource("1_hjwia")
+region = Rect2(0, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6ipy"]
+atlas = ExtResource("1_hjwia")
+region = Rect2(192, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fagkd"]
+atlas = ExtResource("1_hjwia")
+region = Rect2(384, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhkl8"]
+atlas = ExtResource("1_hjwia")
+region = Rect2(576, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71t1l"]
+atlas = ExtResource("1_hjwia")
+region = Rect2(768, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr35c"]
+atlas = ExtResource("1_hjwia")
+region = Rect2(960, 0, 192, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o7e00"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ut1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6ipy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fagkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhkl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71t1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr35c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_r8lcr"]
+colors = PackedColorArray(0, 0, 0, 0, 0.13333334, 0.047058824, 0, 0.8784314)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mh3e2"]
+gradient = SubResource("Gradient_r8lcr")
+fill_from = Vector2(0.4871795, 0)
+fill_to = Vector2(0.48376068, 1)
+
+[node name="RegisterAccount" type="Control" unique_id=413018492]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_3krcp")
+
+[node name="Background" type="Node2D" parent="." unique_id=1309525119]
+
+[node name="AnimatedBG" type="AnimatedSprite2D" parent="Background" unique_id=408774780]
+position = Vector2(960, 540)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_o7e00")
+autoplay = "default"
+
+[node name="Gradient" type="TextureRect" parent="Background" unique_id=1606147460]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_mh3e2")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1678492429]
+visible = false
+layout_mode = 0
+offset_left = 570.0
+offset_top = 156.0
+offset_right = 1333.0
+offset_bottom = 864.0
+color = Color(0.5022987, 0.24747545, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=443222025]
+layout_mode = 0
+offset_left = 571.0
+offset_top = 101.0
+offset_right = 666.375
+offset_bottom = 205.625
+scale = Vector2(8, 8)
+texture = ExtResource("3_qt4tx")
+
+[node name="Label" type="Label" parent="." unique_id=322527703]
+layout_mode = 0
+offset_left = 724.0
+offset_top = 208.0
+offset_right = 1185.0
+offset_bottom = 298.0
+theme_override_fonts/font = ExtResource("2_3krcp")
+theme_override_font_sizes/font_size = 50
+text = "Register Account"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Placeholder1" type="Node" parent="." unique_id=1474830691]
+
+[node name="UsernameLabel" type="Label" parent="Placeholder1" unique_id=1842331212]
+offset_left = 709.0
+offset_top = 308.0
+offset_right = 1204.0
+offset_bottom = 351.0
+theme_override_fonts/font = ExtResource("2_3krcp")
+theme_override_font_sizes/font_size = 30
+text = "Username"
+vertical_alignment = 1
+
+[node name="InputUsername" type="LineEdit" parent="Placeholder1" unique_id=459858381]
+offset_left = 709.0
+offset_top = 355.0
+offset_right = 1205.0
+offset_bottom = 405.0
+theme_override_fonts/font = ExtResource("3_ldrm6")
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Enter username"
+
+[node name="Placeholder2" type="Node" parent="." unique_id=1193616408]
+
+[node name="PasswordLabel" type="Label" parent="Placeholder2" unique_id=1078144199]
+offset_left = 709.0
+offset_top = 423.0
+offset_right = 1204.0
+offset_bottom = 466.0
+theme_override_fonts/font = ExtResource("2_3krcp")
+theme_override_font_sizes/font_size = 30
+text = "Password"
+vertical_alignment = 1
+
+[node name="InputPassword" type="LineEdit" parent="Placeholder2" unique_id=2047264579]
+offset_left = 709.0
+offset_top = 471.0
+offset_right = 1205.0
+offset_bottom = 521.0
+theme_override_fonts/font = ExtResource("3_ldrm6")
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Enter password"
+
+[node name="Placeholder3" type="Node" parent="Placeholder2" unique_id=1786951363]
+
+[node name="ConfirmPass" type="Label" parent="Placeholder2/Placeholder3" unique_id=1950441883]
+offset_left = 709.0
+offset_top = 548.0
+offset_right = 1204.0
+offset_bottom = 591.0
+theme_override_fonts/font = ExtResource("2_3krcp")
+theme_override_font_sizes/font_size = 30
+text = "Confirm Password"
+vertical_alignment = 1
+
+[node name="InputCPass" type="LineEdit" parent="Placeholder2/Placeholder3" unique_id=1784939123]
+offset_left = 709.0
+offset_top = 596.0
+offset_right = 1205.0
+offset_bottom = 646.0
+theme_override_fonts/font = ExtResource("3_ldrm6")
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Confirm password"
+
+[node name="RegisterButton" type="TextureButton" parent="." unique_id=1225701361]
+layout_mode = 0
+offset_left = 757.0
+offset_top = 647.0
+offset_right = 885.0
+offset_bottom = 711.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("6_ldrm6")
+
+[node name="Label2" type="Label" parent="." unique_id=1264889390]
+visible = false
+layout_mode = 0
+offset_left = 881.0
+offset_top = 612.0
+offset_right = 1195.0
+offset_bottom = 642.0
+theme_override_fonts/font = ExtResource("3_ldrm6")
+theme_override_font_sizes/font_size = 25
+text = "Have an account? Go Back"
+horizontal_alignment = 2
+
+[node name="MessageLabel" type="Label" parent="." unique_id=282164482]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 824.0
+offset_right = 1330.0
+offset_bottom = 849.0
+theme_override_fonts/font = ExtResource("3_ldrm6")
+theme_override_font_sizes/font_size = 20
+text = "sample message here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("5_fblf8")]
+layout_mode = 0
+offset_left = 1215.0
+offset_top = 165.0
+offset_right = 1220.0
+offset_bottom = 170.0

@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://bw7k5221ej7ii"]
+
+[ext_resource type="Texture2D" uid="uid://d1oekugphync4" path="res://assets/temporary/level_preview.png" id="1_necti"]
+[ext_resource type="Script" uid="uid://da2oeh0l25ddt" path="res://script/preview_phase.gd" id="1_x02yk"]
+[ext_resource type="Texture2D" uid="uid://mqbgl2en2v0y" path="res://assets/ui/spellbook/spellbook_green_bookmark.png" id="3_d7l6l"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_jxv61"]
+[ext_resource type="Texture2D" uid="uid://c5t544jq1um42" path="res://assets/ui/spellbook/spellbook_blue_bookmark.png" id="4_tee6s"]
+[ext_resource type="Texture2D" uid="uid://c2ijib67ou3nb" path="res://assets/ui/spellbook/spellbook_yellow_bookmark.png" id="5_n13ui"]
+[ext_resource type="Texture2D" uid="uid://ckffja4gdctvj" path="res://assets/ui/spellbook/spellbook_red_bookmark.png" id="6_ow03n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vfnsj"]
+font = ExtResource("4_jxv61")
+font_size = 92
+font_color = Color(1, 1, 1, 0.72156864)
+
+[node name="Preview_Phase1" type="Control" unique_id=684956544]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x02yk")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2090813972]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_necti")
+
+[node name="Board" type="ColorRect" parent="." unique_id=1471430397]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 70.0
+offset_right = 1765.0
+offset_bottom = 1021.0
+color = Color(0.73792905, 0.47394252, 0.28192607, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Board" unique_id=1641705298]
+layout_mode = 0
+offset_left = -12.0
+offset_top = 12.0
+offset_right = 1653.0
+offset_bottom = 774.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Hbox" type="HBoxContainer" parent="Board/MarginContainer" unique_id=1308995286]
+layout_mode = 2
+size_flags_stretch_ratio = 12.3
+
+[node name="Sidebar" type="VBoxContainer" parent="Board/MarginContainer/Hbox" unique_id=454711942]
+layout_mode = 2
+
+[node name="Kalikasan" type="TextureButton" parent="Board/MarginContainer/Hbox/Sidebar" unique_id=655024337]
+layout_mode = 2
+texture_normal = ExtResource("3_d7l6l")
+
+[node name="Tanglaw" type="TextureButton" parent="Board/MarginContainer/Hbox/Sidebar" unique_id=550797167]
+layout_mode = 2
+texture_normal = ExtResource("4_tee6s")
+
+[node name="Diwa" type="TextureButton" parent="Board/MarginContainer/Hbox/Sidebar" unique_id=1779912172]
+layout_mode = 2
+texture_normal = ExtResource("5_n13ui")
+
+[node name="Lahi" type="TextureButton" parent="Board/MarginContainer/Hbox/Sidebar" unique_id=378419077]
+layout_mode = 2
+texture_normal = ExtResource("6_ow03n")
+
+[node name="ScrollArea" type="VScrollBar" parent="Board/MarginContainer/Hbox" unique_id=1015538694]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LibraryGrid" type="GridContainer" parent="Board/MarginContainer/Hbox/ScrollArea" unique_id=53835849]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 4
+
+[node name="SelectedCardHolder2" type="Label" parent="." unique_id=1439791520]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 116.0
+offset_right = 598.0
+offset_bottom = 227.0
+text = "My Cards"
+label_settings = SubResource("LabelSettings_vfnsj")
+horizontal_alignment = 2
+
+[node name="SelectedSection" type="Control" parent="." unique_id=219657312]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StatusLabel" type="Label" parent="SelectedSection" unique_id=415330979]
+layout_mode = 0
+offset_left = 1582.0
+offset_top = 101.0
+offset_right = 1726.0
+offset_bottom = 212.0
+text = "/12"
+label_settings = SubResource("LabelSettings_vfnsj")
+horizontal_alignment = 2
+
+[node name="DeckGrid" type="GridContainer" parent="SelectedSection" unique_id=658690250]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 722.0
+offset_right = 1790.0
+offset_bottom = 986.0
+columns = 5

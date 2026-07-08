@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SpecialCardData" format=3 uid="uid://cotu4b8h276vs"]
 
-[ext_resource type="Script" uid="uid://8m6aga3qk3g5" path="res://diwata.gd" id="1_xapgt"]
+[ext_resource type="Script" uid="uid://8m6aga3qk3g5" path="res://script/item_effects/diwata.gd" id="1_xapgt"]
 [ext_resource type="Script" uid="uid://cpiimvdghqtnm" path="res://data/special_cards.gd" id="2_aw3bd"]
 [ext_resource type="Texture2D" uid="uid://dbf2yi6groiqc" path="res://assets/temporary/diwata.png" id="3_bonhg"]
 
@@ -10,7 +10,7 @@ category = 4
 rarity = 4
 effect_script = ExtResource("1_xapgt")
 heal = 0.5
-mana_cost = 50
+mana_cost = 16
 item_id = "002"
 name = "Diwata"
 description = "Regains 50% of full health back

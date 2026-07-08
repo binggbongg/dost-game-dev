@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://b5jq54loh7tw7"]
+
+[ext_resource type="Script" uid="uid://0wdc1mleeh78" path="res://script/ui/pause_menu.gd" id="1_2wrho"]
+[ext_resource type="Texture2D" uid="uid://cul7661ju2d7r" path="res://assets/ui/mainscreen/mainscreen_ui_registerAccount.png" id="2_eyfc8"]
+[ext_resource type="Texture2D" uid="uid://c0roqogi8ooil" path="res://assets/ui/buttons/resume_icon.png" id="3_xiui8"]
+[ext_resource type="Texture2D" uid="uid://d1nd2y4dhsl7x" path="res://assets/ui/buttons/restart_icon.png" id="4_gqhbq"]
+[ext_resource type="Texture2D" uid="uid://dihsiy3erxnhn" path="res://assets/ui/buttons/quit_button.png" id="5_dgi6y"]
+[ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="6_dqjbd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opdvj"]
+atlas = ExtResource("3_xiui8")
+region = Rect2(11, 10, 106, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf6lc"]
+atlas = ExtResource("4_gqhbq")
+region = Rect2(11, 10, 106, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7gms"]
+atlas = ExtResource("5_dgi6y")
+region = Rect2(21, 11, 85, 42)
+
+[node name="PauseMenu" type="Control" unique_id=386369776]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2wrho")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1537744357]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 609.315
+offset_top = 158.0
+offset_right = -1224.6844
+offset_bottom = -837.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(8.5, 8.5)
+texture = ExtResource("2_eyfc8")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2107912257]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 502.0
+offset_top = 204.0
+offset_right = -468.0
+offset_bottom = -236.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.43758276, 0.21235046, 9.62615e-08, 1)
+
+[node name="Comment" type="RichTextLabel" parent="." unique_id=281366747]
+visible = false
+layout_mode = 0
+offset_left = 544.0
+offset_top = 234.0
+offset_right = 780.0
+offset_bottom = 439.0
+theme_override_font_sizes/normal_font_size = 24
+text = "hi angela pwede ikaw lng polish sa ui ani hehe functioning ramn sd ang buttons"
+
+[node name="PlayButton" type="TextureButton" parent="." unique_id=2108949909]
+layout_mode = 0
+offset_left = 817.0
+offset_top = 342.0
+offset_right = 923.0
+offset_bottom = 386.0
+scale = Vector2(3, 3)
+texture_normal = SubResource("AtlasTexture_opdvj")
+
+[node name="ResetButon" type="TextureButton" parent="." unique_id=389909092]
+layout_mode = 0
+offset_left = 817.0
+offset_top = 492.0
+offset_right = 923.0
+offset_bottom = 536.0
+scale = Vector2(3, 3)
+texture_normal = SubResource("AtlasTexture_pf6lc")
+
+[node name="ExitButton" type="TextureButton" parent="." unique_id=896247683]
+layout_mode = 0
+offset_left = 828.00006
+offset_top = 638.0
+offset_right = 913.00006
+offset_bottom = 680.0
+scale = Vector2(3.5, 3.5)
+texture_normal = SubResource("AtlasTexture_j7gms")
+
+[node name="Label" type="RichTextLabel" parent="." unique_id=131083438]
+layout_mode = 0
+offset_left = 651.0
+offset_top = 219.0
+offset_right = 1300.0
+offset_bottom = 348.0
+theme_override_fonts/normal_font = ExtResource("6_dqjbd")
+theme_override_font_sizes/normal_font_size = 75
+text = "GAME PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1

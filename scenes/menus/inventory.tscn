@@ -1,0 +1,243 @@
+[gd_scene format=3 uid="uid://dv57a2b67p5vg"]
+
+[ext_resource type="Script" uid="uid://d2ab1c08105wj" path="res://script/ui/inventoryUI.gd" id="1_xityo"]
+[ext_resource type="PackedScene" uid="uid://c2bjl38hf6kfw" path="res://scenes/menus/inventory_item_slot.tscn" id="2_aj06e"]
+[ext_resource type="Texture2D" uid="uid://duued71ex3xol" path="res://assets/temporary/inventory_bg.webp" id="2_kbtlh"]
+[ext_resource type="Texture2D" uid="uid://bby48bvsp02i0" path="res://assets/temporary/slot spotlight.jpg" id="2_xityo"]
+[ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="4_aj06e"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_kbtlh"]
+[ext_resource type="PackedScene" uid="uid://buor4em2o4cfj" path="res://scenes/ui/coin_display.tscn" id="5_3ycl8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gunfm"]
+paragraph_spacing = 1.0
+font = ExtResource("4_kbtlh")
+font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_8tary"]
+font = ExtResource("4_kbtlh")
+font_size = 47
+
+[sub_resource type="LabelSettings" id="LabelSettings_6xei0"]
+line_spacing = 0.05
+font = ExtResource("4_kbtlh")
+font_size = 18
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xityo"]
+font = ExtResource("4_kbtlh")
+font_size = 50
+
+[node name="Inventory" type="Control" unique_id=407261551]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xityo")
+slot_scene = ExtResource("2_aj06e")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=91675710]
+layout_mode = 0
+offset_right = 1919.0
+offset_bottom = 1094.0
+texture = ExtResource("2_kbtlh")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1626886338]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1999965413]
+custom_minimum_size = Vector2(1911, 1104)
+layout_mode = 0
+offset_right = 1911.0
+offset_bottom = 1085.0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Left Column" type="VBoxContainer" parent="HBoxContainer" unique_id=1146490268]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Label" type="Label" parent="HBoxContainer/Left Column" unique_id=155588229]
+layout_mode = 2
+text = "
+INVENTORY
+"
+label_settings = SubResource("LabelSettings_gunfm")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ItemGrid" type="GridContainer" parent="HBoxContainer/Left Column" unique_id=1830057225]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 60
+theme_override_constants/v_separation = 100
+columns = 4
+
+[node name="DetailsPanel" type="TextureRect" parent="HBoxContainer" unique_id=1675448014]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_xityo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DetailsPanel" unique_id=480976153]
+layout_mode = 0
+offset_right = 195.0
+offset_bottom = 342.0
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/DetailsPanel" unique_id=1850060926]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.12240664
+anchor_top = 0.013940521
+anchor_right = 0.12240664
+anchor_bottom = 0.013940521
+offset_left = -20.091286
+offset_top = 56.609665
+offset_right = 572.9087
+offset_bottom = 121.609665
+text = "DIWATA"
+label_settings = SubResource("LabelSettings_8tary")
+horizontal_alignment = 1
+
+[node name="BigIcon" type="TextureRect" parent="HBoxContainer/DetailsPanel" unique_id=942224791]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 0
+offset_left = 274.0
+offset_top = 273.0
+offset_right = 469.0
+offset_bottom = 535.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Description" type="Label" parent="HBoxContainer/DetailsPanel" unique_id=365241434]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.11307054
+anchor_top = 0.10130112
+anchor_right = 0.14522822
+anchor_bottom = 0.10130112
+offset_left = 84.78008
+offset_top = 509.16357
+offset_right = 490.11203
+offset_bottom = 639.1636
+text = "The goddess of Light and Heaven blesses her mages with abundance and grace. When used in battle, her blessing allows mages to heal 50% of their total health, allowing them to battle longer and relinquish their opponents."
+label_settings = SubResource("LabelSettings_6xei0")
+autowrap_mode = 3
+
+[node name="Health" type="Label" parent="HBoxContainer/DetailsPanel" unique_id=169855130]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.10425311
+anchor_top = 0.14869888
+anchor_right = 0.10425311
+anchor_bottom = 0.14869888
+offset_left = 49.269707
+offset_top = 659.8364
+offset_right = 119.26971
+offset_bottom = 685.8364
+text = "HEALTH"
+label_settings = SubResource("LabelSettings_6xei0")
+autowrap_mode = 3
+
+[node name="HealthLevel" type="Label" parent="HBoxContainer/DetailsPanel" unique_id=1232036221]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.10373444
+anchor_top = 0.151487
+anchor_right = 0.10373444
+anchor_bottom = 0.151487
+offset_left = 55.65145
+offset_top = 680.75836
+offset_right = 102.65145
+offset_bottom = 706.75836
+text = "+50%"
+label_settings = SubResource("LabelSettings_6xei0")
+autowrap_mode = 3
+
+[node name="Price" type="Label" parent="HBoxContainer/DetailsPanel" unique_id=1839079201]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.121369295
+anchor_top = 0.14684016
+anchor_right = 0.121369295
+anchor_bottom = 0.14684016
+offset_left = 250.6722
+offset_top = 659.8885
+offset_right = 305.67218
+offset_bottom = 685.8885
+text = "PRICE"
+label_settings = SubResource("LabelSettings_6xei0")
+autowrap_mode = 3
+
+[node name="Cost" type="Label" parent="HBoxContainer/DetailsPanel" unique_id=1045437006]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.121369295
+anchor_top = 0.14776951
+anchor_right = 0.121369295
+anchor_bottom = 0.14776951
+offset_left = 261.67218
+offset_top = 680.8624
+offset_right = 297.67218
+offset_bottom = 706.8624
+text = "100"
+label_settings = SubResource("LabelSettings_6xei0")
+autowrap_mode = 3
+
+[node name="Arrack" type="Label" parent="HBoxContainer/DetailsPanel" unique_id=493901173]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1436722
+anchor_top = 0.14869888
+anchor_right = 0.1436722
+anchor_bottom = 0.14869888
+offset_left = 445.25726
+offset_top = 659.8364
+offset_right = 501.25726
+offset_bottom = 711.8364
+text = "Attack"
+label_settings = SubResource("LabelSettings_6xei0")
+autowrap_mode = 3
+
+[node name="AttackLevel" type="Label" parent="HBoxContainer/DetailsPanel" unique_id=279711412]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.14626557
+anchor_top = 0.14962825
+anchor_right = 0.14626557
+anchor_bottom = 0.14962825
+offset_left = 459.34854
+offset_top = 680.8104
+offset_right = 495.34854
+offset_bottom = 706.8104
+text = "10"
+label_settings = SubResource("LabelSettings_6xei0")
+autowrap_mode = 3
+
+[node name="use_button" type="TextureButton" parent="HBoxContainer/DetailsPanel" unique_id=514109910]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 911.0
+offset_right = 671.0
+offset_bottom = 1030.0
+
+[node name="use_button_label" type="Label" parent="HBoxContainer/DetailsPanel/use_button" unique_id=696403628]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 6.0
+offset_right = 594.0
+offset_bottom = 126.0
+text = "USE ITEM"
+label_settings = SubResource("LabelSettings_xityo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("4_aj06e")]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -69.0
+offset_right = 190.0
+offset_bottom = 223.0
+
+[node name="CoinDisplay" parent="." unique_id=220494740 instance=ExtResource("5_3ycl8")]
+layout_mode = 0
+offset_left = 877.0
+offset_top = 84.0
+offset_right = 1158.0
+offset_bottom = 199.0

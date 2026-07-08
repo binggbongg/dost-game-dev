@@ -1,32 +1,135 @@
 [gd_scene format=3 uid="uid://cg6rrinl3k43c"]
 
-[ext_resource type="Texture2D" uid="uid://n6tlgpkgjmq5" path="res://assets/temporary/temp_bg.jpg" id="1_x4si1"]
+[ext_resource type="Script" uid="uid://dpsghyuys5oq1" path="res://script/combat_level.gd" id="1_7d7pp"]
+[ext_resource type="Texture2D" uid="uid://b67a6h4yy3qud" path="res://assets/background/rooms/background_1-1.png" id="1_brv20"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="2_7d7pp"]
 [ext_resource type="PackedScene" uid="uid://dkbejpdwhc33b" path="res://scenes/combat_arena.tscn" id="2_fh0io"]
+[ext_resource type="PackedScene" uid="uid://c6ao8ylhrwwbu" path="res://scenes/ui/level_complete.tscn" id="2_n5pya"]
+[ext_resource type="PackedScene" uid="uid://6t8x0728x5hf" path="res://scenes/ui/spellbook_button.tscn" id="3_76cw8"]
 [ext_resource type="PackedScene" uid="uid://dirj45q71fos6" path="res://scenes/player_interface.tscn" id="4_68ib6"]
 [ext_resource type="Script" uid="uid://cy31dctcq2m2k" path="res://script/battle_manager.gd" id="4_fh0io"]
+[ext_resource type="PackedScene" uid="uid://b14yvyrmb0h2b" path="res://scenes/ui/inventory_button.tscn" id="5_68ib6"]
+[ext_resource type="PackedScene" uid="uid://bmn31kgxbdlkg" path="res://scenes/ui/pause_button.tscn" id="6_7d7pp"]
+[ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="9_e5nfq"]
+[ext_resource type="Texture2D" uid="uid://dmei84moikr28" path="res://assets/ui/shop/setting_icon.png" id="10_lha2r"]
+[ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="12_6owa4"]
+
+[sub_resource type="Gradient" id="Gradient_7d7pp"]
+colors = PackedColorArray(0, 0, 0, 0, 0.12951815, 0.04519721, 1.2032688e-08, 0.8901961)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e5nfq"]
+gradient = SubResource("Gradient_7d7pp")
+fill_from = Vector2(0.45641026, 0)
+fill_to = Vector2(0.48376068, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xjr7"]
+atlas = ExtResource("10_lha2r")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifrkh"]
+atlas = ExtResource("10_lha2r")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drxk1"]
+atlas = ExtResource("10_lha2r")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvox0"]
+atlas = ExtResource("10_lha2r")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6owa4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xjr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifrkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drxk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvox0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Level1" type="Node2D" unique_id=1730621475]
+script = ExtResource("1_7d7pp")
+victory_screen_scene = ExtResource("2_n5pya")
+
+[node name="Timer" type="Timer" parent="." unique_id=322603772]
 
 [node name="UpperBackground" type="TextureRect" parent="." unique_id=633699121]
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -283.0
-offset_right = 1945.0
-offset_bottom = 651.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_x4si1")
+texture = ExtResource("1_brv20")
 
-[node name="LowerBackground" type="ColorRect" parent="." unique_id=1535264395]
-offset_left = -44.0
-offset_top = 480.0
-offset_right = 1957.0
-offset_bottom = 1135.0
-color = Color(0.2775514, 0.5534014, 0.5556392, 1)
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1572945398]
+visible = false
+offset_right = 1920.0
+offset_bottom = 125.0
+color = Color(0.12298488, 0.12298488, 0.12298488, 0.49411765)
 
-[node name="Timer" type="Timer" parent="." unique_id=322603772]
+[node name="LowerBackground" type="TextureRect" parent="." unique_id=93782774]
+offset_left = -10.0
+offset_top = 487.0
+offset_right = 1940.0
+offset_bottom = 1111.0
+texture = SubResource("GradientTexture2D_e5nfq")
+
+[node name="TimerBar" type="ProgressBar" parent="." unique_id=1491666729]
+offset_left = 807.0
+offset_top = 50.0
+offset_right = 1122.0
+offset_bottom = 95.0
+theme_override_font_sizes/font_size = 30
+max_value = 40.0
+step = 1.0
+show_percentage = false
+
+[node name="TimeText" type="Label" parent="TimerBar" unique_id=1944965971]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 314.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("2_7d7pp")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="Node2D" parent="." unique_id=1820597283]
+
+[node name="Inventory" parent="Buttons" unique_id=328878894 instance=ExtResource("5_68ib6")]
+offset_left = 1665.0
+offset_top = 933.00006
+offset_right = 1821.0
+offset_bottom = 1111.0
+scale = Vector2(0.6, 0.6)
+
+[node name="spellbook" parent="Buttons" unique_id=1664093449 instance=ExtResource("3_76cw8")]
+offset_left = 1798.0
+offset_top = 964.0
+offset_right = 1862.0
+offset_bottom = 1028.0
+scale = Vector2(2, 2)
+
+[node name="PauseButton" parent="Buttons" unique_id=784340132 instance=ExtResource("6_7d7pp")]
+process_mode = 3
+offset_left = 1756.0001
+offset_right = 1820.0001
+scale = Vector2(2.5, 2.5)
 
 [node name="BattleManager" type="Node2D" parent="." unique_id=1572491070]
 script = ExtResource("4_fh0io")
@@ -34,3 +137,31 @@ script = ExtResource("4_fh0io")
 [node name="CombatArena" parent="." unique_id=439901724 instance=ExtResource("2_fh0io")]
 
 [node name="PlayerInterface" parent="." unique_id=143692811 instance=ExtResource("4_68ib6")]
+
+[node name="Settings" type="TextureButton" parent="." unique_id=1958819724]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1830.0
+offset_top = 80.0
+offset_right = 1830.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+script = ExtResource("9_e5nfq")
+
+[node name="Audio_Off" type="AnimatedSprite2D" parent="Settings" unique_id=1598970155]
+sprite_frames = SubResource("SpriteFrames_6owa4")
+autoplay = "default"
+
+[node name="MessageLabel" type="RichTextLabel" parent="." unique_id=2113445259]
+offset_left = 720.0
+offset_top = 121.0
+offset_right = 1207.9994
+offset_bottom = 161.00006
+theme_override_fonts/normal_font = ExtResource("12_6owa4")
+theme_override_font_sizes/normal_font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1

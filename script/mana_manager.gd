@@ -1,20 +1,19 @@
-
 extends Node2D
 
 signal mana_changed(current_mana: int)
 
-var max_mana: int
-var current_mana: int  # Change this from 0 to max_mana
+var max_mana: int = 12
+var current_mana: int = 12
 
 func _ready():
 	if PlayerStats:
 		max_mana = PlayerStats.max_mana
 	else:
-		max_mana = 50
+		max_mana = 12
+		
 	current_mana = max_mana
 	mana_changed.emit(current_mana)
 
-# This is the missing function!
 func reset_turn_mana():
 	print("ManaManager: Refilling mana for the new turn.")
 	current_mana = max_mana
@@ -29,4 +28,3 @@ func spend_mana(amount: int) -> bool:
 
 func can_afford(amount: int) -> bool:
 	return current_mana >= amount
-	

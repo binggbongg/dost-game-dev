@@ -52,14 +52,14 @@ func validate_addition(new_card: Card) -> GameEnums.ComboValidationResult:
 		return GameEnums.ComboValidationResult.INVALID_NOT_ENOUGH_MANA
 
 	# Rule Checking - Special Cards: Solo only.
-	if new_card.card_data.get("is_special"):
+	# Rule Checking - Special Cards: Solo only.
+	if new_card.card_data is SpecialCardData:
 		if active_cards.size() > 0:
 			return GameEnums.ComboValidationResult.INVALID_MISSING_PIECE
 
 	for card in active_cards:
-		if card.card_data.get("is_special"):
+		if card.card_data is SpecialCardData:
 			return GameEnums.ComboValidationResult.INVALID_MISSING_PIECE
-
 	# HARD RULES
 
 	# Rule Checking - Duplicate Diwa
@@ -118,81 +118,114 @@ func validate_addition(new_card: Card) -> GameEnums.ComboValidationResult:
 
 
 # --- PART 2: CAST RULES (Controls the Cast Sprite's highlight) ---
-
 func validate_cast() -> bool:
 	var active = get_cards_in_slots()
 
-	if active.is_empty():
+	if active.is_empty() or active.size() > 3:
 		return false
 
-	if active.size() > 3:
-		return false
-
-	# Special Solo check
 	if active.size() == 1 and active[0].card_data.get("is_special"):
 		return true
 
 	var categories = active.map(func(c): return c.card_category)
-
 	var lahi_count = categories.count(GameEnums.CardCategory.LAHI)
 	var diwa_count = categories.count(GameEnums.CardCategory.DIWA)
 	var kali_count = categories.count(GameEnums.CardCategory.KALIKASAN)
 	var tanglaw_count = categories.count(GameEnums.CardCategory.TANGLAW)
 
-	# Duplicate Diwa
-	if diwa_count > 1:
-		return false
+	if active.size() == 1:
+		return true
 
-	# Triple Tanglaw
-	if tanglaw_count > 2:
-		return false
+	if active.size() == 2:
+		if kali_count == 2: return true                    # KALIKASAN + KALIKASAN
+		if diwa_count == 1 and kali_count == 1: return true # DIWA + KALIKASAN / KALIKASAN + DIWA
+		if diwa_count == 1 and tanglaw_count == 1: return true # DIWA + TANGLAW / TANGLAW + DIWA
+		return false # Disallow any other random 2-card combinations
 
-	# Lahi + Tanglaw
-	if lahi_count > 0 and tanglaw_count > 0:
-		return false
+	if active.size() == 3:
+		if lahi_count > 0:
+			if lahi_count == 1 and diwa_count == 1 and kali_count == 1: return true # LAHI + DIWA + KALIKASAN
+			if lahi_count == 2 and diwa_count == 1: return true                    # LAHI + DIWA + LAHI
+			return false
 
-	# Rule Checking - Lahi Combos
-	if lahi_count > 0:
+		if kali_count == 3: return true # KALIKASAN + KALIKASAN + KALIKASAN
+		
+		if diwa_count == 1:
+			if kali_count == 2: return true # KALIKASAN + DIWA + KALIKASAN / DIWA + KALIKASAN + KALIKASAN
+			if kali_count == 1 and tanglaw_count == 1: return true # KALIKASAN + DIWA + TANGLAW / TANGLAW + KALIKASAN + DIWA / DIWA + TANGLAW + KALIKASAN
+			if tanglaw_count == 2: return true # DIWA + TANGLAW + TANGLAW / TANGLAW + DIWA + TANGLAW
+			
+		if tanglaw_count > 0:
+			if kali_count == 1 and tanglaw_count == 2: return true # KALIKASAN + TANGLAW + TANGLAW
+			if kali_count == 2 and tanglaw_count == 1: return true # KALIKASAN + TANGLAW + KALIKASAN
 
-		# LAHI
-		if active.size() == 1:
-			return true
+	return false 
 
-		# LAHI + DIWA + LAHI
-		if lahi_count == 2 and diwa_count == 1:
-			return true
+func get_matched_recipe() -> ComboRecipe:
+	var active = get_cards_in_slots()
+	if not validate_cast() or active.size() < 2:
+		return null
+		
+	# Extract the active card categories currently sitting in your grid slots
+	var current_elements = active.map(func(c): return c.card_category)
+	current_elements.sort() 
 
-		# LAHI + DIWA + KALIKASAN
-		if lahi_count == 1 and diwa_count == 1 and kali_count == 1:
-			return true
+	var recipe_paths: Array[String] = [
+		"res://data/ComboRecipe/baluti_ng_luntian.tres",
+		"res://data/ComboRecipe/bana_na_panata.tres",
+		"res://data/ComboRecipe/bantay_ng_langit.tres",
+		"res://data/ComboRecipe/basbas_ng_liwanag.tres",
+		"res://data/ComboRecipe/galit_ng_gubat.tres",
+		"res://data/ComboRecipe/hukbo_ng_alamat.tres",
+		"res://data/ComboRecipe/katarungan_ng_tala.tres",
+		"res://data/ComboRecipe/lukob_ng_bituin.tres",
+		"res://data/ComboRecipe/pagngitngit_ng_kalikasan.tres",
+		"res://data/ComboRecipe/Pintig_ng_Sanlibutan.tres",
+		"res://data/ComboRecipe/yakap_ng_daigdig.tres"
+	]
 
-		return false
+	for path in recipe_paths:
+		if not ResourceLoader.exists(path): continue
+		var recipe = load(path) as ComboRecipe
+		if recipe:
+			var recipe_elements = recipe.elements.duplicate()
+			recipe_elements.sort()
+			
+			# If the card patterns match up perfectly, return this exact recipe resource!
+			if current_elements == recipe_elements:
+				return recipe
 
-	return true
+	return null
 
-func calculate_combo_output(active_cards):
-	var total_damage = 0
-	var total_healing = 0
+func calculate_combo_output(active_cards: Array) -> Dictionary:
+	var base_damage: float = 0.0
+	var base_healing: float = 0.0
+	var global_multiplier: float = 1
 	
 	for card in active_cards:
-		if not is_instance_valid(card) or not card.card_data: return
+		if not is_instance_valid(card) or not card.card_data:
+			continue
 		
-		var data = card.card_data
-		if "damage" in data:
-			total_damage += data.damage
-		if "heal" in data:
-			total_healing += data.heal
+		var data = card.card_data as CardData
+		
+		match card.card_category:
+			GameEnums.CardCategory.KALIKASAN:
+				base_damage += data.damage
+			GameEnums.CardCategory.TANGLAW:
+				base_healing += data.heal
+			GameEnums.CardCategory.DIWA:
+				base_damage += data.damage
+				base_healing += data.heal
+				if data.multiplier > 0:
+					global_multiplier += (data.multiplier - 1.0)
+			GameEnums.CardCategory.LAHI:
+				base_damage += data.damage
+				base_healing += data.heal
 	
-	var categories = active_cards.map(func(c): return c.card_category)
-	var lahi_count = categories.count(GameEnums.CardCategory.LAHI)
-	var diwa_count = categories.count(GameEnums.CardCategory.DIWA)
-	var kali_count = categories.count(GameEnums.CardCategory.KALIKASAN)
-	
-	if lahi_count == 1 and diwa_count == 1 and kali_count == 1:
-		print("Trio synergy: 1.5x multiplier")
-		total_damage *= 1.5
-	
+	var final_damage = base_damage * global_multiplier
+	var final_healing = base_healing * global_multiplier
+
 	return {
-		"damage": total_damage,
-		"healing": total_healing
+		"damage": int(round(final_damage)),
+		"healing": int(round(final_healing))
 	}

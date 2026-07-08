@@ -5,10 +5,20 @@
 [ext_resource type="PackedScene" uid="uid://blildoqpt5atk" path="res://scenes/menus/shop.tscn" id="3_dxkve"]
 
 [node name="shop" type="TextureButton" unique_id=1664093449]
-offset_left = -95.0
-offset_top = -159.0
-offset_right = 100.0
-offset_bottom = 125.0
-texture_normal = ExtResource("1_go8fd")
+offset_left = -116.0
+offset_top = -98.0
+offset_right = 74.0
+offset_bottom = 90.0
 script = ExtResource("2_ehfxd")
 menu_to_open = ExtResource("3_dxkve")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=777944975]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 0
+offset_left = -43.0
+offset_top = -115.0
+offset_right = 257.0
+offset_bottom = 285.0
+mouse_filter = 2
+texture = ExtResource("1_go8fd")
+expand_mode = 1

@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="EnemyBehavior" format=3 uid="uid://cbxjvt3g6i22y"]
+
+[ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="1_4nxc7"]
+[ext_resource type="Texture2D" uid="uid://dcdj0hovuahmv" path="res://assets/player/lvl2/dogiron.png" id="1_kn2eq"]
+[ext_resource type="Script" uid="uid://bltrhxh2342fx" path="res://data/enemy_behavior.gd" id="2_kn2eq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yip2v"]
+atlas = ExtResource("1_kn2eq")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_car03"]
+atlas = ExtResource("1_kn2eq")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5ucc"]
+atlas = ExtResource("1_kn2eq")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tm8r"]
+atlas = ExtResource("1_kn2eq")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wonug"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yip2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_car03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5ucc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tm8r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[resource]
+script = ExtResource("2_kn2eq")
+max_health = 200
+enemy_sprite = SubResource("SpriteFrames_wonug")
+metadata/_custom_type_script = "uid://bltrhxh2342fx"

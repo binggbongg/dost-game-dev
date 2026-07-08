@@ -1,0 +1,210 @@
+[gd_scene format=3 uid="uid://cf0pyigiayyeg"]
+
+[ext_resource type="Script" uid="uid://bemoscy4adyh" path="res://script/ui/map.gd" id="1_s72bc"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="2_314dn"]
+[ext_resource type="PackedScene" uid="uid://bw7k5221ej7ii" path="res://scenes/level_previews/preview_phase_1.tscn" id="2_t14ch"]
+[ext_resource type="PackedScene" uid="uid://dcxviw3ekcy4k" path="res://scenes/level_previews/preview_phase_2.tscn" id="3_ev0yy"]
+[ext_resource type="PackedScene" uid="uid://dyhvhgchy6owy" path="res://scenes/level_previews/preview_phase_3.tscn" id="4_3yoho"]
+[ext_resource type="Texture2D" uid="uid://baltvh87tb21e" path="res://assets/ui/map/map.png" id="5_sijnj"]
+[ext_resource type="Texture2D" uid="uid://kw6tbr3xis4r" path="res://assets/ui/story/story_scroll.png" id="6_60erm"]
+[ext_resource type="FontFile" uid="uid://df2vd0uxg3gcf" path="res://assets/fonts/PixelifySans-SemiBold.ttf" id="7_o6k5t"]
+[ext_resource type="PackedScene" uid="uid://ckbrj3vh8fqlp" path="res://scenes/story/mechanicsui.tscn" id="8_ev0yy"]
+[ext_resource type="Texture2D" uid="uid://c5esexsxqsto6" path="res://assets/ui/spellbook/spellbook_back_button.png" id="9_3yoho"]
+[ext_resource type="Texture2D" uid="uid://bgkif5gr6mfrm" path="res://assets/ui/map/map_bigbutton.png" id="9_cu3pl"]
+[ext_resource type="Texture2D" uid="uid://cad0d2tw4c1ea" path="res://assets/ui/buttons/Start_icon.png" id="12_60erm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3d4ke"]
+font = ExtResource("7_o6k5t")
+font_size = 105
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mieb7"]
+font = ExtResource("2_314dn")
+font_size = 25
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gh0d3"]
+font = ExtResource("7_o6k5t")
+font_size = 27
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6k5t"]
+atlas = ExtResource("12_60erm")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu3pl"]
+atlas = ExtResource("12_60erm")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3d4ke"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6k5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cu3pl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Map" type="Control" unique_id=142484164]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s72bc")
+phase1 = ExtResource("2_t14ch")
+phase2 = ExtResource("3_ev0yy")
+phase3 = ExtResource("4_3yoho")
+
+[node name="Background" type="TextureRect" parent="." unique_id=495273800]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("5_sijnj")
+
+[node name="Scroll" type="TextureRect" parent="." unique_id=2039498294]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("6_60erm")
+
+[node name="ChapterNo" type="Label" parent="." unique_id=1272290620]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.98300004
+anchor_bottom = 1.0
+offset_left = 334.0
+offset_top = 283.0
+offset_right = -823.3601
+offset_bottom = -584.0
+text = "Chapter 1"
+label_settings = SubResource("LabelSettings_3d4ke")
+vertical_alignment = 1
+
+[node name="ChapterNo2" type="Label" parent="." unique_id=446143759]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.98300004
+anchor_bottom = 1.0
+offset_left = 339.0
+offset_top = 420.0
+offset_right = -903.3601
+offset_bottom = -522.0
+text = "In the fields where people and nature used to work hand-in-hand, are replaced by the sound of enginges and metal grazing away each peace of land."
+label_settings = SubResource("LabelSettings_mieb7")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Buttons" type="CanvasLayer" parent="." unique_id=501019418]
+
+[node name="Phase1" type="TextureButton" parent="Buttons" unique_id=1622936125]
+offset_left = 724.0
+offset_top = 644.0
+offset_right = 737.0
+offset_bottom = 657.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("9_cu3pl")
+
+[node name="Phase2" type="TextureButton" parent="Buttons" unique_id=1346812254]
+offset_left = 1295.0
+offset_top = 260.00003
+offset_right = 1308.0
+offset_bottom = 273.00003
+scale = Vector2(10, 10)
+texture_normal = ExtResource("9_cu3pl")
+
+[node name="Phase3" type="TextureButton" parent="Buttons" unique_id=221368573]
+offset_left = 1209.0
+offset_top = 562.0
+offset_right = 1222.0
+offset_bottom = 575.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("9_cu3pl")
+
+[node name="Labels" type="Node2D" parent="." unique_id=1214762967]
+
+[node name="3" type="Label" parent="Labels" unique_id=1475296039]
+offset_left = 1122.0
+offset_top = 380.0
+offset_right = 1609.0
+offset_bottom = 452.0
+text = "Level 3 - Boss"
+label_settings = SubResource("LabelSettings_gh0d3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="4" type="Label" parent="Labels" unique_id=615404527]
+offset_left = 1034.0
+offset_top = 688.0
+offset_right = 1521.0
+offset_bottom = 760.0
+text = "Level 2"
+label_settings = SubResource("LabelSettings_gh0d3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="5" type="Label" parent="Labels" unique_id=1702988549]
+offset_left = 540.0
+offset_top = 772.0
+offset_right = 1027.0
+offset_bottom = 844.0
+text = "Level 1"
+label_settings = SubResource("LabelSettings_gh0d3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=1603193052]
+layer = 20
+visible = false
+
+[node name="Dimmer" type="ColorRect" parent="TutorialLayer" unique_id=711970714]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="Mechanics" parent="TutorialLayer" unique_id=153786700 instance=ExtResource("8_ev0yy")]
+visible = false
+
+[node name="HighlightLayer" type="CanvasLayer" parent="." unique_id=1158412874]
+layer = 80
+visible = false
+
+[node name="Control" type="Control" parent="HighlightLayer" unique_id=960033263]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Back" type="TextureButton" parent="." unique_id=282255273]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 47.0
+offset_right = 52.0
+offset_bottom = 55.924103
+scale = Vector2(11.99, 11.99)
+texture_normal = ExtResource("9_3yoho")
+
+[node name="Start" type="TextureButton" parent="." unique_id=1772978172]
+layout_mode = 0
+offset_left = 347.0
+offset_top = 543.0
+offset_right = 518.0
+offset_bottom = 602.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Start" unique_id=1008622458]
+position = Vector2(76, 46)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_3d4ke")
+autoplay = "default"
+frame = 1
+frame_progress = 1.0

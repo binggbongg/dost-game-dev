@@ -1,7 +1,7 @@
 extends Node2D
 
 const CARD_WIDTH = 175
-const HAND_Y_POSITION = 890
+const HAND_Y_POSITION = 920
 const DEFAULT_CARD_MOVE_SPEED = 0.2
 
 var screen_size
@@ -15,7 +15,11 @@ var player_cards: Array = []
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
-
+	
+func set_hand_enabled(enabled: bool):
+	for card in player_cards:
+		card.set_interaction_state(enabled)
+		
 func add_card_to_hand(card, speed):
 	if card in player_cards:
 		player_cards.erase(card)
@@ -59,20 +63,17 @@ func remove_card_from_hand(card):
 func draw_starting_hand():
 	var drawn_cards = deck_manager.draw_cards(5)
 	for card_data in drawn_cards:
-		create_card(card_data)
+		create_battle_card(card_data)
 
-func create_card(card_data):
+func create_battle_card(data: Resource, source := GameEnums.CardSource.DECK):
 	var card = card_scene.instantiate()
-	card.card_data = card_data
+	card.card_data = data
 	get_parent().add_child(card)
-	
-	# CRITICAL FIX: The DeckManager needs this to know the card is in the hand!
 	card.location = GameEnums.Location.HAND
-	
 	card.global_position = deck.global_position
 	card_manager.connect_card_signal(card)
 	add_card_to_hand(card, DEFAULT_CARD_MOVE_SPEED)
-
+	return card
 func replenish_hand():
 	player_cards = player_cards.filter(func(c): return is_instance_valid(c) and not c.is_queued_for_deletion())
 	var cards_needed = 5 - player_cards.size()
@@ -80,4 +81,4 @@ func replenish_hand():
 		print("Hand: Replenishing ", cards_needed, " cards.")
 		var drawn_data = deck_manager.draw_cards(cards_needed)
 		for data in drawn_data:
-			create_card(data)
+			create_battle_card(data)

@@ -1,14 +1,52 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://di80xjsmyaptj"]
 
+[ext_resource type="Texture2D" uid="uid://du7ggslh5yqbu" path="res://assets/ui/handsigns/kalikasan_attack/kalikasan_buntala.png" id="1_3cmnt"]
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_fiuvu"]
-[ext_resource type="Texture2D" uid="uid://ckhvdhptlxrvq" path="res://assets/temporary/KALIKASAN.png" id="2_0qboq"]
+[ext_resource type="Texture2D" uid="uid://8bgl3cyt8ncp" path="res://assets/temporary/KALIKASAN.png" id="2_0qboq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2ib8"]
+atlas = ExtResource("1_3cmnt")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nfdv"]
+atlas = ExtResource("1_3cmnt")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yfoe"]
+atlas = ExtResource("1_3cmnt")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sscnw"]
+atlas = ExtResource("1_3cmnt")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0qboq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2ib8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nfdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yfoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sscnw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_fiuvu")
 name = "Bantala"
 category = 2
 rarity = 3
-damage = 10.0
-mana_cost = 10
+damage = 12
+mana_cost = 9
 texture = ExtResource("2_0qboq")
+cardASL = SubResource("SpriteFrames_0qboq")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

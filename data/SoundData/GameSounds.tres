@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundData" format=3 uid="uid://bu8in2jmyqufp"]
+
+[ext_resource type="AudioStream" uid="uid://br2v28fqvfk56" path="res://data/SoundData/sfx/666645__bboz87__shuffle_single.wav" id="1_sjjlk"]
+[ext_resource type="AudioStream" uid="uid://du3cylgtphemx" path="res://data/SoundData/sfx/478197__jonnyruss01__click_1.wav" id="2_hy5ax"]
+[ext_resource type="AudioStream" uid="uid://byo35vco7crjv" path="res://data/SoundData/sfx/858468__ym_the_cosmic__flipping-page-forward.mp3" id="3_g5g0c"]
+[ext_resource type="Script" uid="uid://ba2pfc6mewee2" path="res://data/sound_data.gd" id="4_tmg7j"]
+
+[resource]
+script = ExtResource("4_tmg7j")
+click = ExtResource("2_hy5ax")
+page_flip = ExtResource("3_g5g0c")
+card_shuffle = ExtResource("1_sjjlk")
+metadata/_custom_type_script = "uid://ba2pfc6mewee2"

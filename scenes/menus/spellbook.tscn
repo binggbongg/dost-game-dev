@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://cvgehqahw2e4x"]
+
+[ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="1_pubim"]
+[ext_resource type="Texture2D" uid="uid://dxycjm2n7qvlg" path="res://assets/background/rooms/background_shop1.png" id="2_dfgxp"]
+[ext_resource type="PackedScene" uid="uid://b13ncvuf2dceb" path="res://scenes/menus/spellbook_card_slot.tscn" id="4_focpo"]
+[ext_resource type="Texture2D" uid="uid://b874nuseu5vul" path="res://assets/ui/spellbook/spellbook_book.png" id="4_n8wyq"]
+[ext_resource type="Texture2D" uid="uid://mqbgl2en2v0y" path="res://assets/ui/spellbook/spellbook_green_bookmark.png" id="7_cf21n"]
+[ext_resource type="Texture2D" uid="uid://c5t544jq1um42" path="res://assets/ui/spellbook/spellbook_blue_bookmark.png" id="9_lqdag"]
+[ext_resource type="Texture2D" uid="uid://c2ijib67ou3nb" path="res://assets/ui/spellbook/spellbook_yellow_bookmark.png" id="11_7agw1"]
+[ext_resource type="Script" uid="uid://dacmhq3qtdlpg" path="res://script/ui/spellbook_manager.gd" id="12_vgybv"]
+[ext_resource type="Texture2D" uid="uid://ckffja4gdctvj" path="res://assets/ui/spellbook/spellbook_red_bookmark.png" id="13_4ffkf"]
+[ext_resource type="PackedScene" uid="uid://nrf002bvasid" path="res://scenes/menus/combo_slot.tscn" id="13_qwtax"]
+[ext_resource type="Texture2D" uid="uid://bturl8bl73yof" path="res://assets/ui/spellbook/spellbook_purple_bookmark.png" id="15_166nj"]
+[ext_resource type="Texture2D" uid="uid://c5esexsxqsto6" path="res://assets/ui/spellbook/spellbook_back_button.png" id="17_ndbtc"]
+[ext_resource type="Texture2D" uid="uid://cjrcuo56wi0fc" path="res://assets/ui/spellbook/spellbook_next_button.png" id="19_3i8rq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2uart"]
+font_size = 29
+font_color = Color(0.35085708, 0.1066822, 2.4065375e-08, 1)
+shadow_size = 12
+
+[node name="Spellbook" type="Control" unique_id=1875600038]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpellbookManager" type="Node2D" parent="." unique_id=280941533]
+script = ExtResource("12_vgybv")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=455572607]
+layout_mode = 0
+offset_right = 1919.0
+offset_bottom = 1094.0
+texture = ExtResource("2_dfgxp")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1725266803]
+visible = false
+layout_mode = 0
+offset_left = 303.0
+offset_top = 295.0
+offset_right = 1711.0
+offset_bottom = 795.0
+theme_override_font_sizes/normal_font_size = 100
+text = "this is the spellbook scene!
+hi angela"
+
+[node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("1_pubim")]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -69.0
+offset_right = 190.0
+offset_bottom = 223.0
+
+[node name="SpellbookBg" type="Sprite2D" parent="." unique_id=174915693]
+position = Vector2(1008, 545)
+scale = Vector2(10.000002, 10)
+texture = ExtResource("4_n8wyq")
+
+[node name="CardSlots" type="Node2D" parent="." unique_id=368073542]
+position = Vector2(295, 317)
+
+[node name="SpellbookCardSlotLeft" parent="CardSlots" unique_id=845631153 instance=ExtResource("4_focpo")]
+offset_left = 15.0
+offset_top = -84.0
+offset_right = 757.0
+offset_bottom = 551.0
+metadata/_edit_use_anchors_ = true
+
+[node name="SpellbookCardSlotRight" parent="CardSlots" unique_id=2017068616 instance=ExtResource("4_focpo")]
+offset_left = 676.0
+offset_top = -83.0
+offset_right = 1509.0
+offset_bottom = 498.0
+
+[node name="Bookmarks" type="Node2D" parent="." unique_id=1545144624]
+
+[node name="Kalikasan" type="TextureButton" parent="Bookmarks" unique_id=2006518696]
+offset_left = 169.0
+offset_top = 99.0
+offset_right = 180.0
+offset_bottom = 106.0
+scale = Vector2(12.655, 12.655)
+texture_normal = ExtResource("7_cf21n")
+
+[node name="Tanglaw" type="TextureButton" parent="Bookmarks" unique_id=1943650813]
+offset_left = 167.0
+offset_top = 202.0
+offset_right = 178.0
+offset_bottom = 209.0
+scale = Vector2(12.655, 12.655)
+texture_normal = ExtResource("9_lqdag")
+
+[node name="Diwa" type="TextureButton" parent="Bookmarks" unique_id=1761058960]
+offset_left = 165.0
+offset_top = 311.0
+offset_right = 176.0
+offset_bottom = 318.0
+scale = Vector2(12.655, 12.655)
+texture_normal = ExtResource("11_7agw1")
+
+[node name="Lahi" type="TextureButton" parent="Bookmarks" unique_id=1349092788]
+offset_left = 155.99998
+offset_top = 419.99997
+offset_right = 166.99998
+offset_bottom = 426.99997
+scale = Vector2(12.655, 12.655)
+texture_normal = ExtResource("13_4ffkf")
+
+[node name="Combo" type="TextureButton" parent="Bookmarks" unique_id=588747631]
+offset_left = 157.99998
+offset_top = 531.0
+offset_right = 168.99998
+offset_bottom = 538.0
+scale = Vector2(12.655, 12.655)
+texture_normal = ExtResource("15_166nj")
+
+[node name="Pagination" type="Node2D" parent="." unique_id=393529831]
+
+[node name="Left" type="TextureButton" parent="Pagination" unique_id=182413592]
+offset_left = 349.0
+offset_top = 905.00006
+offset_right = 358.0
+offset_bottom = 913.6819
+scale = Vector2(9.445, 9.445)
+texture_normal = ExtResource("17_ndbtc")
+
+[node name="Right" type="TextureButton" parent="Pagination" unique_id=200031203]
+offset_left = 1592.0
+offset_top = 918.00006
+offset_right = 1601.0
+offset_bottom = 926.6819
+scale = Vector2(9.445, 9.445)
+texture_normal = ExtResource("19_3i8rq")
+
+[node name="Label" type="Label" parent="Pagination" unique_id=1861420774]
+offset_left = 934.0
+offset_top = 937.0
+offset_right = 1066.0
+offset_bottom = 977.0
+text = "1 out of 5"
+label_settings = SubResource("LabelSettings_2uart")
+
+[node name="ComboSlot" type="Node2D" parent="." unique_id=1066137679]
+visible = false
+
+[node name="ComboSlotLeftTop" parent="ComboSlot" unique_id=1928747533 instance=ExtResource("13_qwtax")]
+offset_left = 259.0
+offset_top = 49.0
+offset_right = 259.0
+offset_bottom = 49.0
+
+[node name="ComboSlotLeftBottom" parent="ComboSlot" unique_id=1959456125 instance=ExtResource("13_qwtax")]
+offset_left = 259.0
+offset_top = 469.0
+offset_right = 259.0
+offset_bottom = 469.0
+
+[node name="ComboSlotRightTop" parent="ComboSlot" unique_id=1552715495 instance=ExtResource("13_qwtax")]
+offset_left = 954.0
+offset_top = 41.0
+offset_right = 954.0
+offset_bottom = 41.0
+
+[node name="ComboSlotRightBottom" parent="ComboSlot" unique_id=4670608 instance=ExtResource("13_qwtax")]
+offset_left = 946.0
+offset_top = 469.0
+offset_right = 946.0
+offset_bottom = 469.0

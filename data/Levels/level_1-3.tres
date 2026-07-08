@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://dor14aww3syq6"]
+
+[ext_resource type="Script" uid="uid://buqidver0oody" path="res://data/level_data.gd" id="1_ip1l4"]
+[ext_resource type="Resource" uid="uid://h8pnpm7fwp5n" path="res://data/EnemySet/enemy_1-3.tres" id="1_tl4g4"]
+
+[resource]
+script = ExtResource("1_ip1l4")
+level_number = 3
+background = "uid://cpogo6ux7n285"
+enemy_data = ExtResource("1_tl4g4")
+is_boss_level = true
+metadata/_custom_type_script = "uid://buqidver0oody"

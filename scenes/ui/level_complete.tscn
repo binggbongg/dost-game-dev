@@ -1,0 +1,220 @@
+[gd_scene format=3 uid="uid://c6ao8ylhrwwbu"]
+
+[ext_resource type="Script" uid="uid://chht25bvnjlry" path="res://script/ui/level_complete.gd" id="1_7c5i1"]
+[ext_resource type="Texture2D" uid="uid://dvuofhfo7vd65" path="res://assets/ui/mainscreen/mainscreen_ui_loginAccount.png" id="2_qsb6x"]
+[ext_resource type="FontFile" uid="uid://df2vd0uxg3gcf" path="res://assets/fonts/PixelifySans-SemiBold.ttf" id="3_cjuq0"]
+[ext_resource type="Texture2D" uid="uid://cehfrui28gnh" path="res://assets/ui/buttons/scroll_icon.png" id="4_7s3li"]
+[ext_resource type="Texture2D" uid="uid://kgl2v0um6khp" path="res://assets/ui/mainscreen/mainscreen_ui_button_short.png" id="5_bhdpj"]
+[ext_resource type="Texture2D" uid="uid://dl51l2pbbo6cg" path="res://assets/ui/buttons/coin_icon.png" id="6_6ja6a"]
+[ext_resource type="Texture2D" uid="uid://d3opubgs2iu7c" path="res://assets/cards/2.png" id="7_fhtmr"]
+[ext_resource type="Texture2D" uid="uid://csn03vyiyaocx" path="res://assets/cards/3.png" id="8_g6w5c"]
+[ext_resource type="Texture2D" uid="uid://dbr55eplqxgcg" path="res://assets/cards/1.png" id="9_wfjqo"]
+[ext_resource type="Texture2D" uid="uid://bdcjpy6fofac5" path="res://assets/cards/4.png" id="10_r8lu7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n8v1i"]
+font = ExtResource("3_cjuq0")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_uyitj"]
+font = ExtResource("3_cjuq0")
+
+[sub_resource type="LabelSettings" id="LabelSettings_tj7oh"]
+font = ExtResource("3_cjuq0")
+font_size = 18
+
+[node name="CHICKENDINNER" type="CanvasLayer" unique_id=1645563919]
+script = ExtResource("1_7c5i1")
+
+[node name="VICTORY" type="Control" parent="." unique_id=1486700835]
+layout_mode = 3
+anchor_left = 0.39400002
+anchor_top = 0.32000002
+anchor_right = 0.6121042
+anchor_bottom = 0.66340744
+offset_left = -0.4800415
+offset_top = 0.39996338
+offset_right = -0.23999023
+offset_bottom = -0.4800415
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="VICTORY" unique_id=371580948]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.013745705
+anchor_right = 0.97393334
+anchor_bottom = 0.89381105
+offset_right = -309.4806
+offset_bottom = -251.8935
+scale = Vector2(4.225, 4.225)
+texture = ExtResource("2_qsb6x")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="VICTORY" unique_id=1141772947]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 61.0
+offset_right = 364.0
+offset_bottom = 107.0
+text = "LEVEL COMPLETE"
+label_settings = SubResource("LabelSettings_n8v1i")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label5" type="Label" parent="VICTORY" unique_id=1077678]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 98.0
+offset_right = 251.0
+offset_bottom = 118.0
+text = "YOUR SCORE:"
+label_settings = SubResource("LabelSettings_uyitj")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CoinLabel" type="Label" parent="VICTORY" unique_id=1134235028]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 228.0
+offset_right = 188.0
+offset_bottom = 248.0
+text = "100"
+label_settings = SubResource("LabelSettings_uyitj")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreLabel" type="Label" parent="VICTORY" unique_id=1455351475]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 130.0
+offset_right = 277.0
+offset_bottom = 176.0
+text = "300,000"
+label_settings = SubResource("LabelSettings_n8v1i")
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="VICTORY" unique_id=1184673796]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 121.0
+offset_right = 306.0
+offset_bottom = 180.0
+color = Color(0, 0, 0, 0.3529412)
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="VICTORY" unique_id=1041665428]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 132.0
+offset_right = 132.12427
+offset_bottom = 147.0
+scale = Vector2(2.75, 2.75)
+texture = ExtResource("4_7s3li")
+metadata/_edit_use_anchors_ = true
+
+[node name="next" type="TextureButton" parent="VICTORY" unique_id=2143544794]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 291.0
+offset_right = 155.0
+offset_bottom = 298.0
+scale = Vector2(6.75, 6.75)
+texture_normal = ExtResource("5_bhdpj")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="VICTORY" unique_id=836833990]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 299.0
+offset_right = 268.0
+offset_bottom = 322.0
+text = "NEXT"
+label_settings = SubResource("LabelSettings_tj7oh")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect3" type="TextureRect" parent="VICTORY" unique_id=1871603009]
+layout_mode = 0
+offset_left = 102.99999
+offset_top = 214.99997
+offset_right = 167.0
+offset_bottom = 278.99997
+scale = Vector2(0.685, 0.685)
+texture = ExtResource("6_6ja6a")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="VICTORY" unique_id=676747074]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 186.0
+offset_right = 261.0
+offset_bottom = 206.0
+text = "REWARDS:"
+label_settings = SubResource("LabelSettings_uyitj")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="VICTORY" unique_id=776451135]
+anchors_preset = 0
+offset_left = 235.00002
+offset_top = 212.0
+offset_right = 275.0
+offset_bottom = 252.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CardLabel" type="Label" parent="VICTORY/Control" unique_id=14980379]
+layout_mode = 0
+offset_left = 46.999985
+offset_top = 17.0
+offset_right = 63.999985
+offset_bottom = 37.0
+text = "1"
+label_settings = SubResource("LabelSettings_uyitj")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect4" type="TextureRect" parent="VICTORY/Control" unique_id=1600750574]
+layout_mode = 0
+offset_left = -4.0000153
+offset_top = 15.20639
+offset_right = 59.999985
+offset_bottom = 111.20639
+rotation = -0.29552543
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("7_fhtmr")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect5" type="TextureRect" parent="VICTORY/Control" unique_id=633108288]
+layout_mode = 0
+offset_left = 3.9999857
+offset_top = 13.20639
+offset_right = 67.999985
+offset_bottom = 109.20639
+rotation = -0.16319181
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("8_g6w5c")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect6" type="TextureRect" parent="VICTORY/Control" unique_id=62448670]
+layout_mode = 0
+offset_left = 10.999985
+offset_top = 11.20639
+offset_right = 74.999985
+offset_bottom = 107.20639
+rotation = -0.16232398
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("9_wfjqo")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect7" type="TextureRect" parent="VICTORY/Control" unique_id=1582032536]
+layout_mode = 0
+offset_left = 19.999989
+offset_top = 10.206392
+offset_right = 83.999985
+offset_bottom = 106.20639
+rotation = -0.02291172
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("10_r8lu7")
+metadata/_edit_use_anchors_ = true
+
+[node name="PackLayer" type="CanvasLayer" parent="." unique_id=271680803]

@@ -1,12 +1,51 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://d3n52rqilpn8i"]
 
+[ext_resource type="Texture2D" uid="uid://drtavtxkgt5xe" path="res://assets/ui/handsigns/lahi_attack/lahi_ibon.png" id="1_7t4j0"]
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_dgfcn"]
-[ext_resource type="Texture2D" uid="uid://b5b1q5yy1a0gn" path="res://assets/temporary/LAHI.png" id="2_xd8h5"]
+[ext_resource type="Texture2D" uid="uid://daxwb286wsu6r" path="res://assets/cards/ibon.png" id="2_xd8h5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62o1v"]
+atlas = ExtResource("1_7t4j0")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssbnq"]
+atlas = ExtResource("1_7t4j0")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gi4k"]
+atlas = ExtResource("1_7t4j0")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdsnr"]
+atlas = ExtResource("1_7t4j0")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jj5dp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62o1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssbnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gi4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdsnr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_dgfcn")
 name = "Ibon"
 rarity = 1
-mana_cost = 20
+damage = 4
+mana_cost = 3
 texture = ExtResource("2_xd8h5")
+cardASL = SubResource("SpriteFrames_jj5dp")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

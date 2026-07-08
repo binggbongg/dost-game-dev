@@ -1,13 +1,52 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dup8fmliunun8"]
 
+[ext_resource type="Texture2D" uid="uid://cdm0avc7mq5x0" path="res://assets/ui/handsigns/tanglaw_attack/tanglaw_talon.png" id="1_b3euw"]
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_vk5q5"]
-[ext_resource type="Texture2D" uid="uid://dakgmbra2is36" path="res://assets/temporary/TANGLAW.png" id="2_eyk7a"]
+[ext_resource type="Texture2D" uid="uid://6gvlqr3jaabq" path="res://assets/cards/talon.png" id="2_eyk7a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dhrc"]
+atlas = ExtResource("1_b3euw")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l8lg"]
+atlas = ExtResource("1_b3euw")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l50rt"]
+atlas = ExtResource("1_b3euw")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgg28"]
+atlas = ExtResource("1_b3euw")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v3sy3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dhrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l8lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l50rt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgg28")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_vk5q5")
 name = "Talon"
 category = 3
 rarity = 2
-mana_cost = 10
+heal = 10
+mana_cost = 6
 texture = ExtResource("2_eyk7a")
+cardASL = SubResource("SpriteFrames_v3sy3")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

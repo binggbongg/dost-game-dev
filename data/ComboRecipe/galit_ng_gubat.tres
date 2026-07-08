@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ComboRecipe" format=3 uid="uid://diggi68h8ae0u"]
+
+[ext_resource type="Script" uid="uid://v3nevm1wba6b" path="res://data/combo_recipe.gd" id="1_b23i4"]
+
+[resource]
+script = ExtResource("1_b23i4")
+name = "Galit ng Gubat"
+description = "The untamed forest unleashes its wrath upon those who disturb its peace."
+elements = Array[int]([2, 2])
+metadata/_custom_type_script = "uid://v3nevm1wba6b"

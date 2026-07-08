@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StoryData" format=3 uid="uid://c30my251717y7"]
+
+[ext_resource type="Script" uid="uid://cpqsyhmdvnfv7" path="res://data/StoryData.gd" id="1_cr6gf"]
+
+[resource]
+script = ExtResource("1_cr6gf")
+type = 1
+character_name = "Character Spotlight"
+lines = Array[String](["View your current character and other profile details here including your current progress!"])
+metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

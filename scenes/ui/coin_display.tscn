@@ -1,22 +1,33 @@
 [gd_scene format=3 uid="uid://buor4em2o4cfj"]
 
-[ext_resource type="Texture2D" uid="uid://dkso0nwxame71" path="res://assets/temporary/coin.webp" id="1_hv3hf"]
+[ext_resource type="Script" uid="uid://c6vxkt7ltw0ly" path="res://script/coins_amount.gd" id="1_baxa6"]
+[ext_resource type="Texture2D" uid="uid://datjwds3cnd6n" path="res://assets/ui/buttons/coin_placeholder_icon.png" id="2_6qwn5"]
+[ext_resource type="FontFile" uid="uid://df2vd0uxg3gcf" path="res://assets/fonts/PixelifySans-SemiBold.ttf" id="3_txijq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hv3hf"]
 font_size = 35
 
-[node name="CoinDisplay" type="Node2D" unique_id=220494740]
+[node name="CoinDisplay" type="Control" unique_id=1456686641 groups=["ui_elements"]]
+layout_mode = 3
+anchor_left = -0.087000005
+anchor_top = -0.059000004
+anchor_right = 0.069000006
+anchor_bottom = 0.057000004
+offset_left = 167.04001
+offset_top = 63.720005
+offset_right = -132.48001
+offset_bottom = -61.560005
+script = ExtResource("1_baxa6")
 
 [node name="Coin" type="Sprite2D" parent="." unique_id=1371920841]
-position = Vector2(1596.0001, 87.00001)
-scale = Vector2(0.25142857, 0.25142857)
-texture = ExtResource("1_hv3hf")
+texture = ExtResource("2_6qwn5")
 
-[node name="label" type="Label" parent="." unique_id=449086980]
-visible = false
-offset_left = 1552.0
-offset_top = 58.0
-offset_right = 1820.0
-offset_bottom = 269.0
-text = "500"
+[node name="label" type="Label" parent="Coin" unique_id=449086980]
+offset_left = -19.05
+offset_top = -21.525
+offset_right = 262.95
+offset_bottom = 21.475
+theme_override_fonts/font = ExtResource("3_txijq")
+theme_override_font_sizes/font_size = 25
+text = "100"
 label_settings = SubResource("LabelSettings_hv3hf")

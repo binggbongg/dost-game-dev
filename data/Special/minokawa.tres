@@ -1,12 +1,18 @@
 [gd_resource type="Resource" script_class="SpecialCardData" format=3 uid="uid://qbrv38x4j52"]
 
+[ext_resource type="Script" uid="uid://8m6aga3qk3g5" path="res://script/item_effects/diwata.gd" id="1_7bnip"]
 [ext_resource type="Script" uid="uid://cpiimvdghqtnm" path="res://data/special_cards.gd" id="2_rpm4i"]
 [ext_resource type="Texture2D" uid="uid://cyp7mmyvvuts4" path="res://assets/temporary/minokawa.png" id="3_7bnip"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7bnip"]
 
 [resource]
 script = ExtResource("2_rpm4i")
 category = 4
 rarity = 4
+effect_script = ExtResource("1_7bnip")
+mana_cost = 2
+cardASL = SubResource("SpriteFrames_7bnip")
 item_id = "005"
 name = "Minokawa"
 description = "Does smthn nice and nice!"
