@@ -4,7 +4,6 @@
 [ext_resource type="AudioStream" uid="uid://df1gcjroxeyx6" path="res://data/SoundData/bgm/game_start.wav" id="2_bweju"]
 [ext_resource type="PackedScene" uid="uid://lq3tmvb8ajg0" path="res://scenes/menus/lounge.tscn" id="3_0wcnn"]
 [ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="4_bweju"]
-[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_ivt2f"]
 [ext_resource type="PackedScene" uid="uid://btnk1nc2mvnsk" path="res://scenes/story/intro.tscn" id="5_0xjr7"]
 [ext_resource type="Texture2D" uid="uid://26yniv7ld3ya" path="res://assets/temporary/play_button.png" id="5_hcoq6"]
 [ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="7_0wcnn"]
@@ -78,17 +77,6 @@ gradient = SubResource("Gradient_bp6ot")
 fill = 1
 fill_from = Vector2(0.5190972, 0.4045139)
 fill_to = Vector2(0.16493055, 0.6197917)
-
-[sub_resource type="LabelSettings" id="LabelSettings_0xjr7"]
-font = ExtResource("4_ivt2f")
-font_size = 200
-shadow_color = Color(0, 0, 0, 0.8901961)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ifrkh"]
-font = ExtResource("4_ivt2f")
-font_size = 140
-font_color = Color(0.68235296, 0.6862745, 0.63529414, 0.8)
-shadow_color = Color(0.050980393, 0, 0.10980392, 0.7529412)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0xjr7"]
 atlas = ExtResource("7_57ra1")
@@ -173,50 +161,22 @@ autoplay = "default"
 frame = 1
 frame_progress = 0.90714777
 
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=881261035]
+[node name="Gradient" type="TextureRect" parent="." unique_id=881261035]
 layout_mode = 0
-offset_left = 737.0
-offset_top = 131.0
-offset_right = 1889.0
-offset_bottom = 561.0
+offset_left = 740.0
+offset_top = 174.0
+offset_right = 1886.0
+offset_bottom = 520.0
 texture = SubResource("GradientTexture2D_ybogl")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1620426149]
+[node name="Title" type="TextureRect" parent="." unique_id=1620426149]
 layout_mode = 0
-offset_left = 799.0
-offset_top = -266.0
-offset_right = 5299.0
-offset_bottom = 4234.0
-scale = Vector2(0.25, 0.25)
+offset_left = 725.00006
+offset_top = -281.0
+offset_right = 5225.0
+offset_bottom = 4219.0
+scale = Vector2(0.27, 0.27)
 texture = ExtResource("7_lvox0")
-
-[node name="Title" type="Control" parent="." unique_id=1611951136]
-visible = false
-anchors_preset = 0
-offset_right = 1920.9999
-offset_bottom = 1084.0
-
-[node name="Label" type="Label" parent="Title" unique_id=1333881234]
-layout_mode = 0
-offset_left = 1009.0
-offset_top = 199.0
-offset_right = 1730.0
-offset_bottom = 439.0
-text = "Salamin"
-label_settings = SubResource("LabelSettings_0xjr7")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="Title" unique_id=1500851924]
-layout_mode = 0
-offset_left = 1100.0
-offset_top = 336.0
-offset_right = 1821.0
-offset_bottom = 576.0
-text = "at Bakal "
-label_settings = SubResource("LabelSettings_ifrkh")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Settings" type="TextureButton" parent="." unique_id=276622558]
 layout_mode = 0
@@ -316,27 +276,27 @@ menu_to_open = ExtResource("13_0xjr7")
 [node name="Exit" type="TextureButton" parent="." unique_id=364911246]
 layout_mode = 0
 offset_left = 1333.4102
-offset_top = 768.755
+offset_top = 798.58997
 offset_right = 1418.4102
-offset_bottom = 812.755
+offset_bottom = 842.58997
 scale = Vector2(3.3, 3.3)
 texture_normal = SubResource("AtlasTexture_bp6ot")
 
 [node name="NewGameButton" type="TextureButton" parent="." unique_id=301235348]
 layout_mode = 0
 offset_left = 1328.56
-offset_top = 633.93494
+offset_top = 663.7699
 offset_right = 1434.56
-offset_bottom = 677.93494
+offset_bottom = 707.7699
 scale = Vector2(2.7, 2.7)
 texture_normal = SubResource("AtlasTexture_ybogl")
 
 [node name="ContinueButton" type="TextureButton" parent="." unique_id=684198820]
 layout_mode = 0
 offset_left = 1300.0
-offset_top = 473.165
+offset_top = 503.0
 offset_right = 1426.4996
-offset_bottom = 539.1648
+offset_bottom = 568.99976
 scale = Vector2(2.7, 2.7)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ContinueButton" unique_id=1325709076]

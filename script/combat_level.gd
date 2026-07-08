@@ -152,21 +152,12 @@ func process_chapter_scoring_and_unlock() -> int:
 		"C": bonus_packs_earned = 0
 	
 	var chapter_key = "chapter_" + str(PlayerProfile.current_phase)
-	
 	PlayerProfile.high_scores[chapter_key] = {"rank": final_rank, "score": final_calculated_score}
 	
-	# 🌟 TALO INTEGRATION: Pass the score alongside the rank metadata props dictionary
-	# Note: Talo uses add_entry for posting leaderboard entries in modern versions
 	if typeof(Talo) != TYPE_NIL:
-		var raw_props = {
-			"rank": str(final_rank), 
-			"chapter_cleared": "true"
-		}
-		
-		# 🌟 FORCE UNTYPED CASTING: Prevents the plugin's element type check mismatch
-		var score_metadata: Dictionary = raw_props as Dictionary
-		
-		#await Talo.leaderboards.add_entry(chapter_key, final_calculated_score, score_metadata)
+		await Talo.leaderboards.add_entry(chapter_key, final_calculated_score, {
+			"rank": str(final_rank)
+		})
 	
 	SaveManager.save_game()
 	return final_calculated_score

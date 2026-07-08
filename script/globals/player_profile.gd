@@ -147,7 +147,7 @@ func sync_local_scores_to_talo() -> void:
 	if typeof(Talo) == TYPE_NIL or not Talo.current_player:
 		print("[SYNC] Player not authenticated yet. Deferring backend leaderboard push.")
 		return
-
+	
 	print("[SYNC] Checking local profile high scores for cloud synchronization...")
 	
 	for key in high_scores.keys():
@@ -156,18 +156,10 @@ func sync_local_scores_to_talo() -> void:
 		if typeof(record) == TYPE_DICTIONARY and record.has("score"):
 			var local_score: int = record.get("score")
 			var local_rank: String = record.get("rank", "C")
-			
 			print("[SYNC] Pushing local record -> Board: ", key, " | Score: ", local_score, " | Rank: ", local_rank)
 			
-			var raw_props = {
-				"rank": str(local_rank),
-				"chapter_cleared": "true"
-			}
-			
-			# 2. 🌟 FORCE UNTYPED CASTING: This strips away Godot 4's static type boundaries
-			var score_metadata: Dictionary = raw_props as Dictionary
-			
-			# 3. Send it to the Talo API safely
-			#await Talo.leaderboards.add_entry(key, local_score, score_metadata)
+			await Talo.leaderboards.add_entry(key, local_score, {
+				"rank": str(local_rank)
+			})
 			
 	print("[SYNC] Offline data backup synchronization processing finished.")

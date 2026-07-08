@@ -121,7 +121,7 @@ offset_left = 306.0
 offset_top = 178.0
 offset_right = -301.0
 offset_bottom = -823.0
-theme_override_constants/separation = 300
+theme_override_constants/separation = 260
 alignment = 1
 
 [node name="RankLabel" type="Label" parent="HBoxContainer" unique_id=651692321]
@@ -144,58 +144,47 @@ text = "Score"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1421599821]
 layout_mode = 0
-offset_left = 365.0
+offset_left = 247.0
 offset_top = 255.0
-offset_right = 1590.0
-offset_bottom = 959.0
+offset_right = 1669.0
+offset_bottom = 965.09
+horizontal_scroll_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer" unique_id=1446329492]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 400
+size_flags_vertical = 3
 alignment = 1
 
 [node name="RankColumn" type="VBoxContainer" parent="ScrollContainer/HBoxContainer" unique_id=796725897]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="RankLabel" type="Label" parent="ScrollContainer/HBoxContainer/RankColumn" unique_id=476615812]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_w1rm7")
 theme_override_font_sizes/font_size = 30
-text = "S
-S
-A
-A
-A"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NameColumn" type="VBoxContainer" parent="ScrollContainer/HBoxContainer" unique_id=693635589]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="NameLabel" type="Label" parent="ScrollContainer/HBoxContainer/NameColumn" unique_id=315007061]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_w1rm7")
 theme_override_font_sizes/font_size = 30
-text = "binggbongg
-chrome
-bambi
-ratbytes
-sharkwater"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ScoreColumn" type="VBoxContainer" parent="ScrollContainer/HBoxContainer" unique_id=2046318030]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="ScoreLabel" type="Label" parent="ScrollContainer/HBoxContainer/ScoreColumn" unique_id=1015597381]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_w1rm7")
 theme_override_font_sizes/font_size = 30
-text = "230328
-198020
-188096
-165526
-122938"
 horizontal_alignment = 1
 vertical_alignment = 1
