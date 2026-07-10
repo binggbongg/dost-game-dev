@@ -119,6 +119,9 @@ func update_high_score(level_id: String, score: int) -> bool:
 		SaveManager.save_game()
 		return true
 	return false
+
+var selected_chapter: int = 1 
+# UPDATE THIS METHOD
 func advance_to_next_level() -> void:
 	var next_l := current_level + 1
 	var next_p := current_phase
@@ -126,7 +129,10 @@ func advance_to_next_level() -> void:
 	if next_l > 3:
 		next_l = 1
 		next_p += 1
-		
+		# --- NEW: Chapter Unlock Logic ---
+		if next_p > max_unlocked_chapters:
+			max_unlocked_chapters = next_p
+	
 	var next_path = "res://data/Levels/level_%d-%d.tres" % [next_p, next_l]
 	
 	if ResourceLoader.exists(next_path):
@@ -134,9 +140,9 @@ func advance_to_next_level() -> void:
 		if loaded_level:
 			set_next_level(loaded_level)
 			print("Progression Saved: Next target route updated to ", next_path)
+			SaveManager.save_game() # Keep this
 	else:
 		print("Congratulations! You've cleared all available levels in this version.")
-
 ## Overriding set_next_level to cleanly bind your LevelData layout structure variables
 func set_next_level(level_data: LevelData):
 	next_level_resource = level_data

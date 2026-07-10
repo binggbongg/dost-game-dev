@@ -161,7 +161,7 @@ func collect_and_update_chapter_locks() -> void:
 	if ch1 and ch1 is BaseButton:
 		chapter_buttons.append(ch1)
 		
-	for i in range(2, 14):
+	for i in range(2, 15):
 		var btn = get_node_or_null(str(i))
 		if btn and btn is BaseButton:
 			chapter_buttons.append(btn)
@@ -172,14 +172,27 @@ func collect_and_update_chapter_locks() -> void:
 		var target_btn = chapter_buttons[idx]
 		var chapter_num = idx + 1
 		
-		if chapter_num == 1:
+		if chapter_num <= current_max_unlocked:
 			target_btn.disabled = false
 			target_btn.modulate = Color(1.0, 1.0, 1.0, 1.0)
-			continue
-			
-		if current_max_unlocked >= chapter_num:
-			target_btn.disabled = false
-			target_btn.modulate = Color(1.0, 1.0, 1.0, 1.0)
+			# ADD: Connection for the button
+			if not target_btn.pressed.is_connected(_on_chapter_button_pressed):
+				target_btn.pressed.connect(_on_chapter_button_pressed.bind(chapter_num))
 		else:
 			target_btn.disabled = true
-			target_btn.modulate = Color(0.3, 0.3, 0.3, 0.8) # Grayed out visual feedback
+			target_btn.modulate = Color(0.3, 0.3, 0.3, 0.8)
+
+func _on_chapter_button_pressed(chapter_num: int):
+	AudioManager.play_ui_sound("click")
+	PlayerProfile.selected_chapter = chapter_num
+	
+	# Rule: If redoing a chapter or entering a new one, start at level 1
+	if PlayerProfile.current_phase != chapter_num:
+		PlayerProfile.current_phase = chapter_num
+		PlayerProfile.current_level = 1
+		
+	var path = "res://data/Levels/level_%d-%d.tres" % [PlayerProfile.current_phase, PlayerProfile.current_level]
+	if ResourceLoader.exists(path):
+		PlayerProfile.set_next_level(load(path))
+		
+	SceneTransition.change_scene_path("res://scenes/menus/map.tscn")
