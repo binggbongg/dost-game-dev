@@ -168,14 +168,23 @@ func collect_and_update_chapter_locks() -> void:
 			
 	var current_max_unlocked = PlayerProfile.max_unlocked_chapters
 	
+	var current_max = PlayerProfile.max_unlocked_chapters
+	
 	for idx in range(chapter_buttons.size()):
 		var target_btn = chapter_buttons[idx]
 		var chapter_num = idx + 1
 		
-		if chapter_num <= current_max_unlocked:
+		# Reset any previous tweens if the node is reused
+		var existing_tweens = get_tree().get_processed_tweens().filter(func(t): return t.is_valid())
+		
+		if chapter_num <= current_max:
 			target_btn.disabled = false
 			target_btn.modulate = Color(1.0, 1.0, 1.0, 1.0)
-			# ADD: Connection for the button
+			
+			# NEW: Apply glow only to the current highest chapter
+			if chapter_num == current_max:
+				apply_glow(target_btn)
+				
 			if not target_btn.pressed.is_connected(_on_chapter_button_pressed):
 				target_btn.pressed.connect(_on_chapter_button_pressed.bind(chapter_num))
 		else:
@@ -185,14 +194,15 @@ func collect_and_update_chapter_locks() -> void:
 func _on_chapter_button_pressed(chapter_num: int):
 	AudioManager.play_ui_sound("click")
 	PlayerProfile.selected_chapter = chapter_num
-	
-	# Rule: If redoing a chapter or entering a new one, start at level 1
-	if PlayerProfile.current_phase != chapter_num:
-		PlayerProfile.current_phase = chapter_num
-		PlayerProfile.current_level = 1
+	PlayerProfile.current_phase = chapter_num
 		
 	var path = "res://data/Levels/level_%d-%d.tres" % [PlayerProfile.current_phase, PlayerProfile.current_level]
 	if ResourceLoader.exists(path):
 		PlayerProfile.set_next_level(load(path))
 		
 	SceneTransition.change_scene_path("res://scenes/menus/map.tscn")
+
+func apply_glow(node: CanvasItem):
+	var tween = create_tween().set_loops()
+	tween.tween_property(node, "modulate", Color(1.5, 1.5, 1.5, 1.0), 0.8) # Brighten
+	tween.tween_property(node, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.8) # Return to normal

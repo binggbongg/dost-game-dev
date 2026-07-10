@@ -77,10 +77,10 @@ func _on_enemy_defeated():
 	else:
 		print("CRITICAL: victory_screen_scene file target asset path is invalid or missing!")
 
+
 func prepare_next_progression_target():
-	var old_phase = PlayerProfile.current_phase
 	PlayerProfile.advance_to_next_level()
-	if PlayerProfile.current_phase > old_phase:
+	if PlayerProfile.current_level == 1:
 		PlayerProfile.pending_scene = "res://scenes/menus/lounge.tscn"
 	else:
 		PlayerProfile.pending_scene = "res://scenes/levels/Level1.tscn"
@@ -164,8 +164,12 @@ func _on_player_dies():
 	if combat_arena:
 		var player_node = combat_arena.get_node_or_null("Player")
 		if player_node and player_node.has_method("play_death_animation"):
-			# Execution halts here until the death animation completes exactly once
 			await player_node.play_death_animation()
+	
+	PlayerProfile.current_level = 1
+	var path = "res://data/Levels/level_%d-%d.tres" % [PlayerProfile.current_phase, PlayerProfile.current_level]
+	if ResourceLoader.exists(path):
+		PlayerProfile.set_next_level(load(path))
 	
 	var end_screen_path = "res://scenes/story/gameover.tscn" 
 	var end_screen = load(end_screen_path).instantiate()
