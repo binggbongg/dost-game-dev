@@ -7,4 +7,6 @@
 script = ExtResource("1_maeks")
 background = "uid://b67a6h4yy3qud"
 enemy_data = ExtResource("1_slwnb")
+enemy_name = "Haros"
+level_lore = "Once, watchmen guarded the fields with nothing more than patience and trust. Now, silent figures roam beside mechanical eyes that never tire, watching over the land as it slowly bends to a new order. They call it progress, yet with every passing day, the distance between people and the earth quietly grows."
 metadata/_custom_type_script = "uid://buqidver0oody"

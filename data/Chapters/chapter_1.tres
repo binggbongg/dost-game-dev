@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ChapterData" format=3 uid="uid://4qcipgglummt"]
+
+[ext_resource type="Script" uid="uid://cr6ky6wufya4w" path="res://data/chapter_data.gd" id="1_x7o2r"]
+
+[resource]
+script = ExtResource("1_x7o2r")
+chapter_number = 1
+chapter_name = "Ang Huling Luntián"
+chapter_description = "Your journey begins in the last untouched fields, where the winds still whisper through the tall grass and the land remembers a quieter time. Beyond the horizon, a city of iron continues to grow, carrying dreams of progress into every corner of the kingdom. But as its shadow stretches ever closer, the songs of the plains begin to fade."
+metadata/_custom_type_script = "uid://cr6ky6wufya4w"

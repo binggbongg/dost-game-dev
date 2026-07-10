@@ -9,4 +9,6 @@ level_number = 2
 phase_number = 3
 background = "uid://b53lxvg88um8u"
 enemy_data = ExtResource("1_tuwoo")
+enemy_name = "Tanod"
+level_lore = "Ever watchful, Tanod sees every corner of the Iron City's halls, ensuring nothing escapes its unyielding gaze. To those within these walls, its presence is meant to bring reassurance and security, swearing to prevent every danger in all its forms. Yet where every step is watched, trust slowly gives way to dependence."
 metadata/_custom_type_script = "uid://buqidver0oody"

@@ -8,4 +8,6 @@ script = ExtResource("1_cn07o")
 phase_number = 2
 background = "uid://dpscbo6tsahtl"
 enemy_data = ExtResource("1_4it2x")
+enemy_name = "Alulong"
+level_lore = "Its mournful cry drifts through the empty village long before its steel frame emerges from the shadows. Once fashioned to guard those who called this place home, it now prowls abandoned streets, teaching every traveler that fear can arrive long before danger ever does."
 metadata/_custom_type_script = "uid://buqidver0oody"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ChapterData" format=3 uid="uid://c2pgmaku7lsll"]
+
+[ext_resource type="Script" uid="uid://cr6ky6wufya4w" path="res://data/chapter_data.gd" id="1_j0baj"]
+
+[resource]
+script = ExtResource("1_j0baj")
+chapter_number = 3
+chapter_name = "Mga Bulwagang Bakal"
+chapter_description = "Far from the skies above, endless halls of steel stand as monuments to certainty and control. Here, every answer is sought with unwavering resolve, leaving little room for the impossible. Yet even in the deepest silence, hope has a way of finding the smallest crack through which to shine."
+metadata/_custom_type_script = "uid://cr6ky6wufya4w"

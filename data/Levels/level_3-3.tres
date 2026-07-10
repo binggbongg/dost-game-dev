@@ -10,4 +10,6 @@ phase_number = 3
 background = "uid://c4vu03g4vlhr0"
 enemy_data = ExtResource("1_0q2e2")
 is_boss_level = true
+enemy_name = "Huling Banta"
+level_lore = "Once entrusted to stand as a symbol of courage and unwavering hope, the Huling Bantay now watches over the Iron City's halls with silent devotion. Where it once inspired people to believe in tomorrow, it now teaches that hope is found only in certainty, guarding not the future of the people, but the future chosen for them."
 metadata/_custom_type_script = "uid://buqidver0oody"
