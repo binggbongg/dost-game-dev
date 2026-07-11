@@ -1,61 +1,41 @@
 extends Control
 
-# to change later
-@export var icon_kalikasan: Texture2D
-@export var icon_tanglaw: Texture2D
-@export var icon_lahi: Texture2D
-@export var icon_diwa: Texture2D
+@onready var special_panel = $SpecialCards
+@onready var double_panel = $Spell_double
+@onready var triple_panel = $Spell_tripple
 
-# We define the map inside the function to ensure export variables are captured correctly
-var icon_map = {}
+func display_content(data: Resource):
+	special_panel.hide()
+	double_panel.hide()
+	triple_panel.hide()
+	
+	if data is SpecialCardData:
+		_show_special(data)
+	else:
+		_show_combo(data)
 
-func display_recipe(recipe: Resource):
-	# Refresh the map with current exported textures
-	icon_map = {
-		GameEnums.CardCategory.KALIKASAN: icon_kalikasan,
-		GameEnums.CardCategory.TANGLAW: icon_tanglaw,
-		GameEnums.CardCategory.LAHI: icon_lahi,
-		GameEnums.CardCategory.DIWA: icon_diwa
-	}
+func _show_special(data: SpecialCardData):
+	special_panel.show()
+	special_panel.get_node("Name").text = data.name
+	special_panel.get_node("Card").texture = data.texture
+	special_panel.get_node("DescriptionPanel/DescriptionFull").text = data.description
+	special_panel.get_node("FilipinoLoreFull").text = data.FilipinoLore
+	
+	var asl = special_panel.get_node("ASL")
+	asl.sprite_frames = data.cardASL
+	asl.play("default")
+	special_panel.get_node("ASLLabel2").text = data.ASLExplanation
 
-	if recipe == null:
-		hide()
-		return
+func _show_combo(data: Resource):
+	# Assumes your combo resource has a property 'recipe_cards' (Array)
+	var cards = data.recipe_cards if "recipe_cards" in data else []
+	var target = triple_panel if cards.size() >= 3 else double_panel
+	target.show()
 	
-	show()
+	target.get_node("Name").text = data.name
+	target.get_node("DescriptionPanel/DescriptionFull").text = data.description
 	
-	# Determine branch based on card count
-	var is_triple = recipe.elements.size() == 3
-	$Tripple.visible = is_triple
-	$Double.visible = !is_triple
-	
-	var active_node = $Tripple if is_triple else $Double
-	
-	# Set Text - Name (Title) and Label (Description)
-	var name_lbl = active_node.get_node_or_null("Name")
-	var desc_lbl = active_node.get_node_or_null("Label")
-	
-	if name_lbl: 
-		name_lbl.text = recipe.name
-		
-	if desc_lbl: 
-		desc_lbl.text = recipe.description
-	
-	# Set Icons logic
-	var cards = ["Card", "Card2", "Card3"] if is_triple else ["Card", "Card2"]
-	
-	for i in range(cards.size()):
-		var node = active_node.get_node_or_null(cards[i])
-		if node:
-			# 1. Set the Texture
-			var element_type = recipe.elements[i]
-			node.texture = icon_map.get(element_type)
-			
-			# 2. --- AUTO-SCALING LOGIC ---
-			# This ensures small icons upscale to fill the planned area
-			node.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-			node.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-			
-			# Keeps the element icons sharp (Pixel Art friendly)
-			node.texture_filter = TEXTURE_FILTER_NEAREST
-			# -----------------------------
+	# Set textures Card, Card2, Card3
+	if cards.size() >= 1: target.get_node("Card").texture = cards[0].texture
+	if cards.size() >= 2: target.get_node("Card2").texture = cards[1].texture
+	if cards.size() >= 3: target.get_node("Card3").texture = cards[2].texture

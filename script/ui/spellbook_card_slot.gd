@@ -1,145 +1,124 @@
 extends Control
 
-# UI References
-@onready var texture_rect = get_node_or_null("Card")
-@onready var name_label = get_node_or_null("CardNameHolder/Name")
-@onready var rarity_pill = get_node_or_null("Rarirty")
-@onready var rarity_label = get_node_or_null("Rarirty/Rarity")
-@onready var desc_label = get_node_or_null("DescriptionFull")
+@onready var card_art_display = get_node_or_null("Card")
+@onready var title_name_label = get_node_or_null("Name")
 
-# Generic display slots (their names don't matter anymore)
-@onready var physical_slots = [
-	get_node_or_null("ManaCost"),
-	get_node_or_null("Attack"),
-	get_node_or_null("Shield"),
-	get_node_or_null("Heal")
-]
+# Stats Node Hierarchy
+@onready var mana_label = get_node_or_null("CardStats/ManaCost/ManaCost")
+@onready var attack_label = get_node_or_null("CardStats/Attack/AttackAmount")
+@onready var heal_label = get_node_or_null("CardStats/Heal/HealAmount")
+@onready var multiplier_label = get_node_or_null("CardStats/Shield/ShieldAmount") # Using this container for Multiplier
 
-var icon_textures = {}
+@onready var category_text = get_node_or_null("CategoryPanel/CardCategoryFull")
+@onready var category_icon = get_node_or_null("CategoryPanel/Category")
 
-func _ready():
-	# Save the icons currently assigned to each slot safely
-	if physical_slots[0]:
-		var icon = physical_slots[0].get_node_or_null("Icon")
-		if icon: icon_textures["mana"] = icon.texture
+@onready var effect_text = get_node_or_null("DescriptionPanel/DescriptionFull")
+@onready var rarity_text = get_node_or_null("RarityPanel/CardRarityFull")
 
-	if physical_slots[1]:
-		var icon = physical_slots[1].get_node_or_null("Icon")
-		if icon == null:
-			icon = physical_slots[1].get_node_or_null("Icon2")
-		if icon: icon_textures["attack"] = icon.texture
+@onready var asl_animated_sprite = get_node_or_null("ASL")
+@onready var asl_description_label = get_node_or_null("DescriptionPanel4/ASLDescription")
 
-	if physical_slots[2]:
-		var icon = physical_slots[2].get_node_or_null("Icon")
-		if icon: icon_textures["multiplier"] = icon.texture
-
-	if physical_slots[3]:
-		var icon = physical_slots[3].get_node_or_null("Icon")
-		if icon: icon_textures["heal"] = icon.texture
-
+@export var texture_kalikasan: Texture2D
+@export var texture_tanglaw: Texture2D
+@export var texture_diwa: Texture2D
+@export var texture_lahi: Texture2D
 
 func display(card_res: Resource):
 	if card_res == null:
-		hide()
+		clear_display()
 		return
-
+		
 	show()
+	
+	if card_art_display:
+		card_art_display.texture = card_res.get("texture")
+		card_art_display.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		card_art_display.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 
-	# -----------------------------
-	# Card Info
-	# -----------------------------
-	if texture_rect:
-		texture_rect.texture = card_res.get("texture")
-		texture_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		texture_rect.texture_filter = TEXTURE_FILTER_NEAREST
+	if title_name_label:
+		title_name_label.text = str(card_res.get("name"))
+		
+	if effect_text:
+		effect_text.text = str(card_res.get("description"))
 
-	if name_label:
-		name_label.text = str(card_res.get("name"))
+	if asl_description_label:
+		asl_description_label.text = str(card_res.get("ASLExplanation"))
 
-	if desc_label:
-		desc_label.text = str(card_res.get("description"))
+	# --- Update Stats Block ---
+	if mana_label:
+		mana_label.text = "Mana Cost: %d" % card_res.get("mana_cost")
+	if attack_label:
+		attack_label.text = "Attack Power: %d" % card_res.get("damage")
+	if heal_label:
+		heal_label.text = "Heal Power: %d" % card_res.get("heal")
+		
+	# --- Changed to Multiplier (formatted to 1 decimal place, e.g., 1.5) ---
+	if multiplier_label:
+		var mult_val = card_res.get("multiplier") if "multiplier" in card_res else 0.0
+		multiplier_label.text = "Multiplier: %.1f" % mult_val
 
-	# -----------------------------
-	# Rarity
-	# -----------------------------
-	var r = card_res.get("rarity")
+	_update_category_ui(card_res.get("category"))
+	_update_asl_animation(card_res.get("cardASL"))
+	_update_rarity_text(card_res.get("rarity"))
 
-	if rarity_pill:
-		if r != null:
-			rarity_pill.show()
-			if rarity_label:
-				rarity_label.text = GameEnums.CardRarity.keys()[r]
-		else:
-			rarity_pill.hide()
+func _update_category_ui(category_val):
+	if category_text:
+		category_text.text = GameEnums.CardCategory.keys()[category_val] if category_val != null else "NONE"
+		
+	if not category_icon: return
+	match category_val:
+		GameEnums.CardCategory.KALIKASAN: category_icon.texture = texture_kalikasan
+		GameEnums.CardCategory.TANGLAW: category_icon.texture = texture_tanglaw
+		GameEnums.CardCategory.DIWA: category_icon.texture = texture_diwa
+		GameEnums.CardCategory.LAHI: category_icon.texture = texture_lahi
+		_: category_icon.texture = null
 
-	# -----------------------------
-	# Build active stats
-	# -----------------------------
-	var active_stats = []
+func _update_asl_animation(sprite_frames_res):
+	if not asl_animated_sprite: return
+	
+	if sprite_frames_res is SpriteFrames:
+		asl_animated_sprite.sprite_frames = sprite_frames_res
+		asl_animated_sprite.show()
+		
+		var anim_names = sprite_frames_res.get_animation_names()
+		if anim_names.size() > 0:
+			var active_anim = "default" if "default" in anim_names else anim_names[0]
+			asl_animated_sprite.stop()
+			asl_animated_sprite.set_animation(active_anim)
+			asl_animated_sprite.frame = 0
+			asl_animated_sprite.play(active_anim)
+	else:
+		asl_animated_sprite.hide()
+		asl_animated_sprite.stop()
 
-	# Defined as a lambda to cleanly modify active_stats in-line
-	var add_stat = func(value, label, icon):
-		if value == null:
-			value = 0
+func _update_rarity_text(rarity_val):
+	if not rarity_text: return
+	if rarity_val == null: rarity_val = 0
+	
+	rarity_text.text = GameEnums.CardRarity.keys()[rarity_val]
+	
+	rarity_text.begin_bulk_theme_override()
+	var text_color = Color.WHITE
+	match rarity_val:
+		GameEnums.CardRarity.Karaniwan: text_color = Color.WHITE
+		GameEnums.CardRarity.Natatangi: text_color = Color(0.2, 0.6, 1.0)
+		GameEnums.CardRarity.Bihira: text_color = Color(0.68, 0.45, 0.9)
+		GameEnums.CardRarity.Dambana: text_color = Color(0.95, 0.25, 0.25)
+		
+	rarity_text.add_theme_color_override("font_color", text_color)
+	rarity_text.end_bulk_theme_override()
 
-		if value > 0:
-			active_stats.append({
-				"text": "%s: %s" % [label, str(value)],
-				"icon": icon
-			})
-
-	# Safely call the lambda using .call(), using .get() to avoid missing key crashes
-	add_stat.call(card_res.get("mana_cost"), "Mana Cost", icon_textures.get("mana"))
-	add_stat.call(card_res.get("damage"), "Damage", icon_textures.get("attack"))
-	add_stat.call(card_res.get("heal"), "Heal", icon_textures.get("heal"))
-	add_stat.call(card_res.get("multiplier"), "Multiplier", icon_textures.get("multiplier"))
-
-	# -----------------------------
-	# Fill the display slots
-	# -----------------------------
-	for i in range(physical_slots.size()):
-		var slot = physical_slots[i]
-
-		if slot == null:
-			continue
-
-		if i >= active_stats.size():
-			slot.hide()
-			continue
-
-		slot.show()
-
-		var stat = active_stats[i]
-
-		var icon = slot.get_node_or_null("Icon")
-		if icon == null:
-			icon = slot.get_node_or_null("Icon2")
-
-		if icon:
-			icon.texture = stat.icon
-
-		for child in slot.get_children():
-			if child is Label:
-				child.text = stat.text
-				break
-
-
-func display_combo(title: String, body: String):
-	show()
-
-	for p in physical_slots:
-		if p:
-			p.hide()
-
-	if rarity_pill:
-		rarity_pill.hide()
-
-	if name_label:
-		name_label.text = title
-
-	if desc_label:
-		desc_label.text = body
-
-	if texture_rect:
-		texture_rect.texture = null
+func clear_display():
+	if card_art_display: card_art_display.texture = null
+	if title_name_label: title_name_label.text = ""
+	if category_text: category_text.text = ""
+	if rarity_text: rarity_text.text = ""
+	if effect_text: effect_text.text = ""
+	if asl_description_label: asl_description_label.text = ""
+	if mana_label: mana_label.text = "Mana Cost: 0"
+	if attack_label: attack_label.text = "Attack Power: 0"
+	if multiplier_label: multiplier_label.text = "Multiplier: 0.0"
+	if heal_label: heal_label.text = "Heal Power: 0"
+	if asl_animated_sprite: 
+		asl_animated_sprite.hide()
+		asl_animated_sprite.stop()
