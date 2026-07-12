@@ -36,29 +36,31 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_lt1eh")
 
 [node name="ItemName_CardName_LevelNumber" type="Label" parent="Special Cards" unique_id=1101685491]
 layout_mode = 0
-offset_left = 85.0
+offset_left = 5.0
 offset_top = 236.0
-offset_right = 167.0
+offset_right = 227.0
 offset_bottom = 279.0
 text = "AWIT"
 label_settings = SubResource("LabelSettings_01a2s")
+horizontal_alignment = 1
 
 [node name="ItemCost_Description_Score" type="Label" parent="Special Cards" unique_id=586322369]
 layout_mode = 0
-offset_left = 87.0
+offset_left = 1.0
 offset_top = 281.0
-offset_right = 171.0
+offset_right = 231.0
 offset_bottom = 301.0
 text = "MANA COST: 5"
 label_settings = SubResource("LabelSettings_xhho6")
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ManaCostIcon" type="TextureRect" parent="Special Cards" unique_id=1646148945]
 layout_mode = 0
-offset_left = 71.0
-offset_top = 282.0
-offset_right = 83.0
-offset_bottom = 296.0
+offset_left = 59.0
+offset_top = 284.0
+offset_right = 71.0
+offset_bottom = 298.0
 texture = ExtResource("3_e1b73")
 
 [node name="ItemTexture" type="TextureRect" parent="Special Cards" unique_id=1519000094]
@@ -69,6 +71,8 @@ offset_right = 236.33334
 offset_bottom = 303.0
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("4_486bg")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Button" type="Button" parent="Special Cards" unique_id=1037919980]
 layout_mode = 0

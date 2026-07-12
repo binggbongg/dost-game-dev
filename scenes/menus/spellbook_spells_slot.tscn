@@ -2,7 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dwqexe0c362xp" path="res://script/ui/spellbook_spells_slot.gd" id="1_k2dmb"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="1_qsk0q"]
+[ext_resource type="Texture2D" uid="uid://bdcjpy6fofac5" path="res://assets/cards/4.png" id="2_fol41"]
 [ext_resource type="Texture2D" uid="uid://dokp567t4il4o" path="res://assets/cards/akit.png" id="3_3dkri"]
+[ext_resource type="Texture2D" uid="uid://csn03vyiyaocx" path="res://assets/cards/3.png" id="3_k7rbx"]
+[ext_resource type="Texture2D" uid="uid://d3opubgs2iu7c" path="res://assets/cards/2.png" id="4_75uam"]
+[ext_resource type="Texture2D" uid="uid://dbr55eplqxgcg" path="res://assets/cards/1.png" id="5_bimcv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3dfj"]
 bg_color = Color(0.68235296, 0.5882353, 0.39215687, 0.29411766)
@@ -20,8 +24,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k2dmb")
+tex_kalikasan = ExtResource("2_fol41")
+tex_tanglaw = ExtResource("3_k7rbx")
+tex_diwa = ExtResource("4_75uam")
+tex_lahi = ExtResource("5_bimcv")
 
 [node name="SpellItem_Tripple" type="Panel" parent="." unique_id=501564279]
+visible = false
 layout_mode = 0
 offset_right = 251.0
 offset_bottom = 130.0
@@ -38,32 +47,35 @@ label_settings = SubResource("LabelSettings_qsk0q")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemTexture" type="TextureRect" parent="SpellItem_Tripple" unique_id=1468678291]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 17.0
-offset_right = 164.0
-offset_bottom = 113.0
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("3_3dkri")
-
 [node name="ItemTexture2" type="TextureRect" parent="SpellItem_Tripple" unique_id=1130046635]
 layout_mode = 0
-offset_left = 45.0
-offset_top = 21.0
-offset_right = 109.0
-offset_bottom = 117.0
+offset_left = 56.0
+offset_top = 22.0
+offset_right = 120.0
+offset_bottom = 118.0
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_3dkri")
+expand_mode = 1
 
 [node name="ItemTexture3" type="TextureRect" parent="SpellItem_Tripple" unique_id=1702145718]
 layout_mode = 0
-offset_left = 154.0
-offset_top = 20.0
-offset_right = 218.0
-offset_bottom = 116.0
+offset_left = 138.0
+offset_top = 22.0
+offset_right = 202.0
+offset_bottom = 118.0
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_3dkri")
+expand_mode = 1
+
+[node name="ItemTexture" type="TextureRect" parent="SpellItem_Tripple" unique_id=1468678291]
+layout_mode = 0
+offset_left = 96.00001
+offset_top = 16.0
+offset_right = 166.66666
+offset_bottom = 121.999985
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_3dkri")
+expand_mode = 1
 
 [node name="Button" type="Button" parent="SpellItem_Tripple" unique_id=252760281]
 layout_mode = 0
@@ -73,7 +85,6 @@ offset_bottom = 131.0
 flat = true
 
 [node name="SpellItem_Double" type="Panel" parent="." unique_id=1434196675]
-visible = false
 layout_mode = 0
 offset_right = 251.0
 offset_bottom = 130.0
@@ -98,6 +109,7 @@ offset_right = 136.0
 offset_bottom = 115.0
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_3dkri")
+expand_mode = 1
 
 [node name="ItemTexture3" type="TextureRect" parent="SpellItem_Double" unique_id=754510586]
 layout_mode = 0
@@ -107,6 +119,7 @@ offset_right = 190.0
 offset_bottom = 121.0
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_3dkri")
+expand_mode = 1
 
 [node name="Button" type="Button" parent="SpellItem_Double" unique_id=577382068]
 layout_mode = 0

@@ -5,130 +5,192 @@ const SPECIAL_SLOT_SCENE = preload("res://scenes/menus/spellbook_special_cards.t
 const COMBO_SLOT_SCENE = preload("res://scenes/menus/spellbook_spells_slot.tscn")
 const COMBO_PATH = "res://data/ComboRecipe/"
 
+# --- TEXTURE EXPORTS FOR COMBO MAPPING ---
+@export_group("Category Textures")
+@export var texture_kalikasan: Texture2D
+@export var texture_tanglaw: Texture2D
+@export var texture_diwa: Texture2D
+@export var texture_lahi: Texture2D
 
-# --- TAB 1 NODES ---
-@onready var cards_bookmark = get_node_or_null("../Bookmarks/Cards")
-@onready var tab1_left_page = get_node_or_null("../LeftPage/Tab1_Cards")
-@onready var tab1_grid = get_node_or_null("../LeftPage/Tab1_Cards/Tab1Holder/GridContainer")
-@onready var tab1_right_page = get_node_or_null("../RightPage/SpellbookCards")
+# --- RIGHT PAGE REFERENCES ---
+@onready var tab1_right_page: Control = $"../RightPage/SpellbookCards"
+@onready var tab2_right_page: Control = $"../RightPage/ComboSlot" # Fixed: Points directly to ComboSlot UI script
 
-# --- TAB 2 NODES ---
-@onready var spells_bookmark = get_node_or_null("../Bookmarks/Spells")
-@onready var tab2_left_page = get_node_or_null("../LeftPage/Tab2_Special_Spells")
-@onready var tab2_right_page = get_node_or_null("../RightPage/ComboSlot")
+# --- SPELLBOOK TAB BUTTONS ---
+@onready var cards_button_tab1: TextureButton = $"../Bookmarks/Cards"
+@onready var spells_button_tab2: TextureButton = $"../Bookmarks/Spells"
+@onready var battle_journal_tab3: TextureButton = $"../Bookmarks/BattleJournal"
+@onready var star_fragments_tab4: TextureButton = $"../Bookmarks/StarFragments"
+@onready var locations_tab5: TextureButton = $"../Bookmarks/Locations"
 
-# Grids inside Tab 2
-@onready var special_inv_grid = get_node_or_null("../LeftPage/Tab2_Special_Spells/SpecialCardsHolder/GridContainer")
-@onready var combo_recipes_grid = get_node_or_null("../LeftPage/Tab2_Special_Spells/SpellHolder/GridContainer")
-@onready var owned_count_label = get_node_or_null("../LeftPage/Tab2_Special_Spells/SpecialCardsHolder/GridContainer/../../Label") # "Owned: 25/36"
+# --- SPELLBOOK LEFT PAGE PANELS ---
+@onready var tab_1_cards: Control = $"../LeftPage/Tab1_Cards"
+@onready var tab_2_special_spells: Control = $"../LeftPage/Tab2_Special_Spells"
+@onready var tab_3_battle_journal: Control = $"../LeftPage/Tab3_BattleJournal"
+@onready var tab_4_star_fragments: Control = $"../LeftPage/Tab4_StarFragments"
+@onready var tab_5_world: Control = $"../LeftPage/Tab5_World"
 
-# --- NAVIGATION ---
-@onready var btn_left = get_node_or_null("../Pagination/Left")
-@onready var btn_right = get_node_or_null("../Pagination/Right")
+# --- GRID CONTAINERS ---
+@onready var cards_container: GridContainer = $"../LeftPage/Tab1_Cards/Tab1Holder/CardsContainer"
+@onready var special_card_container: GridContainer = $"../LeftPage/Tab2_Special_Spells/SpecialCardsHolder/SpecialCardContainer"
+@onready var spell_container: GridContainer = $"../LeftPage/Tab2_Special_Spells/SpellHolder/SpellContainer"
+
+# --- EMPTY LABEL ---
+@onready var empty: Label = $"../LeftPage/Tab2_Special_Spells/Empty"
+
+# --- PAGINATION BUTTONS ---
+@onready var cards_bookmark = cards_button_tab1
+@onready var spells_bookmark = spells_button_tab2
+@onready var btn_left = $"../BtnLeft" 
+@onready var btn_right = $"../BtnRight" 
 
 func _ready():
 	setup_connections()
-	# Start on Tab 1
 	await get_tree().process_frame
 	open_cards_tab()
 
 func setup_connections():
-	# Tab Buttons
 	if cards_bookmark: cards_bookmark.pressed.connect(open_cards_tab)
 	if spells_bookmark: spells_bookmark.pressed.connect(open_spells_tab)
-	
-	# Pagination
 	if btn_left: btn_left.pressed.connect(_on_prev_chapter)
 	if btn_right: btn_right.pressed.connect(_on_next_chapter)
 	
-	# Hook other tabs to hide everything
 	var bk = "../Bookmarks/"
 	var hide_all = func():
 		hide_cards_tab()
 		hide_spells_tab()
-		# Add logic for BattleJournal, etc here
 		
 	for b_name in ["BattleJournal", "StarFragments", "Locations"]:
 		var b_node = get_node_or_null(bk + b_name)
 		if b_node: b_node.pressed.connect(hide_all)
 
+func get_texture_for_element(element_val) -> Texture2D:
+	if element_val == null: return null
+	
+	var type_str = ""
+	if element_val is String:
+		type_str = element_val.to_lower().strip_edges()
+	elif element_val is int or element_val is float:
+		# Safeguard against out-of-bounds enum integers
+		var keys = GameEnums.CardCategory.keys()
+		var idx = int(element_val)
+		if idx >= 0 and idx < keys.size():
+			type_str = keys[idx].to_lower()
+		
+	match type_str:
+		"kalikasan": return texture_kalikasan
+		"tanglaw": return texture_tanglaw
+		"diwa": return texture_diwa
+		"lahi": return texture_lahi
+	return null
+
+
+
 # --- TAB 1 LOGIC (Owned Base Cards) ---
 func open_cards_tab():
 	hide_spells_tab()
-	if tab1_left_page: tab1_left_page.show()
+	if tab_1_cards: tab_1_cards.show()
 	if tab1_right_page: tab1_right_page.show()
 	reload_tab1_data()
 
 func hide_cards_tab():
-	if tab1_left_page: tab1_left_page.hide()
+	if tab_1_cards: tab_1_cards.hide()
 	if tab1_right_page: tab1_right_page.hide()
 
 func reload_tab1_data():
-	for child in tab1_grid.get_children(): child.queue_free()
+	if not cards_container: return
+	for child in cards_container.get_children(): child.queue_free()
 	
 	for path in PlayerProfile.owned_cards:
 		if ResourceLoader.exists(path):
 			var res = load(path)
 			var inst = ITEM_HOLDER_SCENE.instantiate()
-			tab1_grid.add_child(inst)
-			if inst.has_method("setup_item"): inst.setup_item(res)
-			if inst.has_signal("card_selected"): inst.card_selected.connect(_on_tab1_selected)
+			cards_container.add_child(inst)
 			
-	# Default display
-	if tab1_grid.get_child_count() > 0 and tab1_right_page.has_method("display"):
+			if inst.has_method("setup_item"): 
+				inst.setup_item(res)
+			
+			if inst.has_signal("card_selected"):
+				inst.card_selected.connect(_on_tab1_selected)
+			
+	if cards_container.get_child_count() > 0 and tab1_right_page.has_method("display"):
 		tab1_right_page.display(load(PlayerProfile.owned_cards[0]))
 
 func _on_tab1_selected(res):
-	if tab1_right_page.has_method("display"): tab1_right_page.display(res)
+	if tab1_right_page and tab1_right_page.has_method("display"): 
+		tab1_right_page.display(res)
 
 # --- TAB 2 LOGIC (Specials & Combos) ---
 func open_spells_tab():
 	hide_cards_tab()
-	if tab2_left_page: tab2_left_page.show()
+	if tab_2_special_spells: tab_2_special_spells.show()
 	if tab2_right_page: tab2_right_page.show()
 	reload_tab2_data()
 
 func hide_spells_tab():
-	if tab2_left_page: tab2_left_page.hide()
-	if tab2_right_page: tab2_right_page.hide()
+	if tab_2_special_spells: tab_2_special_spells.hide()
+	if tab2_right_page: 
+		tab2_right_page.hide()
 
 func reload_tab2_data():
-	# 1. Load Inventory Specials (Top Grid)
-	for child in special_inv_grid.get_children(): child.queue_free()
+	for child in special_card_container.get_children(): child.queue_free()
+	for child in spell_container.get_children(): child.queue_free()
+	
 	var owned_count = 0
+	var first_valid_resource: Resource = null
+	
+	# Load Specials
 	for item_id in PlayerInventory.owned_items.keys():
 		var res = ItemDb.get_item(item_id)
-		if res is SpecialCardData:
+		if res and (res is SpecialCardData or res.has_method("is_special_card")):
 			owned_count += 1
+			if not first_valid_resource: first_valid_resource = res
 			var inst = SPECIAL_SLOT_SCENE.instantiate()
-			special_inv_grid.add_child(inst)
-			inst.setup_item(res)
-			if inst.has_signal("card_selected"): inst.card_selected.connect(_on_tab2_selected)
+			special_card_container.add_child(inst)
+			
+			if inst.has_method("setup_item"): 
+				inst.setup_item(res)
+			
+			if inst.has_signal("card_selected"): 
+				inst.card_selected.connect(_on_tab2_selected)
 	
-	if owned_count_label: owned_count_label.text = "Owned: %d/36" % owned_count
+	if empty:
+		empty.visible = (owned_count == 0)
 
-	# 2. Load Combo Recipes Folder (Bottom Grid)
-	for child in combo_recipes_grid.get_children(): child.queue_free()
+	# Load Combos
 	var dir = DirAccess.open(COMBO_PATH)
 	if dir:
 		dir.list_dir_begin()
-		var file = dir.get_next()
-		while file != "":
-			if file.ends_with(".tres") or file.ends_with(".tres.remap"):
-				var res = load(COMBO_PATH + file.replace(".remap", ""))
+		var file_name = dir.get_next()
+		while file_name != "":
+			if not dir.current_is_dir() and (file_name.ends_with(".tres") or file_name.ends_with(".res")):
+				var res = load(COMBO_PATH + file_name)
+				if not first_valid_resource: first_valid_resource = res
 				var inst = COMBO_SLOT_SCENE.instantiate()
-				combo_recipes_grid.add_child(inst)
-				if inst.has_method("setup_spell"): inst.setup_spell(res)
-				if inst.has_signal("spell_selected"): inst.spell_selected.connect(_on_tab2_selected)
-			file = dir.get_next()
+				spell_container.add_child(inst)
+				
+				if inst.has_method("setup_spell"): 
+					inst.setup_spell(res)
+				
+				if inst.has_signal("spell_selected"): 
+					inst.spell_selected.connect(_on_tab2_selected)
+					
+			file_name = dir.get_next()
+			
+	# Automatically populate default selection on entry if data exists
+	if first_valid_resource and tab2_right_page.has_method("display_content"):
+		tab2_right_page.display_content(first_valid_resource)
 
 func _on_tab2_selected(res):
-	if AudioManager.has_method("play_ui_sound"): AudioManager.play_ui_sound("flip")
-	if tab2_right_page.has_method("display_content"): tab2_right_page.display_content(res)
+	if has_node("/root/AudioManager") and AudioManager.has_method("play_ui_sound"): 
+		AudioManager.play_ui_sound("flip")
+	
+	if tab2_right_page and tab2_right_page.has_method("display_content"): 
+		tab2_right_page.display_content(res)
 
 # --- PAGINATION ---
 func _on_next_chapter():
-	if tab1_left_page.visible: open_spells_tab()
+	if tab_1_cards and tab_1_cards.visible: open_spells_tab()
 
 func _on_prev_chapter():
-	if tab2_left_page.visible: open_cards_tab()
+	if tab_2_special_spells and tab_2_special_spells.visible: open_cards_tab()

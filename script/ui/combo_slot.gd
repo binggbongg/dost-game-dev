@@ -1,41 +1,88 @@
 extends Control
 
+@export_group("Combo Element Templates")
+@export var tex_kalikasan: Texture2D
+@export var tex_tanglaw: Texture2D
+@export var tex_diwa: Texture2D
+@export var tex_lahi: Texture2D
+
 @onready var special_panel = $SpecialCards
 @onready var double_panel = $Spell_double
-@onready var triple_panel = $Spell_tripple
+@onready var triple_panel = $Spell_triiple
 
-func display_content(data: Resource):
-	special_panel.hide()
-	double_panel.hide()
-	triple_panel.hide()
+func display_content(res):
+	if special_panel: special_panel.hide()
+	if double_panel: double_panel.hide()
+	if triple_panel: triple_panel.hide()
 	
-	if data is SpecialCardData:
-		_show_special(data)
+	if res == null: return
+	var manager = get_tree().current_scene.find_child("SpellbookManager", true, false)
+
+	if res is SpecialCardData or res.get("elements") == null:
+		if special_panel:
+			special_panel.show()
+			_fill_special(res)
 	else:
-		_show_combo(data)
+		var elements_array = res.get("elements")
+		if elements_array.size() >= 3:
+			if triple_panel:
+				triple_panel.show()
+				_fill_combo(triple_panel, res, manager, true, elements_array)
+		else:
+			if double_panel:
+				double_panel.show()
+				_fill_combo(double_panel, res, manager, false, elements_array)
 
-func _show_special(data: SpecialCardData):
-	special_panel.show()
-	special_panel.get_node("Name").text = data.name
-	special_panel.get_node("Card").texture = data.texture
-	special_panel.get_node("DescriptionPanel/DescriptionFull").text = data.description
-	special_panel.get_node("FilipinoLoreFull").text = data.FilipinoLore
+func _fill_special(res):
+	var n = special_panel.get_node_or_null("Name")
+	var c = special_panel.get_node_or_null("Card")
+	var d = special_panel.get_node_or_null("DescriptionPanel/DescriptionFull")
+	var l = special_panel.get_node_or_null("FilipinoLoreLabelFull")
+	var e = special_panel.get_node_or_null("SpecialEffectFull")
 	
-	var asl = special_panel.get_node("ASL")
-	asl.sprite_frames = data.cardASL
-	asl.play("default")
-	special_panel.get_node("ASLLabel2").text = data.ASLExplanation
+	if n: n.text = str(res.get("name"))
+	if c: 
+		c.texture = res.get("texture")
+		c.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		c.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	if d: d.text = str(res.get("description"))
+	if l: l.text = str(res.get("FilipinoLore"))
+	if e: e.text = str(res.get("ASLExplanation"))
 
-func _show_combo(data: Resource):
-	# Assumes your combo resource has a property 'recipe_cards' (Array)
-	var cards = data.recipe_cards if "recipe_cards" in data else []
-	var target = triple_panel if cards.size() >= 3 else double_panel
-	target.show()
+func _fill_combo(panel, res, manager, is_triple, elements_array):
+	var n = panel.get_node_or_null("Name")
+	var d = panel.get_node_or_null("DescriptionPanel/DescriptionFull")
 	
-	target.get_node("Name").text = data.name
-	target.get_node("DescriptionPanel/DescriptionFull").text = data.description
+	if n: n.text = str(res.get("name"))
+	if d: d.text = str(res.get("description"))
 	
-	# Set textures Card, Card2, Card3
-	if cards.size() >= 1: target.get_node("Card").texture = cards[0].texture
-	if cards.size() >= 2: target.get_node("Card2").texture = cards[1].texture
-	if cards.size() >= 3: target.get_node("Card3").texture = cards[2].texture
+	if elements_array.size() > 0:
+		var c1 = panel.get_node_or_null("Card")
+		var c2 = panel.get_node_or_null("Card2")
+		var c3 = panel.get_node_or_null("Card3")
+		
+		if is_triple:
+			if c1: c1.texture = _get_tex(elements_array[0], manager)
+			if c2: c2.texture = _get_tex(elements_array[1], manager)
+			if c3: c3.texture = _get_tex(elements_array[2], manager)
+		else:
+			if c2: c2.texture = _get_tex(elements_array[0], manager)
+			if c3: c3.texture = _get_tex(elements_array[1], manager)
+
+func _get_tex(element_val, manager) -> Texture2D:
+	if manager:
+		var tex = manager.get_texture_for_element(element_val)
+		if tex: return tex
+		
+	var type_str = ""
+	if element_val is String:
+		type_str = element_val.to_lower().strip_edges()
+	elif element_val is int:
+		type_str = GameEnums.CardCategory.keys()[element_val].to_lower()
+		
+	match type_str:
+		"kalikasan": return tex_kalikasan
+		"tanglaw": return tex_tanglaw
+		"diwa": return tex_diwa
+		"lahi": return tex_lahi
+	return null

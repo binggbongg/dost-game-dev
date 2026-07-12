@@ -1,9 +1,44 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://bdu5dijp5n5dn"]
 
 [ext_resource type="Script" uid="uid://cv07myeubhuht" path="res://data/CardData.gd" id="1_axtmp"]
+[ext_resource type="Texture2D" uid="uid://7bdv8vekn2g1" path="res://assets/ui/handsigns/diwa_attack/diwa_galit.png" id="1_i0kjx"]
 [ext_resource type="Texture2D" uid="uid://lxgfy4gxk61t" path="res://assets/cards/galit.png" id="2_p2u47"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7mkt"]
+atlas = ExtResource("1_i0kjx")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8rnb"]
+atlas = ExtResource("1_i0kjx")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml030"]
+atlas = ExtResource("1_i0kjx")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l4ld"]
+atlas = ExtResource("1_i0kjx")
+region = Rect2(192, 0, 64, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_p2u47"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7mkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8rnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ml030")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l4ld")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_axtmp")
