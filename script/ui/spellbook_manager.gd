@@ -45,8 +45,7 @@ const COMBO_PATH = "res://data/ComboRecipe/"
 # --- PAGINATION BUTTONS ---
 @onready var cards_bookmark = cards_button_tab1
 @onready var spells_bookmark = spells_button_tab2
-@onready var btn_left = $"../BtnLeft" 
-@onready var btn_right = $"../BtnRight" 
+
 
 func _ready():
 	setup_connections()
@@ -56,9 +55,7 @@ func _ready():
 func setup_connections():
 	if cards_bookmark: cards_bookmark.pressed.connect(open_cards_tab)
 	if spells_bookmark: spells_bookmark.pressed.connect(open_spells_tab)
-	if btn_left: btn_left.pressed.connect(_on_prev_chapter)
-	if btn_right: btn_right.pressed.connect(_on_next_chapter)
-	
+
 	# Dictionary mapping for non-inventory titles
 	var non_inventory_tabs = {
 		"BattleJournal": "Battle Journal",

@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://dj6kdcpk6rmfj"]
 
+[ext_resource type="Texture2D" uid="uid://i21yka7futxl" path="res://assets/prebattle_portrait/boy_prebattle.png" id="1_l7paq"]
 [ext_resource type="Script" uid="uid://hwvdlnk2ti43" path="res://data/character.gd" id="1_le2mw"]
 [ext_resource type="Texture2D" uid="uid://bvrfatanm1wli" path="res://assets/player/boy_attack.png" id="2_87a7f"]
 [ext_resource type="Texture2D" uid="uid://cqukty3kj5qnt" path="res://assets/player/boy_death.png" id="3_s8k3x"]
@@ -319,4 +320,5 @@ script = ExtResource("1_le2mw")
 id = "boy_plain"
 display_name = "boy"
 sprite_frames = SubResource("SpriteFrames_p8ryw")
+portrait = ExtResource("1_l7paq")
 metadata/_custom_type_script = "uid://hwvdlnk2ti43"

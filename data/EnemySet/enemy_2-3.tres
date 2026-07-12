@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="1_4nxc7"]
 [ext_resource type="Texture2D" uid="uid://dcdj0hovuahmv" path="res://assets/player/lvl2/dogiron.png" id="1_kn2eq"]
+[ext_resource type="Texture2D" uid="uid://cjsf6il6ocm1q" path="res://assets/prebattle_portrait/level2/portrait2_3.png" id="1_yip2v"]
 [ext_resource type="Script" uid="uid://bltrhxh2342fx" path="res://data/enemy_behavior.gd" id="2_kn2eq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yip2v"]
@@ -44,4 +45,5 @@ animations = [{
 script = ExtResource("2_kn2eq")
 max_health = 200
 enemy_sprite = SubResource("SpriteFrames_wonug")
+enemy_portait = ExtResource("1_yip2v")
 metadata/_custom_type_script = "uid://bltrhxh2342fx"

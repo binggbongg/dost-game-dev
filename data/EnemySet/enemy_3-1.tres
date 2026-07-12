@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyBehavior" format=3 uid="uid://ulldrvdalbi5"]
 
 [ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="1_kc1lb"]
+[ext_resource type="Texture2D" uid="uid://d2hb6b4dqpd4v" path="res://assets/prebattle_portrait/level3/portrait3_1.png" id="1_majrj"]
 [ext_resource type="Script" uid="uid://bltrhxh2342fx" path="res://data/enemy_behavior.gd" id="2_majrj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kc1lb"]
@@ -9,4 +10,5 @@
 script = ExtResource("2_majrj")
 max_health = 150
 enemy_sprite = SubResource("SpriteFrames_kc1lb")
+enemy_portait = ExtResource("1_majrj")
 metadata/_custom_type_script = "uid://bltrhxh2342fx"
