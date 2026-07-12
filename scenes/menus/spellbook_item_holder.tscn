@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://dwhd73alc5m46"]
+
+[ext_resource type="Texture2D" uid="uid://dokp567t4il4o" path="res://assets/cards/akit.png" id="1_fhce1"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="1_ippkc"]
+[ext_resource type="Script" uid="uid://dd6qad5dng00w" path="res://script/ui/spellbook_item_holder.gd" id="1_ous4t"]
+[ext_resource type="Texture2D" uid="uid://de043ovrwxssr" path="res://assets/ui/buttons/mana_icon.png" id="2_ek7fi"]
+[ext_resource type="Texture2D" uid="uid://c5t544jq1um42" path="res://assets/ui/spellbook/spellbook_blue_bookmark.png" id="3_06t6o"]
+[ext_resource type="Texture2D" uid="uid://mqbgl2en2v0y" path="res://assets/ui/spellbook/spellbook_green_bookmark.png" id="3_ek7fi"]
+[ext_resource type="Texture2D" uid="uid://c2ijib67ou3nb" path="res://assets/ui/spellbook/spellbook_yellow_bookmark.png" id="4_80axn"]
+[ext_resource type="Texture2D" uid="uid://ckffja4gdctvj" path="res://assets/ui/spellbook/spellbook_red_bookmark.png" id="5_lv7pq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acppy"]
+bg_color = Color(0.68235296, 0.5882353, 0.39215687, 0.29411766)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ous4t"]
+font = ExtResource("1_ippkc")
+font_size = 35
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t22la"]
+font = ExtResource("1_ippkc")
+font_size = 13
+font_color = Color(0, 0, 0, 1)
+
+[node name="SpellbookItemHolder" type="Control" unique_id=1602210693]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ous4t")
+texture_kalikasan = ExtResource("3_ek7fi")
+texture_tanglaw = ExtResource("3_06t6o")
+texture_diwa = ExtResource("4_80axn")
+texture_lahi = ExtResource("5_lv7pq")
+
+[node name="CardItems" type="Panel" parent="." unique_id=649406272]
+layout_mode = 0
+offset_right = 609.0
+offset_bottom = 106.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_acppy")
+
+[node name="ItemName_CardName_LevelNumber" type="Label" parent="CardItems" unique_id=81741812]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 14.0
+offset_right = 174.0
+offset_bottom = 57.0
+text = "AWIT"
+label_settings = SubResource("LabelSettings_ous4t")
+
+[node name="ItemCategory_CardRarity_LevelNumber" type="Label" parent="CardItems" unique_id=517249438]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 17.0
+offset_right = 576.0
+offset_bottom = 37.0
+text = "KARANIWAN"
+label_settings = SubResource("LabelSettings_t22la")
+
+[node name="ItemCost_Description_Score" type="Label" parent="CardItems" unique_id=1901581493]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 57.0
+offset_right = 195.0
+offset_bottom = 77.0
+text = "MANA COST: 5"
+label_settings = SubResource("LabelSettings_t22la")
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CardItems" unique_id=1604910906]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 58.0
+offset_right = 105.0
+offset_bottom = 72.0
+texture = ExtResource("2_ek7fi")
+
+[node name="ItemTexture" type="TextureRect" parent="CardItems" unique_id=1946984958]
+layout_mode = 0
+offset_left = 27.000002
+offset_top = 15.0
+offset_right = 91.0
+offset_bottom = 111.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_fhce1")
+
+[node name="CardType_TypeIcon_BattleSymbol" type="TextureRect" parent="CardItems" unique_id=1585790430]
+layout_mode = 0
+offset_left = 16.000015
+offset_top = 72.0
+offset_right = 51.185196
+offset_bottom = 98.66667
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_ek7fi")
+
+[node name="Button" type="Button" parent="CardItems" unique_id=2104773998]
+layout_mode = 0
+offset_right = 607.0
+offset_bottom = 107.0
+flat = true

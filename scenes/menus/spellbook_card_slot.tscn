@@ -3,29 +3,63 @@
 [ext_resource type="Script" uid="uid://btop63eqjc3lh" path="res://script/ui/spellbook_card_slot.gd" id="1_7keov"]
 [ext_resource type="Texture2D" uid="uid://my16ben7onyr" path="res://assets/temporary/card_placeholder.png" id="1_mfgq6"]
 [ext_resource type="Texture2D" uid="uid://brncfoabci411" path="res://assets/temporary/panel small.png" id="2_7keov"]
+[ext_resource type="Texture2D" uid="uid://c5t544jq1um42" path="res://assets/ui/spellbook/spellbook_blue_bookmark.png" id="3_4xpbe"]
+[ext_resource type="Texture2D" uid="uid://mqbgl2en2v0y" path="res://assets/ui/spellbook/spellbook_green_bookmark.png" id="4_ewqmw"]
+[ext_resource type="Texture2D" uid="uid://c2ijib67ou3nb" path="res://assets/ui/spellbook/spellbook_yellow_bookmark.png" id="4_nixut"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_wqq5r"]
+[ext_resource type="Texture2D" uid="uid://ckffja4gdctvj" path="res://assets/ui/spellbook/spellbook_red_bookmark.png" id="5_mshcx"]
 [ext_resource type="Texture2D" uid="uid://de043ovrwxssr" path="res://assets/ui/buttons/mana_icon.png" id="5_tpnqd"]
 [ext_resource type="Texture2D" uid="uid://bw8iae4yec1af" path="res://assets/ui/buttons/damage_icon.png" id="6_y31j3"]
 [ext_resource type="Texture2D" uid="uid://wyktyx008vun" path="res://assets/ui/buttons/heal_icon.png" id="7_ewqmw"]
 [ext_resource type="Texture2D" uid="uid://tf65jq1s3r4f" path="res://assets/ui/buttons/multiplier_icon.png" id="8_b2hc1"]
+[ext_resource type="FontFile" uid="uid://df2vd0uxg3gcf" path="res://assets/fonts/PixelifySans-SemiBold.ttf" id="10_b2hc1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b2hc1"]
+font = ExtResource("10_b2hc1")
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpnqd"]
+bg_color = Color(0.68235296, 0.5882353, 0.39215687, 0.29411766)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jlv65"]
 font = ExtResource("4_wqq5r")
 font_size = 20
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_et8i5"]
+[sub_resource type="LabelSettings" id="LabelSettings_vjf47"]
+font = ExtResource("10_b2hc1")
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ewqmw"]
+font = ExtResource("10_b2hc1")
+font_size = 19
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y31j3"]
+line_spacing = 1.0
 font = ExtResource("4_wqq5r")
+font_size = 15
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tpnqd"]
 font = ExtResource("4_wqq5r")
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_y31j3"]
-line_spacing = 1.0
-font = ExtResource("4_wqq5r")
-font_size = 20
+[sub_resource type="SpriteFrames" id="SpriteFrames_vjf47"]
+animations = []
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y765r"]
+bg_color = Color(0.68235296, 0.5882353, 0.39215687, 0.29411766)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4xpbe"]
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nixut"]
+font = ExtResource("10_b2hc1")
+font_size = 14
 font_color = Color(0, 0, 0, 1)
 
 [node name="SpellbookCardSlot" type="Control" unique_id=2017068616]
@@ -37,150 +71,249 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7keov")
+texture_kalikasan = ExtResource("4_ewqmw")
+texture_tanglaw = ExtResource("3_4xpbe")
+texture_diwa = ExtResource("4_nixut")
+texture_lahi = ExtResource("5_mshcx")
 
 [node name="Card" type="TextureRect" parent="." unique_id=1208578425]
 custom_minimum_size = Vector2(200, 300)
 layout_mode = 0
-offset_left = 108.0
-offset_top = 48.0
-offset_right = 303.0
-offset_bottom = 332.0
+offset_left = 35.0
+offset_top = 98.0
+offset_right = 235.0
+offset_bottom = 398.0
 texture = ExtResource("1_mfgq6")
 expand_mode = 1
 stretch_mode = 3
 
-[node name="CardNameHolder" type="Sprite2D" parent="." unique_id=323338511]
-position = Vector2(494.68753, 98)
-scale = Vector2(2.1467953, 1.9386601)
-
-[node name="Name" type="Label" parent="CardNameHolder" unique_id=854089139]
-offset_left = -64.25041
-offset_top = -11.863865
-offset_right = -10.250412
-offset_bottom = 16.136135
+[node name="Name" type="Label" parent="." unique_id=854089139]
+layout_mode = 0
+offset_top = 17.0
+offset_right = 479.0
+offset_bottom = 120.0
 text = "APOY"
-label_settings = SubResource("LabelSettings_jlv65")
+label_settings = SubResource("LabelSettings_b2hc1")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Rarirty" type="Sprite2D" parent="." unique_id=1737127785]
-position = Vector2(400.65625, 48)
-scale = Vector2(0.84455115, 0.55447817)
+[node name="CardStats" type="Panel" parent="." unique_id=320431559]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 120.0
+offset_right = 473.0
+offset_bottom = 377.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tpnqd")
 
-[node name="Rarity" type="Label" parent="Rarirty" unique_id=1716290084]
-offset_left = -44.587288
-offset_top = 32.46295
-offset_right = 38.412712
-offset_bottom = 55.46295
-text = "Karaniwan"
-label_settings = SubResource("LabelSettings_et8i5")
+[node name="ManaCost" type="Node2D" parent="CardStats" unique_id=103206381]
+position = Vector2(-242, -112)
 
-[node name="ManaCost" type="Node2D" parent="." unique_id=103206381]
-
-[node name="Holder" type="Sprite2D" parent="ManaCost" unique_id=560031345]
+[node name="Holder" type="Sprite2D" parent="CardStats/ManaCost" unique_id=560031345]
 visible = false
 position = Vector2(478.375, 167.75)
 scale = Vector2(1.8192307, 0.93485916)
 texture = ExtResource("2_7keov")
 
-[node name="Icon" type="Sprite2D" parent="ManaCost" unique_id=1880870492]
-position = Vector2(366.99997, 171.99998)
+[node name="Icon" type="Sprite2D" parent="CardStats/ManaCost" unique_id=1880870492]
+position = Vector2(274, 165)
 scale = Vector2(1.179, 1.179)
 texture = ExtResource("5_tpnqd")
 
-[node name="ManaCost" type="Label" parent="ManaCost" unique_id=30183374]
-offset_left = 389.0
-offset_top = 156.0
-offset_right = 514.0
-offset_bottom = 184.0
+[node name="ManaCost" type="Label" parent="CardStats/ManaCost" unique_id=30183374]
+offset_left = 301.0
+offset_top = 150.0
+offset_right = 427.0
+offset_bottom = 178.0
 text = "Mana Cost: 5"
 label_settings = SubResource("LabelSettings_jlv65")
 
-[node name="Attack" type="Node2D" parent="." unique_id=616429263]
+[node name="Attack" type="Node2D" parent="CardStats" unique_id=616429263]
+position = Vector2(-242, -112)
 
-[node name="Holder" type="Sprite2D" parent="Attack" unique_id=1086232427]
+[node name="Holder" type="Sprite2D" parent="CardStats/Attack" unique_id=1086232427]
 visible = false
 position = Vector2(476.375, 211.75)
 scale = Vector2(1.8192307, 0.93485916)
 texture = ExtResource("2_7keov")
 
-[node name="AttackAmount" type="Label" parent="Attack" unique_id=285530549]
-offset_left = 386.0
-offset_top = 200.0
-offset_right = 548.0
-offset_bottom = 228.0
+[node name="AttackAmount" type="Label" parent="CardStats/Attack" unique_id=285530549]
+offset_left = 291.0
+offset_top = 203.0
+offset_right = 457.0
+offset_bottom = 231.0
 text = "Attack Power: 10"
 label_settings = SubResource("LabelSettings_jlv65")
 metadata/_edit_use_anchors_ = true
 
-[node name="Icon" type="Sprite2D" parent="Attack" unique_id=223592798]
-position = Vector2(366, 215)
+[node name="Icon" type="Sprite2D" parent="CardStats/Attack" unique_id=223592798]
+position = Vector2(272, 216.99998)
 scale = Vector2(-1.151, -1.151)
 texture = ExtResource("6_y31j3")
 
-[node name="Shield" type="Node2D" parent="." unique_id=1386243562]
+[node name="Heal" type="Node2D" parent="CardStats" unique_id=1817990218]
+position = Vector2(-242, -112)
 
-[node name="Holder" type="Sprite2D" parent="Shield" unique_id=1564597585]
-visible = false
-position = Vector2(476.375, 257.75)
-scale = Vector2(1.8192307, 0.93485916)
-texture = ExtResource("2_7keov")
-
-[node name="Icon" type="Sprite2D" parent="Shield" unique_id=1370274844]
-position = Vector2(368, 259)
-scale = Vector2(0.994, 0.994)
-texture = ExtResource("8_b2hc1")
-
-[node name="ShieldAmount" type="Label" parent="Shield" unique_id=1890060636]
-offset_left = 389.0
-offset_top = 245.0
-offset_right = 537.0
-offset_bottom = 273.0
-text = "Shield Power: 5"
-label_settings = SubResource("LabelSettings_jlv65")
-metadata/_edit_use_anchors_ = true
-
-[node name="Heal" type="Node2D" parent="." unique_id=1817990218]
-
-[node name="Holder" type="Sprite2D" parent="Heal" unique_id=1736521775]
+[node name="Holder" type="Sprite2D" parent="CardStats/Heal" unique_id=1736521775]
 visible = false
 position = Vector2(471.375, 304.75)
 scale = Vector2(1.8192307, 0.93485916)
 texture = ExtResource("2_7keov")
 
-[node name="Icon" type="Sprite2D" parent="Heal" unique_id=619378225]
-position = Vector2(368.00003, 308)
+[node name="Icon" type="Sprite2D" parent="CardStats/Heal" unique_id=619378225]
+position = Vector2(272.00003, 329)
 scale = Vector2(0.869, 0.869)
 texture = ExtResource("7_ewqmw")
 
-[node name="HealAmount" type="Label" parent="Heal" unique_id=1579708071]
-offset_left = 392.0
-offset_top = 293.0
-offset_right = 525.0
-offset_bottom = 321.0
+[node name="HealAmount" type="Label" parent="CardStats/Heal" unique_id=1579708071]
+offset_left = 294.0
+offset_top = 317.0
+offset_right = 427.0
+offset_bottom = 345.0
 text = "Heal Power: 5"
 label_settings = SubResource("LabelSettings_jlv65")
 
-[node name="Description" type="Sprite2D" parent="." unique_id=747631075]
+[node name="Shield" type="Node2D" parent="CardStats" unique_id=1386243562]
+position = Vector2(-242, -112)
+
+[node name="Holder" type="Sprite2D" parent="CardStats/Shield" unique_id=1564597585]
 visible = false
-position = Vector2(376.8125, 423.00003)
-scale = Vector2(3.5096152, 3.7576923)
+position = Vector2(476.375, 257.75)
+scale = Vector2(1.8192307, 0.93485916)
 texture = ExtResource("2_7keov")
 
-[node name="DescLabel" type="Label" parent="." unique_id=1840614936]
+[node name="Icon" type="Sprite2D" parent="CardStats/Shield" unique_id=1370274844]
+position = Vector2(272.00003, 277.00003)
+scale = Vector2(0.994, 0.994)
+texture = ExtResource("8_b2hc1")
+
+[node name="ShieldAmount" type="Label" parent="CardStats/Shield" unique_id=1890060636]
+offset_left = 291.0
+offset_top = 263.0
+offset_right = 439.0
+offset_bottom = 291.0
+text = "Shield Power: 5"
+label_settings = SubResource("LabelSettings_jlv65")
+metadata/_edit_use_anchors_ = true
+
+[node name="CategoryPanel" type="Panel" parent="." unique_id=1012788928]
 layout_mode = 0
-offset_left = 149.0
-offset_top = 385.0
-offset_right = 262.0
-offset_bottom = 434.0
+offset_left = 35.0
+offset_top = 427.0
+offset_right = 242.0
+offset_bottom = 493.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tpnqd")
+
+[node name="Category" type="Sprite2D" parent="CategoryPanel" unique_id=379459150]
+position = Vector2(52.99997, 25.00003)
+scale = Vector2(2.8663049, 2.8286955)
+texture = ExtResource("4_ewqmw")
+
+[node name="CategoryLabel" type="Label" parent="CategoryPanel" unique_id=13411119]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 16.0
+offset_right = 229.0
+offset_bottom = 53.0
+text = "Category
+"
+label_settings = SubResource("LabelSettings_vjf47")
+vertical_alignment = 1
+
+[node name="CardCategoryFull" type="Label" parent="CategoryPanel" unique_id=1062504660]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 29.0
+offset_right = 176.0
+offset_bottom = 53.0
+text = "KALIKASAN"
+label_settings = SubResource("LabelSettings_ewqmw")
+vertical_alignment = 1
+
+[node name="DescriptionPanel" type="Panel" parent="." unique_id=854549162]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 517.0
+offset_right = 479.0
+offset_bottom = 657.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tpnqd")
+
+[node name="DescriptionFull" type="Label" parent="DescriptionPanel" unique_id=264498412]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 32.0
+offset_right = 425.0
+offset_bottom = 129.0
+text = "This is fthe full description of the card. This is fthe full description of the card. "
+label_settings = SubResource("LabelSettings_y31j3")
+autowrap_mode = 3
+
+[node name="DescLabel" type="Label" parent="DescriptionPanel" unique_id=1840614936]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 14.0
+offset_right = 126.0
+offset_bottom = 57.0
 text = "Description
 "
 label_settings = SubResource("LabelSettings_tpnqd")
 
-[node name="DescriptionFull" type="Label" parent="." unique_id=264498412]
+[node name="RarityPanel" type="Panel" parent="." unique_id=469116025]
 layout_mode = 0
-offset_left = 145.0
-offset_top = 406.0
-offset_right = 639.0
-offset_bottom = 465.0
-text = "This is fthe full description of the card. This is fthe full description of the card. "
-label_settings = SubResource("LabelSettings_y31j3")
-autowrap_mode = 3
+offset_left = 261.0
+offset_top = 427.0
+offset_right = 476.0
+offset_bottom = 493.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tpnqd")
+
+[node name="RarirtyLabel" type="Label" parent="RarityPanel" unique_id=1366606518]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 15.0
+offset_right = 181.0
+offset_bottom = 52.0
+text = "Rarity"
+label_settings = SubResource("LabelSettings_vjf47")
+
+[node name="CardRarityFull" type="Label" parent="RarityPanel" unique_id=1935122058]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 29.0
+offset_right = 133.0
+offset_bottom = 53.0
+text = "KARANIWAN"
+label_settings = SubResource("LabelSettings_ewqmw")
+vertical_alignment = 1
+
+[node name="ASL" type="AnimatedSprite2D" parent="." unique_id=1685392797]
+position = Vector2(363, 743.00006)
+scale = Vector2(3.28125, 3.28125)
+sprite_frames = SubResource("SpriteFrames_vjf47")
+animation = &""
+
+[node name="DescriptionPanel4" type="Panel" parent="." unique_id=1166379140]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 672.0
+offset_right = 242.0
+offset_bottom = 815.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y765r")
+
+[node name="ASLDescription" type="Label" parent="DescriptionPanel4" unique_id=729405998]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 40.0
+offset_right = 168.0
+offset_bottom = 97.0
+text = "You do this and that and this and that and this!"
+label_settings = SubResource("LabelSettings_4xpbe")
+autowrap_mode = 2
+
+[node name="AslLabel" type="Label" parent="." unique_id=519783805]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 685.0
+offset_right = 199.0
+offset_bottom = 722.0
+text = "ASL"
+label_settings = SubResource("LabelSettings_nixut")
+vertical_alignment = 1

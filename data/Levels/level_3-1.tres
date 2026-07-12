@@ -8,4 +8,6 @@ script = ExtResource("1_eewej")
 phase_number = 3
 background = "uid://cb20wv3a5717v"
 enemy_data = ExtResource("1_6xvgi")
+enemy_name = "Bulaan"
+level_lore = "Fashioned in the likeness of humankind, Bulaan walks without hesitation, believing perfection is found in unwavering obedience. It stands as a quiet reminder of the Iron City's promise of  a future without doubt, choice, or failure is the truest form of hope."
 metadata/_custom_type_script = "uid://buqidver0oody"

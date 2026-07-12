@@ -9,7 +9,7 @@ class_name CharacterData
 @export var sprite_frames: SpriteFrames
 @export var portrait: Texture2D
 @export var icon: Texture2D
-@export var splash_art: Texture2D
+@export var splagsh_art: Texture2D
 
 @export_group("Animations")
 @export var idle_animation := "idle"

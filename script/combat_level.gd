@@ -13,7 +13,12 @@ var match_score_multipler: float = 1.0
 
 func _ready() -> void:
 	print("OH YOURE IN REAL GAME!")
+	var chapter_num = PlayerProfile.current_phase
+	var extension = ".mp3" if chapter_num == 2 else ".wav"
+	var bgm_path = "res://data/SoundData/bgm/level/chapter_%d%s" % [chapter_num, extension]
 	
+	if typeof(AudioManager) != TYPE_NIL:
+		AudioManager.play_sound_from_path(bgm_path, true)
 	await get_tree().process_frame
 	
 	var deck = $PlayerInterface/UI/Deck
@@ -77,17 +82,13 @@ func _on_enemy_defeated():
 	else:
 		print("CRITICAL: victory_screen_scene file target asset path is invalid or missing!")
 
+
 func prepare_next_progression_target():
-	PlayerProfile.current_level += 1
-	var next_level_path = "res://data/Levels/level_%d-%d.tres" % [PlayerProfile.current_phase, PlayerProfile.current_level]
-	
-	if ResourceLoader.exists(next_level_path):
-		PlayerProfile.next_level_resource = load(next_level_path)
-		# Save path destination so the DeckBuilder knows what level to boot back into!
-		PlayerProfile.pending_scene = "res://scenes/levels/Level1.tscn"
+	PlayerProfile.advance_to_next_level()
+	if PlayerProfile.current_level == 1:
+		PlayerProfile.pending_scene = "res://scenes/menus/lounge.tscn"
 	else:
-		# No standard level left; next step defaults toward lounge map structures
-		PlayerProfile.pending_scene = "res://scenes/menus/map.tscn"
+		PlayerProfile.pending_scene = "res://scenes/levels/Level1.tscn"
 
 func _on_battle_manager_won():
 	print("CombatLevel: level victory!")
@@ -95,23 +96,14 @@ func _on_battle_manager_won():
 		trigger_boss_defeat_cutscene()
 	else:
 		proceed_next_stage()
-
+		
 func proceed_next_stage():
-	print("combat level: proceeding back to map area")
-	PlayerProfile.current_level += 1
-	var next_level_path = "res://data/Levels/level_%d-%d.tres" % [PlayerProfile.current_phase, PlayerProfile.current_level]
-	
-	if ResourceLoader.exists(next_level_path):
-		PlayerProfile.next_level_resource = load(next_level_path)
-		if typeof(SceneTransition) != TYPE_NIL and SceneTransition.has_method("change_scene"):
-			SceneTransition.change_scene(preload("res://scenes/levels/Level1.tscn"))
-		else:
-			print("scene transition not working -- combat level")
-			get_tree().change_scene_to_file("res://scenes/levels/Level1.tscn")
+	print("combat level: proceeding to next stage")
+	# Instead of re-calculating everything here, use the pending_scene we just set
+	if typeof(SceneTransition) != TYPE_NIL and SceneTransition.has_method("change_scene_path"):
+		SceneTransition.change_scene_path(PlayerProfile.pending_scene)
 	else:
-		print("next level resources missing -- combat level")
-		SceneTransition.change_scene(preload("res://scenes/menus/map.tscn"))
-
+		get_tree().change_scene_to_file(PlayerProfile.pending_scene)
 func process_chapter_scoring_and_unlock() -> int:
 	var turns = PlayerProfile.run_turns
 	var combos_played = PlayerProfile.run_combos_played
@@ -177,8 +169,12 @@ func _on_player_dies():
 	if combat_arena:
 		var player_node = combat_arena.get_node_or_null("Player")
 		if player_node and player_node.has_method("play_death_animation"):
-			# Execution halts here until the death animation completes exactly once
 			await player_node.play_death_animation()
+	
+	PlayerProfile.current_level = 1
+	var path = "res://data/Levels/level_%d-%d.tres" % [PlayerProfile.current_phase, PlayerProfile.current_level]
+	if ResourceLoader.exists(path):
+		PlayerProfile.set_next_level(load(path))
 	
 	var end_screen_path = "res://scenes/story/gameover.tscn" 
 	var end_screen = load(end_screen_path).instantiate()
@@ -201,3 +197,10 @@ func evaluate_combo_scoring(active_cards: Array, matched_recipe: ComboRecipe):
 			match_score_multipler += 0.2
 	
 	print("Current Score (combatlevel): ", str(match_combo_bonus_points))
+
+#will use this to test cutscenes and post levels stuff
+#func _unhandled_input(event):
+	# Press 'W' to instantly win the level and advance
+	#if event is InputEventKey and event.pressed and event.keycode == KEY_W:
+		#print("DEBUG: Instant Win Triggered")
+		#_on_enemy_defeated()

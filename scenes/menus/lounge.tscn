@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://brel5vplcm173" path="res://scenes/story/lore_revisit.tscn" id="4_8rf1m"]
 [ext_resource type="Texture2D" uid="uid://bob36fd0gsx8p" path="res://assets/ui/shop/spellbook_icon.png" id="4_gl360"]
 [ext_resource type="Texture2D" uid="uid://cc3nipjbujmkd" path="res://assets/temporary/battle.png" id="5_3k8m0"]
+[ext_resource type="Texture2D" uid="uid://cehfrui28gnh" path="res://assets/ui/buttons/scroll_icon.png" id="5_5p4kk"]
 [ext_resource type="Texture2D" uid="uid://buemc7yldjape" path="res://assets/temporary/trophy.png" id="5_vh42r"]
 [ext_resource type="Texture2D" uid="uid://cmm0ft8pmm2ms" path="res://assets/ui/buttons/leaderboard_icon.png" id="6_8y8p0"]
 [ext_resource type="PackedScene" uid="uid://xdbig4p2et14" path="res://scenes/menus/leaderboard.tscn" id="7_v8p6s"]
@@ -196,14 +197,27 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="CoinDisplay" parent="Buttons/Content" unique_id=1244250796 instance=ExtResource("8_12qkm")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1376.0
+offset_top = 105.00001
+offset_right = 1376.0
+offset_bottom = 105.00001
+scale = Vector2(1.5, 1.5)
+
 [node name="Lore" type="TextureButton" parent="Buttons/Content" unique_id=1944594900]
 layout_mode = 0
-offset_left = 1500.0
-offset_top = 27.0
-offset_right = 1564.0
-offset_bottom = 91.0
-scale = Vector2(2, 2)
-texture_normal = ExtResource("4_gl360")
+offset_left = 1521.0
+offset_top = 51.0
+offset_right = 1535.0023
+offset_bottom = 66.16922
+scale = Vector2(6.6, 6.6)
+texture_normal = ExtResource("5_5p4kk")
 script = ExtResource("3_uygx0")
 menu_to_open = ExtResource("4_8rf1m")
 
@@ -294,19 +308,6 @@ scale = Vector2(2, 2)
 texture_normal = ExtResource("4_gl360")
 script = ExtResource("3_uygx0")
 menu_to_open = ExtResource("12_6g71x")
-
-[node name="CoinDisplay" parent="Buttons/Content" unique_id=1244250796 instance=ExtResource("8_12qkm")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 1375.975
-offset_top = 91.835
-offset_right = 1375.975
-offset_bottom = 91.835
-scale = Vector2(1.5, 1.5)
 
 [node name="CharacterSpotlight" type="TextureRect" parent="Buttons/Content" unique_id=59332521]
 layout_mode = 0

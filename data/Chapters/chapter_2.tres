@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ChapterData" format=3 uid="uid://deicb4nb0577u"]
+
+[ext_resource type="Script" uid="uid://cr6ky6wufya4w" path="res://data/chapter_data.gd" id="1_kaa8q"]
+
+[resource]
+script = ExtResource("1_kaa8q")
+chapter_number = 2
+chapter_name = "Mga Bulong sa Dilim"
+chapter_description = "The road leads to a forgotten village where laughter once echoed beneath the stars. Time has left its homes in ruin, yet the wind still carries faint whispers through its empty streets. Whether they are memories, warnings, or voices searching to be heard once more, no one can truly say."
+metadata/_custom_type_script = "uid://cr6ky6wufya4w"

@@ -10,4 +10,6 @@ phase_number = 2
 background = "uid://coga0o45gncib"
 enemy_data = ExtResource("1_wugjb")
 is_boss_level = true
+enemy_name = "Hating-Dilim"
+level_lore = "Once only a tale shared beneath moonlit skies, this fearsome creation was forged to become the very nightmare it imitated. Drawn to the terror left behind by the village's fall, it feeds upon every fearful whisper until even the bravest hearts begin to mistake one another for enemies."
 metadata/_custom_type_script = "uid://buqidver0oody"

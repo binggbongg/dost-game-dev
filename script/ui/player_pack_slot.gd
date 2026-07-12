@@ -1,10 +1,14 @@
 extends Control
 
+@export var card_pack_cover_close: Texture
+@export var card_pack_cover_open: Texture
 @onready var cards_container = $Cards
+@onready var texture_rect: TextureRect = $TextureRect
 
 # Logic Variables
 var card_paths: Array[String] = []
 var current_idx := 0
+var pack_is_sealed := false # Tracks if we are waiting for the opening click
 
 # Drag/Swipe Variables
 var is_dragging := false
@@ -21,6 +25,8 @@ func _ready():
 
 	cards_container.position = get_viewport_rect().size / 2
 
+	# Pre-configure the existing texture rect pivot for scaling animations
+	texture_rect.pivot_offset = texture_rect.size / 2
 
 
 func open_pack(is_new_player: bool):
@@ -28,6 +34,15 @@ func open_pack(is_new_player: bool):
 	current_idx = card_paths.size() - 1
 
 	setup_cards()
+	for child in cards_container.get_children():
+		child.visible = false
+
+	# Set the closed texture and enable the sealed state
+	texture_rect.texture = card_pack_cover_close
+	texture_rect.visible = true
+	texture_rect.scale = Vector2.ONE
+	texture_rect.modulate.a = 1.0
+	pack_is_sealed = true
 
 	visible = true
 
@@ -39,6 +54,34 @@ func open_pack(is_new_player: bool):
 		0.45
 	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
+
+func _animate_pack_opening():
+	pack_is_sealed = false # Block duplicate clicks
+	
+	var tween = create_tween()
+	
+	tween.tween_property(texture_rect, "scale", Vector2(1.1, 0.85), 0.15)\
+		.set_trans(Tween.TRANS_CUBIC)\
+		.set_ease(Tween.EASE_OUT)
+	
+	tween.tween_callback(func(): texture_rect.texture = card_pack_cover_open)
+	tween.tween_interval(0.15)
+	
+	tween.tween_property(texture_rect, "scale", Vector2(1.5, 1.5), 0.25)\
+		.set_trans(Tween.TRANS_BACK)\
+		.set_ease(Tween.EASE_OUT)
+	
+	tween.parallel().tween_property(texture_rect, "modulate:a", 0.0, 0.2)\
+		.set_delay(0.05)
+	
+	tween.parallel().tween_callback(func():
+		var nodes = cards_container.get_children()
+		for i in range(nodes.size()):
+			if i < card_paths.size():
+				nodes[i].visible = true
+	).set_delay(0.05)
+	
+	tween.tween_callback(func(): texture_rect.visible = false)
 
 
 func setup_cards():
@@ -73,6 +116,12 @@ func setup_cards():
 func _input(event: InputEvent):
 	if !visible:
 		return
+
+	# Handle opening click if pack is sealed
+	if pack_is_sealed:
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			_animate_pack_opening()
+		return # Block card interaction while sealed
 
 	if current_idx >= card_paths.size():
 		return
@@ -143,7 +192,6 @@ func _handle_drag_end(card_node):
 		)
 
 
-
 func _on_card_swiped():
 	# Save card
 	PlayerProfile.add_card_to_inventory(card_paths[current_idx])
@@ -162,9 +210,7 @@ func _on_card_swiped():
 	else:
 		_finish_pack()
 
-#========================================================
-# End animation
-#========================================================
+
 func _finish_pack():
 
 	var tween = create_tween()

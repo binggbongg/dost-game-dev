@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cpiimvdghqtnm" path="res://data/special_cards.gd" id="1_cjm0h"]
 [ext_resource type="Script" uid="uid://bn7qw47guwt7g" path="res://script/item_effects/kapre.gd" id="1_tmd3s"]
-[ext_resource type="Texture2D" uid="uid://1xorp3x8luxo" path="res://assets/temporary/kapre.png" id="3_xoq7r"]
+[ext_resource type="Texture2D" uid="uid://chq22nxtrqp67" path="res://assets/cards/kapre.png" id="3_qnull"]
 
 [resource]
 script = ExtResource("1_cjm0h")
@@ -14,6 +14,6 @@ mana_cost = 5
 item_id = "001"
 name = "Kapre"
 description = "Envelops the battlefield in mystical smoke, reducing enemy attack damage by 50% for 2 turns."
-texture = ExtResource("3_xoq7r")
+texture = ExtResource("3_qnull")
 price = 80
 metadata/_custom_type_script = "uid://cpiimvdghqtnm"

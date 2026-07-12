@@ -1,7 +1,11 @@
 [gd_resource type="Resource" script_class="EnemyBehavior" format=3 uid="uid://b2o5w2iprkor"]
 
 [ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="1_5ne07"]
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://mhj1b2n7b2ai" path="res://assets/enemies/LVL3/Lvl3_enemy2_animation/ultimate_skill_enemy2(1).png" id="1_24ur5"]
+=======
+[ext_resource type="Texture2D" uid="uid://bcfvt1kwkr53r" path="res://assets/prebattle_portrait/level3/portrait3_2.png" id="1_6dr7d"]
+>>>>>>> origin/gela-friday-updates
 [ext_resource type="Script" uid="uid://bltrhxh2342fx" path="res://data/enemy_behavior.gd" id="2_6dr7d"]
 [ext_resource type="Texture2D" uid="uid://cdo33fchbwjem" path="res://assets/enemies/LVL3/Lvl3_enemy2_animation/basic_attack.png" id="2_pcc7i"]
 [ext_resource type="Texture2D" uid="uid://b38hkblx4lypa" path="res://assets/enemies/LVL3/Lvl3_enemy2_animation/ultimate_skill_enemy2.png" id="3_tgty1"]
@@ -179,5 +183,9 @@ animations = [{
 [resource]
 script = ExtResource("2_6dr7d")
 max_health = 150
+<<<<<<< HEAD
 enemy_sprite = SubResource("SpriteFrames_p3j7p")
+=======
+enemy_portait = ExtResource("1_6dr7d")
+>>>>>>> origin/gela-friday-updates
 metadata/_custom_type_script = "uid://bltrhxh2342fx"

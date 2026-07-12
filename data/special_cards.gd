@@ -12,6 +12,9 @@ class_name SpecialCardData
 @export var mana_cost: int = 0
 var card_source: GameEnums.CardSource =GameEnums.CardSource.INVENTORY
 @export var cardASL: SpriteFrames
+@export var ASLExplanation: String
+@export var FilipinoLore: String
+
 func apply_effect(user: Node, targets: Array):
 	print("apply_effect called")
 	if effect_script == null:

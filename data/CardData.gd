@@ -18,6 +18,7 @@ class_name CardData
 @export var texture: Texture2D
 var card_source: GameEnums.CardSource =GameEnums.CardSource.DECK
 
+@export var ASLExplanation: String
 @export var cardASL: SpriteFrames
 
 func apply_effect(player_stats_node, targets):

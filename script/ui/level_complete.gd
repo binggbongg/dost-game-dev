@@ -1,12 +1,20 @@
 extends CanvasLayer
+
 # UI References (matched to your scene tree)
 @onready var score_label: Label = $VICTORY/ScoreLabel
 @onready var next_button: TextureButton = $VICTORY/next
-@onready var pack_reward_label: Label = $VICTORY/Control/CardLabel
 @onready var coin_reward_label: Label = $VICTORY/CoinLabel
 
 @onready var pack_layer: CanvasLayer = $PackLayer
-@export var pack_scene: PackedScene                           # Assign your card pack .tscn here
+@export var pack_scene: PackedScene                               # Assign your card pack .tscn here
+
+# Updated Card Pack References
+@onready var card_pack: Control = $VICTORY/CardPack
+@onready var card_label: Label = $VICTORY/CardPack/CardLabel
+@onready var texture_rect_4: TextureRect = $VICTORY/CardPack/TextureRect4
+@onready var texture_rect_5: TextureRect = $VICTORY/CardPack/TextureRect5
+@onready var texture_rect_6: TextureRect = $VICTORY/CardPack/TextureRect6
+@onready var texture_rect_7: TextureRect = $VICTORY/CardPack/TextureRect7
 
 # Internal logic data cache
 var cached_coins_earned := 0
@@ -24,7 +32,6 @@ func _ready() -> void:
 		reward_panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 		reward_panel.pivot_offset = reward_panel.size / 2.0
 	
-	# Keep this here to handle fallback frame drawing if elements initialize slowly
 	update_ui_text_displays()
 
 func initialize_victory_rewards(level_data: LevelData, score: int, final_rank: String) -> void:
@@ -40,11 +47,14 @@ func initialize_victory_rewards(level_data: LevelData, score: int, final_rank: S
 	var minimum_reward_threshold = 700
 	var qualifies_for_rewards = is_new_high_score or (score >= minimum_reward_threshold)
 
+	# Determine if this is a boss level (Level 3)
+	var is_boss = level_data and (level_data.is_boss_level or level_data.level_number == 3)
+
 	if not qualifies_for_rewards:
 		cached_coins_earned = 0
-		cached_packs_earned = 0
+		# Boss levels should ALWAYS give a card pack, even if score threshold isn't met
+		cached_packs_earned = 1 if is_boss else 0
 	else:
-		# Calculate standard baseline values based on target minions vs boss tiers
 		if level_data and level_data.is_boss_level:
 			var boss_ratio: float = float(score) / 2500.0
 			cached_coins_earned = int(clamp(boss_ratio * 200, 50, 250))
@@ -52,60 +62,64 @@ func initialize_victory_rewards(level_data: LevelData, score: int, final_rank: S
 			var minion_ratio: float = float(score) / 1500.0
 			cached_coins_earned = int(clamp(minion_ratio * 50, 15, 75))
 
-		# 🌟 DYNAMIC ASSIGNMENT OVERRIDE BASED ON ROUND RANKINGS
-		match final_rank:
-			"S": cached_packs_earned = 3
-			"A": cached_packs_earned = 2
-			"B": cached_packs_earned = 1
-			"C", _: cached_packs_earned = 0
+		if is_boss:
+			cached_packs_earned = 1
+		else:
+			cached_packs_earned = 0
 
+	# Add earned coins to profile immediately
 	PlayerProfile.add_coins(cached_coins_earned)
 	SaveManager.save_game()
 
+	# Adjust positioning and visibility of elements
+	adjust_rewards_layout()
 	update_ui_text_displays()
+
+func adjust_rewards_layout() -> void:
+	if cached_packs_earned == 0:
+		# Hide the card pack elements completely using the correct container reference
+		if card_pack:
+			card_pack.visible = false
+			
+		# Center the coin label horizontally and lower it significantly to line up perfectly with the icon's row
+		if coin_reward_label:
+			coin_reward_label.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+			coin_reward_label.grow_horizontal = Control.GROW_DIRECTION_BOTH
+			coin_reward_label.grow_vertical = Control.GROW_DIRECTION_BOTH
+			coin_reward_label.position.y += 50.0 # Increased offset to lower the text directly level with the coin icon
+	else:
+		# Show the correct card pack UI panel on boss levels
+		if card_pack:
+			card_pack.visible = true
 
 ## Sequence controller running the box disappearance and pack animations loop
 func _on_next_pressed() -> void:
 	next_button.disabled = true
 
-	# 1. Hide the Victory UI overlay panels first to clear screen real estate
+	# 1. Hide the Victory window elements so they don't block the screen during pack openings
 	var hide_tween = create_tween()
-	hide_tween.tween_property(self, "modulate:a", 0.0, 0.3)
-	hide_tween.tween_callback(func(): self.visible = false)
+	hide_tween.tween_property($VICTORY, "modulate:a", 0.0, 0.3)
+	hide_tween.tween_callback(func(): $VICTORY.visible = false)
 	await hide_tween.finished
 
-	# 2. Check if any card packs were earned from the match
 	if cached_packs_earned > 0 and pack_scene:
-		pack_layer.visible = true
+		# Dynamically ensure a valid, visible PackLayer exists so the pack shows over everything
+		if not pack_layer:
+			pack_layer = get_node_or_null("PackLayer")
+			if not pack_layer:
+				pack_layer = CanvasLayer.new()
+				pack_layer.name = "PackLayer"
+				pack_layer.layer = 105 # Higher layer priority
+				add_child(pack_layer)
 		
-		# Loop through each earned card pack sequentially
-		for i in range(cached_packs_earned):
-			var pack_instance = pack_scene.instantiate()
-			pack_layer.add_child(pack_instance)
-			
-			# 🌟 GENERATE LIVE PACK DATA VIA CARD REGISTRY
-			# Generate 5 random card paths using your registry weights (False = not a new player starter pack)
-			var rolled_card_paths: Array[String] = CardRegistry.generate_pack_paths(false)
-			
-			# Add the rolled card paths directly to the player's profile data registry inventory
-			for card_path in rolled_card_paths:
-				PlayerProfile.add_card_to_inventory(card_path)
-			
-			# 🌟 TRIGGER THE ANIMATED CARD OPENING PACK 
-			# Pass false to indicate it's a standard gameplay pack opening, not the starter tutorial
-			pack_instance.open_pack(false)
-			
-			# Wait completely for the player to click/finish opening this pack instance
-			await pack_instance.tree_exited
-			
-			# Quick intermission buffer timing break before rendering the next pack instance layout
-			if i < cached_packs_earned - 1:
-				await get_tree().create_timer(0.25).timeout
-				
-		# Force a save update to secure the newly rolled inventory collection variables in cloud sync slots
+		pack_layer.visible = true
+		var pack_instance = pack_scene.instantiate()
+		pack_layer.add_child(pack_instance)
+		pack_instance.open_pack(false)
+		await pack_instance.tree_exited
 		SaveManager.save_game()
 
-	# 3. 🌟 ROUTING: Now that all card packs are opened and closed, it's safe to transition out!
+	# 3. ROUTING: Now that all card packs are opened and closed, transition out!
 	_finish_and_transition_scene()
 
 func update_ui_text_displays():
@@ -113,18 +127,16 @@ func update_ui_text_displays():
 		score_label.text = str(final_score_to_display)
 	if is_instance_valid(coin_reward_label):
 		coin_reward_label.text = str(cached_coins_earned)
-	if is_instance_valid(pack_reward_label):
-		pack_reward_label.text = str(cached_packs_earned)
+	if is_instance_valid(card_label):
+		card_label.text = str(cached_packs_earned)
 
 func _finish_and_transition_scene() -> void:
-	# 🌟 THE FINAL ROUTING FLOW CONTROLLER
-	if level_data_ref and level_data_ref.is_boss_level:
+	if level_data_ref and (level_data_ref.is_boss_level or level_data_ref.level_number == 3):
 		print("[ROUTE] Boss clear complete. Moving back to overall lounge interface.")
 		#SceneTransition.change_scene_path("res://scenes/menus/lounge.tscn")
 		SceneTransition.change_scene(level_data_ref.post_boss_cutscene)
 	else:
 		print("[ROUTE] Minion clear complete. Redirecting straight to Deck Builder scene layout.")
-		# Redirect the player directly back to card preparation operations
 		SceneTransition.change_scene_path("res://scenes/ui/DeckBuilder.tscn")
 		
 	queue_free()

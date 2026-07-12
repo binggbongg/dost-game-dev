@@ -7,7 +7,39 @@ extends Node
 
 var active_bgm_player: AudioStreamPlayer
 var library = preload("res://data/SoundData/GameSounds.tres") 
+var current_bgm_path: String = ""
 
+func play_sound_from_path(file_path: String, is_bgm: bool = false, volume_adjust: float = 0.0) -> void:
+	if not ResourceLoader.exists(file_path):
+		print("AudioManager Error: Audio file path does not exist! -> ", file_path)
+		return
+		
+	var stream = load(file_path) as AudioStream
+	if not stream:
+		print("AudioManager Error: Failed to load file as AudioStream -> ", file_path)
+		return
+		
+	if is_bgm:
+		play_bgm(stream)
+		# Set volume adjustment target safely
+		active_bgm_player.volume_db = volume_adjust 
+	else:
+		for p in sfx_players:
+			if not p.playing:
+				p.stream = stream
+				p.pitch_scale = randf_range(0.95, 1.05)
+				p.volume_db = volume_adjust 
+				p.play()
+				return
+
+
+# 3. Clear the path if you ever explicitly stop the music
+func stop_bgm(fade_duration: float = 1.0):
+	current_bgm_path = "" # Clear path tracker
+	var tween = create_tween()
+	tween.tween_property(active_bgm_player, "volume_db", -80, fade_duration)
+	tween.tween_callback(active_bgm_player.stop)
+	
 # --- INITIALIZATION ---
 func _ready():
 	# Setup BGM players
@@ -51,10 +83,13 @@ func play_sfx(stream: AudioStream, pitch_variance: float = 0.1):
 			p.play()
 			return
 
-# --- BGM LOGIC ---
 func play_bgm(stream: AudioStream, fade_duration: float = 1.0):
 	if stream == null: return 
-	if active_bgm_player.stream == stream: return 
+	
+	# FIX: Only return early if the stream matches AND the player is actually playing.
+	# If it's stopped (from the scene transition), we need to kickstart it again!
+	if active_bgm_player.stream == stream and active_bgm_player.playing: 
+		return 
 	
 	var old_player = active_bgm_player
 	active_bgm_player = bgm_player2 if active_bgm_player == bgm_player1 else bgm_player1
@@ -67,11 +102,9 @@ func play_bgm(stream: AudioStream, fade_duration: float = 1.0):
 	tween.tween_property(active_bgm_player, "volume_db", 0, fade_duration)
 	tween.parallel().tween_property(old_player, "volume_db", -80, fade_duration)
 	tween.tween_callback(old_player.stop)
-	
-func stop_bgm(fade_duration: float = 1.0):
-	var tween = create_tween()
-	tween.tween_property(active_bgm_player, "volume_db", -80, fade_duration)
-	tween.tween_callback(active_bgm_player.stop)
+
+
+
 
 # --- MASTER MUTE ---
 func toggle_mute():
@@ -79,27 +112,3 @@ func toggle_mute():
 	var is_muted = AudioServer.is_bus_mute(master_bus)
 	AudioServer.set_bus_mute(master_bus, !is_muted)
 	return !is_muted
-
-# --- PLAY VIA FILE PATH (WITH INDIVIDUAL VOLUME BOOST) ---
-# To raise the volume, pass a positive number (like 4.0, 6.5, etc.) into volume_adjust
-func play_sound_from_path(file_path: String, is_bgm: bool = false, volume_adjust: float = 0.0) -> void:
-	if not ResourceLoader.exists(file_path):
-		print("AudioManager Error: Audio file path does not exist! -> ", file_path)
-		return
-		
-	var stream = load(file_path) as AudioStream
-	if not stream:
-		print("AudioManager Error: Failed to load file as AudioStream -> ", file_path)
-		return
-		
-	if is_bgm:
-		play_bgm(stream)
-		active_bgm_player.volume_db = volume_adjust
-	else:
-		for p in sfx_players:
-			if not p.playing:
-				p.stream = stream
-				p.pitch_scale = randf_range(0.95, 1.05)
-				p.volume_db = volume_adjust # Boosts or drops the decibels for this specific play instance
-				p.play()
-				return

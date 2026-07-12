@@ -8,4 +8,6 @@ script = ExtResource("1_05xyf")
 level_number = 2
 background = "uid://sk5ki0j6f3l0"
 enemy_data = ExtResource("1_vq65a")
+enemy_name = "Talanghiyaw"
+level_lore = "Its call still echoes across the plains each morning, but it no longer welcomes the rising sun. Forged to awaken workers instead of wanderers, its cry marks the rhythm of machines rather than the songs of the countryside, reminding all that even the simplest traditions can be remade."
 metadata/_custom_type_script = "uid://buqidver0oody"

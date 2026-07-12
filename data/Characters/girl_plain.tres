@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://csytdktvxss34"]
 
+[ext_resource type="Texture2D" uid="uid://2vggq6in2f7p" path="res://assets/prebattle_portrait/girl_prebattle.png" id="1_oxr0x"]
 [ext_resource type="Script" uid="uid://hwvdlnk2ti43" path="res://data/character.gd" id="1_p370c"]
 [ext_resource type="Texture2D" uid="uid://em16q1ohhgal" path="res://assets/player/girl_death.png" id="3_yqjlm"]
 [ext_resource type="Texture2D" uid="uid://c2xv5vbofw3wy" path="res://assets/player/girl_idle.png" id="4_5wify"]
@@ -281,4 +282,5 @@ script = ExtResource("1_p370c")
 id = "girl_plain"
 display_name = "girl"
 sprite_frames = SubResource("SpriteFrames_5lwx8")
+portrait = ExtResource("1_oxr0x")
 metadata/_custom_type_script = "uid://hwvdlnk2ti43"

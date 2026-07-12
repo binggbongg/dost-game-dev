@@ -1,6 +1,10 @@
 [gd_resource type="Resource" script_class="EnemyBehavior" format=3 uid="uid://h8pnpm7fwp5n"]
 
 [ext_resource type="Texture2D" uid="uid://bgic3265ultah" path="res://assets/enemies/LVL1/Lvl1_BOSS_animation/Ultimateskill_ironCarabao.png" id="1_h2ol7"]
+<<<<<<< HEAD
+=======
+[ext_resource type="Texture2D" uid="uid://bjsg3gbfwnwtr" path="res://assets/prebattle_portrait/level1/portrait1_3.png" id="1_qjexy"]
+>>>>>>> origin/gela-friday-updates
 [ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="1_raexg"]
 [ext_resource type="Script" uid="uid://bltrhxh2342fx" path="res://data/enemy_behavior.gd" id="2_kfc3t"]
 [ext_resource type="Texture2D" uid="uid://bqwwqq3vx3bpu" path="res://assets/enemies/LVL1/Lvl1_BOSS_animation/IRONCARABAO_FINAL.png" id="2_qjexy"]
@@ -233,6 +237,7 @@ script = ExtResource("2_kfc3t")
 enemy_name = "Cyber Tamaraw"
 max_health = 9
 enemy_sprite = SubResource("SpriteFrames_s523q")
+enemy_portait = ExtResource("1_qjexy")
 regular_moves = Array[ExtResource("1_raexg")]([SubResource("Resource_h2ol7")])
 special_moves = Array[ExtResource("1_raexg")]([SubResource("Resource_qjexy"), SubResource("Resource_s523q")])
 metadata/_custom_type_script = "uid://bltrhxh2342fx"

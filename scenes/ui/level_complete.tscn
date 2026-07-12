@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c6ao8ylhrwwbu"]
 
 [ext_resource type="Script" uid="uid://chht25bvnjlry" path="res://script/ui/level_complete.gd" id="1_7c5i1"]
+[ext_resource type="PackedScene" uid="uid://bjo62sglogr7j" path="res://scenes/menus/player_pack_slot.tscn" id="2_cjuq0"]
 [ext_resource type="Texture2D" uid="uid://dvuofhfo7vd65" path="res://assets/ui/mainscreen/mainscreen_ui_loginAccount.png" id="2_qsb6x"]
 [ext_resource type="FontFile" uid="uid://df2vd0uxg3gcf" path="res://assets/fonts/PixelifySans-SemiBold.ttf" id="3_cjuq0"]
 [ext_resource type="Texture2D" uid="uid://cehfrui28gnh" path="res://assets/ui/buttons/scroll_icon.png" id="4_7s3li"]
@@ -24,6 +25,12 @@ font_size = 18
 
 [node name="CHICKENDINNER" type="CanvasLayer" unique_id=1645563919]
 script = ExtResource("1_7c5i1")
+pack_scene = ExtResource("2_cjuq0")
+
+[node name="Dimmer" type="ColorRect" parent="." unique_id=1153445446]
+offset_right = 1925.0
+offset_bottom = 1083.0
+color = Color(0, 0, 0, 0.5137255)
 
 [node name="VICTORY" type="Control" parent="." unique_id=1486700835]
 layout_mode = 3
@@ -154,7 +161,7 @@ label_settings = SubResource("LabelSettings_uyitj")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Control" type="Control" parent="VICTORY" unique_id=776451135]
+[node name="CardPack" type="Control" parent="VICTORY" unique_id=776451135]
 anchors_preset = 0
 offset_left = 235.00002
 offset_top = 212.0
@@ -162,7 +169,7 @@ offset_right = 275.0
 offset_bottom = 252.0
 metadata/_edit_use_anchors_ = true
 
-[node name="CardLabel" type="Label" parent="VICTORY/Control" unique_id=14980379]
+[node name="CardLabel" type="Label" parent="VICTORY/CardPack" unique_id=14980379]
 layout_mode = 0
 offset_left = 46.999985
 offset_top = 17.0
@@ -173,7 +180,7 @@ label_settings = SubResource("LabelSettings_uyitj")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect4" type="TextureRect" parent="VICTORY/Control" unique_id=1600750574]
+[node name="TextureRect4" type="TextureRect" parent="VICTORY/CardPack" unique_id=1600750574]
 layout_mode = 0
 offset_left = -4.0000153
 offset_top = 15.20639
@@ -184,7 +191,7 @@ scale = Vector2(0.31, 0.31)
 texture = ExtResource("7_fhtmr")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect5" type="TextureRect" parent="VICTORY/Control" unique_id=633108288]
+[node name="TextureRect5" type="TextureRect" parent="VICTORY/CardPack" unique_id=633108288]
 layout_mode = 0
 offset_left = 3.9999857
 offset_top = 13.20639
@@ -195,7 +202,7 @@ scale = Vector2(0.31, 0.31)
 texture = ExtResource("8_g6w5c")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect6" type="TextureRect" parent="VICTORY/Control" unique_id=62448670]
+[node name="TextureRect6" type="TextureRect" parent="VICTORY/CardPack" unique_id=62448670]
 layout_mode = 0
 offset_left = 10.999985
 offset_top = 11.20639
@@ -206,7 +213,7 @@ scale = Vector2(0.31, 0.31)
 texture = ExtResource("9_wfjqo")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect7" type="TextureRect" parent="VICTORY/Control" unique_id=1582032536]
+[node name="TextureRect7" type="TextureRect" parent="VICTORY/CardPack" unique_id=1582032536]
 layout_mode = 0
 offset_left = 19.999989
 offset_top = 10.206392
