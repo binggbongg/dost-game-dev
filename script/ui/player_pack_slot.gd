@@ -56,6 +56,7 @@ func open_pack(is_new_player: bool):
 
 
 func _animate_pack_opening():
+	AudioManager.play_sound_from_path("res://data/SoundData/sfx/open_pack.wav", false, 0.0)
 	pack_is_sealed = false # Block duplicate clicks
 	
 	var tween = create_tween()
@@ -193,6 +194,8 @@ func _handle_drag_end(card_node):
 
 
 func _on_card_swiped():
+	AudioManager.play_sound_from_path("res://data/SoundData/sfx/slide.wav", false, 0.0)
+
 	# Save card
 	PlayerProfile.add_card_to_inventory(card_paths[current_idx])
 

@@ -163,7 +163,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CardPack" type="Control" parent="VICTORY" unique_id=776451135]
 anchors_preset = 0
-offset_left = 235.00002
+offset_left = 235.0
 offset_top = 212.0
 offset_right = 275.0
 offset_bottom = 252.0
@@ -224,4 +224,5 @@ scale = Vector2(0.31, 0.31)
 texture = ExtResource("10_r8lu7")
 metadata/_edit_use_anchors_ = true
 
-[node name="PackLayer" type="CanvasLayer" parent="." unique_id=271680803]
+[node name="PackLayer" type="CanvasLayer" parent="VICTORY" unique_id=271680803]
+layer = 25

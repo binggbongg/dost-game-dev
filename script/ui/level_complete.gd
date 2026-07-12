@@ -5,7 +5,7 @@ extends CanvasLayer
 @onready var next_button: TextureButton = $VICTORY/next
 @onready var coin_reward_label: Label = $VICTORY/CoinLabel
 
-@onready var pack_layer: CanvasLayer = $PackLayer
+@onready var pack_layer: CanvasLayer = $VICTORY/PackLayer
 @export var pack_scene: PackedScene                               # Assign your card pack .tscn here
 
 # Updated Card Pack References
