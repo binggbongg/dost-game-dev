@@ -13,9 +13,9 @@ var match_score_multipler: float = 1.0
 
 func _ready() -> void:
 	print("OH YOURE IN REAL GAME!")
-	var chapter = PlayerProfile.current_phase
-	var extension = ".mp3" if chapter == 2 else ".wav"
-	var bgm_path = "res://data/SoundData/bgm/level/chapter_%d%s" % [chapter, extension]
+	var chapter_num = PlayerProfile.current_phase
+	var extension = ".mp3" if chapter_num == 2 else ".wav"
+	var bgm_path = "res://data/SoundData/bgm/level/chapter_%d%s" % [chapter_num, extension]
 	
 	if typeof(AudioManager) != TYPE_NIL:
 		AudioManager.play_sound_from_path(bgm_path, true)
