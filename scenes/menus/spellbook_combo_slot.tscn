@@ -86,7 +86,6 @@ tex_diwa = ExtResource("4_ns48a")
 tex_lahi = ExtResource("5_a3b2j")
 
 [node name="SpecialCards" type="Control" parent="." unique_id=1114170922]
-visible = false
 anchors_preset = 0
 
 [node name="DescriptionPanel2" type="Panel" parent="SpecialCards" unique_id=1944965646]
@@ -107,10 +106,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_03fnx")
 
 [node name="DescriptionPanel4" type="Panel" parent="SpecialCards" unique_id=1613656822]
 layout_mode = 0
-offset_left = 67.0
-offset_top = 444.0
-offset_right = 242.0
-offset_bottom = 587.0
+offset_left = 65.0
+offset_top = 463.0
+offset_right = 240.0
+offset_bottom = 606.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_03fnx")
 
 [node name="Card" type="TextureRect" parent="SpecialCards" unique_id=1027558128]
@@ -150,10 +149,10 @@ vertical_alignment = 1
 
 [node name="ASLLabel" type="Label" parent="SpecialCards" unique_id=1158091242]
 layout_mode = 0
-offset_left = 80.0
-offset_top = 448.0
-offset_right = 231.0
-offset_bottom = 485.0
+offset_left = 78.0
+offset_top = 467.0
+offset_right = 229.0
+offset_bottom = 504.0
 text = "ASL"
 label_settings = SubResource("LabelSettings_e8wx3")
 vertical_alignment = 1
@@ -180,10 +179,10 @@ autowrap_mode = 2
 
 [node name="ASLLabelFull" type="Label" parent="SpecialCards" unique_id=1458440299]
 layout_mode = 0
-offset_left = 78.0
-offset_top = 477.0
-offset_right = 233.0
-offset_bottom = 534.0
+offset_left = 76.0
+offset_top = 496.0
+offset_right = 231.0
+offset_bottom = 553.0
 text = "You do this and that and this and that and this!"
 label_settings = SubResource("LabelSettings_ff687")
 autowrap_mode = 2
@@ -200,10 +199,10 @@ horizontal_alignment = 1
 
 [node name="DescriptionPanel" type="Panel" parent="SpecialCards" unique_id=1315731515]
 layout_mode = 0
-offset_left = 67.0
-offset_top = 306.0
-offset_right = 481.0
-offset_bottom = 433.0
+offset_left = 65.0
+offset_top = 325.0
+offset_right = 479.0
+offset_bottom = 452.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_03fnx")
 
 [node name="DescriptionFull" type="Label" parent="SpecialCards/DescriptionPanel" unique_id=1855507072]
@@ -227,7 +226,7 @@ text = "Description
 label_settings = SubResource("LabelSettings_q5e7q")
 
 [node name="ASL" type="AnimatedSprite2D" parent="SpecialCards" unique_id=550486975]
-position = Vector2(369, 519)
+position = Vector2(367, 538)
 scale = Vector2(3.28125, 3.28125)
 sprite_frames = SubResource("SpriteFrames_bjnl4")
 autoplay = "default"
@@ -240,17 +239,17 @@ anchors_preset = 0
 [node name="DescriptionPanel2" type="Panel" parent="Spell_double" unique_id=562749775]
 layout_mode = 0
 offset_left = 70.0
-offset_top = 443.0
+offset_top = 469.0
 offset_right = 268.0
-offset_bottom = 570.0
+offset_bottom = 596.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_03fnx")
 
 [node name="DescriptionPanel3" type="Panel" parent="Spell_double" unique_id=962047443]
 layout_mode = 0
 offset_left = 276.0
-offset_top = 444.0
+offset_top = 470.0
 offset_right = 474.0
-offset_bottom = 570.0
+offset_bottom = 596.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_03fnx")
 
 [node name="Card2" type="TextureRect" parent="Spell_double" unique_id=304399113]
@@ -282,9 +281,9 @@ stretch_mode = 5
 [node name="SpecialEffectLabel" type="Label" parent="Spell_double" unique_id=1206194023]
 layout_mode = 0
 offset_left = 79.0
-offset_top = 460.0
+offset_top = 486.0
 offset_right = 230.0
-offset_bottom = 497.0
+offset_bottom = 523.0
 text = "Special Effect
 "
 label_settings = SubResource("LabelSettings_e8wx3")
@@ -293,9 +292,9 @@ vertical_alignment = 1
 [node name="FilipinoLoreLabel" type="Label" parent="Spell_double" unique_id=1812679407]
 layout_mode = 0
 offset_left = 295.0
-offset_top = 459.0
+offset_top = 485.0
 offset_right = 446.0
-offset_bottom = 496.0
+offset_bottom = 522.0
 text = "Filipino Lore
 "
 label_settings = SubResource("LabelSettings_e8wx3")
@@ -304,9 +303,9 @@ vertical_alignment = 1
 [node name="SpecialEffectFull" type="Label" parent="Spell_double" unique_id=1363496402]
 layout_mode = 0
 offset_left = 79.0
-offset_top = 479.0
+offset_top = 505.0
 offset_right = 258.0
-offset_bottom = 536.0
+offset_bottom = 562.0
 text = "This explodes the enemy one time kill! fThis explodes the enemy one time kill!"
 label_settings = SubResource("LabelSettings_ff687")
 autowrap_mode = 2
@@ -314,9 +313,9 @@ autowrap_mode = 2
 [node name="FilipinoLoreFull" type="Label" parent="Spell_double" unique_id=1462737323]
 layout_mode = 0
 offset_left = 294.0
-offset_top = 475.0
+offset_top = 501.0
 offset_right = 461.0
-offset_bottom = 532.0
+offset_bottom = 558.0
 text = "This explodes the enemy one time kill! fThis explodes the enemy one time kill!"
 label_settings = SubResource("LabelSettings_ff687")
 autowrap_mode = 2
@@ -334,9 +333,9 @@ horizontal_alignment = 1
 [node name="DescriptionPanel" type="Panel" parent="Spell_double" unique_id=216462701]
 layout_mode = 0
 offset_left = 67.0
-offset_top = 306.0
+offset_top = 332.0
 offset_right = 481.0
-offset_bottom = 433.0
+offset_bottom = 459.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_03fnx")
 
 [node name="DescriptionFull" type="Label" parent="Spell_double/DescriptionPanel" unique_id=1807863501]
@@ -360,22 +359,23 @@ text = "Description
 label_settings = SubResource("LabelSettings_q5e7q")
 
 [node name="Spell_triiple" type="Control" parent="." unique_id=329950312]
+visible = false
 anchors_preset = 0
 
 [node name="DescriptionPanel2" type="Panel" parent="Spell_triiple" unique_id=1498871348]
 layout_mode = 0
 offset_left = 70.0
-offset_top = 443.0
+offset_top = 474.0
 offset_right = 268.0
-offset_bottom = 570.0
+offset_bottom = 601.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_03fnx")
 
 [node name="DescriptionPanel3" type="Panel" parent="Spell_triiple" unique_id=1802076380]
 layout_mode = 0
 offset_left = 276.0
-offset_top = 444.0
+offset_top = 475.0
 offset_right = 474.0
-offset_bottom = 570.0
+offset_bottom = 601.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_03fnx")
 
 [node name="Card2" type="TextureRect" parent="Spell_triiple" unique_id=1989681236]
@@ -420,9 +420,9 @@ stretch_mode = 5
 [node name="SpecialEffectLabel" type="Label" parent="Spell_triiple" unique_id=336549362]
 layout_mode = 0
 offset_left = 79.0
-offset_top = 460.0
+offset_top = 491.0
 offset_right = 230.0
-offset_bottom = 497.0
+offset_bottom = 528.0
 text = "Special Effect
 "
 label_settings = SubResource("LabelSettings_e8wx3")
@@ -431,9 +431,9 @@ vertical_alignment = 1
 [node name="FilipinoLoreLabel" type="Label" parent="Spell_triiple" unique_id=2062611843]
 layout_mode = 0
 offset_left = 295.0
-offset_top = 459.0
+offset_top = 490.0
 offset_right = 446.0
-offset_bottom = 496.0
+offset_bottom = 527.0
 text = "Filipino Lore
 "
 label_settings = SubResource("LabelSettings_e8wx3")
@@ -442,9 +442,9 @@ vertical_alignment = 1
 [node name="SpecialEffectFull" type="Label" parent="Spell_triiple" unique_id=789853047]
 layout_mode = 0
 offset_left = 79.0
-offset_top = 479.0
+offset_top = 510.0
 offset_right = 258.0
-offset_bottom = 536.0
+offset_bottom = 567.0
 text = "This explodes the enemy one time kill! fThis explodes the enemy one time kill!"
 label_settings = SubResource("LabelSettings_ff687")
 autowrap_mode = 2
@@ -452,9 +452,9 @@ autowrap_mode = 2
 [node name="FilipinoLoreFull" type="Label" parent="Spell_triiple" unique_id=1508606483]
 layout_mode = 0
 offset_left = 294.0
-offset_top = 475.0
+offset_top = 506.0
 offset_right = 461.0
-offset_bottom = 532.0
+offset_bottom = 563.0
 text = "This explodes the enemy one time kill! fThis explodes the enemy one time kill!"
 label_settings = SubResource("LabelSettings_ff687")
 autowrap_mode = 2
@@ -472,9 +472,9 @@ horizontal_alignment = 1
 [node name="DescriptionPanel" type="Panel" parent="Spell_triiple" unique_id=704986722]
 layout_mode = 0
 offset_left = 67.0
-offset_top = 306.0
+offset_top = 337.0
 offset_right = 481.0
-offset_bottom = 433.0
+offset_bottom = 464.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_03fnx")
 
 [node name="DescriptionFull" type="Label" parent="Spell_triiple/DescriptionPanel" unique_id=1322573869]
