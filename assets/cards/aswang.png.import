@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cis3rfdjxwt25"
-path="res://.godot/imported/special_minokawa.png-f0c76096b816df14872b744ecd0b68d8.ctex"
+uid="uid://xt4oqkbaj25p"
+path="res://.godot/imported/aswang.png-1a29f223b14685ad5ba795dcf395dc8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/handsigns/special_attack/special_minokawa.png"
-dest_files=["res://.godot/imported/special_minokawa.png-f0c76096b816df14872b744ecd0b68d8.ctex"]
+source_file="res://assets/cards/aswang.png"
+dest_files=["res://.godot/imported/aswang.png-1a29f223b14685ad5ba795dcf395dc8a.ctex"]
 
 [params]
 

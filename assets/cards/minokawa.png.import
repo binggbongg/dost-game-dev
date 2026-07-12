@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1efkbbepkwsh"
-path="res://.godot/imported/shop_board.png-1c6942b7707ddbffae19ac18c2c21ad3.ctex"
+uid="uid://cn66acd8j5tom"
+path="res://.godot/imported/minokawa.png-23b52e24b4b2ea270c88f6f4194bcf3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/shop/shop_board.png"
-dest_files=["res://.godot/imported/shop_board.png-1c6942b7707ddbffae19ac18c2c21ad3.ctex"]
+source_file="res://assets/cards/minokawa.png"
+dest_files=["res://.godot/imported/minokawa.png-23b52e24b4b2ea270c88f6f4194bcf3e.ctex"]
 
 [params]
 

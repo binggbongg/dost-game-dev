@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SoundData" format=3 uid="uid://bu8in2jmyqufp"]
+[gd_resource type="Resource" script_class="SoundData" format=3 uid="uid://cm8kw8ky70nbv"]
 
 [ext_resource type="AudioStream" uid="uid://br2v28fqvfk56" path="res://data/SoundData/sfx/666645__bboz87__shuffle_single.wav" id="1_sjjlk"]
 [ext_resource type="AudioStream" uid="uid://du3cylgtphemx" path="res://data/SoundData/sfx/478197__jonnyruss01__click_1.wav" id="2_hy5ax"]

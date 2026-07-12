@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dst0exh7h1pik"
-path="res://.godot/imported/special_aswang.png-48ed9bf5e30e18ac5fefaee4c51c0084.ctex"
+uid="uid://mhj1b2n7b2ai"
+path="res://.godot/imported/ultimate_skill_enemy2(1).png-c0d378cca88ac95fe723099f5794f4e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/handsigns/special_attack/special_aswang.png"
-dest_files=["res://.godot/imported/special_aswang.png-48ed9bf5e30e18ac5fefaee4c51c0084.ctex"]
+source_file="res://assets/enemies/LVL3/Lvl3_enemy2_animation/ultimate_skill_enemy2(1).png"
+dest_files=["res://.godot/imported/ultimate_skill_enemy2(1).png-c0d378cca88ac95fe723099f5794f4e5.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t08c0q5eqg2i"
-path="res://.godot/imported/special_kapre.png-c078fa66bce7334146aabafc117385a2.ctex"
+uid="uid://chq22nxtrqp67"
+path="res://.godot/imported/kapre.png-f25183e6bda6f9714e1967257cbc84ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/handsigns/special_attack/special_kapre.png"
-dest_files=["res://.godot/imported/special_kapre.png-c078fa66bce7334146aabafc117385a2.ctex"]
+source_file="res://assets/cards/kapre.png"
+dest_files=["res://.godot/imported/kapre.png-f25183e6bda6f9714e1967257cbc84ce.ctex"]
 
 [params]
 
