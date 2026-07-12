@@ -195,13 +195,13 @@ texture_normal = ExtResource("9_3yoho")
 
 [node name="Start" type="TextureButton" parent="." unique_id=1772978172]
 layout_mode = 0
-offset_left = 347.0
+offset_left = 295.0
 offset_top = 543.0
-offset_right = 518.0
-offset_bottom = 602.0
+offset_right = 475.0
+offset_bottom = 626.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Start" unique_id=1008622458]
-position = Vector2(49, 64)
+position = Vector2(92, 46)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_3d4ke")
 autoplay = "default"

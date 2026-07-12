@@ -13,7 +13,12 @@ var match_score_multipler: float = 1.0
 
 func _ready() -> void:
 	print("OH YOURE IN REAL GAME!")
+	var chapter = PlayerProfile.current_phase
+	var extension = ".mp3" if chapter == 2 else ".wav"
+	var bgm_path = "res://data/SoundData/bgm/level/chapter_%d%s" % [chapter, extension]
 	
+	if typeof(AudioManager) != TYPE_NIL:
+		AudioManager.play_sound_from_path(bgm_path, true)
 	await get_tree().process_frame
 	
 	var deck = $PlayerInterface/UI/Deck
@@ -193,8 +198,9 @@ func evaluate_combo_scoring(active_cards: Array, matched_recipe: ComboRecipe):
 	
 	print("Current Score (combatlevel): ", str(match_combo_bonus_points))
 
-func _unhandled_input(event):
+#will use this to test cutscenes and post levels stuff
+#func _unhandled_input(event):
 	# Press 'W' to instantly win the level and advance
-	if event is InputEventKey and event.pressed and event.keycode == KEY_W:
-		print("DEBUG: Instant Win Triggered")
-		_on_enemy_defeated()
+	#if event is InputEventKey and event.pressed and event.keycode == KEY_W:
+		#print("DEBUG: Instant Win Triggered")
+		#_on_enemy_defeated()

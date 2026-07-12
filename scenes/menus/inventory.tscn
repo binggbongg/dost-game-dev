@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://d2ab1c08105wj" path="res://script/ui/inventoryUI.gd" id="1_xityo"]
 [ext_resource type="PackedScene" uid="uid://c2bjl38hf6kfw" path="res://scenes/menus/inventory_item_slot.tscn" id="2_aj06e"]
-[ext_resource type="Texture2D" uid="uid://duued71ex3xol" path="res://assets/temporary/inventory_bg.webp" id="2_kbtlh"]
 [ext_resource type="Texture2D" uid="uid://bby48bvsp02i0" path="res://assets/temporary/slot spotlight.jpg" id="2_xityo"]
+[ext_resource type="Texture2D" uid="uid://cn63j5pwl0hkl" path="res://assets/background/rooms/background_inventory.png" id="3_aj06e"]
+[ext_resource type="Texture2D" uid="uid://2vgynhwgdtwa" path="res://assets/ui/shop/shop_board_empty.png" id="4_3ycl8"]
 [ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="4_aj06e"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_kbtlh"]
 [ext_resource type="PackedScene" uid="uid://buor4em2o4cfj" path="res://scenes/ui/coin_display.tscn" id="5_3ycl8"]
@@ -37,7 +38,24 @@ slot_scene = ExtResource("2_aj06e")
 layout_mode = 0
 offset_right = 1919.0
 offset_bottom = 1094.0
-texture = ExtResource("2_kbtlh")
+texture = ExtResource("3_aj06e")
+
+[node name="Box" type="TextureRect" parent="TextureRect" unique_id=146296447]
+layout_mode = 0
+offset_left = -1510.0
+offset_top = 195.0
+offset_right = 683.0
+offset_bottom = 1014.0
+texture = ExtResource("4_3ycl8")
+
+[node name="Box2" type="TextureRect" parent="TextureRect" unique_id=392696890]
+layout_mode = 0
+offset_left = 503.0
+offset_top = 195.0
+offset_right = 2696.0
+offset_bottom = 1014.0
+texture = ExtResource("4_3ycl8")
+flip_h = true
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1626886338]
 
@@ -230,13 +248,18 @@ vertical_alignment = 1
 
 [node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("4_aj06e")]
 layout_mode = 0
-offset_left = -13.0
-offset_top = -69.0
-offset_right = 190.0
-offset_bottom = 223.0
+offset_left = 51.0
+offset_top = 51.0
+offset_right = 60.625
+offset_bottom = 59.25
 
 [node name="CoinDisplay" parent="." unique_id=220494740 instance=ExtResource("5_3ycl8")]
 layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 877.0
 offset_top = 84.0
 offset_right = 1158.0

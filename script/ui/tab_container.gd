@@ -36,7 +36,7 @@ var tutorial_active := false
 }
 
 func _ready():
-
+	AudioManager.play_sound_from_path("res://data/SoundData/bgm/lounge.wav", true)
 	PlayerProfile.current_deck.clear()
 
 	tab_container.current_tab = 0

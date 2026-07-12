@@ -81,7 +81,7 @@ func run_cinematic_intro() -> void:
 	)
 
 func start_screen_timer() -> void:
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.5).timeout
 	can_skip = true
 	
 	var text_tween = create_tween().set_loops()

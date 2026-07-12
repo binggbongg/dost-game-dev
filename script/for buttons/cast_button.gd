@@ -1,4 +1,5 @@
 extends TextureButton
+@onready var end_turn_2: AnimatedSprite2D = $EndTurn2
 
 @onready var combo_manager = get_node("../../GameManagers/ComboManager")
 @onready var turn_manager = get_node("../../GameManagers/TurnManager")
@@ -22,10 +23,10 @@ func update_button_state() -> void:
 	
 	if can_cast and is_player_turn and not turn_manager.is_busy:
 		self.disabled = false
-		self_modulate = Color(1, 1, 1, 1)
+		end_turn_2.modulate = Color(1, 1, 1, 1)
 	else:
 		self.disabled = true
-		self_modulate = Color(0.3, 0.3, 0.3, 0.8)
+		end_turn_2.modulate = Color(0.3, 0.3, 0.3, 0.8)
 
 func _on_pressed():
 	if not combo_manager or not turn_manager or turn_manager.is_busy:
