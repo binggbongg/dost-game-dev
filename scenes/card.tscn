@@ -12,6 +12,15 @@ size = Vector2(192.5, 282)
 [sub_resource type="LabelSettings" id="LabelSettings_6u4wf"]
 font_size = 13
 
+[sub_resource type="Gradient" id="Gradient_sy11y"]
+colors = PackedColorArray(0.12156863, 0.12156863, 0.12156863, 0.8627451, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6ligt"]
+gradient = SubResource("Gradient_sy11y")
+fill = 1
+fill_from = Vector2(0.4871795, 0.52478635)
+fill_to = Vector2(0.8153846, 0.7846154)
+
 [sub_resource type="LabelSettings" id="LabelSettings_nvopj"]
 font = ExtResource("3_sy11y")
 font_size = 32
@@ -45,6 +54,22 @@ offset_bottom = -140.0
 text = "Card Name"
 label_settings = SubResource("LabelSettings_6u4wf")
 
+[node name="TextureRect" type="TextureRect" parent="Area2D" unique_id=1371923825]
+offset_left = 30.000002
+offset_top = -140.00002
+offset_right = 119.375
+offset_bottom = -76.000015
+scale = Vector2(0.8, 0.8)
+texture = SubResource("GradientTexture2D_6ligt")
+
+[node name="TextureRect2" type="TextureRect" parent="Area2D" unique_id=1836218958]
+offset_left = -90.00001
+offset_top = 97.5
+offset_right = -0.9375076
+offset_bottom = 161.5
+scale = Vector2(0.8, 0.8)
+texture = SubResource("GradientTexture2D_6ligt")
+
 [node name="CardPowerHighlight" type="Control" parent="Area2D" unique_id=919060533]
 layout_mode = 3
 anchors_preset = 0
@@ -56,18 +81,19 @@ offset_bottom = -88.749985
 [node name="PowerHighlight" type="Label" parent="Area2D/CardPowerHighlight" unique_id=79884093]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 11.250004
-offset_right = 50.000008
-offset_bottom = 38.999992
+offset_left = 6.250002
+offset_top = -3.750009
+offset_right = 45.000008
+offset_bottom = 35.249992
 text = "50"
 label_settings = SubResource("LabelSettings_nvopj")
 
 [node name="PowerHighlightIcon" type="TextureRect" parent="Area2D/CardPowerHighlight" unique_id=1856865708]
 layout_mode = 0
-offset_left = -12.499992
-offset_top = 3.7499905
-offset_right = 51.500008
-offset_bottom = 67.74999
+offset_left = -17.499994
+offset_top = -1.9073486e-05
+offset_right = 46.500008
+offset_bottom = 63.99998
 scale = Vector2(0.42, 0.42)
 texture = ExtResource("4_6ligt")
 
@@ -91,11 +117,11 @@ label_settings = SubResource("LabelSettings_nvopj")
 
 [node name="TextureRect" type="TextureRect" parent="Area2D/ManaCost" unique_id=1256354585]
 layout_mode = 0
-offset_left = -23.749992
-offset_top = 3.7499905
-offset_right = 40.250008
-offset_bottom = 67.74999
-scale = Vector2(0.42, 0.42)
+offset_left = -21.250002
+offset_top = 7.5
+offset_right = 42.75
+offset_bottom = 71.5
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("5_sy11y")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

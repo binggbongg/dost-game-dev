@@ -1,53 +1,53 @@
 [gd_scene format=3 uid="uid://sselnp3jwv0s"]
 
-[ext_resource type="Script" path="res://script/loading.gd" id="1_dhqfv"]
+[ext_resource type="Script" uid="uid://doof7clw2io25" path="res://script/loading.gd" id="1_dhqfv"]
 [ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="1_yc7uc"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="2_dhqfv"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_101rs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_57ra1"]
 atlas = ExtResource("1_yc7uc")
 region = Rect2(0, 0, 192, 108)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yt702"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivt2f"]
 atlas = ExtResource("1_yc7uc")
 region = Rect2(192, 0, 192, 108)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ytni"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcoq6"]
 atlas = ExtResource("1_yc7uc")
 region = Rect2(384, 0, 192, 108)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nxo4k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcbjq"]
 atlas = ExtResource("1_yc7uc")
 region = Rect2(576, 0, 192, 108)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c856a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wpdt"]
 atlas = ExtResource("1_yc7uc")
 region = Rect2(768, 0, 192, 108)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3cqd5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wcnn"]
 atlas = ExtResource("1_yc7uc")
 region = Rect2(960, 0, 192, 108)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2b8ay"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_dhqfv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_101rs")
+"texture": SubResource("AtlasTexture_57ra1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yt702")
+"texture": SubResource("AtlasTexture_ivt2f")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2ytni")
+"texture": SubResource("AtlasTexture_hcoq6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nxo4k")
+"texture": SubResource("AtlasTexture_pcbjq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c856a")
+"texture": SubResource("AtlasTexture_6wpdt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3cqd5")
+"texture": SubResource("AtlasTexture_0wcnn")
 }],
 "loop": true,
 "name": &"default",
@@ -66,12 +66,11 @@ fill_to = Vector2(0.13368055, 0.7239583)
 [node name="Loading" type="CanvasLayer" unique_id=2084534103]
 script = ExtResource("1_dhqfv")
 
-[node name="Background" type="AnimatedSprite2D" parent="." unique_id=2127392914]
-position = Vector2(960, 533)
-scale = Vector2(10.3, 10.3)
-sprite_frames = SubResource("SpriteFrames_2b8ay")
+[node name="Background" type="AnimatedSprite2D" parent="." unique_id=1161223209]
+position = Vector2(959.7222, 539.5)
+scale = Vector2(10.070024, 10.083333)
+sprite_frames = SubResource("SpriteFrames_dhqfv")
 autoplay = "default"
-frame_progress = 0.035883956
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=190179675]
 offset_left = -50.0
@@ -81,10 +80,12 @@ offset_bottom = 1116.0
 texture = SubResource("GradientTexture2D_kc112")
 
 [node name="LoadingText" type="Label" parent="." unique_id=1915645524]
-offset_left = 880.0
-offset_top = 520.0
-offset_right = 1081.0
-offset_bottom = 580.0
+offset_left = 498.0
+offset_top = 510.0
+offset_right = 1510.0
+offset_bottom = 570.0
 theme_override_fonts/font = ExtResource("2_dhqfv")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "loading..."
+horizontal_alignment = 1
+vertical_alignment = 1

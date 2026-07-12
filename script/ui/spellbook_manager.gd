@@ -99,7 +99,7 @@ func open_spells_tab():
 	if chapter: chapter.text = "My Spells"
 	if item_numbers: item_numbers.show()
 	
-	reload_tab2_data()
+	await reload_tab2_data()
 
 
 func get_texture_for_element(element_val) -> Texture2D:
@@ -137,6 +137,8 @@ func hide_spells_tab():
 func reload_tab2_data():
 	for child in special_card_container.get_children(): child.queue_free()
 	for child in spell_container.get_children(): child.queue_free()
+	
+	await get_tree().process_frame
 	
 	var owned_count = 0
 	var first_valid_resource: Resource = null

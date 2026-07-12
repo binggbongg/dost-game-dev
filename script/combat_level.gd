@@ -13,12 +13,7 @@ var match_score_multipler: float = 1.0
 
 func _ready() -> void:
 	print("OH YOURE IN REAL GAME!")
-	var chapter = PlayerProfile.current_phase
-	var extension = ".mp3" if chapter == 2 else ".wav"
-	var bgm_path = "res://data/SoundData/bgm/level/chapter_%d%s" % [chapter, extension]
 	
-	if typeof(AudioManager) != TYPE_NIL:
-		AudioManager.play_sound_from_path(bgm_path, true)
 	await get_tree().process_frame
 	
 	var deck = $PlayerInterface/UI/Deck
@@ -54,41 +49,50 @@ func load_level_config(data):
 func _on_enemy_defeated():
 	print("CombatLevel: Enemy defeated signal caught directly!")
 	
-	# Freeze turns, inputs, and match timers smoothly
 	if battle_manager and battle_manager.has_method("halt_battle_processing"):
 		battle_manager.halt_battle_processing()
+	
+	if is_instance_valid(enemy):
+		enemy.visible = false
+	
+	var stage_score = calculate_stage_score()
+	var chapter_key = "chapter_" + str(PlayerProfile.current_phase)
+	if not PlayerProfile.high_scores.has(chapter_key):
+		PlayerProfile.high_scores[chapter_key] = {"score": 0, "rank": "C"}
 		
-	var calculated_score = await process_chapter_scoring_and_unlock()
-	prepare_next_progression_target()
-
-	# Dynamic local instantiation using the secure preload variable
-	if victory_screen_scene:
-		print("CombatLevel: Instantiating victory interface overlay layer...")
-		var victory_instance = victory_screen_scene.instantiate()
-		victory_instance.name = "VictoryScreenNode"
+	var total_chapter_score = PlayerProfile.high_scores[chapter_key].get("score", 0) + stage_score
+	var final_calculated_rank = determine_overall_rank(total_chapter_score, PlayerProfile.run_turns)
+	
+	PlayerProfile.high_scores[chapter_key] = {"rank": final_calculated_rank, "score": total_chapter_score}
+	if current_level_data and current_level_data.is_boss_level:
+		if typeof(Talo) != TYPE_NIL:
+			await Talo.leaderboards.add_entry(chapter_key, total_chapter_score, {
+				"rank": str(final_calculated_rank)
+			})
+		SaveManager.save_game()
 		
-		var ui_parent = get_node_or_null("PlayerInterface")
-		if ui_parent:
-			ui_parent.add_child(victory_instance)
-		else:
-			add_child(victory_instance)
-		
-		var current_chapter_key = "chapter_" + str(PlayerProfile.current_phase)
-		var saved_record = PlayerProfile.high_scores.get(current_chapter_key, {"rank": "C"})
-		var final_calculated_rank: String = saved_record.get("rank", "C")
-		
-		victory_instance.initialize_victory_rewards(current_level_data, calculated_score, final_calculated_rank)
-		PlayerProfile.reset_run_counter()
+		# Show Victory Screen Screen Overlay now that the whole run is complete
+		if victory_screen_scene:
+			var victory_instance = victory_screen_scene.instantiate()
+			victory_instance.name = "VictoryScreenNode"
+			get_tree().root.add_child(victory_instance) # Safe global viewport overlay[cite: 11]
+			victory_instance.initialize_victory_rewards(current_level_data, total_chapter_score, final_calculated_rank)
+			PlayerProfile.reset_run_counter()
 	else:
-		print("CRITICAL: victory_screen_scene file target asset path is invalid or missing!")
-
+		# Just regular level completion, move forward cleanly
+		proceed_next_stage()
 
 func prepare_next_progression_target():
-	PlayerProfile.advance_to_next_level()
-	if PlayerProfile.current_level == 1:
-		PlayerProfile.pending_scene = "res://scenes/menus/lounge.tscn"
-	else:
+	PlayerProfile.current_level += 1
+	var next_level_path = "res://data/Levels/level_%d-%d.tres" % [PlayerProfile.current_phase, PlayerProfile.current_level]
+	
+	if ResourceLoader.exists(next_level_path):
+		PlayerProfile.next_level_resource = load(next_level_path)
+		# Save path destination so the DeckBuilder knows what level to boot back into!
 		PlayerProfile.pending_scene = "res://scenes/levels/Level1.tscn"
+	else:
+		# No standard level left; next step defaults toward lounge map structures
+		PlayerProfile.pending_scene = "res://scenes/menus/map.tscn"
 
 func _on_battle_manager_won():
 	print("CombatLevel: level victory!")
@@ -96,63 +100,43 @@ func _on_battle_manager_won():
 		trigger_boss_defeat_cutscene()
 	else:
 		proceed_next_stage()
-		
+
 func proceed_next_stage():
-	print("combat level: proceeding to next stage")
-	# Instead of re-calculating everything here, use the pending_scene we just set
-	if typeof(SceneTransition) != TYPE_NIL and SceneTransition.has_method("change_scene_path"):
-		SceneTransition.change_scene_path(PlayerProfile.pending_scene)
-	else:
-		get_tree().change_scene_to_file(PlayerProfile.pending_scene)
-func process_chapter_scoring_and_unlock() -> int:
-	var turns = PlayerProfile.run_turns
-	var combos_played = PlayerProfile.run_combos_played
+	print("combat level: proceeding back to map area")
+	PlayerProfile.current_level += 1
+	var next_level_path = "res://data/Levels/level_%d-%d.tres" % [PlayerProfile.current_phase, PlayerProfile.current_level]
 	
-	# Base score build from your card selection patterns matching casting triggers
+	if ResourceLoader.exists(next_level_path):
+		PlayerProfile.next_level_resource = load(next_level_path)
+		if typeof(SceneTransition) != TYPE_NIL and SceneTransition.has_method("change_scene"):
+			SceneTransition.change_scene(preload("res://scenes/levels/Level1.tscn"))
+		else:
+			print("scene transition not working -- combat level")
+			get_tree().change_scene_to_file("res://scenes/levels/Level1.tscn")
+	else:
+		print("next level resources missing -- combat level")
+		SceneTransition.change_scene(preload("res://scenes/menus/map.tscn"))
+
+func calculate_stage_score() -> int:
+	var combos_played = PlayerProfile.run_combos_played # Grab combos from this fight[cite: 11]
 	var gameplay_base = match_combo_bonus_points + (combos_played * 250)
 	
-	# Turn efficiency modifier: fewer turns keeps this multiplier closer to 1.0
-	var turn_efficiency = clamp(1.0 - (turns * 0.02), 0.2, 1.0)
+	# Efficiency based on a reasonable single-match turn counter scale (e.g., max 15 turns)
+	var turn_efficiency = clamp(1.0 - (PlayerProfile.run_turns * 0.02), 0.2, 1.0)
 	
 	var raw_total = gameplay_base * match_score_multipler * turn_efficiency
-	var final_calculated_score: int = int(max(0, raw_total))
-	
-	print("--- ROUND METRICS SUMMARY ---")
-	print("Run Turns Taken: ", turns)
-	print("Total Card Combos Played: ", combos_played)
-	print("Post-Cast Accumulated Score Points: ", match_combo_bonus_points)
-	print("Final Balanced Victory Score: ", final_calculated_score)
-	
-	var final_rank := "C"
-	if final_calculated_score >= 2000 and turns <= 10:
-		final_rank = "S"
-	# A Rank: Solid score output OR decent efficiency combo
-	elif final_calculated_score >= 1000 or (final_calculated_score >= 900 and turns <= 13):
-		final_rank = "A"
-	# B Rank: Average score tier
-	elif final_calculated_score >= 700:
-		final_rank = "B"
-	# Fallback (Under 1200 points) results in a C rank
-	else:
-		final_rank = "C"
-	
-	var bonus_packs_earned := 0
-	match final_rank:
-		"S": bonus_packs_earned = 3 # Premium reward for flawless play
-		"A": bonus_packs_earned = 2
-		"B": bonus_packs_earned = 1
-		"C": bonus_packs_earned = 0
-	
-	var chapter_key = "chapter_" + str(PlayerProfile.current_phase)
-	PlayerProfile.high_scores[chapter_key] = {"rank": final_rank, "score": final_calculated_score}
-	
-	if typeof(Talo) != TYPE_NIL:
-		await Talo.leaderboards.add_entry(chapter_key, final_calculated_score, {
-			"rank": str(final_rank)
-		})
-	
-	SaveManager.save_game()
-	return final_calculated_score
+	return int(max(0, raw_total))
+
+
+func determine_overall_rank(total_score: int, total_turns: int) -> String:
+	# S Rank across 3 levels: Excellent combos, averaging ~10 turns per map fight (Total 30)
+	if total_score >= 5000 and total_turns <= 30:
+		return "S"
+	elif total_score >= 3500 or (total_score >= 3000 and total_turns <= 38):
+		return "A"
+	elif total_score >= 2000:
+		return "B"
+	return "C"
 
 func trigger_boss_defeat_cutscene():
 	if current_level_data and not current_level_data.post_boss_cutscene.is_empty():
@@ -169,12 +153,8 @@ func _on_player_dies():
 	if combat_arena:
 		var player_node = combat_arena.get_node_or_null("Player")
 		if player_node and player_node.has_method("play_death_animation"):
+			# Execution halts here until the death animation completes exactly once
 			await player_node.play_death_animation()
-	
-	PlayerProfile.current_level = 1
-	var path = "res://data/Levels/level_%d-%d.tres" % [PlayerProfile.current_phase, PlayerProfile.current_level]
-	if ResourceLoader.exists(path):
-		PlayerProfile.set_next_level(load(path))
 	
 	var end_screen_path = "res://scenes/story/gameover.tscn" 
 	var end_screen = load(end_screen_path).instantiate()
@@ -183,7 +163,7 @@ func _on_player_dies():
 	SceneTransition.change_scene_path("res://scenes/menus/lounge.tscn")
 
 func evaluate_combo_scoring(active_cards: Array, matched_recipe: ComboRecipe):
-	match_combo_bonus_points += active_cards.size() * 100
+	match_combo_bonus_points += active_cards.size() * 50
 	
 	if matched_recipe:
 		PlayerProfile.run_combos_played += 1
@@ -193,14 +173,7 @@ func evaluate_combo_scoring(active_cards: Array, matched_recipe: ComboRecipe):
 			match_combo_bonus_points += 250
 		elif recipe_size == 3:
 			print("3-card combo bonus!")
-			match_combo_bonus_points += 400
+			match_combo_bonus_points += 300
 			match_score_multipler += 0.2
 	
 	print("Current Score (combatlevel): ", str(match_combo_bonus_points))
-
-#will use this to test cutscenes and post levels stuff
-#func _unhandled_input(event):
-	# Press 'W' to instantly win the level and advance
-	#if event is InputEventKey and event.pressed and event.keycode == KEY_W:
-		#print("DEBUG: Instant Win Triggered")
-		#_on_enemy_defeated()

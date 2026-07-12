@@ -60,8 +60,11 @@ func take_damage(amount):
 		
 		if animated_sprite and animated_sprite.sprite_frames.has_animation("death"):
 			animated_sprite.play("death")
+			await animated_sprite.animation_finished
 		else:
 			visible = false
+		
+		enemy_died.emit()
 
 func choose_next_intent():
 	if current_health <= 0: return
@@ -72,7 +75,7 @@ func choose_next_intent():
 	chosen_intent = null
 	var pool_roll = randf()
 	
-	if pool_roll <= 0.7:
+	if pool_roll <= 0.5:
 		if behavior_data.regular_moves.size() > 0:
 			chosen_intent = roll_weighted_moves(behavior_data.regular_moves)
 	else:

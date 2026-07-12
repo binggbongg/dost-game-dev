@@ -8,6 +8,8 @@ extends Control
 @export var setup: PackedScene 
 @export var intro: PackedScene
 
+@export var loading_scene: PackedScene
+
 #@onready var play_button: TextureButton = $Play
 @onready var settings_button: TextureButton = $Settings
 @onready var audio_button: TextureButton = $Audio
@@ -22,6 +24,7 @@ extends Control
 
 var next_scene: PackedScene 
 var is_returning_player: bool = false
+var active_loading_screen: CustomLoadingScreen = null
 
 func _ready():
 	if menu_bgm:
@@ -60,6 +63,11 @@ func update_settings_button_state():
 
 func check_player_history() -> void:
 	print("MainMenu: Contacting Talo to fetch account save metadata...")
+	
+	if loading_scene:
+		active_loading_screen = loading_scene.instantiate() as CustomLoadingScreen
+		get_tree().root.add_child(active_loading_screen)
+		active_loading_screen.set_message("Recovering cloud profile history...")
 	
 	new_game_btn.disabled = true
 	continue_btn.disabled = true
@@ -107,6 +115,9 @@ func check_player_history() -> void:
 	
 	if PlayerProfile.has_method("sync_local_scores_to_talo"):
 		PlayerProfile.sync_local_scores_to_talo()
+	
+	if is_instance_valid(active_loading_screen):
+		active_loading_screen.close_loading_screen()
 
 func _on_new_game_pressed():
 	AudioManager.play_ui_sound("click")

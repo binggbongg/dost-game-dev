@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="1_4nxc7"]
 [ext_resource type="Texture2D" uid="uid://dw1wfvlvaam3v" path="res://assets/enemies/LVL2/BOSS/ULTIMATESKILL_ENEMY2.png" id="1_h5ucc"]
 [ext_resource type="Texture2D" uid="uid://de0nuq1rsssaa" path="res://assets/enemies/LVL2/BOSS/enemy2.1.png" id="2_6tm8r"]
-[ext_resource type="Texture2D" uid="uid://cjsf6il6ocm1q" path="res://assets/prebattle_portrait/level2/portrait2_3.png" id="1_yip2v"]
 [ext_resource type="Script" uid="uid://bltrhxh2342fx" path="res://data/enemy_behavior.gd" id="2_kn2eq"]
+[ext_resource type="Texture2D" uid="uid://bg03hgo8t8hod" path="res://assets/enemies/LVL2/BOSS/IRONMANANGAL_DEATHANIMATION.png" id="2_wonug"]
 [ext_resource type="Texture2D" uid="uid://cjnm1mpixw3wr" path="res://assets/enemies/LVL2/BOSS/SKILL1_ENEMY2.png" id="3_wonug"]
 [ext_resource type="Texture2D" uid="uid://dmli1dl8kg351" path="res://assets/enemies/LVL2/BOSS/SKILL2_ENEMY2.png" id="4_qa47g"]
 
@@ -43,6 +43,66 @@ region = Rect2(1946, 0, 278, 91)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0r5la"]
 atlas = ExtResource("1_h5ucc")
 region = Rect2(2224, 0, 278, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qa47g"]
+atlas = ExtResource("2_wonug")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12dcf"]
+atlas = ExtResource("2_wonug")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7776"]
+atlas = ExtResource("2_wonug")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jlvo"]
+atlas = ExtResource("2_wonug")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_285fr"]
+atlas = ExtResource("2_wonug")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p803e"]
+atlas = ExtResource("2_wonug")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lukf"]
+atlas = ExtResource("2_wonug")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ck86"]
+atlas = ExtResource("2_wonug")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmx68"]
+atlas = ExtResource("2_wonug")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he732"]
+atlas = ExtResource("2_wonug")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51dpm"]
+atlas = ExtResource("2_wonug")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jdht"]
+atlas = ExtResource("2_wonug")
+region = Rect2(1408, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fv2r"]
+atlas = ExtResource("2_wonug")
+region = Rect2(1536, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0mt5"]
+atlas = ExtResource("2_wonug")
+region = Rect2(1664, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if7vx"]
+atlas = ExtResource("2_wonug")
+region = Rect2(1792, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4giak"]
 atlas = ExtResource("2_6tm8r")
@@ -164,6 +224,56 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_qa47g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12dcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7776")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jlvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_285fr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p803e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lukf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ck86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmx68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he732")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51dpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jdht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fv2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0mt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if7vx")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4giak")
 }, {
 "duration": 1.0,
@@ -176,7 +286,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_0bi6m")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 4.0
 }, {
 "frames": [{
@@ -241,9 +351,35 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_6tm8r"]
+script = ExtResource("1_4nxc7")
+name = "Regular Attack"
+value = 9
+chances = 0.6
+metadata/_custom_type_script = "uid://bc0bopaja6vri"
+
+[sub_resource type="Resource" id="Resource_wonug"]
+script = ExtResource("1_4nxc7")
+name = "Skill"
+type = 2
+value = 14
+chances = 0.4
+cooldown = 2
+metadata/_custom_type_script = "uid://bc0bopaja6vri"
+
+[sub_resource type="Resource" id="Resource_qa47g"]
+script = ExtResource("1_4nxc7")
+name = "Burst"
+type = 3
+value = 18
+cooldown = 5
+metadata/_custom_type_script = "uid://bc0bopaja6vri"
+
 [resource]
 script = ExtResource("2_kn2eq")
-max_health = 110
+enemy_name = "Hating-Dilim"
+max_health = 100
 enemy_sprite = SubResource("SpriteFrames_wonug")
-enemy_portait = ExtResource("1_yip2v")
+regular_moves = Array[ExtResource("1_4nxc7")]([SubResource("Resource_6tm8r"), SubResource("Resource_wonug")])
+special_moves = Array[ExtResource("1_4nxc7")]([SubResource("Resource_qa47g")])
 metadata/_custom_type_script = "uid://bltrhxh2342fx"

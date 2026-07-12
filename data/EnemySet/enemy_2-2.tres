@@ -1,11 +1,10 @@
 [gd_resource type="Resource" script_class="EnemyBehavior" format=3 uid="uid://doqhiveyqwpc"]
 
 [ext_resource type="Texture2D" uid="uid://dhtfv7ysu66m3" path="res://assets/enemies/LVL2/IRON_SOLDIERS/ULTIMATESKILL_ENEMY1.png" id="1_5lhih"]
-[ext_resource type="Texture2D" uid="uid://c81kpjhttqpvg" path="res://assets/prebattle_portrait/level2/portrait2_2.png" id="1_81nnd"]
-[ext_resource type="Texture2D" uid="uid://brv64lm8n2gyr" path="res://assets/player/lvl2/enemy2.2.png" id="1_irm10"]
 [ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="1_n484g"]
 [ext_resource type="Texture2D" uid="uid://dmmvgghi8pb5o" path="res://assets/enemies/LVL2/IRON_SOLDIERS/enemy2.2.png" id="2_bgu8r"]
 [ext_resource type="Script" uid="uid://bltrhxh2342fx" path="res://data/enemy_behavior.gd" id="2_irm10"]
+[ext_resource type="Texture2D" uid="uid://2crhjow53vnl" path="res://assets/enemies/LVL2/IRON_SOLDIERS/IRONSOLDIER_DEATHANIMATION.png" id="2_un4p4"]
 [ext_resource type="Texture2D" uid="uid://va2be16x8i7p" path="res://assets/enemies/LVL2/IRON_SOLDIERS/SKILL1_ENEMY1.png" id="3_un4p4"]
 [ext_resource type="Texture2D" uid="uid://dd7ucktg4nivy" path="res://assets/enemies/LVL2/IRON_SOLDIERS/SKILL2_ENEMY1.png" id="4_iageu"]
 
@@ -36,6 +35,50 @@ region = Rect2(1000, 0, 200, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0gpbs"]
 atlas = ExtResource("1_5lhih")
 region = Rect2(1200, 0, 200, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iageu"]
+atlas = ExtResource("2_un4p4")
+region = Rect2(0, 0, 88, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ett5k"]
+atlas = ExtResource("2_un4p4")
+region = Rect2(88, 0, 88, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thau5"]
+atlas = ExtResource("2_un4p4")
+region = Rect2(176, 0, 88, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3ueo"]
+atlas = ExtResource("2_un4p4")
+region = Rect2(264, 0, 88, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2c4l"]
+atlas = ExtResource("2_un4p4")
+region = Rect2(352, 0, 88, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjjo5"]
+atlas = ExtResource("2_un4p4")
+region = Rect2(440, 0, 88, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d24wv"]
+atlas = ExtResource("2_un4p4")
+region = Rect2(528, 0, 88, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncms4"]
+atlas = ExtResource("2_un4p4")
+region = Rect2(616, 0, 88, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im0wd"]
+atlas = ExtResource("2_un4p4")
+region = Rect2(704, 0, 88, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dula"]
+atlas = ExtResource("2_un4p4")
+region = Rect2(792, 0, 88, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krtkk"]
+atlas = ExtResource("2_un4p4")
+region = Rect2(880, 0, 88, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ox2wa"]
 atlas = ExtResource("2_bgu8r")
@@ -151,6 +194,44 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_iageu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ett5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thau5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3ueo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2c4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjjo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d24wv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncms4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im0wd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dula")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krtkk")
+}],
+"loop": true,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ox2wa")
 }, {
 "duration": 1.0,
@@ -230,13 +311,31 @@ animations = [{
 
 [sub_resource type="Resource" id="Resource_irm10"]
 script = ExtResource("1_n484g")
+name = "Shootdowns"
+value = 9
+chances = 0.6
+metadata/_custom_type_script = "uid://bc0bopaja6vri"
+
+[sub_resource type="Resource" id="Resource_5lhih"]
+script = ExtResource("1_n484g")
+name = "Triple Machine Action"
+type = 2
+value = 14
+chances = 0.4
+metadata/_custom_type_script = "uid://bc0bopaja6vri"
+
+[sub_resource type="Resource" id="Resource_bgu8r"]
+script = ExtResource("1_n484g")
+name = "Flaming Bullets"
+value = 17
+cooldown = 5
 metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
 [resource]
 script = ExtResource("2_irm10")
+enemy_name = "Mga Alagad ng Agaw"
 max_health = 70
 enemy_sprite = SubResource("SpriteFrames_5lhih")
-enemy_portait = ExtResource("1_81nnd")
-regular_moves = Array[ExtResource("1_n484g")]([SubResource("Resource_irm10"), null])
-special_moves = Array[ExtResource("1_n484g")]([null, null])
+regular_moves = Array[ExtResource("1_n484g")]([SubResource("Resource_irm10"), SubResource("Resource_5lhih")])
+special_moves = Array[ExtResource("1_n484g")]([SubResource("Resource_bgu8r")])
 metadata/_custom_type_script = "uid://bltrhxh2342fx"

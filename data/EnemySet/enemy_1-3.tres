@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="EnemyBehavior" format=3 uid="uid://h8pnpm7fwp5n"]
 
 [ext_resource type="Texture2D" uid="uid://bgic3265ultah" path="res://assets/enemies/LVL1/Lvl1_BOSS_animation/Ultimateskill_ironCarabao.png" id="1_h2ol7"]
-[ext_resource type="Texture2D" uid="uid://bjsg3gbfwnwtr" path="res://assets/prebattle_portrait/level1/portrait1_3.png" id="1_qjexy"]
 [ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="1_raexg"]
 [ext_resource type="Script" uid="uid://bltrhxh2342fx" path="res://data/enemy_behavior.gd" id="2_kfc3t"]
 [ext_resource type="Texture2D" uid="uid://bqwwqq3vx3bpu" path="res://assets/enemies/LVL1/Lvl1_BOSS_animation/IRONCARABAO_FINAL.png" id="2_qjexy"]
+[ext_resource type="Texture2D" uid="uid://de2icqcdjvkf7" path="res://assets/enemies/LVL1/Lvl1_BOSS_animation/IRONCARABAO_DEATHANIMATION.png" id="2_s523q"]
 [ext_resource type="Texture2D" uid="uid://cma7jeub7oiq6" path="res://assets/enemies/LVL1/Lvl1_BOSS_animation/skill1_ironCarabao.png" id="3_s523q"]
 [ext_resource type="Texture2D" uid="uid://cbb56yfe3lxqp" path="res://assets/enemies/LVL1/Lvl1_BOSS_animation/secondskill_ironCarabao.png" id="4_hkpsl"]
 
@@ -43,6 +43,38 @@ region = Rect2(1400, 0, 200, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_6lk2n"]
 atlas = ExtResource("1_h2ol7")
 region = Rect2(1600, 0, 200, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkpsl"]
+atlas = ExtResource("2_s523q")
+region = Rect2(0, 0, 111, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utjru"]
+atlas = ExtResource("2_s523q")
+region = Rect2(111, 0, 111, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7mg4"]
+atlas = ExtResource("2_s523q")
+region = Rect2(222, 0, 111, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8kps"]
+atlas = ExtResource("2_s523q")
+region = Rect2(333, 0, 111, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygmy5"]
+atlas = ExtResource("2_s523q")
+region = Rect2(444, 0, 111, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r415c"]
+atlas = ExtResource("2_s523q")
+region = Rect2(555, 0, 111, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip5rh"]
+atlas = ExtResource("2_s523q")
+region = Rect2(666, 0, 111, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2jwx"]
+atlas = ExtResource("2_s523q")
+region = Rect2(777, 0, 111, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjx8d"]
 atlas = ExtResource("2_qjexy")
@@ -145,6 +177,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_hkpsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utjru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7mg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8kps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygmy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r415c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip5rh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2jwx")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_yjx8d")
 }, {
 "duration": 1.0,
@@ -209,32 +270,33 @@ animations = [{
 
 [sub_resource type="Resource" id="Resource_h2ol7"]
 script = ExtResource("1_raexg")
-name = "Transformation"
+name = "Regular Attack"
 value = 8
+chances = 0.7
 metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
-[sub_resource type="Resource" id="Resource_qjexy"]
+[sub_resource type="Resource" id="Resource_hkpsl"]
 script = ExtResource("1_raexg")
 name = "Flaming Circle"
 type = 2
-value = 12
-chances = 0.6
+value = 10
+chances = 0.3
+cooldown = 2
 metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
 [sub_resource type="Resource" id="Resource_s523q"]
 script = ExtResource("1_raexg")
 name = "Flaming Ball"
 type = 3
-value = 16
-chances = 0.4
+value = 15
+cooldown = 6
 metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
 [resource]
 script = ExtResource("2_kfc3t")
-enemy_name = "Cyber Tamaraw"
-max_health = 9
+enemy_name = "Pasan"
+max_health = 80
 enemy_sprite = SubResource("SpriteFrames_s523q")
-enemy_portait = ExtResource("1_qjexy")
-regular_moves = Array[ExtResource("1_raexg")]([SubResource("Resource_h2ol7")])
-special_moves = Array[ExtResource("1_raexg")]([SubResource("Resource_qjexy"), SubResource("Resource_s523q")])
+regular_moves = Array[ExtResource("1_raexg")]([SubResource("Resource_h2ol7"), SubResource("Resource_hkpsl")])
+special_moves = Array[ExtResource("1_raexg")]([SubResource("Resource_s523q")])
 metadata/_custom_type_script = "uid://bltrhxh2342fx"

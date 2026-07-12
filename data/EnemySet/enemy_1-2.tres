@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="EnemyBehavior" format=3 uid="uid://qcjsjnj5jc7j"]
 
-[ext_resource type="Texture2D" uid="uid://dcvwpi4y2tfxp" path="res://assets/prebattle_portrait/level1/portrait1_2.png" id="1_d607d"]
 [ext_resource type="Texture2D" uid="uid://djiss7knvfuhg" path="res://assets/enemies/LVL1/Lvl1_enemy2_animation/Ultimateskill_ironrooster.png" id="1_nnuo7"]
 [ext_resource type="Texture2D" uid="uid://c2hep456inahu" path="res://assets/enemies/LVL1/Lvl1_enemy2_animation/idle_ironrooster_animation.png" id="2_d607d"]
+[ext_resource type="Texture2D" uid="uid://cbm0pgmxubq75" path="res://assets/enemies/LVL1/Lvl1_enemy2_animation/IRONROOSTER_DEATHANIMATION.png" id="2_lew4e"]
 [ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="2_rb28k"]
 [ext_resource type="Script" uid="uid://bltrhxh2342fx" path="res://data/enemy_behavior.gd" id="3_ioh4o"]
 [ext_resource type="Texture2D" uid="uid://m0rf6ek6w7gh" path="res://assets/enemies/LVL1/Lvl1_enemy2_animation/basic_attack_ironrooster.png" id="3_lew4e"]
@@ -43,6 +43,46 @@ region = Rect2(1596, 0, 228, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4a1ca"]
 atlas = ExtResource("1_nnuo7")
 region = Rect2(1824, 0, 228, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aj8w5"]
+atlas = ExtResource("2_lew4e")
+region = Rect2(0, 0, 104, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2vvp"]
+atlas = ExtResource("2_lew4e")
+region = Rect2(104, 0, 104, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2uym"]
+atlas = ExtResource("2_lew4e")
+region = Rect2(208, 0, 104, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66rt5"]
+atlas = ExtResource("2_lew4e")
+region = Rect2(312, 0, 104, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aj0xi"]
+atlas = ExtResource("2_lew4e")
+region = Rect2(416, 0, 104, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1opi5"]
+atlas = ExtResource("2_lew4e")
+region = Rect2(520, 0, 104, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgl30"]
+atlas = ExtResource("2_lew4e")
+region = Rect2(624, 0, 104, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqvwj"]
+atlas = ExtResource("2_lew4e")
+region = Rect2(728, 0, 104, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouypn"]
+atlas = ExtResource("2_lew4e")
+region = Rect2(832, 0, 104, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pohix"]
+atlas = ExtResource("2_lew4e")
+region = Rect2(936, 0, 104, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3iscw"]
 atlas = ExtResource("2_d607d")
@@ -153,6 +193,41 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_aj8w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2vvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2uym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66rt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aj0xi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1opi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgl30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqvwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouypn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pohix")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_3iscw")
 }, {
 "duration": 1.0,
@@ -224,33 +299,32 @@ animations = [{
 [sub_resource type="Resource" id="Resource_nnuo7"]
 script = ExtResource("2_rb28k")
 name = "Feather Attack"
-value = 5
+value = 6
+chances = 0.7
 metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
-[sub_resource type="Resource" id="Resource_lew4e"]
+[sub_resource type="Resource" id="Resource_d607d"]
 script = ExtResource("2_rb28k")
-name = "Cockadoodle-doo"
+name = "Cockadoodledoo"
 type = 2
 value = 8
-chances = 0.8
-cooldown = 4
+chances = 0.3
+cooldown = 2
 metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
 [sub_resource type="Resource" id="Resource_aj8w5"]
 script = ExtResource("2_rb28k")
 name = "Burst"
 type = 3
-value = 10
-chances = 0.2
-cooldown = 8
+value = 12
+cooldown = 5
 metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
 [resource]
 script = ExtResource("3_ioh4o")
-enemy_name = "Enemy2"
-max_health = 5
+enemy_name = "Talanghiyaw"
+max_health = 50
 enemy_sprite = SubResource("SpriteFrames_xlpqw")
-enemy_portait = ExtResource("1_d607d")
-regular_moves = Array[ExtResource("2_rb28k")]([SubResource("Resource_nnuo7")])
-special_moves = Array[ExtResource("2_rb28k")]([SubResource("Resource_lew4e"), SubResource("Resource_aj8w5")])
+regular_moves = Array[ExtResource("2_rb28k")]([SubResource("Resource_nnuo7"), SubResource("Resource_d607d")])
+special_moves = Array[ExtResource("2_rb28k")]([SubResource("Resource_aj8w5")])
 metadata/_custom_type_script = "uid://bltrhxh2342fx"

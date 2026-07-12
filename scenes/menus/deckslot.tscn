@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ph6jbp7fcig3"]
 
-[ext_resource type="Script" uid="uid://dllydbbnhcjxs" path="res://script/ui/deck_card_slot.gd" id="1_vw7pp"]
+[ext_resource type="Script" path="res://script/ui/deck_card_slot.gd" id="1_vw7pp"]
 [ext_resource type="PackedScene" uid="uid://cw5abrwt2c70o" path="res://scenes/card.tscn" id="2_vw7pp"]
-[ext_resource type="Texture2D" uid="uid://3lfeq0ht0rab" path="res://assets/temporary/gamejam.svg" id="3_vw7pp"]
+[ext_resource type="Texture2D" uid="uid://cghhowqilejoq" path="res://assets/temporary/check.png" id="3_vw7pp"]
 
 [node name="Deck" type="Control" unique_id=2017068616]
 custom_minimum_size = Vector2(180, 250)
@@ -30,11 +30,11 @@ flat = true
 
 [node name="Icon" type="TextureRect" parent="Button" unique_id=1187339003]
 layout_mode = 0
-offset_left = 7.999999
-offset_top = 8.0
-offset_right = 203.0
-offset_bottom = 292.0
-scale = Vector2(0.905, 0.905)
+offset_left = 58.837082
+offset_top = 96.21954
+offset_right = 2058.8372
+offset_bottom = 2096.2195
+scale = Vector2(0.04, 0.04)
 texture = ExtResource("3_vw7pp")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

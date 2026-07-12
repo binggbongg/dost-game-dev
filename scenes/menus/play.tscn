@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="4_bweju"]
 [ext_resource type="PackedScene" uid="uid://btnk1nc2mvnsk" path="res://scenes/story/intro.tscn" id="5_0xjr7"]
 [ext_resource type="Texture2D" uid="uid://26yniv7ld3ya" path="res://assets/temporary/play_button.png" id="5_hcoq6"]
+[ext_resource type="PackedScene" uid="uid://sselnp3jwv0s" path="res://scenes/loading.tscn" id="6_lvox0"]
 [ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="7_0wcnn"]
 [ext_resource type="Texture2D" uid="uid://dmei84moikr28" path="res://assets/ui/shop/setting_icon.png" id="7_57ra1"]
 [ext_resource type="Texture2D" uid="uid://wycp27g2a2f2" path="res://dost-esports-2-pixelated.png" id="7_lvox0"]
@@ -152,6 +153,7 @@ menu_bgm = ExtResource("2_bweju")
 lounge = ExtResource("3_0wcnn")
 setup = ExtResource("9_ifrkh")
 intro = ExtResource("5_0xjr7")
+loading_scene = ExtResource("6_lvox0")
 
 [node name="Background" type="AnimatedSprite2D" parent="." unique_id=839548396]
 position = Vector2(959.7222, 539.5)

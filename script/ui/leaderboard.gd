@@ -5,6 +5,10 @@ extends Control
 @onready var rank_label = $ScrollContainer/HBoxContainer/RankColumn/RankLabel
 @onready var name_label = $ScrollContainer/HBoxContainer/NameColumn/NameLabel
 @onready var score_label = $ScrollContainer/HBoxContainer/ScoreColumn/ScoreLabel
+@onready var chapter_label = $ChapterLabel
+@onready var left_btn = $LeftButton
+@onready var right_btn = $RightButton
+
 
 var chapter_name = "chapter_"
 var chapter_key = 1
@@ -14,10 +18,22 @@ func _ready() -> void:
 	rank_label.text = ""
 	name_label.text = ""
 	score_label.text = ""
+	
+	if left_btn:
+		left_btn.pressed.connect(_on_left_button_pressed)
+	if right_btn:
+		right_btn.pressed.connect(_on_right_button_pressed)
+	
 	_load_talo_leaderboard()
 
 func _load_talo_leaderboard() -> void:
 	print("[LEADERBOARD] Contacting Talo backend services for: ", leaderboard_name)
+	rank_label.text = ""
+	name_label.text = ""
+	score_label.text = ""
+	
+	left_btn.disabled = (chapter_key <= 1)
+	right_btn.disabled = (chapter_key >= 3)
 	
 	var options := Talo.leaderboards.GetEntriesOptions.new()
 	options.page = 0
@@ -34,9 +50,6 @@ func _load_talo_leaderboard() -> void:
 	
 	for i in range(res.entries.size()):
 		var entry = res.entries[i]
-		#print("--- INSPECTING ENTRY VARIABLES ---")
-		#print(inst_to_dict(entry))
-		
 		var player_display_name = "Guest"
 		if entry.player_alias:
 			if entry.player_alias.get("display_name"):
@@ -62,3 +75,19 @@ func _load_talo_leaderboard() -> void:
 	score_label.text = scores_text
 	
 	print("[LEADERBOARD] Board population completed successfully.")
+
+func _on_left_button_pressed():
+	if chapter_key > 1:
+		AudioManager.play_ui_sound("click")
+		chapter_key -= 1
+		leaderboard_name = chapter_name + str(chapter_key)
+		chapter_label.text = "Chapter " + str(chapter_key)
+		_load_talo_leaderboard()
+
+func _on_right_button_pressed():
+	if chapter_key < 3:
+		AudioManager.play_ui_sound("click")
+		chapter_key += 1
+		leaderboard_name = chapter_name + str(chapter_key)
+		chapter_label.text = "Chapter " + str(chapter_key)
+		_load_talo_leaderboard()
