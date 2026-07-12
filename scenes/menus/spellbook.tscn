@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dxkwma4vjc3he" path="res://scenes/menus/spellbook_special_cards.tscn" id="7_qwtax"]
 [ext_resource type="PackedScene" uid="uid://b6ljbscbki8al" path="res://scenes/menus/spellbook_spells_slot.tscn" id="8_2uart"]
 [ext_resource type="Texture2D" uid="uid://c5t544jq1um42" path="res://assets/ui/spellbook/spellbook_blue_bookmark.png" id="9_lqdag"]
+[ext_resource type="Script" uid="uid://cmw7epa41rdae" path="res://script/ui/coming_soon.gd" id="10_lqdag"]
 [ext_resource type="Texture2D" uid="uid://c2ijib67ou3nb" path="res://assets/ui/spellbook/spellbook_yellow_bookmark.png" id="11_7agw1"]
 [ext_resource type="Script" uid="uid://dacmhq3qtdlpg" path="res://script/ui/spellbook_manager.gd" id="12_vgybv"]
 [ext_resource type="Texture2D" uid="uid://ckffja4gdctvj" path="res://assets/ui/spellbook/spellbook_red_bookmark.png" id="13_4ffkf"]
@@ -22,15 +23,15 @@
 [ext_resource type="Texture2D" uid="uid://c5esexsxqsto6" path="res://assets/ui/spellbook/spellbook_back_button.png" id="17_ndbtc"]
 [ext_resource type="Texture2D" uid="uid://cjrcuo56wi0fc" path="res://assets/ui/spellbook/spellbook_next_button.png" id="19_3i8rq"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_4tiy4"]
-font = ExtResource("5_vgybv")
-font_size = 49
-font_color = Color(0, 0, 0, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_2uart"]
 font_size = 17
 font_color = Color(0, 0, 0, 1)
 shadow_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_4tiy4"]
+font = ExtResource("5_vgybv")
+font_size = 49
+font_color = Color(0, 0, 0, 1)
 
 [node name="Spellbook" type="Control" unique_id=1875600038]
 layout_mode = 3
@@ -76,6 +77,16 @@ position = Vector2(1008, 545)
 scale = Vector2(10.000002, 10)
 texture = ExtResource("4_n8wyq")
 
+[node name="ItemNumbers" type="Label" parent="." unique_id=1861420774]
+layout_mode = 0
+offset_left = 797.0
+offset_top = 228.0
+offset_right = 930.0
+offset_bottom = 257.0
+text = "Owned: 25/36"
+label_settings = SubResource("LabelSettings_2uart")
+horizontal_alignment = 1
+
 [node name="Chapter" type="Label" parent="." unique_id=956630099]
 layout_mode = 0
 offset_left = 490.0
@@ -85,6 +96,17 @@ offset_bottom = 210.0
 text = "SPELLS"
 label_settings = SubResource("LabelSettings_4tiy4")
 horizontal_alignment = 1
+
+[node name="Coming Soon" type="Label" parent="." unique_id=1558649661]
+layout_mode = 0
+offset_left = 847.0
+offset_top = 526.0
+offset_right = 1159.0
+offset_bottom = 586.0
+text = "Coming Soon..."
+label_settings = SubResource("LabelSettings_4tiy4")
+horizontal_alignment = 1
+script = ExtResource("10_lqdag")
 
 [node name="LeftPage" type="Control" parent="." unique_id=1588941261]
 anchors_preset = 0
@@ -169,12 +191,13 @@ label_settings = SubResource("LabelSettings_2uart")
 
 [node name="Empty" type="Label" parent="LeftPage/Tab2_Special_Spells" unique_id=951589095]
 layout_mode = 0
-offset_left = 175.0
+offset_left = 13.0
 offset_top = 135.0
-offset_right = 470.0
+offset_right = 565.0
 offset_bottom = 164.0
 text = "You currently have no special cards."
 label_settings = SubResource("LabelSettings_2uart")
+horizontal_alignment = 1
 
 [node name="SpellHolder" type="ScrollContainer" parent="LeftPage/Tab2_Special_Spells" unique_id=325587462]
 layout_mode = 0
@@ -294,12 +317,3 @@ offset_right = 1601.0
 offset_bottom = 926.6819
 scale = Vector2(9.445, 9.445)
 texture_normal = ExtResource("19_3i8rq")
-
-[node name="ItemNumber" type="Label" parent="Pagination" unique_id=1861420774]
-offset_left = 797.0
-offset_top = 228.0
-offset_right = 930.0
-offset_bottom = 257.0
-text = "Owned: 25/36"
-label_settings = SubResource("LabelSettings_2uart")
-horizontal_alignment = 1

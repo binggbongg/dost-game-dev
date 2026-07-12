@@ -124,7 +124,7 @@ rotation = 0.00031095743
 scale = Vector2(0.7205128, 0.7205128)
 texture = ExtResource("6_a3b2j")
 expand_mode = 1
-stretch_mode = 3
+stretch_mode = 5
 
 [node name="SpecialEffectLabel" type="Label" parent="SpecialCards" unique_id=1962409700]
 layout_mode = 0
@@ -234,6 +234,7 @@ autoplay = "default"
 frame_progress = 0.101286694
 
 [node name="Spell_double" type="Control" parent="." unique_id=850699920]
+visible = false
 anchors_preset = 0
 
 [node name="DescriptionPanel2" type="Panel" parent="Spell_double" unique_id=562749775]
@@ -257,24 +258,26 @@ custom_minimum_size = Vector2(200, 300)
 layout_mode = 0
 offset_left = 254.00002
 offset_top = 52.0
-offset_right = 476.73816
-offset_bottom = 386.10724
+offset_right = 466.52808
+offset_bottom = 370.79214
 rotation = 0.1962263
 scale = Vector2(0.696, 0.696)
 texture = ExtResource("6_a3b2j")
-stretch_mode = 3
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Card3" type="TextureRect" parent="Spell_double" unique_id=1871288641]
 custom_minimum_size = Vector2(200, 300)
 layout_mode = 0
 offset_left = 121.999985
 offset_top = 74.99999
-offset_right = 344.73816
-offset_bottom = 409.10724
+offset_right = 334.5421
+offset_bottom = 393.81314
 rotation = -0.103358306
 scale = Vector2(0.696, 0.696)
 texture = ExtResource("6_a3b2j")
-stretch_mode = 3
+expand_mode = 1
+stretch_mode = 5
 
 [node name="SpecialEffectLabel" type="Label" parent="Spell_double" unique_id=1206194023]
 layout_mode = 0
@@ -320,10 +323,10 @@ autowrap_mode = 2
 
 [node name="Name" type="Label" parent="Spell_double" unique_id=2115447311]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 32.0
-offset_right = 506.0
-offset_bottom = 68.0
+offset_left = 13.0
+offset_top = 14.0
+offset_right = 507.0
+offset_bottom = 50.0
 text = "SPELL NAME"
 label_settings = SubResource("LabelSettings_ngrdd")
 horizontal_alignment = 1
@@ -357,7 +360,6 @@ text = "Description
 label_settings = SubResource("LabelSettings_q5e7q")
 
 [node name="Spell_triiple" type="Control" parent="." unique_id=329950312]
-visible = false
 anchors_preset = 0
 
 [node name="DescriptionPanel2" type="Panel" parent="Spell_triiple" unique_id=1498871348]
@@ -376,18 +378,6 @@ offset_right = 474.0
 offset_bottom = 570.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_03fnx")
 
-[node name="Card" type="TextureRect" parent="Spell_triiple" unique_id=173187544]
-custom_minimum_size = Vector2(200, 300)
-layout_mode = 0
-offset_left = 187.0
-offset_top = 64.0
-offset_right = 409.73816
-offset_bottom = 398.10724
-rotation = 0.00031095743
-scale = Vector2(0.7205128, 0.7205128)
-texture = ExtResource("6_a3b2j")
-stretch_mode = 3
-
 [node name="Card2" type="TextureRect" parent="Spell_triiple" unique_id=1989681236]
 custom_minimum_size = Vector2(200, 300)
 layout_mode = 0
@@ -398,7 +388,8 @@ offset_bottom = 417.10724
 rotation = 0.1962263
 scale = Vector2(0.601, 0.601)
 texture = ExtResource("6_a3b2j")
-stretch_mode = 3
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Card3" type="TextureRect" parent="Spell_triiple" unique_id=2103563796]
 custom_minimum_size = Vector2(200, 300)
@@ -410,7 +401,21 @@ offset_bottom = 434.10724
 rotation = -0.103358306
 scale = Vector2(0.601, 0.601)
 texture = ExtResource("6_a3b2j")
-stretch_mode = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Card" type="TextureRect" parent="Spell_triiple" unique_id=173187544]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 0
+offset_left = 198.0
+offset_top = 71.00001
+offset_right = 398.0
+offset_bottom = 371.0
+rotation = 0.00031095743
+scale = Vector2(0.7205128, 0.7205128)
+texture = ExtResource("6_a3b2j")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="SpecialEffectLabel" type="Label" parent="Spell_triiple" unique_id=336549362]
 layout_mode = 0
