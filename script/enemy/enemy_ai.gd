@@ -9,6 +9,7 @@ var current_turns: int = 0
 var chosen_intent: EnemyMove
 var special_cooldowns: Dictionary = {}
 var is_defeated: bool = false
+var enemy_name: String
 
 signal enemy_health_changed(new_health: int)
 signal enemy_died
@@ -21,6 +22,8 @@ func setup_enemy():
 	if not behavior_data: 
 		print("Enemy AI Error: setup_enemy called but behavior_data is missing!")
 		return
+	
+	enemy_name = behavior_data.enemy_name
 	
 	current_health = behavior_data.max_health
 	is_defeated = false
@@ -117,7 +120,6 @@ func roll_weighted_moves(moves_pool: Array) -> EnemyMove:
 	
 	return moves_pool[0]
 
-# 🌟 MODIFIED: Converted to a coroutine (using async await) so it handles animation states properly
 func execute_intent():
 	if is_defeated:
 		print("execute_intent() called on a defeated enemy, ignoring")
@@ -150,7 +152,6 @@ func execute_intent():
 				PlayerStats.take_damage(chosen_intent.value)
 			trigger_cooldown(chosen_intent)
 
-	# 🌟 Play the animation instantly without using any "await" keyword blocks here!
 	if animated_sprite and animated_sprite.sprite_frames.has_animation(anim_to_play):
 		animated_sprite.play(anim_to_play)
 	else:

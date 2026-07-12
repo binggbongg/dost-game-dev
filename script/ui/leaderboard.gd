@@ -6,6 +6,9 @@ extends Control
 @onready var name_label = $ScrollContainer/HBoxContainer/NameColumn/NameLabel
 @onready var score_label = $ScrollContainer/HBoxContainer/ScoreColumn/ScoreLabel
 
+var chapter_name = "chapter_"
+var chapter_key = 1
+
 func _ready() -> void:
 	# Clear out any editor placeholder texts before building live listings
 	rank_label.text = ""

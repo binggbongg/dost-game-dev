@@ -55,21 +55,6 @@ func _process(_delta: float) -> void:
 		timer_bar.visible = false
 		timer_bar.value = 0
 
-#func setup_enemy(enemy_resource: EnemyBehavior) -> void:
-	#if not enemy_resource:
-		#print("Received null enemy resource --from battlemanager")
-#
-	#if combat_arena and combat_arena.has_method("initialize_arena_enemy"):
-		#combat_arena.initialize_arena_enemy(enemy_resource)
-#
-		#if combat_arena.has_method("get_enemy"):
-			#var enemy = combat_arena.get_enemy()
-			#if enemy and enemy.has_signal("enemy_died"):
-				#if not enemy.enemy_died.is_connected(_on_enemy_died):
-					#enemy.enemy_died.connect(_on_enemy_died)
-					#print("CHECKPOINT: connected enemy_died signal to _on_enemy_died")
-	#else:
-		#print("something wrong with combat arena --battle manager")
 
 func setup_enemy(enemy_resource: EnemyBehavior) -> void:
 	if combat_arena and combat_arena.has_method("initialize_arena_enemy"):
@@ -87,15 +72,6 @@ func halt_battle_processing() -> void:
 
 	if timer_bar:
 		timer_bar.visible = false
-
-#func setup_enemy(enemy_resource: EnemyBehavior) -> void:
-	#if combat_arena and combat_arena.has_method("initialize_arena_enemy"):
-		#combat_arena.initialize_arena_enemy(enemy_resource)
-#
-#func _on_enemy_died() -> void:
-	#print("CHECKPOINT A: _on_enemy_died received signal")
-	#check_enemy_death()
-	#print("CHECKPOINT B: check_enemy_death() returned inside _on_enemy_died")
 
 func _on_special_requested(item_id:String):
 	if active_special_card != null:
@@ -228,34 +204,34 @@ func _on_turned_state_changed(new_state: GameEnums.TurnState):
 			if card_manager: card_manager.refresh_hand_interaction()
 
 func execute_enemy_turn():
-	display_action_message("Enemy is preparing an action...")
-	
-	# Give the player a moment to read the intent alert message box popup
-	battle_timer.one_shot = true
-	battle_timer.start(1.5)
-	await battle_timer.timeout
-
 	var enemy_node = null
 	if combat_arena and combat_arena.has_method("get_enemy"):
 		enemy_node = combat_arena.get_enemy()
-
+	
 	if is_instance_valid(enemy_node) and not enemy_node.is_defeated:
-		# 1. Fire the action mechanics instantly
-		enemy_node.execute_intent()
+		var chosen_move = enemy_node.get("chosen_intent")
 		
-		# 2. 🌟 THE TURN MANAGER FALLBACK SAFETY GATE WINDOW
-		# Hold the ENEMY_TURN state open here for exactly 1.8 seconds to allow frames to draw
-		battle_timer.start(1.8)
+		if chosen_move and chosen_move is EnemyMove:
+			var msg = "%s uses %s!" % [enemy_node.get("enemy_name"), chosen_move.name]
+			display_action_message(msg)
+		else:
+			var e_name = enemy_node.get("enemy_name") if enemy_node.get("enemy_name") else "Enemy"
+			display_action_message("%s is preparing an action..." % e_name)
+		
+		battle_timer.one_shot = true
+		battle_timer.start(1.5)
 		await battle_timer.timeout
 		
-		# 3. Securely force the enemy back to its idle loop state setup
 		if is_instance_valid(enemy_node) and not enemy_node.is_defeated:
+			enemy_node.execute_intent()
+			
+			battle_timer.start(1.8)
+			await battle_timer.timeout
+			
 			var sprite = enemy_node.get_node_or_null("AnimatedSprite2D")
 			if sprite and sprite.sprite_frames.has_animation("idle"):
-				print("Centralized Battle System: Restoring enemy to idle loop state safely.")
 				sprite.play("idle")
-
-	# Finalize the turn cycle sequence phase cleanly
+	
 	battle_timer.start(0.5)
 	await battle_timer.timeout
 

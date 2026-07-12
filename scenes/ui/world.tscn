@@ -1,17 +1,17 @@
-[gd_scene format=3 uid="uid://crmpmqv6x2nr0"]
+[gd_scene format=3 uid="uid://dq028lrxka24"]
 
 [ext_resource type="PackedScene" uid="uid://divonvi0kh3o3" path="res://scenes/story/storyUI.tscn" id="1_cww4h"]
-[ext_resource type="Script" uid="uid://b5ry0g4hotvyd" path="res://script/ui/world.gd" id="1_vx037"]
+[ext_resource type="Script" path="res://script/ui/world.gd" id="1_vx037"]
 [ext_resource type="Resource" uid="uid://bl7rrt78dnh5k" path="res://script/story/dialogue/chapter_one.dialogue" id="2_4vah2"]
 [ext_resource type="Texture2D" uid="uid://c0xwkakr8uqdc" path="res://assets/player/lvl1/boss1.png" id="3_4vah2"]
 [ext_resource type="Texture2D" uid="uid://cpogo6ux7n285" path="res://assets/background/rooms/background_1-3.png" id="3_l7g6r"]
 [ext_resource type="Texture2D" uid="uid://bjxqvrod4fdtj" path="res://assets/player/boy_walk.png" id="4_l7g6r"]
-[ext_resource type="Texture2D" uid="uid://qi530nrldfpt" path="res://assets/enemies/LVL1/Lvl1_BOSS_animation/IRONCARABAO_FINAL.png" id="4_p0thc"]
+[ext_resource type="Texture2D" uid="uid://bqwwqq3vx3bpu" path="res://assets/enemies/LVL1/Lvl1_BOSS_animation/IRONCARABAO_FINAL.png" id="4_p0thc"]
 [ext_resource type="Texture2D" uid="uid://cs0c43t26y4h6" path="res://assets/gems/prosperity_gem.png" id="6_p0thc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ayieq"]
 atlas = ExtResource("4_p0thc")
-region = Rect2(0, 0, 68, 64)
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p0thc"]
 atlas = ExtResource("3_4vah2")

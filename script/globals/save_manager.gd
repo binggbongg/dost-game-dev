@@ -12,14 +12,18 @@ func register_fields():
 	register_field("selected_character", PlayerProfile.selected_character)
 	register_field("player_rank", PlayerProfile.player_rank)
 	register_field("coins", PlayerProfile.coins)
-	
 	register_field("is_profile_initialized", PlayerProfile.is_profile_initialized)
 	
 	register_field("max_unlocked_chapters", PlayerProfile.max_unlocked_chapters)
 	register_field("high_scores", PlayerProfile.high_scores)
+	register_field("current_phase", PlayerProfile.current_phase)
+	register_field("current_level", PlayerProfile.current_level)
+	register_field("level", PlayerProfile.level)
+	register_field("experience", PlayerProfile.experience)
 	
 	register_field("owned_items", PlayerInventory.owned_items)
 	#hi aissha
+	# hello
 	register_field("tutorials", PlayerProfile.tutorial_steps_completed)
 	register_field("owned_cards", PlayerProfile.owned_cards)
 
@@ -35,8 +39,16 @@ func on_loaded(data: Dictionary):
 	
 	PlayerInventory.owned_items = data.get("owned_items", {})
 	PlayerInventory.inventory_changed.emit()
+	
 	PlayerProfile.owned_cards = data.get("owned_cards", [])
-	PlayerProfile.tutorial_steps_completed = data.get("tutorials", false)
+	
+	PlayerProfile.tutorial_steps_completed = data.get("tutorials", {
+		"lounge_tour": false,
+		"chapter_intro": false,
+		"battle_tutorial": false,
+		"deck_builder": false,
+		"cut_scene": false
+	})
 	
 	print("SaveManager (Talo): Cloud sync applied")
 	print("- Coins Loaded: ", PlayerProfile.coins)

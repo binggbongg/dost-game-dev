@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://rk6tb8tmdr6h"]
+
+[ext_resource type="Script" uid="uid://cce8guswkj8ni" path="res://script/ui/confirmation_message.gd" id="1_donye"]
+[ext_resource type="Texture2D" uid="uid://dvuofhfo7vd65" path="res://assets/ui/mainscreen/mainscreen_ui_loginAccount.png" id="2_1fy8y"]
+[ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="3_4dsc4"]
+[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_baknx"]
+
+[sub_resource type="Gradient" id="Gradient_3i2oc"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.4627451)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1cghd"]
+gradient = SubResource("Gradient_3i2oc")
+
+[node name="ConfirmationMessage" type="Control" unique_id=939963268]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_donye")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=177025891]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_1cghd")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1670922102]
+visible = false
+position = Vector2(971.00006, 512.5)
+scale = Vector2(6.7441874, 4.071429)
+texture = ExtResource("2_1fy8y")
+
+[node name="Label" type="Label" parent="." unique_id=1316548931]
+layout_mode = 0
+offset_left = 761.0
+offset_top = 413.0
+offset_right = 1145.0
+offset_bottom = 480.0
+theme_override_fonts/font = ExtResource("3_4dsc4")
+theme_override_font_sizes/font_size = 55
+text = "Are you sure?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=582968665]
+layout_mode = 0
+offset_left = 698.0
+offset_top = 496.0
+offset_right = 1206.0
+offset_bottom = 539.0
+theme_override_fonts/font = ExtResource("4_baknx")
+theme_override_font_sizes/font_size = 35
+text = "All unsaved data will be lost"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="YesLabel" type="Label" parent="." unique_id=1621297445]
+layout_mode = 0
+offset_left = 820.25
+offset_top = 577.0
+offset_right = 892.25
+offset_bottom = 626.0
+mouse_filter = 0
+theme_override_fonts/font = ExtResource("3_4dsc4")
+theme_override_font_sizes/font_size = 40
+text = "YES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NoLabel" type="Label" parent="." unique_id=1083547426]
+layout_mode = 0
+offset_left = 1005.755
+offset_top = 577.0
+offset_right = 1077.7552
+offset_bottom = 626.0
+mouse_filter = 0
+theme_override_fonts/font = ExtResource("3_4dsc4")
+theme_override_font_sizes/font_size = 40
+text = "NO"
+horizontal_alignment = 1
+vertical_alignment = 1

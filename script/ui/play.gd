@@ -3,10 +3,6 @@ extends Control
 @export_group("Music")
 @export var menu_bgm: AudioStream 
 
-# TextureRects for visuals
-#@onready var new_game_button: TextureRect = $Play/NewGame
-#@onready var continue_button: TextureRect = $Play/Continue
-
 @export_group("Scene Navigation")
 @export var lounge: PackedScene 
 @export var setup: PackedScene 
@@ -50,7 +46,7 @@ func _ready():
 	check_player_history()
 
 func update_settings_button_state():
-	# 🌟 THE FIX: Pass 'false' so Talo returns a status code instead of throwing a loud error!
+	# Pass 'false' so Talo returns a status code instead of throwing a loud error!
 	if typeof(Talo) != TYPE_NIL and Talo.identity_check(false) == OK:
 		print("MainMenu: Player is authenticated. Locking settings login menu entry.")
 		settings_button.disabled = true
@@ -114,16 +110,28 @@ func check_player_history() -> void:
 
 func _on_new_game_pressed():
 	AudioManager.play_ui_sound("click")
-	if not next_scene:
-		print("no next scene for new game -- play")
+	if not intro:
+		print("no intro scene -- play")
 		return
 	
-	PlayerProfile.player_name = "Default Player"
-	PlayerProfile.selected_character = "None"
-	PlayerProfile.max_unlocked_chapters = 1
-	PlayerProfile.high_scores.clear()
+	# resets the player data
+	PlayerProfile.initialize_profile("Player", "None")
+	PlayerProfile.reset_run_counter()
+	PlayerProfile.owned_cards = []
+	PlayerProfile.current_deck = []
+	PlayerInventory.owned_items = {}
+	PlayerInventory.inventory_changed.emit()
 	
-	SceneTransition.change_scene(next_scene)
+	if is_returning_player and typeof(SaveManager) != TYPE_NIL:
+		print("MainMenu: Overriding current save slot")
+		if SaveManager.has_method("register_field"):
+			SaveManager.register_fields()
+		if SaveManager.has_method("save_game_async"):
+			await SaveManager.save_game_async()
+		if SaveManager.has_method("save_game"):
+			await SaveManager.save_game()
+	
+	SceneTransition.change_scene(intro)
 
 func _on_continue_pressed():
 	AudioManager.play_ui_sound("click")

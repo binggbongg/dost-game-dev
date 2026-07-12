@@ -1,5 +1,7 @@
 extends MenuBase
 
+@export var confirm: PackedScene = load("res://scenes/ui/confirmation_message.tscn")
+
 func _ready():
 	super._ready()
 	get_tree().paused = true
@@ -21,9 +23,8 @@ func _on_restart_pressed():
 
 func _on_quit_pressed():
 	AudioManager.play_ui_sound("click")
-	get_tree().paused = false
 	UIManager.close_menu()
-	get_tree().change_scene_to_file("res://scenes/menus/lounge.tscn")
+	UIManager.open_menu(confirm)
 
 func resume_game():
 	get_tree().paused = false

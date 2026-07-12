@@ -56,7 +56,7 @@ func _on_enemy_defeated():
 	var calculated_score = await process_chapter_scoring_and_unlock()
 	prepare_next_progression_target()
 
-	# 🌟 FIX 2: Dynamic local instantiation using the secure preload variable
+	# Dynamic local instantiation using the secure preload variable
 	if victory_screen_scene:
 		print("CombatLevel: Instantiating victory interface overlay layer...")
 		var victory_instance = victory_screen_scene.instantiate()
@@ -165,7 +165,7 @@ func process_chapter_scoring_and_unlock() -> int:
 func trigger_boss_defeat_cutscene():
 	if current_level_data and not current_level_data.post_boss_cutscene.is_empty():
 		print('launching cut scene')
-		get_tree().change_scene_to_file(current_level_data.post_boss_cutscene)
+		SceneTransition.change_scene(current_level_data.post_boss_cutscene)
 	else:
 		proceed_next_stage()
 

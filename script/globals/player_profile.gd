@@ -54,13 +54,11 @@ var high_scores: Dictionary = {}
 var run_turns: int = 0
 var run_damage_taken: int = 0
 var run_combos_played: int = 0
-var run_items_used: int = 0
 
 func reset_run_counter():
 	run_turns = 0
 	run_damage_taken = 0
 	run_combos_played = 0
-	run_items_used = 0
 
 # -- initialization logic --
 func initialize_profile(new_name: String, character_id: String):
@@ -80,7 +78,6 @@ func initialize_profile(new_name: String, character_id: String):
 		"deck_builder": false,
 		"cut_scene": false
 	}
-	is_tutorial_fight = false
 	
 	max_unlocked_chapters = 1
 	high_scores.clear()
