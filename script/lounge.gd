@@ -131,6 +131,7 @@ func _unhandled_input(event):
 func back_button_pressed():
 	AudioManager.play_ui_sound("click")
 	SceneTransition.change_scene_path("res://scenes/menus/play.tscn")
+
 func give_starter_packs():
 	var pack_layer = get_node_or_null("PackLayer")
 	if not pack_layer:
