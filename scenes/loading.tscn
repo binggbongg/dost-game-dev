@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://sselnp3jwv0s"]
 
-[ext_resource type="Script" uid="uid://doof7clw2io25" path="res://script/loading.gd" id="1_dhqfv"]
+[ext_resource type="Script" path="res://script/loading.gd" id="1_dhqfv"]
 [ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="1_yc7uc"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="2_dhqfv"]
 
@@ -66,7 +66,7 @@ fill_to = Vector2(0.13368055, 0.7239583)
 [node name="Loading" type="CanvasLayer" unique_id=2084534103]
 script = ExtResource("1_dhqfv")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2127392914]
+[node name="Background" type="AnimatedSprite2D" parent="." unique_id=2127392914]
 position = Vector2(960, 533)
 scale = Vector2(10.3, 10.3)
 sprite_frames = SubResource("SpriteFrames_2b8ay")

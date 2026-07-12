@@ -54,9 +54,9 @@ func initialize_victory_rewards(level_data: LevelData, score: int, final_rank: S
 
 		# 🌟 DYNAMIC ASSIGNMENT OVERRIDE BASED ON ROUND RANKINGS
 		match final_rank:
-			"S": cached_packs_earned = 3
-			"A": cached_packs_earned = 2
-			"B": cached_packs_earned = 1
+			"S": cached_packs_earned = 2
+			"A": cached_packs_earned = 1
+			"B": cached_packs_earned = 0
 			"C", _: cached_packs_earned = 0
 
 	PlayerProfile.add_coins(cached_coins_earned)

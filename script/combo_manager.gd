@@ -219,6 +219,7 @@ func calculate_combo_output(active_cards: Array) -> Dictionary:
 				if data.multiplier > 0:
 					global_multiplier += (data.multiplier - 1.0)
 			GameEnums.CardCategory.LAHI:
+				global_multiplier += combo_for_lahi(active_cards)
 				base_damage += data.damage
 				base_healing += data.heal
 	
@@ -229,3 +230,30 @@ func calculate_combo_output(active_cards: Array) -> Dictionary:
 		"damage": int(round(final_damage)),
 		"healing": int(round(final_healing))
 	}
+
+func combo_for_lahi(active_cards) -> int:
+	var categories = active_cards.map(func(c): return c.card_category)
+	var lahi_count = categories.count(GameEnums.CardCategory.LAHI)
+	#var kalikasan_count = categories.count(GameEnums.CardCategory.KALIKASAN)
+	#var diwa_count = categories.count(GameEnums.CardCategory.DIWA)
+	#var tanglaw_count = categories.count(GameEnums.CardCategory.TANGLAW)
+	
+	# special condition for the specific lahi combos
+	# lahi combos:
+	# lahi diwa lahi
+	# lahi diwa kalikasan
+	# lahi diwa tanglaw
+	
+	if lahi_count == 0: return 1
+	
+	var matched_recipes = get_matched_recipe()
+	if matched_recipes:
+		var file_name = matched_recipes.resource_path.get_file().to_lower()
+		if "hukbo_ng_alamat" in file_name:
+			print("Hukbo ng Alamat combo matched! Multiplier/Bonus: 3")
+			return 3
+		elif lahi_count == 1:
+			print("Standard recipe with Lahi matched. Multiplier/Bonus: 2")
+			return 2
+	
+	return 1

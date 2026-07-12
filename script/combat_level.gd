@@ -61,7 +61,7 @@ func _on_enemy_defeated():
 		print("CombatLevel: Instantiating victory interface overlay layer...")
 		var victory_instance = victory_screen_scene.instantiate()
 		victory_instance.name = "VictoryScreenNode"
-
+		
 		var ui_parent = get_node_or_null("PlayerInterface")
 		if ui_parent:
 			ui_parent.add_child(victory_instance)

@@ -64,12 +64,12 @@ func halt_battle_processing() -> void:
 	if turn_manager:
 		turn_manager.is_busy = true
 		turn_manager.current_state = GameEnums.TurnState.GAME_COMPLETE
-
+	
 	if battle_timer:
 		battle_timer.stop()
 		if battle_timer.timeout.is_connected(_on_player_turn_timeout):
 			battle_timer.timeout.disconnect(_on_player_turn_timeout)
-
+	
 	if timer_bar:
 		timer_bar.visible = false
 
@@ -254,14 +254,55 @@ func _on_player_turn_timeout():
 
 	turn_manager.end_player_turn()
 
+#func process_cast_score_injection(active_cards: Array):
+	#var root_scene = get_tree().current_scene
+	#if root_scene and root_scene.has_method("evaluate_combo_scoring"):
+		#var matched_recipe = null
+		#if combo_manager and combo_manager.has_method("get_matched_recipe"):
+			#matched_recipe = combo_manager.get_matched_recipe()
+		#
+		#var bonus_points = 0
+		#if combo_manager and combo_manager.has_method("calculate_combo_output"):
+			#var output = combo_manager.calculate_combo_output(active_cards)
+			#bonus_points = output.get("bonus_score", 0)
+		#
+		#if bonus_points > 0:
+			#if "current_score" in root_scene:
+				#root_scene.current_score += bonus_points
+		#
+		## Inject points straight into CombatLevel instantly upon successful casting execution
+		#root_scene.evaluate_combo_scoring(active_cards, matched_recipe)
+
 func process_cast_score_injection(active_cards: Array):
 	var root_scene = get_tree().current_scene
+	var matched_recipe = null
+	
+	if combo_manager and combo_manager.has_method("get_matched_recipe"):
+		matched_recipe = combo_manager.get_matched_recipe()
+	
+	# displaying combo name here
+	if matched_recipe and "recipe_name" in matched_recipe:
+		display_action_message("Combo Cast: %s!" % matched_recipe.recipe_name)
+	elif matched_recipe and "name" in matched_recipe:
+		display_action_message("Combo Cast: %s!" % matched_recipe.name)
+	elif active_cards.size() > 1:
+		display_action_message("Combo Cast: Basic Combination!")
+	elif active_cards.size() == 1:
+		var card_name = active_cards[0].card_data.name if active_cards[0].card_data else "Card"
+		display_action_message("Casting: %s" % card_name)
+
+	# Calculate and inject custom bonus values from the combo configuration dictionary
+	var bonus_points = 0
+	if combo_manager and combo_manager.has_method("calculate_combo_output"):
+		var outputs = combo_manager.calculate_combo_output(active_cards)
+		bonus_points = outputs.get("bonus_score", 0)
+	
+	if bonus_points > 0 and root_scene:
+		print("[SCORE INJECTION] Injecting +", bonus_points, " bonus combo points into level rules.")
+		if "current_score" in root_scene:
+			root_scene.current_score += bonus_points
+	
 	if root_scene and root_scene.has_method("evaluate_combo_scoring"):
-		var matched_recipe = null
-		if combo_manager and combo_manager.has_method("get_matched_recipe"):
-			matched_recipe = combo_manager.get_matched_recipe()
-		
-		# Inject points straight into CombatLevel instantly upon successful casting execution
 		root_scene.evaluate_combo_scoring(active_cards, matched_recipe)
 
 func display_action_message(message: String) -> void:
