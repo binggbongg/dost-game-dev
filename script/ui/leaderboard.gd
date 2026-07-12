@@ -5,16 +5,41 @@ extends Control
 @onready var rank_label = $ScrollContainer/HBoxContainer/RankColumn/RankLabel
 @onready var name_label = $ScrollContainer/HBoxContainer/NameColumn/NameLabel
 @onready var score_label = $ScrollContainer/HBoxContainer/ScoreColumn/ScoreLabel
+@onready var left_button = $LeftButton
+@onready var right_button = $RightButton
+@onready var chapter_title_label = $ChapterLabel
+
+var chapter_name = "chapter_"
+var chapter_key = 1
 
 func _ready() -> void:
 	# Clear out any editor placeholder texts before building live listings
 	rank_label.text = ""
 	name_label.text = ""
 	score_label.text = ""
+	
+	if left_button:
+		left_button.pressed.connect(_on_left_button_pressed)
+	
+	if right_button:
+		right_button.pressed.connect(_on_right_button_pressed)
+	
 	_load_talo_leaderboard()
 
 func _load_talo_leaderboard() -> void:
 	print("[LEADERBOARD] Contacting Talo backend services for: ", leaderboard_name)
+	rank_label.text = "..."
+	name_label.text = "Loading entries..."
+	score_label.text = "..."
+	
+	if is_instance_valid(chapter_title_label):
+		chapter_title_label.text = "Chapter " + str(chapter_key)
+	
+	# Dynamically clamp and lock navigation button actions at boundaries (Chapters 1 and 3)
+	if left_button:
+		left_button.disabled = (chapter_key <= 1)
+	if right_button:
+		right_button.disabled = (chapter_key >= 3)
 	
 	var options := Talo.leaderboards.GetEntriesOptions.new()
 	options.page = 0
@@ -59,3 +84,23 @@ func _load_talo_leaderboard() -> void:
 	score_label.text = scores_text
 	
 	print("[LEADERBOARD] Board population completed successfully.")
+
+func _on_left_button_pressed() -> void:
+	if chapter_key > 1:
+		if has_node("/root/AudioManager") and AudioManager.has_method("play_ui_sound"):
+			AudioManager.play_ui_sound("click")
+			
+		chapter_key -= 1
+		leaderboard_name = chapter_name + str(chapter_key)
+		chapter_title_label.text = "Chapter " + str(chapter_key)
+		_load_talo_leaderboard()
+
+func _on_right_button_pressed() -> void:
+	if chapter_key < 3:
+		if has_node("/root/AudioManager") and AudioManager.has_method("play_ui_sound"):
+			AudioManager.play_ui_sound("click")
+			
+		chapter_key += 1
+		leaderboard_name = chapter_name + str(chapter_key)
+		chapter_title_label.text = "Chapter " + str(chapter_key)
+		_load_talo_leaderboard()

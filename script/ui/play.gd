@@ -6,6 +6,7 @@ extends Control
 # TextureRects for visuals
 #@onready var new_game_button: TextureRect = $Play/NewGame
 #@onready var continue_button: TextureRect = $Play/Continue
+@export var loading_screen_scene: PackedScene = load("res://scenes/loading.tscn")
 
 @export_group("Scene Navigation")
 @export var lounge: PackedScene 
@@ -26,6 +27,7 @@ extends Control
 
 var next_scene: PackedScene 
 var is_returning_player: bool = false
+var active_loading_screen: CustomLoadingScreen = null
 
 func _ready():
 	if menu_bgm:
@@ -65,6 +67,11 @@ func update_settings_button_state():
 func check_player_history() -> void:
 	print("MainMenu: Contacting Talo to fetch account save metadata...")
 	
+	if loading_screen_scene:
+		active_loading_screen = loading_screen_scene.instantiate() as CustomLoadingScreen
+		get_tree().root.add_child(active_loading_screen)
+		active_loading_screen.set_message("Recovering cloud profile history...")
+	
 	new_game_btn.disabled = true
 	continue_btn.disabled = true
 	
@@ -79,6 +86,9 @@ func check_player_history() -> void:
 		continue_btn.visible = true
 		continue_btn.disabled = true
 		continue_btn.modulate = Color(0.4, 0.4, 0.4, 0.9)
+		
+		if is_instance_valid(active_loading_screen):
+			active_loading_screen.queue_free()
 		
 		UIManager.open_menu(login_scene)
 		return
@@ -111,6 +121,9 @@ func check_player_history() -> void:
 	
 	if PlayerProfile.has_method("sync_local_scores_to_talo"):
 		PlayerProfile.sync_local_scores_to_talo()
+	
+	if is_instance_valid(active_loading_screen):
+		active_loading_screen.close_loading_screen()
 
 func _on_new_game_pressed():
 	AudioManager.play_ui_sound("click")
@@ -134,7 +147,7 @@ func _on_continue_pressed():
 	if typeof(SaveManager) != TYPE_NIL and SaveManager.has_method("sync_with_cloud"):
 		await SaveManager.sync_with_cloud()
 	
-	SceneTransition.change_scene(next_scene) 
+	SceneTransition.change_scene(next_scene)
 
 func _on_settings_pressed():
 	AudioManager.play_ui_sound("click")

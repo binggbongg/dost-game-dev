@@ -81,10 +81,12 @@ offset_bottom = 1116.0
 texture = SubResource("GradientTexture2D_kc112")
 
 [node name="LoadingText" type="Label" parent="." unique_id=1915645524]
-offset_left = 880.0
+offset_left = 444.0
 offset_top = 520.0
-offset_right = 1081.0
+offset_right = 1502.0
 offset_bottom = 580.0
 theme_override_fonts/font = ExtResource("2_dhqfv")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "loading..."
+horizontal_alignment = 1
+vertical_alignment = 1
