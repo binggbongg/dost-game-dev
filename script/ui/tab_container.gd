@@ -36,7 +36,7 @@ var tutorial_active := false
 }
 
 func _ready():
-
+	AudioManager.play_sound_from_path("res://data/SoundData/bgm/lounge.wav", true)
 	PlayerProfile.current_deck.clear()
 
 	tab_container.current_tab = 0
@@ -169,12 +169,38 @@ func _on_save_button_pressed():
 
 	SaveManager.save_game()
 
+	# Determine the destination level scene path
+	var target_scene: String = "res://scenes/menus/map.tscn"
 	if !PlayerProfile.pending_scene.is_empty():
-		print("[DECK BUILDER] Launching stored path destination: ", PlayerProfile.pending_scene)
-		get_tree().change_scene_to_file(PlayerProfile.pending_scene)
+		target_scene = PlayerProfile.pending_scene
+
+	# Check if the battle tutorial has been completed yet
+	var is_battle_tutorial_done: bool = PlayerProfile.tutorial_steps_completed.get("battle_tutorial", false)
+
+	if is_battle_tutorial_done:
+		print("[DECK BUILDER] Battle tutorial completed. Injecting Pre-Battle VS Screen.")
+		
+		# Disable the button to prevent double-clicks during the transition sequence
+		save_deck.disabled = true
+		
+		# Load and instantiate the pre-battle screen overlay
+		var prebattle_scene := load("res://scenes/pre_post_battles/prebattle.tscn") as PackedScene
+		if prebattle_scene:
+			var prebattle_instance = prebattle_scene.instantiate()
+			
+			get_tree().root.add_child(prebattle_instance)
+			
+			if prebattle_instance.has_signal("transition_finished"):
+				await prebattle_instance.transition_finished
+				
+			prebattle_instance.queue_free()
+			
 	else:
-		# Safety fallback if profile scene tracker was unassigned
-		get_tree().change_scene_to_file("res://scenes/menus/map.tscn")
+		print("[DECK BUILDER] Battle tutorial is incomplete or false. Skipping VS Screen.")
+
+	# Proceed to the actual gameplay scene level
+	print("[DECK BUILDER] Launching destination: ", target_scene)
+	get_tree().change_scene_to_file(target_scene)
 
 
 func get_first_card_slot():

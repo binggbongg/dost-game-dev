@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://vsdaf8mn3q5o" path="res://script/ui/shopUI.gd" id="1_lr2rd"]
 [ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="2_057h8"]
 [ext_resource type="Resource" uid="uid://cf0hklyd64oy" path="res://data/Shop/regular.tres" id="2_p6j4a"]
-[ext_resource type="Texture2D" uid="uid://dxycjm2n7qvlg" path="res://assets/background/rooms/background_shop1.png" id="3_tqrtc"]
+[ext_resource type="Texture2D" uid="uid://2vgynhwgdtwa" path="res://assets/ui/shop/shop_board_empty.png" id="3_tqrtc"]
 [ext_resource type="PackedScene" uid="uid://buor4em2o4cfj" path="res://scenes/ui/coin_display.tscn" id="4_p6j4a"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_tqrtc"]
 [ext_resource type="Texture2D" uid="uid://bby48bvsp02i0" path="res://assets/temporary/slot spotlight.jpg" id="5_tqrtc"]
@@ -33,13 +33,29 @@ offset_bottom = 1076.0
 script = ExtResource("1_lr2rd")
 shop_data = ExtResource("2_p6j4a")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=38917774]
+[node name="Marker2D" type="Marker2D" parent="." unique_id=168353033]
+
+[node name="Background" type="TextureRect" parent="." unique_id=518723753]
 layout_mode = 0
 offset_right = 1919.0
 offset_bottom = 1094.0
+
+[node name="Box" type="TextureRect" parent="." unique_id=685784617]
+layout_mode = 0
+offset_left = -1510.0
+offset_top = 195.0
+offset_right = 683.0
+offset_bottom = 1014.0
 texture = ExtResource("3_tqrtc")
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=168353033]
+[node name="Box2" type="TextureRect" parent="." unique_id=646417103]
+layout_mode = 0
+offset_left = 503.0
+offset_top = 195.0
+offset_right = 2696.0
+offset_bottom = 1014.0
+texture = ExtResource("3_tqrtc")
+flip_h = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=604738166]
 custom_minimum_size = Vector2(1911, 1104)
@@ -229,14 +245,14 @@ texture_normal = ExtResource("6_op5ld")
 
 [node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("2_057h8")]
 layout_mode = 0
-offset_left = -13.0
-offset_top = -69.0
-offset_right = 190.0
-offset_bottom = 223.0
+offset_left = 41.0
+offset_top = 48.0
+offset_right = 49.625
+offset_bottom = 55.25
 
 [node name="CoinDisplay" parent="." unique_id=1456686641 instance=ExtResource("4_p6j4a")]
 layout_mode = 1
-offset_left = 736.106
-offset_top = 123.40401
-offset_right = 435.33804
-offset_bottom = -1.4110107
+offset_left = 1255.736
+offset_top = 127.48401
+offset_right = 1003.598
+offset_bottom = 2.6689873

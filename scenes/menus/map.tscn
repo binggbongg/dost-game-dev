@@ -15,7 +15,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_3d4ke"]
 font = ExtResource("7_o6k5t")
-font_size = 105
+font_size = 59
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_mieb7"]
@@ -74,87 +74,86 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("6_60erm")
 
-[node name="ChapterNo" type="Label" parent="." unique_id=1272290620]
+[node name="ChapterTitle" type="Label" parent="." unique_id=1272290620]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.98300004
 anchor_bottom = 1.0
-offset_left = 334.0
-offset_top = 283.0
-offset_right = -823.3601
-offset_bottom = -584.0
-text = "Chapter 1"
+offset_left = 295.0
+offset_top = 244.0
+offset_right = -631.3601
+offset_bottom = -623.0
+text = "Chapter 1: Ang Huling Luntian"
 label_settings = SubResource("LabelSettings_3d4ke")
 vertical_alignment = 1
 
-[node name="ChapterNo2" type="Label" parent="." unique_id=446143759]
+[node name="ChapterDescription" type="Label" parent="." unique_id=446143759]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.98300004
 anchor_bottom = 1.0
-offset_left = 339.0
-offset_top = 420.0
-offset_right = -903.3601
-offset_bottom = -522.0
-text = "In the fields where people and nature used to work hand-in-hand, are replaced by the sound of enginges and metal grazing away each peace of land."
+offset_left = 298.0
+offset_top = 389.0
+offset_right = -531.3601
+offset_bottom = -518.0
+text = "Its mournful cry drifts through the empty village long before its steel frame emerges from the shadows. Once fashioned to guard those who called this place home, it now prowls abandoned streets, teaching every traveler that fear can arrive long before danger ever does."
 label_settings = SubResource("LabelSettings_mieb7")
-vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Buttons" type="CanvasLayer" parent="." unique_id=501019418]
 
 [node name="Phase1" type="TextureButton" parent="Buttons" unique_id=1622936125]
-offset_left = 724.0
-offset_top = 644.0
-offset_right = 737.0
-offset_bottom = 657.0
+offset_left = 781.0
+offset_top = 689.0
+offset_right = 794.0
+offset_bottom = 702.0
 scale = Vector2(10, 10)
 texture_normal = ExtResource("9_cu3pl")
 
-[node name="Phase2" type="TextureButton" parent="Buttons" unique_id=1346812254]
-offset_left = 1295.0
-offset_top = 260.00003
-offset_right = 1308.0
-offset_bottom = 273.00003
+[node name="Phase2" type="TextureButton" parent="Buttons" unique_id=221368573]
+offset_left = 1285.0
+offset_top = 591.0
+offset_right = 1298.0
+offset_bottom = 604.0
 scale = Vector2(10, 10)
 texture_normal = ExtResource("9_cu3pl")
 
-[node name="Phase3" type="TextureButton" parent="Buttons" unique_id=221368573]
-offset_left = 1209.0
-offset_top = 562.0
-offset_right = 1222.0
-offset_bottom = 575.0
+[node name="Phase3" type="TextureButton" parent="Buttons" unique_id=1346812254]
+offset_left = 1435.0
+offset_top = 314.0
+offset_right = 1448.0
+offset_bottom = 327.0
 scale = Vector2(10, 10)
 texture_normal = ExtResource("9_cu3pl")
 
 [node name="Labels" type="Node2D" parent="." unique_id=1214762967]
 
-[node name="3" type="Label" parent="Labels" unique_id=1475296039]
-offset_left = 1122.0
-offset_top = 380.0
-offset_right = 1609.0
-offset_bottom = 452.0
-text = "Level 3 - Boss"
+[node name="Label 1" type="Label" parent="Labels" unique_id=1702988549]
+offset_left = 597.0
+offset_top = 817.0
+offset_right = 1084.0
+offset_bottom = 889.0
+text = "Level 1"
 label_settings = SubResource("LabelSettings_gh0d3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="4" type="Label" parent="Labels" unique_id=615404527]
-offset_left = 1034.0
-offset_top = 688.0
-offset_right = 1521.0
-offset_bottom = 760.0
+[node name="Label 2" type="Label" parent="Labels" unique_id=615404527]
+offset_left = 1110.0
+offset_top = 717.0
+offset_right = 1597.0
+offset_bottom = 789.0
 text = "Level 2"
 label_settings = SubResource("LabelSettings_gh0d3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="5" type="Label" parent="Labels" unique_id=1702988549]
-offset_left = 540.0
-offset_top = 772.0
-offset_right = 1027.0
-offset_bottom = 844.0
-text = "Level 1"
+[node name="Label 3" type="Label" parent="Labels" unique_id=1475296039]
+offset_left = 1262.0
+offset_top = 433.99997
+offset_right = 1749.0
+offset_bottom = 505.99997
+text = "Level 3 - Boss"
 label_settings = SubResource("LabelSettings_gh0d3")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -196,13 +195,13 @@ texture_normal = ExtResource("9_3yoho")
 
 [node name="Start" type="TextureButton" parent="." unique_id=1772978172]
 layout_mode = 0
-offset_left = 347.0
+offset_left = 295.0
 offset_top = 543.0
-offset_right = 518.0
-offset_bottom = 602.0
+offset_right = 475.0
+offset_bottom = 626.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Start" unique_id=1008622458]
-position = Vector2(76, 46)
+position = Vector2(92, 46)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_3d4ke")
 autoplay = "default"

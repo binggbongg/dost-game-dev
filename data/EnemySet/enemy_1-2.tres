@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="EnemyBehavior" format=3 uid="uid://qcjsjnj5jc7j"]
 
+[ext_resource type="Texture2D" uid="uid://dcvwpi4y2tfxp" path="res://assets/prebattle_portrait/level1/portrait1_2.png" id="1_d607d"]
 [ext_resource type="Texture2D" uid="uid://djiss7knvfuhg" path="res://assets/enemies/LVL1/Lvl1_enemy2_animation/Ultimateskill_ironrooster.png" id="1_nnuo7"]
 [ext_resource type="Texture2D" uid="uid://c2hep456inahu" path="res://assets/enemies/LVL1/Lvl1_enemy2_animation/idle_ironrooster_animation.png" id="2_d607d"]
 [ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="2_rb28k"]
@@ -249,6 +250,7 @@ script = ExtResource("3_ioh4o")
 enemy_name = "Enemy2"
 max_health = 5
 enemy_sprite = SubResource("SpriteFrames_xlpqw")
+enemy_portait = ExtResource("1_d607d")
 regular_moves = Array[ExtResource("2_rb28k")]([SubResource("Resource_nnuo7")])
 special_moves = Array[ExtResource("2_rb28k")]([SubResource("Resource_lew4e"), SubResource("Resource_aj8w5")])
 metadata/_custom_type_script = "uid://bltrhxh2342fx"

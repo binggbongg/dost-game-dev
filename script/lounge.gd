@@ -131,6 +131,7 @@ func _unhandled_input(event):
 func back_button_pressed():
 	AudioManager.play_ui_sound("click")
 	SceneTransition.change_scene_path("res://scenes/menus/play.tscn")
+
 func give_starter_packs():
 	var pack_layer = get_node_or_null("PackLayer")
 	if not pack_layer:
@@ -161,25 +162,48 @@ func collect_and_update_chapter_locks() -> void:
 	if ch1 and ch1 is BaseButton:
 		chapter_buttons.append(ch1)
 		
-	for i in range(2, 14):
+	for i in range(2, 15):
 		var btn = get_node_or_null(str(i))
 		if btn and btn is BaseButton:
 			chapter_buttons.append(btn)
 			
 	var current_max_unlocked = PlayerProfile.max_unlocked_chapters
 	
+	var current_max = PlayerProfile.max_unlocked_chapters
+	
 	for idx in range(chapter_buttons.size()):
 		var target_btn = chapter_buttons[idx]
 		var chapter_num = idx + 1
 		
-		if chapter_num == 1:
+		# Reset any previous tweens if the node is reused
+		var existing_tweens = get_tree().get_processed_tweens().filter(func(t): return t.is_valid())
+		
+		if chapter_num <= current_max:
 			target_btn.disabled = false
 			target_btn.modulate = Color(1.0, 1.0, 1.0, 1.0)
-			continue
 			
-		if current_max_unlocked >= chapter_num:
-			target_btn.disabled = false
-			target_btn.modulate = Color(1.0, 1.0, 1.0, 1.0)
+			# NEW: Apply glow only to the current highest chapter
+			if chapter_num == current_max:
+				apply_glow(target_btn)
+				
+			if not target_btn.pressed.is_connected(_on_chapter_button_pressed):
+				target_btn.pressed.connect(_on_chapter_button_pressed.bind(chapter_num))
 		else:
 			target_btn.disabled = true
-			target_btn.modulate = Color(0.3, 0.3, 0.3, 0.8) # Grayed out visual feedback
+			target_btn.modulate = Color(0.3, 0.3, 0.3, 0.8)
+
+func _on_chapter_button_pressed(chapter_num: int):
+	AudioManager.play_ui_sound("click")
+	PlayerProfile.selected_chapter = chapter_num
+	PlayerProfile.current_phase = chapter_num
+		
+	var path = "res://data/Levels/level_%d-%d.tres" % [PlayerProfile.current_phase, PlayerProfile.current_level]
+	if ResourceLoader.exists(path):
+		PlayerProfile.set_next_level(load(path))
+		
+	SceneTransition.change_scene_path("res://scenes/menus/map.tscn")
+
+func apply_glow(node: CanvasItem):
+	var tween = create_tween().set_loops()
+	tween.tween_property(node, "modulate", Color(1.5, 1.5, 1.5, 1.0), 0.8) # Brighten
+	tween.tween_property(node, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.8) # Return to normal

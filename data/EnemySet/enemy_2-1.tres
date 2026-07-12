@@ -1,8 +1,6 @@
 [gd_resource type="Resource" script_class="EnemyBehavior" format=3 uid="uid://cdpd661hmsd4h"]
 
 [ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="1_igvwc"]
-[ext_resource type="Texture2D" uid="uid://dgq4p002mh8dh" path="res://assets/enemies/LVL2/IRONDOG/ULTIMATESKILL_irondog.png" id="1_xubck"]
-[ext_resource type="Texture2D" uid="uid://cfhootqrtavrq" path="res://assets/enemies/LVL2/IRONDOG/IRONDOG_IDLE_ANIMATION.png" id="2_d85yn"]
 [ext_resource type="Script" uid="uid://bltrhxh2342fx" path="res://data/enemy_behavior.gd" id="2_g7rjs"]
 [ext_resource type="Texture2D" uid="uid://c23e11u1xgick" path="res://assets/enemies/LVL2/IRONDOG/SKILL1_IRONDOG.png" id="3_3rkdy"]
 [ext_resource type="Texture2D" uid="uid://dn2v46yqnj3fq" path="res://assets/enemies/LVL2/IRONDOG/SKILL2_IRONDOG.png" id="4_5xajl"]
@@ -279,6 +277,4 @@ script = ExtResource("2_g7rjs")
 enemy_name = "Enemy"
 max_health = 50
 enemy_sprite = SubResource("SpriteFrames_3rkdy")
-regular_moves = Array[ExtResource("1_igvwc")]([SubResource("Resource_xubck")])
-special_moves = Array[ExtResource("1_igvwc")]([SubResource("Resource_d85yn"), SubResource("Resource_3rkdy")])
 metadata/_custom_type_script = "uid://bltrhxh2342fx"

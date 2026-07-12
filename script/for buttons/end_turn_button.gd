@@ -3,6 +3,7 @@ extends TextureButton
 signal end_turn_pressed
 
 @onready var turn_manager = get_node("../../GameManagers/TurnManager")
+@onready var end_turn: AnimatedSprite2D = $EndTurn
 
 func _ready() -> void:
 	self.pressed.connect(_on_pressed)
@@ -14,10 +15,10 @@ func _process(_delta: float) -> void:
 	
 	if is_player_turn and not turn_manager.is_busy:
 		self.disabled = false
-		self_modulate = Color(1, 1, 1, 1)
+		end_turn.modulate = Color(1, 1, 1, 1)
 	else:
 		self.disabled = true
-		self_modulate = Color(0.3, 0.3, 0.3, 0.8)
+		end_turn.modulate = Color(0.3, 0.3, 0.3, 0.8)
 
 func _on_pressed():
 	BattleEvents.special_end_turn_requested.emit()

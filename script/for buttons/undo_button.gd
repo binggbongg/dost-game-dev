@@ -1,4 +1,5 @@
 extends TextureButton
+@onready var redo: AnimatedSprite2D = $Redo
 
 @onready var combo_manager = get_node("../../GameManagers/ComboManager")
 @onready var turn_manager = get_node("../../GameManagers/TurnManager")
@@ -15,10 +16,10 @@ func _process(_delta: float) -> void:
 	
 	if has_cards and is_player_turn and not turn_manager.is_busy:
 		self.disabled = false
-		self_modulate = Color(1, 1, 1, 1)
+		redo.modulate = Color(1, 1, 1, 1)
 	else:
 		self.disabled = true
-		self_modulate = Color(0.3, 0.3, 0.3, 0.8)
+		redo.modulate = Color(0.3, 0.3, 0.3, 0.8)
 
 func _on_pressed():
 	

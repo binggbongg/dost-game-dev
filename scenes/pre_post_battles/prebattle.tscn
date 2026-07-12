@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://ccxkqwjp8ujmn"]
+
+[ext_resource type="Script" uid="uid://cmcdubah17imq" path="res://script/ui/prebattle.gd" id="1_i1jyv"]
+[ext_resource type="Texture2D" uid="uid://2vggq6in2f7p" path="res://assets/prebattle_portrait/girl_prebattle.png" id="2_ojhbn"]
+[ext_resource type="Texture2D" uid="uid://bjsg3gbfwnwtr" path="res://assets/prebattle_portrait/level1/portrait1_3.png" id="3_d506j"]
+[ext_resource type="Texture2D" uid="uid://iiisp1c7u4vs" path="res://assets/prebattle_portrait/versus_prebattle.png" id="4_sm4lr"]
+[ext_resource type="FontFile" uid="uid://df2vd0uxg3gcf" path="res://assets/fonts/PixelifySans-SemiBold.ttf" id="5_ojhbn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d506j"]
+font = ExtResource("5_ojhbn")
+font_size = 34
+
+[node name="PreBossScene" type="Control" unique_id=910619487]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i1jyv")
+
+[node name="PlayerPortrait" type="TextureRect" parent="." unique_id=854727737]
+layout_mode = 0
+offset_right = 963.0
+offset_bottom = 1083.375
+texture = ExtResource("2_ojhbn")
+
+[node name="EnemyPortrait" type="TextureRect" parent="." unique_id=1473991494]
+layout_mode = 0
+offset_left = 960.0
+offset_right = 1923.0
+offset_bottom = 1083.375
+texture = ExtResource("3_d506j")
+
+[node name="VS" type="TextureRect" parent="." unique_id=1586746766]
+layout_mode = 0
+offset_left = 847.0
+offset_top = 486.0
+offset_right = 1041.4
+offset_bottom = 648.0
+texture = ExtResource("4_sm4lr")
+
+[node name="Click" type="Label" parent="." unique_id=1704397229]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 1008.0
+offset_right = 1901.0
+offset_bottom = 1067.0
+text = "Click anywhere to begin."
+label_settings = SubResource("LabelSettings_d506j")
+horizontal_alignment = 1
+vertical_alignment = 1

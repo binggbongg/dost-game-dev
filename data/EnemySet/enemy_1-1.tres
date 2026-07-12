@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="EnemyBehavior" format=3 uid="uid://bqrfesdfh2c5v"]
 
+[ext_resource type="Texture2D" uid="uid://c6wbgujkudgdo" path="res://assets/prebattle_portrait/level1/portrait1_1.png" id="1_eb4cn"]
 [ext_resource type="Texture2D" uid="uid://33vabx4be52y" path="res://assets/enemies/LVL1/Lvl1_enemy1_animation/ULTIMATEskill_enemy1.png" id="1_gbaoc"]
 [ext_resource type="Texture2D" uid="uid://c8w43yajpg0ux" path="res://assets/enemies/LVL1/Lvl1_enemy1_animation/enemy1.png" id="2_eb4cn"]
 [ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="2_t2eve"]
@@ -228,6 +229,7 @@ script = ExtResource("3_f5gxb")
 enemy_name = "CyberHuman"
 max_health = 30
 enemy_sprite = SubResource("SpriteFrames_h0iia")
+enemy_portait = ExtResource("1_eb4cn")
 regular_moves = Array[ExtResource("2_t2eve")]([SubResource("Resource_foedf")])
 special_moves = Array[ExtResource("2_t2eve")]([SubResource("Resource_dxx6e"), SubResource("Resource_n7gcu")])
 metadata/_custom_type_script = "uid://bltrhxh2342fx"
