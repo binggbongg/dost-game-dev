@@ -50,5 +50,6 @@ damage = 3
 multiplier = 2.5
 mana_cost = 7
 texture = ExtResource("3_jiej1")
+ASLExplanation = "Tap your head with your index finger, then glide it upward like a check mark."
 cardASL = SubResource("SpriteFrames_bpt6j")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

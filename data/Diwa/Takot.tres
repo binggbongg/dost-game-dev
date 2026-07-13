@@ -43,10 +43,12 @@ animations = [{
 [resource]
 script = ExtResource("1_ca5gj")
 name = "Takot"
+description = "Fills the enemy with fear, making them falter in battle."
 category = 1
 damage = 1
 multiplier = 1.2
 mana_cost = 1
 texture = ExtResource("2_s0rg0")
+ASLExplanation = "Hold both open hands in front of your chest and wiggle your fingers inward."
 cardASL = SubResource("SpriteFrames_2pcjb")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

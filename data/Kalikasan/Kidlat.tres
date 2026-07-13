@@ -43,10 +43,12 @@ animations = [{
 [resource]
 script = ExtResource("1_eg1jt")
 name = "Kidlat"
+description = "Strikes instantly with a bolt of lightning that delivers devastating burst damage."
 category = 2
 rarity = 1
 damage = 5
 mana_cost = 4
 texture = ExtResource("2_duu8p")
+ASLExplanation = "Point your index finger and draw a sharp zigzag downward."
 cardASL = SubResource("SpriteFrames_mty8l")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

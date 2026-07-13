@@ -43,10 +43,12 @@ animations = [{
 [resource]
 script = ExtResource("1_plnuy")
 name = "Lunas"
+description = "Cleanses harmful afflictions while restoring a large amount of health."
 category = 3
 rarity = 1
 heal = 6
 mana_cost = 4
 texture = ExtResource("2_6dt4a")
+ASLExplanation = "Start with a clawed hand facing forward, close your fingertips together, then point your thumbs outward."
 cardASL = SubResource("SpriteFrames_4125x")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

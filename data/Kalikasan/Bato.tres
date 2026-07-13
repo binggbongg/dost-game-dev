@@ -43,9 +43,11 @@ animations = [{
 [resource]
 script = ExtResource("1_q53yv")
 name = "Bato"
+description = "Crushes the enemy with the unyielding might of solid stone."
 category = 2
 damage = 3
 mana_cost = 2
 texture = ExtResource("2_lfsfo")
+ASLExplanation = "Make both hands into fists. Tap one fist on top of the other twice."
 cardASL = SubResource("SpriteFrames_c4kf1")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

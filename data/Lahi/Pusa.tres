@@ -43,8 +43,10 @@ animations = [{
 [resource]
 script = ExtResource("1_a5wgo")
 name = "Pusa"
+description = "Summons a nimble feline spirit that strikes swiftly before vanishing."
 damage = 2
 mana_cost = 2
 texture = ExtResource("2_svvxy")
+ASLExplanation = "Pinch your thumb and index finger, then pull them outward from your cheek."
 cardASL = SubResource("SpriteFrames_f3xxr")
 metadata/_custom_type_script = "uid://cv07myeubhuht"
