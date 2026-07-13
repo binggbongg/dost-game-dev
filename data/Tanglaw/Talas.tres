@@ -43,9 +43,11 @@ animations = [{
 [resource]
 script = ExtResource("1_rdwud")
 name = "Talas"
+description = "Sharpens both offense and spirit, delivering a precise strike with minor recovery."
 category = 3
 heal = 3
 mana_cost = 2
 texture = ExtResource("2_gfa1m")
+ASLExplanation = "Touch your index finger against the middle finger of your other hand."
 cardASL = SubResource("SpriteFrames_q7o2y")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

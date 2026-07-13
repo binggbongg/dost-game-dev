@@ -43,10 +43,12 @@ animations = [{
 [resource]
 script = ExtResource("1_d8tym")
 name = "Baha"
+description = "Sweeps across the battlefield with a powerful flood that engulfs everything in its path."
 category = 2
 rarity = 2
 damage = 8
 mana_cost = 6
 texture = ExtResource("3_iluun")
+ASLExplanation = "Hold both palms down at different heights. Move them forward in a wavy motion."
 cardASL = SubResource("SpriteFrames_3rhdj")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

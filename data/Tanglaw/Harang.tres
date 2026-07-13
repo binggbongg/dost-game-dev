@@ -43,9 +43,11 @@ animations = [{
 [resource]
 script = ExtResource("1_e6lkg")
 name = "Harang"
+description = "Raises a sturdy barrier that protects against incoming attacks."
 category = 3
 heal = 3
 mana_cost = 2
 texture = ExtResource("2_a44is")
+ASLExplanation = "Cross your arms in front of your chest, then push them outward firmly."
 cardASL = SubResource("SpriteFrames_gfble")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

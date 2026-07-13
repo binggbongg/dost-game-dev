@@ -43,11 +43,13 @@ animations = [{
 [resource]
 script = ExtResource("1_t51xp")
 name = "Akit"
+description = "Draws enemies closer, disrupting their position and composure."
 category = 1
 rarity = 2
 damage = 3
 multiplier = 2.0
 mana_cost = 5
 texture = ExtResource("3_aiten")
+ASLExplanation = " Hold curved hands near your face, then pull them inward while closing your fingers."
 cardASL = SubResource("SpriteFrames_xfj6l")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

@@ -43,10 +43,11 @@ animations = [{
 [resource]
 script = ExtResource("1_gukyd")
 name = "Ulan"
-description = "Water canon attack"
+description = "Calls a refreshing rain that damages foes while restoring a small amount of vitality."
 category = 2
 damage = 3
 mana_cost = 2
 texture = ExtResource("2_55x57")
+ASLExplanation = "Hold both hands above with fingers spread. Move them downward while wiggling fingers like falling rain."
 cardASL = SubResource("SpriteFrames_0xhlc")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

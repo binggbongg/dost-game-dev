@@ -43,10 +43,12 @@ animations = [{
 [resource]
 script = ExtResource("1_fiuvu")
 name = "Bantala"
+description = "Draws upon celestial power to rain overwhelming force upon the battlefield."
 category = 2
 rarity = 3
 damage = 12
 mana_cost = 9
 texture = ExtResource("2_0qboq")
+ASLExplanation = "Form C shapes with both hands and trace a large circle in the air."
 cardASL = SubResource("SpriteFrames_0qboq")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

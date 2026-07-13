@@ -43,9 +43,11 @@ animations = [{
 [resource]
 script = ExtResource("1_e7uw1")
 name = "Buwaya"
+description = "Summons a mighty crocodile that dominates the battlefield with brute strength."
 rarity = 3
 damage = 9
 mana_cost = 8
 texture = ExtResource("2_g2bno")
+ASLExplanation = "Stack your forearms and open and close your hands like chomping jaws."
 cardASL = SubResource("SpriteFrames_wta2j")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

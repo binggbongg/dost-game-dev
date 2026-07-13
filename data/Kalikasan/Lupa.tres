@@ -43,9 +43,11 @@ animations = [{
 [resource]
 script = ExtResource("1_6t87j")
 name = "Lupa"
+description = "Draws strength from the earth to deliver a solid, unwavering blow."
 category = 2
 damage = 3
 mana_cost = 2
 texture = ExtResource("2_vf8ie")
+ASLExplanation = "Rub your fingers together, then flatten your hand with the palm facing down"
 cardASL = SubResource("SpriteFrames_exwtm")
 metadata/_custom_type_script = "uid://cv07myeubhuht"
