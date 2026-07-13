@@ -86,6 +86,11 @@ func initialize_profile(new_name: String, character_id: String):
 	high_scores.clear()
 	reset_run_counter()
 	
+	current_phase = 1
+	current_level = 1
+	
+	owned_cards = []
+	
 	is_profile_initialized = true
 	print("Profile Initialized for: ", player_name)
 

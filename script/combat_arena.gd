@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var player = $Player
+
 func get_enemy():
 	if get_child_count() > 0:
 		var enemy_node = get_child(0)
@@ -21,3 +23,6 @@ func initialize_arena_enemy(enemy_resource: EnemyBehavior):
 		enemy_node.behavior_data = enemy_resource
 		if enemy_node.has_method("setup_enemy"):
 			enemy_node.setup_enemy()
+
+func play_player_magic():
+	player.play_magic()

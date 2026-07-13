@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://cyj3yf3uoygfa"]
+[gd_scene format=3 uid="uid://dd411ji1dwh5y"]
 
 [ext_resource type="Script" uid="uid://ccp1g3nlqcrsh" path="res://script/ui/tab_container.gd" id="1_2g1hk"]
 [ext_resource type="Texture2D" uid="uid://dkfvthxdhgsd7" path="res://assets/background/other screens/mainscreen_plain.png" id="2_bm8im"]
+[ext_resource type="PackedScene" uid="uid://lq3tmvb8ajg0" path="res://scenes/menus/lounge.tscn" id="2_prm12"]
 [ext_resource type="Texture2D" uid="uid://bturl8bl73yof" path="res://assets/ui/spellbook/spellbook_purple_bookmark.png" id="3_jv85f"]
 [ext_resource type="Texture2D" uid="uid://mqbgl2en2v0y" path="res://assets/ui/spellbook/spellbook_green_bookmark.png" id="4_nvek4"]
 [ext_resource type="Texture2D" uid="uid://c5t544jq1um42" path="res://assets/ui/spellbook/spellbook_blue_bookmark.png" id="5_hs0xd"]
@@ -14,6 +15,7 @@
 [ext_resource type="FontFile" uid="uid://df2vd0uxg3gcf" path="res://assets/fonts/PixelifySans-SemiBold.ttf" id="11_jv85f"]
 [ext_resource type="Texture2D" uid="uid://cad0d2tw4c1ea" path="res://assets/ui/buttons/Start_icon.png" id="13_nvek4"]
 [ext_resource type="PackedScene" uid="uid://ckbrj3vh8fqlp" path="res://scenes/story/mechanicsui.tscn" id="14_nvek4"]
+[ext_resource type="Texture2D" uid="uid://ds3wsk47yxvob" path="res://assets/ui/map/back_button.png" id="15_hs0xd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_50gjk"]
 font = ExtResource("9_md1jm")
@@ -55,6 +57,7 @@ anchors_preset = 0
 offset_right = 1902.0
 offset_bottom = 1091.0
 script = ExtResource("1_2g1hk")
+lounge = ExtResource("2_prm12")
 
 [node name="ColorRect" type="TextureRect" parent="." unique_id=247712323]
 layout_mode = 1
@@ -312,3 +315,12 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="BackButton" type="TextureButton" parent="." unique_id=846079613]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 51.0
+offset_right = 52.0
+offset_bottom = 73.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("15_hs0xd")

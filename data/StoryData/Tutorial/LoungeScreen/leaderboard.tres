@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_cmcmr")
 type = 1
-character_name = "Leadrboards"
+character_name = "Leaderboards"
 lines = Array[String](["View progess of friends and other players"])
 metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

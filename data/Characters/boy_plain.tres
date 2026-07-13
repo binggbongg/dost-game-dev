@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://dj6kdcpk6rmfj"]
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://d1eawn8c52ms2"]
 
 [ext_resource type="Texture2D" uid="uid://i21yka7futxl" path="res://assets/prebattle_portrait/boy_prebattle.png" id="1_l7paq"]
 [ext_resource type="Script" uid="uid://hwvdlnk2ti43" path="res://data/character.gd" id="1_le2mw"]
