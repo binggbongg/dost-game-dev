@@ -15,6 +15,7 @@ func _process(_delta: float) -> void:
 
 func _on_pressed():
 	if scene_to_open:
+		get_tree().paused = true
 		UIManager.open_menu(scene_to_open)
 	else:
 		print("could not find scene to open -- spellbook button")

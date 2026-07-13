@@ -151,10 +151,15 @@ func execute_intent():
 			if PlayerStats:
 				PlayerStats.take_damage(chosen_intent.value)
 			trigger_cooldown(chosen_intent)
-
-	# 🌟 Play the animation instantly without using any "await" keyword blocks here!
+	
 	if animated_sprite and animated_sprite.sprite_frames.has_animation(anim_to_play):
 		animated_sprite.play(anim_to_play)
+		
+		var combat_arena = get_parent()
+		await get_tree().create_timer(1.0).timeout
+		var player = combat_arena.get_player()
+		if player and player.has_method("flash_red_damage"):
+			player.flash_red_damage()
 	else:
 		print("Warning: Animation ", anim_to_play, " missing from SpriteFrames!")
 		
@@ -171,6 +176,19 @@ func tick_cooldowns():
 	for move_name in special_cooldowns.keys():
 		if special_cooldowns[move_name] > 0:
 			special_cooldowns[move_name] -= 1
+
+func flash_red_damage():
+	if is_defeated: return
+	
+	await get_tree().create_timer(0.75).timeout
+	var original_color = animated_sprite.modulate
+	var flash_tween = create_tween()
+	
+	animated_sprite.modulate = Color(1, 0.1, 0.1, 1)
+	
+	flash_tween.tween_property(animated_sprite, "modulate", original_color, 1.0)\
+		.set_trans(Tween.TRANS_QUAD)\
+		.set_ease(Tween.EASE_OUT)
 
 func any_signals(signals_array: Array) -> void:
 	var completed = false

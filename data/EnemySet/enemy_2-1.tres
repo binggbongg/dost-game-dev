@@ -228,7 +228,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rwi6w")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -311,10 +311,36 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_3rkdy"]
+script = ExtResource("1_igvwc")
+name = "Regular Attack"
+value = 7
+chances = 0.7
+metadata/_custom_type_script = "uid://bc0bopaja6vri"
+
+[sub_resource type="Resource" id="Resource_5xajl"]
+script = ExtResource("1_igvwc")
+name = "Unique Skill"
+type = 2
+value = 10
+chances = 0.3
+cooldown = 3
+metadata/_custom_type_script = "uid://bc0bopaja6vri"
+
+[sub_resource type="Resource" id="Resource_cxnat"]
+script = ExtResource("1_igvwc")
+name = "Ultimate Burst"
+type = 3
+value = 18
+cooldown = 6
+metadata/_custom_type_script = "uid://bc0bopaja6vri"
+
 [resource]
 script = ExtResource("2_g7rjs")
 enemy_name = "Enemy"
-max_health = 100
+max_health = 70
 enemy_sprite = SubResource("SpriteFrames_3rkdy")
 enemy_portait = ExtResource("1_udnx4")
+regular_moves = Array[ExtResource("1_igvwc")]([SubResource("Resource_3rkdy"), SubResource("Resource_5xajl")])
+special_moves = Array[ExtResource("1_igvwc")]([SubResource("Resource_cxnat")])
 metadata/_custom_type_script = "uid://bltrhxh2342fx"

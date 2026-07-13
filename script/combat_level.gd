@@ -5,6 +5,7 @@ class_name CombatLevel
 @onready var battle_manager = $BattleManager
 @onready var enemy = $"CombatArena/Enemy"
 @onready var player = $"CombatArena/Player"
+@onready var asl_sprite = $"PlayerInterface/SpriteAnmation"
 
 @export var victory_screen_scene: PackedScene
 
@@ -42,6 +43,15 @@ func _ready() -> void:
 	
 	if is_instance_valid(enemy) and enemy.has_signal("enemy_died"):
 		enemy.enemy_died.connect(_on_enemy_defeated)
+	
+	if asl_sprite:
+		asl_sprite.asl_card_complete.connect(func():
+			enemy.flash_red_damage())
+	else:
+		print("could not asl node --combat level")
+	
+	if PlayerStats.current_health > 0:
+		PlayerStats.snapshot_level_entry_health()
 
 func load_level_config(data):
 	if data.background and upper_bg:
@@ -88,6 +98,7 @@ func prepare_next_progression_target():
 	PlayerProfile.advance_to_next_level()
 	if PlayerProfile.current_level == 1:
 		PlayerProfile.pending_scene = "res://scenes/menus/lounge.tscn"
+		PlayerStats.reset_health()
 	else:
 		PlayerProfile.pending_scene = "res://scenes/levels/Level1.tscn"
 

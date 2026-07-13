@@ -30,8 +30,12 @@ func _process(_delta) -> void:
 		)
 
 func start_drag(card):
-	if !card.can_drag:
+	if not card or not ("can_drag" in card):
+		print("CardManager Warning: Clicked an object that is not a card: ", card.name)
 		return
+		
+	if !card.can_drag: return
+	
 	card_being_dragged = card
 	card.scale = Vector2(DEFAULT_CARD_SCALE, DEFAULT_CARD_SCALE)
 	card_being_dragged.z_index = 10

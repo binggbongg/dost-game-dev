@@ -55,3 +55,13 @@ func play_magic():
 	magic.play("default")
 	await magic.animation_finished
 	magic.visible = false
+
+func flash_red_damage():
+	var original_color = me.modulate
+	var flash_tween = create_tween()
+	
+	me.modulate = Color(1, 0.1, 0.1, 1)
+	
+	flash_tween.tween_property(me, "modulate", original_color, 1.0)\
+		.set_trans(Tween.TRANS_QUAD)\
+		.set_ease(Tween.EASE_OUT)
