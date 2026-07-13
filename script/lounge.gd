@@ -33,6 +33,10 @@ func _ready():
 	# --- NEW PROGRESSION LOCK INITIALIZATION ---
 	collect_and_update_chapter_locks()
 	
+	# --- TEMP CHAPTER 4+ HARD LOCK ---
+	# Delete or comment out this function call to remove the restriction later.
+	_temp_disable_high_chapters()
+	
 	if not PlayerProfile.tutorial_steps_completed.get("lounge_tour", false):
 		start_lounge_tour()
 
@@ -207,3 +211,12 @@ func apply_glow(node: CanvasItem):
 	var tween = create_tween().set_loops()
 	tween.tween_property(node, "modulate", Color(1.5, 1.5, 1.5, 1.0), 0.8) # Brighten
 	tween.tween_property(node, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.8) # Return to normal
+
+# --- TEMPORARY FUNCTION FOR REMOVABILITY ---
+func _temp_disable_high_chapters() -> void:
+	# Look up the numbered buttons directly inside this function to ensure they lock down
+	for i in range(4, 15):
+		var btn = get_node_or_null(str(i))
+		if btn and btn is BaseButton:
+			btn.disabled = true
+			btn.modulate = Color(0.3, 0.3, 0.3, 0.8)
