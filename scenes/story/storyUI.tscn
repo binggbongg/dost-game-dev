@@ -11,15 +11,16 @@ script = ExtResource("1_gftur")
 [node name="DialogueBox" type="Control" parent="." unique_id=1161655313]
 layout_mode = 3
 anchors_preset = 0
+offset_top = 515.0
 offset_right = 1933.7235
 offset_bottom = 1095.0
 
 [node name="DialoguePanel" type="Panel" parent="DialogueBox" unique_id=1383475601]
 layout_mode = 0
-offset_left = 109.0
-offset_top = 689.0
-offset_right = 1814.0
-offset_bottom = 1039.0
+offset_left = 134.0
+offset_top = 168.0
+offset_right = 1839.0
+offset_bottom = 518.0
 
 [node name="DialoguePanel4" type="Panel" parent="DialogueBox/DialoguePanel" unique_id=1359117070]
 layout_mode = 0
@@ -60,24 +61,41 @@ autowrap_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Next" type="RichTextLabel" parent="DialogueBox/DialoguePanel" unique_id=1203943514]
+layout_mode = 0
+offset_left = 1543.0
+offset_top = 279.0
+offset_right = 1686.0
+offset_bottom = 332.0
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/mono_font_size = 30
+bbcode_enabled = true
+text = "Next"
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="me" type="AnimatedSprite2D" parent="DialogueBox" unique_id=131686089]
-position = Vector2(163.99998, 723.99994)
+position = Vector2(188.99998, 202.99988)
 scale = Vector2(3.325, 3.325)
 sprite_frames = SubResource("SpriteFrames_01g43")
 
 [node name="DialoguePanel3" type="TextureRect" parent="DialogueBox" unique_id=196373372]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 689.0
-offset_right = 471.0
-offset_bottom = 1036.3418
+offset_left = 153.0
+offset_top = 168.0
+offset_right = 496.0
+offset_bottom = 515.3418
 texture = ExtResource("4_vslhr")
 
 [node name="npc_portrait" type="TextureRect" parent="DialogueBox" unique_id=762260707]
 visibility_layer = 17
 layout_mode = 0
-offset_left = 162.0
-offset_top = 710.0
-offset_right = 252.82707
-offset_bottom = 801.7294
+offset_left = 187.0
+offset_top = 189.0
+offset_right = 277.8271
+offset_bottom = 280.72937
 scale = Vector2(3.22, 3.22)

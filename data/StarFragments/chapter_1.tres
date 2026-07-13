@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StarFragments" format=3 uid="uid://dw3wpxmgfpv5s"]
+
+[ext_resource type="Texture2D" uid="uid://cs0c43t26y4h6" path="res://assets/gems/prosperity_gem.png" id="1_84lqm"]
+[ext_resource type="Script" uid="uid://b0a3svt0n8an4" path="res://data/star_fragments.gd" id="1_ll1hv"]
+
+[resource]
+script = ExtResource("1_ll1hv")
+name = "Araw"
+illustration = ExtResource("1_84lqm")
+metadata/_custom_type_script = "uid://b0a3svt0n8an4"

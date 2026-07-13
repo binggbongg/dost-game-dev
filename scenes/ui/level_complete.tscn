@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://chht25bvnjlry" path="res://script/ui/level_complete.gd" id="1_7c5i1"]
 [ext_resource type="PackedScene" uid="uid://bjo62sglogr7j" path="res://scenes/menus/player_pack_slot.tscn" id="2_cjuq0"]
-[ext_resource type="Texture2D" uid="uid://dvuofhfo7vd65" path="res://assets/ui/mainscreen/mainscreen_ui_loginAccount.png" id="2_qsb6x"]
 [ext_resource type="FontFile" uid="uid://df2vd0uxg3gcf" path="res://assets/fonts/PixelifySans-SemiBold.ttf" id="3_cjuq0"]
+[ext_resource type="Texture2D" uid="uid://sru8svuli8o" path="res://assets/ui/mainscreen/victory_template.png" id="3_qsb6x"]
 [ext_resource type="Texture2D" uid="uid://cehfrui28gnh" path="res://assets/ui/buttons/scroll_icon.png" id="4_7s3li"]
-[ext_resource type="Texture2D" uid="uid://kgl2v0um6khp" path="res://assets/ui/mainscreen/mainscreen_ui_button_short.png" id="5_bhdpj"]
 [ext_resource type="Texture2D" uid="uid://dl51l2pbbo6cg" path="res://assets/ui/buttons/coin_icon.png" id="6_6ja6a"]
+[ext_resource type="Texture2D" uid="uid://cae3x3w5q2jsc" path="res://assets/ui/mainscreen/victory_button.png" id="6_cjuq0"]
 [ext_resource type="Texture2D" uid="uid://d3opubgs2iu7c" path="res://assets/cards/2.png" id="7_fhtmr"]
 [ext_resource type="Texture2D" uid="uid://csn03vyiyaocx" path="res://assets/cards/3.png" id="8_g6w5c"]
 [ext_resource type="Texture2D" uid="uid://dbr55eplqxgcg" path="res://assets/cards/1.png" id="9_wfjqo"]
@@ -53,7 +53,16 @@ anchor_bottom = 0.89381105
 offset_right = -309.4806
 offset_bottom = -251.8935
 scale = Vector2(4.225, 4.225)
-texture = ExtResource("2_qsb6x")
+texture = ExtResource("3_qsb6x")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="VICTORY" unique_id=1184673796]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 121.0
+offset_right = 306.0
+offset_bottom = 180.0
+color = Color(0, 0, 0, 0.42745098)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="VICTORY" unique_id=1141772947]
@@ -100,15 +109,6 @@ label_settings = SubResource("LabelSettings_n8v1i")
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="VICTORY" unique_id=1184673796]
-layout_mode = 0
-offset_left = 97.0
-offset_top = 121.0
-offset_right = 306.0
-offset_bottom = 180.0
-color = Color(0, 0, 0, 0.3529412)
-metadata/_edit_use_anchors_ = true
-
 [node name="TextureRect2" type="TextureRect" parent="VICTORY" unique_id=1041665428]
 layout_mode = 0
 offset_left = 121.0
@@ -126,7 +126,7 @@ offset_top = 291.0
 offset_right = 155.0
 offset_bottom = 298.0
 scale = Vector2(6.75, 6.75)
-texture_normal = ExtResource("5_bhdpj")
+texture_normal = ExtResource("6_cjuq0")
 metadata/_edit_use_anchors_ = true
 
 [node name="Label3" type="Label" parent="VICTORY" unique_id=836833990]

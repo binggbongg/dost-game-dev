@@ -22,6 +22,7 @@ func register_fields():
 	#hi aissha
 	register_field("tutorials", PlayerProfile.tutorial_steps_completed)
 	register_field("owned_cards", PlayerProfile.owned_cards)
+	register_field("owned_fragments", PlayerProfile.owned_fragments)
 
 func on_loaded(data: Dictionary):
 	PlayerProfile.player_name = data.get("player_name", "NoobGamer")
@@ -36,6 +37,8 @@ func on_loaded(data: Dictionary):
 	PlayerInventory.owned_items = data.get("owned_items", {})
 	PlayerInventory.inventory_changed.emit()
 	PlayerProfile.owned_cards = data.get("owned_cards", [])
+	var loaded_fragments = data.get("owned_fragments", [])
+	PlayerProfile.owned_fragments.assign(loaded_fragments)
 	PlayerProfile.tutorial_steps_completed = data.get("tutorials", false)
 	
 	print("SaveManager (Talo): Cloud sync applied")

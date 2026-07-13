@@ -201,8 +201,8 @@ func evaluate_combo_scoring(active_cards: Array, matched_recipe: ComboRecipe):
 	print("Current Score (combatlevel): ", str(match_combo_bonus_points))
 
 #will use this to test cutscenes and post levels stuff
-#func _unhandled_input(event):
+func _unhandled_input(event):
 	# Press 'W' to instantly win the level and advance
-	#if event is InputEventKey and event.pressed and event.keycode == KEY_W:
-		#print("DEBUG: Instant Win Triggered")
-		#_on_enemy_defeated()
+	if event is InputEventKey and event.pressed and event.keycode == KEY_W:
+		print("DEBUG: Instant Win Triggered")
+		_on_enemy_defeated()

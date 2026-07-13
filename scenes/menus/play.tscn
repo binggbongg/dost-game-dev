@@ -5,13 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://lq3tmvb8ajg0" path="res://scenes/menus/lounge.tscn" id="3_0wcnn"]
 [ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="4_bweju"]
 [ext_resource type="PackedScene" uid="uid://btnk1nc2mvnsk" path="res://scenes/story/intro.tscn" id="5_0xjr7"]
-[ext_resource type="Texture2D" uid="uid://26yniv7ld3ya" path="res://assets/temporary/play_button.png" id="5_hcoq6"]
 [ext_resource type="Script" uid="uid://co5brqs6w6sgf" path="res://script/ui/open_menu.gd" id="7_0wcnn"]
 [ext_resource type="Texture2D" uid="uid://dmei84moikr28" path="res://assets/ui/shop/setting_icon.png" id="7_57ra1"]
 [ext_resource type="Texture2D" uid="uid://wycp27g2a2f2" path="res://dost-esports-2-pixelated.png" id="7_lvox0"]
 [ext_resource type="PackedScene" uid="uid://dnv63h23touyw" path="res://scenes/menus/login_account.tscn" id="9_ifrkh"]
 [ext_resource type="Texture2D" uid="uid://nvmc7rggfnbj" path="res://assets/ui/buttons/soundOn_icon.png" id="11_0xjr7"]
-[ext_resource type="Texture2D" uid="uid://ctjhgkc78lwkd" path="res://assets/temporary/continue.png" id="11_pcbjq"]
 [ext_resource type="Texture2D" uid="uid://cfp5pvxioqchf" path="res://assets/ui/buttons/soundOff_icon.png" id="12_ifrkh"]
 [ext_resource type="PackedScene" uid="uid://xdbig4p2et14" path="res://scenes/menus/leaderboard.tscn" id="13_0xjr7"]
 [ext_resource type="Texture2D" uid="uid://cmm0ft8pmm2ms" path="res://assets/ui/buttons/leaderboard_icon.png" id="16_cuvb2"]
@@ -226,40 +224,6 @@ offset_top = 524.48004
 offset_right = 273.40802
 offset_bottom = 588.48004
 texture = ExtResource("12_ifrkh")
-expand_mode = 1
-
-[node name="Play" type="TextureButton" parent="." unique_id=1205911924]
-visible = false
-layout_mode = 0
-offset_left = 1274.0
-offset_top = 640.0
-offset_right = 1524.0
-offset_bottom = 727.0
-
-[node name="NewGame" type="TextureRect" parent="Play" unique_id=1136695913]
-custom_minimum_size = Vector2(150, 75)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.497
-offset_left = 172.25
-offset_top = 12.0
-offset_right = 198.0
-offset_bottom = 87.0
-mouse_filter = 2
-texture = ExtResource("5_hcoq6")
-expand_mode = 1
-
-[node name="Continue" type="TextureRect" parent="Play" unique_id=551117370]
-custom_minimum_size = Vector2(400, 600)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.497
-offset_left = 48.25
-offset_top = -229.0
-offset_right = 324.0
-offset_bottom = 371.0
-mouse_filter = 2
-texture = ExtResource("11_pcbjq")
 expand_mode = 1
 
 [node name="Leaderboard" type="TextureButton" parent="." unique_id=267476027]

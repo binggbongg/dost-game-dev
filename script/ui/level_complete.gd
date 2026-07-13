@@ -7,7 +7,7 @@ extends CanvasLayer
 @onready var dimmer: ColorRect = $Dimmer
 
 @onready var pack_layer: CanvasLayer = $VICTORY/PackLayer
-@export var pack_scene: PackedScene                               # Assign your card pack .tscn here
+@export var pack_scene: PackedScene                             
 
 # Updated Card Pack References
 @onready var card_pack: Control = $VICTORY/CardPack
@@ -16,7 +16,7 @@ extends CanvasLayer
 @onready var texture_rect_5: TextureRect = $VICTORY/CardPack/TextureRect5
 @onready var texture_rect_6: TextureRect = $VICTORY/CardPack/TextureRect6
 @onready var texture_rect_7: TextureRect = $VICTORY/CardPack/TextureRect7
-
+@onready var boss_player: String = "res://scenes/pre_post_battles/world.tscn"
 # Internal logic data cache
 var cached_coins_earned := 0
 var cached_packs_earned := 0
@@ -141,7 +141,7 @@ func update_ui_text_displays():
 func _finish_and_transition_scene() -> void:
 	if level_data_ref and (level_data_ref.is_boss_level or level_data_ref.level_number == 3):
 		print("[ROUTE] Boss clear complete. Moving back to overall lounge interface.")
-		SceneTransition.change_scene_path("res://scenes/menus/lounge.tscn")
+		SceneTransition.change_scene_path(boss_player)
 		# change to the actual path of the cutscene
 	else:
 		print("[ROUTE] Minion clear complete. Redirecting straight to Deck Builder scene layout.")

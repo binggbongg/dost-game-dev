@@ -32,6 +32,8 @@ var tutorial_steps_completed: Dictionary = {
 }
 var owned_cards: Array[String] = []
 var current_deck: Array[String] = []
+var owned_fragments: Array[String] = []
+
 var pending_scene: String = ""
 func add_card_to_inventory(card_path: String):
 	if not owned_cards.has(card_path):
@@ -39,6 +41,13 @@ func add_card_to_inventory(card_path: String):
 		print("Added to inventory: ", card_path)
 	SaveManager.save_game()
 
+
+func add_fragment_to_inventory(fragment_name: String):
+	if not owned_fragments.has(fragment_name):
+		owned_fragments.append(fragment_name)
+		print("[PlayerProfile] Fragment added: ", fragment_name)
+	SaveManager.save_game()
+	
 var is_tutorial_fight: bool = false
 var level: int = 1
 var experience: int = 0
@@ -62,7 +71,6 @@ func reset_run_counter():
 	run_combos_played = 0
 	run_items_used = 0
 
-# -- initialization logic --
 func initialize_profile(new_name: String, character_id: String):
 	self.player_name = new_name
 	self.selected_character = character_id
@@ -73,14 +81,12 @@ func initialize_profile(new_name: String, character_id: String):
 	experience = 0
 	is_tutorial_fight = false
 	
-	tutorial_steps_completed = {
-		"lounge_tour": false,
-		"chapter_intro": false,
-		"battle_tutorial": false,
-		"deck_builder": false,
-		"cut_scene": false
-	}
-	is_tutorial_fight = false
+	tutorial_steps_completed.clear()
+	tutorial_steps_completed["lounge_tour"] = false
+	tutorial_steps_completed["chapter_intro"] = false
+	tutorial_steps_completed["battle_tutorial"] = false
+	tutorial_steps_completed["deck_builder"] = false
+	tutorial_steps_completed["cut_scene"] = false
 	
 	max_unlocked_chapters = 1
 	high_scores.clear()
@@ -89,10 +95,13 @@ func initialize_profile(new_name: String, character_id: String):
 	current_phase = 1
 	current_level = 1
 	
-	owned_cards = []
+	owned_cards.clear()
+	owned_fragments.clear()
 	
 	is_profile_initialized = true
 	print("Profile Initialized for: ", player_name)
+
+
 
 func set_rank(new_rank: String):
 	player_rank = new_rank
