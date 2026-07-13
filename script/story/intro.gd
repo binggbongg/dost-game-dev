@@ -41,7 +41,7 @@ func skip_pressed():
 
 ## Keyboards/Controllers still use this safely without breaking mouse interactions
 func _input(event):
-	AudioManager.play_ui_sound("click")
+
 	if is_transitioning or not visible:
 		return
 
@@ -136,5 +136,3 @@ func show_current_block():
 	tween.tween_callback(func():
 		next.visible = true
 	)
-
-	AudioManager.play_ui_sound("click")
