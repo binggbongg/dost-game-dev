@@ -24,21 +24,10 @@ func _ready() -> void:
 	AudioManager.play_sound_from_path("res://data/SoundData/bgm/cutscene.wav", true)
 	setup_player_visuals()
 	
-	# 🛠️ LOGIC UPDATE: Hide the skip/exit button right away at start
+	# LOGIC UPDATE: Hide the skip/exit button right away at start
 	if skip:
 		skip.hide()
 		skip.pressed.connect(_on_skip_pressed)
-	
-	# --- ZOOM EFFECT SETUP ---
-	if scene:
-		scene.pivot_offset = get_viewport().get_visible_rect().size / 2.0
-		scene.scale = Vector2(0.7, 0.7)
-		
-		var zoom_tween = create_tween()
-		zoom_tween.tween_property(scene, "scale", Vector2(1.0, 1.0), 1.5)\
-			.set_trans(Tween.TRANS_CUBIC)\
-			.set_ease(Tween.EASE_OUT)
-	# -------------------------
 
 	if enemy:
 		enemy.modulate = Color(0.35, 0.35, 0.35)
@@ -101,19 +90,18 @@ func _on_skip_pressed() -> void:
 			conversation.dialogue_box.hide()
 		conversation.line_finished.emit()
 
-	# 🛠️ INSTANT POSITIONING (No overlap, keeps player at the foot on the left side)
-	if enemy and player:
-		player.position = Vector2(enemy.position.x - 145.0, enemy.position.y)
+	# 🛠️ SKIP POSITION FIX: Player stays exactly where they are currently standing
+	if player:
 		player.play(char_data.idle_animation)
-		player.flip_h = false
-
-	if gem:
-		gem.visible = false
-		gem.modulate.a = 0.0
 		
-	# Play the final collection sound bit directly, bypass all waiting elements entirely
+	# 🛠️ METAPHORICAL EXIT: Cleanly plays end audio and fades out directly
 	AudioManager.play_sound_from_path("res://data/SoundData/sfx/flutter.mp3", false, 5.0)
 	
+	if gem:
+		var skip_fade = create_tween()
+		skip_fade.tween_property(gem, "modulate:a", 0.0, 0.4)
+		await skip_fade.finished
+
 	cutscene_finished.emit()
 
 # --- CUTSCENE STEP-BY-STEP TIMELINE ---
@@ -178,9 +166,6 @@ func _on_player_reached_enemy(area: Area2D) -> void:
 		reached_enemy = true
 		player.play(char_data.idle_animation)
 		
-		# 🛠️ POSITIONAL SNAP FIX: Keeps the player strictly 145 pixels back to the left (stopped right at the foot)
-		player.position = Vector2(enemy.position.x - 185.0, enemy.position.y)
-		
 		if skip:
 			skip.hide()
 		
@@ -205,7 +190,7 @@ func finish_cutscene() -> void:
 	
 	AudioManager.play_sound_from_path("res://data/SoundData/sfx/flutter.mp3", false, 5.0)
 	
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.5).timeout
 	if is_skipping: return
 	
 	var fade = create_tween()
