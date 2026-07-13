@@ -194,7 +194,6 @@ func _handle_drag_end(card_node):
 
 
 func _on_card_swiped():
-	AudioManager.play_sound_from_path("res://data/SoundData/sfx/slide.wav", false, 0.0)
 
 	# Save card
 	PlayerProfile.add_card_to_inventory(card_paths[current_idx])
@@ -208,6 +207,7 @@ func _on_card_swiped():
 	current_idx -= 1
 
 	if current_idx >= 0:
+		AudioManager.play_sound_from_path("res://data/SoundData/sfx/slide.wav", false, 0.0)
 		var next_card = cards_container.get_child(current_idx)
 		next_card.process_mode = Node.PROCESS_MODE_INHERIT
 	else:

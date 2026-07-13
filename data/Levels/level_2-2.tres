@@ -7,7 +7,7 @@
 script = ExtResource("1_o6av0")
 level_number = 2
 phase_number = 2
-background = "uid://oir6bhhlmmsa"
+background = "uid://cnd7geuc8i0hh"
 enemy_data = ExtResource("1_e1jk7")
 enemy_name = "Mga Alagad ng Agaw"
 level_lore = "They marched beneath banners of order, believing peace could be forged through unquestioned obedience. Though the battle has long since passed, their presence lingers in every shattered doorway and every voice that chose silence over defiance."

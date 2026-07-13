@@ -7,7 +7,7 @@
 script = ExtResource("1_cjj2i")
 level_number = 3
 phase_number = 2
-background = "uid://coga0o45gncib"
+background = "uid://bpn3hmqbp0vsd"
 enemy_data = ExtResource("1_wugjb")
 is_boss_level = true
 enemy_name = "Hating-Dilim"
