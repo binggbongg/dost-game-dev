@@ -146,15 +146,16 @@ func _input(event: InputEvent):
 		current_card.position.x = current_idx * 6 + offset
 		current_card.rotation_degrees = offset * 0.05
 
-
 func _handle_drag_end(card_node):
-
 	var base_x = current_idx * 6
 	var base_y = current_idx * 5
 
 	if abs(card_node.position.x - base_x) > swipe_threshold:
-
 		var direction = 1 if card_node.position.x > base_x else -1
+
+		# FIX: Play the sound immediately when the threshold is passed, 
+		# instead of waiting for the animation to finish.
+		AudioManager.play_ui_sound("flip") 
 
 		var tween = create_tween()
 
@@ -175,7 +176,6 @@ func _handle_drag_end(card_node):
 		tween.tween_callback(_on_card_swiped)
 
 	else:
-
 		var tween = create_tween()
 
 		tween.tween_property(
@@ -193,6 +193,7 @@ func _handle_drag_end(card_node):
 		)
 
 
+
 func _on_card_swiped():
 
 	# Save card
@@ -207,7 +208,6 @@ func _on_card_swiped():
 	current_idx -= 1
 
 	if current_idx >= 0:
-		AudioManager.play_sound_from_path("res://data/SoundData/sfx/slide.wav", false, 0.0)
 		var next_card = cards_container.get_child(current_idx)
 		next_card.process_mode = Node.PROCESS_MODE_INHERIT
 	else:
