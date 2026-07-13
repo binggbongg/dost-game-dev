@@ -15,6 +15,8 @@ var block_index: int = 0
 var line_index: int = 0
 var is_transitioning := false
 
+
+
 func _ready():
 	close_button.pressed.connect(_back_pressed)
 	skip.pressed.connect(skip_pressed)
