@@ -24,8 +24,9 @@ func _ready() -> void:
 	AudioManager.play_sound_from_path("res://data/SoundData/bgm/cutscene.wav", true)
 	setup_player_visuals()
 	
-	# Connect the skip button signal cleanly
+	# 🛠️ LOGIC UPDATE: Hide the skip/exit button right away at start
 	if skip:
+		skip.hide()
 		skip.pressed.connect(_on_skip_pressed)
 	
 	# --- ZOOM EFFECT SETUP ---
@@ -102,7 +103,7 @@ func _on_skip_pressed() -> void:
 
 	# 🛠️ INSTANT POSITIONING (No overlap, keeps player at the foot on the left side)
 	if enemy and player:
-		player.position = Vector2(enemy.position.x - 140.0, enemy.position.y)
+		player.position = Vector2(enemy.position.x - 145.0, enemy.position.y)
 		player.play(char_data.idle_animation)
 		player.flip_h = false
 
@@ -123,14 +124,13 @@ func start_world_cutscene(data: StoryData) -> void:
 	if active_story_data and conversation:
 		conversation.gem_portrait = active_story_data.portrait
 
+	# Intro plays out naturally first without a skip option visible
 	await conversation.play_sequence(dialogue_resource, "intro")
-	if is_skipping: return
-	
 	await play_gem_spawn_anim()
-	if is_skipping: return
-	
+
 	await conversation.play_sequence(dialogue_resource, "see_gem")
-	if is_skipping: return
+	if skip:
+		skip.show()
 	
 	var already_seen = PlayerProfile.tutorial_steps_completed.get("cut_scene", false)
 	if not already_seen:
@@ -179,7 +179,7 @@ func _on_player_reached_enemy(area: Area2D) -> void:
 		player.play(char_data.idle_animation)
 		
 		# 🛠️ POSITIONAL SNAP FIX: Keeps the player strictly 145 pixels back to the left (stopped right at the foot)
-		player.position = Vector2(enemy.position.x - 145.0, enemy.position.y)
+		player.position = Vector2(enemy.position.x - 185.0, enemy.position.y)
 		
 		if skip:
 			skip.hide()

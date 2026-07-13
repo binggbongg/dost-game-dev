@@ -150,7 +150,7 @@ func give_starter_packs():
 		pack_layer.layer = 100
 		add_child(pack_layer)
 
-	for i in range(5):
+	for i in range(3):
 		var pack_instance = pack_scene.instantiate()
 		pack_layer.add_child(pack_instance)
 		pack_instance.open_pack(true) 
