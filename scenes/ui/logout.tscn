@@ -1,70 +1,10 @@
 [gd_scene format=3 uid="uid://b2imrf32ymy20"]
 
-[ext_resource type="Texture2D" uid="uid://bv4x2hrts1np5" path="res://assets/background/other screens/mainscreen.png" id="1_6h5oa"]
 [ext_resource type="Script" uid="uid://ckexj87d0yggu" path="res://script/ui/logout.gd" id="1_uiyih"]
 [ext_resource type="PackedScene" uid="uid://dm1hwrj3l0df6" path="res://scenes/menus/play.tscn" id="2_5eim6"]
-[ext_resource type="Texture2D" uid="uid://dvuofhfo7vd65" path="res://assets/ui/mainscreen/mainscreen_ui_loginAccount.png" id="2_ynx7l"]
-[ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="3_uiyih"]
 [ext_resource type="Texture2D" uid="uid://840avnx5jyqc" path="res://assets/ui/buttons/logout_button.png" id="4_5eim6"]
-[ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="6_5eim6"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_57ra1"]
-atlas = ExtResource("1_6h5oa")
-region = Rect2(0, 0, 192, 108)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ivt2f"]
-atlas = ExtResource("1_6h5oa")
-region = Rect2(192, 0, 192, 108)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hcoq6"]
-atlas = ExtResource("1_6h5oa")
-region = Rect2(384, 0, 192, 108)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pcbjq"]
-atlas = ExtResource("1_6h5oa")
-region = Rect2(576, 0, 192, 108)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6wpdt"]
-atlas = ExtResource("1_6h5oa")
-region = Rect2(768, 0, 192, 108)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0wcnn"]
-atlas = ExtResource("1_6h5oa")
-region = Rect2(960, 0, 192, 108)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_t4n6f"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_57ra1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ivt2f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hcoq6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pcbjq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6wpdt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0wcnn")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="Gradient" id="Gradient_r8lcr"]
-colors = PackedColorArray(0, 0, 0, 0, 0.13333334, 0.047058824, 0, 0.8784314)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_wvhgv"]
-gradient = SubResource("Gradient_r8lcr")
-fill_from = Vector2(0.4871795, 0)
-fill_to = Vector2(0.48376068, 1)
+[ext_resource type="Texture2D" uid="uid://cc2dcy7bis0cu" path="res://assets/ui/mainscreen/volume_bar.png" id="4_6h5oa"]
+[ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="5_ynx7l"]
 
 [node name="Logout" type="Control" unique_id=491667292]
 layout_mode = 3
@@ -76,55 +16,43 @@ grow_vertical = 2
 script = ExtResource("1_uiyih")
 menu = ExtResource("2_5eim6")
 
-[node name="Background" type="AnimatedSprite2D" parent="." unique_id=1436493914]
-position = Vector2(959.7222, 539.5)
-scale = Vector2(10.070024, 10.083333)
-sprite_frames = SubResource("SpriteFrames_t4n6f")
-autoplay = "default"
-
-[node name="Gradient" type="TextureRect" parent="." unique_id=1560073191]
+[node name="TabContainer" type="Panel" parent="." unique_id=1555120493]
 layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = SubResource("GradientTexture2D_wvhgv")
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=2080084517]
-layout_mode = 0
-offset_left = 602.0
-offset_top = 337.0
-offset_right = 719.5
-offset_bottom = 407.0
-scale = Vector2(6, 6)
-texture = ExtResource("2_ynx7l")
-
-[node name="Label" type="Label" parent="." unique_id=564202415]
-layout_mode = 0
-offset_left = 709.0
-offset_top = 428.0
-offset_right = 1200.0
-offset_bottom = 501.0
-theme_override_fonts/font = ExtResource("3_uiyih")
-theme_override_font_sizes/font_size = 60
-text = "Confirm Logout?"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = 142.0
+offset_top = 59.0
+offset_right = 1866.0
+offset_bottom = 972.0
 
 [node name="LogoutButton" type="TextureButton" parent="." unique_id=1089294122]
 layout_mode = 0
-offset_left = 776.0
-offset_top = 510.0
-offset_right = 906.0
-offset_bottom = 555.0
-scale = Vector2(2.7, 2.7)
+offset_left = 1620.0001
+offset_top = 129.0
+offset_right = 1750.0001
+offset_bottom = 174.0
+scale = Vector2(1.49, 1.49)
 texture_normal = ExtResource("4_5eim6")
 
-[node name="MessageLabel" type="Label" parent="." unique_id=1317077501]
+[node name="SFXBar" type="TextureRect" parent="." unique_id=1372622889]
 layout_mode = 0
-offset_left = 637.0
-offset_top = 659.0
-offset_right = 1260.0
-offset_bottom = 696.0
-theme_override_fonts/font = ExtResource("6_5eim6")
-theme_override_font_sizes/font_size = 30
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = 959.99994
+offset_top = 386.0
+offset_right = 2715.0
+offset_bottom = 654.0
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("4_6h5oa")
+
+[node name="SFXBar2" type="TextureRect" parent="." unique_id=393367668]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 500.0
+offset_right = 2715.0
+offset_bottom = 768.0
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("4_6h5oa")
+
+[node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("5_ynx7l")]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 94.0
+offset_right = 191.0
+offset_bottom = 99.0
