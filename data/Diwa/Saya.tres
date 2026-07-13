@@ -43,10 +43,12 @@ animations = [{
 [resource]
 script = ExtResource("1_roffg")
 name = "Saya"
+description = "Inspires joyful courage that lifts morale and strengthens the heart.'"
 category = 1
 damage = 1
 multiplier = 1.2
 mana_cost = 1
 texture = ExtResource("3_qtp6k")
+ASLExplanation = "Curve your hand and rub your chest in small upward circles."
 cardASL = SubResource("SpriteFrames_3egqr")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

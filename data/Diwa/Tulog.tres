@@ -43,11 +43,13 @@ animations = [{
 [resource]
 script = ExtResource("1_4ek7l")
 name = "Tulog"
+description = "Lulls the target into a deep slumber, leaving them unable to act."
 category = 1
 rarity = 1
 damage = 2
 multiplier = 1.5
 mana_cost = 3
 texture = ExtResource("2_wtg7r")
+ASLExplanation = "Move your open hand down your face while closing your fingers and eyes."
 cardASL = SubResource("SpriteFrames_5ixtt")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

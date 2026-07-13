@@ -43,9 +43,11 @@ animations = [{
 [resource]
 script = ExtResource("1_0o41o")
 name = "Hangin"
+description = "Summons swift winds that slice through enemies with relentless force."
 category = 2
 damage = 3
 mana_cost = 2
 texture = ExtResource("2_armn2")
+ASLExplanation = "Hold both open hands facing your chest. Wave them side to side."
 cardASL = SubResource("SpriteFrames_jyk1o")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

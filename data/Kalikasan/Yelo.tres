@@ -43,10 +43,12 @@ animations = [{
 [resource]
 script = ExtResource("1_c51js")
 name = "Yelo"
+description = "Freezes enemies with chilling magic that bites as cold as mountain frost."
 category = 2
 rarity = 1
 damage = 5
 mana_cost = 4
 texture = ExtResource("2_exbsn")
+ASLExplanation = " Hold both palms down, then quickly curl your fingers into claw shapes."
 cardASL = SubResource("SpriteFrames_fx7yi")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

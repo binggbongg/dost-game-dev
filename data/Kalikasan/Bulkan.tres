@@ -43,10 +43,12 @@ animations = [{
 [resource]
 script = ExtResource("1_dq2ih")
 name = "Bulkan"
+description = "Erupts with explosive volcanic fury, unleashing the strongest elemental assault."
 category = 2
 rarity = 3
 damage = 12
 mana_cost = 9
 texture = ExtResource("3_uj3je")
+ASLExplanation = "Form a triangle with your arms, then raise a fist upward while the other hand holds your wrist."
 cardASL = SubResource("SpriteFrames_2pfts")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

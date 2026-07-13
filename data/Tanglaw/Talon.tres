@@ -43,10 +43,12 @@ animations = [{
 [resource]
 script = ExtResource("1_vk5q5")
 name = "Talon"
+description = "Heals steadily over time like the endless flow of a mountain waterfall."
 category = 3
 rarity = 2
 heal = 10
 mana_cost = 6
 texture = ExtResource("2_eyk7a")
+ASLExplanation = "Tap your chin twice, then move both flat hands downward in a cascading wave."
 cardASL = SubResource("SpriteFrames_v3sy3")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

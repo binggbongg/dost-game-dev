@@ -43,11 +43,13 @@ animations = [{
 [resource]
 script = ExtResource("1_fh4wt")
 name = "Lumbay"
+description = "Burdens the enemy with sorrow, weakening their resolve."
 category = 1
 rarity = 2
 damage = 3
 multiplier = 2.0
 mana_cost = 5
 texture = ExtResource("3_hlkkg")
+ASLExplanation = "Hold both palms in front of your face and slowly pull them downward."
 cardASL = SubResource("SpriteFrames_vxxgl")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

@@ -43,9 +43,11 @@ animations = [{
 [resource]
 script = ExtResource("1_55fjx")
 name = "Galaw"
+description = "Restores vitality by keeping the flow of life and energy in motion."
 category = 3
 heal = 3
 mana_cost = 2
 texture = ExtResource("2_g3bwk")
+ASLExplanation = "Touch your fingertips together facing down, then move your hands side to side."
 cardASL = SubResource("SpriteFrames_j01t6")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

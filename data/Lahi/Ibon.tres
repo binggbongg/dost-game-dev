@@ -43,9 +43,11 @@ animations = [{
 [resource]
 script = ExtResource("1_dgfcn")
 name = "Ibon"
+description = "Summons a bird spirit that swoops from above to harass enemies."
 rarity = 1
 damage = 4
 mana_cost = 3
 texture = ExtResource("2_xd8h5")
+ASLExplanation = "Form an L handshape and open and close it twice near your mouth."
 cardASL = SubResource("SpriteFrames_jj5dp")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

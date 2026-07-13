@@ -43,10 +43,12 @@ animations = [{
 [resource]
 script = ExtResource("1_mmbrx")
 name = "Kuta"
+description = "Fortifies the caster with a protective shield that endures incoming attacks."
 category = 3
 rarity = 1
 heal = 6
 mana_cost = 4
 texture = ExtResource("2_7o7gq")
+ASLExplanation = "Cross your wrists, then lower one hand into a flat palm facing down."
 cardASL = SubResource("SpriteFrames_500ja")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

@@ -43,11 +43,12 @@ animations = [{
 [resource]
 script = ExtResource("1_adxyd")
 name = "Salamin"
-description = "Sets a protective layer for player."
+description = "Reflects every burden back to the enemy, turning their own curse against them."
 category = 3
 rarity = 3
 heal = 15
 mana_cost = 9
 texture = ExtResource("3_2ao7b")
+ASLExplanation = "Hold a flat hand near your face and twist it back and forth."
 cardASL = SubResource("SpriteFrames_yncqc")
 metadata/_custom_type_script = "uid://cv07myeubhuht"
