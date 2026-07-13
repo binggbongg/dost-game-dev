@@ -8,6 +8,9 @@ const SLOT_SCENE := preload("res://scenes/menus/deckslot.tscn")
 const MIN_DECK_SIZE := 8
 const MAX_DECK_SIZE := 12
 
+@onready var back_button = $BackButton
+@export var lounge: PackedScene
+
 @onready var mana_cost: Label = $CardDescription/ManaCost
 @onready var battle_effects: Label = $CardDescription/BattleEffects
 
@@ -40,7 +43,9 @@ func _ready():
 	PlayerProfile.current_deck.clear()
 
 	tab_container.current_tab = 0
-
+	if back_button:
+		back_button.pressed.connect(_on_back_button_pressed)
+	
 	if PlayerProfile.owned_cards.is_empty():
 		var all_keys = CardRegistry.all_cards.keys()
 
@@ -61,6 +66,10 @@ func _ready():
 
 	if !PlayerProfile.tutorial_steps_completed.get("deck_builder", false):
 		await start_spellbook_tour()
+
+func _on_back_button_pressed():
+	SceneTransition.change_scene(lounge)
+
 func refresh_ui():
 
 	for grid in grids.values():

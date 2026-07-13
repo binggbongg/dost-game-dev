@@ -75,6 +75,7 @@ func cast_normal(active_cards):
 		await sprite_anim_node.play_cast_sequence(active_cards)
 
 	if player_node and player_node.has_method("stop_attack_loop"):
+		combat_arena.play_player_magic()
 		player_node.stop_attack_loop()
 	
 	# 🌟 FIX 1: Locate BattleManager reliably using the scene tree root

@@ -17,24 +17,45 @@ func _ready():
 	
 	print("Database Ready: ", all_cards.size(), " cards indexed.")
 
+#func index_folder(path: String, category_name: String):
+	#var dir = DirAccess.open(path)
+	#if dir:
+		#dir.list_dir_begin()
+		#var file_name = dir.get_next()
+		#
+		#while file_name != "":
+			#if !dir.current_is_dir() and (file_name.ends_with(".tres") or file_name.ends_with(".res")):
+				#var full_path = path + file_name
+				#var card_res = load(full_path)
+				#
+				#if card_res is CardData: 
+					#all_cards[full_path] = card_res
+					#categories[category_name].append(full_path)
+			#
+			#file_name = dir.get_next()
+	#else:
+		#print("Warning: Could not open path: ", path)
+
+# converted version
 func index_folder(path: String, category_name: String):
-	var dir = DirAccess.open(path)
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
+	var files = ResourceLoader.list_directory(path)
+	
+	if files.is_empty():
+		print("Warning: Could not open path or no files found: ", path)
+		return
+	
+	for file_name in files:
+		# subdirectories are returned with a trailing "/" — skip those
+		if file_name.ends_with("/"):
+			continue
 		
-		while file_name != "":
-			if !dir.current_is_dir() and (file_name.ends_with(".tres") or file_name.ends_with(".res")):
-				var full_path = path + file_name
-				var card_res = load(full_path)
-				
-				if card_res is CardData: 
-					all_cards[full_path] = card_res
-					categories[category_name].append(full_path)
+		if file_name.ends_with(".tres") or file_name.ends_with(".res"):
+			var full_path = path.path_join(file_name)
+			var card_res = load(full_path)
 			
-			file_name = dir.get_next()
-	else:
-		print("Warning: Could not open path: ", path)
+			if card_res is CardData:
+				all_cards[full_path] = card_res
+				categories[category_name].append(full_path)
 
 func get_random_card_path() -> String:
 	var keys = all_cards.keys()

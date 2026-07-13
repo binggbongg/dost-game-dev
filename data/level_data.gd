@@ -7,7 +7,7 @@ class_name LevelData
 @export var enemy_data: EnemyBehavior
 
 @export var is_boss_level: bool = false
-@export_file("*.tscn") var post_boss_cutscene: String
+@export var post_boss_cutscene: PackedScene
 
 @export_group("Lore")
 @export var enemy_name: String

@@ -3,6 +3,7 @@ extends Node2D
 @onready var health_bar = $HealthBar
 @onready var mana_manager = $"../../PlayerInterface/GameManagers/ManaManager"
 @onready var me: AnimatedSprite2D = $AnimatedSprite2D
+@onready var magic = $MagicSprite
 
 func _ready() -> void:
 	if health_bar and mana_manager:
@@ -24,6 +25,8 @@ func _ready() -> void:
 		if character_data:
 			me.sprite_frames = character_data.sprite_frames
 			me.play("idle")
+	
+	magic.visible = false
 
 func start_attack_loop() -> void:
 	if me and me.sprite_frames.has_animation("attack"):
@@ -45,3 +48,10 @@ func play_death_animation() -> void:
 		else:
 			print("Warning: No 'death' animation asset found! Faking visual freeze.")
 			await get_tree().create_timer(1.0).timeout
+
+func play_magic():
+	#print("accessing print magic function")
+	magic.visible = true
+	magic.play("default")
+	await magic.animation_finished
+	magic.visible = false

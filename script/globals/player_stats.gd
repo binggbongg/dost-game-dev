@@ -6,6 +6,7 @@ signal player_died
 var max_mana: int = 12
 var max_health: int = 50
 var current_health: int
+var last_current_health: int
 
 @onready var health_bar:UIStatusBar
 
@@ -27,6 +28,7 @@ func take_damage(amount: int):
 	if current_health <= 0:
 		print("Player has died")
 		player_died.emit()
+		reset_health()
 
 func heal_player(amount):
 	if amount <= 0: return

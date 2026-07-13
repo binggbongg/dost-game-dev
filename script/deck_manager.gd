@@ -23,19 +23,27 @@ func load_all_cards():
 
 	print("Loaded", all_cards.size(), "cards")
 
-func load_folder(path:String):
-	var dir = DirAccess.open(path)
-	if dir == null:
-		return
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	while file_name != "":
+#func load_folder(path:String):
+	#var dir = DirAccess.open(path)
+	#if dir == null:
+		#return
+	#dir.list_dir_begin()
+	#var file_name = dir.get_next()
+	#while file_name != "":
+		#if file_name.ends_with(".tres"):
+			#var card = load(path + "/" + file_name)
+			#all_cards.append(card)
+		#file_name = dir.get_next()
+	#dir.list_dir_end()
+
+func load_folder(path: String):
+	var files = ResourceLoader.list_directory(path)
+	for file_name in files:
 		if file_name.ends_with(".tres"):
-			var card = load(path + "/" + file_name)
-			all_cards.append(card)
-		file_name = dir.get_next()
-	dir.list_dir_end()
-	
+			var card = load(path.path_join(file_name))
+			if card:
+				all_cards.append(card)
+
 func build_deck():
 	deck.clear()
 	for card in all_cards:

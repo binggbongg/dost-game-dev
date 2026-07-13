@@ -10,6 +10,9 @@ extends Node2D
 @onready var me: AnimatedSprite2D = $Buttons/Content/CharacterSpotlight/Character
 @onready var back: TextureButton = $Buttons/Content/Back
 @export var pack_scene: PackedScene 
+
+@onready var level_label = $Buttons/Content/CharacterSpotlight/PLayerLevel
+
 var tutorial_active = false
 
 var chapter_buttons: Array[BaseButton] = []
@@ -32,6 +35,9 @@ func _ready():
 			
 	# --- NEW PROGRESSION LOCK INITIALIZATION ---
 	collect_and_update_chapter_locks()
+	
+	# Updates the current phase
+	level_label.text = "Level " + str(PlayerProfile.current_level)
 	
 	# --- TEMP CHAPTER 4+ HARD LOCK ---
 	# Delete or comment out this function call to remove the restriction later.

@@ -4,6 +4,7 @@ class_name CombatLevel
 @onready var upper_bg = $UpperBackground
 @onready var battle_manager = $BattleManager
 @onready var enemy = $"CombatArena/Enemy"
+@onready var player = $"CombatArena/Player"
 
 @export var victory_screen_scene: PackedScene
 
@@ -124,13 +125,13 @@ func process_chapter_scoring_and_unlock() -> int:
 	print("Final Balanced Victory Score: ", final_calculated_score)
 	
 	var final_rank := "C"
-	if final_calculated_score >= 2000 and turns <= 10:
+	if final_calculated_score >= 10000 and turns <= 30:
 		final_rank = "S"
 	# A Rank: Solid score output OR decent efficiency combo
-	elif final_calculated_score >= 1000 or (final_calculated_score >= 900 and turns <= 13):
+	elif final_calculated_score >= 8000 or (final_calculated_score >= 6000 and turns <= 23):
 		final_rank = "A"
 	# B Rank: Average score tier
-	elif final_calculated_score >= 700:
+	elif final_calculated_score >= 5000:
 		final_rank = "B"
 	# Fallback (Under 1200 points) results in a C rank
 	else:
@@ -138,9 +139,9 @@ func process_chapter_scoring_and_unlock() -> int:
 	
 	var bonus_packs_earned := 0
 	match final_rank:
-		"S": bonus_packs_earned = 3 # Premium reward for flawless play
-		"A": bonus_packs_earned = 2
-		"B": bonus_packs_earned = 1
+		"S": bonus_packs_earned = 2 # Premium reward for flawless play
+		"A": bonus_packs_earned = 1
+		"B": bonus_packs_earned = 0
 		"C": bonus_packs_earned = 0
 	
 	var chapter_key = "chapter_" + str(PlayerProfile.current_phase)
@@ -157,7 +158,8 @@ func process_chapter_scoring_and_unlock() -> int:
 func trigger_boss_defeat_cutscene():
 	if current_level_data and not current_level_data.post_boss_cutscene.is_empty():
 		print('launching cut scene')
-		get_tree().change_scene_to_file(current_level_data.post_boss_cutscene)
+		#get_tree().change_scene_to_file(current_level_data.post_boss_cutscene)
+		SceneTransition.change_scene(current_level_data.post_boss_cutscene)
 	else:
 		proceed_next_stage()
 
@@ -183,17 +185,17 @@ func _on_player_dies():
 	SceneTransition.change_scene_path("res://scenes/menus/lounge.tscn")
 
 func evaluate_combo_scoring(active_cards: Array, matched_recipe: ComboRecipe):
-	match_combo_bonus_points += active_cards.size() * 100
+	match_combo_bonus_points += active_cards.size() * 50
 	
 	if matched_recipe:
 		PlayerProfile.run_combos_played += 1
 		var recipe_size = matched_recipe.elements.size()
 		if recipe_size == 2:
 			print("2-card combo bonus")
-			match_combo_bonus_points += 250
+			match_combo_bonus_points += 200
 		elif recipe_size == 3:
 			print("3-card combo bonus!")
-			match_combo_bonus_points += 400
+			match_combo_bonus_points += 350
 			match_score_multipler += 0.2
 	
 	print("Current Score (combatlevel): ", str(match_combo_bonus_points))

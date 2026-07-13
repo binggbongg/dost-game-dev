@@ -8,15 +8,16 @@ extends Control
 @onready var display: AnimatedSprite2D = $AnimatedSprite2D
 
 @onready var next: Label = $DialogueBox/Panel/Next
-@onready var close_button: TextureButton = $CloseButton
+@onready var close_button: TextureButton = $BackButton
 @onready var dialogue_panel = $DialogueBox/Panel
+
 var current_blocks: PackedStringArray
 var block_index: int = 0
 var line_index: int = 0
 var is_transitioning := false
 
 func _ready():
-	close_button.pressed.connect(_back_pressed)
+	#close_button.pressed.connect(_back_pressed)
 
 	
 	# Connect the dialogue box panel directly to handle text advancement clicks safely
@@ -113,9 +114,9 @@ func display_current_line():
 
 	show_current_block()
 	
-func _back_pressed():
-	AudioManager.play_ui_sound("click")
-	SceneTransition.change_scene_path("res://scenes/menus/lounge.tscn")
+#func _back_pressed():
+	#AudioManager.play_ui_sound("click")
+	#SceneTransition.change_scene_path("res://scenes/menus/lounge.tscn")
 
 func finish_intro():
 	if next_scene:

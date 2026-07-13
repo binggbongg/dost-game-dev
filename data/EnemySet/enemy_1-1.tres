@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bc0bopaja6vri" path="res://data/enemy_move.gd" id="2_t2eve"]
 [ext_resource type="Texture2D" uid="uid://by8vyl5hvtnby" path="res://assets/enemies/LVL1/Lvl1_enemy1_animation/SKILL1_ENEMY1.png" id="3_dfuhr"]
 [ext_resource type="Script" uid="uid://bltrhxh2342fx" path="res://data/enemy_behavior.gd" id="3_f5gxb"]
+[ext_resource type="Texture2D" uid="uid://dcscajymj8jqk" path="res://assets/enemies/LVL1/Lvl1_enemy1_animation/ENEMY1_DEATHANIMATION.png" id="3_i2xak"]
 [ext_resource type="Texture2D" uid="uid://kjl4vircve4u" path="res://assets/enemies/LVL1/Lvl1_enemy1_animation/SKILL2_enemy1.png" id="4_i2xak"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qi863"]
@@ -27,6 +28,58 @@ region = Rect2(600, 0, 200, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_wlvj5"]
 atlas = ExtResource("1_gbaoc")
 region = Rect2(800, 0, 200, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_783ng"]
+atlas = ExtResource("3_i2xak")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kttt"]
+atlas = ExtResource("3_i2xak")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxibf"]
+atlas = ExtResource("3_i2xak")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj1ob"]
+atlas = ExtResource("3_i2xak")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph66j"]
+atlas = ExtResource("3_i2xak")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_343e0"]
+atlas = ExtResource("3_i2xak")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqxss"]
+atlas = ExtResource("3_i2xak")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k141v"]
+atlas = ExtResource("3_i2xak")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jy4tc"]
+atlas = ExtResource("3_i2xak")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpos7"]
+atlas = ExtResource("3_i2xak")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doybx"]
+atlas = ExtResource("3_i2xak")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nm5i"]
+atlas = ExtResource("3_i2xak")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spjn5"]
+atlas = ExtResource("3_i2xak")
+region = Rect2(768, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hlwr"]
 atlas = ExtResource("2_eb4cn")
@@ -129,6 +182,50 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_783ng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kttt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxibf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj1ob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ph66j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_343e0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqxss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k141v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jy4tc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpos7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doybx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nm5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spjn5")
+}],
+"loop": false,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2hlwr")
 }, {
 "duration": 1.0,
@@ -204,15 +301,16 @@ animations = [{
 script = ExtResource("2_t2eve")
 name = "Laser Beam"
 value = 4
+chances = 0.7
 metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
-[sub_resource type="Resource" id="Resource_dxx6e"]
+[sub_resource type="Resource" id="Resource_eb4cn"]
 script = ExtResource("2_t2eve")
 name = "Laser Canon"
 type = 2
 value = 6
-chances = 0.8
-cooldown = 3
+chances = 0.3
+cooldown = 2
 metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
 [sub_resource type="Resource" id="Resource_n7gcu"]
@@ -220,8 +318,7 @@ script = ExtResource("2_t2eve")
 name = "Strikedown"
 type = 3
 value = 10
-chances = 0.2
-cooldown = 7
+cooldown = 4
 metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
 [resource]
@@ -230,6 +327,6 @@ enemy_name = "CyberHuman"
 max_health = 30
 enemy_sprite = SubResource("SpriteFrames_h0iia")
 enemy_portait = ExtResource("1_eb4cn")
-regular_moves = Array[ExtResource("2_t2eve")]([SubResource("Resource_foedf")])
-special_moves = Array[ExtResource("2_t2eve")]([SubResource("Resource_dxx6e"), SubResource("Resource_n7gcu")])
+regular_moves = Array[ExtResource("2_t2eve")]([SubResource("Resource_foedf"), SubResource("Resource_eb4cn")])
+special_moves = Array[ExtResource("2_t2eve")]([SubResource("Resource_n7gcu")])
 metadata/_custom_type_script = "uid://bltrhxh2342fx"
