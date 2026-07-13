@@ -1,5 +1,6 @@
 extends AnimatedSprite2D
 
+
 # Massive overall scale configuration
 const BASE_SCALE := Vector2(6.0, 6.0)
 

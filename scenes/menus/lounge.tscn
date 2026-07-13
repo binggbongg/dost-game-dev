@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cvgehqahw2e4x" path="res://scenes/menus/spellbook.tscn" id="12_6g71x"]
 [ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="12_f46hc"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="13_y4gql"]
+[ext_resource type="PackedScene" uid="uid://b2imrf32ymy20" path="res://scenes/ui/logout.tscn" id="14_jawdw"]
 [ext_resource type="Texture2D" uid="uid://c2xv5vbofw3wy" path="res://assets/player/girl_idle.png" id="14_vh42r"]
 [ext_resource type="Texture2D" uid="uid://vorb3t6rt425" path="res://assets/ui/map/character_container.png" id="15_5p4kk"]
 [ext_resource type="PackedScene" uid="uid://bjo62sglogr7j" path="res://scenes/menus/player_pack_slot.tscn" id="16_6g71x"]
@@ -280,6 +281,7 @@ offset_top = 27.0
 offset_right = 1896.06
 offset_bottom = 159.0
 script = ExtResource("3_uygx0")
+menu_to_open = ExtResource("14_jawdw")
 
 [node name="Audio_Off" type="AnimatedSprite2D" parent="Buttons/Content/Settings" unique_id=1147222571]
 position = Vector2(68.999985, 67)
@@ -294,6 +296,7 @@ offset_top = 798.0
 offset_right = 1625.0
 offset_bottom = 862.0
 scale = Vector2(3.895, 3.895)
+disabled = true
 texture_normal = ExtResource("25_jawdw")
 script = ExtResource("3_uygx0")
 menu_to_open = ExtResource("10_8rf1m")
@@ -338,23 +341,24 @@ vertical_alignment = 1
 
 [node name="PLayerLevel" type="Label" parent="Buttons/Content/CharacterSpotlight" unique_id=1393023250]
 layout_mode = 0
-offset_left = 61.0
-offset_top = 599.0
-offset_right = 464.0
-offset_bottom = 686.0
-text = "Level 1
-"
+offset_left = 66.0
+offset_top = 597.0
+offset_right = 442.0
+offset_bottom = 639.0
+theme_override_font_sizes/font_size = 18
+text = "Level 1"
 label_settings = SubResource("LabelSettings_8s6re")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PLayerLevel2" type="Label" parent="Buttons/Content/CharacterSpotlight" unique_id=1226604120]
 layout_mode = 0
-offset_left = 57.0
-offset_top = 602.0
-offset_right = 460.0
-offset_bottom = 689.0
-text = "230/199 XP"
+offset_left = 67.0
+offset_top = 619.0
+offset_right = 445.0
+offset_bottom = 673.0
+theme_override_font_sizes/font_size = 35
+text = "Current Phase:"
 label_settings = SubResource("LabelSettings_le30m")
 horizontal_alignment = 1
 vertical_alignment = 1

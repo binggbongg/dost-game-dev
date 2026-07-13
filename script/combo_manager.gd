@@ -210,17 +210,22 @@ func calculate_combo_output(active_cards: Array) -> Dictionary:
 		
 		match card.card_category:
 			GameEnums.CardCategory.KALIKASAN:
+				print("processing kalikasan cards --combo manager")
 				base_damage += data.damage
 			GameEnums.CardCategory.TANGLAW:
+				print("processing tanglaw cards --combo manager")
 				base_healing += data.heal
 			GameEnums.CardCategory.DIWA:
+				print("processing diwa cards --combo manager")
 				base_damage += data.damage
 				base_healing += data.heal
 				if data.multiplier > 0:
 					global_multiplier += (data.multiplier - 1.0)
 			GameEnums.CardCategory.LAHI:
+				print("processing lahi cards --combo manager")
 				base_damage += data.damage
 				base_healing += data.heal
+				global_multiplier += process_lahi_cards(active_cards)
 	
 	var final_damage = base_damage * global_multiplier
 	var final_healing = base_healing * global_multiplier
@@ -229,3 +234,25 @@ func calculate_combo_output(active_cards: Array) -> Dictionary:
 		"damage": int(round(final_damage)),
 		"healing": int(round(final_healing))
 	}
+
+func process_lahi_cards(active_cards) -> float:
+	var categories = active_cards.map(func(c): return c.card_category)
+	var lahi_count = categories.count(GameEnums.CardCategory.LAHI)
+	
+	if lahi_count == 0: return 0
+	
+	# lahi type combo
+	# lahi diwa lahi
+	# lahi diwa kalikasan/tanglaw
+	
+	var matched_recipe = get_matched_recipe()
+	if matched_recipe:
+		if matched_recipe.name == "Hukbo ng Alamat":
+			print("Hukbo ng Alamat bonus: x2")
+			return 2
+		else:
+			print("Standard Lahi Card Bonus: x1.5")
+			return 1.5
+	
+	print("no matched recipe -- combo manager")
+	return 0

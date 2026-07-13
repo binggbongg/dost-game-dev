@@ -131,12 +131,28 @@ func _on_new_game_pressed():
 		print("no next scene for new game -- play")
 		return
 	
-	PlayerProfile.player_name = "Default Player"
-	PlayerProfile.selected_character = "None"
-	PlayerProfile.max_unlocked_chapters = 1
-	PlayerProfile.high_scores.clear()
+	# resetting player details
+	PlayerProfile.initialize_profile("Default Player", "None")
+	PlayerInventory.owned_items = {}
+	PlayerInventory.inventory_changed.emit()
 	
-	SceneTransition.change_scene(next_scene)
+	if typeof(Talo) != TYPE_NIL and Talo.identity_check(false) == OK:
+		if typeof(SaveManager) != TYPE_NIL:
+			print("MainMenu: Syncing empty baseline save state to override cloud data...")
+			
+			if SaveManager.has_method("register_fields"):
+				SaveManager.register_fields()
+				
+			if SaveManager.has_method("save_game_async"):
+				await SaveManager.save_game_async()
+			elif SaveManager.has_method("save_game"):
+				SaveManager.save_game()
+	else:
+		# Fallback save for offline local development testing profiles
+		if typeof(SaveManager) != TYPE_NIL and SaveManager.has_method("save_game"):
+			SaveManager.save_game()
+	
+	SceneTransition.change_scene(intro)
 
 func _on_continue_pressed():
 	AudioManager.play_ui_sound("click")

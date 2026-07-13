@@ -134,6 +134,58 @@ func hide_spells_tab():
 	if tab2_right_page: tab2_right_page.hide()
 
 # --- UPDATE DATA RELOAD FOR TAB 2 ---
+#func reload_tab2_data():
+	#for child in special_card_container.get_children(): child.queue_free()
+	#for child in spell_container.get_children(): child.queue_free()
+	#
+	#var owned_count = 0
+	#var first_valid_resource: Resource = null
+	#
+	## Load Specials
+	#for item_id in PlayerInventory.owned_items.keys():
+		#var res = ItemDb.get_item(item_id)
+		#if res and (res is SpecialCardData or res.has_method("is_special_card")):
+			#owned_count += 1
+			#if not first_valid_resource: first_valid_resource = res
+			#var inst = SPECIAL_SLOT_SCENE.instantiate()
+			#special_card_container.add_child(inst)
+			#
+			#if inst.has_method("setup_item"): 
+				#inst.setup_item(res)
+			#
+			#if inst.has_signal("card_selected"): 
+				#inst.card_selected.connect(_on_tab2_selected)
+	#
+	## Dynamically update Special Cards label count
+	#if item_numbers:
+		#item_numbers.text = "Special Cards: %d" % owned_count
+#
+	#if empty:
+		#empty.visible = (owned_count == 0)
+#
+	## Load Combos
+	#var dir = DirAccess.open(COMBO_PATH)
+	#if dir:
+		#dir.list_dir_begin()
+		#var file_name = dir.get_next()
+		#while file_name != "":
+			#if not dir.current_is_dir() and (file_name.ends_with(".tres") or file_name.ends_with(".res")):
+				#var res = load(COMBO_PATH + file_name)
+				#if not first_valid_resource: first_valid_resource = res
+				#var inst = COMBO_SLOT_SCENE.instantiate()
+				#spell_container.add_child(inst)
+				#
+				#if inst.has_method("setup_spell"): 
+					#inst.setup_spell(res)
+				#
+				#if inst.has_signal("spell_selected"): 
+					#inst.spell_selected.connect(_on_tab2_selected)
+					#
+			#file_name = dir.get_next()
+			#
+	#if first_valid_resource and tab2_right_page.has_method("display_content"):
+		#tab2_right_page.display_content(first_valid_resource)
+
 func reload_tab2_data():
 	for child in special_card_container.get_children(): child.queue_free()
 	for child in spell_container.get_children(): child.queue_free()
@@ -159,29 +211,26 @@ func reload_tab2_data():
 	# Dynamically update Special Cards label count
 	if item_numbers:
 		item_numbers.text = "Special Cards: %d" % owned_count
-
 	if empty:
 		empty.visible = (owned_count == 0)
-
+	
 	# Load Combos
-	var dir = DirAccess.open(COMBO_PATH)
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if not dir.current_is_dir() and (file_name.ends_with(".tres") or file_name.ends_with(".res")):
-				var res = load(COMBO_PATH + file_name)
-				if not first_valid_resource: first_valid_resource = res
-				var inst = COMBO_SLOT_SCENE.instantiate()
-				spell_container.add_child(inst)
-				
-				if inst.has_method("setup_spell"): 
-					inst.setup_spell(res)
-				
-				if inst.has_signal("spell_selected"): 
-					inst.spell_selected.connect(_on_tab2_selected)
-					
-			file_name = dir.get_next()
+	var files = ResourceLoader.list_directory(COMBO_PATH)
+	for file_name in files:
+		if file_name.ends_with("/"):
+			continue
+		
+		if file_name.ends_with(".tres") or file_name.ends_with(".res"):
+			var res = load(COMBO_PATH.path_join(file_name))
+			if not first_valid_resource: first_valid_resource = res
+			var inst = COMBO_SLOT_SCENE.instantiate()
+			spell_container.add_child(inst)
+			
+			if inst.has_method("setup_spell"): 
+				inst.setup_spell(res)
+			
+			if inst.has_signal("spell_selected"): 
+				inst.spell_selected.connect(_on_tab2_selected)
 			
 	if first_valid_resource and tab2_right_page.has_method("display_content"):
 		tab2_right_page.display_content(first_valid_resource)

@@ -43,8 +43,7 @@ func setup_enemy():
 	choose_next_intent()
 
 func take_damage(amount):
-	if is_defeated:
-		return
+	if is_defeated: return
 	
 	current_health = max(0, current_health - amount)
 	print(name, " takes ", amount, " of damage. current health: ", current_health)
@@ -52,13 +51,16 @@ func take_damage(amount):
 	
 	if current_health <= 0:
 		is_defeated = true
-		print("enemy has been defeated")
-		enemy_died.emit()
-		
+		#print("enemy has been defeated")
+		#enemy_died.emit()
 		if animated_sprite and animated_sprite.sprite_frames.has_animation("death"):
 			animated_sprite.play("death")
+			await animated_sprite.animation_finished
 		else:
 			visible = false
+		
+		enemy_died.emit()
+		
 
 func choose_next_intent():
 	if current_health <= 0: return

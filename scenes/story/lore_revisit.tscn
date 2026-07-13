@@ -9,8 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://cf8ev4ro6kfoa" path="res://assets/ui/story/story_four.png" id="7_yd0cm"]
 [ext_resource type="Texture2D" uid="uid://cfx7ipnrsioyq" path="res://assets/ui/story/story_five.png" id="8_b2v1e"]
 [ext_resource type="Texture2D" uid="uid://dkrdeoxraji45" path="res://assets/ui/story/story_six.png" id="9_lt1h0"]
-[ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="11_wtt3i"]
+[ext_resource type="Texture2D" uid="uid://dhygk23ytuxpm" path="res://assets/ui/mainscreen/mainscreen_ui_exitbutton.png" id="11_c6tl2"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="12_8r0tg"]
+[ext_resource type="Script" uid="uid://wa6kslpamdoq" path="res://script/ui/close_button.gd" id="12_pcviq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8e46y"]
 animations = [{
@@ -139,10 +140,12 @@ text = "???"
 label_settings = SubResource("LabelSettings_d13ka")
 autowrap_mode = 2
 
-[node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("11_wtt3i")]
+[node name="BackButton" type="TextureButton" parent="." unique_id=585198044]
 layout_mode = 0
-offset_left = 38.0
-offset_top = 37.0
-offset_right = 44.5
-offset_bottom = 43.25
-script = null
+offset_left = 45.0
+offset_top = 44.0
+offset_right = 50.0
+offset_bottom = 49.0
+scale = Vector2(12, 12)
+texture_normal = ExtResource("11_c6tl2")
+script = ExtResource("12_pcviq")
