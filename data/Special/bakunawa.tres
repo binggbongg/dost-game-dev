@@ -1,8 +1,129 @@
 [gd_resource type="Resource" script_class="SpecialCardData" format=3 uid="uid://q1wvvv4gbdoj"]
 
+[ext_resource type="Texture2D" uid="uid://dsp07irp2qj88" path="res://assets/ui/handsigns/special_attack/special_bakunawa.png" id="1_0oigu"]
 [ext_resource type="Script" uid="uid://cpiimvdghqtnm" path="res://data/special_cards.gd" id="1_jnh2x"]
 [ext_resource type="Script" uid="uid://8m6aga3qk3g5" path="res://script/item_effects/diwata.gd" id="1_kj3k0"]
 [ext_resource type="Texture2D" uid="uid://rn1hoha0fbpn" path="res://assets/cards/bakunawa.png" id="3_kj3k0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rsym"]
+atlas = ExtResource("1_0oigu")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snwwj"]
+atlas = ExtResource("1_0oigu")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qprjd"]
+atlas = ExtResource("1_0oigu")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sb2nb"]
+atlas = ExtResource("1_0oigu")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pj8p"]
+atlas = ExtResource("1_0oigu")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cne0d"]
+atlas = ExtResource("1_0oigu")
+region = Rect2(320, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_147o0"]
+atlas = ExtResource("1_0oigu")
+region = Rect2(384, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6lp8"]
+atlas = ExtResource("1_0oigu")
+region = Rect2(448, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0bdc"]
+atlas = ExtResource("1_0oigu")
+region = Rect2(512, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0dqo"]
+atlas = ExtResource("1_0oigu")
+region = Rect2(576, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22ww2"]
+atlas = ExtResource("1_0oigu")
+region = Rect2(640, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8t5o"]
+atlas = ExtResource("1_0oigu")
+region = Rect2(704, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q16li"]
+atlas = ExtResource("1_0oigu")
+region = Rect2(768, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_totn5"]
+atlas = ExtResource("1_0oigu")
+region = Rect2(832, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv2vi"]
+atlas = ExtResource("1_0oigu")
+region = Rect2(896, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfb66"]
+atlas = ExtResource("1_0oigu")
+region = Rect2(960, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qfcql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rsym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snwwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qprjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sb2nb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pj8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cne0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_147o0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6lp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0bdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0dqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22ww2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8t5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q16li")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_totn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv2vi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfb66")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [resource]
 script = ExtResource("1_jnh2x")
@@ -10,6 +131,7 @@ category = 4
 rarity = 4
 effect_script = ExtResource("1_kj3k0")
 mana_cost = 5
+cardASL = SubResource("SpriteFrames_qfcql")
 item_id = "003"
 name = "Bakunawa"
 description = "Does something!"

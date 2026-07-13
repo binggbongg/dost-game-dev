@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cad0d2tw4c1ea" path="res://assets/ui/buttons/Start_icon.png" id="13_nvek4"]
 [ext_resource type="PackedScene" uid="uid://ckbrj3vh8fqlp" path="res://scenes/story/mechanicsui.tscn" id="14_nvek4"]
 [ext_resource type="Texture2D" uid="uid://ds3wsk47yxvob" path="res://assets/ui/map/back_button.png" id="15_hs0xd"]
+[ext_resource type="Texture2D" uid="uid://ck2adhwuhbeqv" path="res://assets/ui/buttons/deselect_button.png" id="20_4hq6j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_50gjk"]
 font = ExtResource("9_md1jm")
@@ -345,10 +346,5 @@ offset_left = 139.0
 offset_top = 995.0
 offset_right = 203.4706
 offset_bottom = 1026.5
-scale = Vector2(2.125, 2.125)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DeselectAll" unique_id=1080612350]
-position = Vector2(31.529411, 16.4706)
-scale = Vector2(0.595, 0.595)
-sprite_frames = SubResource("SpriteFrames_3agqh")
-autoplay = "default"
+scale = Vector2(1.43, 1.43)
+texture_normal = ExtResource("20_4hq6j")

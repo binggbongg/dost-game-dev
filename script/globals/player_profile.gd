@@ -184,3 +184,7 @@ func sync_local_scores_to_talo() -> void:
 			})
 			
 	print("[SYNC] Offline data backup synchronization processing finished.")
+
+
+func get_highest_unlocked_chapter() -> int:
+	return max_unlocked_chapters

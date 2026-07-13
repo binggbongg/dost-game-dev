@@ -82,7 +82,7 @@ func start_world_cutscene(data: StoryData) -> void:
 
 	if skip:
 		skip.show()
-	
+
 
 	await conversation.play_sequence(dialogue_resource, "intro")
 	if is_skipping: return
@@ -106,7 +106,7 @@ func start_world_cutscene(data: StoryData) -> void:
 	if skip:
 		skip.hide()
 	
-	await conversation.play_sequence(dialogue_resource, "chapter1_star_fragment")
+	await conversation.play_sequence(dialogue_resource, "chapter3_star_fragment")
 	if is_skipping: return
 	
 	finish_cutscene()

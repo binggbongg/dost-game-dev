@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bjxqvrod4fdtj" path="res://assets/player/boy_walk.png" id="5_errjt"]
 [ext_resource type="Texture2D" uid="uid://cs0c43t26y4h6" path="res://assets/gems/prosperity_gem.png" id="6_yen50"]
 [ext_resource type="PackedScene" uid="uid://divonvi0kh3o3" path="res://scenes/story/storyUI.tscn" id="7_nfhl1"]
-[ext_resource type="Texture2D" uid="uid://b0swjxppkpsi5" path="res://assets/ui/buttons/exit_icon.png" id="9_efcod"]
+[ext_resource type="Texture2D" uid="uid://c5y7ttcjd5ywj" path="res://assets/ui/buttons/skip_button.png" id="9_efcod"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_efcod"]
 atlas = ExtResource("4_bupx8")
@@ -136,7 +136,7 @@ flip_h = true
 [node name="Area2D" type="Area2D" parent="Scene/Enemy" unique_id=1498880717]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/Enemy/Area2D" unique_id=736863807]
-position = Vector2(22.215067, 16.19717)
+position = Vector2(21.864227, 12.80406)
 rotation = -0.41475078
 shape = SubResource("CapsuleShape2D_sj0b7")
 
@@ -153,7 +153,7 @@ autoplay = "new_animation"
 shape = SubResource("CapsuleShape2D_oxllp")
 
 [node name="Gem" type="Sprite2D" parent="." unique_id=1645395090]
-position = Vector2(1236.0001, 239.00002)
+position = Vector2(1348.0001, 231)
 scale = Vector2(1.5390598, 1.5390598)
 texture = ExtResource("6_yen50")
 
@@ -164,9 +164,9 @@ scale = Vector2(3.325, 3.325)
 [node name="Conversation" parent="." unique_id=153786700 instance=ExtResource("7_nfhl1")]
 
 [node name="Skip" type="TextureButton" parent="." unique_id=25387883]
-offset_left = 1680.0
-offset_top = 8.0
-offset_right = 1808.0
-offset_bottom = 72.0
+offset_left = 1695.0
+offset_top = 36.0
+offset_right = 1802.438
+offset_bottom = 80.0
 scale = Vector2(1.815, 1.815)
 texture_normal = ExtResource("9_efcod")

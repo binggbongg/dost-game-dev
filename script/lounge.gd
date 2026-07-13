@@ -37,7 +37,7 @@ func _ready():
 	collect_and_update_chapter_locks()
 	
 	# Updates the current phase
-	level_label.text = "Level " + str(PlayerProfile.current_level)
+	level_label.text = "Level " + str(PlayerProfile.get_highest_unlocked_chapter())
 	
 	# --- TEMP CHAPTER 4+ HARD LOCK ---
 	# Delete or comment out this function call to remove the restriction later.
@@ -192,8 +192,7 @@ func collect_and_update_chapter_locks() -> void:
 			target_btn.disabled = false
 			target_btn.modulate = Color(1.0, 1.0, 1.0, 1.0)
 			
-			# NEW: Apply glow only to the current highest chapter
-			if chapter_num == current_max:
+			if chapter_num == current_max and chapter_num < 4:
 				apply_glow(target_btn)
 				
 			if not target_btn.pressed.is_connected(_on_chapter_button_pressed):

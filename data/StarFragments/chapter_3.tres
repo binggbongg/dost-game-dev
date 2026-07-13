@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StarFragments" format=3 uid="uid://6eq7ird04vct"]
+
+[ext_resource type="Texture2D" uid="uid://dnyblmx0u83vb" path="res://assets/gems/hope_gem.png" id="1_xjue4"]
+[ext_resource type="Script" uid="uid://b0a3svt0n8an4" path="res://data/star_fragments.gd" id="2_4xnvc"]
+
+[resource]
+script = ExtResource("2_4xnvc")
+name = "Pag-asa"
+illustration = ExtResource("1_xjue4")
+metadata/_custom_type_script = "uid://b0a3svt0n8an4"
