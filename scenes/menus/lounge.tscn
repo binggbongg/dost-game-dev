@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cvgehqahw2e4x" path="res://scenes/menus/spellbook.tscn" id="12_6g71x"]
 [ext_resource type="FontFile" uid="uid://cgd71sksi1cj3" path="res://assets/fonts/PixelifySans-Bold.ttf" id="12_f46hc"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="13_y4gql"]
-[ext_resource type="PackedScene" uid="uid://c6s5cqo4d4utu" path="res://scenes/ui/base_menu.tscn" id="14_jawdw"]
+[ext_resource type="PackedScene" uid="uid://b2imrf32ymy20" path="res://scenes/ui/logout.tscn" id="14_jawdw"]
 [ext_resource type="Texture2D" uid="uid://c2xv5vbofw3wy" path="res://assets/player/girl_idle.png" id="14_vh42r"]
 [ext_resource type="Texture2D" uid="uid://vorb3t6rt425" path="res://assets/ui/map/character_container.png" id="15_5p4kk"]
 [ext_resource type="PackedScene" uid="uid://bjo62sglogr7j" path="res://scenes/menus/player_pack_slot.tscn" id="16_6g71x"]
