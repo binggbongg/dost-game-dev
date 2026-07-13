@@ -142,6 +142,7 @@ func _finish_and_transition_scene() -> void:
 	if level_data_ref and (level_data_ref.is_boss_level or level_data_ref.level_number == 3):
 		print("[ROUTE] Boss clear complete. Moving back to overall lounge interface.")
 		SceneTransition.change_scene_path("res://scenes/menus/lounge.tscn")
+		# change to the actual path of the cutscene
 	else:
 		print("[ROUTE] Minion clear complete. Redirecting straight to Deck Builder scene layout.")
 		SceneTransition.change_scene_path("res://scenes/ui/DeckBuilder.tscn")

@@ -183,17 +183,17 @@ func _on_player_dies():
 	SceneTransition.change_scene_path("res://scenes/menus/lounge.tscn")
 
 func evaluate_combo_scoring(active_cards: Array, matched_recipe: ComboRecipe):
-	match_combo_bonus_points += active_cards.size() * 100
+	match_combo_bonus_points += active_cards.size() * 50
 	
 	if matched_recipe:
 		PlayerProfile.run_combos_played += 1
 		var recipe_size = matched_recipe.elements.size()
 		if recipe_size == 2:
 			print("2-card combo bonus")
-			match_combo_bonus_points += 250
+			match_combo_bonus_points += 200
 		elif recipe_size == 3:
 			print("3-card combo bonus!")
-			match_combo_bonus_points += 400
+			match_combo_bonus_points += 350
 			match_score_multipler += 0.2
 	
 	print("Current Score (combatlevel): ", str(match_combo_bonus_points))
