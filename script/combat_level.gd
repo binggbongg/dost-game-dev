@@ -54,16 +54,27 @@ func load_level_config(data):
 func _on_enemy_defeated():
 	print("CombatLevel: Enemy defeated signal caught directly!")
 	
-	# Freeze turns, inputs, and match timers smoothly
 	if battle_manager and battle_manager.has_method("halt_battle_processing"):
 		battle_manager.halt_battle_processing()
 		
-	var calculated_score = await process_chapter_scoring_and_unlock()
+	# 🌟 Calculate performance metrics for THIS stage
+	var stage_score = calculate_stage_score()
+	var turns_taken = PlayerProfile.run_turns
+	
+	var chapter_key = "chapter_" + str(PlayerProfile.current_phase)
+	if not PlayerProfile.high_scores.has(chapter_key):
+		PlayerProfile.high_scores[chapter_key] = {"score": 0, "rank": "C"}
+	
+	# Accumulate current phase score tracking data
+	var running_chapter_total = PlayerProfile.high_scores[chapter_key].get("score", 0) + stage_score
+	var calculated_rank = determine_overall_rank(running_chapter_total, turns_taken)
+	
+	# Track local changes
+	PlayerProfile.high_scores[chapter_key] = {"rank": calculated_rank, "score": running_chapter_total}
+	
 	prepare_next_progression_target()
 
-	# 🌟 FIX 2: Dynamic local instantiation using the secure preload variable
 	if victory_screen_scene:
-		print("CombatLevel: Instantiating victory interface overlay layer...")
 		var victory_instance = victory_screen_scene.instantiate()
 		victory_instance.name = "VictoryScreenNode"
 
@@ -73,15 +84,38 @@ func _on_enemy_defeated():
 		else:
 			add_child(victory_instance)
 		
-		var current_chapter_key = "chapter_" + str(PlayerProfile.current_phase)
-		var saved_record = PlayerProfile.high_scores.get(current_chapter_key, {"rank": "C"})
-		var final_calculated_rank: String = saved_record.get("rank", "C")
-		
-		victory_instance.initialize_victory_rewards(current_level_data, calculated_score, final_calculated_rank)
-		PlayerProfile.reset_run_counter()
+		# 🌟 Check if this was a boss battle to see what parameters to pass out
+		if current_level_data and current_level_data.is_boss_level:
+			# Boss complete: Push totals to Talo leaderboards
+			if typeof(Talo) != TYPE_NIL:
+				await Talo.leaderboards.add_entry(chapter_key, running_chapter_total, {
+					"rank": str(calculated_rank)
+				})
+			SaveManager.save_game()
+			
+			# Render full chapter rewards (Total cumulative score and card packs unlocked)
+			victory_instance.initialize_victory_rewards(current_level_data, running_chapter_total, calculated_rank)
+			PlayerProfile.reset_run_counter()
+		else:
+			# Regular Stage complete: Show local stage screen metrics without card packs
+			victory_instance.initialize_victory_rewards(current_level_data, stage_score, "C")
 	else:
 		print("CRITICAL: victory_screen_scene file target asset path is invalid or missing!")
 
+func calculate_stage_score() -> int:
+	var combos_played = PlayerProfile.run_combos_played
+	var gameplay_base = match_combo_bonus_points + (combos_played * 250)
+	var turn_efficiency = clamp(1.0 - (PlayerProfile.run_turns * 0.02), 0.2, 1.0)
+	return int(max(0, gameplay_base * match_score_multipler * turn_efficiency))
+
+func determine_overall_rank(total_score: int, total_turns: int) -> String:
+	if total_score >= 5000 and total_turns <= 30:
+		return "S"
+	elif total_score >= 3500 or (total_score >= 3000 and total_turns <= 38):
+		return "A"
+	elif total_score >= 2000:
+		return "B"
+	return "C"
 
 func prepare_next_progression_target():
 	PlayerProfile.advance_to_next_level()

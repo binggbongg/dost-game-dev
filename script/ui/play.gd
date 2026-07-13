@@ -30,6 +30,9 @@ var is_returning_player: bool = false
 var active_loading_screen: CustomLoadingScreen = null
 
 func _ready():
+	if Talo.has_signal("initialized"):
+		await Talo.initialized
+	
 	if menu_bgm:
 		AudioManager.play_bgm(menu_bgm)
 	
@@ -48,7 +51,6 @@ func _ready():
 	
 	update_settings_button_state()
 	
-	# Find out if we are running an intro or continuing a run
 	check_player_history()
 
 func update_settings_button_state():
@@ -127,16 +129,34 @@ func check_player_history() -> void:
 
 func _on_new_game_pressed():
 	AudioManager.play_ui_sound("click")
-	if not next_scene:
-		print("no next scene for new game -- play")
+	
+	var target_start_scene = intro if intro != null else setup
+	if not target_start_scene:
+		print("no valid intro or setup scene assigned -- play")
 		return
 	
-	PlayerProfile.player_name = "Default Player"
-	PlayerProfile.selected_character = "None"
-	PlayerProfile.max_unlocked_chapters = 1
-	PlayerProfile.high_scores.clear()
+	PlayerProfile.initialize_profile("Default Player", "None")
+	PlayerProfile.owned_cards = []
+	PlayerProfile.current_phase = 1
+	PlayerProfile.current_level = 1
 	
-	SceneTransition.change_scene(next_scene)
+	var base_level_path = "res://data/Levels/level_1-1.tres"
+	if ResourceLoader.exists(base_level_path):
+		PlayerProfile.next_level_resource = load(base_level_path) as LevelData
+	
+	PlayerInventory.owned_items = {}
+	PlayerInventory.inventory_changed.emit()
+	
+	if is_returning_player and typeof(SaveManager) != TYPE_NIL:
+		print("MainMenu: Overwriting existing cloud save state with a fresh profile...")
+		if SaveManager.has_method("register_fields"):
+			SaveManager.register_fields()
+		if SaveManager.has_method("save_game_async"):
+			await SaveManager.save_game_async()
+		elif SaveManager.has_method("save_game"):
+			SaveManager.save_game()
+	
+	SceneTransition.change_scene(target_start_scene)
 
 func _on_continue_pressed():
 	AudioManager.play_ui_sound("click")
