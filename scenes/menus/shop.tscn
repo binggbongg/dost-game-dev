@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://vsdaf8mn3q5o" path="res://script/ui/shopUI.gd" id="1_lr2rd"]
 [ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="2_057h8"]
 [ext_resource type="Resource" uid="uid://cf0hklyd64oy" path="res://data/Shop/regular.tres" id="2_p6j4a"]
+[ext_resource type="Texture2D" uid="uid://bcjxrf4ya5uhg" path="res://assets/background/rooms/background_shop.png" id="3_op5ld"]
 [ext_resource type="Texture2D" uid="uid://2vgynhwgdtwa" path="res://assets/ui/shop/shop_board_empty.png" id="3_tqrtc"]
 [ext_resource type="PackedScene" uid="uid://buor4em2o4cfj" path="res://scenes/ui/coin_display.tscn" id="4_p6j4a"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_tqrtc"]
-[ext_resource type="Texture2D" uid="uid://bby48bvsp02i0" path="res://assets/temporary/slot spotlight.jpg" id="5_tqrtc"]
-[ext_resource type="Texture2D" uid="uid://dw0jdj1l28v2" path="res://assets/temporary/purchase.png" id="6_op5ld"]
+[ext_resource type="Texture2D" uid="uid://boabmii5i72r" path="res://assets/ui/shop/purchase_button.png" id="6_lsiq6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lsiq6"]
 paragraph_spacing = 1.0
@@ -21,8 +21,7 @@ font_size = 47
 [sub_resource type="LabelSettings" id="LabelSettings_hlia1"]
 line_spacing = 0.05
 font = ExtResource("4_tqrtc")
-font_size = 18
-font_color = Color(0, 0, 0, 1)
+font_size = 14
 
 [node name="Shop" type="Control" unique_id=777287855]
 custom_minimum_size = Vector2(160, 220)
@@ -39,6 +38,7 @@ shop_data = ExtResource("2_p6j4a")
 layout_mode = 0
 offset_right = 1919.0
 offset_bottom = 1094.0
+texture = ExtResource("3_op5ld")
 
 [node name="Box" type="TextureRect" parent="." unique_id=685784617]
 layout_mode = 0
@@ -89,7 +89,6 @@ columns = 4
 [node name="DetailsPanel" type="TextureRect" parent="HBoxContainer" unique_id=1924379834]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("5_tqrtc")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DetailsPanel" unique_id=579274404]
 layout_mode = 0
@@ -103,10 +102,10 @@ anchor_left = 0.12240664
 anchor_top = 0.013940521
 anchor_right = 0.12240664
 anchor_bottom = 0.013940521
-offset_left = -20.091286
-offset_top = 50.609665
-offset_right = 577.9087
-offset_bottom = 134.60966
+offset_left = 91.985504
+offset_top = 106.609665
+offset_right = 509.98547
+offset_bottom = 190.60966
 text = "DIWATA"
 label_settings = SubResource("LabelSettings_m8xc7")
 horizontal_alignment = 1
@@ -115,10 +114,11 @@ vertical_alignment = 1
 [node name="BigIcon" type="TextureRect" parent="HBoxContainer/DetailsPanel" unique_id=1718231922]
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 0
-offset_left = 245.58
-offset_top = 272.595
-offset_right = 495.58057
-offset_bottom = 534.5947
+offset_left = 262.00003
+offset_top = 289.00003
+offset_right = 512.0006
+offset_bottom = 596.07184
+scale = Vector2(0.835, 0.835)
 expand_mode = 1
 stretch_mode = 5
 
@@ -129,10 +129,10 @@ anchor_left = 0.11307054
 anchor_top = 0.10130112
 anchor_right = 0.14522822
 anchor_bottom = 0.10130112
-offset_left = -13.219948
-offset_top = 513.96857
-offset_right = 558.11206
-offset_bottom = 643.96857
+offset_left = 113.783226
+offset_top = 453.16357
+offset_right = 480.81326
+offset_bottom = 591.1636
 text = "The goddess of Light and Heaven blesses her mages with abundance and grace. When used in battle, her blessing allows mages to heal 50% of their total health, allowing them to battle longer and relinquish their opponents."
 label_settings = SubResource("LabelSettings_hlia1")
 horizontal_alignment = 1
@@ -146,10 +146,10 @@ anchor_left = 0.10425311
 anchor_top = 0.14869888
 anchor_right = 0.10425311
 anchor_bottom = 0.14869888
-offset_left = -6.7302933
-offset_top = 659.8364
-offset_right = 172.26971
-offset_bottom = 685.8364
+offset_left = 72.25885
+offset_top = 600.8364
+offset_right = 251.25885
+offset_bottom = 626.8364
 text = "HEALTH"
 label_settings = SubResource("LabelSettings_hlia1")
 horizontal_alignment = 1
@@ -162,10 +162,10 @@ anchor_left = 0.10373444
 anchor_top = 0.151487
 anchor_right = 0.10373444
 anchor_bottom = 0.151487
-offset_left = -6.348549
-offset_top = 680.75836
-offset_right = 174.65146
-offset_bottom = 706.75836
+offset_left = 104.580894
+offset_top = 616.75836
+offset_right = 215.5809
+offset_bottom = 642.75836
 text = "+50%"
 label_settings = SubResource("LabelSettings_hlia1")
 horizontal_alignment = 1
@@ -178,10 +178,10 @@ anchor_left = 0.121369295
 anchor_top = 0.14684016
 anchor_right = 0.121369295
 anchor_bottom = 0.14684016
-offset_left = 189.6722
-offset_top = 659.8885
-offset_right = 369.67218
-offset_bottom = 685.8885
+offset_left = 207.62973
+offset_top = 602.8885
+offset_right = 387.6297
+offset_bottom = 628.8885
 text = "PRICE"
 label_settings = SubResource("LabelSettings_hlia1")
 horizontal_alignment = 1
@@ -194,10 +194,10 @@ anchor_left = 0.121369295
 anchor_top = 0.14776951
 anchor_right = 0.121369295
 anchor_bottom = 0.14776951
-offset_left = 191.6722
-offset_top = 680.8624
-offset_right = 367.67218
-offset_bottom = 706.8624
+offset_left = 243.62973
+offset_top = 621.8624
+offset_right = 353.62973
+offset_bottom = 647.8624
 text = "100"
 label_settings = SubResource("LabelSettings_hlia1")
 horizontal_alignment = 1
@@ -210,11 +210,11 @@ anchor_left = 0.1436722
 anchor_top = 0.14869888
 anchor_right = 0.1436722
 anchor_bottom = 0.14869888
-offset_left = 379.25726
-offset_top = 659.8364
-offset_right = 559.25726
-offset_bottom = 682.8364
-text = "Attack"
+offset_left = 345.7796
+offset_top = 598.8364
+offset_right = 525.7796
+offset_bottom = 621.8364
+text = "ATK"
 label_settings = SubResource("LabelSettings_hlia1")
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -226,10 +226,10 @@ anchor_left = 0.14626557
 anchor_top = 0.14962825
 anchor_right = 0.14626557
 anchor_bottom = 0.14962825
-offset_left = 375.34854
-offset_top = 680.8104
-offset_right = 557.3485
-offset_bottom = 706.8104
+offset_left = 377.16907
+offset_top = 617.8104
+offset_right = 490.16907
+offset_bottom = 643.8104
 text = "10"
 label_settings = SubResource("LabelSettings_hlia1")
 horizontal_alignment = 1
@@ -237,11 +237,12 @@ autowrap_mode = 3
 
 [node name="purchase_button" type="TextureButton" parent="HBoxContainer/DetailsPanel" unique_id=1339198168]
 layout_mode = 0
-offset_left = 264.0
-offset_top = 835.0
-offset_right = 459.0
-offset_bottom = 1119.0
-texture_normal = ExtResource("6_op5ld")
+offset_left = 252.0
+offset_top = 883.99994
+offset_right = 288.0
+offset_bottom = 892.99994
+scale = Vector2(6.145, 6.145)
+texture_normal = ExtResource("6_lsiq6")
 
 [node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("2_057h8")]
 layout_mode = 0
@@ -252,7 +253,7 @@ offset_bottom = 55.25
 
 [node name="CoinDisplay" parent="." unique_id=1456686641 instance=ExtResource("4_p6j4a")]
 layout_mode = 1
-offset_left = 1255.736
-offset_top = 127.48401
-offset_right = 1003.598
-offset_bottom = 2.6689873
+offset_left = 1437.736
+offset_top = 141.48401
+offset_right = 1185.598
+offset_bottom = 16.668987

@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var score_label: Label = $VICTORY/ScoreLabel
 @onready var next_button: TextureButton = $VICTORY/next
 @onready var coin_reward_label: Label = $VICTORY/CoinLabel
+@onready var dimmer: ColorRect = $Dimmer
 
 @onready var pack_layer: CanvasLayer = $VICTORY/PackLayer
 @export var pack_scene: PackedScene                               # Assign your card pack .tscn here
@@ -92,17 +93,22 @@ func adjust_rewards_layout() -> void:
 		if card_pack:
 			card_pack.visible = true
 
-## Sequence controller running the box disappearance and pack animations loop
 func _on_next_pressed() -> void:
 	next_button.disabled = true
 
 	# 1. Hide the Victory window elements so they don't block the screen during pack openings
 	var hide_tween = create_tween()
 	hide_tween.tween_property($VICTORY, "modulate:a", 0.0, 0.3)
+	
+	# TWEAK: Fade out the dimmer right here if the player earned a card pack
+	if cached_packs_earned > 0 and pack_scene and dimmer:
+		hide_tween.parallel().tween_property(dimmer, "modulate:a", 0.0, 0.3)
+		
 	hide_tween.tween_callback(func(): $VICTORY.visible = false)
 	await hide_tween.finished
 
 	if cached_packs_earned > 0 and pack_scene:
+		
 		# Dynamically ensure a valid, visible PackLayer exists so the pack shows over everything
 		if not pack_layer:
 			pack_layer = get_node_or_null("PackLayer")
@@ -121,6 +127,8 @@ func _on_next_pressed() -> void:
 
 	# 3. ROUTING: Now that all card packs are opened and closed, transition out!
 	_finish_and_transition_scene()
+
+
 
 func update_ui_text_displays():
 	if is_instance_valid(score_label):

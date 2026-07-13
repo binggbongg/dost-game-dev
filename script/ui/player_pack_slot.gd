@@ -155,7 +155,8 @@ func _handle_drag_end(card_node):
 
 		# FIX: Play the sound immediately when the threshold is passed, 
 		# instead of waiting for the animation to finish.
-		AudioManager.play_ui_sound("flip") 
+		AudioManager.play_sound_from_path("res://data/SoundData/sfx/slide.wav", false, 0.0)
+
 
 		var tween = create_tween()
 
