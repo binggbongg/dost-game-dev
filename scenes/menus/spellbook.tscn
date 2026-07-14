@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dwhd73alc5m46" path="res://scenes/menus/spellbook_item_holder.tscn" id="6_qwtax"]
 [ext_resource type="PackedScene" uid="uid://dxkwma4vjc3he" path="res://scenes/menus/spellbook_special_cards.tscn" id="7_qwtax"]
 [ext_resource type="PackedScene" uid="uid://b6ljbscbki8al" path="res://scenes/menus/spellbook_spells_slot.tscn" id="8_2uart"]
-[ext_resource type="Script" path="res://script/ui/coming_soon.gd" id="10_lqdag"]
+[ext_resource type="Script" uid="uid://cmw7epa41rdae" path="res://script/ui/coming_soon.gd" id="10_lqdag"]
 [ext_resource type="Script" uid="uid://dacmhq3qtdlpg" path="res://script/ui/spellbook_manager.gd" id="12_vgybv"]
 [ext_resource type="PackedScene" uid="uid://nrf002bvasid" path="res://scenes/menus/spellbook_combo_slot.tscn" id="13_qwtax"]
 [ext_resource type="Texture2D" uid="uid://cgav85k1hpguj" path="res://assets/ui/spellbook/spellbook_cards.png" id="16_lqdag"]
@@ -279,6 +279,7 @@ scale = Vector2(10.295, 10.295)
 texture_normal = ExtResource("17_7agw1")
 
 [node name="BattleJournal" type="TextureButton" parent="Bookmarks" unique_id=1761058960]
+visible = false
 offset_left = 175.00002
 offset_top = 313.0
 offset_right = 186.00002
@@ -287,6 +288,7 @@ scale = Vector2(10.295, 10.295)
 texture_normal = ExtResource("18_4ffkf")
 
 [node name="StarFragments" type="TextureButton" parent="Bookmarks" unique_id=1349092788]
+visible = false
 offset_left = 166.0
 offset_top = 400.0
 offset_right = 177.0
@@ -295,6 +297,7 @@ scale = Vector2(10.295, 10.295)
 texture_normal = ExtResource("19_166nj")
 
 [node name="Locations" type="TextureButton" parent="Bookmarks" unique_id=588747631]
+visible = false
 offset_left = 157.0
 offset_top = 488.0
 offset_right = 168.0

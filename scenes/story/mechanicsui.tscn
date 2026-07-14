@@ -70,9 +70,9 @@ label_settings = SubResource("LabelSettings_rrrj2")
 autowrap_mode = 2
 
 [node name="Click Anywehre" type="Label" parent="." unique_id=1606723756]
-offset_left = 846.0
+offset_left = 14.0
 offset_top = 1023.0
-offset_right = 1343.0
+offset_right = 1917.0
 offset_bottom = 1064.0
 text = "Press the spacebar to continue"
 label_settings = SubResource("LabelSettings_6ak7u")

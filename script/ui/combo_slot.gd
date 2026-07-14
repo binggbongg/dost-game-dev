@@ -52,10 +52,10 @@ func _fill_special(res):
 func _fill_combo(panel, res, manager, is_triple, elements_array):
 	var n = panel.get_node_or_null("Name")
 	var d = panel.get_node_or_null("DescriptionPanel/DescriptionFull")
-	
+	var f = panel.get_node_or_null("FilipinoLoreFull")
 	if n: n.text = str(res.get("name"))
 	if d: d.text = str(res.get("description"))
-	
+	if f: f.text = str(res.get("filipino_lore"))
 	if elements_array.size() > 0:
 		var c1 = panel.get_node_or_null("Card")
 		var c2 = panel.get_node_or_null("Card2")

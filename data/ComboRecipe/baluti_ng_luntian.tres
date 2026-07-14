@@ -7,4 +7,5 @@ script = ExtResource("1_vkabs")
 name = "Baluti ng Luntian"
 description = "Ancient roots and sacred light weave an unyielding defense."
 elements = Array[int]([2, 3, 2])
+filipino_lore = "Test"
 metadata/_custom_type_script = "uid://v3nevm1wba6b"
