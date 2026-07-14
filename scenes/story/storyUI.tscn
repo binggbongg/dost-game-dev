@@ -124,8 +124,10 @@ texture = ExtResource("4_vslhr")
 [node name="npc_portrait" type="TextureRect" parent="DialogueBox" unique_id=762260707]
 visibility_layer = 17
 layout_mode = 0
-offset_left = 187.0
-offset_top = 189.0
-offset_right = 277.8271
-offset_bottom = 280.72937
+offset_left = 172.0
+offset_top = 180.99997
+offset_right = 267.48547
+offset_bottom = 280.0683
 scale = Vector2(3.22, 3.22)
+expand_mode = 1
+stretch_mode = 5

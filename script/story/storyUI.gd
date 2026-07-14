@@ -10,6 +10,7 @@ signal line_finished
 @onready var name_label: RichTextLabel = $DialogueBox/DialoguePanel/NameLabel
 @onready var portrait: TextureRect = $DialogueBox/npc_portrait
 @onready var next: RichTextLabel = $DialogueBox/DialoguePanel/Next
+@onready var box: TextureRect = $DialogueBox/DialoguePanel3
 
 var is_active: bool = false
 var player_sprite_frames: SpriteFrames 
@@ -56,6 +57,7 @@ func display_line(speaker: String, text: String) -> void:
 	
 	# --- UNIFIED STYLE SWITCHING ---
 	if speaker == "Player":
+		box.show()
 		name_label.text = PlayerProfile.player_name
 		
 		if text.contains("?") or text.contains("...") or text.contains("Let's move"):
@@ -70,6 +72,7 @@ func display_line(speaker: String, text: String) -> void:
 			portrait.hide()
 			
 	elif speaker == "Star Fragment" or speaker == "Araw":
+		box.show()
 		name_label.text = "[color=#ffe6f2][b]" + speaker + "[/b][/color]"
 		text_label.text = "[color=#ffffff][b]" + text + "[/b][/color]"
 		
@@ -79,26 +82,16 @@ func display_line(speaker: String, text: String) -> void:
 		else:
 			portrait.hide()
 	elif speaker == "Enemy":
-		var path = "res://data/Levels/level_%d-%d.tres" % [PlayerProfile.current_phase, PlayerProfile.current_level]
-		var Level: LevelData = load(path)
+		box.hide()
+		var path =  "res://data/Levels/level_%d-%d.tres" % [PlayerProfile.current_phase, PlayerProfile.current_level]
+		var Level: LevelData= load(path)
+		var enemypath =  "res://data/EnemySet/enemy_%d-3.tres" % [PlayerProfile.current_phase]
+		var enemy: EnemyBehavior = load (enemypath)
 		name_label.text = Level.enemy_name
 		text_label.text = text
+		portrait.texture = enemy.enemy_portait
+		portrait.show()
 		
-		# Generate the animation name from the current phase and level (e.g., "2_3")
-		var anim_name = "%d_%d" % [PlayerProfile.current_phase, PlayerProfile.current_level]
-		
-		# Pull the frame texture from the SpriteFrames variable assigned to THIS CanvasLayer script
-		if enemy_portrait and enemy_portrait.has_animation(anim_name):
-			portrait.texture = enemy_portrait.get_frame_texture(anim_name, 0)
-			portrait.show()
-		else:
-			# Fallback: if it's not in the SpriteFrames, try reading LevelData directly
-			if Level and Level.enemy_portrait:
-				portrait.texture = Level.enemy_portrait
-				portrait.show()
-			else:
-				print("[Warning] Could not find animation '", anim_name, "' in enemy_portrait SpriteFrames.")
-				portrait.hide()
 	else:
 		name_label.text = speaker
 		text_label.text = text
