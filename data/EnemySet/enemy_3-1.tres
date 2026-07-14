@@ -399,7 +399,7 @@ metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
 [resource]
 script = ExtResource("2_majrj")
-max_health = 100
+max_health = 80
 enemy_sprite = SubResource("SpriteFrames_kc1lb")
 enemy_portait = ExtResource("1_majrj")
 regular_moves = Array[ExtResource("1_kc1lb")]([SubResource("Resource_pyuhr"), SubResource("Resource_u0700")])
