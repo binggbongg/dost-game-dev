@@ -159,7 +159,7 @@ offset_right = 1215.0
 offset_bottom = 555.0
 theme_override_fonts/font = ExtResource("3_mh3e2")
 theme_override_font_sizes/font_size = 30
-placeholder_text = "Enter username"
+placeholder_text = "Enter password"
 
 [node name="LoginButton" type="TextureButton" parent="." unique_id=604496443]
 layout_mode = 0

@@ -1,5 +1,7 @@
 extends Control
 
+@export var lounge_scene: PackedScene = load("res://scenes/menus/lounge.tscn")
+
 func _ready() -> void:
 	load_current_chapter_cutscene()
 
@@ -40,4 +42,4 @@ func _on_cutscene_player_finished() -> void:
 	var fragment_id = "chapter_%d_fragment" % current_chap
 	PlayerProfile.add_fragment_to_inventory(fragment_id)
 	
-	SceneTransition.change_scene_path("res://scenes/menus/Lounge.tscn")
+	SceneTransition.change_scene(lounge_scene)
