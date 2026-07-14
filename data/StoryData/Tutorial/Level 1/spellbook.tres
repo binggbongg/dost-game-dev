@@ -6,5 +6,5 @@
 script = ExtResource("1_qu0kw")
 type = 1
 character_name = "Spellbook"
-lines = Array[String](["View card descriptions and combo spells here."])
+lines = Array[String](["View the spellbook here if you are unsure about a current card or spell."])
 metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

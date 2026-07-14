@@ -6,5 +6,5 @@
 script = ExtResource("1_x5b4r")
 type = 2
 character_name = "Spellbook"
-lines = Array[String](["View card types and magic combos to cast during battles"])
+lines = Array[String](["View card types and magic spells  to cast during battles"])
 metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

@@ -6,5 +6,5 @@
 script = ExtResource("1_7de8t")
 type = 1
 character_name = "Slot"
-lines = Array[String](["Drag cards here."])
+lines = Array[String](["Drag your card spells here."])
 metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

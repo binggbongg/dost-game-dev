@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_i0m66")
 type = 1
-character_name = "Card Information"
-lines = Array[String](["View more information about your card here."])
+character_name = "Card Preview"
+lines = Array[String](["You may know more about a card's battle ability here."])
 metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

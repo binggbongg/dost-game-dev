@@ -260,7 +260,7 @@ layout_mode = 0
 offset_left = 1300.0
 offset_top = 503.0
 offset_right = 1426.4996
-offset_bottom = 568.99976
+offset_bottom = 561.8889
 scale = Vector2(2.7, 2.7)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ContinueButton" unique_id=1325709076]

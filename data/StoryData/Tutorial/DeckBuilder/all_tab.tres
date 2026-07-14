@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_814qb")
 type = 1
-character_name = "Tabs"
-lines = Array[String](["Select cards to take with you in your upcoming battle here."])
+character_name = "Deck Builder"
+lines = Array[String](["Before we begin, we first have to build our deck.", "Select cards to take with you in your upcoming battle here.", "You can view all your cards or look for specific cards by going through the four card categories."])
 metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

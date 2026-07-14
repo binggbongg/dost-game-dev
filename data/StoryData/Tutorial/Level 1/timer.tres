@@ -6,5 +6,5 @@
 script = ExtResource("1_ufbko")
 type = 1
 character_name = "Timer"
-lines = Array[String](["Player and enemies are given 30 seconds per turn, use it wisely."])
+lines = Array[String](["Player and enemies are timed  per turn, use it wisely."])
 metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

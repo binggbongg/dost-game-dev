@@ -6,5 +6,5 @@
 script = ExtResource("1_7fmsb")
 type = 1
 character_name = "Cards"
-lines = Array[String](["Each card you require have special abilities that will help you finish your battles."])
+lines = Array[String](["Each card you aquire  have special abilities that will help you finish your battles.", "These cards will be shuffled in your deck later and may reoccur more than once throughout the round.", "Try to hover on a card to learn more about them."])
 metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

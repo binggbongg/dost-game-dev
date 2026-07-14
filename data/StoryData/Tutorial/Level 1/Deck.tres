@@ -6,5 +6,5 @@
 script = ExtResource("1_k126t")
 type = 1
 character_name = "Deck"
-lines = Array[String](["This holds all your regular playable cards, click the deck to be given your first hand. When you click again later in the game, it will reshuffle and give you a new hand, ending your current turn."])
+lines = Array[String](["This holds all your regular playable cards, click the deck to be given your first hand and start the round.", "When you click again later in the game, it will reshuffle and give you a new hand, ending your current turn immediately."])
 metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

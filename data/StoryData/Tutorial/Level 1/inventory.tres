@@ -6,5 +6,5 @@
 script = ExtResource("1_irb48")
 type = 1
 character_name = "Inventory"
-lines = Array[String](["View purchased items from the shop here. You can also utilize them in battle if you have enough mana."])
+lines = Array[String](["View purchased items from the shop here. ", "You can utilize them during actual battles.", "Using inventory items howevver willl immediately end your turn."])
 metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

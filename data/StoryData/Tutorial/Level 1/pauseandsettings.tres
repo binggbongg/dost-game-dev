@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_cxo6s")
 type = 1
-character_name = "Pause & Settings"
-lines = Array[String](["Use this buttons when you want to pause the game midway or change some settings when playing."])
+character_name = "Pause "
+lines = Array[String](["Use this button when you need to take a break or quit the game."])
 metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

@@ -284,6 +284,18 @@ func start_spellbook_tour():
 		base + "deck_counter.tres"
 	)
 
+
+	await highlight_and_talk(
+		$DeselectAll,
+		base + "deselect.tres"
+	)
+	
+	
+	await highlight_and_talk(
+		$spellbook,
+		base + "spellbook.tres"
+	)
+	
 	# Save button
 	await highlight_and_talk(
 		$SaveDeck,
