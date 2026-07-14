@@ -7,4 +7,5 @@ script = ExtResource("1_2s3vx")
 name = "Pagngitngit ng Kalikasan"
 description = "The untamed world answers every wound with overwhelming vengeance."
 elements = Array[int]([2, 2, 2])
+filipino_lore = "Unleashes the strongest elemental attack, dealing massive damage to a single target. "
 metadata/_custom_type_script = "uid://v3nevm1wba6b"
