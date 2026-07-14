@@ -293,7 +293,7 @@ metadata/_custom_type_script = "uid://bc0bopaja6vri"
 
 [resource]
 script = ExtResource("2_bgufy")
-max_health = 300
+max_health = 120
 enemy_sprite = SubResource("SpriteFrames_2ahym")
 enemy_portait = ExtResource("1_bgufy")
 regular_moves = Array[ExtResource("1_uny76")]([SubResource("Resource_nnwwl"), SubResource("Resource_pvdv8")])
