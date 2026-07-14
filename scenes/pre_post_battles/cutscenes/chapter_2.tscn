@@ -642,6 +642,7 @@ scale = Vector2(3.325, 3.325)
 [node name="Conversation" parent="." unique_id=153786700 instance=ExtResource("8_buato")]
 
 [node name="Skip" type="TextureButton" parent="." unique_id=1032725667]
+visible = false
 offset_left = 1703.0
 offset_top = 22.0
 offset_right = 1809.0

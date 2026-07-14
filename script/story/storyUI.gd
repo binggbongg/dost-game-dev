@@ -3,6 +3,8 @@ extends CanvasLayer
 signal conversation_finished
 signal line_finished
 
+#call this instead for the texture
+@export var enemy_portrait: SpriteFrames
 @onready var dialogue_box: Control = $DialogueBox
 @onready var text_label: RichTextLabel = $DialogueBox/DialoguePanel/TextLabel 
 @onready var name_label: RichTextLabel = $DialogueBox/DialoguePanel/NameLabel
@@ -76,6 +78,27 @@ func display_line(speaker: String, text: String) -> void:
 			portrait.show()
 		else:
 			portrait.hide()
+	elif speaker == "Enemy":
+		var path = "res://data/Levels/level_%d-%d.tres" % [PlayerProfile.current_phase, PlayerProfile.current_level]
+		var Level: LevelData = load(path)
+		name_label.text = Level.enemy_name
+		text_label.text = text
+		
+		# Generate the animation name from the current phase and level (e.g., "2_3")
+		var anim_name = "%d_%d" % [PlayerProfile.current_phase, PlayerProfile.current_level]
+		
+		# Pull the frame texture from the SpriteFrames variable assigned to THIS CanvasLayer script
+		if enemy_portrait and enemy_portrait.has_animation(anim_name):
+			portrait.texture = enemy_portrait.get_frame_texture(anim_name, 0)
+			portrait.show()
+		else:
+			# Fallback: if it's not in the SpriteFrames, try reading LevelData directly
+			if Level and Level.enemy_portrait:
+				portrait.texture = Level.enemy_portrait
+				portrait.show()
+			else:
+				print("[Warning] Could not find animation '", anim_name, "' in enemy_portrait SpriteFrames.")
+				portrait.hide()
 	else:
 		name_label.text = speaker
 		text_label.text = text
@@ -116,15 +139,12 @@ func play_sequence(dialogue_resource: DialogueResource, title: String) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	# If the cutscene is currently running skip logic, completely block text progression inputs!
 	if not is_active: return
 	
 	var is_action = event.is_action_pressed("ui_accept")
 	var is_click = event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT
 	
 	if is_action or is_click:
-		# 🛠️ FIX: Check if the mouse click is hitting a UI button like Skip. 
-		# If it is, let the button handle it instead of advancing text!
 		var clicked_control = get_viewport().gui_get_focus_owner()
 		if is_click and clicked_control and clicked_control is BaseButton:
 			return 

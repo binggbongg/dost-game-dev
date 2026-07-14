@@ -1,12 +1,42 @@
 [gd_scene format=3 uid="uid://divonvi0kh3o3"]
 
 [ext_resource type="Script" uid="uid://cimu6spqdj8rc" path="res://script/story/storyUI.gd" id="1_gftur"]
+[ext_resource type="Texture2D" uid="uid://cjsf6il6ocm1q" path="res://assets/prebattle_portrait/level2/portrait2_3.png" id="2_vslhr"]
+[ext_resource type="Texture2D" uid="uid://5fnn1ok4rygb" path="res://assets/prebattle_portrait/level3/portrait3_3.png" id="3_vjncb"]
 [ext_resource type="Texture2D" uid="uid://cul7661ju2d7r" path="res://assets/ui/mainscreen/mainscreen_ui_registerAccount.png" id="4_vslhr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfddg"]
+atlas = ExtResource("2_vslhr")
+region = Rect2(0, 0, 96, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37vpt"]
+atlas = ExtResource("3_vjncb")
+region = Rect2(0, 0, 96, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rvaat"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfddg")
+}],
+"loop": true,
+"name": &"2_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37vpt")
+}],
+"loop": true,
+"name": &"3_3",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_01g43"]
 
 [node name="Conversation" type="CanvasLayer" unique_id=153786700]
 script = ExtResource("1_gftur")
+enemy_portrait = SubResource("SpriteFrames_rvaat")
 
 [node name="DialogueBox" type="Control" parent="." unique_id=1161655313]
 layout_mode = 3
