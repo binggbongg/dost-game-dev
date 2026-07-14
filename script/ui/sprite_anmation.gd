@@ -1,5 +1,6 @@
 extends AnimatedSprite2D
 
+signal asl_card_complete
 
 # Massive overall scale configuration
 const BASE_SCALE := Vector2(6.0, 6.0)
@@ -59,5 +60,6 @@ func play_cast_sequence(active_cards: Array) -> void:
 					
 					await fade_tween.finished
 	
+	asl_card_complete.emit()
 	hide()
 	self.sprite_frames = null

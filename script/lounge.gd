@@ -13,6 +13,8 @@ extends Node2D
 
 @onready var level_label = $Buttons/Content/CharacterSpotlight/PLayerLevel
 
+@onready var shop_button = $Buttons/Content/shop # temporary
+
 var tutorial_active = false
 
 var chapter_buttons: Array[BaseButton] = []
@@ -32,7 +34,10 @@ func _ready():
 		if character_data:
 			me.sprite_frames = character_data.sprite_frames
 			me.play("idle")
-			
+	
+	if shop_button:
+		shop_button.modulate = Color(0.3, 0.3, 0.3, 0.9)
+	
 	# --- NEW PROGRESSION LOCK INITIALIZATION ---
 	collect_and_update_chapter_locks()
 	

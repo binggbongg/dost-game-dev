@@ -94,7 +94,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 4.0
+"speed": 6.0
 }]
 
 [resource]
@@ -111,5 +111,5 @@ description = "Regains 50% of full health back
 
 "
 texture = ExtResource("3_xapgt")
-price = 70
+price = 950
 metadata/_custom_type_script = "uid://cpiimvdghqtnm"

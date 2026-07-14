@@ -122,7 +122,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 4.0
+"speed": 6.0
 }]
 
 [resource]
@@ -136,5 +136,5 @@ item_id = "003"
 name = "Bakunawa"
 description = "Does something!"
 texture = ExtResource("3_kj3k0")
-price = 20
+price = 600
 metadata/_custom_type_script = "uid://cpiimvdghqtnm"

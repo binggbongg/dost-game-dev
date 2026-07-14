@@ -94,7 +94,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [resource]
@@ -108,5 +108,5 @@ item_id = "004"
 name = "Aswang"
 description = "Does something scaryyy"
 texture = ExtResource("3_nlnxx")
-price = 50
+price = 450
 metadata/_custom_type_script = "uid://cpiimvdghqtnm"

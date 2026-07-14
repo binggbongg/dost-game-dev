@@ -1,4 +1,5 @@
 extends Node
+
 signal profile_updated # Emitted when name, character, or rank changes
 signal coins_changed(new_amount: int)
 
@@ -76,6 +77,7 @@ func initialize_profile(new_name: String, character_id: String):
 	self.selected_character = character_id
 	self.player_rank = "Starter"
 	self.coins = 100
+	PlayerStats.reset_health()
 	
 	level = 1
 	experience = 0
@@ -97,10 +99,10 @@ func initialize_profile(new_name: String, character_id: String):
 	
 	owned_cards.clear()
 	owned_fragments.clear()
+	current_deck = []
 	
 	is_profile_initialized = true
 	print("Profile Initialized for: ", player_name)
-
 
 
 func set_rank(new_rank: String):
@@ -171,9 +173,10 @@ func sync_local_scores_to_talo() -> void:
 	
 	print("[SYNC] Checking local profile high scores for cloud synchronization...")
 	
+	var active_sync_request: Array = []
 	for key in high_scores.keys():
 		# Verify if the dictionary contains structured data (e.g., {"rank": "A", "score": 2450})
-		var record = high_scores[key]
+		var record = high_scores.get(key)
 		if typeof(record) == TYPE_DICTIONARY and record.has("score"):
 			var local_score: int = record.get("score")
 			var local_rank: String = record.get("rank", "C")
@@ -182,7 +185,12 @@ func sync_local_scores_to_talo() -> void:
 			await Talo.leaderboards.add_entry(key, local_score, {
 				"rank": str(local_rank)
 			})
-			
+	
+	if not active_sync_request.is_empty():
+		print("[SYNC] Waiting for backend responses to settle...")
+		for request in active_sync_request:
+			await request
+	
 	print("[SYNC] Offline data backup synchronization processing finished.")
 
 

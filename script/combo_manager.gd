@@ -200,8 +200,17 @@ func get_matched_recipe() -> ComboRecipe:
 func calculate_combo_output(active_cards: Array) -> Dictionary:
 	var base_damage: float = 0.0
 	var base_healing: float = 0.0
-	var global_multiplier: float = 1
+	var global_multiplier: float = 1.0
 	
+	# --- SCORING TRACKERS ---
+	var score_points_added: int = active_cards.size() * 50
+	var score_multiplier_added: float = 0.0
+	var increment_combos_played: bool = false
+	
+	var categories = active_cards.map(func(c): return c.card_category)
+	var lahi_count = categories.count(GameEnums.CardCategory.LAHI)
+	
+	# 1. First Pass: Calculate flat card parameters cleanly
 	for card in active_cards:
 		if not is_instance_valid(card) or not card.card_data:
 			continue
@@ -210,49 +219,105 @@ func calculate_combo_output(active_cards: Array) -> Dictionary:
 		
 		match card.card_category:
 			GameEnums.CardCategory.KALIKASAN:
-				print("processing kalikasan cards --combo manager")
 				base_damage += data.damage
 			GameEnums.CardCategory.TANGLAW:
-				print("processing tanglaw cards --combo manager")
 				base_healing += data.heal
 			GameEnums.CardCategory.DIWA:
-				print("processing diwa cards --combo manager")
 				base_damage += data.damage
 				base_healing += data.heal
 				if data.multiplier > 0:
 					global_multiplier += (data.multiplier - 1.0)
 			GameEnums.CardCategory.LAHI:
-				print("processing lahi cards --combo manager")
 				base_damage += data.damage
 				base_healing += data.heal
-				global_multiplier += process_lahi_cards(active_cards)
 	
+	# 2. Second Pass: Apply Multiplier rules
+	if lahi_count > 0:
+		global_multiplier += process_lahi_cards(active_cards)
+	else:
+		if active_cards.size() == 2:
+			global_multiplier += 0.5
+		elif active_cards.size() == 3:
+			global_multiplier += 1.0
+
+	# 3. Third Pass: Process Recipe Scoring logic inside the Manager
+	var matched_recipe = get_matched_recipe()
+	if matched_recipe:
+		increment_combos_played = true
+		var recipe_size = matched_recipe.elements.size()
+		if recipe_size == 2:
+			print("[COMBO MANAGER] 2-card recipe score bonus applied")
+			score_points_added += 200
+		elif recipe_size == 3:
+			print("[COMBO MANAGER] 3-card recipe score bonus applied")
+			score_points_added += 350
+			score_multiplier_added += 0.2
+
+	# Final math compounding
 	var final_damage = base_damage * global_multiplier
 	var final_healing = base_healing * global_multiplier
 
+	# Return everything back to the caller in a single payload package
 	return {
 		"damage": int(round(final_damage)),
-		"healing": int(round(final_healing))
+		"healing": int(round(final_healing)),
+		"score_points": score_points_added,
+		"score_multiplier": score_multiplier_added,
+		"increment_combo_counter": increment_combos_played
 	}
 
-func process_lahi_cards(active_cards) -> float:
+#func process_lahi_cards(active_cards: Array) -> float:
+	#var categories = active_cards.map(func(c): return c.card_category)
+	#var lahi_count = categories.count(GameEnums.CardCategory.LAHI)
+	#
+	#if lahi_count == 0: 
+		#return 0.0
+	#
+	#var matched_recipe = get_matched_recipe()
+	#if matched_recipe:
+		## 🌟 CUSTOM DAMAGE TUNING SLOTS:
+		#match matched_recipe.name:
+			#"Hukbo ng Alamat":
+				#print("[LAHI SYSTEM] Hukbo ng Alamat Recipe Verified! Adding +2.0 to Multiplier (x3 total dmg)")
+				#return 2.0 # Adds 2.0 to base 1.0 = x3 Damage output!
+			#_:
+				#print("[LAHI SYSTEM] Standard Combo verified: Adding +0.5 to Multiplier (x1.5 total dmg)")
+				#return 0.5
+				#
+	#print("[LAHI SYSTEM] Raw Lahi card present but no unique combination match made.")
+	#return 0.0
+
+func process_lahi_cards(active_cards: Array) -> float:
 	var categories = active_cards.map(func(c): return c.card_category)
 	var lahi_count = categories.count(GameEnums.CardCategory.LAHI)
+	var kalikasan_count = categories.count(GameEnums.CardCategory.KALIKASAN)
 	
-	if lahi_count == 0: return 0
-	
-	# lahi type combo
-	# lahi diwa lahi
-	# lahi diwa kalikasan/tanglaw
-	
-	var matched_recipe = get_matched_recipe()
-	if matched_recipe:
-		if matched_recipe.name == "Hukbo ng Alamat":
-			print("Hukbo ng Alamat bonus: x2")
-			return 2
-		else:
-			print("Standard Lahi Card Bonus: x1.5")
-			return 1.5
-	
-	print("no matched recipe -- combo manager")
-	return 0
+	if lahi_count == 0: return 0.0
+
+	# ─── RULE 1: SOLO LAHI ───
+	# it remains flat (adds 0.0 to the base 1.0 multiplier).
+	if active_cards.size() == 1:
+		print("[LAHI SYSTEM] Solo Lahi detected. Multiplier remains x1 (Only flat damage applies).")
+		return 0.0
+
+	# ─── RULE 3: WITH KALIKASAN (MULTIPLIES BY 3) ───
+	# If any Kalikasan cards are accompanying the Lahi card in this combo grid arrangement
+	if kalikasan_count > 0:
+		print("[LAHI SYSTEM] Lahi combined with Kalikasan! Adding +2.0 to Multiplier (x3 total dmg).")
+		return 2.0 # 1.0 Base + 2.0 Added = x3 Total Damage
+
+	# ─── RULE 2: WITH OTHER LAHI (ADD UP MULTIPLIERS) ───
+	# If there's more than one Lahi card in the slot layout, they compound their dynamic properties together.
+	if lahi_count > 1:
+		var total_lahi_multiplier_pool: float = 0.0
+		
+		# Sum up the dynamic baseline multipliers of every single Lahi card present in the hand array grid
+		for card in active_cards:
+			if card.card_category == GameEnums.CardCategory.LAHI and card.card_data:
+				total_lahi_multiplier_pool += (card.card_data.multiplier)
+				
+		print("[LAHI SYSTEM] Multiple Lahi cards detected! Aggregated Multiplier bonus pool: +", total_lahi_multiplier_pool)
+		return total_lahi_multiplier_pool
+
+	# Fallback safety default
+	return 0.0

@@ -17,6 +17,7 @@ func _on_restart_pressed():
 	AudioManager.play_ui_sound("click")
 	get_tree().paused = false
 	UIManager.close_menu()
+	PlayerStats.restore_level_entry_health()
 	get_tree().reload_current_scene()
 
 func _on_quit_pressed():

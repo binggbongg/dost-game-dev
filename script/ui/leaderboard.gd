@@ -11,6 +11,7 @@ extends Control
 
 var chapter_name = "chapter_"
 var chapter_key = 1
+var is_loading: bool = false
 
 func _ready() -> void:
 	# Clear out any editor placeholder texts before building live listings
@@ -27,6 +28,9 @@ func _ready() -> void:
 	_load_talo_leaderboard()
 
 func _load_talo_leaderboard() -> void:
+	if is_loading: return
+	is_loading = true
+	
 	print("[LEADERBOARD] Contacting Talo backend services for: ", leaderboard_name)
 	rank_label.text = "..."
 	name_label.text = "Loading entries..."
@@ -45,6 +49,7 @@ func _load_talo_leaderboard() -> void:
 	options.page = 0
 	
 	var res = await Talo.leaderboards.get_entries(leaderboard_name, options)
+	is_loading = false
 	
 	if not res or res.entries.is_empty():
 		name_label.text = "No high scores recorded yet!"
@@ -56,17 +61,12 @@ func _load_talo_leaderboard() -> void:
 	
 	for i in range(res.entries.size()):
 		var entry = res.entries[i]
-		#print("--- INSPECTING ENTRY VARIABLES ---")
-		#print(inst_to_dict(entry))
 		
 		var player_display_name = "Guest"
-		if entry.player_alias:
+		if is_instance_valid(entry.player_alias):
 			if entry.player_alias.get("display_name"):
-				print("got the display name --leaderboard")
+				#print("got the display name --leaderboard")
 				player_display_name = str(entry.player_alias.get("display_name"))
-			elif entry.player_alias.get("identifier"):
-				print("got the identifer --leaderboard")
-				player_display_name = str(entry.player_alias.get("identifier"))
 		
 		var assigned_rank = "—"
 		if entry.props and typeof(entry.props) == TYPE_ARRAY:
