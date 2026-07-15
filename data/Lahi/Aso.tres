@@ -45,6 +45,7 @@ script = ExtResource("1_e32nr")
 name = "Aso"
 description = "Summons a loyal canine companion that faithfully fights by your side."
 damage = 2
+multiplier = 0.5
 mana_cost = 2
 texture = ExtResource("2_tyhio")
 ASLExplanation = "Pat your leg twice, then snap your fingers."

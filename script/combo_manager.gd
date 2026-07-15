@@ -266,48 +266,21 @@ func calculate_combo_output(active_cards: Array) -> Dictionary:
 		"increment_combo_counter": increment_combos_played
 	}
 
-#func process_lahi_cards(active_cards: Array) -> float:
-	#var categories = active_cards.map(func(c): return c.card_category)
-	#var lahi_count = categories.count(GameEnums.CardCategory.LAHI)
-	#
-	#if lahi_count == 0: 
-		#return 0.0
-	#
-	#var matched_recipe = get_matched_recipe()
-	#if matched_recipe:
-		## 🌟 CUSTOM DAMAGE TUNING SLOTS:
-		#match matched_recipe.name:
-			#"Hukbo ng Alamat":
-				#print("[LAHI SYSTEM] Hukbo ng Alamat Recipe Verified! Adding +2.0 to Multiplier (x3 total dmg)")
-				#return 2.0 # Adds 2.0 to base 1.0 = x3 Damage output!
-			#_:
-				#print("[LAHI SYSTEM] Standard Combo verified: Adding +0.5 to Multiplier (x1.5 total dmg)")
-				#return 0.5
-				#
-	#print("[LAHI SYSTEM] Raw Lahi card present but no unique combination match made.")
-	#return 0.0
-
 func process_lahi_cards(active_cards: Array) -> float:
 	var categories = active_cards.map(func(c): return c.card_category)
 	var lahi_count = categories.count(GameEnums.CardCategory.LAHI)
 	var kalikasan_count = categories.count(GameEnums.CardCategory.KALIKASAN)
 	
 	if lahi_count == 0: return 0.0
-
-	# ─── RULE 1: SOLO LAHI ───
-	# it remains flat (adds 0.0 to the base 1.0 multiplier).
+	
 	if active_cards.size() == 1:
 		print("[LAHI SYSTEM] Solo Lahi detected. Multiplier remains x1 (Only flat damage applies).")
 		return 0.0
-
-	# ─── RULE 3: WITH KALIKASAN (MULTIPLIES BY 3) ───
-	# If any Kalikasan cards are accompanying the Lahi card in this combo grid arrangement
+	
 	if kalikasan_count > 0:
 		print("[LAHI SYSTEM] Lahi combined with Kalikasan! Adding +2.0 to Multiplier (x3 total dmg).")
-		return 2.0 # 1.0 Base + 2.0 Added = x3 Total Damage
-
-	# ─── RULE 2: WITH OTHER LAHI (ADD UP MULTIPLIERS) ───
-	# If there's more than one Lahi card in the slot layout, they compound their dynamic properties together.
+		return 1.5 # 1.0 Base + 1.5 Added = 2.5 Total Damage
+	
 	if lahi_count > 1:
 		var total_lahi_multiplier_pool: float = 0.0
 		

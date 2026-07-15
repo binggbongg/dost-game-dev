@@ -13,7 +13,7 @@ extends Node2D
 
 @onready var level_label = $Buttons/Content/CharacterSpotlight/PLayerLevel
 
-@onready var shop_button = $Buttons/Content/shop # temporary
+@onready var shop_button = $Buttons/Content/shop
 
 var tutorial_active = false
 
@@ -42,7 +42,11 @@ func _ready():
 	collect_and_update_chapter_locks()
 	
 	# Updates the current phase
-	level_label.text = "Level " + str(PlayerProfile.get_highest_unlocked_chapter())
+	level_label.text = "Chapter " + str(PlayerProfile.get_highest_unlocked_chapter())
+	
+	#Temporary disabling of button
+	$Buttons/Content/Settings.modulate = Color(0.3, 0.3, 0.3, 0.9)
+	
 	
 	# --- TEMP CHAPTER 4+ HARD LOCK ---
 	# Delete or comment out this function call to remove the restriction later.

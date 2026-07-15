@@ -46,6 +46,7 @@ name = "Buwaya"
 description = "Summons a mighty crocodile that dominates the battlefield with brute strength."
 rarity = 3
 damage = 9
+multiplier = 1.5
 mana_cost = 8
 texture = ExtResource("2_g2bno")
 ASLExplanation = "Stack your forearms and open and close your hands like chomping jaws."
