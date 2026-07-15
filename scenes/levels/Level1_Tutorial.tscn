@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://kmica80eblti"]
+[gd_scene format=3 uid="uid://bpqppqti5tvad"]
 
-[ext_resource type="Script" uid="uid://3rf8j7vr04w" path="res://script/story/level_1_tutorial.gd" id="1_4jv6r"]
+[ext_resource type="Script" path="res://script/story/level_1_tutorial.gd" id="1_4jv6r"]
 [ext_resource type="Texture2D" uid="uid://b67a6h4yy3qud" path="res://assets/background/rooms/background_1-1.png" id="2_h7g6p"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_5ahqo"]
 [ext_resource type="PackedScene" uid="uid://b14yvyrmb0h2b" path="res://scenes/ui/inventory_button.tscn" id="4_dfrf2"]
@@ -104,17 +104,17 @@ vertical_alignment = 1
 [node name="Buttons" type="Node2D" parent="." unique_id=1820597283]
 
 [node name="Inventory" parent="Buttons" unique_id=328878894 instance=ExtResource("4_dfrf2")]
-offset_left = 1628.0
-offset_top = 905.0
-offset_right = 1784.0
-offset_bottom = 1083.0
+offset_left = 1644.0
+offset_top = 923.0
+offset_right = 1800.0
+offset_bottom = 1101.0
 scale = Vector2(0.6, 0.6)
 
 [node name="spellbook" parent="Buttons" unique_id=1664093449 instance=ExtResource("5_cwjf1")]
-offset_left = 1748.0
-offset_top = 893.0
-offset_right = 1812.0
-offset_bottom = 957.0
+offset_left = 1789.0
+offset_top = 945.0
+offset_right = 1853.0
+offset_bottom = 1009.0
 scale = Vector2(2, 2)
 
 [node name="PauseButton" parent="Buttons" unique_id=784340132 instance=ExtResource("6_laxjo")]
