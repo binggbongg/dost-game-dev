@@ -5,6 +5,7 @@ class_name CombatLevel
 @onready var battle_manager = $BattleManager
 @onready var enemy = $"CombatArena/Enemy"
 @onready var player = $"CombatArena/Player"
+@onready var asl_sprite = $"PlayerInterface/SpriteAnmation"
 
 @export var victory_screen_scene: PackedScene
 
@@ -42,6 +43,15 @@ func _ready() -> void:
 	
 	if is_instance_valid(enemy) and enemy.has_signal("enemy_died"):
 		enemy.enemy_died.connect(_on_enemy_defeated)
+	
+	if asl_sprite:
+		asl_sprite.asl_card_complete.connect(func():
+			enemy.flash_red_damage())
+	else:
+		print("could not asl node --combat level")
+	
+	if PlayerStats.current_health > 0:
+		PlayerStats.snapshot_level_entry_health()
 
 func load_level_config(data):
 	if data.background and upper_bg:
@@ -88,6 +98,7 @@ func prepare_next_progression_target():
 	PlayerProfile.advance_to_next_level()
 	if PlayerProfile.current_level == 1:
 		PlayerProfile.pending_scene = "res://scenes/menus/lounge.tscn"
+		PlayerStats.reset_health()
 	else:
 		PlayerProfile.pending_scene = "res://scenes/levels/Level1.tscn"
 
@@ -105,6 +116,7 @@ func proceed_next_stage():
 		SceneTransition.change_scene_path(PlayerProfile.pending_scene)
 	else:
 		get_tree().change_scene_to_file(PlayerProfile.pending_scene)
+
 func process_chapter_scoring_and_unlock() -> int:
 	var turns = PlayerProfile.run_turns
 	var combos_played = PlayerProfile.run_combos_played
@@ -139,9 +151,9 @@ func process_chapter_scoring_and_unlock() -> int:
 	
 	var bonus_packs_earned := 0
 	match final_rank:
-		"S": bonus_packs_earned = 2 # Premium reward for flawless play
-		"A": bonus_packs_earned = 1
-		"B": bonus_packs_earned = 0
+		"S": bonus_packs_earned = 3 # Premium reward for flawless play
+		"A": bonus_packs_earned = 2
+		"B": bonus_packs_earned = 1
 		"C": bonus_packs_earned = 0
 	
 	var chapter_key = "chapter_" + str(PlayerProfile.current_phase)
@@ -202,7 +214,7 @@ func evaluate_combo_scoring(active_cards: Array, matched_recipe: ComboRecipe):
 
 #will use this to test cutscenes and post levels stuff
 #func _unhandled_input(event):
-	# Press 'W' to instantly win the level and advance
+	## Press 'W' to instantly win the level and advance
 	#if event is InputEventKey and event.pressed and event.keycode == KEY_W:
 		#print("DEBUG: Instant Win Triggered")
 		#_on_enemy_defeated()

@@ -43,9 +43,11 @@ animations = [{
 [resource]
 script = ExtResource("1_lxhqc")
 name = "Ulap"
+description = "Gathers dense clouds that conceal power before striking with condensed energy."
 category = 2
 damage = 3
 mana_cost = 2
 texture = ExtResource("2_ob1jw")
+ASLExplanation = "Hold claw-shaped hands above your head. Move them in small puffy circles side to side."
 cardASL = SubResource("SpriteFrames_m4jax")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

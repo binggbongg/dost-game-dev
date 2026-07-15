@@ -48,17 +48,3 @@ func _sync_inventory_change():
 	if typeof(SaveManager) != TYPE_NIL and SaveManager.has_method("save_game"):
 		print("Inventory: Saving save state to cloud")
 		SaveManager.save_game()
-
-#testing delete laturr
-func _input(event):
-	if event is InputEventKey and event.pressed and event.keycode == KEY_I:
-		print("\n--- INVENTORY DEBUG TEST ---")
-		
-		# Try adding a test item (Replace 'kapre' with your actual item_id from the .tres)
-		add_item("002", 1)
-		
-		print("Current Inventory Content:")
-		for id in owned_items:
-			print("- ", id, ": x", owned_items[id])
-		
-		print("----------------------------\n")

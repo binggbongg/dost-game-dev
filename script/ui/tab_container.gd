@@ -7,6 +7,7 @@ const SLOT_SCENE := preload("res://scenes/menus/deckslot.tscn")
 
 const MIN_DECK_SIZE := 8
 const MAX_DECK_SIZE := 12
+@onready var deselect_all: TextureButton = $DeselectAll
 
 @onready var back_button = $BackButton
 @export var lounge: PackedScene
@@ -40,7 +41,8 @@ var tutorial_active := false
 
 func _ready():
 	AudioManager.play_sound_from_path("res://data/SoundData/bgm/lounge.wav", true)
-	PlayerProfile.current_deck.clear()
+	
+	# CHANGED: Removed PlayerProfile.current_deck.clear() to keep previously created deck
 
 	tab_container.current_tab = 0
 	if back_button:
@@ -53,6 +55,10 @@ func _ready():
 			PlayerProfile.add_card_to_inventory(all_keys[i])
 
 	save_deck.pressed.connect(_on_save_button_pressed)
+	
+	# CHANGED: Connect the deselect_all button signal
+	if deselect_all:
+		deselect_all.pressed.connect(_on_deselect_all_pressed)
 
 	card_description.hide()
 
@@ -68,7 +74,16 @@ func _ready():
 		await start_spellbook_tour()
 
 func _on_back_button_pressed():
-	SceneTransition.change_scene(lounge)
+	SceneTransition.change_scene_path("res://scenes/menus/lounge.tscn")
+
+# CHANGED: Added callback function to handle deselecting everything
+func _on_deselect_all_pressed():
+	PlayerProfile.current_deck.clear()
+	for grid in grids.values():
+		for slot in grid.get_children():
+			if slot.has_method("update_selection_visuals"):
+				slot.update_selection_visuals()
+	update_deck_counter()
 
 func refresh_ui():
 
@@ -269,6 +284,18 @@ func start_spellbook_tour():
 		base + "deck_counter.tres"
 	)
 
+
+	await highlight_and_talk(
+		$DeselectAll,
+		base + "deselect.tres"
+	)
+	
+	
+	await highlight_and_talk(
+		$spellbook,
+		base + "spellbook.tres"
+	)
+	
 	# Save button
 	await highlight_and_talk(
 		$SaveDeck,

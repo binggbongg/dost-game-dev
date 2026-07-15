@@ -6,5 +6,5 @@
 script = ExtResource("1_wir0u")
 type = 1
 character_name = "Starter Pack"
-lines = Array[String](["Start your journey with these spell cards to help you overcome each battle forward!"])
+lines = Array[String](["Start your journey with these spell cards to help you overcome each battle forward!", "New  players are given 3 starting packs.", "You can earn more later as you defeat bosses and stronger enemies!"])
 metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

@@ -7,4 +7,5 @@ script = ExtResource("1_88v51")
 name = "Bantay_ng_Langit"
 description = "A heavenly guardian stands watch, shielding the chosen from all harm."
 elements = Array[int]([3, 3])
+filipino_lore = " Recovers a moderate amount of health."
 metadata/_custom_type_script = "uid://v3nevm1wba6b"

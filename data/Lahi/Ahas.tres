@@ -43,10 +43,12 @@ animations = [{
 [resource]
 script = ExtResource("1_kcas5")
 name = "Ahas"
-description = "Summons the snake spirit"
+description = "Summons a venomous serpent that relentlessly hunts its prey."
 rarity = 2
 damage = 6
+multiplier = 1.0
 mana_cost = 5
 texture = ExtResource("2_kcas5")
+ASLExplanation = "Make a bent V handshape and move it forward in a slithering motion."
 cardASL = SubResource("SpriteFrames_le01o")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

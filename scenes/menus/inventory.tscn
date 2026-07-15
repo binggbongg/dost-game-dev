@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://d2ab1c08105wj" path="res://script/ui/inventoryUI.gd" id="1_xityo"]
 [ext_resource type="PackedScene" uid="uid://c2bjl38hf6kfw" path="res://scenes/menus/inventory_item_slot.tscn" id="2_aj06e"]
-[ext_resource type="Texture2D" uid="uid://bby48bvsp02i0" path="res://assets/temporary/slot spotlight.jpg" id="2_xityo"]
 [ext_resource type="Texture2D" uid="uid://cn63j5pwl0hkl" path="res://assets/background/rooms/background_inventory.png" id="3_aj06e"]
 [ext_resource type="Texture2D" uid="uid://2vgynhwgdtwa" path="res://assets/ui/shop/shop_board_empty.png" id="4_3ycl8"]
 [ext_resource type="PackedScene" uid="uid://bn4ggnn074rsh" path="res://scenes/ui/close_button.tscn" id="4_aj06e"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_kbtlh"]
-[ext_resource type="PackedScene" uid="uid://buor4em2o4cfj" path="res://scenes/ui/coin_display.tscn" id="5_3ycl8"]
+[ext_resource type="Texture2D" uid="uid://cgq1dk78psuvc" path="res://assets/ui/shop/shop_board.png" id="5_aj06e"]
+[ext_resource type="Texture2D" uid="uid://cneic45rrk0jh" path="res://assets/ui/shop/castnow_button.png" id="7_3ycl8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gunfm"]
 paragraph_spacing = 1.0
@@ -22,11 +22,6 @@ font_size = 47
 line_spacing = 0.05
 font = ExtResource("4_kbtlh")
 font_size = 18
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_xityo"]
-font = ExtResource("4_kbtlh")
-font_size = 50
 
 [node name="Inventory" type="Control" unique_id=407261551]
 layout_mode = 3
@@ -50,14 +45,22 @@ texture = ExtResource("4_3ycl8")
 
 [node name="Box2" type="TextureRect" parent="TextureRect" unique_id=392696890]
 layout_mode = 0
-offset_left = 503.0
+offset_left = 682.0
 offset_top = 195.0
-offset_right = 2696.0
+offset_right = 2875.0
 offset_bottom = 1014.0
 texture = ExtResource("4_3ycl8")
 flip_h = true
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1626886338]
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1869820804]
+layout_mode = 0
+offset_left = 1336.0
+offset_top = -10.596558
+offset_right = 1929.0
+offset_bottom = 1092.1755
+texture = ExtResource("5_aj06e")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1999965413]
 custom_minimum_size = Vector2(1911, 1104)
@@ -91,7 +94,6 @@ columns = 4
 [node name="DetailsPanel" type="TextureRect" parent="HBoxContainer" unique_id=1675448014]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("2_xityo")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DetailsPanel" unique_id=480976153]
 layout_mode = 0
@@ -105,10 +107,10 @@ anchor_left = 0.12240664
 anchor_top = 0.013940521
 anchor_right = 0.12240664
 anchor_bottom = 0.013940521
-offset_left = -20.091286
-offset_top = 56.609665
-offset_right = 572.9087
-offset_bottom = 121.609665
+offset_left = 88.985504
+offset_top = 101.609665
+offset_right = 518.9855
+offset_bottom = 166.60966
 text = "DIWATA"
 label_settings = SubResource("LabelSettings_8tary")
 horizontal_alignment = 1
@@ -130,10 +132,10 @@ anchor_left = 0.11307054
 anchor_top = 0.10130112
 anchor_right = 0.14522822
 anchor_bottom = 0.10130112
-offset_left = 84.78008
-offset_top = 509.16357
-offset_right = 490.11203
-offset_bottom = 639.1636
+offset_left = 137.78326
+offset_top = 435.16357
+offset_right = 472.81332
+offset_bottom = 573.1636
 text = "The goddess of Light and Heaven blesses her mages with abundance and grace. When used in battle, her blessing allows mages to heal 50% of their total health, allowing them to battle longer and relinquish their opponents."
 label_settings = SubResource("LabelSettings_6xei0")
 autowrap_mode = 3
@@ -145,10 +147,10 @@ anchor_left = 0.10425311
 anchor_top = 0.14869888
 anchor_right = 0.10425311
 anchor_bottom = 0.14869888
-offset_left = 49.269707
-offset_top = 659.8364
-offset_right = 119.26971
-offset_bottom = 685.8364
+offset_left = 116.25885
+offset_top = 598.8364
+offset_right = 186.25885
+offset_bottom = 624.8364
 text = "HEALTH"
 label_settings = SubResource("LabelSettings_6xei0")
 autowrap_mode = 3
@@ -160,10 +162,10 @@ anchor_left = 0.10373444
 anchor_top = 0.151487
 anchor_right = 0.10373444
 anchor_bottom = 0.151487
-offset_left = 55.65145
-offset_top = 680.75836
-offset_right = 102.65145
-offset_bottom = 706.75836
+offset_left = 122.580894
+offset_top = 618.75836
+offset_right = 172.51035
+offset_bottom = 644.75836
 text = "+50%"
 label_settings = SubResource("LabelSettings_6xei0")
 autowrap_mode = 3
@@ -175,11 +177,11 @@ anchor_left = 0.121369295
 anchor_top = 0.14684016
 anchor_right = 0.121369295
 anchor_bottom = 0.14684016
-offset_left = 250.6722
-offset_top = 659.8885
-offset_right = 305.67218
-offset_bottom = 685.8885
-text = "PRICE"
+offset_left = 261.62973
+offset_top = 595.8885
+offset_right = 343.62973
+offset_bottom = 621.8885
+text = "QUANTITY"
 label_settings = SubResource("LabelSettings_6xei0")
 autowrap_mode = 3
 
@@ -190,10 +192,10 @@ anchor_left = 0.121369295
 anchor_top = 0.14776951
 anchor_right = 0.121369295
 anchor_bottom = 0.14776951
-offset_left = 261.67218
-offset_top = 680.8624
-offset_right = 297.67218
-offset_bottom = 706.8624
+offset_left = 287.6297
+offset_top = 619.8624
+offset_right = 323.6297
+offset_bottom = 645.8624
 text = "100"
 label_settings = SubResource("LabelSettings_6xei0")
 autowrap_mode = 3
@@ -205,11 +207,11 @@ anchor_left = 0.1436722
 anchor_top = 0.14869888
 anchor_right = 0.1436722
 anchor_bottom = 0.14869888
-offset_left = 445.25726
-offset_top = 659.8364
-offset_right = 501.25726
-offset_bottom = 711.8364
-text = "Attack"
+offset_left = 410.7795
+offset_top = 596.8364
+offset_right = 484.7795
+offset_bottom = 621.8364
+text = "ATTACK"
 label_settings = SubResource("LabelSettings_6xei0")
 autowrap_mode = 3
 
@@ -220,31 +222,22 @@ anchor_left = 0.14626557
 anchor_top = 0.14962825
 anchor_right = 0.14626557
 anchor_bottom = 0.14962825
-offset_left = 459.34854
-offset_top = 680.8104
-offset_right = 495.34854
-offset_bottom = 706.8104
+offset_left = 428.16907
+offset_top = 616.8104
+offset_right = 459.16907
+offset_bottom = 642.8104
 text = "10"
 label_settings = SubResource("LabelSettings_6xei0")
 autowrap_mode = 3
 
 [node name="use_button" type="TextureButton" parent="HBoxContainer/DetailsPanel" unique_id=514109910]
 layout_mode = 0
-offset_left = 69.0
-offset_top = 911.0
-offset_right = 671.0
-offset_bottom = 1030.0
-
-[node name="use_button_label" type="Label" parent="HBoxContainer/DetailsPanel/use_button" unique_id=696403628]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 6.0
-offset_right = 594.0
-offset_bottom = 126.0
-text = "USE ITEM"
-label_settings = SubResource("LabelSettings_xityo")
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = 235.0
+offset_top = 854.0
+offset_right = 271.0
+offset_bottom = 863.0
+scale = Vector2(7.605, 7.605)
+texture_normal = ExtResource("7_3ycl8")
 
 [node name="CloseButton" parent="." unique_id=1384460648 instance=ExtResource("4_aj06e")]
 layout_mode = 0
@@ -252,15 +245,3 @@ offset_left = 51.0
 offset_top = 51.0
 offset_right = 60.625
 offset_bottom = 59.25
-
-[node name="CoinDisplay" parent="." unique_id=220494740 instance=ExtResource("5_3ycl8")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 877.0
-offset_top = 84.0
-offset_right = 1158.0
-offset_bottom = 199.0

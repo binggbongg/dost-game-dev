@@ -43,10 +43,12 @@ animations = [{
 [resource]
 script = ExtResource("1_x43eh")
 name = "Ginto"
+description = "Channels radiant golden energy into a refined and powerful magical strike."
 category = 2
 rarity = 2
 damage = 8
 mana_cost = 6
 texture = ExtResource("3_ljixb")
+ASLExplanation = "Touch your earlobe, then pull your hand down into a Y handshape while shaking it outward."
 cardASL = SubResource("SpriteFrames_7wsuc")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

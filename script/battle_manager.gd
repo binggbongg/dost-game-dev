@@ -238,17 +238,25 @@ func execute_enemy_turn():
 	var enemy_node = null
 	if combat_arena and combat_arena.has_method("get_enemy"):
 		enemy_node = combat_arena.get_enemy()
+	
+	if is_instance_valid(enemy_node):
+		# Assuming your enemy_ai script stores its current intent resource/name
+		var action_name = "an attack"
+		
+		# If the enemy has a current intent object with a custom name property:
+		if "current_intent" in enemy_node and enemy_node.current_intent:
+			action_name = enemy_node.current_intent.name
+			
+		display_action_message("Enemy is casting: " + str(action_name) + "!")
+	else:
+		display_action_message("Enemy is preparing an action...")
 
 	if is_instance_valid(enemy_node) and not enemy_node.is_defeated:
-		# 1. Fire the action mechanics instantly
 		enemy_node.execute_intent()
 		
-		# 2. 🌟 THE TURN MANAGER FALLBACK SAFETY GATE WINDOW
-		# Hold the ENEMY_TURN state open here for exactly 1.8 seconds to allow frames to draw
 		battle_timer.start(1.8)
 		await battle_timer.timeout
 		
-		# 3. Securely force the enemy back to its idle loop state setup
 		if is_instance_valid(enemy_node) and not enemy_node.is_defeated:
 			var sprite = enemy_node.get_node_or_null("AnimatedSprite2D")
 			if sprite and sprite.sprite_frames.has_animation("idle"):
@@ -280,13 +288,20 @@ func _on_player_turn_timeout():
 
 func process_cast_score_injection(active_cards: Array):
 	var root_scene = get_tree().current_scene
-	if root_scene and root_scene.has_method("evaluate_combo_scoring"):
-		var matched_recipe = null
-		if combo_manager and combo_manager.has_method("get_matched_recipe"):
-			matched_recipe = combo_manager.get_matched_recipe()
+	if root_scene and combo_manager:
+		# 🌟 Fetch the full dynamic parameters directly from the ComboManager layout!
+		var combo_data = combo_manager.calculate_combo_output(active_cards)
 		
-		# Inject points straight into CombatLevel instantly upon successful casting execution
-		root_scene.evaluate_combo_scoring(active_cards, matched_recipe)
+		if "match_combo_bonus_points" in root_scene:
+			root_scene.match_combo_bonus_points += combo_data.get("score_points", 0)
+		
+		if "match_score_multipler" in root_scene:
+			root_scene.match_score_multipler += combo_data.get("score_multiplier", 0.0)
+			
+		if combo_data.get("increment_combo_counter", false):
+			PlayerProfile.run_combos_played += 1
+			
+		print("[BATTLE] Scores updated via ComboManager. Total Points: ", root_scene.get("match_combo_bonus_points"))
 
 func display_action_message(message: String) -> void:
 	if not is_instance_valid(action_log_label):

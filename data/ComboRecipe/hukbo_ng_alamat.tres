@@ -7,4 +7,5 @@ script = ExtResource("1_ov7ux")
 name = "Hukbo ng Alamat"
 description = "Legendary beings heed the summoner's call, marching forth as one."
 elements = Array[int]([0, 1, 0])
+filipino_lore = "Empowers a Lahi technique, unleashing its maximum attack power."
 metadata/_custom_type_script = "uid://v3nevm1wba6b"

@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://buor4em2o4cfj" path="res://scenes/ui/coin_display.tscn" id="4_p6j4a"]
 [ext_resource type="FontFile" uid="uid://0jurkn1nkkvx" path="res://assets/fonts/PixelifySans-Regular.ttf" id="4_tqrtc"]
 [ext_resource type="Texture2D" uid="uid://boabmii5i72r" path="res://assets/ui/shop/purchase_button.png" id="6_lsiq6"]
+[ext_resource type="Texture2D" uid="uid://btr8t32glxok3" path="res://assets/ui/shop/quantitybox.png" id="9_lsiq6"]
+[ext_resource type="Texture2D" uid="uid://cy5jhu5syva71" path="res://assets/ui/shop/add_button.png" id="10_m8xc7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lsiq6"]
 paragraph_spacing = 1.0
@@ -237,10 +239,10 @@ autowrap_mode = 3
 
 [node name="purchase_button" type="TextureButton" parent="HBoxContainer/DetailsPanel" unique_id=1339198168]
 layout_mode = 0
-offset_left = 252.0
-offset_top = 883.99994
-offset_right = 288.0
-offset_bottom = 892.99994
+offset_left = 267.0
+offset_top = 916.0
+offset_right = 303.0
+offset_bottom = 925.0
 scale = Vector2(6.145, 6.145)
 texture_normal = ExtResource("6_lsiq6")
 
@@ -257,3 +259,35 @@ offset_left = 1437.736
 offset_top = 141.48401
 offset_right = 1185.598
 offset_bottom = 16.668987
+
+[node name="Amount" type="TextureRect" parent="." unique_id=95411110]
+layout_mode = 0
+offset_left = 1577.0
+offset_top = 864.0
+offset_right = 1685.0
+offset_bottom = 904.0
+texture = ExtResource("9_lsiq6")
+
+[node name="Amount2" type="TextureRect" parent="." unique_id=208176667]
+layout_mode = 0
+offset_left = 1694.0
+offset_top = 868.0
+offset_right = 1734.186
+offset_bottom = 904.0
+texture = ExtResource("10_m8xc7")
+
+[node name="Quantity" type="Label" parent="." unique_id=2083683694]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.14626557
+anchor_top = 0.14962825
+anchor_right = 0.14626557
+anchor_bottom = 0.14962825
+offset_left = 1310.0
+offset_top = 710.0
+offset_right = 1386.0
+offset_bottom = 736.0
+text = "10"
+label_settings = SubResource("LabelSettings_hlia1")
+horizontal_alignment = 1
+autowrap_mode = 3

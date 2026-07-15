@@ -43,10 +43,11 @@ animations = [{
 [resource]
 script = ExtResource("1_15b2u")
 name = "Apoy"
-description = "Basic fire attack."
+description = "Unleashes blazing flames that scorch a single enemy with the fury of a raging fire."
 category = 2
 damage = 3
 mana_cost = 2
 texture = ExtResource("2_cc56d")
+ASLExplanation = "Raise both open hands with fingers spread. Wiggle fingers upward like rising flames."
 cardASL = SubResource("SpriteFrames_f0wnr")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

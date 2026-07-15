@@ -20,8 +20,10 @@ func register_fields():
 	
 	register_field("owned_items", PlayerInventory.owned_items)
 	#hi aissha
+	# what the
 	register_field("tutorials", PlayerProfile.tutorial_steps_completed)
 	register_field("owned_cards", PlayerProfile.owned_cards)
+	register_field("owned_fragments", PlayerProfile.owned_fragments)
 
 func on_loaded(data: Dictionary):
 	PlayerProfile.player_name = data.get("player_name", "NoobGamer")
@@ -31,12 +33,36 @@ func on_loaded(data: Dictionary):
 	
 	PlayerProfile.is_profile_initialized = data.get("is_profile_initialized", false)
 	PlayerProfile.max_unlocked_chapters = int(data.get("max_unlocked_chapters", 1))
-	PlayerProfile.high_scores = data.get("high_scores", {})
 	
-	PlayerInventory.owned_items = data.get("owned_items", {})
+	var incoming_scores = data.get("high_scores", {})
+	PlayerProfile.high_scores = incoming_scores if typeof(incoming_scores) == TYPE_DICTIONARY else {}
+	
+	var incoming_inventory = data.get("owned_items", {})
+	PlayerInventory.owned_items = incoming_inventory if typeof(incoming_inventory) == TYPE_DICTIONARY else {}
 	PlayerInventory.inventory_changed.emit()
-	PlayerProfile.owned_cards = data.get("owned_cards", [])
-	PlayerProfile.tutorial_steps_completed = data.get("tutorials", false)
+
+	var loaded_fragments = data.get("owned_fragments", [])
+	if typeof(loaded_fragments) == TYPE_ARRAY:
+		PlayerProfile.owned_fragments.assign(loaded_fragments)
+	else:
+		PlayerProfile.owned_fragments.clear()
+	
+	var incoming_cards = data.get("owned_cards", [])
+	if typeof(incoming_cards) == TYPE_ARRAY:
+		PlayerProfile.owned_cards.assign(incoming_cards)
+	else:
+		PlayerProfile.owned_cards.clear()
+	
+	var default_tutorials = {
+		"lounge_tour": false,
+		"chapter_intro": false,
+		"battle_tutorial": false,
+		"deck_builder": false,
+		"cut_scene": false
+	}
+	
+	var loaded_tutorials = data.get("tutorials", default_tutorials)
+	PlayerProfile.tutorial_steps_completed = loaded_tutorials if typeof(loaded_tutorials) == TYPE_DICTIONARY else default_tutorials
 	
 	print("SaveManager (Talo): Cloud sync applied")
 	print("- Coins Loaded: ", PlayerProfile.coins)
@@ -57,14 +83,9 @@ func sync_with_cloud() -> void:
 		print("SaveManager (Talo): Found existing cloud progress. Loading newest profile...")
 		Talo.saves.choose_save(Talo.saves.latest)
 	else:
-		print("SaveManager (Talo): Critical initialization gate - Fresh account with no saves detected!")
-		print("SaveManager (Talo): Provisioning immediate empty container placeholder to satisfy plugin references...")
+		print("SaveManager (Talo): Fresh account with no saves detected. Provisioning workspace...")
 		
-		# 🛡️ SAFE GUARD: To prevent Talo's plugin from breaking on a 'Nil' check,
-		# we initialize an empty, valid TaloGameSave instance into the current session slot.
-		# This assigns an ID of 0 so Talo's background loop processes it safely.
 		if Talo.saves.current == null:
-			# 🛠️ FIX: Match exact keys and casing expected by TaloGameSave._init()
 			var baseline_save_data = {
 				id = 0,
 				name = "PlayerProfileSave",
@@ -72,12 +93,12 @@ func sync_with_cloud() -> void:
 					"version": "godot.v2",
 					"objects": []
 				},
-				updatedAt = Time.get_datetime_string_from_system() # ✨ Fixed camelCase key!
+				updatedAt = Time.get_datetime_string_from_system()
 			}
-			# Safely instantiate the class with the corrected dictionary layout
 			Talo.saves.current = TaloGameSave.new(baseline_save_data)
 		
-		# ⏳ Now that the slot is safely populated, tell the cloud server to store it permanently
+		# Build initial fields immediately so placeholder data is serialized cleanly
+		register_fields()
 		await Talo.saves.create_save("PlayerProfileSave")
 		print("SaveManager (Talo): Placeholder workspace baked successfully.")
 
@@ -86,6 +107,7 @@ func save_game():
 		print("SaveManager Warning: Blocked a save attempt because Talo.saves.current is null (Not fully synced yet).")
 		return
 	
+	register_fields()
 	print("Preparing to push data to cloud profile -- savemanager")
 	Talo.saves.update_current_save()
 
@@ -96,6 +118,7 @@ func save_game_async() -> void:
 		print("Initial save slot created")
 		return
 	
+	register_fields()
 	print("Preparing to push data to cloud profile (Async)")
 	await Talo.saves.update_current_save()
 

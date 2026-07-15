@@ -12,3 +12,4 @@ class_name LevelData
 @export_group("Lore")
 @export var enemy_name: String
 @export var level_lore: String
+@export var enemy_portrait: Texture2D

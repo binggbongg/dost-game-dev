@@ -6,5 +6,5 @@
 script = ExtResource("1_lbvvg")
 type = 1
 character_name = "Player Hand"
-lines = Array[String](["You are given 5 cards in your hand, slide them into the slot as single spells or cast valid magic combo spells for greater power. Invalid cards will be grayed out and not be playable until you have enough mana or have a valid spell."])
+lines = Array[String](["You are given 5 cards in your hand, slide them into the slot as single spells or cast valid spells for greater power. ", "Invalid cards will be grayed out and will not  be playable until you have enough mana or have a valid spell.", "You can use up your entire player hand in 1 turn if your have enough mana to consume them."])
 metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

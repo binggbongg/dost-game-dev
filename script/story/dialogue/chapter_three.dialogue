@@ -1,80 +1,97 @@
+~ intro
+Enemu: GGRRRAAAAAAAAH!!
+
+Enemy: RRRRNNNGGGGHHH!!
+
+=> END
+
+
+~ see_gem
+
+Player: ...
+
+Player: I wonder who was hidden behind all that metal.
+
+Player: I should go to them.
+
+=> END
+
+
 ~ chapter3_star_fragment
 
-Player: Another Star Fragment...
-Player: Your light... feels familiar.
+Star Fragment: So... you're the one everyone's been talking about.
 
-Star Fragment: It is because you have brought my brothers and sisters home.
-
-Star Fragment: Our light grows stronger with every Star Fragment you recover.
+Player: ...
 
 Player: Then...
-Player: Are your memories returning?
 
-Star Fragment: Little by little.
+Player: Who are you?
 
-Star Fragment: Some memories remain beyond our reach...
-Star Fragment: but I remember what this guardian once was.
+Star Fragment: Hahaha...
 
-Player: The Rebulto...
-
-Star Fragment: Once, people came before it
-Star Fragment: not to ask for miracles...
-
-Star Fragment: ...but to find the strength to face tomorrow.
-
-Star Fragment: It stood as a reminder
-Star Fragment: that even in life's darkest moments,
-Star Fragment: hope would always remain.
-
-Player: And they turned it into a weapon.
-
-Star Fragment: Yes.
-
-Star Fragment: They knew that hope cannot be stolen by force.
-
-Star Fragment: So they chose to corrupt it instead.
-
-Star Fragment: If the people could no longer trust
-Star Fragment: the very symbols that gave them hope...
-
-Star Fragment: then despair would take root on its own.
-
-Player: That's why every village we pass...
-
-Player: ...feels so empty.
-
-Star Fragment: Hope is a fragile flame, Blessed One.
-
-Star Fragment: It need not be extinguished.
-
-Star Fragment: People need only believe
-Star Fragment: that it has already gone out.
-
-Player: Then I'll become the proof that it still burns.
-
-Star Fragment: Just as I remembered...
-
-Star Fragment: You truly are the Blessed One.
-
-Star Fragment: More of our memories are returning.
-
-Star Fragment: Soon...
-
-Star Fragment: We may finally remember
-Star Fragment: the one who imprisoned the Stars.
-
-Player: Then we'll find them.
-
-Player: Together.
-
-Star Fragment: I shall gladly walk beside you.
+Star Fragment: It's good to finally meet you, Blessed One.
 
 Star Fragment: I am Pag-asa,
 Star Fragment: the Star of Hope.
 
-Star Fragment: Carry hope within your heart...
+Player: You seem...
 
-Star Fragment: For it is the one light
-Star Fragment: that even darkness cannot imitate.
+Player: Different.
+
+Star Fragment: Should I be gloomy after finally being free?
+
+Star Fragment: I'd rather celebrate that you found us.
+
+Player: Araw and Hiraya said your memories were returning.
+
+Star Fragment: They are.
+
+Star Fragment: Not all at once...
+
+Star Fragment: Just enough to know we've been asleep for far too long.
+
+Player: The Rebulto...
+
+Star Fragment: Once, people stood before it searching for strength.
+
+Star Fragment: Not because they believed it could solve their problems...
+
+Star Fragment: But because it reminded them they could overcome them.
+
+Player: And they corrupted even that.
+
+Star Fragment: Of course they did.
+
+Star Fragment: Hope frightens those who rule through fear.
+
+Star Fragment: They couldn't destroy it...
+
+Star Fragment: So they convinced people it never existed.
+
+Player: That's why every place I've visited...
+
+Player: ...feels empty.
+
+Star Fragment: Empty...
+
+Star Fragment: But not beyond saving.
+
+Player: You really believe that.
+
+Star Fragment: I have to.
+
+Star Fragment: Hope only dies when no one is willing to carry it.
+
+Star Fragment: Yet here you are.
+
+Player: ...
+
+Player: Then I'll keep carrying it.
+
+Star Fragment: I knew you would.
+
+Star Fragment: Come closer, Blessed One.
+
+Star Fragment: Let my light become one with your own.
 
 => END

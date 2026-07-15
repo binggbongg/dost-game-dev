@@ -43,10 +43,12 @@ animations = [{
 [resource]
 script = ExtResource("1_axtmp")
 name = "Galit"
+description = "Ignites fierce anger that empowers attacks through burning determination."
 category = 1
 damage = 1
 multiplier = 1.2
 mana_cost = 1
 texture = ExtResource("2_p2u47")
+ASLExplanation = "Place claw-shaped hands near your chest, then pull them upward forcefully."
 cardASL = SubResource("SpriteFrames_p2u47")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

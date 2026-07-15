@@ -1,70 +1,89 @@
+~ intro
+Enemy: *AUGHHHHHHH*
+
+=> END
+
+
+~ see_gem
+Player: ...
+Player: Another one...
+Player: A Star Fragment.
+Player: Was it trapped inside Hating-Dilim too?
+Player: I should go to it.
+
+=> END
+
+
 ~ chapter2_star_fragment
 
-Player: Another Star Fragment...
-Player: This one feels... calmer.
+Star Fragment: Welcome, Blessed One.
 
-Star Fragment: Welcome once more, Blessed One.
-Star Fragment: I sensed Araw's light the moment you freed them.
+Player: ...
 
-Player: Then the Stars truly are connected.
+Player: You were waiting for me?
 
-Star Fragment: Though we are scattered,
-Star Fragment: our light still finds one another.
-
-Player: Tell me...
-Player: Why was your light sealed inside a Manananggal?
-
-Star Fragment: Because peace is easiest to destroy through fear.
-
-Star Fragment: Long ago,
-Star Fragment: the Manananggal was nothing more than a tale told beneath moonlit skies.
-
-Star Fragment: A story meant to remind children
-Star Fragment: that courage is stronger than fear.
-
-Star Fragment: They twisted that story...
-Star Fragment: and turned it into a weapon.
-
-Player: To make people fear magic?
-
-Star Fragment: No.
-Star Fragment: To make people fear one another.
-
-Star Fragment: When fear takes root,
-Star Fragment: neighbors become strangers.
-
-Star Fragment: Families shut their doors to one another.
-
-Star Fragment: Villages forget what it means to stand together.
-
-Star Fragment: That is how peace is lost.
-
-Player: So every monster they've created...
-
-Player: ...is meant to divide us.
-
-Star Fragment: Yes.
-
-Star Fragment: A divided community  will never hear the songs of the Stars again.
-
-Player: Then we'll give them something stronger than fear.
-
-Star Fragment: Hold fast to that resolve.
-
-Star Fragment: Every Star Fragment you recover
-Star Fragment: restores more than our light alone.
-
-Star Fragment: It rekindles the courage
-Star Fragment: for others to believe once more.
-
-Player: Then I'll keep going.
-
-Star Fragment: And I shall walk beside you.
+Star Fragment: For a very long time.
 
 Star Fragment: I am Hiraya,
 Star Fragment: the Star of Peace.
 
-Star Fragment: May your heart remain steadfast,
-Star Fragment: even when fear surrounds you.
+Star Fragment: Though my light was imprisoned,
+Star Fragment: peace endured because you carried it within your heart.
+
+Player: Then...
+
+Player: You'll be joining the others?
+
+Star Fragment: Gladly.
+
+Star Fragment: My journey now lies with yours.
+
+Star Fragment: Come closer.
+
+Star Fragment: Let my light become one with your own.
+
+=> END
+
+
+~ chapter2_abduction
+
+Player: ...
+
+Player: Another one...
+
+Player: Every Star chooses to become one with me.
+
+Star Fragment: ...
+
+Star Fragment: Blessed One...
+
+Star Fragment: What is that light?
+
+Player: ...?
+
+Star Fragment: No...
+
+Star Fragment: Run!
+
+Player: I can't move...
+
+Player: What's happening?!
+
+=> END
+
+
+~ unknown_transmission
+
+Unknown: Retrieval complete.
+
+Unknown: The anomaly has been secured.
+
+Unknown: Do we know what it is?
+
+Unknown: Negative.
+
+Unknown: Return to base.
+
+Unknown: We'll figure out what we've captured there.
 
 => END

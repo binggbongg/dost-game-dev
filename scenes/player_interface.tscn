@@ -24,6 +24,15 @@
 [ext_resource type="Texture2D" uid="uid://dgowx8wbwjkd4" path="res://assets/ui/handsigns/kalikasan_attack/kalikasan_apoy.png" id="20_tpnij"]
 [ext_resource type="Script" uid="uid://dsi8sgixbk4g7" path="res://script/ui/sprite_anmation.gd" id="21_sw6vk"]
 
+[sub_resource type="Gradient" id="Gradient_fsphr"]
+colors = PackedColorArray(0, 0, 0, 0.6156863, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5f8t2"]
+gradient = SubResource("Gradient_fsphr")
+fill = 1
+fill_from = Vector2(0.47692308, 0.45982906)
+fill_to = Vector2(0.757265, 0.7948718)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_sw6vk"]
 atlas = ExtResource("16_nfx06")
 region = Rect2(0, 0, 64, 64)
@@ -148,6 +157,13 @@ animations = [{
 }]
 
 [node name="PlayerInterface" type="Node2D" unique_id=143692811]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1187535646]
+offset_left = 15.0
+offset_top = 12.0
+offset_right = 397.0
+offset_bottom = 169.0
+texture = SubResource("GradientTexture2D_5f8t2")
 
 [node name="GameManagers" type="Node2D" parent="." unique_id=1478786620]
 

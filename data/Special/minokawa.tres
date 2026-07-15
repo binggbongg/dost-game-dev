@@ -1,10 +1,129 @@
 [gd_resource type="Resource" script_class="SpecialCardData" format=3 uid="uid://qbrv38x4j52"]
 
 [ext_resource type="Script" uid="uid://8m6aga3qk3g5" path="res://script/item_effects/diwata.gd" id="1_7bnip"]
+[ext_resource type="Texture2D" uid="uid://cyj7x07t2fqfq" path="res://assets/ui/handsigns/special_attack/special_minokawa.png" id="1_rpm4i"]
 [ext_resource type="Script" uid="uid://cpiimvdghqtnm" path="res://data/special_cards.gd" id="2_rpm4i"]
 [ext_resource type="Texture2D" uid="uid://cn66acd8j5tom" path="res://assets/cards/minokawa.png" id="3_7bnip"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2k71o"]
+atlas = ExtResource("1_rpm4i")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1ara"]
+atlas = ExtResource("1_rpm4i")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eovpc"]
+atlas = ExtResource("1_rpm4i")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcjc7"]
+atlas = ExtResource("1_rpm4i")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivt1b"]
+atlas = ExtResource("1_rpm4i")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18yev"]
+atlas = ExtResource("1_rpm4i")
+region = Rect2(320, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0wyg"]
+atlas = ExtResource("1_rpm4i")
+region = Rect2(384, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3p4ic"]
+atlas = ExtResource("1_rpm4i")
+region = Rect2(448, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0mps"]
+atlas = ExtResource("1_rpm4i")
+region = Rect2(512, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xstk"]
+atlas = ExtResource("1_rpm4i")
+region = Rect2(576, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10m8j"]
+atlas = ExtResource("1_rpm4i")
+region = Rect2(640, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10rh1"]
+atlas = ExtResource("1_rpm4i")
+region = Rect2(704, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ycng"]
+atlas = ExtResource("1_rpm4i")
+region = Rect2(768, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yckhh"]
+atlas = ExtResource("1_rpm4i")
+region = Rect2(832, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huyqs"]
+atlas = ExtResource("1_rpm4i")
+region = Rect2(896, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg823"]
+atlas = ExtResource("1_rpm4i")
+region = Rect2(960, 0, 64, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_7bnip"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2k71o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1ara")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eovpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcjc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivt1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18yev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0wyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3p4ic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0mps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xstk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10m8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10rh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ycng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yckhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huyqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qg823")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [resource]
 script = ExtResource("2_rpm4i")
@@ -17,5 +136,5 @@ item_id = "005"
 name = "Minokawa"
 description = "Does smthn nice and nice!"
 texture = ExtResource("3_7bnip")
-price = 70
+price = 700
 metadata/_custom_type_script = "uid://cpiimvdghqtnm"

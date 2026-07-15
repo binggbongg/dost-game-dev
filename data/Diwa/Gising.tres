@@ -43,10 +43,12 @@ animations = [{
 [resource]
 script = ExtResource("1_dashj")
 name = "Gising"
+description = "Heightens awareness, allowing the mind to react with perfect clarity."
 category = 1
 damage = 1
 multiplier = 1.2
 mana_cost = 1
 texture = ExtResource("2_86xb4")
+ASLExplanation = "Pinch your thumb and index finger beside your eye, then snap them open."
 cardASL = SubResource("SpriteFrames_ds7y6")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

@@ -52,7 +52,7 @@ func _fill_special(res):
 func _fill_combo(panel, res, manager, is_triple, elements_array):
 	var n = panel.get_node_or_null("Name")
 	var d = panel.get_node_or_null("DescriptionPanel/DescriptionFull")
-	
+	var f 
 	if n: n.text = str(res.get("name"))
 	if d: d.text = str(res.get("description"))
 	
@@ -65,9 +65,13 @@ func _fill_combo(panel, res, manager, is_triple, elements_array):
 			if c1: c1.texture = _get_tex(elements_array[0], manager)
 			if c2: c2.texture = _get_tex(elements_array[1], manager)
 			if c3: c3.texture = _get_tex(elements_array[2], manager)
+			f = $Spell_triiple/SpecialEffectFull
+			if f: f.text = str(res.get("filipino_lore"))
 		else:
+			f = $Spell_double/SpecialEffectFull
 			if c2: c2.texture = _get_tex(elements_array[0], manager)
 			if c3: c3.texture = _get_tex(elements_array[1], manager)
+			if f: f.text = str(res.get("filipino_lore"))
 
 func _get_tex(element_val, manager) -> Texture2D:
 	if manager:

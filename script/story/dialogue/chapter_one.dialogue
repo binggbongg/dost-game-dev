@@ -3,9 +3,9 @@ Player: Is it... finally over?
 => END
 
 ~ see_gem
-Player: What is that? 
-Player: Maybe it can give me answers to the stolen voices of my people.
-Player: Let's head towards it.
+Player: What is that?
+Player: Maybe it holds the answers to the stolen voices of my people.
+Player: I have to see it.
 => END
 
 ~ chapter1_star_fragment
@@ -15,20 +15,19 @@ Player: A Star Fragment...
 Player: Why were you trapped inside that Karabao?
 
 Star Fragment: You need not search for your voice, anak.
-Star Fragment: I hear the one that lives within your heart.
+Star Fragment: I hear the one that lives within your spirit.
 
 Player: ...
 Player: You can hear my thoughts?
 
 Star Fragment: Not your thoughts.
-Star Fragment: Your spirit.
-Star Fragment: Words are unnecessary between a Star and the Blessed One.
+Star Fragment: Your spirit. Words are unnecessary between a Star and the Blessed One.
 
 Player: Then... you know who I am.
 
-Star Fragment: I have known of you for a long time.
+Star Fragment: I have long known of you.
 Star Fragment: The child who casts without a voice.
-Star Fragment: The child touched by the heavens.
+Star Fragment: The one touched by the heavens.
 
 Player: Tell me...
 Player: Have the Stars abandoned the mages?
@@ -38,31 +37,26 @@ Star Fragment: Never.
 Star Fragment: We would sooner let our light fade than betray the children of Bathala.
 
 Star Fragment: We were captured.
-Star Fragment: Our light was broken apart...
-Star Fragment: and sealed within these Star Fragments.
+Star Fragment: Our light was shattered and sealed within these Star Fragments.
 
-Star Fragment: From these prisons, we watched in silence...
+Star Fragment: From our prisons, we watched in silence,
 Star Fragment: unable to warn the mages of the darkness to come.
 
 Player: You're too late.
 Player: My village has already fallen.
 Player: Every mage has lost their voice.
 
-Star Fragment: Then... we have already failed them.
-
+Star Fragment: Then we have already failed them.
 Star Fragment: Forgive us, anak.
-Star Fragment: Had we remained free,
-Star Fragment: perhaps the Stars could have changed your fate.
 
 Player: Can they still be saved?
 
 Star Fragment: They can.
-
-Star Fragment: Each Star Fragment carries a piece of our light...
+Star Fragment: Each Star Fragment carries a piece of our light,
 Star Fragment: and within that light rests a fragment of the voices that were stolen.
 
 Star Fragment: Gather us.
-Star Fragment: As the Stars are made whole...
+Star Fragment: As the Stars are made whole,
 Star Fragment: so too shall the voices of the mages.
 
 Player: Then I'll find every last one of you.
@@ -72,8 +66,7 @@ Star Fragment: And I shall walk beside you.
 Star Fragment: I am Araw,
 Star Fragment: the Star of Prosperity.
 
-Star Fragment: Once,
-Star Fragment: I watched over every harvest,
+Star Fragment: Once, I watched over every harvest,
 Star Fragment: every humble tahanan,
 Star Fragment: and every hopeful heart.
 

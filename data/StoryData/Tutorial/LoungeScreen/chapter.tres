@@ -6,5 +6,5 @@
 script = ExtResource("1_sawkw")
 type = 1
 character_name = "Chapter 1"
-lines = Array[String](["Start your journey now, later you can unlock more chpaters and locations in the map. Click to start chapter one. "])
+lines = Array[String](["Unlock chapters and learn more about the world and meet new enemies.", "Start your journey now, later you can unlock more chpaters and locations in the map."])
 metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

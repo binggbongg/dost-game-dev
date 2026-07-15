@@ -43,10 +43,12 @@ animations = [{
 [resource]
 script = ExtResource("1_uquhd")
 name = "Bagyo"
+description = "Summons a violent typhoon that batters enemies with unrelenting force."
 category = 2
 rarity = 2
 damage = 8
 mana_cost = 6
 texture = ExtResource("3_6f8j7")
+ASLExplanation = "Interlock your thumbs, wiggle your fingers, and make a large circular motion."
 cardASL = SubResource("SpriteFrames_echt3")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

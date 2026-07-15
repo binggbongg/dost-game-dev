@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StarFragments" format=3 uid="uid://byx7ljbhkyyhb"]
+
+[ext_resource type="Texture2D" uid="uid://du1ghpusjlr4p" path="res://assets/gems/peace_gem.png" id="1_npkp4"]
+[ext_resource type="Script" uid="uid://b0a3svt0n8an4" path="res://data/star_fragments.gd" id="2_ftwit"]
+
+[resource]
+script = ExtResource("2_ftwit")
+name = "Hiraya"
+illustration = ExtResource("1_npkp4")
+metadata/_custom_type_script = "uid://b0a3svt0n8an4"

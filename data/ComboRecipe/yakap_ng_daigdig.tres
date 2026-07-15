@@ -7,4 +7,5 @@ script = ExtResource("1_3mg6l")
 name = "Yakap ng Daigdig"
 description = "The earth's spirit answers your call, embracing allies and ensnaring foes alike."
 elements = Array[int]([1, 2])
+filipino_lore = "Empowers an elemental attack, increasing its damage before striking the enemy. "
 metadata/_custom_type_script = "uid://v3nevm1wba6b"

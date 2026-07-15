@@ -1,4 +1,5 @@
 extends Node
+
 signal profile_updated # Emitted when name, character, or rank changes
 signal coins_changed(new_amount: int)
 
@@ -32,6 +33,8 @@ var tutorial_steps_completed: Dictionary = {
 }
 var owned_cards: Array[String] = []
 var current_deck: Array[String] = []
+var owned_fragments: Array[String] = []
+
 var pending_scene: String = ""
 func add_card_to_inventory(card_path: String):
 	if not owned_cards.has(card_path):
@@ -39,6 +42,13 @@ func add_card_to_inventory(card_path: String):
 		print("Added to inventory: ", card_path)
 	SaveManager.save_game()
 
+
+func add_fragment_to_inventory(fragment_name: String):
+	if not owned_fragments.has(fragment_name):
+		owned_fragments.append(fragment_name)
+		print("[PlayerProfile] Fragment added: ", fragment_name)
+	SaveManager.save_game()
+	
 var is_tutorial_fight: bool = false
 var level: int = 1
 var experience: int = 0
@@ -62,25 +72,23 @@ func reset_run_counter():
 	run_combos_played = 0
 	run_items_used = 0
 
-# -- initialization logic --
 func initialize_profile(new_name: String, character_id: String):
 	self.player_name = new_name
 	self.selected_character = character_id
 	self.player_rank = "Starter"
 	self.coins = 100
+	PlayerStats.reset_health()
 	
 	level = 1
 	experience = 0
 	is_tutorial_fight = false
 	
-	tutorial_steps_completed = {
-		"lounge_tour": false,
-		"chapter_intro": false,
-		"battle_tutorial": false,
-		"deck_builder": false,
-		"cut_scene": false
-	}
-	is_tutorial_fight = false
+	tutorial_steps_completed.clear()
+	tutorial_steps_completed["lounge_tour"] = false
+	tutorial_steps_completed["chapter_intro"] = false
+	tutorial_steps_completed["battle_tutorial"] = false
+	tutorial_steps_completed["deck_builder"] = false
+	tutorial_steps_completed["cut_scene"] = false
 	
 	max_unlocked_chapters = 1
 	high_scores.clear()
@@ -89,10 +97,13 @@ func initialize_profile(new_name: String, character_id: String):
 	current_phase = 1
 	current_level = 1
 	
-	owned_cards = []
+	owned_cards.clear()
+	owned_fragments.clear()
+	current_deck = []
 	
 	is_profile_initialized = true
 	print("Profile Initialized for: ", player_name)
+
 
 func set_rank(new_rank: String):
 	player_rank = new_rank
@@ -162,9 +173,10 @@ func sync_local_scores_to_talo() -> void:
 	
 	print("[SYNC] Checking local profile high scores for cloud synchronization...")
 	
+	var active_sync_request: Array = []
 	for key in high_scores.keys():
 		# Verify if the dictionary contains structured data (e.g., {"rank": "A", "score": 2450})
-		var record = high_scores[key]
+		var record = high_scores.get(key)
 		if typeof(record) == TYPE_DICTIONARY and record.has("score"):
 			var local_score: int = record.get("score")
 			var local_rank: String = record.get("rank", "C")
@@ -173,5 +185,13 @@ func sync_local_scores_to_talo() -> void:
 			await Talo.leaderboards.add_entry(key, local_score, {
 				"rank": str(local_rank)
 			})
-			
+	
+	if not active_sync_request.is_empty():
+		print("[SYNC] Waiting for backend responses to settle...")
+		for request in active_sync_request:
+			await request
+	
 	print("[SYNC] Offline data backup synchronization processing finished.")
+
+func get_highest_unlocked_chapter() -> int:
+	return max_unlocked_chapters

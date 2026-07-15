@@ -7,4 +7,5 @@ script = ExtResource("1_klmlk")
 name = "Pintig ng Sanlibutan"
 description = "The pulse of creation courses through every living thing, restoring the balance of life."
 elements = Array[int]([2, 1, 2])
+filipino_lore = "Empowers an elemental technique, greatly increasing its attack power for a devastating strike. "
 metadata/_custom_type_script = "uid://v3nevm1wba6b"

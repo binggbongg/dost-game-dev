@@ -1,8 +1,87 @@
 [gd_resource type="Resource" script_class="SpecialCardData" format=3 uid="uid://caqi4c7tgv3vo"]
 
 [ext_resource type="Script" uid="uid://cpiimvdghqtnm" path="res://data/special_cards.gd" id="1_cjm0h"]
+[ext_resource type="Texture2D" uid="uid://dgieuusq1wlg1" path="res://assets/ui/handsigns/special_attack/special_kapre.png" id="1_rcuxp"]
 [ext_resource type="Script" uid="uid://bn7qw47guwt7g" path="res://script/item_effects/kapre.gd" id="1_tmd3s"]
 [ext_resource type="Texture2D" uid="uid://chq22nxtrqp67" path="res://assets/cards/kapre.png" id="3_qnull"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_006u4"]
+atlas = ExtResource("1_rcuxp")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2libt"]
+atlas = ExtResource("1_rcuxp")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqpa1"]
+atlas = ExtResource("1_rcuxp")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrloj"]
+atlas = ExtResource("1_rcuxp")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbdm5"]
+atlas = ExtResource("1_rcuxp")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gyug"]
+atlas = ExtResource("1_rcuxp")
+region = Rect2(320, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynycs"]
+atlas = ExtResource("1_rcuxp")
+region = Rect2(384, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt8al"]
+atlas = ExtResource("1_rcuxp")
+region = Rect2(448, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erdri"]
+atlas = ExtResource("1_rcuxp")
+region = Rect2(512, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1s64"]
+atlas = ExtResource("1_rcuxp")
+region = Rect2(576, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pr2bd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_006u4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2libt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqpa1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrloj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbdm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gyug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynycs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jt8al")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erdri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1s64")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [resource]
 script = ExtResource("1_cjm0h")
@@ -11,9 +90,10 @@ rarity = 4
 effect_script = ExtResource("1_tmd3s")
 heal = 0.5
 mana_cost = 5
+cardASL = SubResource("SpriteFrames_pr2bd")
 item_id = "001"
 name = "Kapre"
 description = "Envelops the battlefield in mystical smoke, reducing enemy attack damage by 50% for 2 turns."
 texture = ExtResource("3_qnull")
-price = 80
+price = 800
 metadata/_custom_type_script = "uid://cpiimvdghqtnm"

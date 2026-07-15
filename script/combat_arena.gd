@@ -11,6 +11,9 @@ func get_enemy():
 	print("no enemy node found")
 	return null
 
+func get_player():
+	return player
+
 func initialize_arena_enemy(enemy_resource: EnemyBehavior):
 	var enemy_node = get_enemy()
 	if not enemy_node:

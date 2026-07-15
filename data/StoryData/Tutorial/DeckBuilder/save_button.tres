@@ -6,5 +6,5 @@
 script = ExtResource("1_2ojpg")
 type = 1
 character_name = "Save"
-lines = Array[String](["Save your deck and be ready to battle."])
+lines = Array[String](["When you're satisfied with your deck, youeh are ready to start playing."])
 metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

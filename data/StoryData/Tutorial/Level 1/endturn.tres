@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_yoo4u")
 type = 1
-character_name = "End Turn"
-lines = Array[String](["If you are out of valid spells or out of mana, end your turn by clicking this button"])
+character_name = "End Turn "
+lines = Array[String](["If you are out of valid spells or out of mana, end your turn by clicking this button", "You can also use this button to skip a turn."])
 metadata/_custom_type_script = "uid://cpqsyhmdvnfv7"

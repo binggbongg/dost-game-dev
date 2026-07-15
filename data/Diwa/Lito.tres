@@ -43,11 +43,13 @@ animations = [{
 [resource]
 script = ExtResource("1_xfiar")
 name = "Lito"
+description = "Clouds the enemy's judgment, causing confusion and hesitation."
 category = 1
 rarity = 1
 damage = 2
 multiplier = 1.5
 mana_cost = 3
 texture = ExtResource("2_wyygy")
+ASLExplanation = "Tap your head, then twist both bent hands around each other."
 cardASL = SubResource("SpriteFrames_xnawh")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

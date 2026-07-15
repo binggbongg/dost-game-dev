@@ -43,10 +43,12 @@ animations = [{
 [resource]
 script = ExtResource("1_lb8xh")
 name = "Araw"
+description = "Harnesses the warmth of the sun to burn enemies while restoring life."
 category = 2
 rarity = 1
 damage = 5
 mana_cost = 4
 texture = ExtResource("2_okjpj")
+ASLExplanation = "Tap near your eye, move your hand upward, then open your fingers wide."
 cardASL = SubResource("SpriteFrames_qodnk")
 metadata/_custom_type_script = "uid://cv07myeubhuht"

@@ -127,19 +127,19 @@ func check_player_history() -> void:
 
 func _on_new_game_pressed():
 	AudioManager.play_ui_sound("click")
-	if not next_scene:
-		print("no next scene for new game -- play")
+	if not intro:
+		print("no intro scene for new game -- play")
 		return
 	
 	# resetting player details
-	PlayerProfile.initialize_profile("Default Player", "None")
+	PlayerProfile.initialize_profile("NoobGamer", "None")
+	
 	PlayerInventory.owned_items = {}
 	PlayerInventory.inventory_changed.emit()
 	
 	if typeof(Talo) != TYPE_NIL and Talo.identity_check(false) == OK:
 		if typeof(SaveManager) != TYPE_NIL:
 			print("MainMenu: Syncing empty baseline save state to override cloud data...")
-			
 			if SaveManager.has_method("register_fields"):
 				SaveManager.register_fields()
 				

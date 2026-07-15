@@ -13,6 +13,8 @@ extends Node2D
 
 @onready var level_label = $Buttons/Content/CharacterSpotlight/PLayerLevel
 
+@onready var shop_button = $Buttons/Content/shop
+
 var tutorial_active = false
 
 var chapter_buttons: Array[BaseButton] = []
@@ -32,12 +34,19 @@ func _ready():
 		if character_data:
 			me.sprite_frames = character_data.sprite_frames
 			me.play("idle")
-			
+	
+	if shop_button:
+		shop_button.modulate = Color(0.3, 0.3, 0.3, 0.9)
+	
 	# --- NEW PROGRESSION LOCK INITIALIZATION ---
 	collect_and_update_chapter_locks()
 	
 	# Updates the current phase
-	level_label.text = "Level " + str(PlayerProfile.current_level)
+	level_label.text = "Chapter " + str(PlayerProfile.get_highest_unlocked_chapter())
+	
+	#Temporary disabling of button
+	$Buttons/Content/Settings.modulate = Color(0.3, 0.3, 0.3, 0.9)
+	
 	
 	# --- TEMP CHAPTER 4+ HARD LOCK ---
 	# Delete or comment out this function call to remove the restriction later.
@@ -150,7 +159,7 @@ func give_starter_packs():
 		pack_layer.layer = 100
 		add_child(pack_layer)
 
-	for i in range(5):
+	for i in range(3):
 		var pack_instance = pack_scene.instantiate()
 		pack_layer.add_child(pack_instance)
 		pack_instance.open_pack(true) 
@@ -192,8 +201,7 @@ func collect_and_update_chapter_locks() -> void:
 			target_btn.disabled = false
 			target_btn.modulate = Color(1.0, 1.0, 1.0, 1.0)
 			
-			# NEW: Apply glow only to the current highest chapter
-			if chapter_num == current_max:
+			if chapter_num == current_max and chapter_num < 4:
 				apply_glow(target_btn)
 				
 			if not target_btn.pressed.is_connected(_on_chapter_button_pressed):

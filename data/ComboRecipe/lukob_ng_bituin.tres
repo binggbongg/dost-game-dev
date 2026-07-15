@@ -7,4 +7,5 @@ script = ExtResource("1_1tvky")
 name = "Lukob ng Bituin"
 description = "A celestial veil shelters those within its radiant embrace."
 elements = Array[int]([3, 2, 3])
+filipino_lore = "Channels healing into an elemental strike, restoring health while dealing damage"
 metadata/_custom_type_script = "uid://v3nevm1wba6b"
